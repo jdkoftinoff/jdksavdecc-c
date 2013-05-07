@@ -41,7 +41,7 @@ int test_jdksavdecc_acmp_controller()
     
     r = jdksavdecc_common_control_header_read( &header, buf, 0, 12 );
 
-    return 0;
+    return r>=0;
 }
 
 
