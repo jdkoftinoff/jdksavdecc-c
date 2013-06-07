@@ -1,7 +1,4 @@
-#pragma once
-#ifndef JDKSAVDECC_H
-#define JDKSAVDECC_H
-
+  
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -33,25 +30,21 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "jdksavdecc_world.h"
-#include "jdksavdecc_util.h"
-#include "jdksavdecc_pdu.h"
-#include "jdksavdecc_acmp.h"
-#include "jdksavdecc_acmp_controller.h"
-#include "jdksavdecc_acmp_listener.h"
-#include "jdksavdecc_acmp_talker.h"
-#include "jdksavdecc_adp.h"
-#include "jdksavdecc_adp_advertise.h"
-#include "jdksavdecc_adp_discover.h"
-#include "jdksavdecc_aecp.h"
-#include "jdksavdecc_aecp_aem.h"
-#include "jdksavdecc_aem_command.h"
-#include "jdksavdecc_aem_descriptor.h"
-#include "jdksavdecc_aem_entity.h"
-#include "jdksavdecc_app.h"
-#include "jdksavdecc_apc.h"
-#include "jdksavdecc_aps.h"
-#include "jdksavdecc_maap.h"
 
-#endif
+#include "jdksavdecc.h"
+
+int test_jdksavdecc_adp_discover()
+{
+    return 0;
+}
+
+
+int main( int argc, char **argv )
+{
+    (void)argc;
+    (void)argv;
+    return test_jdksavdecc_adp_discover() ? EXIT_SUCCESS : EXIT_FAILURE;
+}
+
+
 

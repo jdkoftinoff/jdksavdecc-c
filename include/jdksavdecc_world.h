@@ -34,7 +34,6 @@
 */
 
 #include <stdlib.h>
-#include <stdint.h>
 #include <string.h>
 #include <stdio.h>
 #include <errno.h>
@@ -46,6 +45,7 @@
 
 #ifdef _MSC_VER
 # include <BaseTsd.h> 
+# include "jdksavdecc_msstdint.h"
 # include "jdksavdecc_msinttypes.h"
 # ifndef ssize_t
 #  define ssize_t SSIZE_T
@@ -54,6 +54,7 @@
 #  define inline __inline
 # endif
 #else
+# include <stdint.h>
 # include <inttypes.h>
 #endif
 
