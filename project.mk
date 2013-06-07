@@ -15,3 +15,5 @@ TEST_OUT_SUFFIX=txt
 
 CONFIG_TOOLS=
 
+COMPILE_FLAGS+=-Wall -Werror -W
+
