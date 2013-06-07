@@ -40,6 +40,8 @@ int test_jdksavdecc_acmp_talker()
 
 int main( int argc, char **argv )
 {
+    (void)argc;
+    (void)argv;
     return test_jdksavdecc_acmp_talker() ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 

@@ -40,6 +40,8 @@ int test_jdksavdecc_acmp_listener()
 
 int main( int argc, char **argv )
 {
+    (void)argc;
+    (void)argv;
     return test_jdksavdecc_acmp_listener() ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 
