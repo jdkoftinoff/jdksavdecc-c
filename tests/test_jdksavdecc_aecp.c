@@ -30,17 +30,10 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 #include "jdksavdecc.h"
 
-int test_jdksavdecc_acmp_controller()
+int test_jdksavdecc_aecp()
 {
-    ssize_t r;
-    struct jdksavdecc_common_control_header header;
-    uint8_t buf[12];
-    
-    r = jdksavdecc_common_control_header_read( &header, buf, 0, 12 );
-
     return 0;
 }
 
@@ -49,8 +42,9 @@ int main( int argc, char **argv )
 {
     (void)argc;
     (void)argv;
-    return test_jdksavdecc_acmp_controller() ? EXIT_SUCCESS : EXIT_FAILURE;
+    return test_jdksavdecc_aecp() ? EXIT_SUCCESS : EXIT_FAILURE;
 }
+
 
 
 
