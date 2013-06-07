@@ -73,9 +73,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\include\jdksavdecc.h" />
     <ClInclude Include="..\include\jdksavdecc_acmp.h" />
     <ClInclude Include="..\include\jdksavdecc_acmp_listener.h" />
@@ -83,8 +80,14 @@
     <ClInclude Include="..\include\jdksavdecc_adp.h" />
     <ClInclude Include="..\include\jdksavdecc_adp_advertise.h" />
     <ClInclude Include="..\include\jdksavdecc_aecp.h" />
+    <ClInclude Include="..\include\jdksavdecc_aecp_aa.h" />
     <ClInclude Include="..\include\jdksavdecc_aecp_aem.h" />
+    <ClInclude Include="..\include\jdksavdecc_aem_command.h" />
+    <ClInclude Include="..\include\jdksavdecc_aem_descriptor.h" />
     <ClInclude Include="..\include\jdksavdecc_aem_entity.h" />
+    <ClInclude Include="..\include\jdksavdecc_apc.h" />
+    <ClInclude Include="..\include\jdksavdecc_app.h" />
+    <ClInclude Include="..\include\jdksavdecc_aps.h" />
     <ClInclude Include="..\include\jdksavdecc_maap.h" />
     <ClInclude Include="..\include\jdksavdecc_msinttypes.h" />
     <ClInclude Include="..\include\jdksavdecc_pdu.h" />
@@ -99,8 +102,14 @@
     <ClCompile Include="..\src\jdksavdecc_adp.c" />
     <ClCompile Include="..\src\jdksavdecc_adp_advertise.c" />
     <ClCompile Include="..\src\jdksavdecc_aecp.c" />
+    <ClCompile Include="..\src\jdksavdecc_aecp_aa.c" />
     <ClCompile Include="..\src\jdksavdecc_aecp_aem.c" />
+    <ClCompile Include="..\src\jdksavdecc_aem_command.c" />
+    <ClCompile Include="..\src\jdksavdecc_aem_descriptor.c" />
     <ClCompile Include="..\src\jdksavdecc_aem_entity.c" />
+    <ClCompile Include="..\src\jdksavdecc_apc.c" />
+    <ClCompile Include="..\src\jdksavdecc_app.c" />
+    <ClCompile Include="..\src\jdksavdecc_aps.c" />
     <ClCompile Include="..\src\jdksavdecc_maap.c" />
     <ClCompile Include="..\src\jdksavdecc_pdu.c" />
     <ClCompile Include="..\src\jdksavdecc_util.c" />
