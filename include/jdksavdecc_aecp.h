@@ -65,9 +65,9 @@ static inline ssize_t jdksavdecc_aecpdu_common_control_header_write( struct jdks
     return jdksavdecc_common_control_header_write( (struct jdksavdecc_common_control_header const *)p, base, pos, len );
 }
 
-#define JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_GUID (0)
-#define JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID (8)
-#define JDKSAVDECC_AECPDU_COMMON_LEN (10)
+#define JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_GUID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
+#define JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
+#define JDKSAVDECC_AECPDU_COMMON_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
 
 
 /*@}*/
