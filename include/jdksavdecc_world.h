@@ -43,7 +43,19 @@
 #include <stddef.h>
 #include <limits.h>
 #include <ctype.h>
-#include <inttypes.h>
+
+#ifdef _MSC_VER
+# include <BaseTsd.h> 
+# include "jdksavdecc_msinttypes.h"
+# ifndef ssize_t
+#  define ssize_t SSIZE_T
+# endif
+# ifndef inline
+#  define inline __inline
+# endif
+#else
+# include <inttypes.h>
+#endif
 
 #endif
 
