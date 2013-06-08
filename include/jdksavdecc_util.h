@@ -694,6 +694,78 @@ static inline void jdksavdecc_eui64_set( struct jdksavdecc_eui64  v, void *base,
 /*@}*/
 
 
+/** \addtogroup gptp GPTP time */
+/*@{*/
+
+struct jdksavdecc_gptp_seconds
+{
+    uint64_t seconds:48;
+};
+
+static inline void avdecc_gptp_seconds_init( struct jdksavdecc_gptp_seconds *self )
+{
+    self->seconds = 0;
+}
+
+static inline void avdecc_gptp_seconds_read( struct jdksavdecc_gptp_seconds *host_value, void const *base, ssize_t pos )
+{
+    uint8_t const *b = ((uint8_t const *)base) + pos;
+    host_value->seconds =
+                  (((uint64_t)b[0])<<(8*5)) +
+                  (((uint64_t)b[1])<<(8*4)) +
+                  (((uint64_t)b[2])<<(8*3)) +
+                  (((uint64_t)b[3])<<(8*2)) +
+                  (((uint64_t)b[4])<<(8*1)) +
+                  b[5];
+}
+
+
+static inline struct jdksavdecc_gptp_seconds jdksavdecc_gptp_seconds_get( void const *base, ssize_t pos )
+{
+    struct jdksavdecc_gptp_seconds v;
+    uint8_t const *b = ((uint8_t const *)base) + pos;
+
+    v.seconds =
+            (((uint64_t)b[0])<<(8*5)) +
+            (((uint64_t)b[1])<<(8*4)) +
+            (((uint64_t)b[2])<<(8*3)) +
+            (((uint64_t)b[3])<<(8*2)) +
+            (((uint64_t)b[4])<<(8*1)) +
+            b[5];
+
+    return v;
+}
+
+static inline ssize_t jdksavdecc_gptp_seconds_write( struct jdksavdecc_gptp_seconds host_value, void *base, ssize_t pos, ssize_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, 6 );
+    if( r>=0 )
+    {
+        uint8_t *b = ((uint8_t *)base) + pos;
+
+        b[0] = (uint8_t)((host_value.seconds)>>(8*5))&0xff;
+        b[1] = (uint8_t)((host_value.seconds)>>(8*4))&0xff;
+        b[2] = (uint8_t)((host_value.seconds)>>(8*3))&0xff;
+        b[3] = (uint8_t)((host_value.seconds)>>(8*2))&0xff;
+        b[4] = (uint8_t)((host_value.seconds)>>(8*1))&0xff;
+        b[5] = (uint8_t)((host_value.seconds))&0xff;
+    }
+    return r;
+}
+
+static inline void jdksavdecc_gptp_seconds_set( struct jdksavdecc_gptp_seconds v, void *base, ssize_t pos )
+{
+    uint8_t *b = ((uint8_t *)base) + pos;
+    b[0] = (uint8_t)((v.seconds)>>(8*5))&0xff;
+    b[1] = (uint8_t)((v.seconds)>>(8*4))&0xff;
+    b[2] = (uint8_t)((v.seconds)>>(8*3))&0xff;
+    b[3] = (uint8_t)((v.seconds)>>(8*2))&0xff;
+    b[4] = (uint8_t)((v.seconds)>>(8*1))&0xff;
+    b[5] = (uint8_t)((v.seconds))&0xff;
+}
+
+/*@}*/
+
 #endif
 
 

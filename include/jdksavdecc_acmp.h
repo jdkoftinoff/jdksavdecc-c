@@ -40,7 +40,7 @@
 /** \addtogroup acmpdu ACMPDU - Clause 8.2.1 */
 /*@{*/
 
-struct jdksavdecc_acmpdu_common_control_header
+struct JDKSAVDECC_ACMPDU_common_control_header
 {
     uint32_t cd:1;
     uint32_t subtype:JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_WIDTH;
@@ -52,12 +52,12 @@ struct jdksavdecc_acmpdu_common_control_header
     struct jdksavdecc_eui64 stream_id;
 };
 
-static inline ssize_t jdksavdecc_acmpdu_common_control_header_read( struct jdksavdecc_acmpdu_common_control_header *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t JDKSAVDECC_ACMPDU_common_control_header_read( struct JDKSAVDECC_ACMPDU_common_control_header *p, void const *base, ssize_t pos, size_t len )
 {
     return jdksavdecc_common_control_header_read( (struct jdksavdecc_common_control_header *)p, base, pos, len );
 }
 
-static inline ssize_t jdksavdecc_acmpdu_common_control_header_write( struct jdksavdecc_acmpdu_common_control_header const *p, void *base, ssize_t pos, size_t len )
+static inline ssize_t JDKSAVDECC_ACMPDU_common_control_header_write( struct JDKSAVDECC_ACMPDU_common_control_header const *p, void *base, ssize_t pos, size_t len )
 {
     return jdksavdecc_common_control_header_write( (struct jdksavdecc_common_control_header const *)p, base, pos, len );
 }
@@ -151,6 +151,424 @@ static inline ssize_t jdksavdecc_acmpdu_common_control_header_write( struct jdks
 #define JDKSAVDECC_ACMP_STATUS_NOT_SUPPORTED (31)
 
 /*@}*/
+
+
+/** \addtogroup acmpdu ACMPDU - Clause 8.2.1 */
+/*@{*/
+
+/**
+ * Extract the eui64 value of the controller_guid field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the struct jdksavdecc_eui64 controller_guid value
+ */
+static inline struct jdksavdecc_eui64 jdksavdecc_acmpdu_get_controller_guid( void const *base, ssize_t pos )
+{
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_CONTROLLER_GUID);
+}
+
+
+/**
+ * Store a eui64 value to the controller_guid field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The struct jdksavdecc_eui64 controller_guid value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_controller_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+{
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_CONTROLLER_GUID);
+}
+
+
+/**
+ * Extract the eui64 value of the talker_guid field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the struct jdksavdecc_eui64 talker_guid value
+ */
+static inline struct jdksavdecc_eui64 jdksavdecc_acmpdu_get_talker_guid( void const *base, ssize_t pos )
+{
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_TALKER_GUID);
+}
+
+
+/**
+ * Store a eui64 value to the talker_guid field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The struct jdksavdecc_eui64 talker_guid value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_talker_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+{
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_TALKER_GUID);
+}
+
+
+/**
+ * Extract the eui64 value of the listener_guid field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the struct jdksavdecc_eui64 listener_guid value
+ */
+static inline struct jdksavdecc_eui64 jdksavdecc_acmpdu_get_listener_guid( void const *base, ssize_t pos )
+{
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_LISTENER_GUID);
+}
+
+
+/**
+ * Store a eui64 value to the listener_guid field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The struct jdksavdecc_eui64 listener_guid value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_listener_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+{
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_LISTENER_GUID);
+}
+
+
+/**
+ * Extract the uint16 value of the talker_unique_id field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t talker_unique_id value
+ */
+static inline uint16_t jdksavdecc_acmpdu_get_talker_unique_id( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_TALKER_UNIQUE_ID);
+}
+
+
+/**
+ * Store a uint16 value to the talker_unique_id field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t talker_unique_id value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_talker_unique_id( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_TALKER_UNIQUE_ID);
+}
+
+
+/**
+ * Extract the uint16 value of the listener_unique_id field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t listener_unique_id value
+ */
+static inline uint16_t jdksavdecc_acmpdu_get_listener_unique_id( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_LISTENER_UNIQUE_ID);
+}
+
+
+/**
+ * Store a uint16 value to the listener_unique_id field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t listener_unique_id value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_listener_unique_id( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_LISTENER_UNIQUE_ID);
+}
+
+
+/**
+ * Extract the eui48 value of the stream_dest_mac field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the struct jdksavdecc_eui48 stream_dest_mac value
+ */
+static inline struct jdksavdecc_eui48 jdksavdecc_acmpdu_get_stream_dest_mac( void const *base, ssize_t pos )
+{
+    return jdksavdecc_eui48_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_STREAM_DEST_MAC);
+}
+
+
+/**
+ * Store a eui48 value to the stream_dest_mac field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The struct jdksavdecc_eui48 stream_dest_mac value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_stream_dest_mac( struct jdksavdecc_eui48 v, void *base, ssize_t pos )
+{
+    jdksavdecc_eui48_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_STREAM_DEST_MAC);
+}
+
+
+/**
+ * Extract the uint16 value of the connection_count field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t connection_count value
+ */
+static inline uint16_t jdksavdecc_acmpdu_get_connection_count( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_CONNECTION_COUNT);
+}
+
+
+/**
+ * Store a uint16 value to the connection_count field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t connection_count value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_connection_count( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_CONNECTION_COUNT);
+}
+
+
+/**
+ * Extract the uint16 value of the sequence_id field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t sequence_id value
+ */
+static inline uint16_t jdksavdecc_acmpdu_get_sequence_id( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_SEQUENCE_ID);
+}
+
+
+/**
+ * Store a uint16 value to the sequence_id field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t sequence_id value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_sequence_id( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_SEQUENCE_ID);
+}
+
+
+/**
+ * Extract the uint16 value of the acmp_flags field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t acmp_flags value
+ */
+static inline uint16_t jdksavdecc_acmpdu_get_acmp_flags( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_ACMP_FLAGS);
+}
+
+
+/**
+ * Store a uint16 value to the acmp_flags field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t acmp_flags value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_acmp_flags( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_ACMP_FLAGS);
+}
+
+
+/**
+ * Extract the uint32 value of the reserved field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint32_t reserved value
+ */
+static inline uint32_t jdksavdecc_acmpdu_get_reserved( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_RESERVED);
+}
+
+
+/**
+ * Store a uint32 value to the reserved field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint32_t reserved value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_reserved( uint32_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_RESERVED);
+}
+
+
+
+
+/*@}*/
+
+
+/** \addtogroup acmpdu ACMPDU - Clause 8.2.1 */
+/*@{*/
+
+
+/// ACMPDU - Clause 8.2.1
+struct jdksavdecc_acmpdu
+{
+    struct JDKSAVDECC_ACMPDU_common_control_header header;
+    struct jdksavdecc_eui64 controller_guid;
+    struct jdksavdecc_eui64 talker_guid;
+    struct jdksavdecc_eui64 listener_guid;
+    uint16_t talker_unique_id;
+    uint16_t listener_unique_id;
+    struct jdksavdecc_eui48 stream_dest_mac;
+    uint16_t connection_count;
+    uint16_t sequence_id;
+    uint16_t acmp_flags;
+    uint32_t reserved;
+};
+
+/**
+ * Extract the jdksavdecc_acmpdu structure from a network buffer.
+ *
+ *
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p pointer to acmpdu structure to fill in.
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
+ */
+static inline ssize_t jdksavdecc_acmpdu_read( struct jdksavdecc_acmpdu *p, void const *base, ssize_t pos, size_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_ACMPDU_LEN );
+    if( r>=0 )
+    {
+        JDKSAVDECC_ACMPDU_common_control_header_read( &p->header, base, pos, len );
+        p->controller_guid = jdksavdecc_acmpdu_get_controller_guid( base, pos );
+        p->talker_guid = jdksavdecc_acmpdu_get_talker_guid( base, pos );
+        p->listener_guid = jdksavdecc_acmpdu_get_listener_guid( base, pos );
+        p->talker_unique_id = jdksavdecc_acmpdu_get_talker_unique_id( base, pos );
+        p->listener_unique_id = jdksavdecc_acmpdu_get_listener_unique_id( base, pos );
+        p->stream_dest_mac = jdksavdecc_acmpdu_get_stream_dest_mac( base, pos );
+        p->connection_count = jdksavdecc_acmpdu_get_connection_count( base, pos );
+        p->sequence_id = jdksavdecc_acmpdu_get_sequence_id( base, pos );
+        p->acmp_flags = jdksavdecc_acmpdu_get_acmp_flags( base, pos );
+        p->reserved = jdksavdecc_acmpdu_get_reserved( base, pos );
+    }
+    return r;
+}
+
+/**
+ * Store the jdksavdecc_acmpdu structure to a network buffer.
+ *
+ *
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p const pointer to acmpdu structure to read from.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
+ */
+static inline ssize_t jdksavdecc_acmpdu_write( struct jdksavdecc_acmpdu const *p, void *base, size_t pos, size_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_ACMPDU_LEN );
+    if( r>=0 )
+    {
+        JDKSAVDECC_ACMPDU_common_control_header_write( &p->header, base, pos, len );
+        jdksavdecc_acmpdu_set_controller_guid( p->controller_guid, base, pos );
+        jdksavdecc_acmpdu_set_talker_guid( p->talker_guid, base, pos );
+        jdksavdecc_acmpdu_set_listener_guid( p->listener_guid, base, pos );
+        jdksavdecc_acmpdu_set_talker_unique_id( p->talker_unique_id, base, pos );
+        jdksavdecc_acmpdu_set_listener_unique_id( p->listener_unique_id, base, pos );
+        jdksavdecc_acmpdu_set_stream_dest_mac( p->stream_dest_mac, base, pos );
+        jdksavdecc_acmpdu_set_connection_count( p->connection_count, base, pos );
+        jdksavdecc_acmpdu_set_sequence_id( p->sequence_id, base, pos );
+        jdksavdecc_acmpdu_set_acmp_flags( p->acmp_flags, base, pos );
+        jdksavdecc_acmpdu_set_reserved( p->reserved, base, pos );
+    }
+    return r;
+}
+
+/*@}*/
+
 
 #endif
 

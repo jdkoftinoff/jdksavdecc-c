@@ -278,6 +278,10 @@ static inline ssize_t jdksavdecc_maap_write( struct jdksavdecc_maap_t const *p, 
 
 /*@}*/
 
+
+
+
+
 #endif
 
 

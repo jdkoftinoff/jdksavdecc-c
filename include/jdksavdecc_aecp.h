@@ -99,6 +99,145 @@ static inline ssize_t jdksavdecc_aecpdu_common_control_header_write( struct jdks
 
 /*@}*/
 
+
+/** \addtogroup aecpdu_common AECPDU Common - Clause 9.2.1.1 */
+/*@{*/
+
+/**
+ * Extract the eui64 value of the controller_guid field of the AECPDU_COMMON object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the struct jdksavdecc_eui64 controller_guid value
+ */
+static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_common_get_controller_guid( void const *base, ssize_t pos )
+{
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_GUID);
+}
+
+
+/**
+ * Store a eui64 value to the controller_guid field of the AECPDU_COMMON object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The struct jdksavdecc_eui64 controller_guid value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aecpdu_common_set_controller_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+{
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_GUID);
+}
+
+
+/**
+ * Extract the uint16 value of the sequence_id field of the AECPDU_COMMON object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t sequence_id value
+ */
+static inline uint16_t jdksavdecc_aecpdu_common_get_sequence_id( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID);
+}
+
+
+/**
+ * Store a uint16 value to the sequence_id field of the AECPDU_COMMON object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t sequence_id value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aecpdu_common_set_sequence_id( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID);
+}
+
+
+
+
+/*@}*/
+
+
+/** \addtogroup aecpdu_common AECPDU Common - Clause 9.2.1.1 */
+/*@{*/
+
+
+/// AECPDU Common - Clause 9.2.1.1
+struct jdksavdecc_aecpdu_common_t
+{
+    struct jdksavdecc_aecpdu_common_control_header header;
+    struct jdksavdecc_eui64 controller_guid;
+    uint16_t sequence_id;
+};
+
+/**
+ * Extract the jdksavdecc_aecpdu_common_t structure from a network buffer.
+ *
+ *
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p pointer to aecpdu_common structure to fill in.
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
+ */
+static inline ssize_t jdksavdecc_aecpdu_common_read( struct jdksavdecc_aecpdu_common_t *p, void const *base, ssize_t pos, size_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_COMMON_LEN );
+    if( r>=0 )
+    {
+        jdksavdecc_aecpdu_common_control_header_read( &p->header, base, pos, len );
+        p->controller_guid = jdksavdecc_aecpdu_common_get_controller_guid( base, pos );
+        p->sequence_id = jdksavdecc_aecpdu_common_get_sequence_id( base, pos );
+    }
+    return r;
+}
+
+/**
+ * Store the jdksavdecc_aecpdu_common_t structure to a network buffer.
+ *
+ *
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p const pointer to aecpdu_common structure to read from.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
+ */
+static inline ssize_t jdksavdecc_aecpdu_common_write( struct jdksavdecc_aecpdu_common_t const *p, void *base, size_t pos, size_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_COMMON_LEN );
+    if( r>=0 )
+    {
+        jdksavdecc_aecpdu_common_control_header_write( &p->header, base, pos, len );
+        jdksavdecc_aecpdu_common_set_controller_guid( p->controller_guid, base, pos );
+        jdksavdecc_aecpdu_common_set_sequence_id( p->sequence_id, base, pos );
+    }
+    return r;
+}
+
+/*@}*/
+
+
+
 #endif
 
 
