@@ -2258,9 +2258,65 @@
 /*@}*/
 
 
+/** \addtogroup command_set_memory_object_length SET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.72.1 */
+/*@{*/
+
+
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_DESCRIPTOR_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_DESCRIPTOR_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_LENGTH (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
+
+/*@}*/
+
+
+/** \addtogroup command_set_memory_object_length_response SET_MEMORY_OBJECT_LENGTH Response  - Clause 7.4.72.2 */
+/*@{*/
+
+
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
+
+/*@}*/
+
+/** \addtogroup command_get_memory_object_length GET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.72.1 */
+/*@{*/
+
+
+#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
+#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
+#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
+#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_OFFSET_DESCRIPTOR_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_OFFSET_DESCRIPTOR_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
+#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+
+/*@}*/
+
+
+/** \addtogroup command_get_memory_object_length_response GET_MEMORY_OBJECT_LENGTH Response  - Clause 7.4.72.2 */
+/*@{*/
+
+
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
+
+/*@}*/
+
+
 /**! @todo: Add offsets for fields for the rest of the commands:
-JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH
-JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH
 JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP
 JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP
 
@@ -40594,7 +40650,489 @@ static inline ssize_t jdksavdecc_aem_command_disable_stream_encryption_response_
 
 /*@}*/
 
+
+/** \addtogroup command_set_memory_object_length SET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.72.1 */
+/*@{*/
+
+/**
+ * Extract the eui64 value of the controller_entity_id field of the COMMAND_SET_MEMORY_OBJECT_LENGTH object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the struct jdksavdecc_eui64 controller_entity_id value
+ */
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_set_memory_object_length_get_controller_entity_id( void const *base, ssize_t pos )
+{
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_CONTROLLER_ENTITY_ID);
+}
+
+
+/**
+ * Store a eui64 value to the controller_entity_id field of the COMMAND_SET_MEMORY_OBJECT_LENGTH object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The struct jdksavdecc_eui64 controller_entity_id value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_memory_object_length_set_controller_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+{
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_CONTROLLER_ENTITY_ID);
+}
+
+
+/**
+ * Extract the uint16 value of the sequence_id field of the COMMAND_SET_MEMORY_OBJECT_LENGTH object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t sequence_id value
+ */
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_get_sequence_id( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_SEQUENCE_ID);
+}
+
+
+/**
+ * Store a uint16 value to the sequence_id field of the COMMAND_SET_MEMORY_OBJECT_LENGTH object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t sequence_id value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_memory_object_length_set_sequence_id( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_SEQUENCE_ID);
+}
+
+
+/**
+ * Extract the uint16 value of the command_type field of the COMMAND_SET_MEMORY_OBJECT_LENGTH object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t command_type value
+ */
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_get_command_type( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_COMMAND_TYPE);
+}
+
+
+/**
+ * Store a uint16 value to the command_type field of the COMMAND_SET_MEMORY_OBJECT_LENGTH object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t command_type value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_memory_object_length_set_command_type( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_COMMAND_TYPE);
+}
+
+
+/**
+ * Extract the uint16 value of the descriptor_type field of the COMMAND_SET_MEMORY_OBJECT_LENGTH object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t descriptor_type value
+ */
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_get_descriptor_type( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_DESCRIPTOR_TYPE);
+}
+
+
+/**
+ * Store a uint16 value to the descriptor_type field of the COMMAND_SET_MEMORY_OBJECT_LENGTH object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t descriptor_type value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_memory_object_length_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_DESCRIPTOR_TYPE);
+}
+
+
+/**
+ * Extract the uint16 value of the descriptor_index field of the COMMAND_SET_MEMORY_OBJECT_LENGTH object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t descriptor_index value
+ */
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_get_descriptor_index( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_DESCRIPTOR_INDEX);
+}
+
+
+/**
+ * Store a uint16 value to the descriptor_index field of the COMMAND_SET_MEMORY_OBJECT_LENGTH object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t descriptor_index value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_memory_object_length_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_OFFSET_DESCRIPTOR_INDEX);
+}
+
+
+/** \addtogroup command_set_memory_object_length SET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.71.1 */
+/*@{*/
+
+
+/// SET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.72.1
+struct jdksavdecc_aem_command_set_memory_object_length
+{
+    struct jdksavdecc_aecpdu_aem aem_header;
+    struct jdksavdecc_eui64 controller_entity_id;
+    uint16_t sequence_id;
+    uint16_t command_type;
+    uint16_t descriptor_type;
+    uint16_t descriptor_index;
+    uint64_t length;
+};
+
+/**
+ * Extract the jdksavdecc_aem_command_set_memory_object_length structure from a network buffer.
+ *
+ *
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p pointer to command_set_memory_object_length structure to fill in.
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
+ */
+static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_read( struct jdksavdecc_aem_command_set_memory_object_length *p, void const *base, ssize_t pos, size_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_LEN );
+    if( r>=0 )
+    {
+        jdksavdecc_aecpdu_aem_read(&p->aem_header,base,pos,len);
+        p->controller_entity_id = jdksavdecc_aem_command_set_memory_object_length_get_controller_entity_id( base, pos );
+        p->sequence_id = jdksavdecc_aem_command_set_memory_object_length_get_sequence_id( base, pos );
+        p->command_type = jdksavdecc_aem_command_set_memory_object_length_get_command_type( base, pos );
+        p->descriptor_type = jdksavdecc_aem_command_set_memory_object_length_get_descriptor_type( base, pos );
+        p->descriptor_index = jdksavdecc_aem_command_set_memory_object_length_get_descriptor_index( base, pos );
+        p->length = jdksavdecc_aem_command_set_memory_object_length_get_length( base, pos );
+    }
+    return r;
+}
+
+/**
+ * Store the jdksavdecc_aem_command_set_memory_object_length structure to a network buffer.
+ *
+ *
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p const pointer to command_set_memory_object_length structure to read from.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
+ */
+static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_write( struct jdksavdecc_aem_command_set_memory_object_length const *p, void *base, size_t pos, size_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_LEN );
+    if( r>=0 )
+    {
+        jdksavdecc_aecpdu_aem_write(&p->aem_header,base,pos,len);
+        jdksavdecc_aem_command_set_memory_object_length_set_controller_entity_id( p->controller_entity_id, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_set_sequence_id( p->sequence_id, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_set_command_type( p->command_type, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_set_descriptor_type( p->descriptor_type, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_set_length( p->length, base, pos );
+    }
+    return r;
+}
+
+/*@}*/
+
+
+/** \addtogroup command_set_memory_object_length_response SET_MEMORY_OBJECT_LENGTH Response  - Clause 7.4.72.2 */
+/*@{*/
+
+/**
+ * Extract the eui64 value of the controller_entity_id field of the COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the struct jdksavdecc_eui64 controller_entity_id value
+ */
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_set_memory_object_length_response_get_controller_entity_id( void const *base, ssize_t pos )
+{
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID);
+}
+
+
+/**
+ * Store a eui64 value to the controller_entity_id field of the COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The struct jdksavdecc_eui64 controller_entity_id value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_controller_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+{
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID);
+}
+
+
+/**
+ * Extract the uint16 value of the sequence_id field of the COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t sequence_id value
+ */
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_response_get_sequence_id( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_SEQUENCE_ID);
+}
+
+
+/**
+ * Store a uint16 value to the sequence_id field of the COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t sequence_id value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_sequence_id( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_SEQUENCE_ID);
+}
+
+
+/**
+ * Extract the uint16 value of the command_type field of the COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t command_type value
+ */
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_response_get_command_type( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_COMMAND_TYPE);
+}
+
+
+/**
+ * Store a uint16 value to the command_type field of the COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t command_type value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_command_type( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_COMMAND_TYPE);
+}
+
+
+/**
+ * Extract the uint16 value of the descriptor_type field of the COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t descriptor_type value
+ */
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_response_get_descriptor_type( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE);
+}
+
+
+/**
+ * Store a uint16 value to the descriptor_type field of the COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t descriptor_type value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE);
+}
+
+
+/**
+ * Extract the uint16 value of the descriptor_index field of the COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t descriptor_index value
+ */
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_response_get_descriptor_index( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_INDEX);
+}
+
+
+/**
+ * Store a uint16 value to the descriptor_index field of the COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t descriptor_index value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_INDEX);
+}
+
+
+/** \addtogroup command_set_memory_object_length_response SET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.71.1 */
+/*@{*/
+
+
+/// SET_MEMORY_OBJECT_LENGTH Response  - Clause 7.4.72.2
+struct jdksavdecc_aem_command_set_memory_object_length_response
+{
+    struct jdksavdecc_aecpdu_aem aem_header;
+    struct jdksavdecc_eui64 controller_entity_id;
+    uint16_t sequence_id;
+    uint16_t command_type;
+    uint16_t descriptor_type;
+    uint16_t descriptor_index;
+    uint64_t length;
+};
+
+/**
+ * Extract the jdksavdecc_aem_command_set_memory_object_length_response structure from a network buffer.
+ *
+ *
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p pointer to command_set_memory_object_length_response structure to fill in.
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
+ */
+static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_response_read( struct jdksavdecc_aem_command_set_memory_object_length_response *p, void const *base, ssize_t pos, size_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN );
+    if( r>=0 )
+    {
+        jdksavdecc_aecpdu_aem_read(&p->aem_header,base,pos,len);
+        p->controller_entity_id = jdksavdecc_aem_command_set_memory_object_length_response_get_controller_entity_id( base, pos );
+        p->sequence_id = jdksavdecc_aem_command_set_memory_object_length_response_get_sequence_id( base, pos );
+        p->command_type = jdksavdecc_aem_command_set_memory_object_length_response_get_command_type( base, pos );
+        p->descriptor_type = jdksavdecc_aem_command_set_memory_object_length_response_get_descriptor_type( base, pos );
+        p->descriptor_index = jdksavdecc_aem_command_set_memory_object_length_response_get_descriptor_index( base, pos );
+        p->length = jdksavdecc_aem_command_set_memory_object_length_response_get_length( base, pos );
+    }
+    return r;
+}
+
+/**
+ * Store the jdksavdecc_aem_command_set_memory_object_length_response structure to a network buffer.
+ *
+ *
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p const pointer to command_set_memory_object_length_response structure to read from.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
+ */
+static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_response_write( struct jdksavdecc_aem_command_set_memory_object_length_response const *p, void *base, size_t pos, size_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN );
+    if( r>=0 )
+    {
+        jdksavdecc_aecpdu_aem_write(&p->aem_header,base,pos,len);
+        jdksavdecc_aem_command_set_memory_object_length_response_set_controller_entity_id( p->controller_entity_id, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_response_set_sequence_id( p->sequence_id, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_response_set_command_type( p->command_type, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_response_set_descriptor_type( p->descriptor_type, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_response_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_response_set_length( p->length, base, pos );
+    }
+    return r;
+}
+
+/*@}*/
+
+
 /**! @todo: Add read/write for the rest of the commands and responses */
+
 
 /**! @todo: Add Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4 ECC_PRIVATE_256, 7.6.1.3 Key Chains */
 
