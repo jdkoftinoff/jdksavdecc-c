@@ -166,7 +166,73 @@ static inline void jdksavdecc_aecpdu_aem_set_command_type( uint16_t v, void *bas
 }
 
 
+/*@}*/
 
+
+/** \addtogroup aecpdu_aem AECPDU AEM - Clause 9.2.1.2 */
+/*@{*/
+
+
+/// AECPDU AEM - Clause 9.2.1.2
+struct jdksavdecc_aecpdu_aem
+{
+    struct jdksavdecc_aecpdu_common aecpdu_header;
+    struct jdksavdecc_eui64 controller_guid;
+    uint16_t sequence_id;
+    uint16_t command_type;
+};
+
+/**
+ * Extract the avdecc_aecpdu_aem_t structure from a network buffer.
+ *
+ *
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p pointer to aecpdu_aem structure to fill in.
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
+ */
+static inline ssize_t jdksavdecc_aecpdu_aem_read( struct jdksavdecc_aecpdu_aem *p, void const *base, ssize_t pos, size_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_AEM_LEN );
+    if( r>=0 )
+    {
+        jdksavdecc_aecpdu_common_read(&p->aecpdu_header,base,pos,len);
+        p->controller_guid = jdksavdecc_aecpdu_aem_get_controller_guid( base, pos );
+        p->sequence_id = jdksavdecc_aecpdu_aem_get_sequence_id( base, pos );
+        p->command_type = jdksavdecc_aecpdu_aem_get_command_type( base, pos );
+    }
+    return r;
+}
+
+/**
+ * Store the avdecc_aecpdu_aem_t structure to a network buffer.
+ *
+ *
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p const pointer to aecpdu_aem structure to read from.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
+ */
+static inline ssize_t jdksavdecc_aecpdu_aem_write( struct jdksavdecc_aecpdu_aem const *p, void *base, size_t pos, size_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_AEM_LEN );
+    if( r>=0 )
+    {
+        jdksavdecc_aecpdu_common_write(&p->aecpdu_header,base,pos,len);
+        jdksavdecc_aecpdu_aem_set_controller_guid( p->controller_guid, base, pos );
+        jdksavdecc_aecpdu_aem_set_sequence_id( p->sequence_id, base, pos );
+        jdksavdecc_aecpdu_aem_set_command_type( p->command_type, base, pos );
+    }
+    return r;
+}
 
 /*@}*/
 

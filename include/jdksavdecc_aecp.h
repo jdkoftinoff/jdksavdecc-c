@@ -104,7 +104,7 @@ static inline ssize_t jdksavdecc_aecpdu_common_control_header_write( struct jdks
 /*@{*/
 
 /**
- * Extract the eui64 value of the controller_guid field of the AECPDU_COMMON object from a network buffer.
+ * Extract the eui64 value of the controller_guid field of the aecpdu_common object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
@@ -120,7 +120,7 @@ static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_common_get_controller_gu
 
 
 /**
- * Store a eui64 value to the controller_guid field of the AECPDU_COMMON object to a network buffer.
+ * Store a eui64 value to the controller_guid field of the aecpdu_common object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
@@ -136,7 +136,7 @@ static inline void jdksavdecc_aecpdu_common_set_controller_guid( struct jdksavde
 
 
 /**
- * Extract the uint16 value of the sequence_id field of the AECPDU_COMMON object from a network buffer.
+ * Extract the uint16 value of the sequence_id field of the aecpdu_common object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
@@ -152,7 +152,7 @@ static inline uint16_t jdksavdecc_aecpdu_common_get_sequence_id( void const *bas
 
 
 /**
- * Store a uint16 value to the sequence_id field of the AECPDU_COMMON object to a network buffer.
+ * Store a uint16 value to the sequence_id field of the aecpdu_common object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
@@ -177,7 +177,7 @@ static inline void jdksavdecc_aecpdu_common_set_sequence_id( uint16_t v, void *b
 
 
 /// AECPDU Common - Clause 9.2.1.1
-struct jdksavdecc_aecpdu_common_t
+struct jdksavdecc_aecpdu_common
 {
     struct jdksavdecc_aecpdu_common_control_header header;
     struct jdksavdecc_eui64 controller_guid;
@@ -197,7 +197,7 @@ struct jdksavdecc_aecpdu_common_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aecpdu_common_read( struct jdksavdecc_aecpdu_common_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_aecpdu_common_read( struct jdksavdecc_aecpdu_common *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_COMMON_LEN );
     if( r>=0 )
@@ -222,7 +222,7 @@ static inline ssize_t jdksavdecc_aecpdu_common_read( struct jdksavdecc_aecpdu_co
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aecpdu_common_write( struct jdksavdecc_aecpdu_common_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_aecpdu_common_write( struct jdksavdecc_aecpdu_common const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_COMMON_LEN );
     if( r>=0 )
