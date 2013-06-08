@@ -85,6 +85,9 @@ static inline ssize_t JDKSAVDECC_ACMPDU_common_control_header_write( struct JDKS
 #define JDKSAVDECC_ACMP_FLAG_ENCRYPTED_PDU_BIT (11)
 #define JDKSAVDECC_ACMP_FLAG_ENCRYPTED_PDU (0x0010)
 #define JDKSAVDECC_ACMP_FLAG_ENCRYPTED_PDU_MASK (~0x0010)
+#define JDKSAVDECC_ACMP_FLAG_TALKER_FAILED_BIT (10)
+#define JDKSAVDECC_ACMP_FLAG_TALKER_FAILED (0x0020)
+#define JDKSAVDECC_ACMP_FLAG_TALKER_FAILED_MASK (~0x0020)
 
 /*@}*/
 
@@ -102,7 +105,8 @@ static inline ssize_t JDKSAVDECC_ACMPDU_common_control_header_write( struct JDKS
 #define JDKSAVDECC_ACMPDU_OFFSET_CONNECTION_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+34)
 #define JDKSAVDECC_ACMPDU_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+36)
 #define JDKSAVDECC_ACMPDU_OFFSET_ACMP_FLAGS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+38)
-#define JDKSAVDECC_ACMPDU_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+40)
+#define JDKSAVDECC_ACMPDU_OFFSET_STREAM_VLAN_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+40)
+#define JDKSAVDECC_ACMPDU_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+42)
 #define JDKSAVDECC_ACMPDU_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+44)
 
 /*@}*/
@@ -445,34 +449,67 @@ static inline void jdksavdecc_acmpdu_set_acmp_flags( uint16_t v, void *base, ssi
 
 
 /**
- * Extract the uint32 value of the reserved field of the ACMPDU object from a network buffer.
+ * Extract the uint16 value of the stream_vlan_id field of the ACMPDU object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t reserved value
+ * @return the uint16_t stream_vlan_id value
  */
-static inline uint32_t jdksavdecc_acmpdu_get_reserved( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_acmpdu_get_stream_vlan_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_RESERVED);
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_STREAM_VLAN_ID);
 }
 
 
 /**
- * Store a uint32 value to the reserved field of the ACMPDU object to a network buffer.
+ * Store a uint16 value to the stream_vlan_id field of the ACMPDU object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t reserved value.
+ * @param v The uint16_t stream_vlan_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_acmpdu_set_reserved( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_acmpdu_set_stream_vlan_id( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_RESERVED);
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_STREAM_VLAN_ID);
+}
+
+
+
+/**
+ * Extract the uint16 value of the reserved field of the ACMPDU object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t reserved value
+ */
+static inline uint16_t jdksavdecc_acmpdu_get_reserved( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_RESERVED);
+}
+
+
+/**
+ * Store a uint16 value to the reserved field of the ACMPDU object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t reserved value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_acmpdu_set_reserved( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_RESERVED);
 }
 
 
@@ -498,7 +535,8 @@ struct jdksavdecc_acmpdu
     uint16_t connection_count;
     uint16_t sequence_id;
     uint16_t acmp_flags;
-    uint32_t reserved;
+    uint16_t stream_vlan_id;
+    uint16_t reserved;
 };
 
 /**
@@ -529,6 +567,7 @@ static inline ssize_t jdksavdecc_acmpdu_read( struct jdksavdecc_acmpdu *p, void 
         p->connection_count = jdksavdecc_acmpdu_get_connection_count( base, pos );
         p->sequence_id = jdksavdecc_acmpdu_get_sequence_id( base, pos );
         p->acmp_flags = jdksavdecc_acmpdu_get_acmp_flags( base, pos );
+        p->stream_vlan_id = jdksavdecc_acmpdu_get_stream_vlan_id( base, pos );
         p->reserved = jdksavdecc_acmpdu_get_reserved( base, pos );
     }
     return r;
@@ -562,6 +601,7 @@ static inline ssize_t jdksavdecc_acmpdu_write( struct jdksavdecc_acmpdu const *p
         jdksavdecc_acmpdu_set_connection_count( p->connection_count, base, pos );
         jdksavdecc_acmpdu_set_sequence_id( p->sequence_id, base, pos );
         jdksavdecc_acmpdu_set_acmp_flags( p->acmp_flags, base, pos );
+        jdksavdecc_acmpdu_set_stream_vlan_id( p->stream_vlan_id, base, pos );
         jdksavdecc_acmpdu_set_reserved( p->reserved, base, pos );
     }
     return r;
