@@ -1819,7 +1819,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_KEY_TYPE_KEY_LENGTH (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+22)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_KEY (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
@@ -1835,7 +1835,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
 
 /*@}*/
@@ -1848,7 +1848,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
 
 /*@}*/
@@ -1861,7 +1861,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
 
 /*@}*/
@@ -1901,7 +1901,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
 
 /*@}*/
@@ -1914,7 +1914,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_KEY_TYPE_KEY_LENGTH (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+22)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_KEY (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
@@ -1932,7 +1932,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_OFFSET_KEYCHAIN_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
 
 /*@}*/
@@ -1947,7 +1947,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_OFFSET_KEYCHAIN_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
 
 /*@}*/
@@ -1962,7 +1962,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_OFFSET_KEYCHAIN_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
 
 /*@}*/
@@ -1977,7 +1977,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_OFFSET_KEYCHAIN_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
 
 /*@}*/
@@ -2008,7 +2008,7 @@
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEYCHAIN_LIST_RESPONSE_OFFSET_LIST_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEYCHAIN_LIST_RESPONSE_OFFSET_NUMBER_OF_LISTS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEYCHAIN_LIST_RESPONSE_OFFSET_NUMBER_OF_KEYS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+18)
-#define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEYCHAIN_LIST_RESPONSE_OFFSET_KEY_EUIS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
+#define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEYCHAIN_LIST_RESPONSE_OFFSET_KEY_IDS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEYCHAIN_LIST_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
 
 /*@}*/
@@ -2157,7 +2157,7 @@
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
-#define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
 
 /*@}*/
@@ -2170,7 +2170,7 @@
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
-#define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
+#define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+20)
 
 /*@}*/
@@ -2209,7 +2209,7 @@
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_OFFSET_DESCRIPTOR_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_OFFSET_DESCRIPTOR_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
-#define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+#define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
 
 /*@}*/
@@ -2224,7 +2224,7 @@
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_OFFSET_DESCRIPTOR_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_OFFSET_DESCRIPTOR_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
-#define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_OFFSET_KEY_EUI (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+#define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_OFFSET_KEY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
 #define JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
 
 /*@}*/
@@ -2258,13 +2258,16 @@
 /*@}*/
 
 
-/*** @todo: Add offsets for fields for the rest of the commands:
+/**! @todo: Add offsets for fields for the rest of the commands:
 JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH
 JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH
 JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP
 JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP
 
 */
+
+/**! @todo: Add defs Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4 ECC_PRIVATE_256, 7.6.1.3 Key Chains */
+
 
 /** \addtogroup command_acquire_entity ACQUIRE_ENTITY Command - Clause 7.4.1.1 */
 /*@{*/
@@ -33259,34 +33262,34 @@ static inline void jdksavdecc_aem_command_auth_add_key_set_command_type( uint16_
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_AUTH_ADD_KEY object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_AUTH_ADD_KEY object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_add_key_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_add_key_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_AUTH_ADD_KEY object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_AUTH_ADD_KEY object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_auth_add_key_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_auth_add_key_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_OFFSET_KEY_ID);
 }
 
 
@@ -33370,7 +33373,7 @@ struct jdksavdecc_aem_command_auth_add_key
     struct jdksavdecc_eui64 controller_entity_id;
     uint16_t sequence_id;
     uint16_t command_type;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
     uint16_t key_type_key_length;
     uint16_t reserved;
 };
@@ -33397,7 +33400,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_read( struct jdksavdec
         p->controller_entity_id = jdksavdecc_aem_command_auth_add_key_get_controller_entity_id( base, pos );
         p->sequence_id = jdksavdecc_aem_command_auth_add_key_get_sequence_id( base, pos );
         p->command_type = jdksavdecc_aem_command_auth_add_key_get_command_type( base, pos );
-        p->key_eui = jdksavdecc_aem_command_auth_add_key_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_auth_add_key_get_key_id( base, pos );
         p->key_type_key_length = jdksavdecc_aem_command_auth_add_key_get_key_type_key_length( base, pos );
         p->reserved = jdksavdecc_aem_command_auth_add_key_get_reserved( base, pos );
     }
@@ -33426,7 +33429,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_write( struct jdksavde
         jdksavdecc_aem_command_auth_add_key_set_controller_entity_id( p->controller_entity_id, base, pos );
         jdksavdecc_aem_command_auth_add_key_set_sequence_id( p->sequence_id, base, pos );
         jdksavdecc_aem_command_auth_add_key_set_command_type( p->command_type, base, pos );
-        jdksavdecc_aem_command_auth_add_key_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_auth_add_key_set_key_id( p->key_id, base, pos );
         jdksavdecc_aem_command_auth_add_key_set_key_type_key_length( p->key_type_key_length, base, pos );
         jdksavdecc_aem_command_auth_add_key_set_reserved( p->reserved, base, pos );
     }
@@ -33535,34 +33538,34 @@ static inline void jdksavdecc_aem_command_auth_add_key_response_set_command_type
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_AUTH_ADD_KEY_RESPONSE object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_AUTH_ADD_KEY_RESPONSE object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_add_key_response_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_add_key_response_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_AUTH_ADD_KEY_RESPONSE object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_AUTH_ADD_KEY_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_auth_add_key_response_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_auth_add_key_response_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_OFFSET_KEY_ID);
 }
 
 
@@ -33582,7 +33585,7 @@ struct jdksavdecc_aem_command_auth_add_key_response
     struct jdksavdecc_eui64 controller_entity_id;
     uint16_t sequence_id;
     uint16_t command_type;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -33607,7 +33610,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_response_read( struct 
         p->controller_entity_id = jdksavdecc_aem_command_auth_add_key_response_get_controller_entity_id( base, pos );
         p->sequence_id = jdksavdecc_aem_command_auth_add_key_response_get_sequence_id( base, pos );
         p->command_type = jdksavdecc_aem_command_auth_add_key_response_get_command_type( base, pos );
-        p->key_eui = jdksavdecc_aem_command_auth_add_key_response_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_auth_add_key_response_get_key_id( base, pos );
     }
     return r;
 }
@@ -33634,7 +33637,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_response_write( struct
         jdksavdecc_aem_command_auth_add_key_response_set_controller_entity_id( p->controller_entity_id, base, pos );
         jdksavdecc_aem_command_auth_add_key_response_set_sequence_id( p->sequence_id, base, pos );
         jdksavdecc_aem_command_auth_add_key_response_set_command_type( p->command_type, base, pos );
-        jdksavdecc_aem_command_auth_add_key_response_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_auth_add_key_response_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -33741,34 +33744,34 @@ static inline void jdksavdecc_aem_command_auth_delete_key_set_command_type( uint
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_AUTH_DELETE_KEY object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_AUTH_DELETE_KEY object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_delete_key_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_delete_key_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_AUTH_DELETE_KEY object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_AUTH_DELETE_KEY object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_auth_delete_key_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_auth_delete_key_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_OFFSET_KEY_ID);
 }
 
 
@@ -33788,7 +33791,7 @@ struct jdksavdecc_aem_command_auth_delete_key
     struct jdksavdecc_eui64 controller_entity_id;
     uint16_t sequence_id;
     uint16_t command_type;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -33813,7 +33816,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_read( struct jdksav
         p->controller_entity_id = jdksavdecc_aem_command_auth_delete_key_get_controller_entity_id( base, pos );
         p->sequence_id = jdksavdecc_aem_command_auth_delete_key_get_sequence_id( base, pos );
         p->command_type = jdksavdecc_aem_command_auth_delete_key_get_command_type( base, pos );
-        p->key_eui = jdksavdecc_aem_command_auth_delete_key_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_auth_delete_key_get_key_id( base, pos );
     }
     return r;
 }
@@ -33840,7 +33843,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_write( struct jdksa
         jdksavdecc_aem_command_auth_delete_key_set_controller_entity_id( p->controller_entity_id, base, pos );
         jdksavdecc_aem_command_auth_delete_key_set_sequence_id( p->sequence_id, base, pos );
         jdksavdecc_aem_command_auth_delete_key_set_command_type( p->command_type, base, pos );
-        jdksavdecc_aem_command_auth_delete_key_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_auth_delete_key_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -33947,34 +33950,34 @@ static inline void jdksavdecc_aem_command_auth_delete_key_response_set_command_t
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_AUTH_DELETE_KEY_RESPONSE object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_AUTH_DELETE_KEY_RESPONSE object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_delete_key_response_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_delete_key_response_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_AUTH_DELETE_KEY_RESPONSE object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_AUTH_DELETE_KEY_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_auth_delete_key_response_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_auth_delete_key_response_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_OFFSET_KEY_ID);
 }
 
 
@@ -33994,7 +33997,7 @@ struct jdksavdecc_aem_command_auth_delete_key_response
     struct jdksavdecc_eui64 controller_entity_id;
     uint16_t sequence_id;
     uint16_t command_type;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -34019,7 +34022,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_response_read( stru
         p->controller_entity_id = jdksavdecc_aem_command_auth_delete_key_response_get_controller_entity_id( base, pos );
         p->sequence_id = jdksavdecc_aem_command_auth_delete_key_response_get_sequence_id( base, pos );
         p->command_type = jdksavdecc_aem_command_auth_delete_key_response_get_command_type( base, pos );
-        p->key_eui = jdksavdecc_aem_command_auth_delete_key_response_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_auth_delete_key_response_get_key_id( base, pos );
     }
     return r;
 }
@@ -34046,7 +34049,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_response_write( str
         jdksavdecc_aem_command_auth_delete_key_response_set_controller_entity_id( p->controller_entity_id, base, pos );
         jdksavdecc_aem_command_auth_delete_key_response_set_sequence_id( p->sequence_id, base, pos );
         jdksavdecc_aem_command_auth_delete_key_response_set_command_type( p->command_type, base, pos );
-        jdksavdecc_aem_command_auth_delete_key_response_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_auth_delete_key_response_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -34600,34 +34603,34 @@ static inline void jdksavdecc_aem_command_auth_get_key_set_command_type( uint16_
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_AUTH_GET_KEY object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_AUTH_GET_KEY object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_get_key_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_get_key_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_AUTH_GET_KEY object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_AUTH_GET_KEY object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_auth_get_key_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_auth_get_key_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_OFFSET_KEY_ID);
 }
 
 
@@ -34647,7 +34650,7 @@ struct jdksavdecc_aem_command_auth_get_key
     struct jdksavdecc_eui64 controller_entity_id;
     uint16_t sequence_id;
     uint16_t command_type;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -34672,7 +34675,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_read( struct jdksavdec
         p->controller_entity_id = jdksavdecc_aem_command_auth_get_key_get_controller_entity_id( base, pos );
         p->sequence_id = jdksavdecc_aem_command_auth_get_key_get_sequence_id( base, pos );
         p->command_type = jdksavdecc_aem_command_auth_get_key_get_command_type( base, pos );
-        p->key_eui = jdksavdecc_aem_command_auth_get_key_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_auth_get_key_get_key_id( base, pos );
     }
     return r;
 }
@@ -34699,7 +34702,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_write( struct jdksavde
         jdksavdecc_aem_command_auth_get_key_set_controller_entity_id( p->controller_entity_id, base, pos );
         jdksavdecc_aem_command_auth_get_key_set_sequence_id( p->sequence_id, base, pos );
         jdksavdecc_aem_command_auth_get_key_set_command_type( p->command_type, base, pos );
-        jdksavdecc_aem_command_auth_get_key_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_auth_get_key_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -34806,34 +34809,34 @@ static inline void jdksavdecc_aem_command_auth_get_key_response_set_command_type
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_AUTH_GET_KEY_RESPONSE object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_AUTH_GET_KEY_RESPONSE object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_get_key_response_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_get_key_response_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_AUTH_GET_KEY_RESPONSE object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_AUTH_GET_KEY_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_auth_get_key_response_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_auth_get_key_response_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_KEY_ID);
 }
 
 
@@ -34917,7 +34920,7 @@ struct jdksavdecc_aem_command_auth_get_key_response
     struct jdksavdecc_eui64 controller_entity_id;
     uint16_t sequence_id;
     uint16_t command_type;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
     uint16_t key_type_key_length;
     uint16_t reserved;
 };
@@ -34944,7 +34947,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_response_read( struct 
         p->controller_entity_id = jdksavdecc_aem_command_auth_get_key_response_get_controller_entity_id( base, pos );
         p->sequence_id = jdksavdecc_aem_command_auth_get_key_response_get_sequence_id( base, pos );
         p->command_type = jdksavdecc_aem_command_auth_get_key_response_get_command_type( base, pos );
-        p->key_eui = jdksavdecc_aem_command_auth_get_key_response_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_auth_get_key_response_get_key_id( base, pos );
         p->key_type_key_length = jdksavdecc_aem_command_auth_get_key_response_get_key_type_key_length( base, pos );
         p->reserved = jdksavdecc_aem_command_auth_get_key_response_get_reserved( base, pos );
     }
@@ -34973,7 +34976,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_response_write( struct
         jdksavdecc_aem_command_auth_get_key_response_set_controller_entity_id( p->controller_entity_id, base, pos );
         jdksavdecc_aem_command_auth_get_key_response_set_sequence_id( p->sequence_id, base, pos );
         jdksavdecc_aem_command_auth_get_key_response_set_command_type( p->command_type, base, pos );
-        jdksavdecc_aem_command_auth_get_key_response_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_auth_get_key_response_set_key_id( p->key_id, base, pos );
         jdksavdecc_aem_command_auth_get_key_response_set_key_type_key_length( p->key_type_key_length, base, pos );
         jdksavdecc_aem_command_auth_get_key_response_set_reserved( p->reserved, base, pos );
     }
@@ -35146,34 +35149,34 @@ static inline void jdksavdecc_aem_command_auth_add_key_to_chain_set_reserved( ui
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_AUTH_ADD_KEY_TO_CHAIN object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_AUTH_ADD_KEY_TO_CHAIN object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_add_key_to_chain_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_add_key_to_chain_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_AUTH_ADD_KEY_TO_CHAIN object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_AUTH_ADD_KEY_TO_CHAIN object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_auth_add_key_to_chain_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_auth_add_key_to_chain_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_OFFSET_KEY_ID);
 }
 
 
@@ -35195,7 +35198,7 @@ struct jdksavdecc_aem_command_auth_add_key_to_chain
     uint16_t command_type;
     uint16_t keychain_id;
     uint16_t reserved;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -35222,7 +35225,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_to_chain_read( struct 
         p->command_type = jdksavdecc_aem_command_auth_add_key_to_chain_get_command_type( base, pos );
         p->keychain_id = jdksavdecc_aem_command_auth_add_key_to_chain_get_keychain_id( base, pos );
         p->reserved = jdksavdecc_aem_command_auth_add_key_to_chain_get_reserved( base, pos );
-        p->key_eui = jdksavdecc_aem_command_auth_add_key_to_chain_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_auth_add_key_to_chain_get_key_id( base, pos );
     }
     return r;
 }
@@ -35251,7 +35254,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_to_chain_write( struct
         jdksavdecc_aem_command_auth_add_key_to_chain_set_command_type( p->command_type, base, pos );
         jdksavdecc_aem_command_auth_add_key_to_chain_set_keychain_id( p->keychain_id, base, pos );
         jdksavdecc_aem_command_auth_add_key_to_chain_set_reserved( p->reserved, base, pos );
-        jdksavdecc_aem_command_auth_add_key_to_chain_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_auth_add_key_to_chain_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -35422,34 +35425,34 @@ static inline void jdksavdecc_aem_command_auth_add_key_to_chain_response_set_res
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_add_key_to_chain_response_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_add_key_to_chain_response_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_auth_add_key_to_chain_response_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_auth_add_key_to_chain_response_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_OFFSET_KEY_ID);
 }
 
 
@@ -35471,7 +35474,7 @@ struct jdksavdecc_aem_command_auth_add_key_to_chain_response
     uint16_t command_type;
     uint16_t keychain_id;
     uint16_t reserved;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -35498,7 +35501,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_to_chain_response_read
         p->command_type = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_command_type( base, pos );
         p->keychain_id = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_keychain_id( base, pos );
         p->reserved = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_reserved( base, pos );
-        p->key_eui = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_key_id( base, pos );
     }
     return r;
 }
@@ -35527,7 +35530,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_to_chain_response_writ
         jdksavdecc_aem_command_auth_add_key_to_chain_response_set_command_type( p->command_type, base, pos );
         jdksavdecc_aem_command_auth_add_key_to_chain_response_set_keychain_id( p->keychain_id, base, pos );
         jdksavdecc_aem_command_auth_add_key_to_chain_response_set_reserved( p->reserved, base, pos );
-        jdksavdecc_aem_command_auth_add_key_to_chain_response_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_auth_add_key_to_chain_response_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -35698,34 +35701,34 @@ static inline void jdksavdecc_aem_command_auth_delete_key_from_chain_set_reserve
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_AUTH_DELETE_KEY_FROM_CHAIN object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_AUTH_DELETE_KEY_FROM_CHAIN object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_delete_key_from_chain_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_delete_key_from_chain_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_AUTH_DELETE_KEY_FROM_CHAIN object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_AUTH_DELETE_KEY_FROM_CHAIN object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_auth_delete_key_from_chain_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_auth_delete_key_from_chain_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_OFFSET_KEY_ID);
 }
 
 
@@ -35747,7 +35750,7 @@ struct jdksavdecc_aem_command_auth_delete_key_from_chain
     uint16_t command_type;
     uint16_t keychain_id;
     uint16_t reserved;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -35774,7 +35777,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_from_chain_read( st
         p->command_type = jdksavdecc_aem_command_auth_delete_key_from_chain_get_command_type( base, pos );
         p->keychain_id = jdksavdecc_aem_command_auth_delete_key_from_chain_get_keychain_id( base, pos );
         p->reserved = jdksavdecc_aem_command_auth_delete_key_from_chain_get_reserved( base, pos );
-        p->key_eui = jdksavdecc_aem_command_auth_delete_key_from_chain_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_auth_delete_key_from_chain_get_key_id( base, pos );
     }
     return r;
 }
@@ -35803,7 +35806,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_from_chain_write( s
         jdksavdecc_aem_command_auth_delete_key_from_chain_set_command_type( p->command_type, base, pos );
         jdksavdecc_aem_command_auth_delete_key_from_chain_set_keychain_id( p->keychain_id, base, pos );
         jdksavdecc_aem_command_auth_delete_key_from_chain_set_reserved( p->reserved, base, pos );
-        jdksavdecc_aem_command_auth_delete_key_from_chain_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_auth_delete_key_from_chain_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -35974,34 +35977,34 @@ static inline void jdksavdecc_aem_command_auth_delete_key_from_chain_response_se
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_OFFSET_KEY_ID);
 }
 
 
@@ -36023,7 +36026,7 @@ struct jdksavdecc_aem_command_auth_delete_key_from_chain_response
     uint16_t command_type;
     uint16_t keychain_id;
     uint16_t reserved;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -36050,7 +36053,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_from_chain_response
         p->command_type = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_command_type( base, pos );
         p->keychain_id = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_keychain_id( base, pos );
         p->reserved = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_reserved( base, pos );
-        p->key_eui = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_key_id( base, pos );
     }
     return r;
 }
@@ -36079,7 +36082,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_from_chain_response
         jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_command_type( p->command_type, base, pos );
         jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_keychain_id( p->keychain_id, base, pos );
         jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_reserved( p->reserved, base, pos );
-        jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -38903,34 +38906,34 @@ static inline void jdksavdecc_aem_command_enable_transport_security_set_command_
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_ENABLE_TRANSPORT_SECURITY object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_ENABLE_TRANSPORT_SECURITY object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_enable_transport_security_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_enable_transport_security_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_ENABLE_TRANSPORT_SECURITY object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_ENABLE_TRANSPORT_SECURITY object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_enable_transport_security_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_enable_transport_security_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_OFFSET_KEY_ID);
 }
 
 
@@ -38950,7 +38953,7 @@ struct jdksavdecc_aem_command_enable_transport_security
     struct jdksavdecc_eui64 controller_entity_id;
     uint16_t sequence_id;
     uint16_t command_type;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -38975,7 +38978,7 @@ static inline ssize_t jdksavdecc_aem_command_enable_transport_security_read( str
         p->controller_entity_id = jdksavdecc_aem_command_enable_transport_security_get_controller_entity_id( base, pos );
         p->sequence_id = jdksavdecc_aem_command_enable_transport_security_get_sequence_id( base, pos );
         p->command_type = jdksavdecc_aem_command_enable_transport_security_get_command_type( base, pos );
-        p->key_eui = jdksavdecc_aem_command_enable_transport_security_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_enable_transport_security_get_key_id( base, pos );
     }
     return r;
 }
@@ -39002,7 +39005,7 @@ static inline ssize_t jdksavdecc_aem_command_enable_transport_security_write( st
         jdksavdecc_aem_command_enable_transport_security_set_controller_entity_id( p->controller_entity_id, base, pos );
         jdksavdecc_aem_command_enable_transport_security_set_sequence_id( p->sequence_id, base, pos );
         jdksavdecc_aem_command_enable_transport_security_set_command_type( p->command_type, base, pos );
-        jdksavdecc_aem_command_enable_transport_security_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_enable_transport_security_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -39109,34 +39112,34 @@ static inline void jdksavdecc_aem_command_enable_transport_security_response_set
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_enable_transport_security_response_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_enable_transport_security_response_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_enable_transport_security_response_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_enable_transport_security_response_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_OFFSET_KEY_ID);
 }
 
 
@@ -39156,7 +39159,7 @@ struct jdksavdecc_aem_command_enable_transport_security_response
     struct jdksavdecc_eui64 controller_entity_id;
     uint16_t sequence_id;
     uint16_t command_type;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -39181,7 +39184,7 @@ static inline ssize_t jdksavdecc_aem_command_enable_transport_security_response_
         p->controller_entity_id = jdksavdecc_aem_command_enable_transport_security_response_get_controller_entity_id( base, pos );
         p->sequence_id = jdksavdecc_aem_command_enable_transport_security_response_get_sequence_id( base, pos );
         p->command_type = jdksavdecc_aem_command_enable_transport_security_response_get_command_type( base, pos );
-        p->key_eui = jdksavdecc_aem_command_enable_transport_security_response_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_enable_transport_security_response_get_key_id( base, pos );
     }
     return r;
 }
@@ -39208,7 +39211,7 @@ static inline ssize_t jdksavdecc_aem_command_enable_transport_security_response_
         jdksavdecc_aem_command_enable_transport_security_response_set_controller_entity_id( p->controller_entity_id, base, pos );
         jdksavdecc_aem_command_enable_transport_security_response_set_sequence_id( p->sequence_id, base, pos );
         jdksavdecc_aem_command_enable_transport_security_response_set_command_type( p->command_type, base, pos );
-        jdksavdecc_aem_command_enable_transport_security_response_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_enable_transport_security_response_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -39721,34 +39724,34 @@ static inline void jdksavdecc_aem_command_enable_stream_encryption_set_descripto
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_ENABLE_STREAM_ENCRYPTION object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_ENABLE_STREAM_ENCRYPTION object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_enable_stream_encryption_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_enable_stream_encryption_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_ENABLE_STREAM_ENCRYPTION object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_ENABLE_STREAM_ENCRYPTION object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_enable_stream_encryption_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_enable_stream_encryption_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_OFFSET_KEY_ID);
 }
 
 
@@ -39770,7 +39773,7 @@ struct jdksavdecc_aem_command_enable_stream_encryption
     uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -39797,7 +39800,7 @@ static inline ssize_t jdksavdecc_aem_command_enable_stream_encryption_read( stru
         p->command_type = jdksavdecc_aem_command_enable_stream_encryption_get_command_type( base, pos );
         p->descriptor_type = jdksavdecc_aem_command_enable_stream_encryption_get_descriptor_type( base, pos );
         p->descriptor_index = jdksavdecc_aem_command_enable_stream_encryption_get_descriptor_index( base, pos );
-        p->key_eui = jdksavdecc_aem_command_enable_stream_encryption_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_enable_stream_encryption_get_key_id( base, pos );
     }
     return r;
 }
@@ -39826,7 +39829,7 @@ static inline ssize_t jdksavdecc_aem_command_enable_stream_encryption_write( str
         jdksavdecc_aem_command_enable_stream_encryption_set_command_type( p->command_type, base, pos );
         jdksavdecc_aem_command_enable_stream_encryption_set_descriptor_type( p->descriptor_type, base, pos );
         jdksavdecc_aem_command_enable_stream_encryption_set_descriptor_index( p->descriptor_index, base, pos );
-        jdksavdecc_aem_command_enable_stream_encryption_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_enable_stream_encryption_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -39997,34 +40000,34 @@ static inline void jdksavdecc_aem_command_enable_stream_encryption_response_set_
 
 
 /**
- * Extract the eui64 value of the key_eui field of the COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE object from a network buffer.
+ * Extract the eui64 value of the key_id field of the COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 key_eui value
+ * @return the struct jdksavdecc_eui64 key_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_enable_stream_encryption_response_get_key_eui( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_enable_stream_encryption_response_get_key_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_OFFSET_KEY_EUI);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_OFFSET_KEY_ID);
 }
 
 
 /**
- * Store a eui64 value to the key_eui field of the COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE object to a network buffer.
+ * Store a eui64 value to the key_id field of the COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 key_eui value.
+ * @param v The struct jdksavdecc_eui64 key_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_enable_stream_encryption_response_set_key_eui( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_enable_stream_encryption_response_set_key_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_OFFSET_KEY_EUI);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_OFFSET_KEY_ID);
 }
 
 
@@ -40046,7 +40049,7 @@ struct jdksavdecc_aem_command_enable_stream_encryption_response
     uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
-    struct jdksavdecc_eui64 key_eui;
+    struct jdksavdecc_eui64 key_id;
 };
 
 /**
@@ -40073,7 +40076,7 @@ static inline ssize_t jdksavdecc_aem_command_enable_stream_encryption_response_r
         p->command_type = jdksavdecc_aem_command_enable_stream_encryption_response_get_command_type( base, pos );
         p->descriptor_type = jdksavdecc_aem_command_enable_stream_encryption_response_get_descriptor_type( base, pos );
         p->descriptor_index = jdksavdecc_aem_command_enable_stream_encryption_response_get_descriptor_index( base, pos );
-        p->key_eui = jdksavdecc_aem_command_enable_stream_encryption_response_get_key_eui( base, pos );
+        p->key_id = jdksavdecc_aem_command_enable_stream_encryption_response_get_key_id( base, pos );
     }
     return r;
 }
@@ -40102,7 +40105,7 @@ static inline ssize_t jdksavdecc_aem_command_enable_stream_encryption_response_w
         jdksavdecc_aem_command_enable_stream_encryption_response_set_command_type( p->command_type, base, pos );
         jdksavdecc_aem_command_enable_stream_encryption_response_set_descriptor_type( p->descriptor_type, base, pos );
         jdksavdecc_aem_command_enable_stream_encryption_response_set_descriptor_index( p->descriptor_index, base, pos );
-        jdksavdecc_aem_command_enable_stream_encryption_response_set_key_eui( p->key_eui, base, pos );
+        jdksavdecc_aem_command_enable_stream_encryption_response_set_key_id( p->key_id, base, pos );
     }
     return r;
 }
@@ -40593,6 +40596,7 @@ static inline ssize_t jdksavdecc_aem_command_disable_stream_encryption_response_
 
 /**! @todo: Add read/write for the rest of the commands and responses */
 
+/**! @todo: Add Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4 ECC_PRIVATE_256, 7.6.1.3 Key Chains */
 
 #endif
 
