@@ -36,6 +36,7 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp_aem.h"
 
+/** @todo: put aecp common header at beginning of each command and respose structure, add to read/write methods, adjust all offset fields appropriately */
 
 /** \addtogroup command */
 /*@{*/
