@@ -40,7 +40,7 @@
 /*@{*/
 
 
-#define JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_GUID (0)
+#define JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID (0)
 #define JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID (8)
 #define JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE (10)
 #define JDKSAVDECC_AECPDU_AEM_LEN (12)
@@ -71,34 +71,34 @@
 /*@{*/
 
 /**
- * Extract the eui64 value of the controller_guid field of the AECPDU_AEM object from a network buffer.
+ * Extract the eui64 value of the controller_entity_id field of the AECPDU_AEM object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 controller_guid value
+ * @return the struct jdksavdecc_eui64 controller_entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_aem_get_controller_guid( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_aem_get_controller_entity_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_GUID);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID);
 }
 
 
 /**
- * Store a eui64 value to the controller_guid field of the AECPDU_AEM object to a network buffer.
+ * Store a eui64 value to the controller_entity_id field of the AECPDU_AEM object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 controller_guid value.
+ * @param v The struct jdksavdecc_eui64 controller_entity_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aecpdu_aem_set_controller_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_aecpdu_aem_set_controller_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_GUID);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID);
 }
 
 
@@ -177,7 +177,7 @@ static inline void jdksavdecc_aecpdu_aem_set_command_type( uint16_t v, void *bas
 struct jdksavdecc_aecpdu_aem
 {
     struct jdksavdecc_aecpdu_common aecpdu_header;
-    struct jdksavdecc_eui64 controller_guid;
+    struct jdksavdecc_eui64 controller_entity_id;
     uint16_t sequence_id;
     uint16_t command_type;
 };
@@ -201,7 +201,7 @@ static inline ssize_t jdksavdecc_aecpdu_aem_read( struct jdksavdecc_aecpdu_aem *
     if( r>=0 )
     {
         jdksavdecc_aecpdu_common_read(&p->aecpdu_header,base,pos,len);
-        p->controller_guid = jdksavdecc_aecpdu_aem_get_controller_guid( base, pos );
+        p->controller_entity_id = jdksavdecc_aecpdu_aem_get_controller_entity_id( base, pos );
         p->sequence_id = jdksavdecc_aecpdu_aem_get_sequence_id( base, pos );
         p->command_type = jdksavdecc_aecpdu_aem_get_command_type( base, pos );
     }
@@ -227,7 +227,7 @@ static inline ssize_t jdksavdecc_aecpdu_aem_write( struct jdksavdecc_aecpdu_aem 
     if( r>=0 )
     {
         jdksavdecc_aecpdu_common_write(&p->aecpdu_header,base,pos,len);
-        jdksavdecc_aecpdu_aem_set_controller_guid( p->controller_guid, base, pos );
+        jdksavdecc_aecpdu_aem_set_controller_entity_id( p->controller_entity_id, base, pos );
         jdksavdecc_aecpdu_aem_set_sequence_id( p->sequence_id, base, pos );
         jdksavdecc_aecpdu_aem_set_command_type( p->command_type, base, pos );
     }

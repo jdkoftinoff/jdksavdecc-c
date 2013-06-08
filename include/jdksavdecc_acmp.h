@@ -96,9 +96,9 @@ static inline ssize_t JDKSAVDECC_ACMPDU_common_control_header_write( struct JDKS
 /*@{*/
 
 
-#define JDKSAVDECC_ACMPDU_OFFSET_CONTROLLER_GUID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
-#define JDKSAVDECC_ACMPDU_OFFSET_TALKER_GUID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
-#define JDKSAVDECC_ACMPDU_OFFSET_LISTENER_GUID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
+#define JDKSAVDECC_ACMPDU_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
+#define JDKSAVDECC_ACMPDU_OFFSET_TALKER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
+#define JDKSAVDECC_ACMPDU_OFFSET_LISTENER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
 #define JDKSAVDECC_ACMPDU_OFFSET_TALKER_UNIQUE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
 #define JDKSAVDECC_ACMPDU_OFFSET_LISTENER_UNIQUE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+26)
 #define JDKSAVDECC_ACMPDU_OFFSET_STREAM_DEST_MAC (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+28)
@@ -161,98 +161,98 @@ static inline ssize_t JDKSAVDECC_ACMPDU_common_control_header_write( struct JDKS
 /*@{*/
 
 /**
- * Extract the eui64 value of the controller_guid field of the ACMPDU object from a network buffer.
+ * Extract the eui64 value of the controller_entity_id field of the ACMPDU object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 controller_guid value
+ * @return the struct jdksavdecc_eui64 controller_entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_acmpdu_get_controller_guid( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_acmpdu_get_controller_entity_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_CONTROLLER_GUID);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_CONTROLLER_ENTITY_ID);
 }
 
 
 /**
- * Store a eui64 value to the controller_guid field of the ACMPDU object to a network buffer.
+ * Store a eui64 value to the controller_entity_id field of the ACMPDU object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 controller_guid value.
+ * @param v The struct jdksavdecc_eui64 controller_entity_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_acmpdu_set_controller_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_acmpdu_set_controller_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_CONTROLLER_GUID);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_CONTROLLER_ENTITY_ID);
 }
 
 
 /**
- * Extract the eui64 value of the talker_guid field of the ACMPDU object from a network buffer.
+ * Extract the eui64 value of the talker_entity_id field of the ACMPDU object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 talker_guid value
+ * @return the struct jdksavdecc_eui64 talker_entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_acmpdu_get_talker_guid( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_acmpdu_get_talker_entity_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_TALKER_GUID);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_TALKER_ENTITY_ID);
 }
 
 
 /**
- * Store a eui64 value to the talker_guid field of the ACMPDU object to a network buffer.
+ * Store a eui64 value to the talker_entity_id field of the ACMPDU object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 talker_guid value.
+ * @param v The struct jdksavdecc_eui64 talker_entity_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_acmpdu_set_talker_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_acmpdu_set_talker_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_TALKER_GUID);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_TALKER_ENTITY_ID);
 }
 
 
 /**
- * Extract the eui64 value of the listener_guid field of the ACMPDU object from a network buffer.
+ * Extract the eui64 value of the listener_entity_id field of the ACMPDU object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 listener_guid value
+ * @return the struct jdksavdecc_eui64 listener_entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_acmpdu_get_listener_guid( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_acmpdu_get_listener_entity_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_LISTENER_GUID);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_LISTENER_ENTITY_ID);
 }
 
 
 /**
- * Store a eui64 value to the listener_guid field of the ACMPDU object to a network buffer.
+ * Store a eui64 value to the listener_entity_id field of the ACMPDU object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 listener_guid value.
+ * @param v The struct jdksavdecc_eui64 listener_entity_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_acmpdu_set_listener_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_acmpdu_set_listener_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_LISTENER_GUID);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_LISTENER_ENTITY_ID);
 }
 
 
@@ -526,9 +526,9 @@ static inline void jdksavdecc_acmpdu_set_reserved( uint16_t v, void *base, ssize
 struct jdksavdecc_acmpdu
 {
     struct JDKSAVDECC_ACMPDU_common_control_header header;
-    struct jdksavdecc_eui64 controller_guid;
-    struct jdksavdecc_eui64 talker_guid;
-    struct jdksavdecc_eui64 listener_guid;
+    struct jdksavdecc_eui64 controller_entity_id;
+    struct jdksavdecc_eui64 talker_entity_id;
+    struct jdksavdecc_eui64 listener_entity_id;
     uint16_t talker_unique_id;
     uint16_t listener_unique_id;
     struct jdksavdecc_eui48 stream_dest_mac;
@@ -558,9 +558,9 @@ static inline ssize_t jdksavdecc_acmpdu_read( struct jdksavdecc_acmpdu *p, void 
     if( r>=0 )
     {
         JDKSAVDECC_ACMPDU_common_control_header_read( &p->header, base, pos, len );
-        p->controller_guid = jdksavdecc_acmpdu_get_controller_guid( base, pos );
-        p->talker_guid = jdksavdecc_acmpdu_get_talker_guid( base, pos );
-        p->listener_guid = jdksavdecc_acmpdu_get_listener_guid( base, pos );
+        p->controller_entity_id = jdksavdecc_acmpdu_get_controller_entity_id( base, pos );
+        p->talker_entity_id = jdksavdecc_acmpdu_get_talker_entity_id( base, pos );
+        p->listener_entity_id = jdksavdecc_acmpdu_get_listener_entity_id( base, pos );
         p->talker_unique_id = jdksavdecc_acmpdu_get_talker_unique_id( base, pos );
         p->listener_unique_id = jdksavdecc_acmpdu_get_listener_unique_id( base, pos );
         p->stream_dest_mac = jdksavdecc_acmpdu_get_stream_dest_mac( base, pos );
@@ -592,9 +592,9 @@ static inline ssize_t jdksavdecc_acmpdu_write( struct jdksavdecc_acmpdu const *p
     if( r>=0 )
     {
         JDKSAVDECC_ACMPDU_common_control_header_write( &p->header, base, pos, len );
-        jdksavdecc_acmpdu_set_controller_guid( p->controller_guid, base, pos );
-        jdksavdecc_acmpdu_set_talker_guid( p->talker_guid, base, pos );
-        jdksavdecc_acmpdu_set_listener_guid( p->listener_guid, base, pos );
+        jdksavdecc_acmpdu_set_controller_entity_id( p->controller_entity_id, base, pos );
+        jdksavdecc_acmpdu_set_talker_entity_id( p->talker_entity_id, base, pos );
+        jdksavdecc_acmpdu_set_listener_entity_id( p->listener_entity_id, base, pos );
         jdksavdecc_acmpdu_set_talker_unique_id( p->talker_unique_id, base, pos );
         jdksavdecc_acmpdu_set_listener_unique_id( p->listener_unique_id, base, pos );
         jdksavdecc_acmpdu_set_stream_dest_mac( p->stream_dest_mac, base, pos );

@@ -808,7 +808,7 @@
 /*@{*/
 
 
-#define JDKSAVDECC_VALUES_VENDOR_OFFSET_GUID (0)
+#define JDKSAVDECC_VALUES_VENDOR_OFFSET_ENTITY_ID (0)
 #define JDKSAVDECC_VALUES_VENDOR_OFFSET_BLOB_SIZE (8)
 #define JDKSAVDECC_VALUES_VENDOR_OFFSET_BINARY_BLOB (12)
 #define JDKSAVDECC_VALUES_VENDOR_LEN (12)
@@ -860,7 +860,7 @@
 
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_DESCRIPTOR_TYPE (0)
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_DESCRIPTOR_INDEX (2)
-#define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_GUID (4)
+#define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ENTITY_ID (4)
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_VENDOR_ID (12)
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_MODEL_ID (16)
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_CAPABILITIES (20)
@@ -1055,13 +1055,13 @@
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_CURRENT_FORMAT (74)
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_FORMATS_OFFSET (82)
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_NUMBER_OF_FORMATS (84)
-#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_GUID_0 (86)
+#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_0 (86)
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_0 (94)
-#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_GUID_1 (96)
+#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_1 (96)
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_1 (104)
-#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_GUID_2 (106)
+#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_2 (106)
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_2 (114)
-#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_GUID (116)
+#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_ENTITY_ID (116)
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_UNIQUE (124)
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_AVB_INTERFACE_INDEX (126)
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BUFFER_LENGTH (128)
@@ -4379,34 +4379,34 @@ static inline ssize_t jdksavdecc_values_gptp_time_write( struct jdksavdecc_value
 /*@{*/
 
 /**
- * Extract the eui64 value of the guid field of the VALUES_VENDOR object from a network buffer.
+ * Extract the eui64 value of the entity_id field of the VALUES_VENDOR object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 guid value
+ * @return the struct jdksavdecc_eui64 entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_values_vendor_get_guid( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_values_vendor_get_entity_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_VALUES_VENDOR_OFFSET_GUID);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_VALUES_VENDOR_OFFSET_ENTITY_ID);
 }
 
 
 /**
- * Store a eui64 value to the guid field of the VALUES_VENDOR object to a network buffer.
+ * Store a eui64 value to the entity_id field of the VALUES_VENDOR object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 guid value.
+ * @param v The struct jdksavdecc_eui64 entity_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_vendor_set_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_vendor_set_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_VALUES_VENDOR_OFFSET_GUID);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_VALUES_VENDOR_OFFSET_ENTITY_ID);
 }
 
 
@@ -4454,7 +4454,7 @@ static inline void jdksavdecc_values_vendor_set_blob_size( uint32_t v, void *bas
 /// Vendor Value Details - Clause 7.3.5.2.9
 struct jdksavdecc_values_vendor_t
 {
-    struct jdksavdecc_eui64 guid;
+    struct jdksavdecc_eui64 entity_id;
     uint32_t blob_size;
 };
 
@@ -4476,7 +4476,7 @@ static inline ssize_t jdksavdecc_values_vendor_read( struct jdksavdecc_values_ve
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VALUES_VENDOR_LEN );
     if( r>=0 )
     {
-        p->guid = jdksavdecc_values_vendor_get_guid( base, pos );
+        p->entity_id = jdksavdecc_values_vendor_get_entity_id( base, pos );
         p->blob_size = jdksavdecc_values_vendor_get_blob_size( base, pos );
     }
     return r;
@@ -4500,7 +4500,7 @@ static inline ssize_t jdksavdecc_values_vendor_write( struct jdksavdecc_values_v
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VALUES_VENDOR_LEN );
     if( r>=0 )
     {
-        jdksavdecc_values_vendor_set_guid( p->guid, base, pos );
+        jdksavdecc_values_vendor_set_entity_id( p->entity_id, base, pos );
         jdksavdecc_values_vendor_set_blob_size( p->blob_size, base, pos );
     }
     return r;
@@ -5151,34 +5151,34 @@ static inline void jdksavdecc_descriptor_entity_set_descriptor_index( uint16_t v
 
 
 /**
- * Extract the eui64 value of the entity_guid field of the DESCRIPTOR_ENTITY object from a network buffer.
+ * Extract the eui64 value of the entity_entity_id field of the DESCRIPTOR_ENTITY object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 entity_guid value
+ * @return the struct jdksavdecc_eui64 entity_entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_entity_get_entity_guid( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_entity_get_entity_entity_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_GUID);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ENTITY_ID);
 }
 
 
 /**
- * Store a eui64 value to the entity_guid field of the DESCRIPTOR_ENTITY object to a network buffer.
+ * Store a eui64 value to the entity_entity_id field of the DESCRIPTOR_ENTITY object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 entity_guid value.
+ * @param v The struct jdksavdecc_eui64 entity_entity_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_entity_set_entity_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_entity_set_entity_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_GUID);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ENTITY_ID);
 }
 
 
@@ -5772,7 +5772,7 @@ struct jdksavdecc_descriptor_entity_t
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
-    struct jdksavdecc_eui64 entity_guid;
+    struct jdksavdecc_eui64 entity_entity_id;
     uint32_t vendor_id;
     uint32_t entity_model_id;
     uint32_t entity_capabilities;
@@ -5813,7 +5813,7 @@ static inline ssize_t jdksavdecc_descriptor_entity_read( struct jdksavdecc_descr
     {
         p->descriptor_type = jdksavdecc_descriptor_entity_get_descriptor_type( base, pos );
         p->descriptor_index = jdksavdecc_descriptor_entity_get_descriptor_index( base, pos );
-        p->entity_guid = jdksavdecc_descriptor_entity_get_entity_guid( base, pos );
+        p->entity_entity_id = jdksavdecc_descriptor_entity_get_entity_entity_id( base, pos );
         p->vendor_id = jdksavdecc_descriptor_entity_get_vendor_id( base, pos );
         p->entity_model_id = jdksavdecc_descriptor_entity_get_entity_model_id( base, pos );
         p->entity_capabilities = jdksavdecc_descriptor_entity_get_entity_capabilities( base, pos );
@@ -5856,7 +5856,7 @@ static inline ssize_t jdksavdecc_descriptor_entity_write( struct jdksavdecc_desc
     {
         jdksavdecc_descriptor_entity_set_descriptor_type( p->descriptor_type, base, pos );
         jdksavdecc_descriptor_entity_set_descriptor_index( p->descriptor_index, base, pos );
-        jdksavdecc_descriptor_entity_set_entity_guid( p->entity_guid, base, pos );
+        jdksavdecc_descriptor_entity_set_entity_entity_id( p->entity_entity_id, base, pos );
         jdksavdecc_descriptor_entity_set_vendor_id( p->vendor_id, base, pos );
         jdksavdecc_descriptor_entity_set_entity_model_id( p->entity_model_id, base, pos );
         jdksavdecc_descriptor_entity_set_entity_capabilities( p->entity_capabilities, base, pos );
@@ -10625,34 +10625,34 @@ static inline void jdksavdecc_descriptor_stream_set_number_of_formats( uint16_t 
 
 
 /**
- * Extract the eui64 value of the backup_talker_guid_0 field of the DESCRIPTOR_STREAM object from a network buffer.
+ * Extract the eui64 value of the backup_talker_entity_id_0 field of the DESCRIPTOR_STREAM object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 backup_talker_guid_0 value
+ * @return the struct jdksavdecc_eui64 backup_talker_entity_id_0 value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_stream_get_backup_talker_guid_0( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_stream_get_backup_talker_entity_id_0( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_GUID_0);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_0);
 }
 
 
 /**
- * Store a eui64 value to the backup_talker_guid_0 field of the DESCRIPTOR_STREAM object to a network buffer.
+ * Store a eui64 value to the backup_talker_entity_id_0 field of the DESCRIPTOR_STREAM object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 backup_talker_guid_0 value.
+ * @param v The struct jdksavdecc_eui64 backup_talker_entity_id_0 value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_stream_set_backup_talker_guid_0( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_stream_set_backup_talker_entity_id_0( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_GUID_0);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_0);
 }
 
 
@@ -10689,34 +10689,34 @@ static inline void jdksavdecc_descriptor_stream_set_backup_talker_unique_0( uint
 
 
 /**
- * Extract the eui64 value of the backup_talker_guid_1 field of the DESCRIPTOR_STREAM object from a network buffer.
+ * Extract the eui64 value of the backup_talker_entity_id_1 field of the DESCRIPTOR_STREAM object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 backup_talker_guid_1 value
+ * @return the struct jdksavdecc_eui64 backup_talker_entity_id_1 value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_stream_get_backup_talker_guid_1( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_stream_get_backup_talker_entity_id_1( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_GUID_1);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_1);
 }
 
 
 /**
- * Store a eui64 value to the backup_talker_guid_1 field of the DESCRIPTOR_STREAM object to a network buffer.
+ * Store a eui64 value to the backup_talker_entity_id_1 field of the DESCRIPTOR_STREAM object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 backup_talker_guid_1 value.
+ * @param v The struct jdksavdecc_eui64 backup_talker_entity_id_1 value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_stream_set_backup_talker_guid_1( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_stream_set_backup_talker_entity_id_1( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_GUID_1);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_1);
 }
 
 
@@ -10753,34 +10753,34 @@ static inline void jdksavdecc_descriptor_stream_set_backup_talker_unique_1( uint
 
 
 /**
- * Extract the eui64 value of the backup_talker_guid_2 field of the DESCRIPTOR_STREAM object from a network buffer.
+ * Extract the eui64 value of the backup_talker_entity_id_2 field of the DESCRIPTOR_STREAM object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 backup_talker_guid_2 value
+ * @return the struct jdksavdecc_eui64 backup_talker_entity_id_2 value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_stream_get_backup_talker_guid_2( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_stream_get_backup_talker_entity_id_2( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_GUID_2);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_2);
 }
 
 
 /**
- * Store a eui64 value to the backup_talker_guid_2 field of the DESCRIPTOR_STREAM object to a network buffer.
+ * Store a eui64 value to the backup_talker_entity_id_2 field of the DESCRIPTOR_STREAM object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 backup_talker_guid_2 value.
+ * @param v The struct jdksavdecc_eui64 backup_talker_entity_id_2 value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_stream_set_backup_talker_guid_2( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_stream_set_backup_talker_entity_id_2( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_GUID_2);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_2);
 }
 
 
@@ -10817,34 +10817,34 @@ static inline void jdksavdecc_descriptor_stream_set_backup_talker_unique_2( uint
 
 
 /**
- * Extract the eui64 value of the backedup_talker_guid field of the DESCRIPTOR_STREAM object from a network buffer.
+ * Extract the eui64 value of the backedup_talker_entity_id field of the DESCRIPTOR_STREAM object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64 backedup_talker_guid value
+ * @return the struct jdksavdecc_eui64 backedup_talker_entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_stream_get_backedup_talker_guid( void const *base, ssize_t pos )
+static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_stream_get_backedup_talker_entity_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_GUID);
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_ENTITY_ID);
 }
 
 
 /**
- * Store a eui64 value to the backedup_talker_guid field of the DESCRIPTOR_STREAM object to a network buffer.
+ * Store a eui64 value to the backedup_talker_entity_id field of the DESCRIPTOR_STREAM object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64 backedup_talker_guid value.
+ * @param v The struct jdksavdecc_eui64 backedup_talker_entity_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_stream_set_backedup_talker_guid( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_stream_set_backedup_talker_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_GUID);
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_ENTITY_ID);
 }
 
 
@@ -10965,13 +10965,13 @@ struct jdksavdecc_descriptor_stream_t
     struct jdksavdecc_eui64 current_format;
     uint16_t formats_offset;
     uint16_t number_of_formats;
-    struct jdksavdecc_eui64 backup_talker_guid_0;
+    struct jdksavdecc_eui64 backup_talker_entity_id_0;
     uint16_t backup_talker_unique_0;
-    struct jdksavdecc_eui64 backup_talker_guid_1;
+    struct jdksavdecc_eui64 backup_talker_entity_id_1;
     uint16_t backup_talker_unique_1;
-    struct jdksavdecc_eui64 backup_talker_guid_2;
+    struct jdksavdecc_eui64 backup_talker_entity_id_2;
     uint16_t backup_talker_unique_2;
-    struct jdksavdecc_eui64 backedup_talker_guid;
+    struct jdksavdecc_eui64 backedup_talker_entity_id;
     uint16_t backedup_talker_unique;
     uint16_t avb_interface_index;
     uint32_t buffer_length;
@@ -11004,13 +11004,13 @@ static inline ssize_t jdksavdecc_descriptor_stream_read( struct jdksavdecc_descr
         p->current_format = jdksavdecc_descriptor_stream_get_current_format( base, pos );
         p->formats_offset = jdksavdecc_descriptor_stream_get_formats_offset( base, pos );
         p->number_of_formats = jdksavdecc_descriptor_stream_get_number_of_formats( base, pos );
-        p->backup_talker_guid_0 = jdksavdecc_descriptor_stream_get_backup_talker_guid_0( base, pos );
+        p->backup_talker_entity_id_0 = jdksavdecc_descriptor_stream_get_backup_talker_entity_id_0( base, pos );
         p->backup_talker_unique_0 = jdksavdecc_descriptor_stream_get_backup_talker_unique_0( base, pos );
-        p->backup_talker_guid_1 = jdksavdecc_descriptor_stream_get_backup_talker_guid_1( base, pos );
+        p->backup_talker_entity_id_1 = jdksavdecc_descriptor_stream_get_backup_talker_entity_id_1( base, pos );
         p->backup_talker_unique_1 = jdksavdecc_descriptor_stream_get_backup_talker_unique_1( base, pos );
-        p->backup_talker_guid_2 = jdksavdecc_descriptor_stream_get_backup_talker_guid_2( base, pos );
+        p->backup_talker_entity_id_2 = jdksavdecc_descriptor_stream_get_backup_talker_entity_id_2( base, pos );
         p->backup_talker_unique_2 = jdksavdecc_descriptor_stream_get_backup_talker_unique_2( base, pos );
-        p->backedup_talker_guid = jdksavdecc_descriptor_stream_get_backedup_talker_guid( base, pos );
+        p->backedup_talker_entity_id = jdksavdecc_descriptor_stream_get_backedup_talker_entity_id( base, pos );
         p->backedup_talker_unique = jdksavdecc_descriptor_stream_get_backedup_talker_unique( base, pos );
         p->avb_interface_index = jdksavdecc_descriptor_stream_get_avb_interface_index( base, pos );
         p->buffer_length = jdksavdecc_descriptor_stream_get_buffer_length( base, pos );
@@ -11045,13 +11045,13 @@ static inline ssize_t jdksavdecc_descriptor_stream_write( struct jdksavdecc_desc
         jdksavdecc_descriptor_stream_set_current_format( p->current_format, base, pos );
         jdksavdecc_descriptor_stream_set_formats_offset( p->formats_offset, base, pos );
         jdksavdecc_descriptor_stream_set_number_of_formats( p->number_of_formats, base, pos );
-        jdksavdecc_descriptor_stream_set_backup_talker_guid_0( p->backup_talker_guid_0, base, pos );
+        jdksavdecc_descriptor_stream_set_backup_talker_entity_id_0( p->backup_talker_entity_id_0, base, pos );
         jdksavdecc_descriptor_stream_set_backup_talker_unique_0( p->backup_talker_unique_0, base, pos );
-        jdksavdecc_descriptor_stream_set_backup_talker_guid_1( p->backup_talker_guid_1, base, pos );
+        jdksavdecc_descriptor_stream_set_backup_talker_entity_id_1( p->backup_talker_entity_id_1, base, pos );
         jdksavdecc_descriptor_stream_set_backup_talker_unique_1( p->backup_talker_unique_1, base, pos );
-        jdksavdecc_descriptor_stream_set_backup_talker_guid_2( p->backup_talker_guid_2, base, pos );
+        jdksavdecc_descriptor_stream_set_backup_talker_entity_id_2( p->backup_talker_entity_id_2, base, pos );
         jdksavdecc_descriptor_stream_set_backup_talker_unique_2( p->backup_talker_unique_2, base, pos );
-        jdksavdecc_descriptor_stream_set_backedup_talker_guid( p->backedup_talker_guid, base, pos );
+        jdksavdecc_descriptor_stream_set_backedup_talker_entity_id( p->backedup_talker_entity_id, base, pos );
         jdksavdecc_descriptor_stream_set_backedup_talker_unique( p->backedup_talker_unique, base, pos );
         jdksavdecc_descriptor_stream_set_avb_interface_index( p->avb_interface_index, base, pos );
         jdksavdecc_descriptor_stream_set_buffer_length( p->buffer_length, base, pos );

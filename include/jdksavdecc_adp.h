@@ -49,7 +49,7 @@ struct jdksavdecc_adpdu_common_control_header
     uint32_t message_type:JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_WIDTH;
     uint32_t valid_time:JDKSAVDECC_SUBTYPE_DATA_STATUS_WIDTH;
     uint32_t control_data_length:JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_WIDTH;
-    struct jdksavdecc_eui64 entity_guid;
+    struct jdksavdecc_eui64 entity_entity_id;
 };
 
 
