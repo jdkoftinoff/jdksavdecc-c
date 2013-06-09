@@ -38,6 +38,8 @@
 /** \addtogroup util Utilities */
 /*@{*/
 
+struct jdksavdecc_pdu_dispatch;
+
 typedef uint64_t jdksavdecc_time;
 
 /**

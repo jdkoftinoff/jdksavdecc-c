@@ -49,9 +49,16 @@
 #include "jdksavdecc_aem_descriptor.h"
 #include "jdksavdecc_aem_entity.h"
 #include "jdksavdecc_app.h"
+#include "jdksavdecc_app_print.h"
 #include "jdksavdecc_apc.h"
 #include "jdksavdecc_aps.h"
 #include "jdksavdecc_maap.h"
-
+#include "jdksavdecc_maap_print.h"
+#include "jdksavdecc_pdu_dispatch.h"
+#include "jdksavdecc_pdu_dispatch_print.h"
+#include "jdksavdecc_command_dispatch.h"
+#include "jdksavdecc_command_dispatch_print.h"
+#include "jdksavdecc_descriptor_dispatch.h"
+#include "jdksavdecc_descriptor_dispatch_print.h"
 #endif
 
