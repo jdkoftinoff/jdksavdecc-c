@@ -274,7 +274,6 @@ ssize_t jdksavdecc_aem_write_values_format_linear_double(
     return r;
 }
 
-/** @todo Selector types, array types, utf, bode plot, smpte time, sample rate, gptp time */
 
 ssize_t jdksavdecc_aem_write_values_format_utf8(
         struct jdksavdecc_string *s,

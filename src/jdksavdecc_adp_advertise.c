@@ -33,3 +33,8 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_adp_advertise.h"
+
+
+/** @todo adp advertise entity state machine implementation */
+
+/** @todo adp advertise interface state machine implementation */

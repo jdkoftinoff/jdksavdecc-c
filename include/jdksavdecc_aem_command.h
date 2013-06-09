@@ -36,8 +36,6 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp_aem.h"
 
-/** @todo: put aecp common header at beginning of each command and respose structure, add to read/write methods, adjust all offset fields appropriately */
-
 /** \addtogroup command */
 /*@{*/
 
@@ -2287,7 +2285,7 @@
 
 /*@}*/
 
-/** \addtogroup command_get_memory_object_length GET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.72.1 */
+/** \addtogroup command_get_memory_object_length GET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.73.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
@@ -2301,7 +2299,7 @@
 
 
 
-/** \addtogroup command_get_memory_object_length_response GET_MEMORY_OBJECT_LENGTH Response  - Clause 7.4.72.2 */
+/** \addtogroup command_get_memory_object_length_response GET_MEMORY_OBJECT_LENGTH Response  - Clause 7.4.73.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
@@ -2315,13 +2313,12 @@
 /*@}*/
 
 
-/**! @todo: Add offsets for fields for the rest of the commands:
+/** @todo Add offsets for fields for the rest of the commands:
 JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP
 JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP
-
 */
 
-/**! @todo: Add defs Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4 ECC_PRIVATE_256, 7.6.1.3 Key Chains */
+/** @todo Add defs Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4 ECC_PRIVATE_256, 7.6.1.3 Key Chains */
 
 
 /** \addtogroup command_acquire_entity ACQUIRE_ENTITY Command - Clause 7.4.1.1 */
@@ -40843,9 +40840,9 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_set_length( u
 {
     jdksavdecc_uint64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_LENGTH);
 }
+/*@}*/
 
-
-/** \addtogroup command_set_memory_object_length SET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.71.1 */
+/** \addtogroup command_set_memory_object_length SET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.72.1 */
 /*@{*/
 
 
@@ -41116,9 +41113,10 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_
 {
     jdksavdecc_uint64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH);
 }
+/*@}*/
 
 
-/** \addtogroup command_set_memory_object_length_response SET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.71.1 */
+/** \addtogroup command_set_memory_object_length_response SET_MEMORY_OBJECT_LENGTH Response  - Clause 7.4.72.2 */
 /*@{*/
 
 
@@ -41357,9 +41355,10 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_set_descripto
 {
     jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_INDEX);
 }
+/*@}*/
 
 
-/** \addtogroup command_get_memory_object_length GET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.72.1 */
+/** \addtogroup command_get_memory_object_length GET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.73.1 */
 /*@{*/
 
 
@@ -41625,9 +41624,10 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_response_set_
 {
     jdksavdecc_uint64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH);
 }
+/*@}*/
 
 
-/** \addtogroup command_get_memory_object_length_response GET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.71.1 */
+/** \addtogroup command_get_memory_object_length_response GET_MEMORY_OBJECT_LENGTH Response  - Clause 7.4.73.2 */
 /*@{*/
 
 
@@ -41703,10 +41703,10 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_response_w
 
 /*@}*/
 
-/**! @todo: Add read/write for the rest of the commands and responses */
+/** @todo Add read/write for the set/get stream backup commands and responses */
 
 
-/**! @todo: Add Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4 ECC_PRIVATE_256, 7.6.1.3 Key Chains */
+/* @todo Add Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4 ECC_PRIVATE_256, 7.6.1.3 Key Chains */
 
 #endif
 
