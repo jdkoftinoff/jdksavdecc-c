@@ -40,7 +40,7 @@
 /** \addtogroup acmpdu ACMPDU - Clause 8.2.1 */
 /*@{*/
 
-struct JDKSAVDECC_ACMPDU_common_control_header
+struct jdksavdecc_acmpdu_common_control_header
 {
     uint32_t cd:1;
     uint32_t subtype:JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_WIDTH;
@@ -52,12 +52,12 @@ struct JDKSAVDECC_ACMPDU_common_control_header
     struct jdksavdecc_eui64 stream_id;
 };
 
-static inline ssize_t JDKSAVDECC_ACMPDU_common_control_header_read( struct JDKSAVDECC_ACMPDU_common_control_header *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_acmpdu_common_control_header_read( struct jdksavdecc_acmpdu_common_control_header *p, void const *base, ssize_t pos, size_t len )
 {
     return jdksavdecc_common_control_header_read( (struct jdksavdecc_common_control_header *)p, base, pos, len );
 }
 
-static inline ssize_t JDKSAVDECC_ACMPDU_common_control_header_write( struct JDKSAVDECC_ACMPDU_common_control_header const *p, void *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_acmpdu_common_control_header_write( struct jdksavdecc_acmpdu_common_control_header const *p, void *base, ssize_t pos, size_t len )
 {
     return jdksavdecc_common_control_header_write( (struct jdksavdecc_common_control_header const *)p, base, pos, len );
 }
@@ -525,7 +525,7 @@ static inline void jdksavdecc_acmpdu_set_reserved( uint16_t v, void *base, ssize
 /// ACMPDU - Clause 8.2.1
 struct jdksavdecc_acmpdu
 {
-    struct JDKSAVDECC_ACMPDU_common_control_header header;
+    struct jdksavdecc_acmpdu_common_control_header header;
     struct jdksavdecc_eui64 controller_entity_id;
     struct jdksavdecc_eui64 talker_entity_id;
     struct jdksavdecc_eui64 listener_entity_id;
@@ -557,7 +557,7 @@ static inline ssize_t jdksavdecc_acmpdu_read( struct jdksavdecc_acmpdu *p, void 
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_ACMPDU_LEN );
     if( r>=0 )
     {
-        JDKSAVDECC_ACMPDU_common_control_header_read( &p->header, base, pos, len );
+        jdksavdecc_acmpdu_common_control_header_read( &p->header, base, pos, len );
         p->controller_entity_id = jdksavdecc_acmpdu_get_controller_entity_id( base, pos );
         p->talker_entity_id = jdksavdecc_acmpdu_get_talker_entity_id( base, pos );
         p->listener_entity_id = jdksavdecc_acmpdu_get_listener_entity_id( base, pos );
@@ -591,7 +591,7 @@ static inline ssize_t jdksavdecc_acmpdu_write( struct jdksavdecc_acmpdu const *p
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_ACMPDU_LEN );
     if( r>=0 )
     {
-        JDKSAVDECC_ACMPDU_common_control_header_write( &p->header, base, pos, len );
+        jdksavdecc_acmpdu_common_control_header_write( &p->header, base, pos, len );
         jdksavdecc_acmpdu_set_controller_entity_id( p->controller_entity_id, base, pos );
         jdksavdecc_acmpdu_set_talker_entity_id( p->talker_entity_id, base, pos );
         jdksavdecc_acmpdu_set_listener_entity_id( p->listener_entity_id, base, pos );
@@ -608,6 +608,9 @@ static inline ssize_t jdksavdecc_acmpdu_write( struct jdksavdecc_acmpdu const *p
 }
 
 /*@}*/
+
+
+
 
 
 #endif
