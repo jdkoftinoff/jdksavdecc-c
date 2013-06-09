@@ -33,4 +33,3 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp_listener.h"
 
-/** @todo acmp listener state machine implementation */

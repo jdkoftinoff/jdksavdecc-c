@@ -34,4 +34,3 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp_talker.h"
 
-/** @todo acmp talker state machine implementation */

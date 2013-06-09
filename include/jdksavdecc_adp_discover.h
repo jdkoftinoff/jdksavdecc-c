@@ -115,5 +115,7 @@ struct jdksavdecc_adp_discovery
 /// See Clause 6.2.6.3.2
 void jdksavdecc_adp_discovery_remove_entity( struct jdksavdecc_adp_discovery *, struct jdksavdecc_frame * );
 
+/** @todo adp discovery state machine implementation */
+
 #endif
 

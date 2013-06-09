@@ -34,4 +34,3 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_adp_discover.h"
 
-/** @todo adp discovery state machine implementation */

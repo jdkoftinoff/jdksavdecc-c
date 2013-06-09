@@ -114,5 +114,10 @@ void jdksavdecc_adp_advertise_entity_state_advertise(struct jdksavdecc_adp_adver
 void jdksavdecc_adp_advertise_entity_state_waiting(struct jdksavdecc_adp_advertise_entity *);
 
 
+/** @todo adp advertise entity state machine implementation */
+
+/** @todo adp advertise interface state machine implementation */
+
+
 #endif
 
