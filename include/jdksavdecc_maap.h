@@ -375,13 +375,18 @@ void jdksavdecc_maap_action_sannounce(
 /// @todo implement MAAP state machine
 struct jdksavdecc_maap_state_machine
 {
+    uint32_t tag;
+    void *additional;
+    void (*send_frame)( struct jdksavdecc_frame * );
+
+    void (*tick)( struct jdksavdecc_maap_state_machine *self, jdksavdecc_time timestamp );
+    ssize_t (*rx_frame)( struct jdksavdecc_maap_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+
     jdksavdecc_maap_state state;
     struct jdksavdecc_eui48 local_mac;
     uint16_t desired_count;
     jdksavdecc_time announce_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.1
     jdksavdecc_time probe_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.2
-
-    void (*send_frame)( struct jdksavdecc_frame * );
 };
 
 void jdksavdecc_maap_state_machine_init(
@@ -397,9 +402,10 @@ void jdksavdecc_maap_state_machine_tick(
         jdksavdecc_time current_time
         );
 
-int jdksavdecc_maap_state_machine_rx(
+ssize_t jdksavdecc_maap_state_machine_rx_frame(
         struct jdksavdecc_maap_state_machine *,
-        struct jdksavdecc_frame *rx_frame
+        struct jdksavdecc_frame *rx_frame,
+        size_t pos
         );
 
 

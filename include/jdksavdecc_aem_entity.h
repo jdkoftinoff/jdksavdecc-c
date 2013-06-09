@@ -38,5 +38,16 @@
 #include "jdksavdecc_aem_command.h"
 #include "jdksavdecc_aem_descriptor.h"
 
+/// @todo aem_entity_state_machine
+struct jdksavdecc_aem_entity_state_machine
+{
+    uint32_t tag;
+    void *additional;
+    void (*send_frame)( struct jdksavdecc_frame * );
+
+    void (*tick)( struct jdksavdecc_aem_entity_state_machine *self, jdksavdecc_time timestamp );
+    ssize_t (*rx_frame)( struct jdksavdecc_aem_entity_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+};
+
 #endif
 

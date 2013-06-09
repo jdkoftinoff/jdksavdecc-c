@@ -69,49 +69,70 @@ struct jdksavdecc_adp_advertise_interface_vars
 };
 
 
-struct jdksavdecc_adp_advertise_interface;
+struct jdksavdecc_adp_advertise_interface_state_machine;
 
-typedef void (*jdksavdecc_adp_advertise_interface_state)( struct jdksavdecc_adp_advertise_interface * );
+typedef void (*jdksavdecc_adp_advertise_interface_state)( struct jdksavdecc_adp_advertise_interface_state_machine * );
 
 /// Clause 6.2.5.2 entity state machine functions
-void jdksavdecc_adp_advertise_interface_tx_entity_available( struct jdksavdecc_adp_advertise_interface * );
-void jdksavdecc_adp_advertise_interface_tx_entity_departing( struct jdksavdecc_adp_advertise_interface * );
+void jdksavdecc_adp_advertise_interface_tx_entity_available( struct jdksavdecc_adp_advertise_interface_state_machine * );
+void jdksavdecc_adp_advertise_interface_tx_entity_departing( struct jdksavdecc_adp_advertise_interface_state_machine * );
 
 /// Clause 6.2.5.3 entity state machine states
-void jdksavdecc_adp_advertise_interface_state_initialize( struct jdksavdecc_adp_advertise_interface * );
-void jdksavdecc_adp_advertise_interface_state_waiting( struct jdksavdecc_adp_advertise_interface * );
-void jdksavdecc_adp_advertise_interface_state_departing( struct jdksavdecc_adp_advertise_interface * );
-void jdksavdecc_adp_advertise_interface_state_advertise( struct jdksavdecc_adp_advertise_interface * );
-void jdksavdecc_adp_advertise_interface_state_received_discover( struct jdksavdecc_adp_advertise_interface * );
-void jdksavdecc_adp_advertise_interface_state_update_gm( struct jdksavdecc_adp_advertise_interface * );
-void jdksavdecc_adp_advertise_interface_state_link_state_change( struct jdksavdecc_adp_advertise_interface * );
+void jdksavdecc_adp_advertise_interface_state_initialize( struct jdksavdecc_adp_advertise_interface_state_machine * );
+void jdksavdecc_adp_advertise_interface_state_waiting( struct jdksavdecc_adp_advertise_interface_state_machine * );
+void jdksavdecc_adp_advertise_interface_state_departing( struct jdksavdecc_adp_advertise_interface_state_machine * );
+void jdksavdecc_adp_advertise_interface_state_advertise( struct jdksavdecc_adp_advertise_interface_state_machine * );
+void jdksavdecc_adp_advertise_interface_state_received_discover( struct jdksavdecc_adp_advertise_interface_state_machine * );
+void jdksavdecc_adp_advertise_interface_state_update_gm( struct jdksavdecc_adp_advertise_interface_state_machine * );
+void jdksavdecc_adp_advertise_interface_state_link_state_change( struct jdksavdecc_adp_advertise_interface_state_machine * );
 
-struct jdksavdecc_adp_advertise_interface
+struct jdksavdecc_adp_advertise_interface_state_machine
 {
+    uint32_t tag;
+    void *additional;
+    void (*send_frame)( struct jdksavdecc_frame * );
+
+    void (*tick)( struct jdksavdecc_adp_advertise_interface_state_machine *self, jdksavdecc_time timestamp );
+    ssize_t (*rx_frame)( struct jdksavdecc_adp_advertise_interface_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+
     jdksavdecc_adp_advertise_interface_state state;
     struct jdksavdecc_adp_advertise_interface_vars *vars;
     struct jdksavdecc_eui48 interface_mac;
-    void (*send_frame)( struct jdksavdecc_frame * );
 };
 
+void jdksavdecc_adp_advertise_interface_tick( struct jdksavdecc_adp_advertise_interface_state_machine *self, jdksavdecc_time timestamp );
+ssize_t jdksavdecc_adp_advertise_interface_rx_frame( struct jdksavdecc_adp_advertise_interface_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 
-struct jdksavdecc_adp_advertise_entity;
 
-typedef void (*jdksavdecc_adp_advertise_entity_state)( struct jdksavdecc_adp_advertise_entity * );
+struct jdksavdecc_adp_advertise_entity_state_machine;
 
-struct jdksavdecc_adp_advertise_entity
+typedef void (*jdksavdecc_adp_advertise_entity_state)( struct jdksavdecc_adp_advertise_entity_state_machine * );
+
+struct jdksavdecc_adp_advertise_entity_state_machine
 {
+    uint32_t tag;
+    void *additional;
+    void (*send_frame)( struct jdksavdecc_frame * );
+
+    void (*tick)( struct jdksavdecc_adp_advertise_entity_state_machine *self, jdksavdecc_time timestamp );
+    ssize_t (*rx_frame)( struct jdksavdecc_adp_advertise_entity_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+
+
     jdksavdecc_adp_advertise_entity_state state;
     struct jdksavdecc_adp_advertise_entity_vars *vars;
 };
 
+void jdksavdecc_adp_advertise_entity_tick( struct jdksavdecc_adp_advertise_entity_state_machine *self, jdksavdecc_time timestamp );
+ssize_t jdksavdecc_adp_advertise_entity_rx_frame( struct jdksavdecc_adp_advertise_entity_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+
+
 /// See Clause 6.2.4.2.1
-void jdksavdecc_adp_advertise_entity_send_available( struct jdksavdecc_adp_advertise_entity * );
+void jdksavdecc_adp_advertise_entity_send_available( struct jdksavdecc_adp_advertise_entity_state_machine * );
 
 /// See Clause 7.2.4.3
-void jdksavdecc_adp_advertise_entity_state_initialize(struct jdksavdecc_adp_advertise_entity *);
-void jdksavdecc_adp_advertise_entity_state_advertise(struct jdksavdecc_adp_advertise_entity *);
-void jdksavdecc_adp_advertise_entity_state_waiting(struct jdksavdecc_adp_advertise_entity *);
+void jdksavdecc_adp_advertise_entity_state_initialize(struct jdksavdecc_adp_advertise_entity_state_machine *);
+void jdksavdecc_adp_advertise_entity_state_advertise(struct jdksavdecc_adp_advertise_entity_state_machine *);
+void jdksavdecc_adp_advertise_entity_state_waiting(struct jdksavdecc_adp_advertise_entity_state_machine *);
 
 
 /** @todo adp advertise entity state machine implementation */

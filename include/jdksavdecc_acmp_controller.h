@@ -42,7 +42,13 @@
 /// @todo acmp controller state machine implementation
 struct jdksavdecc_acmp_controller_state_machine
 {
-	void *todo;
+    uint32_t tag;
+    void *additional;
+    void (*send_frame)( struct jdksavdecc_frame * );
+
+    void (*tick)( struct jdksavdecc_acmp_controller_state_machine *self, jdksavdecc_time timestamp );
+    ssize_t (*rx_frame)( struct jdksavdecc_acmp_controller_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+
 };
 
 /*@}*/

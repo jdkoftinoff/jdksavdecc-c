@@ -37,7 +37,15 @@
 #include "jdksavdecc_app.h"
 
 /// @todo APS state machine
-struct jdksavdec_aps_state_machine;
+struct jdksavdec_aps_state_machine
+{
+    uint32_t tag;
+    void *additional;
+    void (*send_frame)( struct jdksavdecc_frame * );
+
+    void (*tick)( struct jdksavdec_aps_state_machine *self, jdksavdecc_time timestamp );
+    ssize_t (*rx_frame)( struct jdksavdec_aps_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+};
 
 #endif
 

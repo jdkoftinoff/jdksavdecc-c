@@ -65,55 +65,61 @@ struct jdksavdecc_adp_discovery_vars
     struct jdksavdecc_adp_discovery_db *entities; /// See Clause 6.2.6.1.7
 };
 
-struct jdksavdecc_adp_discovery;
+struct jdksavdecc_adp_discovery_state_machine;
 
 /// See Clause 6.2.6.2.1
-void jdksavdecc_adp_discovery_perform_discover( struct jdksavdecc_adp_discovery * );
+void jdksavdecc_adp_discovery_perform_discover( struct jdksavdecc_adp_discovery_state_machine * );
 
 /// See Clause 6.2.6.3.1
-void jdksavdecc_adp_discovery_tx_discover( struct jdksavdecc_adp_discovery * );
+void jdksavdecc_adp_discovery_tx_discover( struct jdksavdecc_adp_discovery_state_machine * );
 
 /// See Clause 6.2.6.3.2
-void jdksavdecc_adp_discovery_have_entity_id( struct jdksavdecc_adp_discovery *, struct jdksavdecc_eui64 entity_id );
+void jdksavdecc_adp_discovery_have_entity_id( struct jdksavdecc_adp_discovery_state_machine *, struct jdksavdecc_eui64 entity_id );
 
 /// See Clause 6.2.6.3.2
-void jdksavdecc_adp_discovery_update_entity( struct jdksavdecc_adp_discovery *, struct jdksavdecc_frame * );
+void jdksavdecc_adp_discovery_update_entity( struct jdksavdecc_adp_discovery_state_machine *, struct jdksavdecc_frame * );
 
 /// See Clause 6.2.6.3.2
-void jdksavdecc_adp_discovery_add_entity( struct jdksavdecc_adp_discovery *, struct jdksavdecc_frame * );
+void jdksavdecc_adp_discovery_add_entity( struct jdksavdecc_adp_discovery_state_machine *, struct jdksavdecc_frame * );
 
 /// See Clause 6.2.6.3.2
-void jdksavdecc_adp_discovery_remove_entity( struct jdksavdecc_adp_discovery *, struct jdksavdecc_frame * );
+void jdksavdecc_adp_discovery_remove_entity( struct jdksavdecc_adp_discovery_state_machine *, struct jdksavdecc_frame * );
 
-struct jdksavdecc_adp_discovery;
+struct jdksavdecc_adp_discovery_state_machine;
 
-typedef void (*jdksavdecc_adp_discovery_state)( struct jdksavdecc_adp_discovery * );
-
-/// See Clause 6.2.6.4
-void jdksavdecc_adp_discovery_state_waiting( struct jdksavdecc_adp_discovery * );
+typedef void (*jdksavdecc_adp_discovery_state)( struct jdksavdecc_adp_discovery_state_machine * );
 
 /// See Clause 6.2.6.4
-void jdksavdecc_adp_discovery_state_discover( struct jdksavdecc_adp_discovery * );
+void jdksavdecc_adp_discovery_state_waiting( struct jdksavdecc_adp_discovery_state_machine * );
 
 /// See Clause 6.2.6.4
-void jdksavdecc_adp_discovery_state_available( struct jdksavdecc_adp_discovery * );
+void jdksavdecc_adp_discovery_state_discover( struct jdksavdecc_adp_discovery_state_machine * );
 
 /// See Clause 6.2.6.4
-void jdksavdecc_adp_discovery_state_departing( struct jdksavdecc_adp_discovery * );
+void jdksavdecc_adp_discovery_state_available( struct jdksavdecc_adp_discovery_state_machine * );
 
 /// See Clause 6.2.6.4
-void jdksavdecc_adp_discovery_state_timeout( struct jdksavdecc_adp_discovery * );
+void jdksavdecc_adp_discovery_state_departing( struct jdksavdecc_adp_discovery_state_machine * );
 
 /// See Clause 6.2.6.4
-struct jdksavdecc_adp_discovery
+void jdksavdecc_adp_discovery_state_timeout( struct jdksavdecc_adp_discovery_state_machine * );
+
+/// See Clause 6.2.6.4
+struct jdksavdecc_adp_discovery_state_machine
 {
+    uint32_t tag;
+    void *additional;
+    void (*send_frame)( struct jdksavdecc_frame * );
+
+    void (*tick)( struct jdksavdecc_adp_discovery_state_machine *self, jdksavdecc_time timestamp );
+    ssize_t (*rx_frame)( struct jdksavdecc_adp_discovery_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+
     jdksavdecc_adp_discovery_state state;
     struct jdksavdecc_adp_discovery_vars *vars;
-    void (*send_frame)( struct jdksavdecc_frame * );
 };
 
 /// See Clause 6.2.6.3.2
-void jdksavdecc_adp_discovery_remove_entity( struct jdksavdecc_adp_discovery *, struct jdksavdecc_frame * );
+void jdksavdecc_adp_discovery_remove_entity( struct jdksavdecc_adp_discovery_state_machine *, struct jdksavdecc_frame * );
 
 /** @todo adp discovery state machine implementation */
 

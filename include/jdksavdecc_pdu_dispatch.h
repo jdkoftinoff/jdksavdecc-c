@@ -35,35 +35,79 @@
 
 #include "jdksavdecc.h"
 
+struct jdksavdecc_pdu_dispatch;
+struct jdksavdecc_command_dispatch;
+struct jdksavdecc_descriptor_dispatch;
+struct jdksavdecc_maap_state_machine;
+struct jdksavdecc_adp_discovery_state_machine;
+struct jdksavdecc_adp_advertise_interface_state_machine;
+struct jdksavdecc_adp_advertise_entity_state_machine;
+struct jdksavdecc_acmp_talker_state_machine;
+struct jdksavdecc_acmp_listener_state_machine;
+struct jdksavdecc_acmp_controller_state_machine;
+struct jdksavdecc_aem_entity_state_machine;
+
+typedef ssize_t (*jdksavdecc_pdu_dispatch_proc)(
+        struct jdksavdecc_pdu_dispatch *self,
+        struct jdksavdecc_frame *frame,
+        size_t pos
+        );
+
 struct jdksavdecc_pdu_dispatch
 {
-    ssize_t (*avtp)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*avtpv0)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*avtpv1)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*acmpdu)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*adpdu)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*aecpdu)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*aecpdu_aa)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*aecpdu_aecp)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*aecpdu_aem)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*aecpdu_vendor)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*aecpdu_avc)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*aecpdu_hdcp_apm)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-    ssize_t (*maap)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
+    uint32_t tag;
+    void *additional;
+    void (*send_frame)( struct jdksavdecc_frame * );
+
+    void (*tick)( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_time timestamp );
+
+    jdksavdecc_pdu_dispatch_proc rx_frame;
+    jdksavdecc_pdu_dispatch_proc unknown;
+    jdksavdecc_pdu_dispatch_proc avtpv0;
+    jdksavdecc_pdu_dispatch_proc avtpv1;
+    jdksavdecc_pdu_dispatch_proc acmpdu;
+    jdksavdecc_pdu_dispatch_proc adpdu;
+    jdksavdecc_pdu_dispatch_proc aecpdu;
+    jdksavdecc_pdu_dispatch_proc aecpdu_aa_command;
+    jdksavdecc_pdu_dispatch_proc aecpdu_aa_response;
+    jdksavdecc_pdu_dispatch_proc aecpdu_aem_command;
+    jdksavdecc_pdu_dispatch_proc aecpdu_aem_response;
+    jdksavdecc_pdu_dispatch_proc aecpdu_vendor_command;
+    jdksavdecc_pdu_dispatch_proc aecpdu_vendor_response;
+    jdksavdecc_pdu_dispatch_proc aecpdu_avc_command;
+    jdksavdecc_pdu_dispatch_proc aecpdu_avc_response;
+    jdksavdecc_pdu_dispatch_proc aecpdu_hdcp_apm_command;
+    jdksavdecc_pdu_dispatch_proc aecpdu_hdcp_apm_response;
+    jdksavdecc_pdu_dispatch_proc maap;
+
+    struct jdksavdecc_command_dispatch *aecp_aem_command;
+    struct jdksavdecc_command_dispatch *aecp_aem_response;
+
+    struct jdksavdecc_descriptor_dispatch *aecp_aem_descriptor_write;
+    struct jdksavdecc_descriptor_dispatch *aecp_aem_descriptor_read;
+    struct jdksavdecc_descriptor_dispatch *aecp_aem_descriptor_response;
+
+    struct jdksavdecc_acmp_talker_state_machine *acmp_talker_state_machine;
+    struct jdksavdecc_acmp_listener_state_machine *acmp_listener_state_machine;
+    struct jdksavdecc_acmp_controller_state_machine *acmp_controller_state_machine;
+
+    struct jdksavdecc_adp_discovery_state_machine *adp_discovery_state_machine;
+    struct jdksavdecc_adp_advertise_interface_state_machine *adp_advertise_interface_state_machine;
+    struct jdksavdecc_adp_advertise_entity_state_machine *adp_advertise_entity_state_machine;
+
+    struct jdksavdecc_aem_entity_state_machine *aem_entity_state_machine;
+
+    struct jdksavdecc_maap_state_machine *maap_state_machine;
 };
 
-ssize_t jdksavdecc_pdu_dispatch_avtp( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
+void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self );
+void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_time timestamp );
+ssize_t jdksavdecc_pdu_dispatch_unknown( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
+ssize_t jdksavdecc_pdu_dispatch_rx_frame( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
 ssize_t jdksavdecc_pdu_dispatch_avtpv0( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_avtpv1( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
 ssize_t jdksavdecc_pdu_dispatch_acmpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
+ssize_t jdksavdecc_pdu_dispatch_adpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
 ssize_t jdksavdecc_pdu_dispatch_aecpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_aa( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_aecp( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_vendor( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_avc( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_hdcp_apm( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_maap( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
 
 #endif
 
