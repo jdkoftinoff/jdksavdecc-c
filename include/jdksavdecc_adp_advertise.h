@@ -38,8 +38,6 @@
 #include "jdksavdecc_adp.h"
 #include "jdksavdecc_aem_entity.h"
 
-typedef uint64_t jdksavdecc_time;
-
 /// See Clause 6.2.3
 struct jdksavdecc_adp_advertise_global_vars
 {

@@ -38,6 +38,8 @@
 /** \addtogroup util Utilities */
 /*@{*/
 
+typedef uint64_t jdksavdecc_time;
+
 /**
  * Validate buffer position in a buffer len for an element of elem_size.
  *
