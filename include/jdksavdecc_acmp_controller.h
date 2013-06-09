@@ -42,6 +42,7 @@
 /// @todo acmp controller state machine implementation
 struct jdksavdecc_acmp_controller_state_machine
 {
+	void *todo;
 };
 
 /*@}*/

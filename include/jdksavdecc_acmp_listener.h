@@ -42,6 +42,7 @@
 /// @todo acmp listener state machine implementation
 struct jdksavdecc_acmp_listener_state_machine
 {
+	void *todo;
 };
 
 /*@}*/
