@@ -3717,7 +3717,7 @@ static inline void jdksavdecc_values_bode_plot_set_phase_default( uint32_t v, vo
 
 
 /// Bode Plot Value Details - Clause 7.3.5.2.5
-struct jdksavdecc_values_bode_plot_t
+struct jdksavdecc_values_bode_plot
 {
     uint32_t frequency_minimum;
     uint32_t frequency_maximum;
@@ -3734,7 +3734,7 @@ struct jdksavdecc_values_bode_plot_t
 };
 
 /**
- * Extract the jdksavdecc_values_bode_plot_t structure from a network buffer.
+ * Extract the jdksavdecc_values_bode_plot structure from a network buffer.
  *
  *  - Clause 7.3.5.2.5
  *
@@ -3746,7 +3746,7 @@ struct jdksavdecc_values_bode_plot_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_values_bode_plot_read( struct jdksavdecc_values_bode_plot_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_values_bode_plot_read( struct jdksavdecc_values_bode_plot *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VALUES_BODE_PLOT_LEN );
     if( r>=0 )
@@ -3768,7 +3768,7 @@ static inline ssize_t jdksavdecc_values_bode_plot_read( struct jdksavdecc_values
 }
 
 /**
- * Store the jdksavdecc_values_bode_plot_t structure to a network buffer.
+ * Store the jdksavdecc_values_bode_plot structure to a network buffer.
  *
  *  - Clause 7.3.5.2.5
  *
@@ -3780,7 +3780,7 @@ static inline ssize_t jdksavdecc_values_bode_plot_read( struct jdksavdecc_values
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_values_bode_plot_write( struct jdksavdecc_values_bode_plot_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_values_bode_plot_write( struct jdksavdecc_values_bode_plot const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VALUES_BODE_PLOT_LEN );
     if( r>=0 )
@@ -4072,7 +4072,7 @@ static inline void jdksavdecc_values_smpte_time_set_pull( uint8_t v, void *base,
 
 
 /// SMPTE Value Details - Clause 7.3.5.2.6
-struct jdksavdecc_values_smpte_time_t
+struct jdksavdecc_values_smpte_time
 {
     uint16_t hours;
     uint8_t minutes;
@@ -4085,7 +4085,7 @@ struct jdksavdecc_values_smpte_time_t
 };
 
 /**
- * Extract the jdksavdecc_values_smpte_time_t structure from a network buffer.
+ * Extract the jdksavdecc_values_smpte_time structure from a network buffer.
  *
  *  - Clause 7.3.5.2.6
  *
@@ -4097,7 +4097,7 @@ struct jdksavdecc_values_smpte_time_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_values_smpte_time_read( struct jdksavdecc_values_smpte_time_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_values_smpte_time_read( struct jdksavdecc_values_smpte_time *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VALUES_SMPTE_TIME_LEN );
     if( r>=0 )
@@ -4115,7 +4115,7 @@ static inline ssize_t jdksavdecc_values_smpte_time_read( struct jdksavdecc_value
 }
 
 /**
- * Store the jdksavdecc_values_smpte_time_t structure to a network buffer.
+ * Store the jdksavdecc_values_smpte_time structure to a network buffer.
  *
  *  - Clause 7.3.5.2.6
  *
@@ -4127,7 +4127,7 @@ static inline ssize_t jdksavdecc_values_smpte_time_read( struct jdksavdecc_value
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_values_smpte_time_write( struct jdksavdecc_values_smpte_time_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_values_smpte_time_write( struct jdksavdecc_values_smpte_time const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VALUES_SMPTE_TIME_LEN );
     if( r>=0 )
@@ -4191,13 +4191,13 @@ static inline void jdksavdecc_values_sample_rate_set_sample_rate( uint32_t v, vo
 
 
 /// Sample Rate Value Details - Clause 7.3.5.2.7
-struct jdksavdecc_values_sample_rate_t
+struct jdksavdecc_values_sample_rate
 {
-    uint32_t sample_rate;
+    uint32_t sample_rate; /// @todo pull field
 };
 
 /**
- * Extract the jdksavdecc_values_sample_rate_t structure from a network buffer.
+ * Extract the jdksavdecc_values_sample_rate structure from a network buffer.
  *
  *  - Clause 7.3.5.2.7
  *
@@ -4209,7 +4209,7 @@ struct jdksavdecc_values_sample_rate_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_values_sample_rate_read( struct jdksavdecc_values_sample_rate_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_values_sample_rate_read( struct jdksavdecc_values_sample_rate *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VALUES_SAMPLE_RATE_LEN );
     if( r>=0 )
@@ -4220,7 +4220,7 @@ static inline ssize_t jdksavdecc_values_sample_rate_read( struct jdksavdecc_valu
 }
 
 /**
- * Store the jdksavdecc_values_sample_rate_t structure to a network buffer.
+ * Store the jdksavdecc_values_sample_rate structure to a network buffer.
  *
  *  - Clause 7.3.5.2.7
  *
@@ -4232,7 +4232,7 @@ static inline ssize_t jdksavdecc_values_sample_rate_read( struct jdksavdecc_valu
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_values_sample_rate_write( struct jdksavdecc_values_sample_rate_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_values_sample_rate_write( struct jdksavdecc_values_sample_rate const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VALUES_SAMPLE_RATE_LEN );
     if( r>=0 )
@@ -4352,7 +4352,7 @@ static inline ssize_t jdksavdecc_values_gptp_time_read( struct jdksavdecc_values
 }
 
 /**
- * Store the jdksavdecc_values_gptp_time_t structure to a network buffer.
+ * Store the jdksavdecc_values_gptp_time structure to a network buffer.
  *
  *  - Clause 7.3.5.2.8
  *
@@ -4454,14 +4454,14 @@ static inline void jdksavdecc_values_vendor_set_blob_size( uint32_t v, void *bas
 
 
 /// Vendor Value Details - Clause 7.3.5.2.9
-struct jdksavdecc_values_vendor_t
+struct jdksavdecc_values_vendor
 {
     struct jdksavdecc_eui64 entity_id;
     uint32_t blob_size;
 };
 
 /**
- * Extract the jdksavdecc_values_vendor_t structure from a network buffer.
+ * Extract the jdksavdecc_values_vendor structure from a network buffer.
  *
  *  - Clause 7.3.5.2.9
  *
@@ -4473,7 +4473,7 @@ struct jdksavdecc_values_vendor_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_values_vendor_read( struct jdksavdecc_values_vendor_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_values_vendor_read( struct jdksavdecc_values_vendor *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VALUES_VENDOR_LEN );
     if( r>=0 )
@@ -4497,7 +4497,7 @@ static inline ssize_t jdksavdecc_values_vendor_read( struct jdksavdecc_values_ve
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_values_vendor_write( struct jdksavdecc_values_vendor_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_values_vendor_write( struct jdksavdecc_values_vendor const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VALUES_VENDOR_LEN );
     if( r>=0 )
@@ -4619,7 +4619,7 @@ static inline void jdksavdecc_msrp_mappings_format_set_vlan_id( uint16_t v, void
 
 
 /// msrp_mappings Format - Clause 7.4.40.2.1
-struct jdksavdecc_msrp_mappings_format_t
+struct jdksavdecc_msrp_mappings_format
 {
     uint8_t traffic_class;
     uint8_t priority;
@@ -4627,7 +4627,7 @@ struct jdksavdecc_msrp_mappings_format_t
 };
 
 /**
- * Extract the jdksavdecc_msrp_mappings_format_t structure from a network buffer.
+ * Extract the jdksavdecc_msrp_mappings_format structure from a network buffer.
  *
  *  - Clause 7.4.40.2.1
  *
@@ -4639,7 +4639,7 @@ struct jdksavdecc_msrp_mappings_format_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_msrp_mappings_format_read( struct jdksavdecc_msrp_mappings_format_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_msrp_mappings_format_read( struct jdksavdecc_msrp_mappings_format *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_MSRP_MAPPINGS_FORMAT_LEN );
     if( r>=0 )
@@ -4652,7 +4652,7 @@ static inline ssize_t jdksavdecc_msrp_mappings_format_read( struct jdksavdecc_ms
 }
 
 /**
- * Store the jdksavdecc_msrp_mappings_format_t structure to a network buffer.
+ * Store the jdksavdecc_msrp_mappings_format structure to a network buffer.
  *
  *  - Clause 7.4.40.2.1
  *
@@ -4664,7 +4664,7 @@ static inline ssize_t jdksavdecc_msrp_mappings_format_read( struct jdksavdecc_ms
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_msrp_mappings_format_write( struct jdksavdecc_msrp_mappings_format_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_msrp_mappings_format_write( struct jdksavdecc_msrp_mappings_format const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_MSRP_MAPPINGS_FORMAT_LEN );
     if( r>=0 )
@@ -4819,7 +4819,7 @@ static inline void jdksavdecc_audio_mappings_format_set_mapping_cluster_channel(
 
 
 /// Audio Mappings Format - Clause 7.4.44.2.1
-struct jdksavdecc_audio_mappings_format_t
+struct jdksavdecc_audio_mappings_format
 {
     uint16_t mapping_stream_index;
     uint16_t mapping_stream_channel;
@@ -4828,7 +4828,7 @@ struct jdksavdecc_audio_mappings_format_t
 };
 
 /**
- * Extract the jdksavdecc_audio_mappings_format_t structure from a network buffer.
+ * Extract the jdksavdecc_audio_mappings_format structure from a network buffer.
  *
  *  - Clause 7.4.44.2.1
  *
@@ -4840,7 +4840,7 @@ struct jdksavdecc_audio_mappings_format_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_audio_mappings_format_read( struct jdksavdecc_audio_mappings_format_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_audio_mappings_format_read( struct jdksavdecc_audio_mappings_format *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AUDIO_MAPPINGS_FORMAT_LEN );
     if( r>=0 )
@@ -4854,7 +4854,7 @@ static inline ssize_t jdksavdecc_audio_mappings_format_read( struct jdksavdecc_a
 }
 
 /**
- * Store the jdksavdecc_audio_mappings_format_t structure to a network buffer.
+ * Store the jdksavdecc_audio_mappings_format structure to a network buffer.
  *
  *  - Clause 7.4.44.2.1
  *
@@ -4866,7 +4866,7 @@ static inline ssize_t jdksavdecc_audio_mappings_format_read( struct jdksavdecc_a
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_audio_mappings_format_write( struct jdksavdecc_audio_mappings_format_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_audio_mappings_format_write( struct jdksavdecc_audio_mappings_format const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AUDIO_MAPPINGS_FORMAT_LEN );
     if( r>=0 )
@@ -5022,7 +5022,7 @@ static inline void jdksavdecc_video_mappings_format_set_mapping_cluster_offset( 
 
 
 /// Video Mappings Format - Clause 7.4.47.2.1
-struct jdksavdecc_video_mappings_format_t
+struct jdksavdecc_video_mappings_format
 {
     uint16_t mapping_stream_index;
     uint16_t mapping_program_stream;
@@ -5031,7 +5031,7 @@ struct jdksavdecc_video_mappings_format_t
 };
 
 /**
- * Extract the jdksavdecc_video_mappings_format_t structure from a network buffer.
+ * Extract the jdksavdecc_video_mappings_format structure from a network buffer.
  *
  *  - Clause 7.4.47.2.1
  *
@@ -5043,7 +5043,7 @@ struct jdksavdecc_video_mappings_format_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_video_mappings_format_read( struct jdksavdecc_video_mappings_format_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_video_mappings_format_read( struct jdksavdecc_video_mappings_format *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VIDEO_MAPPINGS_FORMAT_LEN );
     if( r>=0 )
@@ -5057,7 +5057,7 @@ static inline ssize_t jdksavdecc_video_mappings_format_read( struct jdksavdecc_v
 }
 
 /**
- * Store the jdksavdecc_video_mappings_format_t structure to a network buffer.
+ * Store the jdksavdecc_video_mappings_format structure to a network buffer.
  *
  *  - Clause 7.4.47.2.1
  *
@@ -5069,7 +5069,7 @@ static inline ssize_t jdksavdecc_video_mappings_format_read( struct jdksavdecc_v
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_video_mappings_format_write( struct jdksavdecc_video_mappings_format_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_video_mappings_format_write( struct jdksavdecc_video_mappings_format const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VIDEO_MAPPINGS_FORMAT_LEN );
     if( r>=0 )
@@ -5770,7 +5770,7 @@ static inline void jdksavdecc_descriptor_entity_set_current_configuration( uint1
 
 
 /// ENTITY Descriptor - Clause 7.2.1
-struct jdksavdecc_descriptor_entity_t
+struct jdksavdecc_descriptor_entity
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -5796,7 +5796,7 @@ struct jdksavdecc_descriptor_entity_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_entity_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_entity structure from a network buffer.
  *
  *  - Clause 7.2.1
  *
@@ -5808,7 +5808,7 @@ struct jdksavdecc_descriptor_entity_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_entity_read( struct jdksavdecc_descriptor_entity_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_entity_read( struct jdksavdecc_descriptor_entity *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_ENTITY_LEN );
     if( r>=0 )
@@ -5839,7 +5839,7 @@ static inline ssize_t jdksavdecc_descriptor_entity_read( struct jdksavdecc_descr
 }
 
 /**
- * Store the jdksavdecc_descriptor_entity_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_entity structure to a network buffer.
  *
  *  - Clause 7.2.1
  *
@@ -5851,7 +5851,7 @@ static inline ssize_t jdksavdecc_descriptor_entity_read( struct jdksavdecc_descr
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_entity_write( struct jdksavdecc_descriptor_entity_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_entity_write( struct jdksavdecc_descriptor_entity const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_ENTITY_LEN );
     if( r>=0 )
@@ -6088,7 +6088,7 @@ static inline void jdksavdecc_descriptor_configuration_set_descriptor_counts_off
 
 
 /// CONFIGURATION Descriptor - Clause 7.2.2
-struct jdksavdecc_descriptor_configuration_t
+struct jdksavdecc_descriptor_configuration
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -6099,7 +6099,7 @@ struct jdksavdecc_descriptor_configuration_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_configuration_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_configuration structure from a network buffer.
  *
  *  - Clause 7.2.2
  *
@@ -6111,7 +6111,7 @@ struct jdksavdecc_descriptor_configuration_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_configuration_read( struct jdksavdecc_descriptor_configuration_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_configuration_read( struct jdksavdecc_descriptor_configuration *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_CONFIGURATION_LEN );
     if( r>=0 )
@@ -6127,7 +6127,7 @@ static inline ssize_t jdksavdecc_descriptor_configuration_read( struct jdksavdec
 }
 
 /**
- * Store the jdksavdecc_descriptor_configuration_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_configuration structure to a network buffer.
  *
  *  - Clause 7.2.2
  *
@@ -6139,7 +6139,7 @@ static inline ssize_t jdksavdecc_descriptor_configuration_read( struct jdksavdec
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_configuration_write( struct jdksavdecc_descriptor_configuration_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_configuration_write( struct jdksavdecc_descriptor_configuration const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_CONFIGURATION_LEN );
     if( r>=0 )
@@ -7449,7 +7449,7 @@ static inline void jdksavdecc_descriptor_audio_set_sampling_rates_count( uint16_
 
 
 /// AUDIO_UNIT Descriptor - Clause 7.2.3
-struct jdksavdecc_descriptor_audio_t
+struct jdksavdecc_descriptor_audio
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -7494,7 +7494,7 @@ struct jdksavdecc_descriptor_audio_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_audio_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_audio structure from a network buffer.
  *
  *  - Clause 7.2.3
  *
@@ -7506,7 +7506,7 @@ struct jdksavdecc_descriptor_audio_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_audio_read( struct jdksavdecc_descriptor_audio_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_audio_read( struct jdksavdecc_descriptor_audio *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_LEN );
     if( r>=0 )
@@ -7556,7 +7556,7 @@ static inline ssize_t jdksavdecc_descriptor_audio_read( struct jdksavdecc_descri
 }
 
 /**
- * Store the jdksavdecc_descriptor_audio_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_audio structure to a network buffer.
  *
  *  - Clause 7.2.3
  *
@@ -7568,7 +7568,7 @@ static inline ssize_t jdksavdecc_descriptor_audio_read( struct jdksavdecc_descri
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_audio_write( struct jdksavdecc_descriptor_audio_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_audio_write( struct jdksavdecc_descriptor_audio const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_LEN );
     if( r>=0 )
@@ -8816,7 +8816,7 @@ static inline void jdksavdecc_descriptor_video_set_base_control_block( uint16_t 
 
 
 /// VIDEO_UNIT Descriptor - Clause 7.2.4
-struct jdksavdecc_descriptor_video_t
+struct jdksavdecc_descriptor_video
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -8858,7 +8858,7 @@ struct jdksavdecc_descriptor_video_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_video_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_video structure from a network buffer.
  *
  *  - Clause 7.2.4
  *
@@ -8870,7 +8870,7 @@ struct jdksavdecc_descriptor_video_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_video_read( struct jdksavdecc_descriptor_video_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_video_read( struct jdksavdecc_descriptor_video *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_LEN );
     if( r>=0 )
@@ -8917,7 +8917,7 @@ static inline ssize_t jdksavdecc_descriptor_video_read( struct jdksavdecc_descri
 }
 
 /**
- * Store the jdksavdecc_descriptor_video_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_video structure to a network buffer.
  *
  *  - Clause 7.2.4
  *
@@ -8929,7 +8929,7 @@ static inline ssize_t jdksavdecc_descriptor_video_read( struct jdksavdecc_descri
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_video_write( struct jdksavdecc_descriptor_video_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_video_write( struct jdksavdecc_descriptor_video const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_LEN );
     if( r>=0 )
@@ -10174,7 +10174,7 @@ static inline void jdksavdecc_descriptor_sensor_set_base_control_block( uint16_t
 
 
 /// SENSOR_UNIT Descriptor - Clause 7.2.5
-struct jdksavdecc_descriptor_sensor_t
+struct jdksavdecc_descriptor_sensor
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -10216,7 +10216,7 @@ struct jdksavdecc_descriptor_sensor_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_sensor_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_sensor structure from a network buffer.
  *
  *  - Clause 7.2.5
  *
@@ -10228,7 +10228,7 @@ struct jdksavdecc_descriptor_sensor_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_sensor_read( struct jdksavdecc_descriptor_sensor_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_sensor_read( struct jdksavdecc_descriptor_sensor *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SENSOR_LEN );
     if( r>=0 )
@@ -10275,7 +10275,7 @@ static inline ssize_t jdksavdecc_descriptor_sensor_read( struct jdksavdecc_descr
 }
 
 /**
- * Store the jdksavdecc_descriptor_sensor_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_sensor structure to a network buffer.
  *
  *  - Clause 7.2.5
  *
@@ -10287,7 +10287,7 @@ static inline ssize_t jdksavdecc_descriptor_sensor_read( struct jdksavdecc_descr
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_sensor_write( struct jdksavdecc_descriptor_sensor_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_sensor_write( struct jdksavdecc_descriptor_sensor const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SENSOR_LEN );
     if( r>=0 )
@@ -10956,7 +10956,7 @@ static inline void jdksavdecc_descriptor_stream_set_buffer_length( uint32_t v, v
 
 
 /// STREAM_INPUT and STREAM_OUTPUT Descriptor - Clause 7.2.6
-struct jdksavdecc_descriptor_stream_t
+struct jdksavdecc_descriptor_stream
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -10980,7 +10980,7 @@ struct jdksavdecc_descriptor_stream_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_stream_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_stream structure from a network buffer.
  *
  *  - Clause 7.2.6
  *
@@ -10992,7 +10992,7 @@ struct jdksavdecc_descriptor_stream_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_stream_read( struct jdksavdecc_descriptor_stream_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_stream_read( struct jdksavdecc_descriptor_stream *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STREAM_LEN );
     if( r>=0 )
@@ -11021,7 +11021,7 @@ static inline ssize_t jdksavdecc_descriptor_stream_read( struct jdksavdecc_descr
 }
 
 /**
- * Store the jdksavdecc_descriptor_stream_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_stream structure to a network buffer.
  *
  *  - Clause 7.2.6
  *
@@ -11033,7 +11033,7 @@ static inline ssize_t jdksavdecc_descriptor_stream_read( struct jdksavdecc_descr
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_stream_write( struct jdksavdecc_descriptor_stream_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_stream_write( struct jdksavdecc_descriptor_stream const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STREAM_LEN );
     if( r>=0 )
@@ -11332,7 +11332,7 @@ static inline void jdksavdecc_descriptor_jack_set_base_control( uint16_t v, void
 
 
 /// JACK_INPUT and JACK_OUTPUT Descriptor - Clause 7.2.7
-struct jdksavdecc_descriptor_jack_t
+struct jdksavdecc_descriptor_jack
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -11345,7 +11345,7 @@ struct jdksavdecc_descriptor_jack_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_jack_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_jack structure from a network buffer.
  *
  *  - Clause 7.2.7
  *
@@ -11357,7 +11357,7 @@ struct jdksavdecc_descriptor_jack_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_jack_read( struct jdksavdecc_descriptor_jack_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_jack_read( struct jdksavdecc_descriptor_jack *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_JACK_LEN );
     if( r>=0 )
@@ -11375,7 +11375,7 @@ static inline ssize_t jdksavdecc_descriptor_jack_read( struct jdksavdecc_descrip
 }
 
 /**
- * Store the jdksavdecc_descriptor_jack_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_jack structure to a network buffer.
  *
  *  - Clause 7.2.7
  *
@@ -11387,7 +11387,7 @@ static inline ssize_t jdksavdecc_descriptor_jack_read( struct jdksavdecc_descrip
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_jack_write( struct jdksavdecc_descriptor_jack_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_jack_write( struct jdksavdecc_descriptor_jack const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_JACK_LEN );
     if( r>=0 )
@@ -11867,7 +11867,7 @@ static inline void jdksavdecc_descriptor_avb_interface_set_log_sync_interval( ui
 
 
 /// AVB_INTERFACE Descriptor - Clause 7.2.8
-struct jdksavdecc_descriptor_avb_interface_t
+struct jdksavdecc_descriptor_avb_interface
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -11886,7 +11886,7 @@ struct jdksavdecc_descriptor_avb_interface_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_avb_interface_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_avb_interface structure from a network buffer.
  *
  *  - Clause 7.2.8
  *
@@ -11898,7 +11898,7 @@ struct jdksavdecc_descriptor_avb_interface_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_avb_interface_read( struct jdksavdecc_descriptor_avb_interface_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_avb_interface_read( struct jdksavdecc_descriptor_avb_interface *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_LEN );
     if( r>=0 )
@@ -11922,7 +11922,7 @@ static inline ssize_t jdksavdecc_descriptor_avb_interface_read( struct jdksavdec
 }
 
 /**
- * Store the jdksavdecc_descriptor_avb_interface_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_avb_interface structure to a network buffer.
  *
  *  - Clause 7.2.8
  *
@@ -11934,7 +11934,7 @@ static inline ssize_t jdksavdecc_descriptor_avb_interface_read( struct jdksavdec
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_avb_interface_write( struct jdksavdecc_descriptor_avb_interface_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_avb_interface_write( struct jdksavdecc_descriptor_avb_interface const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_LEN );
     if( r>=0 )
@@ -12260,7 +12260,7 @@ static inline void jdksavdecc_descriptor_clock_source_set_clock_source_location_
 
 
 /// CLOCK_SOURCE Descriptor - Clause 7.2.9
-struct jdksavdecc_descriptor_clock_source_t
+struct jdksavdecc_descriptor_clock_source
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -12274,7 +12274,7 @@ struct jdksavdecc_descriptor_clock_source_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_clock_source_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_clock_source structure from a network buffer.
  *
  *  - Clause 7.2.9
  *
@@ -12286,7 +12286,7 @@ struct jdksavdecc_descriptor_clock_source_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_clock_source_read( struct jdksavdecc_descriptor_clock_source_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_clock_source_read( struct jdksavdecc_descriptor_clock_source *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_CLOCK_SOURCE_LEN );
     if( r>=0 )
@@ -12305,7 +12305,7 @@ static inline ssize_t jdksavdecc_descriptor_clock_source_read( struct jdksavdecc
 }
 
 /**
- * Store the jdksavdecc_descriptor_clock_source_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_clock_source structure to a network buffer.
  *
  *  - Clause 7.2.9
  *
@@ -12317,7 +12317,7 @@ static inline ssize_t jdksavdecc_descriptor_clock_source_read( struct jdksavdecc
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_clock_source_write( struct jdksavdecc_descriptor_clock_source_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_clock_source_write( struct jdksavdecc_descriptor_clock_source const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_CLOCK_SOURCE_LEN );
     if( r>=0 )
@@ -12670,7 +12670,7 @@ static inline void jdksavdecc_descriptor_memory_object_set_length( uint64_t v, v
 
 
 /// MEMORY_OBJECT Descriptor - Clause 7.2.10
-struct jdksavdecc_descriptor_memory_object_t
+struct jdksavdecc_descriptor_memory_object
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -12685,7 +12685,7 @@ struct jdksavdecc_descriptor_memory_object_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_memory_object_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_memory_object structure from a network buffer.
  *
  *  - Clause 7.2.10
  *
@@ -12697,7 +12697,7 @@ struct jdksavdecc_descriptor_memory_object_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_memory_object_read( struct jdksavdecc_descriptor_memory_object_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_memory_object_read( struct jdksavdecc_descriptor_memory_object *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_LEN );
     if( r>=0 )
@@ -12717,7 +12717,7 @@ static inline ssize_t jdksavdecc_descriptor_memory_object_read( struct jdksavdec
 }
 
 /**
- * Store the jdksavdecc_descriptor_memory_object_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_memory_object structure to a network buffer.
  *
  *  - Clause 7.2.10
  *
@@ -12729,7 +12729,7 @@ static inline ssize_t jdksavdecc_descriptor_memory_object_read( struct jdksavdec
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_memory_object_write( struct jdksavdecc_descriptor_memory_object_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_memory_object_write( struct jdksavdecc_descriptor_memory_object const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_LEN );
     if( r>=0 )
@@ -12923,7 +12923,7 @@ static inline void jdksavdecc_descriptor_locale_set_base_strings( uint16_t v, vo
 
 
 /// LOCALE Descriptor - Clause 7.2.11
-struct jdksavdecc_descriptor_locale_t
+struct jdksavdecc_descriptor_locale
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -12933,7 +12933,7 @@ struct jdksavdecc_descriptor_locale_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_locale_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_locale structure from a network buffer.
  *
  *  - Clause 7.2.11
  *
@@ -12945,7 +12945,7 @@ struct jdksavdecc_descriptor_locale_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_locale_read( struct jdksavdecc_descriptor_locale_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_locale_read( struct jdksavdecc_descriptor_locale *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_LOCALE_LEN );
     if( r>=0 )
@@ -12960,7 +12960,7 @@ static inline ssize_t jdksavdecc_descriptor_locale_read( struct jdksavdecc_descr
 }
 
 /**
- * Store the jdksavdecc_descriptor_locale_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_locale structure to a network buffer.
  *
  *  - Clause 7.2.11
  *
@@ -12972,7 +12972,7 @@ static inline ssize_t jdksavdecc_descriptor_locale_read( struct jdksavdecc_descr
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_locale_write( struct jdksavdecc_descriptor_locale_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_locale_write( struct jdksavdecc_descriptor_locale const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_LOCALE_LEN );
     if( r>=0 )
@@ -13289,7 +13289,7 @@ static inline void jdksavdecc_descriptor_strings_set_string_6( struct jdksavdecc
 
 
 /// STRINGS Descriptor - Clause 7.2.12
-struct jdksavdecc_descriptor_strings_t
+struct jdksavdecc_descriptor_strings
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -13303,7 +13303,7 @@ struct jdksavdecc_descriptor_strings_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_strings_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_strings structure from a network buffer.
  *
  *  - Clause 7.2.12
  *
@@ -13315,7 +13315,7 @@ struct jdksavdecc_descriptor_strings_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_strings_read( struct jdksavdecc_descriptor_strings_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_strings_read( struct jdksavdecc_descriptor_strings *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STRINGS_LEN );
     if( r>=0 )
@@ -13334,7 +13334,7 @@ static inline ssize_t jdksavdecc_descriptor_strings_read( struct jdksavdecc_desc
 }
 
 /**
- * Store the jdksavdecc_descriptor_strings_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_strings structure to a network buffer.
  *
  *  - Clause 7.2.12
  *
@@ -13346,7 +13346,7 @@ static inline ssize_t jdksavdecc_descriptor_strings_read( struct jdksavdecc_desc
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_strings_write( struct jdksavdecc_descriptor_strings_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_strings_write( struct jdksavdecc_descriptor_strings const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STRINGS_LEN );
     if( r>=0 )
@@ -13699,7 +13699,7 @@ static inline void jdksavdecc_descriptor_stream_port_set_base_map( uint16_t v, v
 
 
 /// STREAM_PORT_INPUT and STREAM_PORT_OUTPUT Descriptor - Clause 7.2.13
-struct jdksavdecc_descriptor_stream_port_t
+struct jdksavdecc_descriptor_stream_port
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -13714,7 +13714,7 @@ struct jdksavdecc_descriptor_stream_port_t
 };
 
 /**
- * Extract the jdksavdecc_descriptor_stream_port_t structure from a network buffer.
+ * Extract the jdksavdecc_descriptor_stream_port structure from a network buffer.
  *
  *  - Clause 7.2.13
  *
@@ -13726,7 +13726,7 @@ struct jdksavdecc_descriptor_stream_port_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_stream_port_read( struct jdksavdecc_descriptor_stream_port_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_stream_port_read( struct jdksavdecc_descriptor_stream_port *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STREAM_PORT_LEN );
     if( r>=0 )
@@ -13746,7 +13746,7 @@ static inline ssize_t jdksavdecc_descriptor_stream_port_read( struct jdksavdecc_
 }
 
 /**
- * Store the jdksavdecc_descriptor_stream_port_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_stream_port structure to a network buffer.
  *
  *  - Clause 7.2.13
  *
@@ -13758,7 +13758,7 @@ static inline ssize_t jdksavdecc_descriptor_stream_port_read( struct jdksavdecc_
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_stream_port_write( struct jdksavdecc_descriptor_stream_port_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_stream_port_write( struct jdksavdecc_descriptor_stream_port const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STREAM_PORT_LEN );
     if( r>=0 )
@@ -14144,7 +14144,7 @@ static inline void jdksavdecc_descriptor_external_port_set_jack_index( uint16_t 
 
 
 /// EXTERNAL_PORT_INPUT and EXTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.14
-struct jdksavdecc_descriptor_external_port_t
+struct jdksavdecc_descriptor_external_port
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -14172,7 +14172,7 @@ struct jdksavdecc_descriptor_external_port_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_external_port_read( struct jdksavdecc_descriptor_external_port_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_external_port_read( struct jdksavdecc_descriptor_external_port *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_EXTERNAL_PORT_LEN );
     if( r>=0 )
@@ -14205,7 +14205,7 @@ static inline ssize_t jdksavdecc_descriptor_external_port_read( struct jdksavdec
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_external_port_write( struct jdksavdecc_descriptor_external_port_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_external_port_write( struct jdksavdecc_descriptor_external_port const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_EXTERNAL_PORT_LEN );
     if( r>=0 )
@@ -14592,7 +14592,7 @@ static inline void jdksavdecc_descriptor_internal_port_set_internal_index( uint1
 
 
 /// INTERNAL_PORT_INPUT and INTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.15
-struct jdksavdecc_descriptor_internal_port_t
+struct jdksavdecc_descriptor_internal_port
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -14620,7 +14620,7 @@ struct jdksavdecc_descriptor_internal_port_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_internal_port_read( struct jdksavdecc_descriptor_internal_port_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_internal_port_read( struct jdksavdecc_descriptor_internal_port *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_INTERNAL_PORT_LEN );
     if( r>=0 )
@@ -14653,7 +14653,7 @@ static inline ssize_t jdksavdecc_descriptor_internal_port_read( struct jdksavdec
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_internal_port_write( struct jdksavdecc_descriptor_internal_port_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_internal_port_write( struct jdksavdecc_descriptor_internal_port const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_INTERNAL_PORT_LEN );
     if( r>=0 )
@@ -15040,7 +15040,7 @@ static inline void jdksavdecc_descriptor_audio_cluster_set_format( uint8_t v, vo
 
 
 /// AUDIO_CLUSTER Descriptor - Clause 7.2.16
-struct jdksavdecc_descriptor_audio_cluster_t
+struct jdksavdecc_descriptor_audio_cluster
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -15068,7 +15068,7 @@ struct jdksavdecc_descriptor_audio_cluster_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_audio_cluster_read( struct jdksavdecc_descriptor_audio_cluster_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_audio_cluster_read( struct jdksavdecc_descriptor_audio_cluster *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_CLUSTER_LEN );
     if( r>=0 )
@@ -15101,7 +15101,7 @@ static inline ssize_t jdksavdecc_descriptor_audio_cluster_read( struct jdksavdec
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_audio_cluster_write( struct jdksavdecc_descriptor_audio_cluster_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_audio_cluster_write( struct jdksavdecc_descriptor_audio_cluster const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_CLUSTER_LEN );
     if( r>=0 )
@@ -15936,7 +15936,7 @@ static inline void jdksavdecc_descriptor_video_cluster_set_supported_color_space
 
 
 /// VIDEO_CLUSTER Descriptor - Clause 7.2.17
-struct jdksavdecc_descriptor_video_cluster_t
+struct jdksavdecc_descriptor_video_cluster
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -15978,7 +15978,7 @@ struct jdksavdecc_descriptor_video_cluster_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_video_cluster_read( struct jdksavdecc_descriptor_video_cluster_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_video_cluster_read( struct jdksavdecc_descriptor_video_cluster *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_CLUSTER_LEN );
     if( r>=0 )
@@ -16025,7 +16025,7 @@ static inline ssize_t jdksavdecc_descriptor_video_cluster_read( struct jdksavdec
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_video_cluster_write( struct jdksavdecc_descriptor_video_cluster_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_video_cluster_write( struct jdksavdecc_descriptor_video_cluster const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_CLUSTER_LEN );
     if( r>=0 )
@@ -16554,7 +16554,7 @@ static inline void jdksavdecc_descriptor_sensor_cluster_set_supported_sampling_r
 
 
 /// SENSOR_CLUSTER Descriptor - Clause 7.2.18
-struct jdksavdecc_descriptor_sensor_cluster_t
+struct jdksavdecc_descriptor_sensor_cluster
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -16586,7 +16586,7 @@ struct jdksavdecc_descriptor_sensor_cluster_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_sensor_cluster_read( struct jdksavdecc_descriptor_sensor_cluster_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_sensor_cluster_read( struct jdksavdecc_descriptor_sensor_cluster *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SENSOR_CLUSTER_LEN );
     if( r>=0 )
@@ -16623,7 +16623,7 @@ static inline ssize_t jdksavdecc_descriptor_sensor_cluster_read( struct jdksavde
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_sensor_cluster_write( struct jdksavdecc_descriptor_sensor_cluster_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_sensor_cluster_write( struct jdksavdecc_descriptor_sensor_cluster const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SENSOR_CLUSTER_LEN );
     if( r>=0 )
@@ -16790,7 +16790,7 @@ static inline void jdksavdecc_descriptor_audio_map_set_number_of_mappings( uint1
 
 
 /// AUDIO_MAP Descriptor - Clause 7.2.19
-struct jdksavdecc_descriptor_audio_map_t
+struct jdksavdecc_descriptor_audio_map
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -16811,7 +16811,7 @@ struct jdksavdecc_descriptor_audio_map_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_audio_map_read( struct jdksavdecc_descriptor_audio_map_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_audio_map_read( struct jdksavdecc_descriptor_audio_map *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_MAP_LEN );
     if( r>=0 )
@@ -16837,7 +16837,7 @@ static inline ssize_t jdksavdecc_descriptor_audio_map_read( struct jdksavdecc_de
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_audio_map_write( struct jdksavdecc_descriptor_audio_map_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_audio_map_write( struct jdksavdecc_descriptor_audio_map const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_MAP_LEN );
     if( r>=0 )
@@ -16993,7 +16993,7 @@ static inline void jdksavdecc_descriptor_video_map_set_number_of_mappings( uint1
 
 
 /// VIDEO_MAP Descriptor - Clause 7.2.20
-struct jdksavdecc_descriptor_video_map_t
+struct jdksavdecc_descriptor_video_map
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -17014,7 +17014,7 @@ struct jdksavdecc_descriptor_video_map_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_video_map_read( struct jdksavdecc_descriptor_video_map_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_video_map_read( struct jdksavdecc_descriptor_video_map *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_MAP_LEN );
     if( r>=0 )
@@ -17040,7 +17040,7 @@ static inline ssize_t jdksavdecc_descriptor_video_map_read( struct jdksavdecc_de
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_video_map_write( struct jdksavdecc_descriptor_video_map_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_video_map_write( struct jdksavdecc_descriptor_video_map const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_MAP_LEN );
     if( r>=0 )
@@ -17196,7 +17196,7 @@ static inline void jdksavdecc_descriptor_sensor_map_set_number_of_mappings( uint
 
 
 /// SENSOR_MAP Descriptor - Clause 7.2.21
-struct jdksavdecc_descriptor_sensor_map_t
+struct jdksavdecc_descriptor_sensor_map
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -17217,7 +17217,7 @@ struct jdksavdecc_descriptor_sensor_map_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_sensor_map_read( struct jdksavdecc_descriptor_sensor_map_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_sensor_map_read( struct jdksavdecc_descriptor_sensor_map *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SENSOR_MAP_LEN );
     if( r>=0 )
@@ -17243,7 +17243,7 @@ static inline ssize_t jdksavdecc_descriptor_sensor_map_read( struct jdksavdecc_d
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_sensor_map_write( struct jdksavdecc_descriptor_sensor_map_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_sensor_map_write( struct jdksavdecc_descriptor_sensor_map const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SENSOR_MAP_LEN );
     if( r>=0 )
@@ -17751,7 +17751,7 @@ static inline void jdksavdecc_descriptor_control_set_signal_output( uint16_t v, 
 
 
 /// CONTROL Descriptor - Clause 7.2.22
-struct jdksavdecc_descriptor_control_t
+struct jdksavdecc_descriptor_control
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -17783,7 +17783,7 @@ struct jdksavdecc_descriptor_control_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_control_read( struct jdksavdecc_descriptor_control_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_control_read( struct jdksavdecc_descriptor_control *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_CONTROL_LEN );
     if( r>=0 )
@@ -17820,7 +17820,7 @@ static inline ssize_t jdksavdecc_descriptor_control_read( struct jdksavdecc_desc
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_control_write( struct jdksavdecc_descriptor_control_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_control_write( struct jdksavdecc_descriptor_control const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_CONTROL_LEN );
     if( r>=0 )
@@ -18339,7 +18339,7 @@ static inline void jdksavdecc_descriptor_signal_selector_set_default_signal_outp
 
 
 /// SIGNAL_SELECTOR Descriptor - Clause 7.2.23
-struct jdksavdecc_descriptor_signal_selector_t
+struct jdksavdecc_descriptor_signal_selector
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -18371,7 +18371,7 @@ struct jdksavdecc_descriptor_signal_selector_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_signal_selector_read( struct jdksavdecc_descriptor_signal_selector_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_signal_selector_read( struct jdksavdecc_descriptor_signal_selector *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_SELECTOR_LEN );
     if( r>=0 )
@@ -18408,7 +18408,7 @@ static inline ssize_t jdksavdecc_descriptor_signal_selector_read( struct jdksavd
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_signal_selector_write( struct jdksavdecc_descriptor_signal_selector_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_signal_selector_write( struct jdksavdecc_descriptor_signal_selector const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_SELECTOR_LEN );
     if( r>=0 )
@@ -18799,7 +18799,7 @@ static inline void jdksavdecc_descriptor_mixer_set_value_offset( uint16_t v, voi
 
 
 /// MIXER Descriptor - Clause 7.2.24
-struct jdksavdecc_descriptor_mixer_t
+struct jdksavdecc_descriptor_mixer
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -18827,7 +18827,7 @@ struct jdksavdecc_descriptor_mixer_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_mixer_read( struct jdksavdecc_descriptor_mixer_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_mixer_read( struct jdksavdecc_descriptor_mixer *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_MIXER_LEN );
     if( r>=0 )
@@ -18860,7 +18860,7 @@ static inline ssize_t jdksavdecc_descriptor_mixer_read( struct jdksavdecc_descri
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_mixer_write( struct jdksavdecc_descriptor_mixer_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_mixer_write( struct jdksavdecc_descriptor_mixer const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_MIXER_LEN );
     if( r>=0 )
@@ -19375,7 +19375,7 @@ static inline void jdksavdecc_descriptor_matrix_set_base_source( uint16_t v, voi
 
 
 /// MATRIX Descriptor - Clause 7.2.25
-struct jdksavdecc_descriptor_matrix_t
+struct jdksavdecc_descriptor_matrix
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -19407,7 +19407,7 @@ struct jdksavdecc_descriptor_matrix_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_matrix_read( struct jdksavdecc_descriptor_matrix_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_matrix_read( struct jdksavdecc_descriptor_matrix *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_MATRIX_LEN );
     if( r>=0 )
@@ -19444,7 +19444,7 @@ static inline ssize_t jdksavdecc_descriptor_matrix_read( struct jdksavdecc_descr
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_matrix_write( struct jdksavdecc_descriptor_matrix_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_matrix_write( struct jdksavdecc_descriptor_matrix const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_MATRIX_LEN );
     if( r>=0 )
@@ -19611,7 +19611,7 @@ static inline void jdksavdecc_descriptor_matrix_signal_set_signals_offset( uint1
 
 
 /// Matrix Signal Descriptor - Clause 7.2.26
-struct jdksavdecc_descriptor_matrix_signal_t
+struct jdksavdecc_descriptor_matrix_signal
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -19632,7 +19632,7 @@ struct jdksavdecc_descriptor_matrix_signal_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_matrix_signal_read( struct jdksavdecc_descriptor_matrix_signal_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_matrix_signal_read( struct jdksavdecc_descriptor_matrix_signal *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_MATRIX_SIGNAL_LEN );
     if( r>=0 )
@@ -19658,7 +19658,7 @@ static inline ssize_t jdksavdecc_descriptor_matrix_signal_read( struct jdksavdec
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_matrix_signal_write( struct jdksavdecc_descriptor_matrix_signal_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_matrix_signal_write( struct jdksavdecc_descriptor_matrix_signal const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_MATRIX_SIGNAL_LEN );
     if( r>=0 )
@@ -20102,7 +20102,7 @@ static inline void jdksavdecc_descriptor_signal_splitter_set_splitter_map_offset
 
 
 /// SIGNAL_SPLITTER Descriptor - Clause 7.2.27
-struct jdksavdecc_descriptor_signal_splitter_t
+struct jdksavdecc_descriptor_signal_splitter
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -20132,7 +20132,7 @@ struct jdksavdecc_descriptor_signal_splitter_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_signal_splitter_read( struct jdksavdecc_descriptor_signal_splitter_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_signal_splitter_read( struct jdksavdecc_descriptor_signal_splitter *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_SPLITTER_LEN );
     if( r>=0 )
@@ -20167,7 +20167,7 @@ static inline ssize_t jdksavdecc_descriptor_signal_splitter_read( struct jdksavd
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_signal_splitter_write( struct jdksavdecc_descriptor_signal_splitter_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_signal_splitter_write( struct jdksavdecc_descriptor_signal_splitter const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_SPLITTER_LEN );
     if( r>=0 )
@@ -20556,7 +20556,7 @@ static inline void jdksavdecc_descriptor_signal_combiner_set_number_of_sources( 
 
 
 /// SIGNAL_COMBINER Descriptor - Clause 7.2.28
-struct jdksavdecc_descriptor_signal_combiner_t
+struct jdksavdecc_descriptor_signal_combiner
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -20584,7 +20584,7 @@ struct jdksavdecc_descriptor_signal_combiner_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_signal_combiner_read( struct jdksavdecc_descriptor_signal_combiner_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_signal_combiner_read( struct jdksavdecc_descriptor_signal_combiner *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_COMBINER_LEN );
     if( r>=0 )
@@ -20617,7 +20617,7 @@ static inline ssize_t jdksavdecc_descriptor_signal_combiner_read( struct jdksavd
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_signal_combiner_write( struct jdksavdecc_descriptor_signal_combiner_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_signal_combiner_write( struct jdksavdecc_descriptor_signal_combiner const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_COMBINER_LEN );
     if( r>=0 )
@@ -21068,7 +21068,7 @@ static inline void jdksavdecc_descriptor_signal_demultiplexer_set_demultiplexer_
 
 
 /// SIGNAL_DEMULTIPLEXER Descriptor - Clause 7.2.29
-struct jdksavdecc_descriptor_signal_demultiplexer_t
+struct jdksavdecc_descriptor_signal_demultiplexer
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -21098,7 +21098,7 @@ struct jdksavdecc_descriptor_signal_demultiplexer_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_signal_demultiplexer_read( struct jdksavdecc_descriptor_signal_demultiplexer_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_signal_demultiplexer_read( struct jdksavdecc_descriptor_signal_demultiplexer *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_DEMULTIPLEXER_LEN );
     if( r>=0 )
@@ -21133,7 +21133,7 @@ static inline ssize_t jdksavdecc_descriptor_signal_demultiplexer_read( struct jd
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_signal_demultiplexer_write( struct jdksavdecc_descriptor_signal_demultiplexer_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_signal_demultiplexer_write( struct jdksavdecc_descriptor_signal_demultiplexer const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_DEMULTIPLEXER_LEN );
     if( r>=0 )
@@ -21522,7 +21522,7 @@ static inline void jdksavdecc_descriptor_signal_multiplexer_set_number_of_source
 
 
 /// SIGNAL_MULTIPLEXER Descriptor - Clause 7.2.30
-struct jdksavdecc_descriptor_signal_multiplexer_t
+struct jdksavdecc_descriptor_signal_multiplexer
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -21550,7 +21550,7 @@ struct jdksavdecc_descriptor_signal_multiplexer_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_signal_multiplexer_read( struct jdksavdecc_descriptor_signal_multiplexer_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_signal_multiplexer_read( struct jdksavdecc_descriptor_signal_multiplexer *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_MULTIPLEXER_LEN );
     if( r>=0 )
@@ -21583,7 +21583,7 @@ static inline ssize_t jdksavdecc_descriptor_signal_multiplexer_read( struct jdks
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_signal_multiplexer_write( struct jdksavdecc_descriptor_signal_multiplexer_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_signal_multiplexer_write( struct jdksavdecc_descriptor_signal_multiplexer const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_MULTIPLEXER_LEN );
     if( r>=0 )
@@ -22034,7 +22034,7 @@ static inline void jdksavdecc_descriptor_transcoder_set_signal_output( uint16_t 
 
 
 /// SIGNAL_TRANSCODER Descriptor - Clause 7.2.31
-struct jdksavdecc_descriptor_transcoder_t
+struct jdksavdecc_descriptor_transcoder
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -22064,7 +22064,7 @@ struct jdksavdecc_descriptor_transcoder_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_transcoder_read( struct jdksavdecc_descriptor_transcoder_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_transcoder_read( struct jdksavdecc_descriptor_transcoder *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_TRANSCODER_LEN );
     if( r>=0 )
@@ -22099,7 +22099,7 @@ static inline ssize_t jdksavdecc_descriptor_transcoder_read( struct jdksavdecc_d
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_transcoder_write( struct jdksavdecc_descriptor_transcoder_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_transcoder_write( struct jdksavdecc_descriptor_transcoder const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_TRANSCODER_LEN );
     if( r>=0 )
@@ -22360,7 +22360,7 @@ static inline void jdksavdecc_descriptor_clock_domain_set_clock_sources_count( u
 
 
 /// CLOCK_DOMAIN Descriptor - Clause 7.2.32
-struct jdksavdecc_descriptor_clock_domain_t
+struct jdksavdecc_descriptor_clock_domain
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -22384,7 +22384,7 @@ struct jdksavdecc_descriptor_clock_domain_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_clock_domain_read( struct jdksavdecc_descriptor_clock_domain_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_clock_domain_read( struct jdksavdecc_descriptor_clock_domain *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_CLOCK_DOMAIN_LEN );
     if( r>=0 )
@@ -22413,7 +22413,7 @@ static inline ssize_t jdksavdecc_descriptor_clock_domain_read( struct jdksavdecc
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_clock_domain_write( struct jdksavdecc_descriptor_clock_domain_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_clock_domain_write( struct jdksavdecc_descriptor_clock_domain const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_CLOCK_DOMAIN_LEN );
     if( r>=0 )
@@ -22668,7 +22668,7 @@ static inline void jdksavdecc_descriptor_control_block_set_final_control_index( 
 
 
 /// CONTROL_BLOCK Descriptor - Clause 7.2.33
-struct jdksavdecc_descriptor_control_block_t
+struct jdksavdecc_descriptor_control_block
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -22692,7 +22692,7 @@ struct jdksavdecc_descriptor_control_block_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_control_block_read( struct jdksavdecc_descriptor_control_block_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_control_block_read( struct jdksavdecc_descriptor_control_block *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_CONTROL_BLOCK_LEN );
     if( r>=0 )
@@ -22721,7 +22721,7 @@ static inline ssize_t jdksavdecc_descriptor_control_block_read( struct jdksavdec
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_control_block_write( struct jdksavdecc_descriptor_control_block_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_descriptor_control_block_write( struct jdksavdecc_descriptor_control_block const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_CONTROL_BLOCK_LEN );
     if( r>=0 )
