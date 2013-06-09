@@ -37,15 +37,32 @@
 #include "jdksavdecc_util.h"
 #include "jdksavdecc_adp.h"
 
+/// See Clause 6.2.6.1.1
+struct jdksavdecc_adp_discovery_entity_info
+{
+    struct jdksavdecc_eui48 entity_mac;
+    struct jdksavdecc_eui48 local_mac;
+    struct jdksavdecc_adpdu adpdu;
+};
+
+/// See Clause 6.2.6.1.7
+struct jdksavdecc_adp_discovery_db
+{
+    struct jdksavdecc_adp_discovery_entity_info entity_info;
+    struct jdksavdecc_adp_discovery_db *prev;
+    struct jdksavdecc_adp_discovery_db *next;
+};
+
 /// See Clause 6.2.6.1
 struct jdksavdecc_adp_discovery_vars
 {
-    struct jdksavdecc_frame rcvd_entity_info;
-    int rcvd_available;
-    int rcvd_departing;
-    int do_discover;
-    struct jdksavdecc_eui64 discover_id;
-    int do_terminate;
+    struct jdksavdecc_adp_discovery_entity_info rcvd_entity_info;  /// See Clause 6.2.6.1.1
+    int rcvd_available; /// See Clause 6.2.6.1.2
+    int rcvd_departing; /// See Clause 6.2.6.1.3
+    int do_discover; /// See Clause 6.2.6.1.4
+    struct jdksavdecc_eui64 discover_id; /// See Clause 6.2.6.1.5
+    int do_terminate; /// See Clause 6.2.6.1.6
+    struct jdksavdecc_adp_discovery_db *entities; /// See Clause 6.2.6.1.7
 };
 
 struct jdksavdecc_adp_discovery;
@@ -72,16 +89,27 @@ struct jdksavdecc_adp_discovery;
 
 typedef void (*jdksavdecc_adp_discovery_state)( struct jdksavdecc_adp_discovery * );
 
+/// See Clause 6.2.6.4
 void jdksavdecc_adp_discovery_state_waiting( struct jdksavdecc_adp_discovery * );
+
+/// See Clause 6.2.6.4
 void jdksavdecc_adp_discovery_state_discover( struct jdksavdecc_adp_discovery * );
+
+/// See Clause 6.2.6.4
 void jdksavdecc_adp_discovery_state_available( struct jdksavdecc_adp_discovery * );
+
+/// See Clause 6.2.6.4
 void jdksavdecc_adp_discovery_state_departing( struct jdksavdecc_adp_discovery * );
+
+/// See Clause 6.2.6.4
 void jdksavdecc_adp_discovery_state_timeout( struct jdksavdecc_adp_discovery * );
 
+/// See Clause 6.2.6.4
 struct jdksavdecc_adp_discovery
 {
     jdksavdecc_adp_discovery_state state;
     struct jdksavdecc_adp_discovery_vars *vars;
+    void (*send_frame)( struct jdksavdecc_frame * );
 };
 
 /// See Clause 6.2.6.3.2

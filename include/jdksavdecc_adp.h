@@ -711,7 +711,7 @@ static inline void jdksavdecc_adpdu_set_reserved1( uint32_t v, void *base, ssize
 
 
 /// ADPDU - Clause 6.2.1
-struct jdksavdecc_adpdu_t
+struct jdksavdecc_adpdu
 {
     struct jdksavdecc_adpdu_common_control_header header;
     struct jdksavdecc_eui64 entity_model_id;
@@ -732,7 +732,7 @@ struct jdksavdecc_adpdu_t
 };
 
 /**
- * Extract the jdksavdecc_adpdu_t structure from a network buffer.
+ * Extract the jdksavdecc_adpdu structure from a network buffer.
  *
  *
  *
@@ -744,7 +744,7 @@ struct jdksavdecc_adpdu_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_adpdu_read( struct jdksavdecc_adpdu_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_adpdu_read( struct jdksavdecc_adpdu *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_ADPDU_LEN );
     if( r>=0 )
@@ -770,7 +770,7 @@ static inline ssize_t jdksavdecc_adpdu_read( struct jdksavdecc_adpdu_t *p, void 
 }
 
 /**
- * Store the jdksavdecc_adpdu_t structure to a network buffer.
+ * Store the jdksavdecc_adpdu structure to a network buffer.
  *
  *
  *
@@ -782,7 +782,7 @@ static inline ssize_t jdksavdecc_adpdu_read( struct jdksavdecc_adpdu_t *p, void 
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_adpdu_write( struct jdksavdecc_adpdu_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_adpdu_write( struct jdksavdecc_adpdu const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_ADPDU_LEN );
     if( r>=0 )
