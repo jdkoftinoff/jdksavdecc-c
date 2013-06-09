@@ -174,7 +174,7 @@ static inline void jdksavdecc_aecpdu_aa_set_tlv_count( uint16_t v, void *base, s
 
 
 /// AECPDU Address Access - Clause 9.2.1.3
-struct jdksavdecc_aecpdu_aa_t
+struct jdksavdecc_aecpdu_aa
 {
     struct jdksavdecc_aecpdu_common aecpdu_header;
     struct jdksavdecc_eui64 controller_entity_id;
@@ -195,7 +195,7 @@ struct jdksavdecc_aecpdu_aa_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aecpdu_aa_read( struct jdksavdecc_aecpdu_aa_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_aecpdu_aa_read( struct jdksavdecc_aecpdu_aa *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_AA_LEN );
     if( r>=0 )
@@ -221,7 +221,7 @@ static inline ssize_t jdksavdecc_aecpdu_aa_read( struct jdksavdecc_aecpdu_aa_t *
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aecpdu_aa_write( struct jdksavdecc_aecpdu_aa_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_aecpdu_aa_write( struct jdksavdecc_aecpdu_aa const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_AA_LEN );
     if( r>=0 )
