@@ -40825,7 +40825,7 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_set_descripto
  */
 static inline uint64_t jdksavdecc_aem_command_set_memory_object_length_get_length( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_LENGTH);
+    return jdksavdecc_uint64_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_LENGTH);
 }
 
 
@@ -40839,9 +40839,9 @@ static inline uint64_t jdksavdecc_aem_command_set_memory_object_length_get_lengt
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_set_memory_object_length_set_length( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_set_memory_object_length_set_length( uint64_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_LENGTH);
+    jdksavdecc_uint64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_LENGTH);
 }
 
 
@@ -41098,7 +41098,7 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_
  */
 static inline uint64_t jdksavdecc_aem_command_set_memory_object_length_response_get_length( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH);
+    return jdksavdecc_uint64_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH);
 }
 
 
@@ -41112,9 +41112,9 @@ static inline uint64_t jdksavdecc_aem_command_set_memory_object_length_response_
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_length( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_length( uint64_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH);
+    jdksavdecc_uint64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH);
 }
 
 
@@ -41607,7 +41607,7 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_response_set_
  */
 static inline uint64_t jdksavdecc_aem_command_get_memory_object_length_response_get_length( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH);
+    return jdksavdecc_uint64_get( base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH);
 }
 
 
@@ -41621,9 +41621,9 @@ static inline uint64_t jdksavdecc_aem_command_get_memory_object_length_response_
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_get_memory_object_length_response_set_length( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_get_memory_object_length_response_set_length( uint64_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH);
+    jdksavdecc_uint64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH);
 }
 
 
