@@ -2047,7 +2047,7 @@ static inline void jdksavdecc_audio_mapping_set_mapping_cluster_channel( uint16_
 
 
 /// Audio Mappings Format - Clause 7.2.19.1
-struct jdksavdecc_audio_mapping_t
+struct jdksavdecc_audio_mapping
 {
     uint16_t mapping_stream_index;
     uint16_t mapping_stream_channel;
@@ -2068,7 +2068,7 @@ struct jdksavdecc_audio_mapping_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_audio_mapping_read( struct jdksavdecc_audio_mapping_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_audio_mapping_read( struct jdksavdecc_audio_mapping *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AUDIO_MAPPING_LEN );
     if( r>=0 )
@@ -2094,7 +2094,7 @@ static inline ssize_t jdksavdecc_audio_mapping_read( struct jdksavdecc_audio_map
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_audio_mapping_write( struct jdksavdecc_audio_mapping_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_audio_mapping_write( struct jdksavdecc_audio_mapping const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AUDIO_MAPPING_LEN );
     if( r>=0 )
@@ -2250,7 +2250,7 @@ static inline void jdksavdecc_video_mapping_set_mapping_cluster_offset( uint16_t
 
 
 /// Video Mappings Format - Clause 7.2.20.1
-struct jdksavdecc_video_mapping_t
+struct jdksavdecc_video_mapping
 {
     uint16_t mapping_stream_index;
     uint16_t mapping_program_stream;
@@ -2271,7 +2271,7 @@ struct jdksavdecc_video_mapping_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_video_mapping_read( struct jdksavdecc_video_mapping_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_video_mapping_read( struct jdksavdecc_video_mapping *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VIDEO_MAPPING_LEN );
     if( r>=0 )
@@ -2297,7 +2297,7 @@ static inline ssize_t jdksavdecc_video_mapping_read( struct jdksavdecc_video_map
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_video_mapping_write( struct jdksavdecc_video_mapping_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_video_mapping_write( struct jdksavdecc_video_mapping const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_VIDEO_MAPPING_LEN );
     if( r>=0 )
@@ -2421,7 +2421,7 @@ static inline void jdksavdecc_signal_selector_source_set_signal_output( uint16_t
 
 
 /// Signal Selector Sources Field - Clause 7.2.23.1
-struct jdksavdecc_signal_selector_source_t
+struct jdksavdecc_signal_selector_source
 {
     uint16_t signal_type;
     uint16_t signal_index;
@@ -2441,7 +2441,7 @@ struct jdksavdecc_signal_selector_source_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_signal_selector_source_read( struct jdksavdecc_signal_selector_source_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_signal_selector_source_read( struct jdksavdecc_signal_selector_source *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_SIGNAL_SELECTOR_SOURCE_LEN );
     if( r>=0 )
@@ -2466,7 +2466,7 @@ static inline ssize_t jdksavdecc_signal_selector_source_read( struct jdksavdecc_
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_signal_selector_source_write( struct jdksavdecc_signal_selector_source_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_signal_selector_source_write( struct jdksavdecc_signal_selector_source const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_SIGNAL_SELECTOR_SOURCE_LEN );
     if( r>=0 )
@@ -2589,7 +2589,7 @@ static inline void jdksavdecc_mixer_source_set_signal_output( uint16_t v, void *
 
 
 /// Mixer Sources Field - Clause 7.2.24.1
-struct jdksavdecc_mixer_source_t
+struct jdksavdecc_mixer_source
 {
     uint16_t signal_type;
     uint16_t signal_index;
@@ -2609,7 +2609,7 @@ struct jdksavdecc_mixer_source_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_mixer_source_read( struct jdksavdecc_mixer_source_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_mixer_source_read( struct jdksavdecc_mixer_source *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_MIXER_SOURCE_LEN );
     if( r>=0 )
@@ -2634,7 +2634,7 @@ static inline ssize_t jdksavdecc_mixer_source_read( struct jdksavdecc_mixer_sour
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_mixer_source_write( struct jdksavdecc_mixer_source_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_mixer_source_write( struct jdksavdecc_mixer_source const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_MIXER_SOURCE_LEN );
     if( r>=0 )
@@ -2757,7 +2757,7 @@ static inline void jdksavdecc_splitter_map_set_output_index( uint16_t v, void *b
 
 
 /// splitter_map Format - Clause 7.2.27.1
-struct jdksavdecc_splitter_map_t
+struct jdksavdecc_splitter_map
 {
     uint16_t sub_signal_start;
     uint16_t sub_signal_count;
@@ -2777,7 +2777,7 @@ struct jdksavdecc_splitter_map_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_splitter_map_read( struct jdksavdecc_splitter_map_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_splitter_map_read( struct jdksavdecc_splitter_map *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_SPLITTER_MAP_LEN );
     if( r>=0 )
@@ -2802,7 +2802,7 @@ static inline ssize_t jdksavdecc_splitter_map_read( struct jdksavdecc_splitter_m
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_splitter_map_write( struct jdksavdecc_splitter_map_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_splitter_map_write( struct jdksavdecc_splitter_map const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_SPLITTER_MAP_LEN );
     if( r>=0 )
@@ -2925,7 +2925,7 @@ static inline void jdksavdecc_combiner_map_set_input_index( uint16_t v, void *ba
 
 
 /// combiner_map Format - Clause 7.2.28.1
-struct jdksavdecc_combiner_map_t
+struct jdksavdecc_combiner_map
 {
     uint16_t sub_signal_start;
     uint16_t sub_signal_count;
@@ -2945,7 +2945,7 @@ struct jdksavdecc_combiner_map_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_combiner_map_read( struct jdksavdecc_combiner_map_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_combiner_map_read( struct jdksavdecc_combiner_map *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_COMBINER_MAP_LEN );
     if( r>=0 )
@@ -2970,7 +2970,7 @@ static inline ssize_t jdksavdecc_combiner_map_read( struct jdksavdecc_combiner_m
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_combiner_map_write( struct jdksavdecc_combiner_map_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_combiner_map_write( struct jdksavdecc_combiner_map const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_COMBINER_MAP_LEN );
     if( r>=0 )
@@ -3093,7 +3093,7 @@ static inline void jdksavdecc_demultiplexer_map_set_output_index( uint16_t v, vo
 
 
 /// demultiplexer_map Format - Clause 7.2.29.1
-struct jdksavdecc_demultiplexer_map_t
+struct jdksavdecc_demultiplexer_map
 {
     uint16_t sub_signal_start;
     uint16_t sub_signal_count;
@@ -3113,7 +3113,7 @@ struct jdksavdecc_demultiplexer_map_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_demultiplexer_map_read( struct jdksavdecc_demultiplexer_map_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_demultiplexer_map_read( struct jdksavdecc_demultiplexer_map *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DEMULTIPLEXER_MAP_LEN );
     if( r>=0 )
@@ -3138,7 +3138,7 @@ static inline ssize_t jdksavdecc_demultiplexer_map_read( struct jdksavdecc_demul
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_demultiplexer_map_write( struct jdksavdecc_demultiplexer_map_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_demultiplexer_map_write( struct jdksavdecc_demultiplexer_map const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DEMULTIPLEXER_MAP_LEN );
     if( r>=0 )
@@ -3261,7 +3261,7 @@ static inline void jdksavdecc_multiplexer_source_set_signal_output( uint16_t v, 
 
 
 /// Signal Multiplexer Sources Field - Clause 7.2.30.2
-struct jdksavdecc_multiplexer_source_t
+struct jdksavdecc_multiplexer_source
 {
     uint16_t signal_type;
     uint16_t signal_index;
@@ -3281,7 +3281,7 @@ struct jdksavdecc_multiplexer_source_t
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_multiplexer_source_read( struct jdksavdecc_multiplexer_source_t *p, void const *base, ssize_t pos, size_t len )
+static inline ssize_t jdksavdecc_multiplexer_source_read( struct jdksavdecc_multiplexer_source *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_MULTIPLEXER_SOURCE_LEN );
     if( r>=0 )
@@ -3306,7 +3306,7 @@ static inline ssize_t jdksavdecc_multiplexer_source_read( struct jdksavdecc_mult
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_multiplexer_source_write( struct jdksavdecc_multiplexer_source_t const *p, void *base, size_t pos, size_t len )
+static inline ssize_t jdksavdecc_multiplexer_source_write( struct jdksavdecc_multiplexer_source const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_MULTIPLEXER_SOURCE_LEN );
     if( r>=0 )
