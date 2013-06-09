@@ -34,7 +34,58 @@
 */
 
 #include "jdksavdecc_world.h"
+#include "jdksavdecc_util.h"
 #include "jdksavdecc_adp.h"
+
+/// See Clause 6.2.6.1
+struct jdksavdecc_adp_discovery_vars
+{
+    struct jdksavdecc_frame rcvd_entity_info;
+    int rcvd_available;
+    int rcvd_departing;
+    int do_discover;
+    struct jdksavdecc_eui64 discover_id;
+    int do_terminate;
+};
+
+struct jdksavdecc_adp_discovery;
+
+/// See Clause 6.2.6.2.1
+void jdksavdecc_adp_discovery_perform_discover( struct jdksavdecc_adp_discovery * );
+
+/// See Clause 6.2.6.3.1
+void jdksavdecc_adp_discovery_tx_discover( struct jdksavdecc_adp_discovery * );
+
+/// See Clause 6.2.6.3.2
+void jdksavdecc_adp_discovery_have_entity_id( struct jdksavdecc_adp_discovery *, struct jdksavdecc_eui64 entity_id );
+
+/// See Clause 6.2.6.3.2
+void jdksavdecc_adp_discovery_update_entity( struct jdksavdecc_adp_discovery *, struct jdksavdecc_frame * );
+
+/// See Clause 6.2.6.3.2
+void jdksavdecc_adp_discovery_add_entity( struct jdksavdecc_adp_discovery *, struct jdksavdecc_frame * );
+
+/// See Clause 6.2.6.3.2
+void jdksavdecc_adp_discovery_remove_entity( struct jdksavdecc_adp_discovery *, struct jdksavdecc_frame * );
+
+struct jdksavdecc_adp_discovery;
+
+typedef void (*jdksavdecc_adp_discovery_state)( struct jdksavdecc_adp_discovery * );
+
+void jdksavdecc_adp_discovery_state_waiting( struct jdksavdecc_adp_discovery * );
+void jdksavdecc_adp_discovery_state_discover( struct jdksavdecc_adp_discovery * );
+void jdksavdecc_adp_discovery_state_available( struct jdksavdecc_adp_discovery * );
+void jdksavdecc_adp_discovery_state_departing( struct jdksavdecc_adp_discovery * );
+void jdksavdecc_adp_discovery_state_timeout( struct jdksavdecc_adp_discovery * );
+
+struct jdksavdecc_adp_discovery
+{
+    jdksavdecc_adp_discovery_state state;
+    struct jdksavdecc_adp_discovery_vars *vars;
+};
+
+/// See Clause 6.2.6.3.2
+void jdksavdecc_adp_discovery_remove_entity( struct jdksavdecc_adp_discovery *, struct jdksavdecc_frame * );
 
 #endif
 
