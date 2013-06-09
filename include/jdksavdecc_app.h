@@ -36,5 +36,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_pdu.h"
 
+/// @todo APPDU
+struct jdksavdec_appdu;
+
 #endif
 

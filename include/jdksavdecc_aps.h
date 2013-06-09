@@ -36,5 +36,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_app.h"
 
+/// @todo APS state machine
+struct jdksavdec_aps_state_machine;
+
 #endif
 

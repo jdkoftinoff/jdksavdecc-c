@@ -36,5 +36,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_app.h"
 
+/// @todo APC state machine
+struct jdksavdec_apc_state_machine;
+
 #endif
 
