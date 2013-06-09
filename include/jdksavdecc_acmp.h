@@ -104,7 +104,7 @@ static inline ssize_t jdksavdecc_acmpdu_common_control_header_write( struct jdks
 #define JDKSAVDECC_ACMPDU_OFFSET_STREAM_DEST_MAC (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+28)
 #define JDKSAVDECC_ACMPDU_OFFSET_CONNECTION_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+34)
 #define JDKSAVDECC_ACMPDU_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+36)
-#define JDKSAVDECC_ACMPDU_OFFSET_ACMP_FLAGS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+38)
+#define JDKSAVDECC_ACMPDU_OFFSET_FLAGS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+38)
 #define JDKSAVDECC_ACMPDU_OFFSET_STREAM_VLAN_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+40)
 #define JDKSAVDECC_ACMPDU_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+42)
 #define JDKSAVDECC_ACMPDU_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+44)
@@ -426,9 +426,9 @@ static inline void jdksavdecc_acmpdu_set_sequence_id( uint16_t v, void *base, ss
  * @param pos offset from base to read the field from;
  * @return the uint16_t acmp_flags value
  */
-static inline uint16_t jdksavdecc_acmpdu_get_acmp_flags( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_acmpdu_get_flags( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_ACMP_FLAGS);
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_ACMPDU_OFFSET_FLAGS);
 }
 
 
@@ -442,9 +442,9 @@ static inline uint16_t jdksavdecc_acmpdu_get_acmp_flags( void const *base, ssize
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_acmpdu_set_acmp_flags( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_acmpdu_set_flags( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_ACMP_FLAGS);
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_ACMPDU_OFFSET_FLAGS);
 }
 
 
@@ -534,7 +534,7 @@ struct jdksavdecc_acmpdu
     struct jdksavdecc_eui48 stream_dest_mac;
     uint16_t connection_count;
     uint16_t sequence_id;
-    uint16_t acmp_flags;
+    uint16_t flags;
     uint16_t stream_vlan_id;
     uint16_t reserved;
 };
@@ -566,7 +566,7 @@ static inline ssize_t jdksavdecc_acmpdu_read( struct jdksavdecc_acmpdu *p, void 
         p->stream_dest_mac = jdksavdecc_acmpdu_get_stream_dest_mac( base, pos );
         p->connection_count = jdksavdecc_acmpdu_get_connection_count( base, pos );
         p->sequence_id = jdksavdecc_acmpdu_get_sequence_id( base, pos );
-        p->acmp_flags = jdksavdecc_acmpdu_get_acmp_flags( base, pos );
+        p->flags = jdksavdecc_acmpdu_get_flags( base, pos );
         p->stream_vlan_id = jdksavdecc_acmpdu_get_stream_vlan_id( base, pos );
         p->reserved = jdksavdecc_acmpdu_get_reserved( base, pos );
     }
@@ -600,7 +600,7 @@ static inline ssize_t jdksavdecc_acmpdu_write( struct jdksavdecc_acmpdu const *p
         jdksavdecc_acmpdu_set_stream_dest_mac( p->stream_dest_mac, base, pos );
         jdksavdecc_acmpdu_set_connection_count( p->connection_count, base, pos );
         jdksavdecc_acmpdu_set_sequence_id( p->sequence_id, base, pos );
-        jdksavdecc_acmpdu_set_acmp_flags( p->acmp_flags, base, pos );
+        jdksavdecc_acmpdu_set_flags( p->flags, base, pos );
         jdksavdecc_acmpdu_set_stream_vlan_id( p->stream_vlan_id, base, pos );
         jdksavdecc_acmpdu_set_reserved( p->reserved, base, pos );
     }
@@ -610,8 +610,91 @@ static inline ssize_t jdksavdecc_acmpdu_write( struct jdksavdecc_acmpdu const *p
 /*@}*/
 
 
+/// Clause 8.2.2.2.1
+struct jdksavdecc_acmp_command_response
+{
+    struct jdksavdecc_acmpdu_common_control_header header;
+    struct jdksavdecc_eui64 controller_entity_id;
+    struct jdksavdecc_eui64 talker_entity_id;
+    struct jdksavdecc_eui64 listener_entity_id;
+    uint16_t talker_unique_id;
+    uint16_t listener_unique_id;
+    struct jdksavdecc_eui48 stream_dest_mac;
+    uint16_t connection_count;
+    uint16_t sequence_id;
+    uint16_t flags;
+    uint16_t stream_vlan_id;
+};
+
+/// Clause 8.2.2.2.1
+static inline void jdksavdecc_acmp_command_response_set( struct jdksavdecc_acmp_command_response *self, struct jdksavdecc_acmpdu *p )
+{
+    self->header = p->header;
+    self->controller_entity_id = p->controller_entity_id;
+    self->talker_entity_id = p->talker_entity_id;
+    self->listener_entity_id = p->listener_entity_id;
+    self->talker_unique_id = p->talker_unique_id;
+    self->listener_unique_id = p->talker_unique_id;
+    self->stream_dest_mac = p->stream_dest_mac;
+    self->connection_count = p->connection_count;
+    self->sequence_id = p->sequence_id;
+    self->flags = p->flags;
+    self->stream_vlan_id = p->stream_vlan_id;
+}
 
 
+/// Clause 8.2.2.2.2
+struct jdksavdecc_acmp_listener_stream_info
+{
+    struct jdksavdecc_eui64 talker_entity_id;
+    uint16_t talker_unique_id;
+    int connected;
+    struct jdksavdecc_eui64 stream_id;
+    struct jdksavdecc_eui48 stream_dest_mac;
+    struct jdksavdecc_eui64 controller_entity_id;
+    uint16_t flags;
+    uint16_t stream_vlan_id;
+};
+
+/// Clause 8.2.2.2.2
+static inline void jdksavdecc_acmp_listener_stream_info_set( struct jdksavdecc_acmp_listener_stream_info *self, struct jdksavdecc_acmpdu *p )
+{
+    self->stream_id = p->header.stream_id;
+    self->controller_entity_id = p->controller_entity_id;
+    self->talker_entity_id = p->talker_entity_id;
+    self->talker_unique_id = p->talker_unique_id;
+    self->stream_dest_mac = p->stream_dest_mac;
+    self->connected = p->connection_count > 0 ? 1 : 0;
+    self->flags = p->flags;
+    self->stream_vlan_id = p->stream_vlan_id;
+}
+
+
+/// Clause 8.2.2.2.3
+struct jdksavdecc_acmp_listener_pair
+{
+    struct jdksavdecc_eui64 listener_entity_id;
+    uint16_t listener_unique_id;
+};
+
+/// Clause 8.2.2.2.3
+struct jdksavdecc_acmp_listener_pair_list
+{
+    struct jdksavdecc_acmp_listener_pair listener_pair;
+    struct jdksavdecc_acmp_listener_pair_list *prev;
+    struct jdksavdecc_acmp_listener_pair_list *next;
+};
+
+
+/// Clause 8.2.2.2.4
+struct jdksavdecc_acmp_talker_stream_info
+{
+    struct jdksavdecc_eui48 stream_id;
+    struct jdksavdecc_eui48 stream_dest_mac;
+    uint16_t connection_count;
+    struct jdksavdecc_acmp_listener_pair_list *connected_listeners;
+    uint16_t stream_vlan_id;
+};
 
 #endif
 
