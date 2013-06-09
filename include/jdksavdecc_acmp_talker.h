@@ -36,8 +36,15 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp.h"
 
-/** @todo acmp talker state machine implementation */
+/** \addtogroup acmp_talker ACMPDU Talker State Machine - Clause 8.2.2.6 */
+/*@{*/
 
+/// @todo acmp talker state machine implementation
+struct jdksavdecc_acmp_talker_state_machine
+{
+};
+
+/*@}*/
 
 #endif
 

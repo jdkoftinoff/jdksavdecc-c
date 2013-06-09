@@ -1886,6 +1886,7 @@ ssize_t jdksavdecc_aem_write_values_format_linear_double(
         );
 
 /** @todo Selector types, array types, utf, bode plot, smpte time, sample rate, gptp time */
+struct jdksavdecc_aem_additional_control_type;
 
 ssize_t jdksavdecc_aem_write_values_format_utf8(
         struct jdksavdecc_string *s,
@@ -22738,6 +22739,9 @@ static inline ssize_t jdksavdecc_descriptor_control_block_write( struct jdksavde
 
 /*@}*/
 
+/** @todo Add Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4 ECC_PRIVATE_256, 7.6.1.3 Key Chains */
+struct jdksavdecc_aem_ecc_public_256;
+struct jdksavdecc_aem_ecc_private_256;
 
 #endif
 

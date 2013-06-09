@@ -41704,9 +41704,11 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_response_w
 /*@}*/
 
 /** @todo Add read/write for the set/get stream backup commands and responses */
+struct jdksavdecc_aem_command_set_stream_backup;
+struct jdksavdecc_aem_command_set_stream_backup_response;
+struct jdksavdecc_aem_command_get_stream_backup;
+struct jdksavdecc_aem_command_get_stream_backup_response;
 
-
-/* @todo Add Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4 ECC_PRIVATE_256, 7.6.1.3 Key Chains */
 
 #endif
 

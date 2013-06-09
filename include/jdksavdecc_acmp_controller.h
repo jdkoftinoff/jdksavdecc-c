@@ -36,7 +36,15 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp.h"
 
-/** @todo acmp controller state machine implementation */
+/** \addtogroup acmp_controller ACMPDU Controller State Machine - Clause 8.2.2.4 */
+/*@{*/
+
+/// @todo acmp controller state machine implementation
+struct jdksavdecc_acmp_controller_state_machine
+{
+};
+
+/*@}*/
 
 #endif
 

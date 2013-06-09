@@ -372,6 +372,7 @@ void jdksavdecc_maap_action_sannounce(
         struct jdksavdecc_maap_state_machine *
         );
 
+/// @todo implement MAAP state machine
 struct jdksavdecc_maap_state_machine
 {
     jdksavdecc_maap_state state;
@@ -408,7 +409,6 @@ int jdksavdecc_maap_state_machine_rx(
 #define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_END {{0x91,0xe0,0xf0,0x00,0xFE,0xFF}} /// See IEEE Std 1722-2011 Table B.4
 
 
-/** @todo implement MAAP state machine */
 
 /*@}*/
 
