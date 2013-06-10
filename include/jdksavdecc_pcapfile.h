@@ -56,7 +56,7 @@ struct jdksavdecc_pcapfile_sender
     FILE *f;
 };
 
-int jdksavdecc_pcapfile_frame_sender( jdksavdecc_pcapfile_sender *self, struct jdksavdecc_frame const *frame );
+int jdksavdecc_pcapfile_frame_sender( struct jdksavdecc_pcapfile_sender *self, struct jdksavdecc_frame const *frame );
 
 
 /*@}*/
