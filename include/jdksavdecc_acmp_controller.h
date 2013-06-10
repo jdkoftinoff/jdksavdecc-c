@@ -44,7 +44,8 @@ struct jdksavdecc_acmp_controller_state_machine
 {
     uint32_t tag;
     void *additional;
-    void (*send_frame)( struct jdksavdecc_frame * );
+
+    struct jdksavdecc_frame_sender *frame_sender;
 
     void (*tick)( struct jdksavdecc_acmp_controller_state_machine *self, jdksavdecc_time timestamp );
     ssize_t (*rx_frame)( struct jdksavdecc_acmp_controller_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );

@@ -333,6 +333,7 @@ ssize_t jdksavdecc_common_control_header_write( struct jdksavdecc_common_control
 
 struct jdksavdecc_frame
 {
+    jdksavdecc_time time;
 	struct jdksavdecc_eui48 dest_address;
 	struct jdksavdecc_eui48 src_address;
 	uint16_t ethertype;
@@ -346,6 +347,7 @@ struct jdksavdecc_frame
 
 static inline void jdksavdecc_frame_init( struct jdksavdecc_frame *p )
 {
+    p->time=0;
 	jdksavdecc_eui48_init(&p->dest_address);
 	jdksavdecc_eui48_init(&p->src_address);
 	p->ethertype = 0;
@@ -361,6 +363,12 @@ ssize_t jdksavdecc_frame_read( struct jdksavdecc_frame *p, void const *base, ssi
 ssize_t jdksavdecc_frame_write( struct jdksavdecc_frame const *p, void *base, ssize_t pos, size_t len );
 
 /*@}*/
+
+struct jdksavdecc_frame_sender
+{
+    void (*jdksavdecc_frame_sender)( struct jdksavdecc_frame_sender *, struct jdksavdecc_frame const *frame );
+};
+
 
 #endif
 

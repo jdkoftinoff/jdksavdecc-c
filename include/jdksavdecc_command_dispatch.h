@@ -34,12 +34,37 @@
 */
 
 #include "jdksavdecc_world.h"
-
+#include "jdksavdecc_aem_command.h"
 
 /** \addtogroup command_dispatch Command Dispatch
  *  @todo command_dispatch
 */
 /*@{*/
+
+struct jdksavdecc_command_dispatch;
+
+typedef ssize_t (*jdksavdecc_command_dispatch_proc)(
+        struct jdksavdecc_command_dispatch *self,
+        struct jdksavdecc_frame *frame,
+        size_t pos
+        );
+
+struct jdksavdecc_command_dispatch
+{
+    uint32_t tag;
+    void *additional;
+
+    struct jdksavdecc_frame_sender *frame_sender;
+    jdksavdecc_command_dispatch_proc rx_frame;
+
+    jdksavdecc_command_dispatch_proc command[ JDKSAVDECC_AEM_NUM_COMMANDS ];
+};
+
+ssize_t jdksavdecc_command_dispatch_rx_frame(
+        struct jdksavdecc_command_dispatch *self,
+        struct jdksavdecc_frame *frame,
+        size_t pos
+        );
 
 /*@}*/
 

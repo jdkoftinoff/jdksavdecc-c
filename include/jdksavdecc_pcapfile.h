@@ -35,12 +35,29 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_util.h"
+#include "jdksavdecc_pdu.h"
 
 
-/** \addtogroup pcapfile pcap file
- *  @todo pcapfile
-*/
+/** \addtogroup pcapfile pcap file */
 /*@{*/
+
+struct jdksavdecc_pdu_dispatch;
+
+int jdksavdecc_pcapfile_open_for_reading( FILE *f );
+int jdksavdecc_pcapfile_read( FILE *f, struct jdksavdecc_frame *frame );
+int jdksavdecc_pcapfile_read_all( FILE *f, struct jdksavdecc_pdu_dispatch *dispatcher );
+
+int jdksavdecc_pcapfile_open_for_writing( FILE *f );
+int jdksavdecc_pcapfile_write( FILE *f, struct jdksavdecc_frame const *frame );
+
+struct jdksavdecc_pcapfile_sender
+{
+    struct jdksavdecc_frame_sender base;
+    FILE *f;
+};
+
+int jdksavdecc_pcapfile_frame_sender( jdksavdecc_pcapfile_sender *self, struct jdksavdecc_frame const *frame );
+
 
 /*@}*/
 

@@ -93,6 +93,7 @@
 #define JDKSAVDECC_DESCRIPTOR_CONTROL_BLOCK (0x0025)
 #define JDKSAVDECC_DESCRIPTOR_INVALID (0xffff)
 
+#define JDKSAVDECC_NUM_DESCRIPTOR_TYPES (0x0026)
 /*@}*/
 
 /** \addtogroup jack_type jack_type : Jack Types - Clause 7.2.7.2  */

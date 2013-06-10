@@ -123,6 +123,8 @@
 #define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP (0x004a)
 #define JDKSAVDECC_AEM_COMMAND_EXPANSION (0x7fff)
 
+#define JDKSAVDECC_AEM_NUM_COMMANDS (0x004b)
+
 /*@}*/
 
 /** \addtogroup command_acquire_entity ACQUIRE_ENTITY Command - Clause 7.4.1.1 */

@@ -32,6 +32,7 @@
 
 
 #include "jdksavdecc_world.h"
+#include "jdksavdecc_state_machines.h"
 #include "jdksavdecc_pdu_dispatch.h"
 #include "jdksavdecc_adp_discover.h"
 #include "jdksavdecc_adp_advertise.h"
@@ -51,51 +52,17 @@ void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self )
     self->acmpdu = jdksavdecc_pdu_dispatch_acmpdu;
     self->adpdu = jdksavdecc_pdu_dispatch_adpdu;
     self->aecpdu = jdksavdecc_pdu_dispatch_aecpdu;
+    self->aecpdu_aem_command = jdksavdecc_pdu_dispatch_aecpdu_aem_command;
+    self->aecpdu_aem_response = jdksavdecc_pdu_dispatch_aecpdu_aem_response;
 }
 
 
 void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_time timestamp )
 {
-    if( self->acmp_controller_state_machine )
+    if( self->state_machines )
     {
-        self->acmp_controller_state_machine->tick( self->acmp_controller_state_machine, timestamp );
+        self->state_machines->tick( self->state_machines, timestamp );
     }
-
-    if( self->acmp_listener_state_machine )
-    {
-        self->acmp_listener_state_machine->tick( self->acmp_listener_state_machine, timestamp );
-    }
-
-    if( self->acmp_talker_state_machine )
-    {
-        self->acmp_talker_state_machine->tick( self->acmp_talker_state_machine, timestamp );
-    }
-
-    if( self->adp_discovery_state_machine )
-    {
-        self->adp_discovery_state_machine->tick( self->adp_discovery_state_machine, timestamp );
-    }
-
-    if( self->adp_advertise_entity_state_machine )
-    {
-        self->adp_advertise_entity_state_machine->tick( self->adp_advertise_entity_state_machine, timestamp );
-    }
-
-    if( self->adp_advertise_interface_state_machine )
-    {
-        self->adp_advertise_interface_state_machine->tick( self->adp_advertise_interface_state_machine, timestamp );
-    }
-
-    if( self->aem_entity_state_machine )
-    {
-        self->aem_entity_state_machine->tick( self->aem_entity_state_machine, timestamp );
-    }
-
-    if( self->maap_state_machine )
-    {
-        self->maap_state_machine->tick( self->maap_state_machine, timestamp );
-    }
-
 }
 
 ssize_t jdksavdecc_pdu_dispatch_unknown( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos )
@@ -183,19 +150,21 @@ ssize_t jdksavdecc_pdu_dispatch_acmpdu( struct jdksavdecc_pdu_dispatch *self, st
     ssize_t rc=0;
     ssize_t r=0;
 
-    if( self->acmp_talker_state_machine )
+    if( self->state_machines )
     {
-        rt = self->acmp_talker_state_machine->rx_frame( self->acmp_talker_state_machine, frame, pos );
+        if( self->state_machines->acmp_talker_state_machine )
+        {
+            rt = self->state_machines->acmp_talker_state_machine->rx_frame( self->state_machines->acmp_talker_state_machine, frame, pos );
+        }
+        if( self->state_machines->acmp_listener_state_machine )
+        {
+            rl = self->state_machines->acmp_listener_state_machine->rx_frame( self->state_machines->acmp_listener_state_machine, frame, pos );
+        }
+        if( self->state_machines->acmp_controller_state_machine )
+        {
+            rc = self->state_machines->acmp_controller_state_machine->rx_frame( self->state_machines->acmp_controller_state_machine, frame, pos );
+        }
     }
-    if( self->acmp_listener_state_machine )
-    {
-        rl = self->acmp_listener_state_machine->rx_frame( self->acmp_listener_state_machine, frame, pos );
-    }
-    if( self->acmp_controller_state_machine )
-    {
-        rc = self->acmp_controller_state_machine->rx_frame( self->acmp_controller_state_machine, frame, pos );
-    }
-
     if( rt<0 || rl<0 || rc<0 )
     {
         r=-1;
@@ -214,18 +183,22 @@ ssize_t jdksavdecc_pdu_dispatch_adpdu( struct jdksavdecc_pdu_dispatch *self, str
     ssize_t rai=0;
     ssize_t rd=0;
 
-    if( self->adp_advertise_entity_state_machine )
+    if( self->state_machines )
     {
-        rae=self->adp_advertise_entity_state_machine->rx_frame( self->adp_advertise_entity_state_machine, frame, pos );
+        if( self->state_machines->adp_advertise_entity_state_machine )
+        {
+            rae=self->state_machines->adp_advertise_entity_state_machine->rx_frame( self->state_machines->adp_advertise_entity_state_machine, frame, pos );
+        }
+        if( self->state_machines->adp_advertise_interface_state_machine )
+        {
+            rai=self->state_machines->adp_advertise_interface_state_machine->rx_frame( self->state_machines->adp_advertise_interface_state_machine, frame, pos );
+        }
+        if( self->state_machines->adp_discovery_state_machine )
+        {
+            rd=self->state_machines->adp_discovery_state_machine->rx_frame( self->state_machines->adp_discovery_state_machine, frame, pos );
+        }
     }
-    if( self->adp_advertise_interface_state_machine )
-    {
-        rai=self->adp_advertise_interface_state_machine->rx_frame( self->adp_advertise_interface_state_machine, frame, pos );
-    }
-    if( self->adp_discovery_state_machine )
-    {
-        rd=self->adp_discovery_state_machine->rx_frame( self->adp_discovery_state_machine, frame, pos );
-    }
+
     if( rae<0 || rai<0 || rd<0 )
     {
         r=-1;
@@ -313,6 +286,27 @@ ssize_t jdksavdecc_pdu_dispatch_aecpdu( struct jdksavdecc_pdu_dispatch *self, st
         r=0;
     }
 
+    return r;
+}
+
+
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
+{
+    ssize_t r=0;
+    if( self->aem_command_dispatch )
+    {
+        r=self->aem_command_dispatch->rx_frame( self->aem_command_dispatch, frame, pos );
+    }
+    return r;
+}
+
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
+{
+    ssize_t r=0;
+    if( self->aem_response_dispatch )
+    {
+        r=self->aem_response_dispatch->rx_frame( self->aem_response_dispatch, frame, pos );
+    }
     return r;
 }
 

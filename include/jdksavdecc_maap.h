@@ -377,8 +377,8 @@ struct jdksavdecc_maap_state_machine
 {
     uint32_t tag;
     void *additional;
-    void (*send_frame)( struct jdksavdecc_frame * );
 
+    struct jdksavdecc_frame_sender *frame_sender;
     void (*tick)( struct jdksavdecc_maap_state_machine *self, jdksavdecc_time timestamp );
     ssize_t (*rx_frame)( struct jdksavdecc_maap_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 
@@ -394,7 +394,7 @@ void jdksavdecc_maap_state_machine_init(
         jdksavdecc_time current_time,
         struct jdksavdecc_eui48 local_mac,
         uint16_t desired_count,
-        void (*send_frame)( struct jdksavdecc_frame * )
+        struct jdksavdecc_frame_sender *frame_sender
         );
 
 void jdksavdecc_maap_state_machine_tick(
