@@ -609,6 +609,8 @@ static inline ssize_t jdksavdecc_acmpdu_write( struct jdksavdecc_acmpdu const *p
 
 /*@}*/
 
+/** \addtogroup acmp_statemachines ACMP State Machines - Clause 8.2.2*/
+/*@{*/
 
 /// Clause 8.2.2.2.1
 struct jdksavdecc_acmp_command_response
@@ -655,6 +657,15 @@ struct jdksavdecc_acmp_listener_stream_info
     uint16_t flags;
     uint16_t stream_vlan_id;
 };
+
+/// Clause 8.2.2.2.2
+struct jdksavdecc_acmp_listener_stream_info_list
+{
+    struct jdksavdecc_acmp_listener_stream_info info;
+    struct jdksavdecc_acmp_listener_stream_info_list *prev;
+    struct jdksavdecc_acmp_listener_stream_info_list *next;
+};
+
 
 /// Clause 8.2.2.2.2
 static inline void jdksavdecc_acmp_listener_stream_info_set( struct jdksavdecc_acmp_listener_stream_info *self, struct jdksavdecc_acmpdu *p )
