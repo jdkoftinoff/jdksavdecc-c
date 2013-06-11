@@ -133,6 +133,8 @@
 		BFAF570F176585E800E9B1A9 /* jdksavdecc_aecp_hdcp_apm.c in Sources */ = {isa = PBXBuildFile; fileRef = BFAF570B176585E800E9B1A9 /* jdksavdecc_aecp_hdcp_apm.c */; };
 		BFAF5710176585E800E9B1A9 /* jdksavdecc_aecp_vendor.c in Sources */ = {isa = PBXBuildFile; fileRef = BFAF570C176585E800E9B1A9 /* jdksavdecc_aecp_vendor.c */; };
 		BFAF5711176585E800E9B1A9 /* jdksavdecc_state_machines.c in Sources */ = {isa = PBXBuildFile; fileRef = BFAF570D176585E800E9B1A9 /* jdksavdecc_state_machines.c */; };
+		BFBB2F301767AB6600699546 /* jdksavdecc_test.c in Sources */ = {isa = PBXBuildFile; fileRef = BFBB2F2F1767AB6600699546 /* jdksavdecc_test.c */; };
+		BFBB2F321767AB7900699546 /* jdksavdecc_test.h in Headers */ = {isa = PBXBuildFile; fileRef = BFBB2F311767AB7900699546 /* jdksavdecc_test.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -529,6 +531,8 @@
 		BFAF570B176585E800E9B1A9 /* jdksavdecc_aecp_hdcp_apm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jdksavdecc_aecp_hdcp_apm.c; sourceTree = "<group>"; };
 		BFAF570C176585E800E9B1A9 /* jdksavdecc_aecp_vendor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jdksavdecc_aecp_vendor.c; sourceTree = "<group>"; };
 		BFAF570D176585E800E9B1A9 /* jdksavdecc_state_machines.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jdksavdecc_state_machines.c; sourceTree = "<group>"; };
+		BFBB2F2F1767AB6600699546 /* jdksavdecc_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jdksavdecc_test.c; sourceTree = "<group>"; };
+		BFBB2F311767AB7900699546 /* jdksavdecc_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_test.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -731,6 +735,7 @@
 				BF6607A61764F7F90054A850 /* jdksavdecc_pdu_dispatch.h */,
 				BF6607D2176528AA0054A850 /* jdksavdecc_pdu_dispatch_print.h */,
 				BFAF5705176585D700E9B1A9 /* jdksavdecc_state_machines.h */,
+				BFBB2F311767AB7900699546 /* jdksavdecc_test.h */,
 				BF6CF0D91762865000A9FA28 /* jdksavdecc_util.h */,
 				BF6CF0DA1762865000A9FA28 /* jdksavdecc_world.h */,
 			);
@@ -741,10 +746,6 @@
 		BF6CF0F21762867900A9FA28 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				BFAF570A176585E800E9B1A9 /* jdksavdecc_aecp_avc.c */,
-				BFAF570B176585E800E9B1A9 /* jdksavdecc_aecp_hdcp_apm.c */,
-				BFAF570C176585E800E9B1A9 /* jdksavdecc_aecp_vendor.c */,
-				BFAF570D176585E800E9B1A9 /* jdksavdecc_state_machines.c */,
 				BF6CF0F31762867900A9FA28 /* jdksavdecc.c */,
 				BF6CF0F41762867900A9FA28 /* jdksavdecc_acmp.c */,
 				BF6CF0F51762867900A9FA28 /* jdksavdecc_acmp_controller.c */,
@@ -758,7 +759,10 @@
 				BF6CF0FB1762867900A9FA28 /* jdksavdecc_aecp.c */,
 				BF6CF0FC1762867900A9FA28 /* jdksavdecc_aecp_aa.c */,
 				BF6CF0FD1762867900A9FA28 /* jdksavdecc_aecp_aem.c */,
+				BFAF570A176585E800E9B1A9 /* jdksavdecc_aecp_avc.c */,
+				BFAF570B176585E800E9B1A9 /* jdksavdecc_aecp_hdcp_apm.c */,
 				BF6607BD1765289C0054A850 /* jdksavdecc_aecp_print.c */,
+				BFAF570C176585E800E9B1A9 /* jdksavdecc_aecp_vendor.c */,
 				BF6CF0FE1762867900A9FA28 /* jdksavdecc_aem_command.c */,
 				BF6CF0FF1762867900A9FA28 /* jdksavdecc_aem_descriptor.c */,
 				BF6CF1001762867900A9FA28 /* jdksavdecc_aem_entity.c */,
@@ -776,6 +780,8 @@
 				BF6CF1051762867900A9FA28 /* jdksavdecc_pdu.c */,
 				BF6607AC1764F8090054A850 /* jdksavdecc_pdu_dispatch.c */,
 				BF6607C21765289C0054A850 /* jdksavdecc_pdu_dispatch_print.c */,
+				BFAF570D176585E800E9B1A9 /* jdksavdecc_state_machines.c */,
+				BFBB2F2F1767AB6600699546 /* jdksavdecc_test.c */,
 				BF6CF1061762867900A9FA28 /* jdksavdecc_util.c */,
 				BF6CF1071762867900A9FA28 /* jdksavdecc_world.c */,
 			);
@@ -824,6 +830,7 @@
 				BF6607D7176528AA0054A850 /* jdksavdecc_command_dispatch_print.h in Headers */,
 				BF6607D8176528AA0054A850 /* jdksavdecc_descriptor_dispatch_print.h in Headers */,
 				BF6607D9176528AA0054A850 /* jdksavdecc_maap_print.h in Headers */,
+				BFBB2F321767AB7900699546 /* jdksavdecc_test.h in Headers */,
 				BF6607DA176528AA0054A850 /* jdksavdecc_pdu_dispatch_print.h in Headers */,
 				BF6CF0EE1762865000A9FA28 /* jdksavdecc_msstdint.h in Headers */,
 				BF6CF0EF1762865000A9FA28 /* jdksavdecc_pdu.h in Headers */,
@@ -1237,6 +1244,7 @@
 				BFAF570F176585E800E9B1A9 /* jdksavdecc_aecp_hdcp_apm.c in Sources */,
 				BFAF5710176585E800E9B1A9 /* jdksavdecc_aecp_vendor.c in Sources */,
 				BFAF5711176585E800E9B1A9 /* jdksavdecc_state_machines.c in Sources */,
+				BFBB2F301767AB6600699546 /* jdksavdecc_test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
