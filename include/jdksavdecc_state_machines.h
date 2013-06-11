@@ -47,7 +47,7 @@ struct jdksavdecc_acmp_talker_state_machine;
 struct jdksavdecc_acmp_listener_state_machine;
 struct jdksavdecc_acmp_controller_state_machine;
 struct jdksavdecc_aem_entity_state_machine;
-
+struct jdksavdecc_descriptor_dispatch;
 
 struct jdksavdecc_state_machines
 {
