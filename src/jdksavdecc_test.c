@@ -63,8 +63,11 @@ int jdksavdecc_test_run(
         reader.close( &reader );
         return 0;
     }
-    
-    
+
+    reader.tick = tick;
+
+    pdu_dispatch->set_frame_sender( &writer.inherited );
+    reader.dispatch_frames( &reader, pdu_dispatch );
     
     reader.close( &reader );
     writer.close( &writer );

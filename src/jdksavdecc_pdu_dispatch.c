@@ -46,6 +46,7 @@ void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self )
 {
     memset( self, 0, sizeof(*self) );
     self->tick = jdksavdecc_pdu_dispatch_tick;
+    self->set_frame_sender = jdksavdecc_pdu_dispatch_set_frame_sender;
     self->unknown = jdksavdecc_pdu_dispatch_unknown;
     self->rx_frame = jdksavdecc_pdu_dispatch_rx_frame;
     self->avtpv0 = jdksavdecc_pdu_dispatch_avtpv0;
@@ -62,6 +63,23 @@ void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavd
     if( self->state_machines )
     {
         self->state_machines->tick( self->state_machines, timestamp );
+    }
+}
+
+void jdksavdecc_pdu_dispatch_set_frame_sender( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender )
+{
+    self->frame_sender = sender;
+    if( self->aem_command_dispatch )
+    {
+        self->aem_command_dispatch->frame_sender = sender;
+    }
+    if( self->aem_response_dispatch )
+    {
+        self->aem_response_dispatch->frame_sender = sender;
+    }
+    if( self->state_machines )
+    {
+        self->state_machines->set_frame_sender( self->state_machines, sender );
     }
 }
 

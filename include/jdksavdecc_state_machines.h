@@ -58,6 +58,8 @@ struct jdksavdecc_state_machines
 
     void (*tick)( struct jdksavdecc_state_machines *self, jdksavdecc_time timestamp );
 
+    void (*set_frame_sender)( struct jdksavdecc_state_machines *self, struct jdksavdecc_frame_sender *sender );
+
     struct jdksavdecc_command_dispatch *aecp_aem_command;
     struct jdksavdecc_command_dispatch *aecp_aem_response;
 
@@ -65,9 +67,9 @@ struct jdksavdecc_state_machines
     struct jdksavdecc_descriptor_dispatch *aecp_aem_descriptor_read;
     struct jdksavdecc_descriptor_dispatch *aecp_aem_descriptor_response;
 
-    struct jdksavdecc_acmp_talker_state_machine *acmp_talker_state_machine;
-    struct jdksavdecc_acmp_listener_state_machine *acmp_listener_state_machine;
     struct jdksavdecc_acmp_controller_state_machine *acmp_controller_state_machine;
+    struct jdksavdecc_acmp_listener_state_machine *acmp_listener_state_machine;
+    struct jdksavdecc_acmp_talker_state_machine *acmp_talker_state_machine;
 
     struct jdksavdecc_adp_discovery_state_machine *adp_discovery_state_machine;
     struct jdksavdecc_adp_advertise_interface_state_machine *adp_advertise_interface_state_machine;
@@ -80,6 +82,7 @@ struct jdksavdecc_state_machines
 
 void jdksavdecc_state_machines_init( struct jdksavdecc_state_machines *self );
 void jdksavdecc_state_machines_tick( struct jdksavdecc_state_machines *self, jdksavdecc_time timestamp );
+void jdksavdecc_state_machines_set_frame_sender( struct jdksavdecc_state_machines *self, struct jdksavdecc_frame_sender *sender );
 
 
 

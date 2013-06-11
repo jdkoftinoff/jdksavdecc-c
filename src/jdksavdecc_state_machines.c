@@ -38,13 +38,14 @@
 #include "jdksavdecc_acmp_talker.h"
 #include "jdksavdecc_maap.h"
 #include "jdksavdecc_aem_entity.h"
+#include "jdksavdecc_descriptor_dispatch.h"
 
 void jdksavdecc_state_machines_init( struct jdksavdecc_state_machines *self )
 {
     memset( self, 0, sizeof(*self) );
     self->tick = jdksavdecc_state_machines_tick;
+    self->set_frame_sender = jdksavdecc_state_machines_set_frame_sender;
 }
-
 
 void jdksavdecc_state_machines_tick( struct jdksavdecc_state_machines *self, jdksavdecc_time timestamp )
 {
@@ -90,3 +91,66 @@ void jdksavdecc_state_machines_tick( struct jdksavdecc_state_machines *self, jdk
 
 }
 
+void jdksavdecc_state_machines_set_frame_sender( struct jdksavdecc_state_machines *self, struct jdksavdecc_frame_sender *sender )
+{
+    if( self->aecp_aem_command )
+    {
+        self->aecp_aem_command->frame_sender = sender;
+    }
+
+    if( self->aecp_aem_response )
+    {
+        self->aecp_aem_response->frame_sender = sender;
+    }
+
+    if( self->aecp_aem_descriptor_write )
+    {
+        self->aecp_aem_descriptor_write->frame_sender = sender;
+    }
+
+    if( self->aecp_aem_descriptor_response )
+    {
+        self->aecp_aem_descriptor_response->frame_sender = sender;
+    }
+
+    if( self->acmp_controller_state_machine )
+    {
+        self->acmp_controller_state_machine->frame_sender = sender;
+    }
+
+    if( self->acmp_listener_state_machine )
+    {
+        self->acmp_listener_state_machine->frame_sender = sender;
+    }
+
+    if( self->acmp_talker_state_machine )
+    {
+        self->acmp_talker_state_machine->frame_sender = sender;
+    }
+
+    if( self->adp_discovery_state_machine )
+    {
+        self->adp_discovery_state_machine->frame_sender = sender;
+    }
+
+    if( self->adp_advertise_entity_state_machine )
+    {
+        self->adp_advertise_entity_state_machine->frame_sender = sender;
+    }
+
+    if( self->adp_advertise_interface_state_machine )
+    {
+        self->adp_advertise_interface_state_machine->frame_sender = sender;
+    }
+
+    if( self->aem_entity_state_machine )
+    {
+        self->aem_entity_state_machine->frame_sender = sender;
+    }
+
+    if( self->maap_state_machine )
+    {
+        self->maap_state_machine->frame_sender = sender;
+    }
+
+}
