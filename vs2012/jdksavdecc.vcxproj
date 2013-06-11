@@ -110,6 +110,7 @@
     <ClInclude Include="..\include\jdksavdecc_pdu_dispatch.h" />
     <ClInclude Include="..\include\jdksavdecc_pdu_dispatch_print.h" />
     <ClInclude Include="..\include\jdksavdecc_state_machines.h" />
+    <ClInclude Include="..\include\jdksavdecc_test.h" />
     <ClInclude Include="..\include\jdksavdecc_util.h" />
     <ClInclude Include="..\include\jdksavdecc_world.h" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClCompile Include="..\src\jdksavdecc_pdu_dispatch.c" />
     <ClCompile Include="..\src\jdksavdecc_pdu_dispatch_print.c" />
     <ClCompile Include="..\src\jdksavdecc_state_machines.c" />
+    <ClCompile Include="..\src\jdksavdecc_test.c" />
     <ClCompile Include="..\src\jdksavdecc_util.c" />
     <ClCompile Include="..\src\jdksavdecc_world.c" />
   </ItemGroup>
