@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** \addtogroup acmp_talker ACMPDU Talker State Machine - Clause 8.2.2.6 */
 /*@{*/
 
@@ -171,6 +175,9 @@ void jdksavdecc_aem_talker_state_machine_state_get_connection(
         );
 
 /*@}*/
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

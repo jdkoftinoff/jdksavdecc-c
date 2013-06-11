@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aem_descriptor.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct jdksavdecc_descriptor;
 
 /** \addtogroup descriptor_dispatch Descriptor Dispatch
@@ -68,6 +72,9 @@ ssize_t jdksavdec_descriptor_dispatch_rx_frame(
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

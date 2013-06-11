@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_maap.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /** \addtogroup maap_print MAAP Print
  *  @todo maap_print
@@ -44,6 +48,9 @@
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

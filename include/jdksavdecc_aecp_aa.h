@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 
 /** \addtogroup aecpdu_aa AECPDU Address Access - Clause 9.2.1.3 */
@@ -403,6 +407,9 @@ static inline ssize_t jdksavdecc_aecpdu_aa_tlv_write( struct jdksavdecc_aecpdu_a
 }
 
 /*@}*/
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

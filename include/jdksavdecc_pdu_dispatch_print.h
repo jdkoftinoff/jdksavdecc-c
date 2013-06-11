@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_maap.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /** \addtogroup pdu_dispatch_print PDU Dispatch Print
  *  @todo pdu_dispatch_print
@@ -44,6 +48,9 @@
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

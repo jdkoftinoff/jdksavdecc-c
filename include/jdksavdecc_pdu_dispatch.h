@@ -35,6 +35,10 @@
 
 #include "jdksavdecc.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct jdksavdecc_pdu_dispatch;
 struct jdksavdecc_command_dispatch;
 struct jdksavdecc_state_machines;
@@ -90,6 +94,10 @@ ssize_t jdksavdecc_pdu_dispatch_adpdu( struct jdksavdecc_pdu_dispatch *self, str
 ssize_t jdksavdecc_pdu_dispatch_aecpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
 ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem_command( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
 ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem_response( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

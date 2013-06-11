@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_app.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /** \addtogroup app_print APP Print
  *  @todo app_print
@@ -44,6 +48,9 @@
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

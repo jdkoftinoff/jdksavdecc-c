@@ -36,8 +36,15 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_pdu.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /// @todo APPDU
 struct jdksavdec_appdu;
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

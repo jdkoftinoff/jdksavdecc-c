@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** \addtogroup acmp_listener ACMPDU Listener State Machine - Clause 8.2.2.5 */
 /*@{*/
 
@@ -53,6 +57,9 @@ struct jdksavdecc_acmp_listener_state_machine
 };
 
 /*@}*/
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

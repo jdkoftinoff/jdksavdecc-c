@@ -37,6 +37,10 @@
 #include "jdksavdecc_util.h"
 #include "jdksavdecc_pdu.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /** \addtogroup pcapfile pcap file */
 /*@{*/
@@ -61,6 +65,9 @@ int jdksavdecc_pcapfile_frame_sender( struct jdksavdecc_pcapfile_sender *self, s
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

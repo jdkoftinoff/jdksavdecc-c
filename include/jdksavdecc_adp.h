@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_pdu.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /** \addtogroup adpdu ADPDU - Clause 6.2.1 */
 /*@{*/
@@ -809,6 +813,9 @@ static inline ssize_t jdksavdecc_adpdu_write( struct jdksavdecc_adpdu const *p, 
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

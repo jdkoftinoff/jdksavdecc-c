@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp_aem.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define JDKSAVDECC_AEM_VALUES_TYPE_FLAG_READ_ONLY  (0x8000)
 #define JDKSAVDECC_AEM_VALUES_TYPE_FLAG_UNKNOWN (0x4000)
 
@@ -22743,6 +22747,9 @@ static inline ssize_t jdksavdecc_descriptor_control_block_write( struct jdksavde
 /** @todo Add Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4 ECC_PRIVATE_256, 7.6.1.3 Key Chains */
 struct jdksavdecc_aem_ecc_public_256;
 struct jdksavdecc_aem_ecc_private_256;
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /** \addtogroup acmp_print ACMP Print
  *  @todo acmp_print
@@ -44,6 +48,9 @@
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

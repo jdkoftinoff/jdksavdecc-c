@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_pdu.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /** \addtogroup acmpdu ACMPDU - Clause 8.2.1 */
 /*@{*/
@@ -706,6 +710,9 @@ struct jdksavdecc_acmp_talker_stream_info
     struct jdksavdecc_acmp_listener_pair_list *connected_listeners;
     uint16_t stream_vlan_id;
 };
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

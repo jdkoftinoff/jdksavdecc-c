@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** \addtogroup aecpdu_aem AECPDU AEM - Clause 9.2.1.2 */
 /*@{*/
 
@@ -235,6 +239,9 @@ static inline ssize_t jdksavdecc_aecpdu_aem_write( struct jdksavdecc_aecpdu_aem 
 }
 
 /*@}*/
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

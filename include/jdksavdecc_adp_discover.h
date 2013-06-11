@@ -37,6 +37,10 @@
 #include "jdksavdecc_util.h"
 #include "jdksavdecc_adp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /// See Clause 6.2.6.1.1
 struct jdksavdecc_adp_discovery_entity_info
 {
@@ -123,6 +127,9 @@ struct jdksavdecc_adp_discovery_state_machine
 void jdksavdecc_adp_discovery_remove_entity( struct jdksavdecc_adp_discovery_state_machine *, struct jdksavdecc_frame * );
 
 /** @todo adp discovery state machine implementation */
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

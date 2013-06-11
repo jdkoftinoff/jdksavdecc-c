@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_app.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /// @todo APS state machine
 struct jdksavdec_aps_state_machine
 {
@@ -47,6 +51,9 @@ struct jdksavdec_aps_state_machine
     void (*tick)( struct jdksavdec_aps_state_machine *self, jdksavdecc_time timestamp );
     ssize_t (*rx_frame)( struct jdksavdec_aps_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 };
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

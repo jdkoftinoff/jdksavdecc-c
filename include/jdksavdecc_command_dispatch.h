@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aem_command.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** \addtogroup command_dispatch Command Dispatch
  *  @todo command_dispatch
 */
@@ -68,6 +72,9 @@ ssize_t jdksavdecc_command_dispatch_rx_frame(
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

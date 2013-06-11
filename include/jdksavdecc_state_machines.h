@@ -35,6 +35,10 @@
 
 #include "jdksavdecc.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct jdksavdecc_maap_state_machine;
 struct jdksavdecc_adp_discovery_state_machine;
 struct jdksavdecc_adp_advertise_interface_state_machine;
@@ -78,6 +82,10 @@ void jdksavdecc_state_machines_init( struct jdksavdecc_state_machines *self );
 void jdksavdecc_state_machines_tick( struct jdksavdecc_state_machines *self, jdksavdecc_time timestamp );
 
 
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

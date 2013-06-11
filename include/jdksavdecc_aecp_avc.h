@@ -36,12 +36,19 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** \addtogroup aecp_avc AECP AVC
  *  @todo aecp_avc
 */
 /*@{*/
 
 /*@}*/
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

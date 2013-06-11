@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_pdu.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** \addtogroup maap MAAP - IEEE Std 1722-2011 Annex B.2 */
 /*@{*/
 
@@ -417,6 +421,9 @@ ssize_t jdksavdecc_maap_state_machine_rx_frame(
 
 
 /*@}*/
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

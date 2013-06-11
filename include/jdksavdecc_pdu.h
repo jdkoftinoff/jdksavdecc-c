@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_util.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #define JDKSAVDECC_AVTP_ETHERTYPE (0x22f0) /// See IEEE Std 1722-2011 Clause 5.1.2
 #define JDKSAVDECC_AVTP_V0_PAYLOAD_OFFSET (12) /// See IEEE Std 1722-2011 Clause 5.2
@@ -369,6 +373,9 @@ struct jdksavdecc_frame_sender
     void (*jdksavdecc_frame_sender)( struct jdksavdecc_frame_sender *, struct jdksavdecc_frame const *frame );
 };
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

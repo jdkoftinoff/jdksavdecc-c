@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp_aem.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** \addtogroup command */
 /*@{*/
 
@@ -41711,6 +41715,9 @@ struct jdksavdecc_aem_command_set_stream_backup_response;
 struct jdksavdecc_aem_command_get_stream_backup;
 struct jdksavdecc_aem_command_get_stream_backup_response;
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

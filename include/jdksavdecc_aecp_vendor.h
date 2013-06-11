@@ -36,6 +36,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** \addtogroup aecp_vendor AECP Vendor
  *  @todo aecp_vendor
 */
@@ -43,6 +47,9 @@
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

@@ -37,6 +37,10 @@
 #include "jdksavdecc_command_dispatch.h"
 #include "jdksavdecc_aecp_print.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /** \addtogroup command_dispatch_print Command Dispatch Print
  *  @todo command_dispatch_print
@@ -45,6 +49,9 @@
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

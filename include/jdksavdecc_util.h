@@ -35,6 +35,10 @@
 
 #include "jdksavdecc_world.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** \addtogroup util Utilities */
 /*@{*/
 
@@ -769,6 +773,10 @@ static inline void jdksavdecc_gptp_seconds_set( struct jdksavdecc_gptp_seconds v
 }
 
 /*@}*/
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

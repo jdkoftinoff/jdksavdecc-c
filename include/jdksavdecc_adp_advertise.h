@@ -38,6 +38,10 @@
 #include "jdksavdecc_adp.h"
 #include "jdksavdecc_aem_entity.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /// See Clause 6.2.3
 struct jdksavdecc_adp_advertise_global_vars
 {
@@ -141,6 +145,9 @@ void jdksavdecc_adp_advertise_entity_state_waiting(struct jdksavdecc_adp_adverti
 
 /** @todo adp advertise interface state machine implementation */
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

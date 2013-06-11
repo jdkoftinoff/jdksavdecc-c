@@ -41,6 +41,10 @@
 #include "jdksavdecc_aecp_hdcp_apm.h"
 #include "jdksavdecc_aecp_vendor.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /** \addtogroup aecp_print AECP Print
  *  @todo aecp_print
@@ -49,6 +53,9 @@
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 
