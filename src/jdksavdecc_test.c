@@ -36,9 +36,6 @@
 
 
 int jdksavdecc_test_run(
-    char const *name,
-    int argc,
-    char const **argv,
     char const *infile,
     char const *outfile,
     struct jdksavdecc_pdu_dispatch *pdu_dispatch,
