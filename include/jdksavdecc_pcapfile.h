@@ -47,20 +47,41 @@ extern "C" {
 
 struct jdksavdecc_pdu_dispatch;
 
-int jdksavdecc_pcapfile_open_for_reading( FILE *f );
-int jdksavdecc_pcapfile_read( FILE *f, struct jdksavdecc_frame *frame );
-int jdksavdecc_pcapfile_read_all( FILE *f, struct jdksavdecc_pdu_dispatch *dispatcher );
-
-int jdksavdecc_pcapfile_open_for_writing( FILE *f );
-int jdksavdecc_pcapfile_write( FILE *f, struct jdksavdecc_frame const *frame );
-
-struct jdksavdecc_pcapfile_sender
+struct jdksavdecc_pcapfile_reader
 {
-    struct jdksavdecc_frame_sender base;
     FILE *f;
+    int swapped;
+    int (*open)( struct jdksavdecc_pcapfile_reader *self, char const *fname );
+    void (*close)( struct jdksavdecc_pcapfile_reader *self );
+    int (*read_frame)( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_frame *frame );
+    int (*dispatch_frames)( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_pdu_dispatch *dispatcher );
+    int (*tick)( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_time time );
 };
 
-int jdksavdecc_pcapfile_frame_sender( struct jdksavdecc_pcapfile_sender *self, struct jdksavdecc_frame const *frame );
+void jdksavdecc_pcapfile_reader_init(struct jdksavdecc_pcapfile_reader *self);
+int jdksavdecc_pcapfile_reader_open( struct jdksavdecc_pcapfile_reader *self, char const *fname );
+void jdksavdecc_pcapfile_reader_close( struct jdksavdecc_pcapfile_reader *self );
+int jdksavdecc_pcapfile_reader_read_frame( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_frame *frame );
+int jdksavdecc_pcapfile_reader_dispatch_frames( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_pdu_dispatch *dispatcher );
+
+struct jdksavdecc_pcapfile_writer
+{
+    struct jdksavdecc_frame_sender inherited;
+    
+    FILE *f;
+    int swapped;
+
+    int (*open)( struct jdksavdecc_pcapfile_writer *self, char const *fname );
+    void (*close)( struct jdksavdecc_pcapfile_writer *self );
+    
+    
+};
+
+void jdksavdecc_pcapfile_writer_init( struct jdksavdecc_pcapfile_writer *self );
+int jdksavdecc_pcapfile_writer_open( struct jdksavdecc_pcapfile_writer *self, char const *fname );
+void jdksavdecc_pcapfile_writer_close( struct jdksavdecc_pcapfile_writer *self );
+
+void jdksavdecc_pcapfile_writer_send( struct jdksavdecc_frame_sender *self, struct jdksavdecc_frame const *frame );
 
 
 /*@}*/
