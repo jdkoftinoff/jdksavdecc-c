@@ -62,6 +62,7 @@ void jdksavdecc_pcapfile_reader_init(struct jdksavdecc_pcapfile_reader *self)
     self->open = jdksavdecc_pcapfile_reader_open;
     self->close = jdksavdecc_pcapfile_reader_close;
     self->read_frame = jdksavdecc_pcapfile_reader_read_frame;
+    self->dispatch_frames = jdksavdecc_pcapfile_reader_dispatch_frames;
     self->tick = 0;
 }
 
