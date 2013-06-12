@@ -383,19 +383,19 @@ struct jdksavdecc_maap_state_machine
     void *additional;
 
     struct jdksavdecc_frame_sender *frame_sender;
-    void (*tick)( struct jdksavdecc_maap_state_machine *self, jdksavdecc_time timestamp );
+    void (*tick)( struct jdksavdecc_maap_state_machine *self, jdksavdecc_millisecond_time timestamp );
     ssize_t (*rx_frame)( struct jdksavdecc_maap_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 
     jdksavdecc_maap_state state;
     struct jdksavdecc_eui48 local_mac;
     uint16_t desired_count;
-    jdksavdecc_time announce_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.1
-    jdksavdecc_time probe_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.2
+    jdksavdecc_millisecond_time announce_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.1
+    jdksavdecc_millisecond_time probe_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.2
 };
 
 void jdksavdecc_maap_state_machine_init(
         struct jdksavdecc_maap_state_machine *,
-        jdksavdecc_time current_time,
+        jdksavdecc_millisecond_time current_time,
         struct jdksavdecc_eui48 local_mac,
         uint16_t desired_count,
         struct jdksavdecc_frame_sender *frame_sender
@@ -403,7 +403,7 @@ void jdksavdecc_maap_state_machine_init(
 
 void jdksavdecc_maap_state_machine_tick(
         struct jdksavdecc_maap_state_machine *,
-        jdksavdecc_time current_time
+        jdksavdecc_millisecond_time current_time
         );
 
 ssize_t jdksavdecc_maap_state_machine_rx_frame(

@@ -45,7 +45,7 @@ extern "C" {
 /// See Clause 6.2.3
 struct jdksavdecc_adp_advertise_global_vars
 {
-    jdksavdecc_time current_time;
+    jdksavdecc_millisecond_time current_time;
     struct jdksavdecc_entity *entity_info;
 };
 
@@ -53,7 +53,7 @@ struct jdksavdecc_adp_advertise_global_vars
 struct jdksavdecc_adp_advertise_entity_vars
 {
     struct jdksavdecc_adp_advertise_global_vars *global;
-    jdksavdecc_time reannounce_timer_timeout;
+    jdksavdecc_millisecond_time reannounce_timer_timeout;
     int needs_advertise;
     int do_terminate;
 };
@@ -97,7 +97,7 @@ struct jdksavdecc_adp_advertise_interface_state_machine
 
     struct jdksavdecc_frame_sender *frame_sender;
 
-    void (*tick)( struct jdksavdecc_adp_advertise_interface_state_machine *self, jdksavdecc_time timestamp );
+    void (*tick)( struct jdksavdecc_adp_advertise_interface_state_machine *self, jdksavdecc_millisecond_time timestamp );
     ssize_t (*rx_frame)( struct jdksavdecc_adp_advertise_interface_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 
     jdksavdecc_adp_advertise_interface_state state;
@@ -105,7 +105,7 @@ struct jdksavdecc_adp_advertise_interface_state_machine
     struct jdksavdecc_eui48 interface_mac;
 };
 
-void jdksavdecc_adp_advertise_interface_tick( struct jdksavdecc_adp_advertise_interface_state_machine *self, jdksavdecc_time timestamp );
+void jdksavdecc_adp_advertise_interface_tick( struct jdksavdecc_adp_advertise_interface_state_machine *self, jdksavdecc_millisecond_time timestamp );
 ssize_t jdksavdecc_adp_advertise_interface_rx_frame( struct jdksavdecc_adp_advertise_interface_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 
 
@@ -120,7 +120,7 @@ struct jdksavdecc_adp_advertise_entity_state_machine
 
     struct jdksavdecc_frame_sender *frame_sender;
 
-    void (*tick)( struct jdksavdecc_adp_advertise_entity_state_machine *self, jdksavdecc_time timestamp );
+    void (*tick)( struct jdksavdecc_adp_advertise_entity_state_machine *self, jdksavdecc_millisecond_time timestamp );
     ssize_t (*rx_frame)( struct jdksavdecc_adp_advertise_entity_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 
 
@@ -128,7 +128,7 @@ struct jdksavdecc_adp_advertise_entity_state_machine
     struct jdksavdecc_adp_advertise_entity_vars *vars;
 };
 
-void jdksavdecc_adp_advertise_entity_tick( struct jdksavdecc_adp_advertise_entity_state_machine *self, jdksavdecc_time timestamp );
+void jdksavdecc_adp_advertise_entity_tick( struct jdksavdecc_adp_advertise_entity_state_machine *self, jdksavdecc_millisecond_time timestamp );
 ssize_t jdksavdecc_adp_advertise_entity_rx_frame( struct jdksavdecc_adp_advertise_entity_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 
 

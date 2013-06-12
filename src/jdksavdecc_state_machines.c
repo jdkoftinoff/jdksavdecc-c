@@ -47,7 +47,7 @@ void jdksavdecc_state_machines_init( struct jdksavdecc_state_machines *self )
     self->set_frame_sender = jdksavdecc_state_machines_set_frame_sender;
 }
 
-void jdksavdecc_state_machines_tick( struct jdksavdecc_state_machines *self, jdksavdecc_time timestamp )
+void jdksavdecc_state_machines_tick( struct jdksavdecc_state_machines *self, jdksavdecc_millisecond_time timestamp )
 {
     if( self->acmp_controller_state_machine )
     {

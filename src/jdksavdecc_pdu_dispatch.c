@@ -58,7 +58,7 @@ void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self )
 }
 
 
-void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_time timestamp )
+void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_millisecond_time timestamp )
 {
     if( self->state_machines )
     {

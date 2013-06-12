@@ -169,7 +169,7 @@ int jdksavdecc_pcapfile_reader_read_frame( struct jdksavdecc_pcapfile_reader *se
 int jdksavdecc_pcapfile_reader_dispatch_frames( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_pdu_dispatch *dispatcher )
 {
     int r=-1;
-    jdksavdecc_time cur_time=0;
+    jdksavdecc_millisecond_time cur_time=0;
     
     while( self->f && r==-1 )
     {

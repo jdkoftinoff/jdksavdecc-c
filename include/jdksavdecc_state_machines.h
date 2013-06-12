@@ -56,7 +56,7 @@ struct jdksavdecc_state_machines
 
     struct jdksavdecc_frame_sender *frame_sender;
 
-    void (*tick)( struct jdksavdecc_state_machines *self, jdksavdecc_time timestamp );
+    void (*tick)( struct jdksavdecc_state_machines *self, jdksavdecc_millisecond_time timestamp );
 
     void (*set_frame_sender)( struct jdksavdecc_state_machines *self, struct jdksavdecc_frame_sender *sender );
 
@@ -81,7 +81,7 @@ struct jdksavdecc_state_machines
 };
 
 void jdksavdecc_state_machines_init( struct jdksavdecc_state_machines *self );
-void jdksavdecc_state_machines_tick( struct jdksavdecc_state_machines *self, jdksavdecc_time timestamp );
+void jdksavdecc_state_machines_tick( struct jdksavdecc_state_machines *self, jdksavdecc_millisecond_time timestamp );
 void jdksavdecc_state_machines_set_frame_sender( struct jdksavdecc_state_machines *self, struct jdksavdecc_frame_sender *sender );
 
 

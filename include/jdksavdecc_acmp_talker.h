@@ -72,7 +72,7 @@ struct jdksavdecc_acmp_talker_state_machine
 
     jdksavdecc_acmp_talker_state state;
 
-    void (*tick)( struct jdksavdecc_acmp_talker_state_machine *self, jdksavdecc_time timestamp );
+    void (*tick)( struct jdksavdecc_acmp_talker_state_machine *self, jdksavdecc_millisecond_time timestamp );
     ssize_t (*rx_frame)( struct jdksavdecc_acmp_talker_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 
     uint8_t (*valid_talker_unique)(

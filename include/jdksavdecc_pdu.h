@@ -337,7 +337,7 @@ ssize_t jdksavdecc_common_control_header_write( struct jdksavdecc_common_control
 
 struct jdksavdecc_frame
 {
-    jdksavdecc_time time;
+    jdksavdecc_millisecond_time time;
 	struct jdksavdecc_eui48 dest_address;
 	struct jdksavdecc_eui48 src_address;
 	uint16_t ethertype;
