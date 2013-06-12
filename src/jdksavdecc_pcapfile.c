@@ -69,7 +69,18 @@ void jdksavdecc_pcapfile_reader_init(struct jdksavdecc_pcapfile_reader *self)
 int jdksavdecc_pcapfile_reader_open( struct jdksavdecc_pcapfile_reader *self, char const *fname )
 {
     int r=0;
+
+#ifdef _MSC_VER
+    errno_t e;
+    e = fopen_s(&self->f, fname, "rb" );
+    if( e!=0 )
+    {
+        self->f=0;
+    }
+#else
     self->f = fopen(fname, "rb" );
+#endif
+
     if( self->f )
     {
         struct jdksavdecc_pcapfile_header file_header;
@@ -213,7 +224,17 @@ void jdksavdecc_pcapfile_writer_init( struct jdksavdecc_pcapfile_writer *self )
 int jdksavdecc_pcapfile_writer_open( struct jdksavdecc_pcapfile_writer *self, char const *fname )
 {
     int r=0;
+#ifdef _MSC_VER
+    errno_t e;
+    e = fopen_s(&self->f, fname, "wb" );
+    if( e!=0 )
+    {
+        self->f=0;
+    }
+#else
     self->f = fopen(fname, "wb" );
+#endif
+
     if( self->f )
     {
         struct jdksavdecc_pcapfile_header file_header;
