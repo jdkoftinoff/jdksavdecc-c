@@ -56,6 +56,7 @@ struct jdksavdecc_state_machines
 
     struct jdksavdecc_frame_sender *frame_sender;
 
+    void (*destroy)( struct jdksavdecc_state_machines * );
     void (*tick)( struct jdksavdecc_state_machines *self, jdksavdecc_millisecond_time timestamp );
 
     void (*set_frame_sender)( struct jdksavdecc_state_machines *self, struct jdksavdecc_frame_sender *sender );

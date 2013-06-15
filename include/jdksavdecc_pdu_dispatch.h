@@ -56,6 +56,9 @@ struct jdksavdecc_pdu_dispatch
     void *additional;
 
     struct jdksavdecc_frame_sender *frame_sender;
+
+    void (*destroy)( struct jdksavdecc_pdu_dispatch * );
+
     void (*tick)( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_millisecond_time timestamp );
 
     void (*set_frame_sender)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender );

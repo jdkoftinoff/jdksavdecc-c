@@ -50,6 +50,7 @@ struct jdksavdecc_aem_entity_state_machine
 
     struct jdksavdecc_frame_sender *frame_sender;
 
+    void (*destroy)( struct jdksavdecc_aem_entity_state_machine * );
     void (*tick)( struct jdksavdecc_aem_entity_state_machine *self, jdksavdecc_millisecond_time timestamp );
     ssize_t (*rx_frame)( struct jdksavdecc_aem_entity_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 };

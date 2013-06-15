@@ -370,6 +370,7 @@ ssize_t jdksavdecc_frame_write( struct jdksavdecc_frame const *p, void *base, ss
 
 struct jdksavdecc_frame_sender
 {
+    void (*destroy)( struct jdksavdecc_frame_sender * );
     void (*send)( struct jdksavdecc_frame_sender *, struct jdksavdecc_frame const *frame );
 };
 
