@@ -34,3 +34,4 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp_aem.h"
 
+char const *jdksavdecc_aecp_aem_file = __FILE__;

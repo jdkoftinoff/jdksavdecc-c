@@ -33,3 +33,5 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_maap.h"
+
+char const *jdksavdecc_maap_file = __FILE__;

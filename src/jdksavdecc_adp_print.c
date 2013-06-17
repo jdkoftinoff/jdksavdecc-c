@@ -33,3 +33,4 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_adp_print.h"
 
+char const *jdksavdecc_adp_print_file = __FILE__;

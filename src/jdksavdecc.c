@@ -33,3 +33,6 @@
 
 #include "jdksavdecc.h"
 
+char const *jdksavdecc_file = __FILE__;
+
+

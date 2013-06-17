@@ -33,3 +33,4 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp_vendor.h"
 
+char const *jdksavdecc_aecp_vendor_file = __FILE__;

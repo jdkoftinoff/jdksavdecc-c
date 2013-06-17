@@ -34,3 +34,4 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_adp_discover.h"
 
+char const *jdksavdecc_adp_discover_file = __FILE__;

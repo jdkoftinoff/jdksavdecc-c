@@ -33,3 +33,4 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_descriptor_dispatch.h"
 
+char const *jdksavdecc_descriptor_dispatch_file = __FILE__;

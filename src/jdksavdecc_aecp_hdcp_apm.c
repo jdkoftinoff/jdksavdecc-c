@@ -33,3 +33,4 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp_hdcp_apm.h"
 
+char const *jdksavdecc_aecp_hdcp_apm_file = __FILE__;

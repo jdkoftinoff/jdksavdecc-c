@@ -1,4 +1,3 @@
-
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -33,3 +32,5 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_maap_print.h"
+
+char const *jdksavdecc_maap_print_file = __FILE__;

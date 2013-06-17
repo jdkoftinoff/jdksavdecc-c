@@ -1,4 +1,3 @@
-
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -33,3 +32,4 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_command_dispatch.h"
 
+char const *jdksavdecc_command_dispatch_file = __FILE__;

@@ -34,3 +34,4 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp_talker.h"
 
+char const *jdksavdecc_acmp_talker_file = __FILE__;

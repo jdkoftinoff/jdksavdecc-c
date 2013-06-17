@@ -33,3 +33,4 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp.h"
 
+char const *jdksavdecc_acmp_file = __FILE__;
