@@ -137,41 +137,41 @@ uint8_t jdksavdecc_acmp_talker_state_machine_tx_response(
         );
 
 /// See Clause 8.2.2.6.2.4
-uint8_t jdksavdecc_aem_talker_state_machine_disconnect_talker(
+uint8_t jdksavdecc_acmp_talker_state_machine_disconnect_talker(
         struct jdksavdecc_acmp_talker_state_machine *self,
         struct jdksavdecc_acmp_command_response *response,
         struct jdksavdecc_acmpdu const *command
         );
 
 /// See Clause 8.2.2.6.2.5
-uint8_t jdksavdecc_aem_talker_state_machine_get_connection(
+uint8_t jdksavdecc_acmp_talker_state_machine_get_connection(
         struct jdksavdecc_acmp_talker_state_machine *self,
         struct jdksavdecc_acmp_command_response *response,
         struct jdksavdecc_acmpdu const *command
         );
 
 /// See Clause 8.2.2.6.2.6
-void jdksavdecc_aem_talker_state_machine_state_waiting(
+void jdksavdecc_acmp_talker_state_machine_state_waiting(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
 /// See Clause 8.2.2.6.3
-void jdksavdecc_aem_talker_state_machine_state_connect(
+void jdksavdecc_acmp_talker_state_machine_state_connect(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
 /// See Clause 8.2.2.6.3
-void jdksavdecc_aem_talker_state_machine_state_disconnect(
+void jdksavdecc_acmp_talker_state_machine_state_disconnect(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
 /// See Clause 8.2.2.6.3
-void jdksavdecc_aem_talker_state_machine_state_get_state(
+void jdksavdecc_acmp_talker_state_machine_state_get_state(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
 /// See Clause 8.2.2.6.3
-void jdksavdecc_aem_talker_state_machine_state_get_connection(
+void jdksavdecc_acmp_talker_state_machine_state_get_connection(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
