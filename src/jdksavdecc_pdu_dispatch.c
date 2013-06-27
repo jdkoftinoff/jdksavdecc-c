@@ -62,7 +62,7 @@ void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavd
 {
     if( self->state_machines )
     {
-        self->state_machines->tick( self->state_machines, timestamp );
+        self->state_machines->base.tick( &self->state_machines->base, timestamp );
     }
 }
 
@@ -76,10 +76,6 @@ void jdksavdecc_pdu_dispatch_set_frame_sender( struct jdksavdecc_pdu_dispatch *s
     if( self->aem_response_dispatch )
     {
         self->aem_response_dispatch->frame_sender = sender;
-    }
-    if( self->state_machines )
-    {
-        self->state_machines->set_frame_sender( self->state_machines, sender );
     }
 }
 
@@ -163,33 +159,11 @@ ssize_t jdksavdecc_pdu_dispatch_avtpv0( struct jdksavdecc_pdu_dispatch *self, st
 
 ssize_t jdksavdecc_pdu_dispatch_acmpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos )
 {
-    ssize_t rt=0;
-    ssize_t rl=0;
-    ssize_t rc=0;
     ssize_t r=0;
 
     if( self->state_machines )
     {
-        if( self->state_machines->acmp_talker_state_machine )
-        {
-            rt = self->state_machines->acmp_talker_state_machine->rx_frame( self->state_machines->acmp_talker_state_machine, frame, pos );
-        }
-        if( self->state_machines->acmp_listener_state_machine )
-        {
-            rl = self->state_machines->acmp_listener_state_machine->rx_frame( self->state_machines->acmp_listener_state_machine, frame, pos );
-        }
-        if( self->state_machines->acmp_controller_state_machine )
-        {
-            rc = self->state_machines->acmp_controller_state_machine->rx_frame( self->state_machines->acmp_controller_state_machine, frame, pos );
-        }
-    }
-    if( rt<0 || rl<0 || rc<0 )
-    {
-        r=-1;
-    }
-    if( rt>0 || rl>0 || rc>0 )
-    {
-        r=frame->length;
+        r = self->state_machines->base.rx_frame( &self->state_machines->base, frame, pos );
     }
     return r;
 }
@@ -197,34 +171,12 @@ ssize_t jdksavdecc_pdu_dispatch_acmpdu( struct jdksavdecc_pdu_dispatch *self, st
 ssize_t jdksavdecc_pdu_dispatch_adpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos )
 {
     ssize_t r=0;
-    ssize_t rae=0;
-    ssize_t rai=0;
-    ssize_t rd=0;
 
     if( self->state_machines )
     {
-        if( self->state_machines->adp_advertise_entity_state_machine )
-        {
-            rae=self->state_machines->adp_advertise_entity_state_machine->rx_frame( self->state_machines->adp_advertise_entity_state_machine, frame, pos );
-        }
-        if( self->state_machines->adp_advertise_interface_state_machine )
-        {
-            rai=self->state_machines->adp_advertise_interface_state_machine->rx_frame( self->state_machines->adp_advertise_interface_state_machine, frame, pos );
-        }
-        if( self->state_machines->adp_discovery_state_machine )
-        {
-            rd=self->state_machines->adp_discovery_state_machine->rx_frame( self->state_machines->adp_discovery_state_machine, frame, pos );
-        }
+        r = self->state_machines->base.rx_frame( &self->state_machines->base, frame, pos );
     }
 
-    if( rae<0 || rai<0 || rd<0 )
-    {
-        r=-1;
-    }
-    if( rae>0 || rai>0 || rd>0 )
-    {
-        r=frame->length;
-    }
     return r;
 }
 

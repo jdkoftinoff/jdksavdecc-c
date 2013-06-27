@@ -1,6 +1,6 @@
 #pragma once
-#ifndef JDKSAVDECC_ACMP_CONTROLLER_H
-#define JDKSAVDECC_ACMP_CONTROLLER_H
+#ifndef JDKSAVDECC_STATE_MACHINE_H
+#define JDKSAVDECC_STATE_MACHINE_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -34,57 +34,58 @@
 */
 
 #include "jdksavdecc_world.h"
-#include "jdksavdecc_state_machine.h"
-#include "jdksavdecc_acmp.h"
+#include "jdksavdecc_pdu.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/** \addtogroup acmp_controller ACMPDU Controller State Machine - Clause 8.2.2.4 */
+/** \addtogroup state_machine State Machine Base Interface */
 /*@{*/
 
-/// @todo acmp controller state machine implementation
-struct jdksavdecc_acmp_controller_state_machine
+/// Common base class for state machines
+struct jdksavdecc_state_machine
 {
-    struct jdksavdecc_state_machine base;
-    struct jdksavdecc_eui64 controller_entity_id;
+    /// Destructor
+    void (*destroy)( struct jdksavdecc_state_machine *self );
+
+    /// Time tick
+    void (*tick)( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp );
+
+    /// Received Frame
+    ssize_t (*rx_frame)( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+
+    /// Transmit Frame
+    void (*tx_frame)( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame );
+
+    /// Object to Transmit Frame with
+    struct jdksavdecc_frame_sender *frame_sender;
+
+    /// Tag for additional identification
+    uint32_t tag;
+
+    /// Auxiliary pointer for additional associations
+    void *additional;
 };
 
-void jdksavdecc_acmp_controller_state_machine_init(
-        struct jdksavdecc_acmp_controller_state_machine *self,
-        struct jdksavdecc_eui64 controller_entity_id,
-        struct jdksavdecc_frame_sender *sender,
+
+void jdksavdecc_state_machine_init(
+        struct jdksavdecc_state_machine *self,
+        struct jdksavdecc_frame_sender *frame_sender,
         uint32_t tag,
         void *additional
         );
-
-
-void jdksavdecc_acmp_controller_state_machine_destroy(
-        struct jdksavdecc_state_machine *self
-        );
-
-void jdksavdecc_acmp_controller_state_machine_tick(
-        struct jdksavdecc_state_machine *self,
-        jdksavdecc_millisecond_time timestamp
-        );
-
-ssize_t jdksavdecc_acmp_controller_state_machine_rx_frame(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame *rx_frame,
-        size_t pos
-        );
-
-void jdksavdecc_acmp_controller_state_machine_tx_frame(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame const *frame
-        );
-
+void jdksavdecc_state_machine_destroy( struct jdksavdecc_state_machine *self );
+void jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp );
+ssize_t jdksavdecc_state_machine_rx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+void jdksavdecc_state_machine_tx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame );
 
 /*@}*/
+
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif
 
+#endif

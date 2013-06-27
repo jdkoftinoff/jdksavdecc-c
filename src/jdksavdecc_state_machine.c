@@ -1,6 +1,3 @@
-#pragma once
-#ifndef JDKSAVDECC_ACMP_CONTROLLER_H
-#define JDKSAVDECC_ACMP_CONTROLLER_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -33,58 +30,56 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
+
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_state_machine.h"
-#include "jdksavdecc_acmp.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
-/** \addtogroup acmp_controller ACMPDU Controller State Machine - Clause 8.2.2.4 */
-/*@{*/
-
-/// @todo acmp controller state machine implementation
-struct jdksavdecc_acmp_controller_state_machine
-{
-    struct jdksavdecc_state_machine base;
-    struct jdksavdecc_eui64 controller_entity_id;
-};
-
-void jdksavdecc_acmp_controller_state_machine_init(
-        struct jdksavdecc_acmp_controller_state_machine *self,
-        struct jdksavdecc_eui64 controller_entity_id,
-        struct jdksavdecc_frame_sender *sender,
+void jdksavdecc_state_machine_init(
+        struct jdksavdecc_state_machine *self,
+        struct jdksavdecc_frame_sender *frame_sender,
         uint32_t tag,
         void *additional
-        );
-
-
-void jdksavdecc_acmp_controller_state_machine_destroy(
-        struct jdksavdecc_state_machine *self
-        );
-
-void jdksavdecc_acmp_controller_state_machine_tick(
-        struct jdksavdecc_state_machine *self,
-        jdksavdecc_millisecond_time timestamp
-        );
-
-ssize_t jdksavdecc_acmp_controller_state_machine_rx_frame(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame *rx_frame,
-        size_t pos
-        );
-
-void jdksavdecc_acmp_controller_state_machine_tx_frame(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame const *frame
-        );
-
-
-/*@}*/
-#ifdef __cplusplus
+        )
+{
+    self->additional = 0;
+    self->tag = 0;
+    self->destroy = jdksavdecc_state_machine_destroy;
+    self->tick = jdksavdecc_state_machine_tick;
+    self->rx_frame = jdksavdecc_state_machine_rx_frame;
+    self->tx_frame = jdksavdecc_state_machine_tx_frame;
+    self->frame_sender = frame_sender;
+    self->tag = tag;
+    self->additional = additional;
 }
-#endif
 
-#endif
+void jdksavdecc_state_machine_destroy( struct jdksavdecc_state_machine *self )
+{
+    /* zero all fields */
+    memset(self,0,sizeof(*self));
+}
 
+void jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp )
+{
+    /* Nothing to do - default is to ignore ticks */
+    (void)self;
+    (void)timestamp;
+}
+
+ssize_t jdksavdecc_state_machine_rx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos )
+{
+    /* Nothing to do - default is to ignore rx_frame */
+    (void)self;
+    (void)rx_frame;
+    (void)pos;
+    return 0;
+}
+
+void jdksavdecc_state_machine_tx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame )
+{
+    /* Default is to give the frame to the frame_sender if there is one */
+    if( self->frame_sender )
+    {
+        self->frame_sender->send( self->frame_sender, frame );
+    }
+}

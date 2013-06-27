@@ -31,6 +31,7 @@
 */
 
 #include "jdksavdecc_world.h"
+#include "jdksavdecc_state_machine.h"
 #include "jdksavdecc_acmp_controller.h"
 
 char const *jdksavdecc_acmp_controller_file = __FILE__;

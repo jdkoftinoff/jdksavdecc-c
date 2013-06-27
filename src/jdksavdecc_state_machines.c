@@ -33,124 +33,92 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_state_machines.h"
-#include "jdksavdecc_acmp_controller.h"
-#include "jdksavdecc_acmp_listener.h"
-#include "jdksavdecc_acmp_talker.h"
-#include "jdksavdecc_maap.h"
-#include "jdksavdecc_aem_entity.h"
-#include "jdksavdecc_descriptor_dispatch.h"
 
-void jdksavdecc_state_machines_init( struct jdksavdecc_state_machines *self )
+
+
+int jdksavdecc_state_machines_init(
+        struct jdksavdecc_state_machines *self,
+        int max_state_machines,
+        struct jdksavdecc_frame_sender *frame_sender,
+        uint32_t tag,
+        void *additional
+        )
 {
-    memset( self, 0, sizeof(*self) );
-    self->tick = jdksavdecc_state_machines_tick;
-    self->set_frame_sender = jdksavdecc_state_machines_set_frame_sender;
+    jdksavdecc_state_machine_init(&self->base,frame_sender, tag, additional );
+    self->base.destroy = jdksavdecc_state_machines_destroy;
+    self->base.tick = jdksavdecc_state_machines_tick;
+    self->base.rx_frame = jdksavdecc_state_machines_rx_frame;
+    self->add_state_machine = jdksavdecc_state_machines_add_state_machine;
+    self->max_state_machines = max_state_machines;
+    self->num_state_machines = 0;
+    self->state_machines = calloc(sizeof(struct jdksavdecc_state_machine*),max_state_machines);
+    if( self->state_machines )
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
 }
 
-void jdksavdecc_state_machines_tick( struct jdksavdecc_state_machines *self, jdksavdecc_millisecond_time timestamp )
+void jdksavdecc_state_machines_destroy(
+        struct jdksavdecc_state_machine *self_
+        )
 {
-    if( self->acmp_controller_state_machine )
+    struct jdksavdecc_state_machines *self = (struct jdksavdecc_state_machines *)self_;
+    int i;
+    for( i=0; i<self->num_state_machines; ++i )
     {
-        self->acmp_controller_state_machine->tick( self->acmp_controller_state_machine, timestamp );
+        self->state_machines[i]->destroy( self->state_machines[i] );
     }
-
-    if( self->acmp_listener_state_machine )
-    {
-        self->acmp_listener_state_machine->tick( self->acmp_listener_state_machine, timestamp );
-    }
-
-    if( self->acmp_talker_state_machine )
-    {
-        self->acmp_talker_state_machine->tick( self->acmp_talker_state_machine, timestamp );
-    }
-
-    if( self->adp_discovery_state_machine )
-    {
-        self->adp_discovery_state_machine->tick( self->adp_discovery_state_machine, timestamp );
-    }
-
-    if( self->adp_advertise_entity_state_machine )
-    {
-        self->adp_advertise_entity_state_machine->tick( self->adp_advertise_entity_state_machine, timestamp );
-    }
-
-    if( self->adp_advertise_interface_state_machine )
-    {
-        self->adp_advertise_interface_state_machine->tick( self->adp_advertise_interface_state_machine, timestamp );
-    }
-
-    if( self->aem_entity_state_machine )
-    {
-        self->aem_entity_state_machine->tick( self->aem_entity_state_machine, timestamp );
-    }
-
-    if( self->maap_state_machine )
-    {
-        self->maap_state_machine->tick( self->maap_state_machine, timestamp );
-    }
-
 }
 
-void jdksavdecc_state_machines_set_frame_sender( struct jdksavdecc_state_machines *self, struct jdksavdecc_frame_sender *sender )
+void jdksavdecc_state_machines_tick(
+        struct jdksavdecc_state_machine *self_,
+        jdksavdecc_millisecond_time timestamp
+        )
 {
-    if( self->aecp_aem_command )
+    struct jdksavdecc_state_machines *self = (struct jdksavdecc_state_machines *)self_;
+    int i;
+    for( i=0; i<self->num_state_machines; ++i )
     {
-        self->aecp_aem_command->frame_sender = sender;
+        self->state_machines[i]->tick( self->state_machines[i], timestamp );
     }
-
-    if( self->aecp_aem_response )
-    {
-        self->aecp_aem_response->frame_sender = sender;
-    }
-
-    if( self->aecp_aem_descriptor_write )
-    {
-        self->aecp_aem_descriptor_write->frame_sender = sender;
-    }
-
-    if( self->aecp_aem_descriptor_response )
-    {
-        self->aecp_aem_descriptor_response->frame_sender = sender;
-    }
-
-    if( self->acmp_controller_state_machine )
-    {
-        self->acmp_controller_state_machine->frame_sender = sender;
-    }
-
-    if( self->acmp_listener_state_machine )
-    {
-        self->acmp_listener_state_machine->frame_sender = sender;
-    }
-
-    if( self->acmp_talker_state_machine )
-    {
-        self->acmp_talker_state_machine->frame_sender = sender;
-    }
-
-    if( self->adp_discovery_state_machine )
-    {
-        self->adp_discovery_state_machine->frame_sender = sender;
-    }
-
-    if( self->adp_advertise_entity_state_machine )
-    {
-        self->adp_advertise_entity_state_machine->frame_sender = sender;
-    }
-
-    if( self->adp_advertise_interface_state_machine )
-    {
-        self->adp_advertise_interface_state_machine->frame_sender = sender;
-    }
-
-    if( self->aem_entity_state_machine )
-    {
-        self->aem_entity_state_machine->frame_sender = sender;
-    }
-
-    if( self->maap_state_machine )
-    {
-        self->maap_state_machine->frame_sender = sender;
-    }
-
 }
+
+ssize_t jdksavdecc_state_machines_rx_frame(
+        struct jdksavdecc_state_machine *self_,
+        struct jdksavdecc_frame *rx_frame,
+        size_t pos
+        )
+{
+    struct jdksavdecc_state_machines *self = (struct jdksavdecc_state_machines *)self_;
+    int i;
+    ssize_t max_r=-1;
+    ssize_t r;
+    for( i=0; i<self->num_state_machines; ++i )
+    {
+        r=self->state_machines[i]->rx_frame( self->state_machines[i], rx_frame, pos );
+        if( r>max_r )
+        {
+            max_r=r;
+        }
+    }
+    return max_r;
+}
+
+int jdksavdecc_state_machines_add_state_machine(
+        struct jdksavdecc_state_machines *self,
+        struct jdksavdecc_state_machine *s
+        )
+{
+    int r=1;
+    if( self->state_machines && (self->num_state_machines < self->max_state_machines) )
+    {
+        r=0;
+        self->state_machines[ self->num_state_machines++ ] = s;
+    }
+    return r;
+}
+

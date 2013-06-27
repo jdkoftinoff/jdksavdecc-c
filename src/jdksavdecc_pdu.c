@@ -33,6 +33,17 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_pdu.h"
 
+struct jdksavdecc_eui48 jdksavdecc_multicast_maap = JDKSAVDECC_MULTICAST_MAAP;
+
+struct jdksavdecc_eui48 jdksavdecc_multicast_adp_acmp = JDKSAVDECC_MULTICAST_ADP_ACMP;
+
+struct jdksavdecc_eui48 jdksavdecc_multicast_identification = JDKSAVDECC_MULTICAST_IDENTIFICATION;
+
+struct jdksavdecc_eui64 jdksavdecc_identification_notification_controller_entity_id = JDKSAVDECC_IDENTIFICATION_NOTIFICATION_CONTROLLER_ENTITY_ID;
+
+
+
+
 ssize_t jdksavdecc_common_control_header_read( struct jdksavdecc_common_control_header *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN );

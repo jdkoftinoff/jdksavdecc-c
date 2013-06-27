@@ -617,36 +617,7 @@ static inline ssize_t jdksavdecc_acmpdu_write( struct jdksavdecc_acmpdu const *p
 /*@{*/
 
 /// Clause 8.2.2.2.1
-struct jdksavdecc_acmp_command_response
-{
-    struct jdksavdecc_acmpdu_common_control_header header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    struct jdksavdecc_eui64 talker_entity_id;
-    struct jdksavdecc_eui64 listener_entity_id;
-    uint16_t talker_unique_id;
-    uint16_t listener_unique_id;
-    struct jdksavdecc_eui48 stream_dest_mac;
-    uint16_t connection_count;
-    uint16_t sequence_id;
-    uint16_t flags;
-    uint16_t stream_vlan_id;
-};
-
-/// Clause 8.2.2.2.1
-static inline void jdksavdecc_acmp_command_response_set( struct jdksavdecc_acmp_command_response *self, struct jdksavdecc_acmpdu *p )
-{
-    self->header = p->header;
-    self->controller_entity_id = p->controller_entity_id;
-    self->talker_entity_id = p->talker_entity_id;
-    self->listener_entity_id = p->listener_entity_id;
-    self->talker_unique_id = p->talker_unique_id;
-    self->listener_unique_id = p->talker_unique_id;
-    self->stream_dest_mac = p->stream_dest_mac;
-    self->connection_count = p->connection_count;
-    self->sequence_id = p->sequence_id;
-    self->flags = p->flags;
-    self->stream_vlan_id = p->stream_vlan_id;
-}
+typedef struct jdksavdecc_acmpdu jdksavdecc_acmp_command_response;
 
 
 /// Clause 8.2.2.2.2
@@ -663,11 +634,11 @@ struct jdksavdecc_acmp_listener_stream_info
 };
 
 /// Clause 8.2.2.2.2
-struct jdksavdecc_acmp_listener_stream_info_list
+struct jdksavdecc_acmp_listener_stream_infos
 {
-    struct jdksavdecc_acmp_listener_stream_info info;
-    struct jdksavdecc_acmp_listener_stream_info_list *prev;
-    struct jdksavdecc_acmp_listener_stream_info_list *next;
+    size_t max_items;
+    size_t num_items;
+    struct jdksavdecc_acmp_listener_stream_info *items;
 };
 
 
@@ -692,24 +663,38 @@ struct jdksavdecc_acmp_listener_pair
     uint16_t listener_unique_id;
 };
 
-/// Clause 8.2.2.2.3
-struct jdksavdecc_acmp_listener_pair_list
-{
-    struct jdksavdecc_acmp_listener_pair listener_pair;
-    struct jdksavdecc_acmp_listener_pair_list *prev;
-    struct jdksavdecc_acmp_listener_pair_list *next;
-};
-
 
 /// Clause 8.2.2.2.4
 struct jdksavdecc_acmp_talker_stream_info
 {
-    struct jdksavdecc_eui48 stream_id;
+    struct jdksavdecc_eui64 stream_id;
     struct jdksavdecc_eui48 stream_dest_mac;
     uint16_t connection_count;
-    struct jdksavdecc_acmp_listener_pair_list *connected_listeners;
+    uint16_t max_connected_listeners;
+    struct jdksavdecc_acmp_listener_pair *connected_listeners;
     uint16_t stream_vlan_id;
 };
+
+/// Clause 8.2.2.2.4
+struct jdksavdecc_acmp_talker_stream_infos
+{
+    void (*destroy)( struct jdksavdecc_acmp_talker_stream_infos *);
+
+    uint16_t num_stream_sources;
+    struct jdksavdecc_acmp_talker_stream_info *stream_sources;
+};
+
+int jdksavdecc_acmp_talker_stream_infos_init(
+        struct jdksavdecc_acmp_talker_stream_infos *self,
+        uint16_t num_stream_sources,
+        uint16_t max_connected_listeners,
+        struct jdksavdecc_eui64 starting_stream_id,
+        struct jdksavdecc_eui48 starting_stream_dest_mac,
+        uint16_t stream_vlan_id
+        );
+
+
+
 #ifdef __cplusplus
 }
 #endif

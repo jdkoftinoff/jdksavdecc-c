@@ -45,14 +45,21 @@ extern "C" {
 #define JDKSAVDECC_AVTP_V0_PAYLOAD_OFFSET (12) /// See IEEE Std 1722-2011 Clause 5.2
 
 #define JDKSAVDECC_MULTICAST_MAAP {{0x91,0xe0,0xf0,0x00,0xff,0x00}} /// See IEEE Std 1722-2011 Annex B
+extern struct jdksavdecc_eui48 jdksavdecc_multicast_maap;
+
 #define JDKSAVDECC_MULTICAST_ADP_ACMP {{0x91,0xe0,0xf0,0x01,0x00,0x00}}    /// See Annex B.1
+extern struct jdksavdecc_eui48 jdksavdecc_multicast_adp_acmp;
+
 #define JDKSAVDECC_MULTICAST_IDENTIFICATION {{0x91,0xe0,0xf0,0x01,0x00,0x01}} /// See Annex B.1
+extern struct jdksavdecc_eui48 jdksavdecc_multicast_identification;
 
 #define JDKSAVDECC_MULTICAST_MAAP_MAC 0x91e0f000ff00ULL /// See IEEE 1722a D3 Annex B
 #define JDKSAVDECC_MULTICAST_ADP_ACMP_MAC 0x91e0f0010000ULL    /// See Annex B.1
 #define JDKSAVDECC_MULTICAST_IDENTIFICATION_MAC 0x91e0f0010001ULL /// See Annex B.1
 
 #define JDKSAVDECC_IDENTIFICATION_NOTIFICATION_CONTROLLER_ENTITY_ID {{0x90,0xe0,0xf0,0xff,0xfe,0x01,0x00,0x01}} /// See Clause 7.5.1
+extern struct jdksavdecc_eui64 jdksavdecc_identification_notification_controller_entity_id;
+
 #define JDKSAVDECC_IDENTIFICATION_NOTIFICATION_CONTROLLER_ENTITY_ID_L 0x90e0f0fffe010001ULL /// See Clause 7.5.1
 
 
