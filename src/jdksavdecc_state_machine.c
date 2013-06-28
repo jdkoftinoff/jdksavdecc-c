@@ -51,24 +51,27 @@ void jdksavdecc_state_machine_init(
     self->frame_sender = frame_sender;
     self->tag = tag;
     self->additional = additional;
+    self->do_early_tick = 0;
 }
 
 void jdksavdecc_state_machine_destroy( struct jdksavdecc_state_machine *self )
 {
-    /* zero all fields */
+    // zero all fields
     memset(self,0,sizeof(*self));
 }
 
 void jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp )
 {
-    /* Nothing to do - default is to ignore ticks */
-    (void)self;
+    // default is to ignore ticks
     (void)timestamp;
+
+    // Reset the flag to trigger an early tick
+    self->do_early_tick = 0;
 }
 
 ssize_t jdksavdecc_state_machine_rx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos )
 {
-    /* Nothing to do - default is to ignore rx_frame */
+    // Nothing to do - default is to ignore rx_frame
     (void)self;
     (void)rx_frame;
     (void)pos;

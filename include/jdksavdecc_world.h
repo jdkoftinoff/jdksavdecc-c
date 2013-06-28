@@ -58,6 +58,18 @@
 # include <inttypes.h>
 #endif
 
+#ifndef JDKSAVDECC_ENABLE_LOG
+# define JDKAVDECC_ENABLE_LOG (1)
+#endif
+
+#if JDKSAVDECC_ENABLE_LOG
+#ifndef jdksavdecc_log
+# define jdksavdecc_log(fmt,...) printf(fmt ## "\n", ... )
+#endif
+#else
+# define jdksavdecc_log(fmt,...)
+#endif
+
 #endif
 
 

@@ -66,6 +66,9 @@ struct jdksavdecc_state_machine
 
     /// Auxiliary pointer for additional associations
     void *additional;
+
+    /// Flag used to trigger an early tick due to protocol handling message request
+    int do_early_tick;
 };
 
 

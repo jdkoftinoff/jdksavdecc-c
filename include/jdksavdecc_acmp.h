@@ -40,6 +40,9 @@
 extern "C" {
 #endif
 
+#ifndef jdksavdecc_acmp_log
+# define jdksavdecc_acmp_log(...) jdksavdecc_log(...)
+#endif
 
 /** \addtogroup acmpdu ACMPDU - Clause 8.2.1 */
 /*@{*/

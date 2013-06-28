@@ -68,65 +68,88 @@ typedef void (*jdksavdecc_acmp_talker_state_transition)(
         );
 
 
-/// @todo acmp talker state machine implementation
+/// ACMP Talker State Machine
 struct jdksavdecc_acmp_talker_state_machine
 {
+    /// Base class for a state machine
     struct jdksavdecc_state_machine base;
-    uint16_t talker_unique_id;
 
+    /// The Variables of the talker state machine
     struct jdksavdecc_acmp_talker_state_machine_vars vars;
 
+    /// The current state procedure
     jdksavdecc_acmp_talker_state state;
 
+    /// Overridable Method that is called to validate a talker unique_id value
     uint8_t (*valid_talker_unique)(
             struct jdksavdecc_acmp_talker_state_machine *self,
             uint16_t talker_unique_id
             );
 
-    uint8_t (*tx_response)(
+    /// Overridable method that is called to transmit an ACMP response to the network
+    void (*tx_response)(
             struct jdksavdecc_acmp_talker_state_machine *self,
             uint8_t message_type,
             jdksavdecc_acmp_command_response const *response,
             uint8_t error
             );
 
+    /// Overridable method that is called to do what ever it takes to perform the connection on the talker side.
+    /// Must fill in the appropriate fields in the command_response parameter
     uint8_t (*connect_talker)(
             struct jdksavdecc_acmp_talker_state_machine *self,
-            jdksavdecc_acmp_command_response *response,
-            struct jdksavdecc_acmpdu const *command
+            jdksavdecc_acmp_command_response *command_response
             );
 
+    /// Overridable method that is called to do what ever it takes to perform the disconnection on the talker side.
+    /// Must fill in the appropriate fields in the command_response parameter
     uint8_t (*disconnect_talker)(
             struct jdksavdecc_acmp_talker_state_machine *self,
-            jdksavdecc_acmp_command_response *response,
-            struct jdksavdecc_acmpdu const *command
+            jdksavdecc_acmp_command_response *command_response
             );
 
+    /// Overridable method that is called to do what ever it takes to get the talker state on the talker side.
+    /// Must fill in the appropriate fields in the command_response parameter
     uint8_t (*get_state)(
             struct jdksavdecc_acmp_talker_state_machine *self,
-            jdksavdecc_acmp_command_response *response,
-            struct jdksavdecc_acmpdu const *command
+            jdksavdecc_acmp_command_response *command_response
             );
 
+    /// Overridable method that is called to do what ever it takes to get the talker connection info on the talker side.
+    /// Must fill in the appropriate fields in the command_response parameter
     uint8_t (*get_connection)(
             struct jdksavdecc_acmp_talker_state_machine *self,
-            jdksavdecc_acmp_command_response *response,
-            struct jdksavdecc_acmpdu const *command
+            jdksavdecc_acmp_command_response *response_response
             );
 
+    /// Pointer to the state transition procedure to call when transitioning into the WAITING state
     jdksavdecc_acmp_talker_state_transition goto_waiting;
+
+    /// Pointer to the state handling procedure to call when in the WAITING state
     jdksavdecc_acmp_talker_state state_waiting;
 
+    /// Pointer to the state transition procedure to call when transitioning into the CONNECT state
     jdksavdecc_acmp_talker_state_transition goto_connect;
+
+    /// Pointer to the state handling procedure to call when in the CONNECT state
     jdksavdecc_acmp_talker_state state_connect;
 
+    /// Pointer to the state transition procedure to call when transitioning into the DISCONNECT state
     jdksavdecc_acmp_talker_state_transition goto_disconnect;
+
+    /// Pointer to the state handling procedure to call when in the DISCONNECT state
     jdksavdecc_acmp_talker_state state_disconnect;
 
+    /// Pointer to the state transition procedure to call when transitioning into the GET_STATE state
     jdksavdecc_acmp_talker_state_transition goto_get_state;
+
+    /// Pointer to the state handling procedure to call when in the GET_STATE state
     jdksavdecc_acmp_talker_state state_get_state;
 
+    /// Pointer to the state transition procedure to call when transitioning into the GET_CONNECTION state
     jdksavdecc_acmp_talker_state_transition goto_get_connection;
+
+    /// Pointer to the state handling procedure to call when in the GET_CONNECTION state
     jdksavdecc_acmp_talker_state state_get_connection;
 };
 
@@ -182,7 +205,7 @@ ssize_t jdksavdecc_acmp_talker_state_machine_rx_frame(
 /// Transmit a frame to a network port
 ///
 /// @param self Pointer to state_machine base class
-/// @param rx_frame The frame that received
+/// @param frame The frame that received
 /// @returns void
 void jdksavdecc_acmp_talker_state_machine_tx_frame(
         struct jdksavdecc_state_machine *self,
@@ -193,7 +216,7 @@ void jdksavdecc_acmp_talker_state_machine_tx_frame(
 ///
 /// See Clause 8.2.2.6.2.1
 ///
-/// @param self Pointer to state_machine base class
+/// @param self Pointer to talker_state_machine
 /// @param talker_unique_id uint16_t unique_id to be validated
 /// @returns ACMP Message status value
 uint8_t jdksavdecc_acmp_talker_state_machine_valid_talker_unique(
@@ -206,7 +229,7 @@ uint8_t jdksavdecc_acmp_talker_state_machine_valid_talker_unique(
 ///
 /// See Clause 8.2.2.6.2.2
 ///
-/// @param self Pointer to state_machine base class
+/// @param self Pointer to talker_state_machine
 /// @param command_and_response the current command that triggered this.
 ///        The appropriate additional fields will be filled in.
 /// @returns ACMP Message status value
@@ -215,11 +238,19 @@ uint8_t jdksavdecc_acmp_talker_state_machine_connect_talker(
         struct jdksavdecc_acmpdu *command_and_response
         );
 
+/// Send a command_response to the network with the specified message_type and error status
+///
 /// See Clause 8.2.2.6.2.3
-uint8_t jdksavdecc_acmp_talker_state_machine_tx_response(
+///
+/// @param self Pointer to talker_state_machine
+/// @param message_type ACMPDU Message type code to use
+/// @param response Pointer to all other ACMPDU parameters
+/// @param error ACMPDU Status code to use
+
+void jdksavdecc_acmp_talker_state_machine_tx_response(
         struct jdksavdecc_acmp_talker_state_machine *self,
         uint8_t message_type,
-        jdksavdecc_acmp_command_response const *response,
+        jdksavdecc_acmp_command_response *response,
         uint8_t error
         );
 

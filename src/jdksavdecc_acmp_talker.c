@@ -45,6 +45,7 @@ int jdksavdecc_acmp_talker_state_machine_init(
 {
     int r;
 
+    jdksavdecc_acmp_log( "jdksavdecc_acmp_talker_state_machine_init: %p", self );
     jdksavdecc_state_machine_init(&self->base,sender,tag,additional);
 
     self->base.destroy = jdksavdecc_acmp_talker_state_machine_destroy;
@@ -92,6 +93,7 @@ void jdksavdecc_acmp_talker_state_machine_destroy(
 {
     struct jdksavdecc_acmp_talker_state_machine *self = (struct jdksavdecc_acmp_talker_state_machine *)self_;
 
+    jdksavdecc_acmp_log("jdksavdecc_acmp_talker_state_machine_destroy: %p", self);
     jdksavdecc_state_machine_destroy( &self->base );
     memset(self,0,sizeof(*self));
 }
@@ -101,7 +103,11 @@ void jdksavdecc_acmp_talker_state_machine_tick(
         jdksavdecc_millisecond_time timestamp
         )
 {
+    // Forward to the base class tick method
     struct jdksavdecc_acmp_talker_state_machine *self = (struct jdksavdecc_acmp_talker_state_machine *)self_;
+
+    jdksavdecc_acmp_log("jdksavdecc_acmp_talker_state_machine_tick: %p", self);
+
     jdksavdecc_state_machine_tick(&self->base,timestamp);
 }
 
@@ -133,21 +139,31 @@ ssize_t jdksavdecc_acmp_talker_state_machine_rx_frame(
             r=jdksavdecc_acmpdu_read(acmpdu,rx_frame->payload,pos,rx_frame->length);
 
             // If the message type is one of the few we care about, then parse the frame and set the appropriate flags.
+            // Also set the do_early_tick flag so that the caller will immediatelly call our tick() method as immediate
+            // state machine processing is requested to handle the message
             if( r>0 && jdksavdecc_eui64_compare(&self->vars.my_id, &acmpdu->talker_entity_id )==0 )
             {
                 switch( acmpdu->header.message_type )
                 {
                 case JDKSAVDECC_ACMP_MESSAGE_TYPE_CONNECT_TX_COMMAND:
                     self->vars.rcvd_connect_tx = 1;
+                    self->base.do_early_tick = 1;
+                    jdksavdecc_acmp_log("jdksavdecc_acmp_talker_state_machine_rx_frame: %p CONNECT_TX_COMMAND", self);
                     break;
                 case JDKSAVDECC_ACMP_MESSAGE_TYPE_DISCONNECT_TX_COMMAND:
                     self->vars.rcvd_disconnect_tx = 1;
+                    self->base.do_early_tick = 1;
+                    jdksavdecc_acmp_log("jdksavdecc_acmp_talker_state_machine_rx_frame: %p DISCONNECT_TX_COMMAND", self);
                     break;
                 case JDKSAVDECC_ACMP_MESSAGE_TYPE_GET_TX_STATE_COMMAND:
                     self->vars.rcvd_get_tx_state = 1;
+                    self->base.do_early_tick = 1;
+                    jdksavdecc_acmp_log("jdksavdecc_acmp_talker_state_machine_rx_frame: %p GET_TX_STATE_COMMAND", self);
                     break;
                 case JDKSAVDECC_ACMP_MESSAGE_TYPE_GET_TX_CONNECTION_COMMAND:
                     self->vars.rcvd_get_tx_connection = 1;
+                    self->base.do_early_tick = 1;
+                    jdksavdecc_acmp_log("jdksavdecc_acmp_talker_state_machine_rx_frame: %p GET_TX_CONNECTION_COMMAND", self);
                     break;
                 default:
                     break;
@@ -163,7 +179,9 @@ void jdksavdecc_acmp_talker_state_machine_tx_frame(
         struct jdksavdecc_frame const *frame
         )
 {
+    // Forward to the base class method
     struct jdksavdecc_acmp_talker_state_machine *self = (struct jdksavdecc_acmp_talker_state_machine *)self_;
+    jdksavdecc_acmp_log("jdksavdecc_acmp_talker_state_machine_tx_frame: %p", self);
     jdksavdecc_state_machine_tx_frame(&self->base,frame);
 }
 
@@ -176,47 +194,47 @@ uint8_t jdksavdecc_acmp_talker_state_machine_valid_talker_unique(
     /* Override this method to validate the unique_id */
     (void)self;
     (void)talker_unique_id;
-    return JDKSAVDECC_ACMP_STATUS_SUCCESS;
+    jdksavdecc_acmp_log("jdksavdecc_acmp_talker_state_machine_valid_talker_unique: %p", self);
+    return JDKSAVDECC_ACMP_STATUS_TALKER_UNKNOWN_ID;
 }
 
 /// See Clause 8.2.2.6.2.2
 uint8_t jdksavdecc_acmp_talker_state_machine_connect_talker(
         struct jdksavdecc_acmp_talker_state_machine *self,
-        jdksavdecc_acmp_command_response *response,
-        struct jdksavdecc_acmpdu const *command
+        jdksavdecc_acmp_command_response *command_response
         )
 {
+    (void)self;
+    (void)command_response;
     /* Override this method to actually cause talker to connect */
-    return JDKSAVDECC_ACMP_STATUS_SUCCESS;
+    jdksavdecc_acmp_log("jdksavdecc_acmp_talker_state_machine_connect_talker: %p", self);
+    return JDKSAVDECC_ACMP_STATUS_TALKER_MISBEHAVING;
 }
 
 /// See Clause 8.2.2.6.2.3
-uint8_t jdksavdecc_acmp_talker_state_machine_tx_response(
+void jdksavdecc_acmp_talker_state_machine_tx_response(
         struct jdksavdecc_acmp_talker_state_machine *self,
         uint8_t message_type,
-        jdksavdecc_acmp_command_response const *respone,
+        jdksavdecc_acmp_command_response *command_response,
         uint8_t error
         );
 
 /// See Clause 8.2.2.6.2.4
 uint8_t jdksavdecc_acmp_talker_state_machine_disconnect_talker(
         struct jdksavdecc_acmp_talker_state_machine *self,
-        jdksavdecc_acmp_command_response *response,
-        struct jdksavdecc_acmpdu const *command
+        jdksavdecc_acmp_command_response *command_response
         );
 
 /// See Clause 8.2.2.6.2.5
 uint8_t jdksavdecc_acmp_talker_state_machine_get_state(
         struct jdksavdecc_acmp_talker_state_machine *self,
-        jdksavdecc_acmp_command_response *response,
-        struct jdksavdecc_acmpdu const *command
+        jdksavdecc_acmp_command_response *command_response
         );
 
 /// See Clause 8.2.2.6.2.5
 uint8_t jdksavdecc_acmp_talker_state_machine_get_connection(
         struct jdksavdecc_acmp_talker_state_machine *self,
-        jdksavdecc_acmp_command_response *response,
-        struct jdksavdecc_acmpdu const *command
+        jdksavdecc_acmp_command_response *command_response
         );
 
 /// See Clause 8.2.2.6.2.6
@@ -284,7 +302,7 @@ void jdksavdecc_acmp_talker_state_machine_goto_state_connect(
 
     if( error == JDKSAVDECC_ACMP_STATUS_SUCCESS )
     {
-        error = self->connect_talker( self, &self->vars.rcvd_cmd_resp, &self->vars.rcvd_cmd_resp );
+        error = self->connect_talker( self, &self->vars.rcvd_cmd_resp );
     }
 
     self->tx_response( self, JDKSAVDECC_ACMP_MESSAGE_TYPE_CONNECT_TX_RESPONSE, &self->vars.rcvd_cmd_resp, error );
@@ -310,7 +328,7 @@ void jdksavdecc_acmp_talker_state_machine_goto_state_disconnect(
 
     if( error == JDKSAVDECC_ACMP_STATUS_SUCCESS )
     {
-        error = self->disconnect_talker( self, &self->vars.rcvd_cmd_resp, &self->vars.rcvd_cmd_resp );
+        error = self->disconnect_talker( self, &self->vars.rcvd_cmd_resp );
     }
 
     self->tx_response( self, JDKSAVDECC_ACMP_MESSAGE_TYPE_DISCONNECT_TX_RESPONSE, &self->vars.rcvd_cmd_resp, error );
@@ -337,7 +355,7 @@ void jdksavdecc_acmp_talker_state_machine_goto_state_get_state(
 
     if( error == JDKSAVDECC_ACMP_STATUS_SUCCESS )
     {
-        error = self->disconnect_talker( self, &self->vars.rcvd_cmd_resp, &self->vars.rcvd_cmd_resp );
+        error = self->disconnect_talker( self, &self->vars.rcvd_cmd_resp );
     }
 
     self->tx_response( self, JDKSAVDECC_ACMP_MESSAGE_TYPE_GET_TX_STATE_RESPONSE, &self->vars.rcvd_cmd_resp, error );
@@ -363,7 +381,7 @@ void jdksavdecc_acmp_talker_state_machine_goto_state_get_connection(
 
     if( error == JDKSAVDECC_ACMP_STATUS_SUCCESS )
     {
-        error = self->get_connection( self, &self->vars.rcvd_cmd_resp, &self->vars.rcvd_cmd_resp );
+        error = self->get_connection( self, &self->vars.rcvd_cmd_resp );
     }
 
     self->tx_response( self, JDKSAVDECC_ACMP_MESSAGE_TYPE_GET_TX_CONNECTION_RESPONSE, &self->vars.rcvd_cmd_resp, error );
