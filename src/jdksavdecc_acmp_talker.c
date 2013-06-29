@@ -53,7 +53,6 @@ int jdksavdecc_acmp_talker_state_machine_init(
     self->base.rx_frame = jdksavdecc_acmp_talker_state_machine_rx_frame;
     self->base.tx_frame = jdksavdecc_acmp_talker_state_machine_tx_frame;
 
-    self->terminate = jdksavdecc_acmp_talker_state_machine_terminate;
     self->connect_talker = jdksavdecc_acmp_talker_state_machine_connect_talker;
     self->disconnect_talker = jdksavdecc_acmp_talker_state_machine_disconnect_talker;
     self->get_state = jdksavdecc_acmp_talker_state_machine_get_state;
@@ -74,7 +73,6 @@ int jdksavdecc_acmp_talker_state_machine_init(
     self->goto_get_state = jdksavdecc_acmp_talker_state_machine_goto_state_get_state;
     self->state_get_state = jdksavdecc_acmp_talker_state_machine_state_get_state;
 
-    self->vars.do_terminate = 0;
     self->vars.my_id = talker_entity_id;
 
     self->vars.rcvd_connect_tx = 0;
@@ -251,7 +249,7 @@ void jdksavdecc_acmp_talker_state_machine_tx_response(
     command_response->header.control_data_length = JDKSAVDECC_ACMPDU_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN;
 
     // Store the fields into the frame
-    output_frame.length = jdksavdecc_acmpdu_write(command_response,output_frame.payload, 0, sizeof(output_frame.payload) );
+    output_frame.length = (uint16_t)jdksavdecc_acmpdu_write(command_response,output_frame.payload, 0, sizeof(output_frame.payload) );
 
     if( output_frame.length>0 )
     {
@@ -362,7 +360,7 @@ void jdksavdecc_acmp_talker_state_machine_state_waiting(
         )
 {
     jdksavdecc_acmp_talker_log_enter();
-    if( self->vars.do_terminate )
+    if( self->base.terminated )
     {
         self->state = 0;
     }
@@ -408,7 +406,7 @@ void jdksavdecc_acmp_talker_state_machine_goto_state_connect(
         struct jdksavdecc_acmp_talker_state_machine *self
         )
 {
-    uint16_t error;
+    uint8_t error;
     jdksavdecc_acmp_talker_log_enter();
 
     error = self->valid_talker_unique( self, self->vars.rcvd_cmd_resp.talker_unique_id );
@@ -439,7 +437,7 @@ void jdksavdecc_acmp_talker_state_machine_goto_state_disconnect(
         struct jdksavdecc_acmp_talker_state_machine *self
         )
 {
-    uint16_t error;
+    uint8_t error;
     jdksavdecc_acmp_talker_log_enter();
     error = self->valid_talker_unique( self, self->vars.rcvd_cmd_resp.talker_unique_id );
 
@@ -470,7 +468,7 @@ void jdksavdecc_acmp_talker_state_machine_goto_state_get_state(
         struct jdksavdecc_acmp_talker_state_machine *self
         )
 {
-    uint16_t error;
+    uint8_t error;
     jdksavdecc_acmp_talker_log_enter();
     error = self->valid_talker_unique( self, self->vars.rcvd_cmd_resp.talker_unique_id );
 
@@ -500,7 +498,7 @@ void jdksavdecc_acmp_talker_state_machine_goto_state_get_connection(
         struct jdksavdecc_acmp_talker_state_machine *self
         )
 {
-    uint16_t error;
+    uint8_t error;
     jdksavdecc_acmp_talker_log_enter();
     error = self->valid_talker_unique( self, self->vars.rcvd_cmd_resp.talker_unique_id );
 

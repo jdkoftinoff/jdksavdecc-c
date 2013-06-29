@@ -74,6 +74,18 @@ void jdksavdecc_state_machines_destroy(
     }
 }
 
+
+void jdksavdecc_state_machines_terminate( struct jdksavdecc_state_machine *self_ )
+{
+    struct jdksavdecc_state_machines *self = (struct jdksavdecc_state_machines *)self_;
+    int i;
+    for( i=0; i<self->num_state_machines; ++i )
+    {
+        self->state_machines[i]->terminate( self->state_machines[i] );
+    }
+    jdksavdecc_state_machine_terminate( &self->base );
+}
+
 void jdksavdecc_state_machines_tick(
         struct jdksavdecc_state_machine *self_,
         jdksavdecc_millisecond_time timestamp

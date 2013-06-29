@@ -57,7 +57,6 @@ extern "C" {
 
 struct jdksavdecc_acmp_talker_state_machine_vars
 {
-    int do_terminate;
     struct jdksavdecc_eui64 my_id; /// See Clause 8.2.2.3.1
     jdksavdecc_acmp_command_response rcvd_cmd_resp; /// See Clause 8.2.2.3.2
     struct jdksavdecc_acmp_talker_stream_infos *talker_stream_infos; /// See Clause 8.2.2.6.1.1
@@ -90,11 +89,6 @@ struct jdksavdecc_acmp_talker_state_machine
 
     /// The current state procedure
     jdksavdecc_acmp_talker_state state;
-
-    /// Ask the state machine to terminate
-    void (*terminate)(
-            struct jdksavdecc_acmp_talker_state_machine *self
-            );
 
     /// Overridable Method that is called to validate a talker unique_id value
     uint8_t (*valid_talker_unique)(
@@ -228,16 +222,6 @@ void jdksavdecc_acmp_talker_state_machine_tx_frame(
         struct jdksavdecc_frame const *frame
         );
 
-/// Ask the state machine to terminate
-///
-/// @param self Pointer to talker_state_machine
-///
-void jdksavdecc_acmp_talker_state_machine_terminate(
-        struct jdksavdecc_acmp_talker_state_machine *self
-        )
-{
-    self->vars.do_terminate = 1;
-}
 
 /// Validate that a unique_id for the talker is valid
 ///

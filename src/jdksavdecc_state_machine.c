@@ -49,6 +49,7 @@ void jdksavdecc_state_machine_init(
     self->rx_frame = jdksavdecc_state_machine_rx_frame;
     self->tx_frame = jdksavdecc_state_machine_tx_frame;
     self->frame_sender = frame_sender;
+    self->terminated = 0;
     self->tag = tag;
     self->additional = additional;
     self->do_early_tick = 0;
@@ -58,6 +59,11 @@ void jdksavdecc_state_machine_destroy( struct jdksavdecc_state_machine *self )
 {
     // zero all fields
     memset(self,0,sizeof(*self));
+}
+
+void jdksavdecc_state_machine_terminate( struct jdksavdecc_state_machine *self )
+{
+    self->terminated = 1;
 }
 
 void jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp )

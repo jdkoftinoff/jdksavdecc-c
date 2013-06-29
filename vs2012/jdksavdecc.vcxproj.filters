@@ -135,6 +135,9 @@
     <ClInclude Include="..\include\jdksavdecc_test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\jdksavdecc_state_machine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\jdksavdecc.c">
@@ -249,6 +252,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\jdksavdecc_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\jdksavdecc_state_machine.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

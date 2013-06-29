@@ -49,6 +49,11 @@ struct jdksavdecc_state_machine
     /// Destructor
     void (*destroy)( struct jdksavdecc_state_machine *self );
 
+    /// Ask the state machine to terminate
+    void (*terminate)(
+            struct jdksavdecc_state_machine *self
+            );
+
     /// Time tick
     void (*tick)( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp );
 
@@ -60,6 +65,9 @@ struct jdksavdecc_state_machine
 
     /// Object to Transmit Frame with
     struct jdksavdecc_frame_sender *frame_sender;
+
+    /// flag to indicate that the state machine was asked to terminate
+    int terminated;
 
     /// Tag for additional identification
     uint32_t tag;
@@ -79,6 +87,7 @@ void jdksavdecc_state_machine_init(
         void *additional
         );
 void jdksavdecc_state_machine_destroy( struct jdksavdecc_state_machine *self );
+void jdksavdecc_state_machine_terminate( struct jdksavdecc_state_machine *self );
 void jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp );
 ssize_t jdksavdecc_state_machine_rx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 void jdksavdecc_state_machine_tx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame );

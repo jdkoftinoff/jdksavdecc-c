@@ -48,7 +48,13 @@ int jdksavdecc_test_run(
     jdksavdecc_pcapfile_reader_init(&reader);
     if( !jdksavdecc_pcapfile_reader_open(&reader, infile) )
     {
+#ifdef _MSC_VER
+        char buf[1024];
+        strerror_s(buf,sizeof(buf),errno);
+        fprintf(stderr,"Error %s reading file: %s\n", buf, infile );
+#else
         fprintf(stderr,"Error %s reading file: %s\n", strerror(errno), infile );
+#endif
         return 0;
     }
     reader.tick = tick;
@@ -56,7 +62,13 @@ int jdksavdecc_test_run(
     jdksavdecc_pcapfile_writer_init(&writer);
     if( !jdksavdecc_pcapfile_writer_open(&writer, outfile) )
     {
-        fprintf(stderr,"Error %s writing file: %s\n", strerror(errno), outfile );
+#ifdef _MSC_VER
+        char buf[1024];
+        strerror_s(buf,sizeof(buf),errno);
+        fprintf(stderr,"Error %s writing file: %s\n", buf, infile );
+#else
+        fprintf(stderr,"Error %s writing file: %s\n", strerror(errno), infile );
+#endif
         reader.close( &reader );
         return 0;
     }
