@@ -81,6 +81,10 @@
 		BF6607D8176528AA0054A850 /* jdksavdecc_descriptor_dispatch_print.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6607D0176528AA0054A850 /* jdksavdecc_descriptor_dispatch_print.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6607D9176528AA0054A850 /* jdksavdecc_maap_print.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6607D1176528AA0054A850 /* jdksavdecc_maap_print.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6607DA176528AA0054A850 /* jdksavdecc_pdu_dispatch_print.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6607D2176528AA0054A850 /* jdksavdecc_pdu_dispatch_print.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF6C9534177FA6B400FC2585 /* jdksavdecc_adp_advertising_entity.c in Sources */ = {isa = PBXBuildFile; fileRef = BF6C9532177FA6B400FC2585 /* jdksavdecc_adp_advertising_entity.c */; };
+		BF6C9535177FA6B400FC2585 /* jdksavdecc_adp_advertising_interface.c in Sources */ = {isa = PBXBuildFile; fileRef = BF6C9533177FA6B400FC2585 /* jdksavdecc_adp_advertising_interface.c */; };
+		BF6C9538177FA76F00FC2585 /* jdksavdecc_adp_advertising_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6C9536177FA76F00FC2585 /* jdksavdecc_adp_advertising_entity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF6C9539177FA76F00FC2585 /* jdksavdecc_adp_advertising_interface.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6C9537177FA76F00FC2585 /* jdksavdecc_adp_advertising_interface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6CF0DB1762865000A9FA28 /* jdksavdecc.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6CF0C41762865000A9FA28 /* jdksavdecc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6CF0DC1762865000A9FA28 /* jdksavdecc_acmp.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6CF0C51762865000A9FA28 /* jdksavdecc_acmp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6CF0DD1762865000A9FA28 /* jdksavdecc_acmp_controller.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6CF0C61762865000A9FA28 /* jdksavdecc_acmp_controller.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -480,6 +484,10 @@
 		BF6607D0176528AA0054A850 /* jdksavdecc_descriptor_dispatch_print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_descriptor_dispatch_print.h; sourceTree = "<group>"; };
 		BF6607D1176528AA0054A850 /* jdksavdecc_maap_print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_maap_print.h; sourceTree = "<group>"; };
 		BF6607D2176528AA0054A850 /* jdksavdecc_pdu_dispatch_print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_pdu_dispatch_print.h; sourceTree = "<group>"; };
+		BF6C9532177FA6B400FC2585 /* jdksavdecc_adp_advertising_entity.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jdksavdecc_adp_advertising_entity.c; sourceTree = "<group>"; };
+		BF6C9533177FA6B400FC2585 /* jdksavdecc_adp_advertising_interface.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jdksavdecc_adp_advertising_interface.c; sourceTree = "<group>"; };
+		BF6C9536177FA76F00FC2585 /* jdksavdecc_adp_advertising_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_adp_advertising_entity.h; sourceTree = "<group>"; };
+		BF6C9537177FA76F00FC2585 /* jdksavdecc_adp_advertising_interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_adp_advertising_interface.h; sourceTree = "<group>"; };
 		BF6CF0C41762865000A9FA28 /* jdksavdecc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc.h; sourceTree = "<group>"; };
 		BF6CF0C51762865000A9FA28 /* jdksavdecc_acmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_acmp.h; sourceTree = "<group>"; };
 		BF6CF0C61762865000A9FA28 /* jdksavdecc_acmp_controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_acmp_controller.h; sourceTree = "<group>"; };
@@ -709,6 +717,8 @@
 				BF6CF0C81762865000A9FA28 /* jdksavdecc_acmp_talker.h */,
 				BF6CF0C91762865000A9FA28 /* jdksavdecc_adp.h */,
 				BF6CF0CA1762865000A9FA28 /* jdksavdecc_adp_advertise.h */,
+				BF6C9536177FA76F00FC2585 /* jdksavdecc_adp_advertising_entity.h */,
+				BF6C9537177FA76F00FC2585 /* jdksavdecc_adp_advertising_interface.h */,
 				BF6CF0CB1762865000A9FA28 /* jdksavdecc_adp_discover.h */,
 				BF6607CC176528AA0054A850 /* jdksavdecc_adp_print.h */,
 				BF6CF0CC1762865000A9FA28 /* jdksavdecc_aecp.h */,
@@ -758,6 +768,8 @@
 				BF6CF0F71762867900A9FA28 /* jdksavdecc_acmp_talker.c */,
 				BF6CF0F81762867900A9FA28 /* jdksavdecc_adp.c */,
 				BF6CF0F91762867900A9FA28 /* jdksavdecc_adp_advertise.c */,
+				BF6C9532177FA6B400FC2585 /* jdksavdecc_adp_advertising_entity.c */,
+				BF6C9533177FA6B400FC2585 /* jdksavdecc_adp_advertising_interface.c */,
 				BF6CF0FA1762867900A9FA28 /* jdksavdecc_adp_discover.c */,
 				BF6607BC1765289C0054A850 /* jdksavdecc_adp_print.c */,
 				BF6CF0FB1762867900A9FA28 /* jdksavdecc_aecp.c */,
@@ -834,6 +846,8 @@
 				BF6CF0ED1762865000A9FA28 /* jdksavdecc_msinttypes.h in Headers */,
 				BF6CF0EE1762865000A9FA28 /* jdksavdecc_msstdint.h in Headers */,
 				BF6607B71765279D0054A850 /* jdksavdecc_pcapfile.h in Headers */,
+				BF6C9538177FA76F00FC2585 /* jdksavdecc_adp_advertising_entity.h in Headers */,
+				BF6C9539177FA76F00FC2585 /* jdksavdecc_adp_advertising_interface.h in Headers */,
 				BF6CF0EF1762865000A9FA28 /* jdksavdecc_pdu.h in Headers */,
 				BF6607BA1765279D0054A850 /* jdksavdecc_pdu_dispatch.h in Headers */,
 				BF6607DA176528AA0054A850 /* jdksavdecc_pdu_dispatch_print.h in Headers */,
@@ -1251,6 +1265,8 @@
 				BFAF5710176585E800E9B1A9 /* jdksavdecc_aecp_vendor.c in Sources */,
 				BFAF5711176585E800E9B1A9 /* jdksavdecc_state_machines.c in Sources */,
 				BFBB2F301767AB6600699546 /* jdksavdecc_test.c in Sources */,
+				BF6C9534177FA6B400FC2585 /* jdksavdecc_adp_advertising_entity.c in Sources */,
+				BF6C9535177FA6B400FC2585 /* jdksavdecc_adp_advertising_interface.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
