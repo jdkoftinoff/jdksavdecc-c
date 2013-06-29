@@ -81,6 +81,8 @@
     <ClInclude Include="..\include\jdksavdecc_acmp_talker.h" />
     <ClInclude Include="..\include\jdksavdecc_adp.h" />
     <ClInclude Include="..\include\jdksavdecc_adp_advertise.h" />
+    <ClInclude Include="..\include\jdksavdecc_adp_advertising_entity.h" />
+    <ClInclude Include="..\include\jdksavdecc_adp_advertising_interface.h" />
     <ClInclude Include="..\include\jdksavdecc_adp_discover.h" />
     <ClInclude Include="..\include\jdksavdecc_adp_print.h" />
     <ClInclude Include="..\include\jdksavdecc_aecp.h" />
@@ -124,6 +126,8 @@
     <ClCompile Include="..\src\jdksavdecc_acmp_talker.c" />
     <ClCompile Include="..\src\jdksavdecc_adp.c" />
     <ClCompile Include="..\src\jdksavdecc_adp_advertise.c" />
+    <ClCompile Include="..\src\jdksavdecc_adp_advertising_entity.c" />
+    <ClCompile Include="..\src\jdksavdecc_adp_advertising_interface.c" />
     <ClCompile Include="..\src\jdksavdecc_adp_discover.c" />
     <ClCompile Include="..\src\jdksavdecc_adp_print.c" />
     <ClCompile Include="..\src\jdksavdecc_aecp.c" />

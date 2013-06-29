@@ -138,6 +138,12 @@
     <ClInclude Include="..\include\jdksavdecc_state_machine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\jdksavdecc_adp_advertising_entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\jdksavdecc_adp_advertising_interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\jdksavdecc.c">
@@ -255,6 +261,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\jdksavdecc_state_machine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\jdksavdecc_adp_advertising_entity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\jdksavdecc_adp_advertising_interface.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
