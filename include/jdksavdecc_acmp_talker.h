@@ -194,8 +194,8 @@ void jdksavdecc_acmp_talker_state_machine_destroy(
 ///
 /// @param self Pointer to state_machine base class
 /// @param timestamp millisecond_time current time
-/// @returns void
-void jdksavdecc_acmp_talker_state_machine_tick(
+/// @returns integer 0 on success, -1 on state machine terminated
+int jdksavdecc_acmp_talker_state_machine_tick(
         struct jdksavdecc_state_machine *self,
         jdksavdecc_millisecond_time timestamp
         );

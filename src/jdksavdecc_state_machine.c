@@ -66,13 +66,22 @@ void jdksavdecc_state_machine_terminate( struct jdksavdecc_state_machine *self )
     self->terminated = 1;
 }
 
-void jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp )
+int jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp )
 {
     // default is to ignore ticks
     (void)timestamp;
 
     // Reset the flag to trigger an early tick
     self->do_early_tick = 0;
+
+    if( self->terminated )
+    {
+        return -1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 ssize_t jdksavdecc_state_machine_rx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos )

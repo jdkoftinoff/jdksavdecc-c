@@ -99,18 +99,30 @@ void jdksavdecc_acmp_talker_state_machine_destroy(
     memset(self,0,sizeof(*self));
 }
 
-void jdksavdecc_acmp_talker_state_machine_tick(
+int jdksavdecc_acmp_talker_state_machine_tick(
         struct jdksavdecc_state_machine *self_,
         jdksavdecc_millisecond_time timestamp
         )
 {
+    int r=0;
     // Forward to the base class tick method
     struct jdksavdecc_acmp_talker_state_machine *self = (struct jdksavdecc_acmp_talker_state_machine *)self_;
 
     jdksavdecc_acmp_talker_log_enter();
 
-    jdksavdecc_state_machine_tick(&self->base,timestamp);
+    if( jdksavdecc_state_machine_tick(&self->base,timestamp)==0 )
+    {
+        if( self->state )
+        {
+            self->state( self );
+        }
+        else
+        {
+            r=-1;
+        }
+    }
     jdksavdecc_acmp_talker_log_exit();
+    return r;
 }
 
 ssize_t jdksavdecc_acmp_talker_state_machine_rx_frame(

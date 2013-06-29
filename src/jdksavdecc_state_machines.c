@@ -79,23 +79,46 @@ void jdksavdecc_state_machines_terminate( struct jdksavdecc_state_machine *self_
 {
     struct jdksavdecc_state_machines *self = (struct jdksavdecc_state_machines *)self_;
     int i;
+    // Tell all sub state machines to terminate and wait for them to terminate before stopping
     for( i=0; i<self->num_state_machines; ++i )
     {
         self->state_machines[i]->terminate( self->state_machines[i] );
     }
-    jdksavdecc_state_machine_terminate( &self->base );
 }
 
-void jdksavdecc_state_machines_tick(
+int jdksavdecc_state_machines_tick(
         struct jdksavdecc_state_machine *self_,
         jdksavdecc_millisecond_time timestamp
         )
 {
     struct jdksavdecc_state_machines *self = (struct jdksavdecc_state_machines *)self_;
     int i;
-    for( i=0; i<self->num_state_machines; ++i )
+
+    // Try run the base class tick. Continue with our tick if it is not terminated
+    if( jdksavdecc_state_machine_tick( &self->base, timestamp )==0 )
     {
-        self->state_machines[i]->tick( self->state_machines[i], timestamp );
+        // Run tick on all sub state machines. Keep track of how many sub state machines are terminated
+        int num_state_machines_ended=0;
+        for( i=0; i<self->num_state_machines; ++i )
+        {
+            // Run the sub state machine tick
+            if( self->state_machines[i]->tick( self->state_machines[i], timestamp )!=0 )
+            {
+                // It was terminated, so count it
+                num_state_machines_ended++;
+            }
+        }
+        // Did all of our sub state machines terminate?
+        if( num_state_machines_ended==self->num_state_machines )
+        {
+            // Yes, then we really are terminated
+            self->base.terminated = 1;
+        }
+        return 0;
+    }
+    else
+    {
+        return -1;
     }
 }
 
