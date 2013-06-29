@@ -59,16 +59,23 @@
 #endif
 
 #ifndef JDKSAVDECC_ENABLE_LOG
-# define JDKAVDECC_ENABLE_LOG (1)
+# define JDKSAVDECC_ENABLE_LOG (1)
+#endif
+
+
+#ifndef JDKSAVDECC_LOG_PREFIX
+# define JDKSAVDECC_LOG_PREFIX ""
 #endif
 
 #if JDKSAVDECC_ENABLE_LOG
-#ifndef jdksavdecc_log
-# define jdksavdecc_log(fmt,...) printf(fmt ## "\n", ... )
-#endif
+# ifndef jdksavdecc_do_log
+#  define jdksavdecc_do_log(prefix,fmt,...) fprintf(stderr,prefix # fmt "\n", __VA_ARGS__ )
+# endif
 #else
-# define jdksavdecc_log(fmt,...)
+# define jdksavdecc_do_log(prefix,fmt)
 #endif
+
+#define jdksavdecc_log(fmt,...) jdksavdecc_do_log(JDKSAVDECC_LOG_PREFIX,fmt,JDKSAVDECC_LOG_SUFFIX, __VA_ARGS__ )
 
 #endif
 

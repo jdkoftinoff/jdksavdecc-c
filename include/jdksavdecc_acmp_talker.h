@@ -44,6 +44,17 @@ extern "C" {
 /** \addtogroup acmp_talker ACMPDU Talker State Machine - Clause 8.2.2.6 */
 /*@{*/
 
+#ifndef jdksavdecc_acmp_talker_log
+# define jdksavdecc_acmp_talker_log(fmt, ...) jdksavdecc_do_log("ACMP Talker:%p:%s:",fmt, self, __FUNCTION__, __VA_ARGS__ )
+#endif
+#ifndef jdksavdecc_acmp_talker_log_enter
+# define jdksavdecc_acmp_talker_log_enter() jdksavdecc_do_log("ACMP Talker:%p:%s:","%s", self, __FUNCTION__, "Enter" )
+#endif
+#ifndef jdksavdecc_acmp_talker_log_exit
+# define jdksavdecc_acmp_talker_log_exit() jdksavdecc_acmp_talker_log("%s","Exit")
+#endif
+
+
 struct jdksavdecc_acmp_talker_state_machine_vars
 {
     int do_terminate;
@@ -79,6 +90,11 @@ struct jdksavdecc_acmp_talker_state_machine
 
     /// The current state procedure
     jdksavdecc_acmp_talker_state state;
+
+    /// Ask the state machine to terminate
+    void (*terminate)(
+            struct jdksavdecc_acmp_talker_state_machine *self
+            );
 
     /// Overridable Method that is called to validate a talker unique_id value
     uint8_t (*valid_talker_unique)(
@@ -212,6 +228,17 @@ void jdksavdecc_acmp_talker_state_machine_tx_frame(
         struct jdksavdecc_frame const *frame
         );
 
+/// Ask the state machine to terminate
+///
+/// @param self Pointer to talker_state_machine
+///
+void jdksavdecc_acmp_talker_state_machine_terminate(
+        struct jdksavdecc_acmp_talker_state_machine *self
+        )
+{
+    self->vars.do_terminate = 1;
+}
+
 /// Validate that a unique_id for the talker is valid
 ///
 /// See Clause 8.2.2.6.2.1
@@ -246,7 +273,6 @@ uint8_t jdksavdecc_acmp_talker_state_machine_connect_talker(
 /// @param message_type ACMPDU Message type code to use
 /// @param response Pointer to all other ACMPDU parameters
 /// @param error ACMPDU Status code to use
-
 void jdksavdecc_acmp_talker_state_machine_tx_response(
         struct jdksavdecc_acmp_talker_state_machine *self,
         uint8_t message_type,
@@ -254,72 +280,131 @@ void jdksavdecc_acmp_talker_state_machine_tx_response(
         uint8_t error
         );
 
+/// Actually perform a disconnect of the talker
+///
 /// See Clause 8.2.2.6.2.4
+///
+/// @param self Pointer to talker_state_machine
+/// @param command_and_response the current command that triggered this.
+///        The appropriate additional fields will be filled in.
+/// @returns ACMP Message status value
 uint8_t jdksavdecc_acmp_talker_state_machine_disconnect_talker(
         struct jdksavdecc_acmp_talker_state_machine *self,
         struct jdksavdecc_acmpdu *command_and_response
         );
 
+/// Actually perform a get state command and fill in the response
+///
 /// See Clause 8.2.2.6.2.5
+///
+/// @param self Pointer to talker_state_machine
+/// @param command_and_response the current command that triggered this.
+///        The appropriate additional fields will be filled in.
+/// @returns ACMP Message status value
 uint8_t jdksavdecc_acmp_talker_state_machine_get_state(
         struct jdksavdecc_acmp_talker_state_machine *self,
         struct jdksavdecc_acmpdu *command_and_response
         );
 
-
+/// Actually perform a get connection command.
+///
 /// See Clause 8.2.2.6.2.6
+///
+/// @param self Pointer to talker_state_machine
+/// @param command_and_response the current command that triggered this.
+///        The appropriate additional fields will be filled in.
+/// @returns ACMP Message status value
 uint8_t jdksavdecc_acmp_talker_state_machine_get_connection(
         struct jdksavdecc_acmp_talker_state_machine *self,
         struct jdksavdecc_acmpdu *command_and_response
         );
 
+/// Do the actions that are necessary when transitioning into the WAITING state.
+///
 /// See Clause 8.2.2.6.3
+///
+/// @param self Pointer to talker_state_machine
 void jdksavdecc_acmp_talker_state_machine_goto_state_waiting(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
+/// Do any decisions that are necessary while in the WAITING state
+///
 /// See Clause 8.2.2.6.3
+///
+/// @param self Pointer to talker_state_machine
 void jdksavdecc_acmp_talker_state_machine_state_waiting(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
+/// Do the actions that are necessary when transitioning into the CONNECT state.
+///
 /// See Clause 8.2.2.6.3
+///
+/// @param self Pointer to talker_state_machine
 void jdksavdecc_acmp_talker_state_machine_goto_state_connect(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
+/// Do any decisions that are necessary while in the CONNECT state
+///
 /// See Clause 8.2.2.6.3
+///
+/// @param self Pointer to talker_state_machine
 void jdksavdecc_acmp_talker_state_machine_state_connect(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
+/// Do the actions that are necessary when transitioning into the DISCONNECT state.
+///
 /// See Clause 8.2.2.6.3
+///
+/// @param self Pointer to talker_state_machine
 void jdksavdecc_acmp_talker_state_machine_goto_state_disconnect(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
+/// Do any decisions that are necessary while in the DISCONNECT state
+///
 /// See Clause 8.2.2.6.3
+///
+/// @param self Pointer to talker_state_machine
 void jdksavdecc_acmp_talker_state_machine_state_disconnect(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
-
+/// Do the actions that are necessary when transitioning into the GET_STATE state.
+///
 /// See Clause 8.2.2.6.3
+///
+/// @param self Pointer to talker_state_machine
 void jdksavdecc_acmp_talker_state_machine_goto_state_get_state(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
+/// Do any decisions that are necessary while in the GET_STATE state
+///
 /// See Clause 8.2.2.6.3
+///
+/// @param self Pointer to talker_state_machine
 void jdksavdecc_acmp_talker_state_machine_state_get_state(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
+/// Do the actions that are necessary when transitioning into the GET_CONNECTION state.
+///
 /// See Clause 8.2.2.6.3
+///
+/// @param self Pointer to talker_state_machine
 void jdksavdecc_acmp_talker_state_machine_goto_state_get_connection(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
 
+/// Do any decisions that are necessary while in the GET_CONNECTION state
+///
 /// See Clause 8.2.2.6.3
+///
+/// @param self Pointer to talker_state_machine
 void jdksavdecc_acmp_talker_state_machine_state_get_connection(
         struct jdksavdecc_acmp_talker_state_machine *self
         );
