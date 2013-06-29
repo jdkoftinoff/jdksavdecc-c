@@ -1,7 +1,4 @@
-#pragma once
-#ifndef JDKSAVDECC_ADP_ADVERTISE_H
-#define JDKSAVDECC_ADP_ADVERTISE_H
-
+  
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -33,20 +30,8 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
+
 #include "jdksavdecc_world.h"
-#include "jdksavdecc_adp_advertising_entity.h"
 #include "jdksavdecc_adp_advertising_interface.h"
 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif
-
+char const *jdksavdecc_adp_advertising_interface_file = __FILE__;
