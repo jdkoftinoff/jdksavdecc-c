@@ -44,14 +44,22 @@ extern "C" {
 /** \addtogroup acmp_talker ACMPDU Talker State Machine - Clause 8.2.2.6 */
 /*@{*/
 
-#ifndef jdksavdecc_acmp_talker_log
-# define jdksavdecc_acmp_talker_log(fmt, ...) jdksavdecc_do_log("ACMP Talker:%p:%s:",fmt, self, __FUNCTION__, __VA_ARGS__ )
+#ifndef JDKSAVDECC_ACMP_TALKER_ENABLE_LOG
+# define JDKSAVDECC_ACMP_TALKER_ENABLE_LOG (1)
 #endif
-#ifndef jdksavdecc_acmp_talker_log_enter
-# define jdksavdecc_acmp_talker_log_enter() jdksavdecc_do_log("ACMP Talker:%p:%s:","%s", self, __FUNCTION__, "Enter" )
-#endif
-#ifndef jdksavdecc_acmp_talker_log_exit
-# define jdksavdecc_acmp_talker_log_exit() jdksavdecc_acmp_talker_log("%s","Exit")
+
+#if JDKSAVDECC_ACMP_TALKER_ENABLE_LOG
+# define jdksavdecc_acmp_talker_log(fmt, ...) jdksavdecc_do_log("jdksavdecc_acmp_talker_state_machine:%p:%s:",fmt, self, __FUNCTION__, ## __VA_ARGS__ )
+# ifndef jdksavdecc_acmp_talker_log_enter
+#  define jdksavdecc_acmp_talker_log_enter() jdksavdecc_acmp_talker_log("Enter")
+# endif
+# ifndef jdksavdecc_acmp_talker_log_exit
+#  define jdksavdecc_acmp_talker_log_exit() jdksavdecc_acmp_talker_log("Exit")
+# endif
+#else
+# define jdksavdecc_acmp_talker_log(fmt, ...)
+# define jdksavdecc_acmp_talker_log_enter()
+# define jdksavdecc_acmp_talker_log_exit()
 #endif
 
 

@@ -40,6 +40,29 @@
 extern "C" {
 #endif
 
+/** \addtogroup state_machines jdksavdecc_state_machines - A collection of jdksavdecc_state_machine objects */
+/*@{*/
+
+
+#ifndef JDKSAVDECC_STATE_MACHINES_ENABLE_LOG
+# define JDKSAVDECC_STATE_MACHINES_ENABLE_LOG (1)
+#endif
+
+#if JDKSAVDECC_STATE_MACHINES_ENABLE_LOG
+# define jdksavdecc_state_machines_log(fmt, ...) jdksavdecc_do_log("jdksavdecc_state_machines:%p:%s:",fmt, self, __FUNCTION__, ## __VA_ARGS__ )
+# ifndef jdksavdecc_state_machines_log_enter
+#  define jdksavdecc_state_machines_log_enter() jdksavdecc_state_machines_log("Enter")
+# endif
+# ifndef jdksavdecc_state_machines_log_exit
+#  define jdksavdecc_state_machines_log_exit() jdksavdecc_state_machines_log("Exit")
+# endif
+#else
+# define jdksavdecc_state_machines_log(fmt, ...)
+# define jdksavdecc_state_machines_log_enter()
+# define jdksavdecc_state_machines_log_exit()
+#endif
+
+
 struct jdksavdecc_state_machines
 {
     struct jdksavdecc_state_machine base;
@@ -85,6 +108,8 @@ int jdksavdecc_state_machines_add_state_machine(
         struct jdksavdecc_state_machines *self,
         struct jdksavdecc_state_machine *s
         );
+
+/*@}*/
 
 #ifdef __cplusplus
 }

@@ -43,6 +43,25 @@ extern "C" {
 /** \addtogroup state_machine State Machine Base Interface */
 /*@{*/
 
+#ifndef JDKSAVDECC_STATE_MACHINE_ENABLE_LOG
+# define JDKSAVDECC_STATE_MACHINE_ENABLE_LOG (1)
+#endif
+
+#if JDKSAVDECC_STATE_MACHINE_ENABLE_LOG
+# define jdksavdecc_state_machine_log(fmt, ...) jdksavdecc_do_log("jdksavdecc_state_machine:%p:%s:",fmt, self, __FUNCTION__, ## __VA_ARGS__ )
+# ifndef jdksavdecc_state_machine_log_enter
+#  define jdksavdecc_state_machine_log_enter() jdksavdecc_state_machine_log("Enter")
+# endif
+# ifndef jdksavdecc_state_machine_log_exit
+#  define jdksavdecc_state_machine_log_exit() jdksavdecc_state_machine_log("Exit")
+# endif
+#else
+# define jdksavdecc_state_machine_log(fmt, ...)
+# define jdksavdecc_state_machine_log_enter()
+# define jdksavdecc_state_machine_log_exit()
+#endif
+
+
 /// Common base class for state machines
 struct jdksavdecc_state_machine
 {
