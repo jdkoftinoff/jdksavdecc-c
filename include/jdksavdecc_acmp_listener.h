@@ -41,6 +41,24 @@
 extern "C" {
 #endif
 
+#ifndef JDKSAVDECC_ACMP_LISTENER_ENABLE_LOG
+# define JDKSAVDECC_ACMP_LISTENER_ENABLE_LOG (1)
+#endif
+
+#if JDKSAVDECC_ACMP_LISTENER_ENABLE_LOG
+# define jdksavdecc_acmp_listener_log(fmt, ...) jdksavdecc_do_log("jdksavdecc_acmp_listener_state_machine:%p:%s:",fmt, self, __FUNCTION__, ## __VA_ARGS__ )
+# ifndef jdksavdecc_acmp_listener_log_enter
+#  define jdksavdecc_acmp_listener_log_enter() jdksavdecc_acmp_listener_log("Enter")
+# endif
+# ifndef jdksavdecc_acmp_listener_log_exit
+#  define jdksavdecc_acmp_listener_log_exit() jdksavdecc_acmp_listener_log("Exit")
+# endif
+#else
+# define jdksavdecc_acmp_listener_log(fmt, ...)
+# define jdksavdecc_acmp_listener_log_enter()
+# define jdksavdecc_acmp_listener_log_exit()
+#endif
+
 /** \addtogroup acmp_listener ACMPDU Listener State Machine - Clause 8.2.2.5 */
 /*@{*/
 
@@ -58,7 +76,6 @@ void jdksavdecc_acmp_listener_state_machine_init(
         uint32_t tag,
         void *additional
         );
-
 
 void jdksavdecc_acmp_listener_state_machine_destroy(
         struct jdksavdecc_state_machine *self
