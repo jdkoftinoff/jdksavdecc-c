@@ -692,6 +692,7 @@ int jdksavdecc_acmp_talker_stream_infos_init(
         uint16_t stream_vlan_id
         );
 
+/*@}*/
 
 
 #ifdef __cplusplus

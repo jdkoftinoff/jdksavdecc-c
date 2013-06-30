@@ -37,7 +37,7 @@
 /// Initialize the ADP Advertising Entity State Machine
 ///
 /// @param self Pointer to jdksavdecc_adp_advertising_interface_state_machine to initialize
-/// @param entity_info Pointer to jdksavdecc_entity object representing the entity
+/// @param global Pointer to jdksavdecc_adp_advertising_global_vars object representing the entity global variables
 /// @param tag uint32_t general purpose tag value for high level use
 /// @param additional void * general purpose pointer for high level use
 /// @returns 0 on success
@@ -83,7 +83,7 @@ int jdksavdecc_adp_advertising_entity_state_machine_init(
 
 /// Destroy the state machine. Frees any allocated data
 ///
-/// @param self Pointer to state_machine base class
+/// @param self Pointer to jdksavdecc_state_machine base
 /// @returns void
 ///
 void jdksavdecc_adp_advertising_entity_state_machine_destroy(
@@ -97,8 +97,8 @@ void jdksavdecc_adp_advertising_entity_state_machine_destroy(
 
 /// Run the state machine current state
 ///
-/// @param self Pointer to state_machine base class
-/// @param timestamp millisecond_time current time
+/// @param self_ Pointer to state_machine base class
+/// @param timestamp jdksavdecc_millisecond_time current time
 /// @returns integer 0 on success, -1 on state machine terminated
 ///
 int jdksavdecc_advertising_entity_state_machine_tick(

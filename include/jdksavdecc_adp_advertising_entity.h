@@ -43,7 +43,7 @@
 extern "C" {
 #endif
 
-/** \addtogroup adp_advertise ADP Advertising Entity State Machine - Clause 6.2.4 */
+/** \addtogroup adp_advertise_entity ADP Advertising Entity State Machine - Clause 6.2.4 */
 /*@{*/
 
 #ifndef JDKSAVDECC_ADP_ADVERTISING_ENTITY_ENABLE_LOG
