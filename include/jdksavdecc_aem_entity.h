@@ -34,6 +34,7 @@
 */
 
 #include "jdksavdecc_world.h"
+#include "jdksavdecc_adp.h"
 #include "jdksavdecc_aecp_aem.h"
 #include "jdksavdecc_aem_command.h"
 #include "jdksavdecc_aem_descriptor.h"
@@ -41,6 +42,13 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+struct jdksavdecc_entity_info
+{
+    struct jdksavdecc_adpdu advertising_info;
+    uint16_t num_interfaces;
+    // TODO
+};
 
 /// @todo aem_entity_state_machine
 struct jdksavdecc_aem_entity_state_machine

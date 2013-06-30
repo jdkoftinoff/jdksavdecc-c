@@ -68,7 +68,7 @@ extern "C" {
 struct jdksavdecc_adp_advertising_global_vars
 {
     jdksavdecc_millisecond_time current_time;
-    struct jdksavdecc_entity *entity_info;
+    struct jdksavdecc_entity_info *entity_info;
 };
 
 /// See Clause 6.2.4.1
@@ -97,6 +97,7 @@ typedef void (*jdksavdecc_adp_advertising_entity_state_transition)(
         );
 
 
+/// See Clause 6.2.4
 struct jdksavdecc_adp_advertising_entity_state_machine
 {
     /// Base class for a state machine
@@ -140,14 +141,14 @@ struct jdksavdecc_adp_advertising_entity_state_machine
 /// Initialize the ADP Advertising Entity State Machine
 ///
 /// @param self Pointer to jdksavdecc_adp_advertising_interface_state_machine to initialize
-/// @param entity_info Pointer to jdksavdecc_entity object representing the entity
+/// @param global Pointer to jdksavdecc_adp_advertising_global_vars object representing the entity
 /// @param tag uint32_t general purpose tag value for high level use
 /// @param additional void * general purpose pointer for high level use
 /// @returns 0 on success
 ///
 int jdksavdecc_adp_advertising_entity_state_machine_init(
         struct jdksavdecc_adp_advertising_entity_state_machine *self,
-        struct jdksavdecc_entity *entity_info,
+        struct jdksavdecc_adp_advertising_global_vars *global,
         uint32_t tag,
         void *additional
         );
@@ -157,7 +158,7 @@ int jdksavdecc_adp_advertising_entity_state_machine_init(
 /// @param self Pointer to state_machine base class
 /// @returns void
 ///
-void jdksavdecc_adp_advertising_interface_state_machine_destroy(
+void jdksavdecc_adp_advertising_entity_state_machine_destroy(
         struct jdksavdecc_state_machine *self
         );
 
@@ -167,22 +168,9 @@ void jdksavdecc_adp_advertising_interface_state_machine_destroy(
 /// @param timestamp millisecond_time current time
 /// @returns integer 0 on success, -1 on state machine terminated
 ///
-int jdksavdecc_advertising_interface_state_machine_tick(
+int jdksavdecc_adp_advertising_entity_state_machine_tick(
         struct jdksavdecc_state_machine *self,
         jdksavdecc_millisecond_time timestamp
-        );
-
-/// Tell the state machine that an ethernet frame was received
-///
-/// @param self Pointer to state_machine base class
-/// @param rx_frame The frame that received
-/// @param pos The starting position of the message within the frame
-/// @returns ssize_t byte position that the message was parsed up to; 0 for none, or -1 for other error
-///
-ssize_t jdksavdecc_advertising_interface_state_machine_rx_frame(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame *rx_frame,
-        size_t pos
         );
 
 /// trigger all advertise interface state machines to send an advertise
