@@ -41,6 +41,15 @@ extern "C" {
 #endif
 
 
+/** \addtogroup adp ADP Message Types - Clause 6.2.1.5 */
+/*@{*/
+#define JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_AVAILABLE (0)
+#define JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_DEPARTING (1)
+#define JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_DISCOVER (2)
+
+/*@}*/
+
+
 /** \addtogroup adpdu ADPDU - Clause 6.2.1 */
 /*@{*/
 
