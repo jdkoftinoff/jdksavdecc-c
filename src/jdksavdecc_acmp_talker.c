@@ -147,7 +147,8 @@ ssize_t jdksavdecc_acmp_talker_state_machine_rx_frame(
                 && header.cd == 1
                 && header.subtype == JDKSAVDECC_SUBTYPE_ACMP
                 && header.version == 0
-                && header.status == JDKSAVDECC_ACMP_STATUS_SUCCESS )
+                && header.status == JDKSAVDECC_ACMP_STATUS_SUCCESS
+                && header.control_data_length >= (JDKSAVDECC_ACMPDU_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN) )
         {
             // Okay, read the entire acmpdu into rcvd_cmd_resp
             struct jdksavdecc_acmpdu *acmpdu = &self->vars.rcvd_cmd_resp;
