@@ -46,7 +46,9 @@ extern "C" {
 struct jdksavdecc_entity_info
 {
     struct jdksavdecc_adpdu advertising_info;
+    void (*send_advertise_on_all_interfaces)(struct jdksavdecc_entity_info *);
     uint16_t num_interfaces;
+    struct jdksavdecc_adp_advertising_interface_state_machine *interfaces;
     // TODO
 };
 
