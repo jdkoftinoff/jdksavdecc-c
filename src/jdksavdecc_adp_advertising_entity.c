@@ -74,7 +74,7 @@ int jdksavdecc_adp_advertising_entity_state_machine_init(
 
     self->state = self->state_initialize;
 
-    // Go to the initialize state
+    // Go to the initialize state immediately
     self->goto_initialize( self );
 
     jdksavdecc_adp_advertising_entity_log_exit();
@@ -136,7 +136,8 @@ void jdksavdecc_adp_advertising_entity_state_machine_send_available(
         )
 {
     jdksavdecc_adp_advertising_entity_log_enter();
-
+    struct jdksavdecc_entity_info *entity_info = self->vars.global->entity_info;
+    entity_info->send_advertise_on_all_interfaces( entity_info );
     jdksavdecc_adp_advertising_entity_log_exit();
 }
 
@@ -152,6 +153,8 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_initialize(
 {
     jdksavdecc_adp_advertising_entity_log_enter();
 
+    self->state = self->state_initialize;
+
     jdksavdecc_adp_advertising_entity_log_exit();
 }
 
@@ -166,6 +169,9 @@ void jdksavdecc_adp_advertising_entity_state_machine_state_initialize(
         )
 {
     jdksavdecc_adp_advertising_entity_log_enter();
+    self->vars.global->entity_info->advertising_info.available_index = 0;
+
+    self->goto_advertise( self );
 
     jdksavdecc_adp_advertising_entity_log_exit();
 }
@@ -181,6 +187,19 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_advertise(
         )
 {
     jdksavdecc_adp_advertising_entity_log_enter();
+    jdksavdecc_millisecond_time delta;
+
+    self->send_available( self );
+
+    delta = self->vars.global->entity_info->advertising_info.header.valid_time / 4;
+    if( delta<1 )
+    {
+        delta=1;
+    }
+    self->vars.reannounce_timer_timeout = self->vars.global->current_time + (delta*1000);
+    self->vars.needs_advertise = 0;
+
+    self->goto_waiting( self );
 
     jdksavdecc_adp_advertising_entity_log_exit();
 }
@@ -197,6 +216,8 @@ void jdksavdecc_adp_advertising_entity_state_machine_state_advertise(
 {
     jdksavdecc_adp_advertising_entity_log_enter();
 
+    self->goto_waiting(self);
+
     jdksavdecc_adp_advertising_entity_log_exit();
 }
 
@@ -212,6 +233,8 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_waiting(
 {
     jdksavdecc_adp_advertising_entity_log_enter();
 
+    self->vars.global->entity_info->advertising_info.available_index++;
+
     jdksavdecc_adp_advertising_entity_log_exit();
 }
 
@@ -226,6 +249,11 @@ void jdksavdecc_adp_advertising_entity_state_machine_state_waiting(
         )
 {
     jdksavdecc_adp_advertising_entity_log_enter();
+
+    if( self->vars.global->current_time >= self->vars.reannounce_timer_timeout )
+    {
+        self->goto_advertise(self);
+    }
 
     jdksavdecc_adp_advertising_entity_log_exit();
 }
