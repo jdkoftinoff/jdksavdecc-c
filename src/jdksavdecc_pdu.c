@@ -119,7 +119,7 @@ ssize_t jdksavdecc_frame_read( struct jdksavdecc_frame *p, void const *base, ssi
 
 		if( r>=0 )
 		{
-			p->length = len-payload_offset;
+            p->length = (uint16_t)(len-payload_offset);
 			memcpy( p->payload, ((uint8_t*)base) + pos + payload_offset,p->length );
 			r=len;
 		}

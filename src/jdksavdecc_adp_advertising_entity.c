@@ -135,8 +135,9 @@ void jdksavdecc_adp_advertising_entity_state_machine_send_available(
         struct jdksavdecc_adp_advertising_entity_state_machine *self
         )
 {
+    struct jdksavdecc_entity_info *entity_info;
     jdksavdecc_adp_advertising_entity_log_enter();
-    struct jdksavdecc_entity_info *entity_info = self->vars.global->entity_info;
+    entity_info = self->vars.global->entity_info;
     entity_info->send_advertise_on_all_interfaces( entity_info );
     jdksavdecc_adp_advertising_entity_log_exit();
 }
@@ -186,8 +187,8 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_advertise(
         struct jdksavdecc_adp_advertising_entity_state_machine *self
         )
 {
-    jdksavdecc_adp_advertising_entity_log_enter();
     jdksavdecc_millisecond_time delta;
+    jdksavdecc_adp_advertising_entity_log_enter();
 
     self->send_available( self );
 
