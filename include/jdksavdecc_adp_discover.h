@@ -36,6 +36,7 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_util.h"
 #include "jdksavdecc_adp.h"
+#include "jdksavdecc_state_machine.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -49,13 +50,38 @@ struct jdksavdecc_adp_discovery_entity_info
     struct jdksavdecc_adpdu adpdu;
 };
 
+void jdksavdecc_adp_discovery_entity_info_init( struct jdksavdecc_adp_discovery_entity_info *self );
+
 /// See Clause 6.2.6.1.7
 struct jdksavdecc_adp_discovery_db
 {
-    struct jdksavdecc_adp_discovery_entity_info entity_info;
-    struct jdksavdecc_adp_discovery_db *prev;
-    struct jdksavdecc_adp_discovery_db *next;
+    void (*destroy)( struct jdksavdecc_adp_discovery_db * );
+    int (*add)( struct jdksavdecc_adp_discovery_db *self, struct jdksavdecc_adp_discovery_entity_info *info );
+    int (*remove)( struct jdksavdecc_adp_discovery_db *self, struct jdksavdecc_eui48 entity_mac );
+
+    void (*entity_info_init)( struct jdksavdecc_adp_discovery_db *self, struct jdksavdecc_adp_discovery_entity_info *info );
+    size_t entity_info_size;
+
+    size_t max_entity_infos;
+    size_t num_entity_infos;
+    struct jdksavdecc_adp_discovery_entity_info **entity_info;
 };
+
+
+void jdksavdecc_adp_discovery_db_init(
+        struct jdksavdecc_adp_discovery_db *self,
+        size_t max_entity_infos,
+        size_t entity_info_size,
+        void (*entity_info_init)( struct jdksavdecc_adp_discovery_db *self, struct jdksavdecc_adp_discovery_entity_info *info )
+        );
+
+void jdksavdecc_adp_discovery_db_destroy( struct jdksavdecc_adp_discovery_db *self, struct jdksavdecc_eui48 entity_mac );
+
+int jdksavdecc_adp_discovery_db_add( struct jdksavdecc_adp_discovery_db *self, struct jdksavdecc_adp_discovery_entity_info *info );
+
+int jdksavdecc_adp_discovery_db_remove( struct jdksavdecc_adp_discovery_db *self, struct jdksavdecc_eui48 entity_mac );
+
+
 
 /// See Clause 6.2.6.1
 struct jdksavdecc_adp_discovery_vars
@@ -111,14 +137,7 @@ void jdksavdecc_adp_discovery_state_timeout( struct jdksavdecc_adp_discovery_sta
 /// See Clause 6.2.6.4
 struct jdksavdecc_adp_discovery_state_machine
 {
-    uint32_t tag;
-    void *additional;
-
-    struct jdksavdecc_frame_sender *frame_sender;
-
-    void (*destroy)( struct jdksavdecc_adp_discovery_state_machine * );
-    void (*tick)( struct jdksavdecc_adp_discovery_state_machine *self, jdksavdecc_millisecond_time timestamp );
-    ssize_t (*rx_frame)( struct jdksavdecc_adp_discovery_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+    struct jdksavdecc_state_machine base;
 
     jdksavdecc_adp_discovery_state state;
     struct jdksavdecc_adp_discovery_vars *vars;
