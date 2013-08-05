@@ -69,7 +69,7 @@ struct jdksavdecc_acmp_talker_state_machine_vars
     jdksavdecc_acmp_command_response rcvd_cmd_resp; /// See Clause 8.2.2.3.2
     struct jdksavdecc_acmp_talker_stream_infos *talker_stream_infos; /// See Clause 8.2.2.6.1.1
     int rcvd_connect_tx; /// See Clause 8.2.2.6.1.2
-    int rcvd_disconnect_tx; /// S See Clause 8.2.2.6.1.3
+    int rcvd_disconnect_tx; /// See Clause 8.2.2.6.1.3
     int rcvd_get_tx_state; /// See Clause 8.2.2.6.1.4
     int rcvd_get_tx_connection; /// See Clause 8.2.2.6.1.5
 };

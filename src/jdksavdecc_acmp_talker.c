@@ -214,12 +214,21 @@ uint8_t jdksavdecc_acmp_talker_state_machine_valid_talker_unique(
         uint16_t talker_unique_id
         )
 {
+    uint8_t r=JDKSAVDECC_ACMP_STATUS_TALKER_UNKNOWN_ID;
     // Override this method to validate the unique_id
     (void)self;
-    (void)talker_unique_id;
     jdksavdecc_acmp_talker_log_enter();
+
+    jdksavdecc_acmp_talker_log("validate talker unique id 0x%04x", talker_unique_id );
+
+    if( talker_unique_id==0 )
+    {
+        // Default is to only allow one stream until this method is overriden
+        r=JDKSAVDECC_ACMP_STATUS_SUCCESS;
+    }
+
     jdksavdecc_acmp_talker_log_exit();
-    return JDKSAVDECC_ACMP_STATUS_TALKER_UNKNOWN_ID;
+    return r;
 }
 
 /// See Clause 8.2.2.6.2.2
@@ -228,12 +237,15 @@ uint8_t jdksavdecc_acmp_talker_state_machine_connect_talker(
         jdksavdecc_acmp_command_response *command_response
         )
 {
+    uint8_t r=JDKSAVDECC_ACMP_STATUS_TALKER_MISBEHAVING;
     (void)self;
     (void)command_response;
     // Override this method to actually cause talker to connect
     jdksavdecc_acmp_talker_log_enter();
+
+
     jdksavdecc_acmp_talker_log_exit();
-    return JDKSAVDECC_ACMP_STATUS_TALKER_MISBEHAVING;
+    return r;
 }
 
 /// See Clause 8.2.2.6.2.3
