@@ -140,7 +140,7 @@ struct jdksavdecc_adp_advertising_entity_state_machine
 
 /// Initialize the ADP Advertising Entity State Machine
 ///
-/// @param self Pointer to jdksavdecc_adp_advertising_interface_state_machine to initialize
+/// @param self Pointer to jdksavdecc_adp_advertising_entity_state_machine to initialize
 /// @param global Pointer to jdksavdecc_adp_advertising_global_vars object representing the entity
 /// @param tag uint32_t general purpose tag value for high level use
 /// @param additional void * general purpose pointer for high level use
