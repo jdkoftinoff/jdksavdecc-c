@@ -58,6 +58,8 @@
 # include <inttypes.h>
 #endif
 
+#include "jdksavdecc_print.h"
+
 #define JDKSAVDECC_LOG_TYPE_NONE (0)
 #define JDKSAVDECC_LOG_TYPE_STDERR (1)
 #define JDKSAVDECC_LOG_TYPE_SYSLOG (2)
@@ -94,6 +96,7 @@
 #endif
 
 #define jdksavdecc_log(fmt,...) jdksavdecc_do_log(JDKSAVDECC_LOG_PREFIX,fmt,JDKSAVDECC_LOG_SUFFIX, ## __VA_ARGS__ )
+
 
 #endif
 

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef JDKSAVDECC_ADP_PRINT_H
-#define JDKSAVDECC_ADP_PRINT_H
+#ifndef JDKSAVDECC_PDU_PRINT_H
+#define JDKSAVDECC_PDU_PRINT_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -34,26 +34,16 @@
 */
 
 #include "jdksavdecc_world.h"
-#include "jdksavdecc_adp.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-
-/** \addtogroup adp_print ADP Print
- *  @todo adp_print
-*/
+/** \addtogroup print_pdu PDU Print Utilities */
 /*@{*/
 
-extern struct jdksavdecc_uint16_name jdksavdecc_adpdu_print_message_type[];
-extern struct jdksavdecc_32bit_name jdksavdecc_adpdu_print_entity_capabilities[];
-extern struct jdksavdecc_16bit_name jdksavdecc_adpdu_print_talker_capabilities[];
-extern struct jdksavdecc_16bit_name jdksavdecc_adpdu_print_listener_capabilities[];
-extern struct jdksavdecc_32bit_name jdksavdecc_adpdu_print_controller_capabilities[];
 
-void jdksavdecc_adpdu_print_common_control_header( FILE *f, struct jdksavdecc_adpdu_common_control_header const *p );
-void jdksavdecc_adpdu_print( FILE *f, struct jdksavdecc_adpdu const *p );
+
 
 /*@}*/
 
@@ -62,4 +52,6 @@ void jdksavdecc_adpdu_print( FILE *f, struct jdksavdecc_adpdu const *p );
 #endif
 
 #endif
+
+
 

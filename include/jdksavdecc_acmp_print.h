@@ -46,6 +46,11 @@ extern "C" {
 */
 /*@{*/
 
+extern struct jdksavdecc_uint16_name jdksavdecc_acmpdu_print_message_type[];
+extern struct jdksavdecc_uint16_name jdksavdecc_acmpdu_print_status[];
+extern struct jdksavdecc_16bit_name jdksavdecc_acmpdu_print_flags[];
+
+
 /*@}*/
 
 #ifdef __cplusplus
