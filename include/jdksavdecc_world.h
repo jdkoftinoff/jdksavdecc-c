@@ -58,21 +58,39 @@
 # include <inttypes.h>
 #endif
 
+#define JDKSAVDECC_LOG_TYPE_NONE (0)
+#define JDKSAVDECC_LOG_TYPE_STDERR (1)
+#define JDKSAVDECC_LOG_TYPE_SYSLOG (2)
+
+#ifndef JDKSAVDECC_LOG_TYPE
+# define JDKSAVDECC_LOG_TYPE (JDKSAVDECC_LOG_TYPE_STDERR)
+#endif
+
 #ifndef JDKSAVDECC_ENABLE_LOG
 # define JDKSAVDECC_ENABLE_LOG (1)
 #endif
-
 
 #ifndef JDKSAVDECC_LOG_PREFIX
 # define JDKSAVDECC_LOG_PREFIX ""
 #endif
 
 #if JDKSAVDECC_ENABLE_LOG
-# ifndef jdksavdecc_do_log
-#  define jdksavdecc_do_log(prefix,fmt,...) fprintf(stderr,prefix # fmt "\n", ## __VA_ARGS__ )
+# if JDKSAVDECC_LOG_TYPE == JDKSAVDECC_LOG_TYPE_NONE
+#  ifndef jdksavdecc_do_log
+#   define jdksavdecc_do_log(prefix,fmt,...)
+#  endif
+# elif JDKSAVDECC_LOG_TYPE == JDKSAVDECC_LOG_TYPE_STDERR
+#  ifndef jdksavdecc_do_log
+#   define jdksavdecc_do_log(prefix,fmt,...) fprintf(stderr,prefix # fmt "\n", ## __VA_ARGS__ )
+#  endif
+# elif JDKSAVDECC_LOG_TYPE == JDKSAVDECC_LOG_TYPE_SYSLOG
+#  include <syslog.h>
+#  ifndef jdksavdecc_do_log
+#   define jdksavdecc_do_log(prefix,fmt,...) syslog( LOG_INFO, prefix # fmt, ## __VA_ARGS__ )
+#  endif
 # endif
 #else
-# define jdksavdecc_do_log(prefix,fmt)
+# define jdksavdecc_do_log(prefix,fmt,...)
 #endif
 
 #define jdksavdecc_log(fmt,...) jdksavdecc_do_log(JDKSAVDECC_LOG_PREFIX,fmt,JDKSAVDECC_LOG_SUFFIX, ## __VA_ARGS__ )
