@@ -77,6 +77,7 @@ extern struct jdksavdecc_eui64 jdksavdecc_identification_notification_controller
 #define JDKSAVDECC_SUBTYPE_AVTP_AUDIO (0x02)
 #define JDKSAVDECC_SUBTYPE_AVTP_VIDEO (0x03)
 #define JDKSAVDECC_SUBTYPE_AVTP_CONTROL (0x04)
+#define JDKSAVDECC_SUBTYPE_VENDOR (0x6f)
 #define JDKSAVDECC_SUBTYPE_ADP (0x7a)
 #define JDKSAVDECC_SUBTYPE_AECP (0x7b)
 #define JDKSAVDECC_SUBTYPE_ACMP (0x7c)
