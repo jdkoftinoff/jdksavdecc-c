@@ -136,6 +136,7 @@ struct jdksavdecc_eui64_t const *avdecc_get_eui64_value_for_name( struct jdksavd
 void jdksavdecc_print_eol( FILE *f );
 void jdksavdecc_print_label( FILE *f, const char *v );
 void jdksavdecc_print_hexdigits( FILE *f, uint8_t v );
+void jdksavdecc_print_block( FILE *f, const uint8_t *p, size_t sz, size_t start_pos, size_t end_pos );
 
 void jdksavdecc_print_uint8( FILE *f, uint8_t v );
 void jdksavdecc_print_uint16( FILE *f, uint16_t v );
