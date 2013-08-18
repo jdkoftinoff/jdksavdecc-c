@@ -39,7 +39,7 @@ int jdksavdecc_test_run(
     char const *infile,
     char const *outfile,
     struct jdksavdecc_pdu_dispatch *pdu_dispatch,
-    int (*tick)( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_millisecond_time time )
+    int (*tick)( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_microsecond_time time )
     )
 {
     struct jdksavdecc_pcapfile_reader reader;

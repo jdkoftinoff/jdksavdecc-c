@@ -163,9 +163,10 @@ void jdksavdecc_pdu_print( FILE *f, const uint8_t *p, size_t len, int dump_paylo
 
 void jdksavdecc_frame_print( FILE *f, struct jdksavdecc_frame const *p, int dump_payload )
 {
-    jdksavdecc_print_label(f,"millisecond_time");
-    jdksavdecc_print_uint64(f,p->time);
+    jdksavdecc_print_label(f,"time (seconds)");
+    jdksavdecc_print(f,"%0" PRIu64 ".%06" PRIu64, p->time/1000000, p->time%1000000 );
     jdksavdecc_print_eol(f);
+
 
     jdksavdecc_print_label(f,"dest_address");
     jdksavdecc_print_eui48(f,p->dest_address);

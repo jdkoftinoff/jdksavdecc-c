@@ -59,7 +59,7 @@ void jdksavdecc_adp_advertising_interface_state_machine_destroy(
 }
 
 
-void jdksavdecc_adp_advertising_interface_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp )
+void jdksavdecc_adp_advertising_interface_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_microsecond_time timestamp )
 {
     // TODO:
     (void)self;

@@ -51,13 +51,14 @@ struct jdksavdecc_pcapfile_reader
 {
     FILE *f;
     int swapped;
+    int nano;
     void (*destroy)( struct jdksavdecc_pcapfile_reader * );
 
     int (*open)( struct jdksavdecc_pcapfile_reader *self, char const *fname );
     void (*close)( struct jdksavdecc_pcapfile_reader *self );
     int (*read_frame)( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_frame *frame );
     int (*dispatch_frames)( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_pdu_dispatch *dispatcher );
-    int (*tick)( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_millisecond_time time );
+    int (*tick)( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_microsecond_time time );
 };
 
 void jdksavdecc_pcapfile_reader_init(struct jdksavdecc_pcapfile_reader *self);

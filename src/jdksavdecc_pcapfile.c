@@ -34,10 +34,14 @@
 #include "jdksavdecc_pcapfile.h"
 #include "jdksavdecc_pdu_dispatch.h"
 
-#define JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NATIVE (0xa1b2c3d4L)
-#define JDKSAVDECC_PCAPFILE_HEADER_MAGIC_SWAPPED (0xd4c3b2a1L)
+#define JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NATIVE (0xa1b2c3d4UL)
+#define JDKSAVDECC_PCAPFILE_HEADER_MAGIC_SWAPPED (0xd4c3b2a1UL)
 
-struct jdksavdecc_pcapfile_header {
+#define JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_NATIVE  (0xa1b23c4dUL)
+#define JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_SWAPPED (0x4d3cb2a1UL)
+
+struct jdksavdecc_pcapfile_header
+{
         uint32_t magic_number;   /* magic number */
         uint16_t version_major;  /* major version number */
         uint16_t version_minor;  /* minor version number */
@@ -47,9 +51,10 @@ struct jdksavdecc_pcapfile_header {
         uint32_t network;        /* data link type */
 };
 
-struct jdksavdecc_pcapfile_record_header {
+struct jdksavdecc_pcapfile_record_header
+{
         uint32_t ts_sec;         /* timestamp seconds */
-        uint32_t ts_usec;        /* timestamp microseconds */
+        uint32_t ts_usec;        /* timestamp microseconds or nanoseconds when format is nano */
         uint32_t incl_len;       /* number of octets of packet saved in file */
         uint32_t orig_len;       /* actual length of packet */
 };
@@ -59,6 +64,7 @@ void jdksavdecc_pcapfile_reader_init(struct jdksavdecc_pcapfile_reader *self)
 {
     self->f=0;
     self->swapped = 0;
+    self->nano = 0;
     self->open = jdksavdecc_pcapfile_reader_open;
     self->close = jdksavdecc_pcapfile_reader_close;
     self->read_frame = jdksavdecc_pcapfile_reader_read_frame;
@@ -89,14 +95,28 @@ int jdksavdecc_pcapfile_reader_open( struct jdksavdecc_pcapfile_reader *self, ch
             if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_SWAPPED )
             {
                 self->swapped = 1;
+                self->nano = 0;
                 r=1;
             }
             else if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NATIVE )
             {
                 self->swapped = 0;
+                self->nano = 0;
                 r=1;
             }
-            
+            else if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_SWAPPED )
+            {
+                self->swapped = 1;
+                self->nano = 1;
+                r=1;
+            }
+            else if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_NATIVE )
+            {
+                self->swapped = 0;
+                self->nano = 1;
+                r=1;
+            }
+
             if( self->swapped )
             {
                 file_header.magic_number = jdksavdecc_endian_reverse_uint32(&file_header.magic_number);
@@ -151,7 +171,14 @@ int jdksavdecc_pcapfile_reader_read_frame( struct jdksavdecc_pcapfile_reader *se
                 {
                     if( jdksavdecc_frame_read(frame,buf, 0, frame_record.incl_len ) == frame_record.incl_len )
                     {
-                        frame->time = ((uint64_t)frame_record.ts_sec * 1000) + (frame_record.ts_usec / 1000 );
+                        if( self->nano )
+                        {
+                            frame->time = ((uint64_t)frame_record.ts_sec * 1000000) + (frame_record.ts_usec/1000 ); // convert nano to micro
+                        }
+                        else
+                        {
+                            frame->time = ((uint64_t)frame_record.ts_sec * 1000000) + (frame_record.ts_usec );
+                        }
                         r=1;
                     }
                 }
@@ -169,7 +196,7 @@ int jdksavdecc_pcapfile_reader_read_frame( struct jdksavdecc_pcapfile_reader *se
 int jdksavdecc_pcapfile_reader_dispatch_frames( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_pdu_dispatch *dispatcher )
 {
     int r=-1;
-    jdksavdecc_millisecond_time cur_time=0;
+    jdksavdecc_microsecond_time cur_time=0;
     
     while( self->f && r==-1 )
     {
@@ -282,8 +309,8 @@ void jdksavdecc_pcapfile_writer_send( struct jdksavdecc_frame_sender *self_, str
         int r=0;
         frame_record.incl_len = (uint32_t)len;
         frame_record.orig_len = (uint32_t)len;
-        frame_record.ts_sec = (uint32_t)(frame->time / 1000);
-        frame_record.ts_usec = (uint32_t)((frame->time % 1000) * 1000);
+        frame_record.ts_sec = (uint32_t)(frame->time / 1000000);
+        frame_record.ts_usec = (uint32_t)(frame->time % 1000000);
         
         if( fwrite(&frame_record, sizeof(frame_record), 1, self->f )==1 )
         {

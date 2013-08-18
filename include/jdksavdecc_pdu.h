@@ -617,7 +617,7 @@ static inline void jdksavdecc_common_stream_header_set_protocol_specific_header(
 
 struct jdksavdecc_frame
 {
-    jdksavdecc_millisecond_time time;
+    jdksavdecc_microsecond_time time;
 	struct jdksavdecc_eui48 dest_address;
 	struct jdksavdecc_eui48 src_address;
 	uint16_t ethertype;

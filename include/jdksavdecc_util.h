@@ -44,7 +44,7 @@ extern "C" {
 
 struct jdksavdecc_pdu_dispatch;
 
-typedef uint64_t jdksavdecc_millisecond_time;
+typedef uint64_t jdksavdecc_microsecond_time;
 
 /**
  * Validate buffer position in a buffer len for an element of elem_size.

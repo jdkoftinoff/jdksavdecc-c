@@ -205,7 +205,7 @@ void jdksavdecc_acmp_talker_state_machine_destroy(
 /// @returns integer 0 on success, -1 on state machine terminated
 int jdksavdecc_acmp_talker_state_machine_tick(
         struct jdksavdecc_state_machine *self,
-        jdksavdecc_millisecond_time timestamp
+        jdksavdecc_microsecond_time timestamp
         );
 
 /// Tell the state machine that an ethernet frame was received

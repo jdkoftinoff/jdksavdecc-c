@@ -74,7 +74,7 @@ struct jdksavdecc_state_machine
             );
 
     /// Time tick. Returns 0 on success, -1 on state machine terminated
-    int (*tick)( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp );
+    int (*tick)( struct jdksavdecc_state_machine *self, jdksavdecc_microsecond_time timestamp );
 
     /// Received Frame
     ssize_t (*rx_frame)( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
@@ -107,7 +107,7 @@ void jdksavdecc_state_machine_init(
         );
 void jdksavdecc_state_machine_destroy( struct jdksavdecc_state_machine *self );
 void jdksavdecc_state_machine_terminate( struct jdksavdecc_state_machine *self );
-int jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_millisecond_time timestamp );
+int jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_microsecond_time timestamp );
 ssize_t jdksavdecc_state_machine_rx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 void jdksavdecc_state_machine_tx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame );
 

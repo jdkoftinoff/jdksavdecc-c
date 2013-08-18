@@ -101,7 +101,7 @@ void jdksavdecc_acmp_talker_state_machine_destroy(
 
 int jdksavdecc_acmp_talker_state_machine_tick(
         struct jdksavdecc_state_machine *self_,
-        jdksavdecc_millisecond_time timestamp
+        jdksavdecc_microsecond_time timestamp
         )
 {
     int r=0;
