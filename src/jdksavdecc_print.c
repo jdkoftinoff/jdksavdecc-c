@@ -123,6 +123,32 @@ void jdksavdecc_print_streamid( FILE *f, struct jdksavdecc_eui64 v )
     jdksavdecc_print_hexdigits(f, v.value[7] );
 }
 
+void jdksavdecc_print_block( FILE *f, const uint8_t *p, size_t sz, size_t start_pos, size_t end_pos )
+{
+    size_t pos;
+    size_t step=32;
+    size_t indent=42;
+
+    for( pos=start_pos; pos<sz && pos<end_pos; pos+=step )
+    {
+        size_t i=0;
+
+        for( i=0; i<indent; ++i )
+        {
+            jdksavdecc_printc(f,' ');
+        }
+
+        jdksavdecc_print_uint32(f,(uint32_t)pos);
+        jdksavdecc_printc(f,':');
+
+        for( i=pos; i<(pos+step) && (i<sz) && (i<end_pos); ++i )
+        {
+            jdksavdecc_printc(f,' ');
+            jdksavdecc_print_hexdigits(f,p[i]);
+        }
+        jdksavdecc_print_eol(f);
+    }
+}
 
 void jdksavdecc_print_string( FILE *f, struct jdksavdecc_string const *v )
 {
