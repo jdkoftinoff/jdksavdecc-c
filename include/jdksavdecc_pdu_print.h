@@ -34,6 +34,7 @@
 */
 
 #include "jdksavdecc_world.h"
+#include "jdksavdecc_pdu.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -43,7 +44,11 @@ extern "C" {
 /*@{*/
 
 
+extern struct jdksavdecc_uint16_name jdksavdecc_pdu_print_cd_subtype[];
 
+void jdksavdecc_pdu_print( FILE *f, const uint8_t *p, size_t len, int dump_payload );
+
+void jdksavdecc_frame_print( FILE *f, struct jdksavdecc_frame const *p, int dump_payload );
 
 /*@}*/
 
