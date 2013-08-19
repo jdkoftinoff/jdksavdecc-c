@@ -98,7 +98,7 @@ void jdksavdecc_pdu_print( FILE *f, const uint8_t *p, size_t len, int dump_paylo
                 jdksavdecc_print_eol(f);
 
                 jdksavdecc_print_label(f,"stream_id");
-                jdksavdecc_print_eui64(f,jdksavdecc_common_stream_header_get_stream_id(p,0));
+                jdksavdecc_print_streamid(f,jdksavdecc_common_stream_header_get_stream_id(p,0));
                 jdksavdecc_print_eol(f);
 
                 jdksavdecc_print_label(f,"avtp_timestamp");
@@ -138,7 +138,7 @@ void jdksavdecc_pdu_print( FILE *f, const uint8_t *p, size_t len, int dump_paylo
                 jdksavdecc_print_eol(f);
 
                 jdksavdecc_print_label(f,"stream_id");
-                jdksavdecc_print_eui64(f,jdksavdecc_common_control_header_get_stream_id(p,0));
+                jdksavdecc_print_streamid(f,jdksavdecc_common_control_header_get_stream_id(p,0));
                 jdksavdecc_print_eol(f);
             }
 

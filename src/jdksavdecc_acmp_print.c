@@ -104,7 +104,7 @@ void jdksavdecc_acmpdu_print_common_control_header( FILE *f, struct jdksavdecc_a
     jdksavdecc_print_eol( f );
 
     jdksavdecc_print_label(f,"stream_id");
-    jdksavdecc_print_eui64(f,p->stream_id );
+    jdksavdecc_print_streamid(f,p->stream_id );
     jdksavdecc_print_eol( f );
 }
 

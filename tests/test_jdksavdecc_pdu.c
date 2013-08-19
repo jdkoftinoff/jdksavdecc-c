@@ -31,18 +31,64 @@
 */
 
 #include "jdksavdecc.h"
+#include "jdksavdecc_pcapfile.h"
 
-int test_jdksavdecc_pdu()
+int test_jdksavdecc_pdu( struct jdksavdecc_pcapfile_reader *reader, struct jdksavdecc_pcapfile_writer *writer )
 {
-    return 0;
+    int r=0;
+    (void)reader;
+    (void)writer;
+    return r;
 }
 
 
 int main( int argc, char **argv )
 {
-    (void)argc;
-    (void)argv;
-    return test_jdksavdecc_pdu() ? EXIT_SUCCESS : EXIT_FAILURE;
+    int r=0;
+    const char *infilename="input.pcap";
+    const char *outfilename="output.pcap";
+    struct jdksavdecc_pcapfile_reader reader;
+    struct jdksavdecc_pcapfile_writer writer;
+
+    if( argc>1 )
+    {
+        infilename=argv[1];
+    }
+    if( argc>2 )
+    {
+        outfilename=argv[2];
+    }
+
+    jdksavdecc_log_info("%8s:%s","Starting",argv[0]);
+    jdksavdecc_pcapfile_reader_init( &reader );
+    if( reader.open( &reader, infilename ) )
+    {
+        jdksavdecc_pcapfile_writer_init( &writer );
+        if( writer.open( &writer, outfilename ) )
+        {
+            r=test_jdksavdecc_pdu( &reader, &writer );
+            if( r==0 )
+            {
+                jdksavdecc_log_error("%8s:%s", "failure", argv[0]);
+            }
+            else
+            {
+                jdksavdecc_log_info("%8s:%s", "success", argv[0]);
+            }
+        }
+        else
+        {
+            jdksavdecc_log_error("unable to open file '%s' for writing", outfilename );            
+        }
+        writer.destroy( &writer );
+    }
+    else
+    {
+        jdksavdecc_log_error("unable to open file '%s' for reading", infilename );
+    }
+    reader.destroy(&reader);
+
+    return (r!=0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 
 

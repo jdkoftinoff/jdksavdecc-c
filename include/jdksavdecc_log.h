@@ -1,6 +1,6 @@
 #pragma once
-#ifndef JDKSAVDECC_WORLD_H
-#define JDKSAVDECC_WORLD_H
+#ifndef JDKSAVDECC_LOG_H
+#define JDKSAVDECC_LOG_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -33,35 +33,31 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <errno.h>
-#include <assert.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <limits.h>
-#include <ctype.h>
-
-#ifdef _MSC_VER
-# include <BaseTsd.h> 
-# include "jdksavdecc_msstdint.h"
-# include "jdksavdecc_msinttypes.h"
-# ifndef ssize_t
-#  define ssize_t SSIZE_T
-# endif
-# ifndef inline
-#  define inline __inline
-# endif
-#else
-# include <stdint.h>
-# include <inttypes.h>
+#ifndef JDKSAVDECC_WORLD_H
+#include "jdksavdecc_world.h"
 #endif
 
-#include "jdksavdecc_log.h"
 
-#include "jdksavdecc_print.h"
-
+#ifdef __cplusplus
+extern "C" {
 #endif
 
+
+/** \addtogroup log logging
+*/
+/*@{*/
+
+extern FILE *jdksavdecc_log_file;
+
+extern void jdksavdecc_log_error( const char *fmt, ... );
+extern void jdksavdecc_log_warning( const char *fmt, ... );
+extern void jdksavdecc_log_info( const char *fmt, ... );
+
+/*@}*/
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
 

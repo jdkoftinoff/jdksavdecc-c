@@ -46,7 +46,6 @@ extern "C" {
 /*@{*/
 
 struct jdksavdecc_pdu_dispatch;
-
 struct jdksavdecc_pcapfile_reader
 {
     FILE *f;
@@ -83,6 +82,7 @@ struct jdksavdecc_pcapfile_writer
 };
 
 void jdksavdecc_pcapfile_writer_init( struct jdksavdecc_pcapfile_writer *self );
+void jdksavdecc_pcapfile_writer_destroy( struct jdksavdecc_pcapfile_writer *self );
 int jdksavdecc_pcapfile_writer_open( struct jdksavdecc_pcapfile_writer *self, char const *fname );
 void jdksavdecc_pcapfile_writer_close( struct jdksavdecc_pcapfile_writer *self );
 

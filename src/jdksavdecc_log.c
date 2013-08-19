@@ -1,6 +1,3 @@
-#pragma once
-#ifndef JDKSAVDECC_WORLD_H
-#define JDKSAVDECC_WORLD_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -33,35 +30,64 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <errno.h>
-#include <assert.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <limits.h>
-#include <ctype.h>
 
-#ifdef _MSC_VER
-# include <BaseTsd.h> 
-# include "jdksavdecc_msstdint.h"
-# include "jdksavdecc_msinttypes.h"
-# ifndef ssize_t
-#  define ssize_t SSIZE_T
-# endif
-# ifndef inline
-#  define inline __inline
-# endif
-#else
-# include <stdint.h>
-# include <inttypes.h>
-#endif
+#include "jdksavdecc_world.h"
+#include "jdksavdecc_maap.h"
 
-#include "jdksavdecc_log.h"
+FILE *jdksavdecc_log_file=0;
 
-#include "jdksavdecc_print.h"
+void jdksavdecc_log_error( const char *fmt, ... )
+{
+    va_list args;
+    FILE *f=jdksavdecc_log_file;
 
-#endif
+    if( !f )
+    {
+        f=stderr;
+    }
+
+    va_start (args,fmt);
+    fprintf( f, "%12s", "ERROR:" );
+    vfprintf( f, fmt, args );
+    fputc('\n',f);
+    va_end(args);
+    fflush(jdksavdecc_log_file);
+}
+
+void jdksavdecc_log_warning( const char *fmt, ... )
+{
+    va_list args;
+    FILE *f=jdksavdecc_log_file;
+
+    if( !f )
+    {
+        f=stderr;
+    }
 
 
+    va_start (args,fmt);
+    fprintf( f, "%12s", "WARNING:" );
+    vfprintf( f, fmt, args );
+    fputc('\n',f);
+    va_end(args);
+    fflush(jdksavdecc_log_file);
+}
+
+void jdksavdecc_log_info( const char *fmt, ... )
+{
+    va_list args;
+    FILE *f=jdksavdecc_log_file;
+
+    if( !f )
+    {
+        f=stderr;
+    }
+
+
+    va_start (args,fmt);
+    fprintf( f, "%12s", "INFO:" );
+    vfprintf( f, fmt, args );
+    fputc('\n',f);
+    va_end(args);
+    fflush(jdksavdecc_log_file);
+}

@@ -65,11 +65,17 @@ void jdksavdecc_pcapfile_reader_init(struct jdksavdecc_pcapfile_reader *self)
     self->f=0;
     self->swapped = 0;
     self->nano = 0;
+    self->destroy = jdksavdecc_pcapfile_reader_destroy;
     self->open = jdksavdecc_pcapfile_reader_open;
     self->close = jdksavdecc_pcapfile_reader_close;
     self->read_frame = jdksavdecc_pcapfile_reader_read_frame;
     self->dispatch_frames = jdksavdecc_pcapfile_reader_dispatch_frames;
     self->tick = 0;
+}
+
+void jdksavdecc_pcapfile_reader_destroy(struct jdksavdecc_pcapfile_reader *self)
+{
+    self->close( self );
 }
 
 int jdksavdecc_pcapfile_reader_open( struct jdksavdecc_pcapfile_reader *self, char const *fname )
@@ -243,9 +249,16 @@ int jdksavdecc_pcapfile_reader_dispatch_frames( struct jdksavdecc_pcapfile_reade
 void jdksavdecc_pcapfile_writer_init( struct jdksavdecc_pcapfile_writer *self )
 {
     self->f = 0;
+    self->destroy = jdksavdecc_pcapfile_writer_destroy;
+    self->open = jdksavdecc_pcapfile_writer_open;
     self->close = jdksavdecc_pcapfile_writer_close;
     self->swapped = 0;
     self->inherited.send = jdksavdecc_pcapfile_writer_send;
+}
+
+void jdksavdecc_pcapfile_writer_destroy(struct jdksavdecc_pcapfile_writer *self)
+{
+    self->close( self );
 }
 
 int jdksavdecc_pcapfile_writer_open( struct jdksavdecc_pcapfile_writer *self, char const *fname )

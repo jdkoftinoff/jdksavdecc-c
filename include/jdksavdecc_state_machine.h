@@ -48,12 +48,12 @@ extern "C" {
 #endif
 
 #if JDKSAVDECC_STATE_MACHINE_ENABLE_LOG
-# define jdksavdecc_state_machine_log(fmt, ...) jdksavdecc_do_log("jdksavdecc_state_machine:%p:%s:",fmt, self, __FUNCTION__, ## __VA_ARGS__ )
+# define jdksavdecc_state_machine_log jdksavdecc_log_info
 # ifndef jdksavdecc_state_machine_log_enter
-#  define jdksavdecc_state_machine_log_enter() jdksavdecc_state_machine_log("Enter")
+#  define jdksavdecc_state_machine_log_enter() jdksavdecc_state_machine_log("Enter:%s:%d",__FUNCTION__,__LINE__)
 # endif
 # ifndef jdksavdecc_state_machine_log_exit
-#  define jdksavdecc_state_machine_log_exit() jdksavdecc_state_machine_log("Exit")
+#  define jdksavdecc_state_machine_log_exit() jdksavdecc_state_machine_log(" Exit:%s:%d",__FUNCTION__,__LINE__)
 # endif
 #else
 # define jdksavdecc_state_machine_log(fmt, ...)

@@ -219,7 +219,7 @@ uint8_t jdksavdecc_acmp_talker_state_machine_valid_talker_unique(
     (void)self;
     jdksavdecc_acmp_talker_log_enter();
 
-    jdksavdecc_acmp_talker_log("validate talker unique id 0x%04x", talker_unique_id );
+    jdksavdecc_acmp_talker_log("validate talker unique id 0x%" PRIx16, talker_unique_id );
 
     if( talker_unique_id==0 )
     {
@@ -290,6 +290,7 @@ uint8_t jdksavdecc_acmp_talker_state_machine_disconnect_talker(
         jdksavdecc_acmp_command_response *command_response
         )
 {
+    (void)self;
     jdksavdecc_acmp_talker_log_enter();
     // Override this method to actually cause talker to disconnect
     (void)command_response;
