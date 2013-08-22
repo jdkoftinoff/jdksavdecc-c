@@ -85,6 +85,12 @@
 		BF6C9535177FA6B400FC2585 /* jdksavdecc_adp_advertising_interface.c in Sources */ = {isa = PBXBuildFile; fileRef = BF6C9533177FA6B400FC2585 /* jdksavdecc_adp_advertising_interface.c */; };
 		BF6C9538177FA76F00FC2585 /* jdksavdecc_adp_advertising_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6C9536177FA76F00FC2585 /* jdksavdecc_adp_advertising_entity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6C9539177FA76F00FC2585 /* jdksavdecc_adp_advertising_interface.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6C9537177FA76F00FC2585 /* jdksavdecc_adp_advertising_interface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF6CC3DE17C674440022772C /* jdksavdecc_log.c in Sources */ = {isa = PBXBuildFile; fileRef = BF6CC3DB17C674440022772C /* jdksavdecc_log.c */; };
+		BF6CC3DF17C674440022772C /* jdksavdecc_pdu_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF6CC3DC17C674440022772C /* jdksavdecc_pdu_print.c */; };
+		BF6CC3E017C674440022772C /* jdksavdecc_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF6CC3DD17C674440022772C /* jdksavdecc_print.c */; };
+		BF6CC3E417C674870022772C /* jdksavdecc_log.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6CC3E117C674550022772C /* jdksavdecc_log.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF6CC3E517C6748A0022772C /* jdksavdecc_pdu_print.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6CC3E217C674550022772C /* jdksavdecc_pdu_print.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF6CC3E617C6748E0022772C /* jdksavdecc_print.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6CC3E317C674550022772C /* jdksavdecc_print.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6CF0DB1762865000A9FA28 /* jdksavdecc.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6CF0C41762865000A9FA28 /* jdksavdecc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6CF0DC1762865000A9FA28 /* jdksavdecc_acmp.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6CF0C51762865000A9FA28 /* jdksavdecc_acmp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6CF0DD1762865000A9FA28 /* jdksavdecc_acmp_controller.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6CF0C61762865000A9FA28 /* jdksavdecc_acmp_controller.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -488,6 +494,12 @@
 		BF6C9533177FA6B400FC2585 /* jdksavdecc_adp_advertising_interface.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jdksavdecc_adp_advertising_interface.c; sourceTree = "<group>"; };
 		BF6C9536177FA76F00FC2585 /* jdksavdecc_adp_advertising_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_adp_advertising_entity.h; sourceTree = "<group>"; };
 		BF6C9537177FA76F00FC2585 /* jdksavdecc_adp_advertising_interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_adp_advertising_interface.h; sourceTree = "<group>"; };
+		BF6CC3DB17C674440022772C /* jdksavdecc_log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jdksavdecc_log.c; sourceTree = "<group>"; };
+		BF6CC3DC17C674440022772C /* jdksavdecc_pdu_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jdksavdecc_pdu_print.c; sourceTree = "<group>"; };
+		BF6CC3DD17C674440022772C /* jdksavdecc_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jdksavdecc_print.c; sourceTree = "<group>"; };
+		BF6CC3E117C674550022772C /* jdksavdecc_log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_log.h; sourceTree = "<group>"; };
+		BF6CC3E217C674550022772C /* jdksavdecc_pdu_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_pdu_print.h; sourceTree = "<group>"; };
+		BF6CC3E317C674550022772C /* jdksavdecc_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_print.h; sourceTree = "<group>"; };
 		BF6CF0C41762865000A9FA28 /* jdksavdecc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc.h; sourceTree = "<group>"; };
 		BF6CF0C51762865000A9FA28 /* jdksavdecc_acmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_acmp.h; sourceTree = "<group>"; };
 		BF6CF0C61762865000A9FA28 /* jdksavdecc_acmp_controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_acmp_controller.h; sourceTree = "<group>"; };
@@ -739,6 +751,7 @@
 				BF6607CF176528AA0054A850 /* jdksavdecc_command_dispatch_print.h */,
 				BF6607A51764F7F90054A850 /* jdksavdecc_descriptor_dispatch.h */,
 				BF6607D0176528AA0054A850 /* jdksavdecc_descriptor_dispatch_print.h */,
+				BF6CC3E117C674550022772C /* jdksavdecc_log.h */,
 				BF6CF0D51762865000A9FA28 /* jdksavdecc_maap.h */,
 				BF6607D1176528AA0054A850 /* jdksavdecc_maap_print.h */,
 				BF6CF0D61762865000A9FA28 /* jdksavdecc_msinttypes.h */,
@@ -747,6 +760,8 @@
 				BF6CF0D81762865000A9FA28 /* jdksavdecc_pdu.h */,
 				BF6607A61764F7F90054A850 /* jdksavdecc_pdu_dispatch.h */,
 				BF6607D2176528AA0054A850 /* jdksavdecc_pdu_dispatch_print.h */,
+				BF6CC3E217C674550022772C /* jdksavdecc_pdu_print.h */,
+				BF6CC3E317C674550022772C /* jdksavdecc_print.h */,
 				BFBBA4C3177F6F1000DB94A5 /* jdksavdecc_state_machine.h */,
 				BFAF5705176585D700E9B1A9 /* jdksavdecc_state_machines.h */,
 				BFBB2F311767AB7900699546 /* jdksavdecc_test.h */,
@@ -790,12 +805,15 @@
 				BF6607BF1765289C0054A850 /* jdksavdecc_command_dispatch_print.c */,
 				BF6607AB1764F8090054A850 /* jdksavdecc_descriptor_dispatch.c */,
 				BF6607C01765289C0054A850 /* jdksavdecc_descriptor_dispatch_print.c */,
+				BF6CC3DB17C674440022772C /* jdksavdecc_log.c */,
 				BF6CF1041762867900A9FA28 /* jdksavdecc_maap.c */,
 				BF6607C11765289C0054A850 /* jdksavdecc_maap_print.c */,
 				BF6607B3176527600054A850 /* jdksavdecc_pcapfile.c */,
 				BF6CF1051762867900A9FA28 /* jdksavdecc_pdu.c */,
 				BF6607AC1764F8090054A850 /* jdksavdecc_pdu_dispatch.c */,
 				BF6607C21765289C0054A850 /* jdksavdecc_pdu_dispatch_print.c */,
+				BF6CC3DC17C674440022772C /* jdksavdecc_pdu_print.c */,
+				BF6CC3DD17C674440022772C /* jdksavdecc_print.c */,
 				BFBBA4C4177F6F1900DB94A5 /* jdksavdecc_state_machine.c */,
 				BFAF570D176585E800E9B1A9 /* jdksavdecc_state_machines.c */,
 				BFBB2F2F1767AB6600699546 /* jdksavdecc_test.c */,
@@ -814,6 +832,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6CF0DB1762865000A9FA28 /* jdksavdecc.h in Headers */,
+				BF6CC3E617C6748E0022772C /* jdksavdecc_print.h in Headers */,
 				BF6CF0DC1762865000A9FA28 /* jdksavdecc_acmp.h in Headers */,
 				BF6CF0DD1762865000A9FA28 /* jdksavdecc_acmp_controller.h in Headers */,
 				BF6CF0DE1762865000A9FA28 /* jdksavdecc_acmp_listener.h in Headers */,
@@ -846,12 +865,14 @@
 				BF6CF0ED1762865000A9FA28 /* jdksavdecc_msinttypes.h in Headers */,
 				BF6CF0EE1762865000A9FA28 /* jdksavdecc_msstdint.h in Headers */,
 				BF6607B71765279D0054A850 /* jdksavdecc_pcapfile.h in Headers */,
+				BF6CC3E517C6748A0022772C /* jdksavdecc_pdu_print.h in Headers */,
 				BF6C9538177FA76F00FC2585 /* jdksavdecc_adp_advertising_entity.h in Headers */,
 				BF6C9539177FA76F00FC2585 /* jdksavdecc_adp_advertising_interface.h in Headers */,
 				BF6CF0EF1762865000A9FA28 /* jdksavdecc_pdu.h in Headers */,
 				BF6607BA1765279D0054A850 /* jdksavdecc_pdu_dispatch.h in Headers */,
 				BF6607DA176528AA0054A850 /* jdksavdecc_pdu_dispatch_print.h in Headers */,
 				BFBBA4C5177F6F6B00DB94A5 /* jdksavdecc_state_machine.h in Headers */,
+				BF6CC3E417C674870022772C /* jdksavdecc_log.h in Headers */,
 				BFAF5709176585D700E9B1A9 /* jdksavdecc_state_machines.h in Headers */,
 				BFBB2F321767AB7900699546 /* jdksavdecc_test.h in Headers */,
 				BF6CF0F01762865000A9FA28 /* jdksavdecc_util.h in Headers */,
@@ -1228,6 +1249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6CF1081762867900A9FA28 /* jdksavdecc.c in Sources */,
+				BF6CC3DE17C674440022772C /* jdksavdecc_log.c in Sources */,
 				BF6CF1091762867900A9FA28 /* jdksavdecc_acmp.c in Sources */,
 				BF6CF10A1762867900A9FA28 /* jdksavdecc_acmp_controller.c in Sources */,
 				BF6CF10B1762867900A9FA28 /* jdksavdecc_acmp_listener.c in Sources */,
@@ -1243,6 +1265,7 @@
 				BF6CF1151762867900A9FA28 /* jdksavdecc_aem_entity.c in Sources */,
 				BF6CF1161762867900A9FA28 /* jdksavdecc_apc.c in Sources */,
 				BF6CF1171762867900A9FA28 /* jdksavdecc_app.c in Sources */,
+				BF6CC3DF17C674440022772C /* jdksavdecc_pdu_print.c in Sources */,
 				BF6CF1181762867900A9FA28 /* jdksavdecc_aps.c in Sources */,
 				BF6CF1191762867900A9FA28 /* jdksavdecc_maap.c in Sources */,
 				BF6CF11A1762867900A9FA28 /* jdksavdecc_pdu.c in Sources */,
@@ -1253,6 +1276,7 @@
 				BF6607AF1764F8090054A850 /* jdksavdecc_pdu_dispatch.c in Sources */,
 				BF6607B4176527600054A850 /* jdksavdecc_pcapfile.c in Sources */,
 				BF6607C31765289C0054A850 /* jdksavdecc_acmp_print.c in Sources */,
+				BF6CC3E017C674440022772C /* jdksavdecc_print.c in Sources */,
 				BF6607C41765289C0054A850 /* jdksavdecc_adp_print.c in Sources */,
 				BF6607C51765289C0054A850 /* jdksavdecc_aecp_print.c in Sources */,
 				BF6607C61765289C0054A850 /* jdksavdecc_app_print.c in Sources */,
