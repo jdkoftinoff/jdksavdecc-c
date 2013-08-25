@@ -415,9 +415,16 @@ ssize_t jdksavdecc_maap_state_machine_rx_frame(
 
 
 #define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_START {{0x91,0xe0,0xf0,0x00,0x00,0x00}} /// See IEEE Std 1722-2011 Table B.4
+extern struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_start;
+    
 #define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_END {{0x91,0xe0,0xf0,0x00,0xFD,0xFF}} /// See IEEE Std 1722-2011 Table B.4
+extern struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_end;
+    
 #define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_START {{0x91,0xe0,0xf0,0x00,0xFE,0x00}} /// See IEEE Std 1722-2011 Table B.4
+extern struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_start;
+    
 #define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_END {{0x91,0xe0,0xf0,0x00,0xFE,0xFF}} /// See IEEE Std 1722-2011 Table B.4
+extern struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_end;
 
 
 

@@ -34,4 +34,13 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_maap.h"
 
-char const *jdksavdecc_maap_file = __FILE__;
+struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_start = JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_START;
+
+struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_end = JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_END;
+
+struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_start = JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_START;
+
+struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_end = JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_END;
+
+
+
