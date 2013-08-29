@@ -42,6 +42,25 @@
 extern "C" {
 #endif
 
+
+#ifndef JDKSAVDECC_ADP_DISCOVER_ENABLE_LOG
+# define JDKSAVDECC_ADP_DISCOVER_ENABLE_LOG (1)
+#endif
+
+#if JDKSAVDECC_ADP_DISCOVER_ENABLE_LOG
+# define jdksavdecc_adp_discover_log jdksavdecc_log_info
+# ifndef jdksavdecc_adp_discover_log_enter
+#  define jdksavdecc_adp_discover_log_enter() jdksavdecc_adp_discover_log("Enter:%s:%d",__FUNCTION__,__LINE__)
+# endif
+# ifndef jdksavdecc_adp_discover_log_exit
+#  define jdksavdecc_adp_discover_log_exit() jdksavdecc_adp_discover_log("Exit:%s:%d",__FUNCTION__,__LINE__)
+# endif
+#else
+# define jdksavdecc_adp_discover_interface_log(fmt, ...)
+# define jdksavdecc_adp_discover_interface_log_enter()
+# define jdksavdecc_adp_discover_interface_log_exit()
+#endif
+
 /// See Clause 6.2.6.1.1
 struct jdksavdecc_adp_discovery_entity_info
 {

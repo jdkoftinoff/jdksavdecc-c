@@ -44,6 +44,24 @@ extern "C" {
 /** \addtogroup maap MAAP - IEEE Std 1722-2011 Annex B.2 */
 /*@{*/
 
+#ifndef JDKSAVDECC_MAAP_ENABLE_LOG
+# define JDKSAVDECC_MAAP_ENABLE_LOG (1)
+#endif
+
+#if JDKSAVDECC_MAAP_ENABLE_LOG
+# define jdksavdecc_maap_log jdksavdecc_log_info
+# ifndef jdksavdecc_maap_log_enter
+#  define jdksavdecc_maap_log_enter() jdksavdecc_maap_log("Enter:%s:%d",__FUNCTION__,__LINE__)
+# endif
+# ifndef jdksavdecc_maap_log_exit
+#  define jdksavdecc_maap_log_exit() jdksavdecc_maap_log("Exit:%s:%d",__FUNCTION__,__LINE__)
+# endif
+#else
+# define jdksavdecc_maap_interface_log(fmt, ...)
+# define jdksavdecc_maap_interface_log_enter()
+# define jdksavdecc_maap_interface_log_exit()
+#endif
+
 struct jdksavdecc_maap_common_control_header
 {
     uint32_t cd:1;
