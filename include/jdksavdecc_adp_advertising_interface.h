@@ -51,12 +51,12 @@ extern "C" {
 #endif
 
 #if JDKSAVDECC_ADP_ADVERTISING_INTERFACE_ENABLE_LOG
-# define jdksavdecc_adp_advertising_interface_log(fmt, ...) jdksavdecc_do_log("jdksavdecc_adp_advertising_interface_state_machine:%p:%s:",fmt, self, __FUNCTION__, ## __VA_ARGS__ )
+# define jdksavdecc_adp_advertising_interface_log jdksavdecc_log_info
 # ifndef jdksavdecc_adp_advertising_interface_log_enter
-#  define jdksavdecc_adp_advertising_interface_log_enter() jdksavdecc_adp_advertising_interface_log("Enter")
+#  define jdksavdecc_adp_advertising_interface_log_enter() jdksavdecc_adp_advertising_interface_log("Enter:%s:%d",__FUNCTION__,__LINE__)
 # endif
 # ifndef jdksavdecc_adp_advertising_interface_log_exit
-#  define jdksavdecc_adp_advertising_interface_log_exit() jdksavdecc_adp_advertising_interface_log("Exit")
+#  define jdksavdecc_adp_advertising_interface_log_exit() jdksavdecc_adp_advertising_interface_log("Exit:%s:%d",__FUNCTION__,__LINE__)
 # endif
 #else
 # define jdksavdecc_adp_advertising_interface_log(fmt, ...)
