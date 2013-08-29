@@ -462,7 +462,7 @@ void jdksavdecc_maap_state_machine_destroy(
         struct jdksavdecc_state_machine *self
         );
 
-void jdksavdecc_maap_state_machine_tick(
+int jdksavdecc_maap_state_machine_tick(
         struct jdksavdecc_state_machine *self,
         jdksavdecc_microsecond_time current_time
         );
