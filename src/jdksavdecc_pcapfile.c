@@ -59,12 +59,17 @@ struct jdksavdecc_pcapfile_record_header
         uint32_t orig_len;       /* actual length of packet */
 };
 
-
-void jdksavdecc_pcapfile_reader_init(struct jdksavdecc_pcapfile_reader *self)
+void jdksavdecc_pcapfile_reader_init(
+    struct jdksavdecc_pcapfile_reader *self, 
+    jdksavdecc_microsecond_time minimum_time_to_synthesize,
+    jdksavdecc_microsecond_time time_step_in_microseconds
+    )
 {
     self->f=0;
     self->swapped = 0;
     self->nano = 0;
+    self->minimum_time_to_synthesize = minimum_time_to_synthesize;
+    self->time_step_in_microseconds = time_step_in_microseconds;
     self->destroy = jdksavdecc_pcapfile_reader_destroy;
     self->open = jdksavdecc_pcapfile_reader_open;
     self->close = jdksavdecc_pcapfile_reader_close;
@@ -82,66 +87,79 @@ int jdksavdecc_pcapfile_reader_open( struct jdksavdecc_pcapfile_reader *self, ch
 {
     int r=0;
 
-#ifdef _MSC_VER
-    errno_t e;
-    e = fopen_s(&self->f, fname, "rb" );
-    if( e!=0 )
+    // if fname is set then open the file
+    if( fname )
     {
-        self->f=0;
-    }
+#ifdef _MSC_VER
+        {
+            errno_t e;
+            e = fopen_s(&self->f, fname, "rb" );
+            if( e!=0 )
+            {
+                self->f=0;
+            }
+        }
 #else
-    self->f = fopen(fname, "rb" );
+        self->f = fopen(fname, "rb" );
 #endif
 
-    if( self->f )
-    {
-        struct jdksavdecc_pcapfile_header file_header;
-        if( fread(&file_header, sizeof(file_header), 1, self->f)==1 )
+        if( self->f )
         {
-            if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_SWAPPED )
+            struct jdksavdecc_pcapfile_header file_header;
+            if( fread(&file_header, sizeof(file_header), 1, self->f)==1 )
             {
-                self->swapped = 1;
-                self->nano = 0;
-                r=1;
-            }
-            else if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NATIVE )
-            {
-                self->swapped = 0;
-                self->nano = 0;
-                r=1;
-            }
-            else if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_SWAPPED )
-            {
-                self->swapped = 1;
-                self->nano = 1;
-                r=1;
-            }
-            else if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_NATIVE )
-            {
-                self->swapped = 0;
-                self->nano = 1;
-                r=1;
-            }
+                if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_SWAPPED )
+                {
+                    self->swapped = 1;
+                    self->nano = 0;
+                    r=1;
+                }
+                else if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NATIVE )
+                {
+                    self->swapped = 0;
+                    self->nano = 0;
+                    r=1;
+                }
+                else if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_SWAPPED )
+                {
+                    self->swapped = 1;
+                    self->nano = 1;
+                    r=1;
+                }
+                else if( file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_NATIVE )
+                {
+                    self->swapped = 0;
+                    self->nano = 1;
+                    r=1;
+                }
 
-            if( self->swapped )
-            {
-                file_header.magic_number = jdksavdecc_endian_reverse_uint32(&file_header.magic_number);
-                file_header.version_major = jdksavdecc_endian_reverse_uint16(&file_header.version_major);
-                file_header.version_minor = jdksavdecc_endian_reverse_uint16(&file_header.version_minor);
-                file_header.thiszone = (int32_t)jdksavdecc_endian_reverse_uint32((uint32_t *)&file_header.thiszone);
-                file_header.sigfigs = jdksavdecc_endian_reverse_uint32(&file_header.sigfigs);
-                file_header.snaplen = jdksavdecc_endian_reverse_uint32(&file_header.snaplen);
-                file_header.network = jdksavdecc_endian_reverse_uint32(&file_header.network);
+                if( self->swapped )
+                {
+                    file_header.magic_number = jdksavdecc_endian_reverse_uint32(&file_header.magic_number);
+                    file_header.version_major = jdksavdecc_endian_reverse_uint16(&file_header.version_major);
+                    file_header.version_minor = jdksavdecc_endian_reverse_uint16(&file_header.version_minor);
+                    file_header.thiszone = (int32_t)jdksavdecc_endian_reverse_uint32((uint32_t *)&file_header.thiszone);
+                    file_header.sigfigs = jdksavdecc_endian_reverse_uint32(&file_header.sigfigs);
+                    file_header.snaplen = jdksavdecc_endian_reverse_uint32(&file_header.snaplen);
+                    file_header.network = jdksavdecc_endian_reverse_uint32(&file_header.network);
+                }
             }
-        }
         
-        // Error in header, close file
-        if( !r )
-        {
-            fclose(self->f);
-            self->f=0;
+            // Error in header, close file
+            if( !r )
+            {
+                fclose(self->f);
+                self->f=0;
+            }
         }
     }
+    else
+    {
+        // If fname is null then we don't try to open anything, we exist only to synthesize ticks
+        r=1;
+        self->f=0;
+    }
+    
     return r;
 }
 
@@ -199,46 +217,78 @@ int jdksavdecc_pcapfile_reader_read_frame( struct jdksavdecc_pcapfile_reader *se
     return r;
 }
 
-int jdksavdecc_pcapfile_reader_dispatch_frames( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_pdu_dispatch *dispatcher )
+int jdksavdecc_pcapfile_reader_dispatch_frames( 
+    struct jdksavdecc_pcapfile_reader *self, 
+    struct jdksavdecc_pdu_dispatch *dispatcher 
+    )
 {
-    int r=-1;
+    int r=0;
     jdksavdecc_microsecond_time cur_time=0;
+    jdksavdecc_microsecond_time next_time=self->minimum_time_to_synthesize;
     
-    while( self->f && r==-1 )
+    // until we are finished dispatching all frames
+    while( r==0 )
     {
         struct jdksavdecc_frame frame;
-        if( self->read_frame(self,&frame) )
+        int did_read_frame=0;
+
+        // If we have a file to read
+        if( self->f )
         {
-            if (cur_time==0)
+            // Try read a frame from the file
+            did_read_frame=self->read_frame(self,&frame);
+
+            if( did_read_frame )
             {
-                cur_time=frame.time;
-            }
-            if( self->tick || dispatcher->tick )
-            {
-                // simulate ticks every 100ms to get to this point
-                while( r==-1 && cur_time >= frame.time + 100 )
+                if (cur_time==0 )
                 {
-                    if( dispatcher->tick )
-                    {
-                        dispatcher->tick( dispatcher, cur_time );
-                    }
-                    if( self->tick )
-                    {
-                        if( self->tick( self, cur_time )==0 )
-                        {
-                            // tick wanted us to halt
-                            r=0;
-                            break;
-                        }
-                    }
-                    cur_time+=100;
+                    // Synchronize our time to the beginning file time
+                    cur_time=frame.time;
+                    next_time=cur_time;
+                }
+                else
+                {
+                    // Otherwise use the next packet time from the file as our next_time
+                    next_time=frame.time;
                 }
             }
-            // give the 'received' frame to the dispatcher
-            if( r==-1 )
+        }
+
+        // Do we have tick functions to call?
+        if( self->tick || dispatcher->tick )
+        {
+            // yes, simulate ticks every time_step_in_microseconds to get to this point
+            while( r==0 && cur_time >= next_time + self->time_step_in_microseconds )
             {
-                dispatcher->rx_frame( dispatcher, &frame, 0 );
+                if( dispatcher->tick )
+                {
+                    // notify the dispatcher about the tick time
+                    dispatcher->tick( dispatcher, cur_time );
+                }
+                if( self->tick )
+                {
+                    // notify self about the tick time
+                    if( self->tick( self, cur_time )==0 )
+                    {
+                        // tick proc wanted us to halt
+                        r=1;
+                        break;
+                    }
+                }
+                // advance the time
+                cur_time+=self->time_step_in_microseconds;
             }
+        }
+        
+        // Synchronize the current time to the packet time if we jumped over it
+        if( did_read_frame && cur_time > frame.time )
+        {
+            cur_time = frame.time;
+        }
+        // give the 'received' frame to the dispatcher
+        if( r==0 && did_read_frame )
+        {
+            dispatcher->rx_frame( dispatcher, &frame, 0 );
         }
     }
     return r;
