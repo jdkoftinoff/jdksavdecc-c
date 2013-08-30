@@ -32,6 +32,8 @@
 
 #include "jdksavdecc.h"
 #include "jdksavdecc_pcapfile.h"
+#include "jdksavdecc_pdu_dispatch.h"
+#include "jdksavdecc_test.h"
 
 int test_jdksavdecc_pdu( struct jdksavdecc_pcapfile_reader *reader, struct jdksavdecc_pcapfile_writer *writer )
 {
@@ -41,52 +43,44 @@ int test_jdksavdecc_pdu( struct jdksavdecc_pcapfile_reader *reader, struct jdksa
     return r;
 }
 
+int test_jdksavdecc_pdu_tick( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_microsecond_time time )
+{
+    (void)self;
+    (void)time;
+    return 0;
+}
+
 
 int main( int argc, char **argv )
 {
     int r=0;
-    const char *infilename="input.pcap";
-    const char *outfilename="output.pcap";
-    struct jdksavdecc_pcapfile_reader reader;
-    struct jdksavdecc_pcapfile_writer writer;
+    const char *in_file_name="input.pcap";
+    const char *out_file_name="output.pcap";
+    struct jdksavdecc_pdu_dispatch pdu_dispatch;
+    jdksavdecc_microsecond_time minimum_time_to_synthesize = 5000000;
+    jdksavdecc_microsecond_time time_step_in_microseconds = 10000;
 
     if( argc>1 )
     {
-        infilename=argv[1];
+        in_file_name=argv[1];
     }
     if( argc>2 )
     {
-        outfilename=argv[2];
+        out_file_name=argv[2];
     }
 
     jdksavdecc_log_info("%8s:%s","Starting",argv[0]);
-    jdksavdecc_pcapfile_reader_init( &reader );
-    if( reader.open( &reader, infilename ) )
-    {
-        jdksavdecc_pcapfile_writer_init( &writer );
-        if( writer.open( &writer, outfilename ) )
-        {
-            r=test_jdksavdecc_pdu( &reader, &writer );
-            if( r==0 )
-            {
-                jdksavdecc_log_error("%8s:%s", "failure", argv[0]);
-            }
-            else
-            {
-                jdksavdecc_log_info("%8s:%s", "success", argv[0]);
-            }
-        }
-        else
-        {
-            jdksavdecc_log_error("unable to open file '%s' for writing", outfilename );            
-        }
-        writer.destroy( &writer );
-    }
-    else
-    {
-        jdksavdecc_log_error("unable to open file '%s' for reading", infilename );
-    }
-    reader.destroy(&reader);
+    
+    jdksavdecc_pdu_dispatch_init(&pdu_dispatch);
+    
+    r = jdksavdecc_test_run(
+        in_file_name,
+        out_file_name,
+        &pdu_dispatch,
+        &test_jdksavdecc_pdu_tick,
+        minimum_time_to_synthesize,
+        time_step_in_microseconds
+        );
 
     return (r!=0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
