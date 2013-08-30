@@ -55,15 +55,98 @@ void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self )
     self->aecpdu = jdksavdecc_pdu_dispatch_aecpdu;
     self->aecpdu_aem_command = jdksavdecc_pdu_dispatch_aecpdu_aem_command;
     self->aecpdu_aem_response = jdksavdecc_pdu_dispatch_aecpdu_aem_response;
+    self->maap_state_machines = 0;
+    self->acmp_state_machines = 0;
+    self->adp_state_machines = 0;
+    self->aecp_aa_command_state_machines = 0;
+    self->aecp_aa_response_state_machines = 0;
+    self->aecp_aem_command_state_machines = 0;
+    self->aecp_aem_response_state_machines = 0;
+    self->aecp_avc_command_state_machines = 0;
+    self->aecp_avc_response_state_machines = 0;
+    self->aecp_vendor_command_state_machines = 0;
+    self->aecp_vendor_response_state_machines = 0;
+    self->aecp_hdcp_apm_command_state_machines = 0;
+    self->aecp_hdcp_apm_response_state_machines = 0;
 }
 
 
 void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_microsecond_time timestamp )
 {
-    if( self->state_machines )
+    struct jdksavdecc_state_machines *sm = 0;
+    
+    sm = self->acmp_state_machines;
+    if( sm )
     {
-        self->state_machines->base.tick( &self->state_machines->base, timestamp );
+        sm->base.tick( &sm->base, timestamp );
     }
+    
+    sm = self->adp_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+
+    sm = self->aecp_aa_command_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+
+    sm = self->aecp_aa_response_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+
+    sm = self->aecp_aem_command_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+
+    sm = self->aecp_aem_response_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+
+    sm = self->aecp_avc_command_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+
+    sm = self->aecp_avc_response_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+
+    sm = self->aecp_vendor_command_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+
+    sm = self->aecp_vendor_response_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+
+    sm = self->aecp_hdcp_apm_command_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+
+    sm = self->aecp_hdcp_apm_response_state_machines;
+    if( sm )
+    {
+        sm->base.tick( &sm->base, timestamp );
+    }
+    
 }
 
 void jdksavdecc_pdu_dispatch_set_frame_sender( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender )
@@ -160,10 +243,12 @@ ssize_t jdksavdecc_pdu_dispatch_avtpv0( struct jdksavdecc_pdu_dispatch *self, st
 ssize_t jdksavdecc_pdu_dispatch_acmpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos )
 {
     ssize_t r=0;
+    struct jdksavdecc_state_machines *sm = 0;
 
-    if( self->state_machines )
+    sm = self->acmp_state_machines;
+    if( sm )
     {
-        r = self->state_machines->base.rx_frame( &self->state_machines->base, frame, pos );
+        r = sm->base.rx_frame( &sm->base, frame, pos );
     }
     return r;
 }
@@ -171,12 +256,13 @@ ssize_t jdksavdecc_pdu_dispatch_acmpdu( struct jdksavdecc_pdu_dispatch *self, st
 ssize_t jdksavdecc_pdu_dispatch_adpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos )
 {
     ssize_t r=0;
+    struct jdksavdecc_state_machines *sm = 0;
 
-    if( self->state_machines )
+    sm = self->adp_state_machines;
+    if( sm )
     {
-        r = self->state_machines->base.rx_frame( &self->state_machines->base, frame, pos );
+        r = sm->base.rx_frame( &sm->base, frame, pos );
     }
-
     return r;
 }
 

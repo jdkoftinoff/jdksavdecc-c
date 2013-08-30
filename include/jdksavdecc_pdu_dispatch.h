@@ -84,7 +84,19 @@ struct jdksavdecc_pdu_dispatch
     struct jdksavdecc_command_dispatch *aem_command_dispatch;
     struct jdksavdecc_command_dispatch *aem_response_dispatch;
 
-    struct jdksavdecc_state_machines *state_machines;
+    struct jdksavdecc_state_machines *maap_state_machines;
+    struct jdksavdecc_state_machines *acmp_state_machines;
+    struct jdksavdecc_state_machines *adp_state_machines;
+    struct jdksavdecc_state_machines *aecp_aa_command_state_machines;
+    struct jdksavdecc_state_machines *aecp_aa_response_state_machines;
+    struct jdksavdecc_state_machines *aecp_aem_command_state_machines;
+    struct jdksavdecc_state_machines *aecp_aem_response_state_machines;
+    struct jdksavdecc_state_machines *aecp_vendor_command_state_machines;
+    struct jdksavdecc_state_machines *aecp_vendor_response_state_machines;
+    struct jdksavdecc_state_machines *aecp_avc_command_state_machines;
+    struct jdksavdecc_state_machines *aecp_avc_response_state_machines;
+    struct jdksavdecc_state_machines *aecp_hdcp_apm_command_state_machines;
+    struct jdksavdecc_state_machines *aecp_hdcp_apm_response_state_machines;
 };
 
 
