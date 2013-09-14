@@ -57,10 +57,30 @@ extern "C" {
 #  define jdksavdecc_maap_log_exit() jdksavdecc_maap_log("Exit:%s:%d",__FUNCTION__,__LINE__)
 # endif
 #else
-# define jdksavdecc_maap_interface_log(fmt, ...)
-# define jdksavdecc_maap_interface_log_enter()
-# define jdksavdecc_maap_interface_log_exit()
+# define jdksavdecc_maap_log(fmt, ...)
+# define jdksavdecc_maap_log_enter()
+# define jdksavdecc_maap_log_exit()
 #endif
+
+#define JDKSAVDECC_MAAP_PROBE_RETRANSMITS (3) /// See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_PROBE_INTERVAL_BASE ((jdksavdecc_microsecond_time)500000L) /// 500ms in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_PROBE_INTERVAL_VARIATION ((jdksavdecc_microsecond_time)100000L) /// 100ms in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_BASE ((jdksavdecc_microsecond_time)30000000L) /// 30s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_VARIATION ((jdksavdecc_microsecond_time)2000000L) /// 2s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+
+#define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_START {{0x91,0xe0,0xf0,0x00,0x00,0x00}} /// See IEEE Std 1722-2011 Table B.4
+extern struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_start;
+
+#define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_END {{0x91,0xe0,0xf0,0x00,0xFD,0xFF}} /// See IEEE Std 1722-2011 Table B.4
+extern struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_end;
+
+#define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_START {{0x91,0xe0,0xf0,0x00,0xFE,0x00}} /// See IEEE Std 1722-2011 Table B.4
+extern struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_start;
+
+#define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_END {{0x91,0xe0,0xf0,0x00,0xFE,0xFF}} /// See IEEE Std 1722-2011 Table B.4
+extern struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_end;
+
+
 
 struct jdksavdecc_maap_common_control_header
 {
@@ -226,15 +246,6 @@ static inline void jdksavdecc_maap_set_conflict_count( uint16_t v, void *base, s
 }
 
 
-
-
-/*@}*/
-
-
-/** \addtogroup maap MAAP - IEEE Std 1722-2011 Annex B.2 */
-/*@{*/
-
-
 /// MAAP - IEEE Std 1722-2011 Annex B.2
 struct jdksavdecc_maap
 {
@@ -312,173 +323,6 @@ static inline ssize_t jdksavdecc_maap_write(
 /*@}*/
 
 
-/** \addtogroup maap_sm MAAP State Machine - IEEE Std 1722-2011 Annex B.3 */
-/*@{*/
-
-#define JDKSAVDECC_MAAP_PROBE_RETRANSMITS (3) /// See IEEE Std 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_PROBE_INTERVAL_BASE ((jdksavdecc_microsecond_time)500000L) /// 500ms in microseconds - See IEEE Std 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_PROBE_INTERVAL_VARIATION ((jdksavdecc_microsecond_time)100000L) /// 100ms in microseconds - See IEEE Std 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_BASE ((jdksavdecc_microsecond_time)30000000L) /// 30s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_VARIATION ((jdksavdecc_microsecond_time)2000000L) /// 2s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
-
-/// See IEEE Std 1722-2011 Annex B.3.1.
-enum jdksavdecc_maap_event
-{
-    jdksavdecc_maap_event_begin=0,
-    jdksavdecc_maap_event_release,
-    jdksavdecc_maap_event_restart,
-    jdksavdecc_maap_event_reserve_address,
-    jdksavdecc_maap_event_rprobe,
-    jdksavdecc_maap_event_rdefend,
-    jdksavdecc_maap_event_rannounce,
-    jdksavdecc_maap_event_probe_count,
-    jdksavdecc_maap_event_announce_timer,
-    jdksavdecc_maap_event_probe_timer
-};
-
-struct jdksavdecc_maap_state_machine;
-
-/// See IEEE Std 1722-2011 Annex B.3.2
-typedef void (*jdksavdecc_maap_state)(
-        struct jdksavdecc_maap_state_machine *,
-        enum jdksavdecc_maap_event event,
-        struct jdksavdecc_maap *received_pdu
-        );
-
-/// See IEEE Std 1722-2011 Annex B.3.2
-void jdksavdecc_maap_state_initial(
-        struct jdksavdecc_maap_state_machine *,
-        enum jdksavdecc_maap_event event,
-        struct jdksavdecc_maap *received_pdu
-        );
-
-/// See IEEE Std 1722-2011 Annex B.3.2
-void jdksavdecc_maap_state_probe(
-        struct jdksavdecc_maap_state_machine *,
-        enum jdksavdecc_maap_event event,
-        struct jdksavdecc_maap *received_pdu
-        );
-
-/// See IEEE Std 1722-2011 Annex B.3.2
-void jdksavdecc_maap_state_defend(
-        struct jdksavdecc_maap_state_machine *,
-        enum jdksavdecc_maap_event event,
-        struct jdksavdecc_maap *received_pdu
-        );
-
-
-/// See IEEE Std 1722-2011 Annex B.3.6.1
-void jdksavdecc_maap_action_generate_address(
-        struct jdksavdecc_maap_state_machine *,
-        struct jdksavdecc_eui48 *start_address,
-        uint16_t count
-        );
-
-/// See IEEE Std 1722-2011 Annex B.3.6.2
-void jdksavdecc_maap_action_init_maap_probe_count(
-        struct jdksavdecc_maap_state_machine *
-        );
-
-/// See IEEE Std 1722-2011 Annex B.3.6.3
-void jdksavdecc_maap_action_dec_maap_probe_count(
-        struct jdksavdecc_maap_state_machine *
-        );
-
-/// See IEEE Std 1722-2011 Annex B.3.6.4
-void jdksavdecc_maap_action_compare_mac(
-        struct jdksavdecc_maap_state_machine *,
-        struct jdksavdecc_maap *received_pdu
-        );
-
-/// See IEEE Std 1722-2011 Annex B.3.6.5
-void jdksavdecc_maap_action_sprobe(
-        struct jdksavdecc_maap_state_machine *
-        );
-
-/// See IEEE Std 1722-2011 Annex B.3.6.6
-void jdksavdecc_maap_action_sdefend(
-        struct jdksavdecc_maap_state_machine *
-        );
-
-/// See IEEE Std 1722-2011 Annex B.3.6.7
-void jdksavdecc_maap_action_sannounce(
-        struct jdksavdecc_maap_state_machine *
-        );
-
-/// The MAAP state machine - See IEEE Std 1722-2011 Annex B.3
-struct jdksavdecc_maap_state_machine
-{
-    /// Base class for a state machine
-    struct jdksavdecc_state_machine base;
-    
-    jdksavdecc_maap_state state;
-    struct jdksavdecc_eui48 local_mac;
-    struct jdksavdecc_eui48 base_of_range;
-    uint16_t desired_count;
-
-    void (*range_acquired_notification)( struct jdksavdecc_maap_state_machine *, struct jdksavdecc_eui48 base_of_range, uint16_t count );
-    void (*range_lost_notification)( struct jdksavdecc_maap_state_machine *, struct jdksavdecc_eui48 base_of_range, uint16_t count );
-
-
-    jdksavdecc_microsecond_time last_time;
-    jdksavdecc_microsecond_time announce_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.1
-    jdksavdecc_microsecond_time probe_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.2
-};
-
-void jdksavdecc_maap_state_machine_init(
-        struct jdksavdecc_maap_state_machine *self,
-        jdksavdecc_microsecond_time current_time,
-        struct jdksavdecc_eui48 local_mac,
-        struct jdksavdecc_eui48 base_of_range,
-        uint16_t desired_count,
-        void (*range_acquired_notification)( struct jdksavdecc_maap_state_machine *, struct jdksavdecc_eui48 base_of_range, uint16_t count ),
-        void (*range_lost_notification)( struct jdksavdecc_maap_state_machine *, struct jdksavdecc_eui48 base_of_range, uint16_t count ),
-        struct jdksavdecc_frame_sender *frame_sender,
-        uint32_t tag,
-        void *additional
-        );
-
-void jdksavdecc_maap_state_machine_destroy(
-        struct jdksavdecc_state_machine *self
-        );
-
-int jdksavdecc_maap_state_machine_tick(
-        struct jdksavdecc_state_machine *self,
-        jdksavdecc_microsecond_time current_time
-        );
-
-ssize_t jdksavdecc_maap_state_machine_rx_frame(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame *rx_frame,
-        size_t pos
-        );
-
-/// Transmit a frame to a network port
-///
-/// @param self Pointer to state_machine base class
-/// @param frame The frame that received
-/// @returns void
-void jdksavdecc_maap_state_machine_tx_frame(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame const *frame
-        );
-
-
-#define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_START {{0x91,0xe0,0xf0,0x00,0x00,0x00}} /// See IEEE Std 1722-2011 Table B.4
-extern struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_start;
-
-#define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_END {{0x91,0xe0,0xf0,0x00,0xFD,0xFF}} /// See IEEE Std 1722-2011 Table B.4
-extern struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_end;
-
-#define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_START {{0x91,0xe0,0xf0,0x00,0xFE,0x00}} /// See IEEE Std 1722-2011 Table B.4
-extern struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_start;
-
-#define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_END {{0x91,0xe0,0xf0,0x00,0xFE,0xFF}} /// See IEEE Std 1722-2011 Table B.4
-extern struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_end;
-
-
-
-/*@}*/
 #ifdef __cplusplus
 }
 #endif
