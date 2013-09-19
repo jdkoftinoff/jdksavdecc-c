@@ -46,7 +46,63 @@ extern "C" {
 */
 /*@{*/
 
+struct jdksavdecc_descriptor_storage_gen
+{
+    void (*destroy)( struct jdksavdecc_descriptor_storage_gen *self );
+    void (*error)( struct jdksavdecc_descriptor_storage_gen *self, int code );
 
+    uint8_t buffer;
+    size_t buffer_size;
+    size_t buffer_pos;
+};
+
+void jdksavdecc_descriptor_storage_gen_init(
+        struct jdksavdecc_descriptor_storage_gen *self,
+        uint8_t *buffer,
+        size_t buffer_size
+        );
+
+void jdksavdecc_descriptor_storage_gen_destroy(
+        struct jdksavdecc_descriptor_storage_gen *self
+        );
+
+void jdksavdecc_descriptor_storage_gen_finish(
+        struct jdksavdecc_descriptor_storage_gen *self
+        );
+
+void jdksavdecc_descriptor_storage_gen_add_configuration(
+        struct jdksavdecc_descriptor_storage_gen *self
+        );
+
+void jdksavdecc_descriptor_storage_gen_finish_configuration(
+        struct jdksavdecc_descriptor_storage_gen *self
+        );
+
+void jdksavdecc_descriptor_storage_gen_add_descriptor_list(
+        struct jdksavdecc_descriptor_storage_gen *self,
+        uint16_t descriptor_type
+        );
+
+void jdksavdecc_descriptor_storage_gen_finish_descriptor_list(
+        struct jdksavdecc_descriptor_storage_gen *self
+        );
+
+void jdksavdecc_descriptor_storage_gen_add_descriptor(
+        struct jdksavdecc_descriptor_storage_gen *self,
+        struct jdksavdecc_descriptor const *descriptor,
+        uint16_t descriptor_len
+        );
+
+int jdksavdecc_descriptor_storage_gen_export_binary(
+        struct jdksavdecc_descriptor_storage_gen *self,
+        const char *fname
+        );
+
+int jdksavdecc_descriptor_storage_gen_export_c(
+        struct jdksavdecc_descriptor_storage_gen *self,
+        const char *fname_c,
+        const char *fname_h
+        );
 
 /*@}*/
 
