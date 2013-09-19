@@ -251,7 +251,7 @@ static inline struct jdksavdecc_eui64 jdksavdecc_adpdu_get_entity_model_id( void
 
 
 /**
- * Store a uint32 value to the entity_model_id field of the ADPDU object to a network buffer.
+ * Store an eui64 value to the entity_model_id field of the ADPDU object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
