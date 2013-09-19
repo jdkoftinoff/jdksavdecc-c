@@ -95,7 +95,8 @@ void jdksavdecc_descriptor_storage_gen_add_descriptor(
 }
 
 int jdksavdecc_descriptor_storage_gen_export_binary(
-        struct jdksavdecc_descriptor_storage_gen *self,
+        uint8_t const *buffer,
+        size_t buffer_len,
         const char *fname
         )
 {
@@ -104,7 +105,8 @@ int jdksavdecc_descriptor_storage_gen_export_binary(
 }
 
 int jdksavdecc_descriptor_storage_gen_export_c(
-        struct jdksavdecc_descriptor_storage_gen *self,
+        uint8_t const *buffer,
+        size_t buffer_len,
         const char *fname_c,
         const char *fname_h
         )

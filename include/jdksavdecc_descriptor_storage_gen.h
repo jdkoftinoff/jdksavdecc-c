@@ -51,9 +51,12 @@ struct jdksavdecc_descriptor_storage_gen
     void (*destroy)( struct jdksavdecc_descriptor_storage_gen *self );
     void (*error)( struct jdksavdecc_descriptor_storage_gen *self, int code );
 
-    uint8_t buffer;
+    uint8_t *buffer;
     size_t buffer_size;
     size_t buffer_pos;
+
+    uint8_t *current_descriptor_list_chunk;
+    uint8_t *current_configuration_chunk;
 };
 
 void jdksavdecc_descriptor_storage_gen_init(
@@ -94,12 +97,14 @@ void jdksavdecc_descriptor_storage_gen_add_descriptor(
         );
 
 int jdksavdecc_descriptor_storage_gen_export_binary(
-        struct jdksavdecc_descriptor_storage_gen *self,
+        uint8_t const *buffer,
+        size_t buffer_len,
         const char *fname
         );
 
 int jdksavdecc_descriptor_storage_gen_export_c(
-        struct jdksavdecc_descriptor_storage_gen *self,
+        uint8_t const *buffer,
+        size_t buffer_len,
         const char *fname_c,
         const char *fname_h
         );
