@@ -2,7 +2,7 @@ cache()
 
 QT       -= core gui
 
-TARGET = avdecc
+TARGET = jdksavdecc-c
 TEMPLATE = lib
 CONFIG += staticlib
 
