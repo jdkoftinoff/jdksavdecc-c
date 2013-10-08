@@ -59,7 +59,7 @@ struct jdksavdecc_pdu_dispatch
 
     void (*destroy)( struct jdksavdecc_pdu_dispatch * );
 
-    void (*tick)( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_microsecond_time timestamp );
+    void (*tick)( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_timestamp_in_microseconds timestamp );
 
     void (*set_frame_sender)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender );
     jdksavdecc_pdu_dispatch_proc rx_frame;
@@ -101,7 +101,7 @@ struct jdksavdecc_pdu_dispatch
 
 
 void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self );
-void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_microsecond_time timestamp );
+void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_timestamp_in_microseconds timestamp );
 void jdksavdecc_pdu_dispatch_set_frame_sender( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender );
 
 ssize_t jdksavdecc_pdu_dispatch_rx_frame( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );

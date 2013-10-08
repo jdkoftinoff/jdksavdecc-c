@@ -39,9 +39,9 @@ int jdksavdecc_test_run(
     char const *in_file_name,
     char const *out_file_name,
     struct jdksavdecc_pdu_dispatch *pdu_dispatch,
-    int (*tick)( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_microsecond_time time ),
-    jdksavdecc_microsecond_time minimum_time_to_synthesize,
-    jdksavdecc_microsecond_time time_step_in_microseconds
+    int (*tick)( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_timestamp_in_microseconds time ),
+    jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize,
+    jdksavdecc_timestamp_in_microseconds time_step_in_microseconds
     )
 {
     struct jdksavdecc_pcapfile_reader reader;

@@ -52,8 +52,8 @@ struct jdksavdecc_pcapfile_reader
     int swapped;
     int nano;
 
-    jdksavdecc_microsecond_time minimum_time_to_synthesize;
-    jdksavdecc_microsecond_time time_step_in_microseconds;
+    jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize;
+    jdksavdecc_timestamp_in_microseconds time_step_in_microseconds;
     
     void (*destroy)( struct jdksavdecc_pcapfile_reader * );
 
@@ -61,13 +61,13 @@ struct jdksavdecc_pcapfile_reader
     void (*close)( struct jdksavdecc_pcapfile_reader *self );
     int (*read_frame)( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_frame *frame );
     int (*dispatch_frames)( struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_pdu_dispatch *dispatcher );
-    int (*tick)( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_microsecond_time time );
+    int (*tick)( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_timestamp_in_microseconds time );
 };
 
 void jdksavdecc_pcapfile_reader_init(
     struct jdksavdecc_pcapfile_reader *self, 
-    jdksavdecc_microsecond_time minimum_time_to_synthesize,
-    jdksavdecc_microsecond_time time_step_in_microseconds
+    jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize,
+    jdksavdecc_timestamp_in_microseconds time_step_in_microseconds
     );
 
 void jdksavdecc_pcapfile_reader_destroy(struct jdksavdecc_pcapfile_reader *self);

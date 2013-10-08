@@ -139,7 +139,7 @@ void jdksavdecc_adp_advertising_interface_state_machine_destroy(
         );
 
 
-void jdksavdecc_adp_advertising_interface_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_microsecond_time timestamp );
+void jdksavdecc_adp_advertising_interface_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp );
 ssize_t jdksavdecc_adp_advertising_interface_state_machine_rx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 
 /// Clause 6.2.5.2 entity state machine functions

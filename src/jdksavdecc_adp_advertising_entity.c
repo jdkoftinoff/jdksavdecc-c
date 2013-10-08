@@ -103,7 +103,7 @@ void jdksavdecc_adp_advertising_entity_state_machine_destroy(
 ///
 int jdksavdecc_advertising_entity_state_machine_tick(
         struct jdksavdecc_state_machine *self_,
-        jdksavdecc_microsecond_time timestamp
+        jdksavdecc_timestamp_in_microseconds timestamp
         )
 {
     int r=-1;
@@ -187,7 +187,7 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_advertise(
         struct jdksavdecc_adp_advertising_entity_state_machine *self
         )
 {
-    jdksavdecc_microsecond_time delta;
+    jdksavdecc_timestamp_in_microseconds delta;
     jdksavdecc_adp_advertising_entity_log_enter();
 
     self->send_available( self );

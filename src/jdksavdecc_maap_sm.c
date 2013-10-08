@@ -37,7 +37,7 @@
 
 void jdksavdecc_maap_state_machine_init(
     struct jdksavdecc_maap_state_machine *self,
-    jdksavdecc_microsecond_time current_time,
+    jdksavdecc_timestamp_in_microseconds current_time,
     struct jdksavdecc_eui48 local_mac,
     struct jdksavdecc_eui48 base_of_range,
     uint16_t desired_count,
@@ -81,7 +81,7 @@ void jdksavdecc_maap_state_machine_destroy(
 
 int jdksavdecc_maap_state_machine_tick(
     struct jdksavdecc_state_machine *self_,
-    jdksavdecc_microsecond_time current_time
+    jdksavdecc_timestamp_in_microseconds current_time
     )
 {
     struct jdksavdecc_maap_state_machine *self = (struct jdksavdecc_maap_state_machine *)self_;

@@ -102,7 +102,7 @@ void jdksavdecc_state_machines_terminate( struct jdksavdecc_state_machine *self_
 
 int jdksavdecc_state_machines_tick(
         struct jdksavdecc_state_machine *self_,
-        jdksavdecc_microsecond_time timestamp
+        jdksavdecc_timestamp_in_microseconds timestamp
         )
 {
     int r=0;

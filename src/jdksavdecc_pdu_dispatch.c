@@ -68,7 +68,7 @@ void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self )
 }
 
 
-void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_microsecond_time timestamp )
+void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_timestamp_in_microseconds timestamp )
 {
     struct jdksavdecc_state_machines *sms[] =
     {

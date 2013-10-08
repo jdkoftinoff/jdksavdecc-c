@@ -95,7 +95,7 @@ void jdksavdecc_state_machines_terminate(
 
 int jdksavdecc_state_machines_tick(
         struct jdksavdecc_state_machine *self,
-        jdksavdecc_microsecond_time timestamp
+        jdksavdecc_timestamp_in_microseconds timestamp
         );
 
 ssize_t jdksavdecc_state_machines_rx_frame(

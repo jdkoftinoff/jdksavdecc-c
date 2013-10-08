@@ -67,7 +67,7 @@ extern "C" {
 /// See Clause 6.2.3
 struct jdksavdecc_adp_advertising_global_vars
 {
-    jdksavdecc_microsecond_time current_time;
+    jdksavdecc_timestamp_in_microseconds current_time;
     struct jdksavdecc_entity_info *entity_info;
 };
 
@@ -78,7 +78,7 @@ struct jdksavdecc_adp_advertising_entity_vars
     struct jdksavdecc_adp_advertising_global_vars *global;
 
     /// See Clause 6.2.4.1.1
-    jdksavdecc_microsecond_time reannounce_timer_timeout;
+    jdksavdecc_timestamp_in_microseconds reannounce_timer_timeout;
 
     /// See Clause 6.2.4.1.2
     int needs_advertise;
@@ -170,7 +170,7 @@ void jdksavdecc_adp_advertising_entity_state_machine_destroy(
 ///
 int jdksavdecc_adp_advertising_entity_state_machine_tick(
         struct jdksavdecc_state_machine *self,
-        jdksavdecc_microsecond_time timestamp
+        jdksavdecc_timestamp_in_microseconds timestamp
         );
 
 /// trigger all advertise interface state machines to send an advertise

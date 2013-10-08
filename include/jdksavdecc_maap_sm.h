@@ -167,14 +167,14 @@ struct jdksavdecc_maap_state_machine
     void (*range_lost_notification)( struct jdksavdecc_maap_state_machine *, struct jdksavdecc_eui48 base_of_range, uint16_t count );
 
 
-    jdksavdecc_microsecond_time last_time;
-    jdksavdecc_microsecond_time announce_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.1
-    jdksavdecc_microsecond_time probe_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.2
+    jdksavdecc_timestamp_in_microseconds last_time;
+    jdksavdecc_timestamp_in_microseconds announce_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.1
+    jdksavdecc_timestamp_in_microseconds probe_timer;  /// See IEEE Std 1722-2011 Annex B.3.4.2
 };
 
 void jdksavdecc_maap_state_machine_init(
         struct jdksavdecc_maap_state_machine *self,
-        jdksavdecc_microsecond_time current_time,
+        jdksavdecc_timestamp_in_microseconds current_time,
         struct jdksavdecc_eui48 local_mac,
         struct jdksavdecc_eui48 base_of_range,
         uint16_t desired_count,
@@ -191,7 +191,7 @@ void jdksavdecc_maap_state_machine_destroy(
 
 int jdksavdecc_maap_state_machine_tick(
         struct jdksavdecc_state_machine *self,
-        jdksavdecc_microsecond_time current_time
+        jdksavdecc_timestamp_in_microseconds current_time
         );
 
 ssize_t jdksavdecc_maap_state_machine_rx_frame(

@@ -61,8 +61,8 @@ struct jdksavdecc_pcapfile_record_header
 
 void jdksavdecc_pcapfile_reader_init(
     struct jdksavdecc_pcapfile_reader *self, 
-    jdksavdecc_microsecond_time minimum_time_to_synthesize,
-    jdksavdecc_microsecond_time time_step_in_microseconds
+    jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize,
+    jdksavdecc_timestamp_in_microseconds time_step_in_microseconds
     )
 {
     self->f=0;
@@ -223,8 +223,8 @@ int jdksavdecc_pcapfile_reader_dispatch_frames(
     )
 {
     int r=0;
-    jdksavdecc_microsecond_time cur_time=0;
-    jdksavdecc_microsecond_time next_time=self->minimum_time_to_synthesize;
+    jdksavdecc_timestamp_in_microseconds cur_time=0;
+    jdksavdecc_timestamp_in_microseconds next_time=self->minimum_time_to_synthesize;
     
     // until we are finished dispatching all frames
     while( r==0 )

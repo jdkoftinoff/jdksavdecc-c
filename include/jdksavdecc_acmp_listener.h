@@ -84,7 +84,7 @@ void jdksavdecc_acmp_listener_state_machine_destroy(
 
 void jdksavdecc_acmp_listener_state_machine_tick(
         struct jdksavdecc_state_machine *self,
-        jdksavdecc_microsecond_time timestamp
+        jdksavdecc_timestamp_in_microseconds timestamp
         );
 
 ssize_t jdksavdecc_acmp_listener_state_machine_rx_frame(
