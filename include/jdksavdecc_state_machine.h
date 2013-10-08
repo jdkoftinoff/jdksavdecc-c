@@ -99,16 +99,27 @@ struct jdksavdecc_state_machine
 };
 
 
+/// Initialize state machine
 void jdksavdecc_state_machine_init(
         struct jdksavdecc_state_machine *self,
         struct jdksavdecc_frame_sender *frame_sender,
         uint32_t tag,
         void *additional
         );
+
+/// Destroy state machine
 void jdksavdecc_state_machine_destroy( struct jdksavdecc_state_machine *self );
+
+/// Ask the state machine to terminate
 void jdksavdecc_state_machine_terminate( struct jdksavdecc_state_machine *self );
+
+/// Time tick.  Returns 0 on success, -1 on state machine terminated
 int jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp );
+
+/// Received Frame
 ssize_t jdksavdecc_state_machine_rx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+
+/// Transmit Frame
 void jdksavdecc_state_machine_tx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame );
 
 /*@}*/
