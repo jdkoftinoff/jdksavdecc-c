@@ -40,6 +40,9 @@ void jdksavdecc_descriptor_storage_gen_init(
         )
 {
     /* @TODO */
+    (void)self;
+    (void)buffer;
+    (void)buffer_size;
 }
 
 void jdksavdecc_descriptor_storage_gen_destroy(
@@ -47,6 +50,7 @@ void jdksavdecc_descriptor_storage_gen_destroy(
         )
 {
     /* @TODO */
+    (void)self;
 }
 
 void jdksavdecc_descriptor_storage_gen_finish(
@@ -54,6 +58,7 @@ void jdksavdecc_descriptor_storage_gen_finish(
         )
 {
     /* @TODO */
+    (void)self;
 }
 
 void jdksavdecc_descriptor_storage_gen_add_configuration(
@@ -61,6 +66,7 @@ void jdksavdecc_descriptor_storage_gen_add_configuration(
         )
 {
     /* @TODO */
+    (void)self;
 }
 
 void jdksavdecc_descriptor_storage_gen_finish_configuration(
@@ -68,6 +74,7 @@ void jdksavdecc_descriptor_storage_gen_finish_configuration(
         )
 {
     /* @TODO */
+    (void)self;
 }
 
 void jdksavdecc_descriptor_storage_gen_add_descriptor_list(
@@ -76,6 +83,8 @@ void jdksavdecc_descriptor_storage_gen_add_descriptor_list(
         )
 {
     /* @TODO */
+    (void)self;
+    (void)descriptor_type;
 }
 
 void jdksavdecc_descriptor_storage_gen_finish_descriptor_list(
@@ -83,6 +92,7 @@ void jdksavdecc_descriptor_storage_gen_finish_descriptor_list(
         )
 {
     /* @TODO */
+    (void)self;
 }
 
 void jdksavdecc_descriptor_storage_gen_add_descriptor(
@@ -92,6 +102,9 @@ void jdksavdecc_descriptor_storage_gen_add_descriptor(
         )
 {
     /* @TODO */
+    (void)self;
+    (void)descriptor;
+    (void)descriptor_len;
 }
 
 int jdksavdecc_descriptor_storage_gen_export_binary(
@@ -101,6 +114,9 @@ int jdksavdecc_descriptor_storage_gen_export_binary(
         )
 {
     /* @TODO */
+    (void)buffer;
+    (void)buffer_len;
+    (void)fname;
     return -1;
 }
 
@@ -112,5 +128,9 @@ int jdksavdecc_descriptor_storage_gen_export_c(
         )
 {
     /* @TODO */
+    (void)buffer;
+    (void)buffer_len;
+    (void)fname_c;
+    (void)fname_h;
     return -1;
 }

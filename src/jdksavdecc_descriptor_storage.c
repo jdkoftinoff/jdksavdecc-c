@@ -42,6 +42,10 @@ int jdksavdecc_descriptor_storage_init( struct jdksavdecc_descriptor_storage *se
 struct jdksavdecc_descriptor const *jdksavdecc_descriptor_storage_read( struct jdksavdecc_descriptor_storage *self, uint16_t config, uint16_t descriptor_type, uint16_t descriptor_index )
 {
     /* TODO */
+    (void)self;
+    (void)config;
+    (void)descriptor_type;
+    (void)descriptor_index;
     return 0;
 }
 
