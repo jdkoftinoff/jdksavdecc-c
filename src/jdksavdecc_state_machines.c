@@ -78,6 +78,8 @@ void jdksavdecc_state_machines_destroy(
         struct jdksavdecc_state_machine *sm = self->state_machines[i];
         sm->destroy( sm );
     }
+    // free the memory for our list
+    free( self->state_machines );
     jdksavdecc_state_machines_log_exit();
 }
 

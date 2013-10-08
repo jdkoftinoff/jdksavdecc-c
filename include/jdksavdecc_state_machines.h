@@ -63,20 +63,30 @@ extern "C" {
 #endif
 
 
+/// Container for multiple state machines
 struct jdksavdecc_state_machines
 {
+    /// IsA state machine
     struct jdksavdecc_state_machine base;
 
+    /// The number of state machines in the list
     int num_state_machines;
+
+    /// The maximum number of state machines allowed
     int max_state_machines;
+
+    /// The list of state machines
     struct jdksavdecc_state_machine **state_machines;
 
+    /// Add a state machine to the list.
+    /// Returns 0 on success
     int (*add_state_machine)(
             struct jdksavdecc_state_machines *self,
             struct jdksavdecc_state_machine *sm
             );
 };
 
+/// Initialize the state machine list.
 int jdksavdecc_state_machines_init(
         struct jdksavdecc_state_machines *self,
         int max_state_machines,
@@ -85,25 +95,33 @@ int jdksavdecc_state_machines_init(
         void *additional
         );
 
+/// Destroy the state machine list and deallocate the list
 void jdksavdecc_state_machines_destroy(
         struct jdksavdecc_state_machine *self
         );
 
+/// Ask all the state machines to terminate
 void jdksavdecc_state_machines_terminate(
         struct jdksavdecc_state_machine *self
         );
 
+/// Dispatch a tick to all state machines.
+/// Returns -1 when all state machines finish terminating
 int jdksavdecc_state_machines_tick(
         struct jdksavdecc_state_machine *self,
         jdksavdecc_timestamp_in_microseconds timestamp
         );
 
+/// Dispatch the rx_frame to all state machines.
+/// Returns the largest parsed octet count that the state machines returned
 ssize_t jdksavdecc_state_machines_rx_frame(
         struct jdksavdecc_state_machine *self,
         struct jdksavdecc_frame *rx_frame,
         size_t pos
         );
 
+/// Add a state machine to the list.
+/// Returns 0 on success, <0 if there is no room
 int jdksavdecc_state_machines_add_state_machine(
         struct jdksavdecc_state_machines *self,
         struct jdksavdecc_state_machine *s
