@@ -33,3 +33,5 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_pdu_dispatch_print.h"
+
+char const *jdksavdecc_pdu_dispatch_print_file = __FILE__;

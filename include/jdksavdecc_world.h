@@ -50,13 +50,19 @@
 # ifndef ssize_t
 #  define ssize_t SSIZE_T
 # endif
-# ifndef inline
-#  define inline __inline
+# ifndef __cplusplus
+#  ifndef inline
+#   define inline __inline
+#  endif
 # endif
 #else
 # include <stdint.h>
 # include <inttypes.h>
 #endif
+
+#include "jdksavdecc_log.h"
+
+#include "jdksavdecc_print.h"
 
 #endif
 

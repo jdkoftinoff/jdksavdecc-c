@@ -50,36 +50,84 @@ void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self )
     self->unknown = jdksavdecc_pdu_dispatch_unknown;
     self->rx_frame = jdksavdecc_pdu_dispatch_rx_frame;
     self->avtpv0 = jdksavdecc_pdu_dispatch_avtpv0;
+    self->maap = jdksavdecc_pdu_dispatch_maap;
     self->acmpdu = jdksavdecc_pdu_dispatch_acmpdu;
     self->adpdu = jdksavdecc_pdu_dispatch_adpdu;
     self->aecpdu = jdksavdecc_pdu_dispatch_aecpdu;
     self->aecpdu_aem_command = jdksavdecc_pdu_dispatch_aecpdu_aem_command;
     self->aecpdu_aem_response = jdksavdecc_pdu_dispatch_aecpdu_aem_response;
+    self->aecpdu_aa_command = jdksavdecc_pdu_dispatch_aecpdu_aa_command;
+    self->aecpdu_aa_response = jdksavdecc_pdu_dispatch_aecpdu_aa_response;
+    self->aecpdu_vendor_command = jdksavdecc_pdu_dispatch_aecpdu_vendor_command;
+    self->aecpdu_vendor_response = jdksavdecc_pdu_dispatch_aecpdu_vendor_response;
+    self->aecpdu_avc_command = jdksavdecc_pdu_dispatch_aecpdu_avc_command;
+    self->aecpdu_avc_response = jdksavdecc_pdu_dispatch_aecpdu_avc_response;
+    self->aecpdu_avc_command = jdksavdecc_pdu_dispatch_aecpdu_hdcp_apm_command;
+    self->aecpdu_avc_response = jdksavdecc_pdu_dispatch_aecpdu_hdcp_apm_response;
+
 }
 
 
-void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_millisecond_time timestamp )
+void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_timestamp_in_microseconds timestamp )
 {
-    if( self->state_machines )
+    struct jdksavdecc_state_machines *sms[] =
     {
-        self->state_machines->tick( self->state_machines, timestamp );
+        self->maap_state_machines,
+        self->acmp_talker_state_machines,
+        self->acmp_listener_state_machines,
+        self->acmp_controller_state_machines,
+        self->adp_advertiser_state_machines,
+        self->adp_discovery_state_machines,
+        self->aecp_aa_controller_state_machines,
+        self->aecp_aa_responder_state_machines,
+        self->aecp_aem_controller_state_machines,
+        self->aecp_aem_responder_state_machines,
+        self->aecp_avc_controller_state_machines,
+        self->aecp_avc_responder_state_machines,
+        self->aecp_hdcp_apm_controller_state_machines,
+        self->aecp_hdcp_apm_responder_state_machines
+    };
+    unsigned int i;
+    
+    for( i=0; i<sizeof(sms)/sizeof(*sms); ++i )
+    {
+        if( sms[i] )
+        {
+            sms[i]->base.tick( &sms[i]->base, timestamp );
+        }
     }
+
 }
 
 void jdksavdecc_pdu_dispatch_set_frame_sender( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender )
 {
+    struct jdksavdecc_state_machines *sms[] =
+    {
+        self->maap_state_machines,
+        self->acmp_talker_state_machines,
+        self->acmp_listener_state_machines,
+        self->acmp_controller_state_machines,
+        self->adp_advertiser_state_machines,
+        self->adp_discovery_state_machines,
+        self->aecp_aa_controller_state_machines,
+        self->aecp_aa_responder_state_machines,
+        self->aecp_aem_controller_state_machines,
+        self->aecp_aem_responder_state_machines,
+        self->aecp_avc_controller_state_machines,
+        self->aecp_avc_responder_state_machines,
+        self->aecp_hdcp_apm_controller_state_machines,
+        self->aecp_hdcp_apm_responder_state_machines
+    };
+    unsigned int i;
+    
     self->frame_sender = sender;
-    if( self->aem_command_dispatch )
+    
+    for( i=0; i<sizeof(sms)/sizeof(*sms); ++i )
     {
-        self->aem_command_dispatch->frame_sender = sender;
-    }
-    if( self->aem_response_dispatch )
-    {
-        self->aem_response_dispatch->frame_sender = sender;
-    }
-    if( self->state_machines )
-    {
-        self->state_machines->set_frame_sender( self->state_machines, sender );
+        if( sms[i] )
+        {
+            sms[i]->base.frame_sender = sender;
+        }
     }
 }
 
@@ -115,7 +163,7 @@ ssize_t jdksavdecc_pdu_dispatch_rx_frame( struct jdksavdecc_pdu_dispatch *self, 
         }
     }
 
-    // If no handler was found, then call the unknown proc
+    // If no handler was found or the handler returned 0, then call the unknown proc
     if( r==0 && self->unknown )
     {
         r=self->unknown( self, frame, pos );
@@ -127,69 +175,108 @@ ssize_t jdksavdecc_pdu_dispatch_avtpv0( struct jdksavdecc_pdu_dispatch *self, st
 {
     ssize_t r=0;
 
+    // handle control frame
+    uint8_t cd = jdksavdecc_common_control_header_get_cd( frame->payload, pos );
+    
     // Get the subtype
     uint8_t subtype = jdksavdecc_common_control_header_get_subtype( frame->payload, pos );
 
-    switch( subtype )
+    // handle control frames
+    if( cd==1 )
     {
-    case JDKSAVDECC_SUBTYPE_ADP:
-        if( self->adpdu )
+        switch( subtype )
         {
-            r=self->adpdu( self, frame, pos );
+        case JDKSAVDECC_SUBTYPE_ADP:
+            if( self->adpdu )
+            {
+                r=self->adpdu( self, frame, pos );
+            }
+            break;
+        case JDKSAVDECC_SUBTYPE_AECP:
+            if( self->aecpdu )
+            {
+                r=self->aecpdu( self, frame, pos );
+            }
+            break;
+        case JDKSAVDECC_SUBTYPE_ACMP:
+            if( self->acmpdu )
+            {
+                r=self->acmpdu( self, frame, pos );
+            }
+            break;
+        case JDKSAVDECC_SUBTYPE_MAAP:
+            if( self->maap )
+            {
+                r=self->maap( self, frame, pos );
+            }
+            break;
         }
-        break;
-    case JDKSAVDECC_SUBTYPE_AECP:
-        if( self->aecpdu )
-        {
-            r=self->aecpdu( self, frame, pos );
-        }
-        break;
-    case JDKSAVDECC_SUBTYPE_ACMP:
-        if( self->acmpdu )
-        {
-            r=self->acmpdu( self, frame, pos );
-        }
-        break;
-    case JDKSAVDECC_SUBTYPE_MAAP:
-        if( self->maap )
-        {
-            r=self->maap( self, frame, pos );
-        }
-        break;
     }
+    else
+    {
+        // handle data frames
+        switch( subtype )
+        {
+        case JDKSAVDECC_SUBTYPE_61883_IIDC:
+            break;
+        case JDKSAVDECC_SUBTYPE_AVTP_AUDIO:
+            break;
+        case JDKSAVDECC_SUBTYPE_AVTP_VIDEO:
+            break;
+        case JDKSAVDECC_SUBTYPE_AVTP_CONTROL:
+            break;
+        }
+        
+    }
+    
 
+    return r;
+}
+
+ssize_t jdksavdecc_pdu_dispatch_maap( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos )
+{
+    ssize_t r=0;
+    unsigned int i;
+    struct jdksavdecc_state_machines *sms[] =
+    {
+        self->maap_state_machines
+    };
+
+    for( i=0; i<sizeof(sms)/sizeof(*sms); ++i )
+    {
+        if( sms[i] )
+        {
+            ssize_t lr = sms[i]->base.rx_frame( &sms[i]->base, frame, pos );
+            if( lr>0 )
+            {
+                r=lr;
+            }
+        }
+    }
     return r;
 }
 
 ssize_t jdksavdecc_pdu_dispatch_acmpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos )
 {
-    ssize_t rt=0;
-    ssize_t rl=0;
-    ssize_t rc=0;
     ssize_t r=0;
+    unsigned int i;
+    struct jdksavdecc_state_machines *sms[] =
+    {
+        self->acmp_talker_state_machines,
+        self->acmp_listener_state_machines,
+        self->acmp_controller_state_machines
+    };
 
-    if( self->state_machines )
+    for( i=0; i<sizeof(sms)/sizeof(*sms); ++i )
     {
-        if( self->state_machines->acmp_talker_state_machine )
+        if( sms[i] )
         {
-            rt = self->state_machines->acmp_talker_state_machine->rx_frame( self->state_machines->acmp_talker_state_machine, frame, pos );
+            ssize_t lr = sms[i]->base.rx_frame( &sms[i]->base, frame, pos );
+            if( lr>0 )
+            {
+                r=lr;
+            }
         }
-        if( self->state_machines->acmp_listener_state_machine )
-        {
-            rl = self->state_machines->acmp_listener_state_machine->rx_frame( self->state_machines->acmp_listener_state_machine, frame, pos );
-        }
-        if( self->state_machines->acmp_controller_state_machine )
-        {
-            rc = self->state_machines->acmp_controller_state_machine->rx_frame( self->state_machines->acmp_controller_state_machine, frame, pos );
-        }
-    }
-    if( rt<0 || rl<0 || rc<0 )
-    {
-        r=-1;
-    }
-    if( rt>0 || rl>0 || rc>0 )
-    {
-        r=frame->length;
     }
     return r;
 }
@@ -197,33 +284,23 @@ ssize_t jdksavdecc_pdu_dispatch_acmpdu( struct jdksavdecc_pdu_dispatch *self, st
 ssize_t jdksavdecc_pdu_dispatch_adpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos )
 {
     ssize_t r=0;
-    ssize_t rae=0;
-    ssize_t rai=0;
-    ssize_t rd=0;
+    unsigned int i;
+    struct jdksavdecc_state_machines *sms[] =
+    {
+        self->adp_advertiser_state_machines,
+        self->adp_discovery_state_machines
+    };
 
-    if( self->state_machines )
+    for( i=0; i<sizeof(sms)/sizeof(*sms); ++i )
     {
-        if( self->state_machines->adp_advertise_entity_state_machine )
+        if( sms[i] )
         {
-            rae=self->state_machines->adp_advertise_entity_state_machine->rx_frame( self->state_machines->adp_advertise_entity_state_machine, frame, pos );
+            ssize_t lr = sms[i]->base.rx_frame( &sms[i]->base, frame, pos );
+            if( lr>0 )
+            {
+                r=lr;
+            }
         }
-        if( self->state_machines->adp_advertise_interface_state_machine )
-        {
-            rai=self->state_machines->adp_advertise_interface_state_machine->rx_frame( self->state_machines->adp_advertise_interface_state_machine, frame, pos );
-        }
-        if( self->state_machines->adp_discovery_state_machine )
-        {
-            rd=self->state_machines->adp_discovery_state_machine->rx_frame( self->state_machines->adp_discovery_state_machine, frame, pos );
-        }
-    }
-
-    if( rae<0 || rai<0 || rd<0 )
-    {
-        r=-1;
-    }
-    if( rae>0 || rai>0 || rd>0 )
-    {
-        r=frame->length;
     }
     return r;
 }
@@ -311,20 +388,168 @@ ssize_t jdksavdecc_pdu_dispatch_aecpdu( struct jdksavdecc_pdu_dispatch *self, st
 ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
 {
     ssize_t r=0;
-    if( self->aem_command_dispatch )
+    struct jdksavdecc_state_machines *sm;
+    
+    sm = self->aecp_aem_responder_state_machines;
+    
+    if( sm )
     {
-        r=self->aem_command_dispatch->rx_frame( self->aem_command_dispatch, frame, pos );
+        r = sm->base.rx_frame( &sm->base, frame, pos );
     }
+
+    sm = self->aecp_aem_controller_state_machines;
+    
+    if( sm )
+    {
+        r = sm->base.rx_frame( &sm->base, frame, pos );
+    }
+    
     return r;
 }
 
 ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
 {
     ssize_t r=0;
-    if( self->aem_response_dispatch )
+    struct jdksavdecc_state_machines *sm;
+    
+    sm = self->aecp_aem_responder_state_machines;
+    
+    if( sm )
     {
-        r=self->aem_response_dispatch->rx_frame( self->aem_response_dispatch, frame, pos );
+        r = sm->base.rx_frame( &sm->base, frame, pos );
     }
+
+    sm = self->aecp_aem_controller_state_machines;
+    
+    if( sm )
+    {
+        r = sm->base.rx_frame( &sm->base, frame, pos );
+    }
+    
     return r;
 }
+
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_aa_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
+{
+    ssize_t r=0;
+    struct jdksavdecc_state_machines *sm;
+    
+    sm = self->aecp_aa_responder_state_machines;
+    
+    if( sm )
+    {
+        r = sm->base.rx_frame( &sm->base, frame, pos );
+    }
+
+    return r;
+}
+
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_aa_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
+{
+    ssize_t r=0;
+    struct jdksavdecc_state_machines *sm;
+    
+    sm = self->aecp_aa_controller_state_machines;
+    
+    if( sm )
+    {
+        r = sm->base.rx_frame( &sm->base, frame, pos );
+    }
+
+    return r;
+}
+
+
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_avc_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
+{
+    ssize_t r=0;
+    struct jdksavdecc_state_machines *sm;
+    
+    sm = self->aecp_avc_responder_state_machines;
+    
+    if( sm )
+    {
+        r = sm->base.rx_frame( &sm->base, frame, pos );
+    }
+
+    return r;
+}
+
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_avc_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
+{
+    ssize_t r=0;
+    struct jdksavdecc_state_machines *sm;
+    
+    sm = self->aecp_avc_controller_state_machines;
+    
+    if( sm )
+    {
+        r = sm->base.rx_frame( &sm->base, frame, pos );
+    }
+
+    return r;
+}
+
+
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_vendor_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
+{
+    ssize_t r=0;
+    struct jdksavdecc_state_machines *sm;
+    
+    sm = self->aecp_vendor_responder_state_machines;
+    
+    if( sm )
+    {
+        r = sm->base.rx_frame( &sm->base, frame, pos );
+    }
+
+    return r;
+}
+
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_vendor_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
+{
+    ssize_t r=0;
+    struct jdksavdecc_state_machines *sm;
+    
+    sm = self->aecp_vendor_controller_state_machines;
+    
+    if( sm )
+    {
+        r = sm->base.rx_frame( &sm->base, frame, pos );
+    }
+
+    return r;
+}
+
+
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_hdcp_apm_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
+{
+    ssize_t r=0;
+    struct jdksavdecc_state_machines *sm;
+    
+    sm = self->aecp_hdcp_apm_responder_state_machines;
+    
+    if( sm )
+    {
+        r = sm->base.rx_frame( &sm->base, frame, pos );
+    }
+
+    return r;
+}
+
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_hdcp_apm_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos)
+{
+    ssize_t r=0;
+    struct jdksavdecc_state_machines *sm;
+    
+    sm = self->aecp_hdcp_apm_controller_state_machines;
+    
+    if( sm )
+    {
+        r = sm->base.rx_frame( &sm->base, frame, pos );
+    }
+
+    return r;
+}
+
 

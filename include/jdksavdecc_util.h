@@ -44,7 +44,7 @@ extern "C" {
 
 struct jdksavdecc_pdu_dispatch;
 
-typedef uint64_t jdksavdecc_millisecond_time;
+typedef uint64_t jdksavdecc_timestamp_in_microseconds;
 
 /**
  * Validate buffer position in a buffer len for an element of elem_size.
@@ -710,12 +710,12 @@ struct jdksavdecc_gptp_seconds
     uint64_t seconds:48;
 };
 
-static inline void avdecc_gptp_seconds_init( struct jdksavdecc_gptp_seconds *self )
+static inline void jdksavdecc_gptp_seconds_init( struct jdksavdecc_gptp_seconds *self )
 {
     self->seconds = 0;
 }
 
-static inline void avdecc_gptp_seconds_read( struct jdksavdecc_gptp_seconds *host_value, void const *base, ssize_t pos )
+static inline void jdksavdecc_gptp_seconds_read( struct jdksavdecc_gptp_seconds *host_value, void const *base, ssize_t pos )
 {
     uint8_t const *b = ((uint8_t const *)base) + pos;
     host_value->seconds =

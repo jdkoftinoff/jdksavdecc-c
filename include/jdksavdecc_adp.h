@@ -41,6 +41,15 @@ extern "C" {
 #endif
 
 
+/** \addtogroup adp ADP Message Types - Clause 6.2.1.5 */
+/*@{*/
+#define JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_AVAILABLE (0)
+#define JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_DEPARTING (1)
+#define JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_DISCOVER (2)
+
+/*@}*/
+
+
 /** \addtogroup adpdu ADPDU - Clause 6.2.1 */
 /*@{*/
 
@@ -53,7 +62,7 @@ struct jdksavdecc_adpdu_common_control_header
     uint32_t message_type:JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_WIDTH;
     uint32_t valid_time:JDKSAVDECC_SUBTYPE_DATA_STATUS_WIDTH;
     uint32_t control_data_length:JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_WIDTH;
-    struct jdksavdecc_eui64 entity_entity_id;
+    struct jdksavdecc_eui64 entity_id;
 };
 
 
@@ -242,7 +251,7 @@ static inline struct jdksavdecc_eui64 jdksavdecc_adpdu_get_entity_model_id( void
 
 
 /**
- * Store a uint32 value to the entity_model_id field of the ADPDU object to a network buffer.
+ * Store an eui64 value to the entity_model_id field of the ADPDU object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.

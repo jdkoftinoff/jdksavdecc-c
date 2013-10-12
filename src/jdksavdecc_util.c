@@ -1,4 +1,3 @@
-  
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -30,6 +29,7 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
+char const *jdksavdecc_util_file = __FILE__;
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_util.h"

@@ -59,6 +59,8 @@ struct jdksavdecc_command_dispatch
     void *additional;
 
     struct jdksavdecc_frame_sender *frame_sender;
+    void (*destroy)( struct jdksavdecc_command_dispatch * );
+
     jdksavdecc_command_dispatch_proc rx_frame;
 
     jdksavdecc_command_dispatch_proc command[ JDKSAVDECC_AEM_NUM_COMMANDS ];

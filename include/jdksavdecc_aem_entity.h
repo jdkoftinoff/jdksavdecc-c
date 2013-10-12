@@ -34,6 +34,7 @@
 */
 
 #include "jdksavdecc_world.h"
+#include "jdksavdecc_adp.h"
 #include "jdksavdecc_aecp_aem.h"
 #include "jdksavdecc_aem_command.h"
 #include "jdksavdecc_aem_descriptor.h"
@@ -41,6 +42,15 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+struct jdksavdecc_entity_info
+{
+    struct jdksavdecc_adpdu advertising_info;
+    void (*send_advertise_on_all_interfaces)(struct jdksavdecc_entity_info *);
+    uint16_t num_interfaces;
+    struct jdksavdecc_adp_advertising_interface_state_machine *interfaces;
+    // TODO
+};
 
 /// @todo aem_entity_state_machine
 struct jdksavdecc_aem_entity_state_machine
@@ -50,7 +60,8 @@ struct jdksavdecc_aem_entity_state_machine
 
     struct jdksavdecc_frame_sender *frame_sender;
 
-    void (*tick)( struct jdksavdecc_aem_entity_state_machine *self, jdksavdecc_millisecond_time timestamp );
+    void (*destroy)( struct jdksavdecc_aem_entity_state_machine * );
+    void (*tick)( struct jdksavdecc_aem_entity_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp );
     ssize_t (*rx_frame)( struct jdksavdecc_aem_entity_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
 };
 #ifdef __cplusplus

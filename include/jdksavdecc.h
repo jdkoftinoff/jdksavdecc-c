@@ -45,6 +45,8 @@
 
 #include "jdksavdecc_adp.h"
 #include "jdksavdecc_adp_advertise.h"
+#include "jdksavdecc_adp_advertising_entity.h"
+#include "jdksavdecc_adp_advertising_interface.h"
 #include "jdksavdecc_adp_discover.h"
 
 #include "jdksavdecc_aecp.h"
@@ -52,8 +54,8 @@
 #include "jdksavdecc_aecp_aem.h"
 #include "jdksavdecc_aecp_avc.h"
 #include "jdksavdecc_aecp_hdcp_apm.h"
-#include "jdksavdecc_aecp_vendor.h"
 #include "jdksavdecc_aecp_print.h"
+#include "jdksavdecc_aecp_vendor.h"
 
 #include "jdksavdecc_aem_command.h"
 #include "jdksavdecc_aem_descriptor.h"
@@ -75,5 +77,8 @@
 
 #include "jdksavdecc_descriptor_dispatch.h"
 #include "jdksavdecc_descriptor_dispatch_print.h"
+
+#include "jdksavdecc_state_machine.h"
+#include "jdksavdecc_state_machines.h"
 #endif
 

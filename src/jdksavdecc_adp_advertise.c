@@ -34,3 +34,4 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_adp_advertise.h"
 
+char const *jdksavdecc_adp_advertise_file = __FILE__;

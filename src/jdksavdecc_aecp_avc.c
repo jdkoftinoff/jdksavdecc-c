@@ -34,3 +34,4 @@
 #include "jdksavdecc_aecp_avc.h"
 
 
+char const *jdksavdecc_aecp_avc_file = __FILE__;

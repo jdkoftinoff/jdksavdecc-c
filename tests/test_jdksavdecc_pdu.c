@@ -31,18 +31,58 @@
 */
 
 #include "jdksavdecc.h"
+#include "jdksavdecc_pcapfile.h"
+#include "jdksavdecc_pdu_dispatch.h"
+#include "jdksavdecc_test.h"
 
-int test_jdksavdecc_pdu()
+int test_jdksavdecc_pdu( struct jdksavdecc_pcapfile_reader *reader, struct jdksavdecc_pcapfile_writer *writer )
 {
+    int r=0;
+    (void)reader;
+    (void)writer;
+    return r;
+}
+
+int test_jdksavdecc_pdu_tick( struct jdksavdecc_pcapfile_reader *self, jdksavdecc_timestamp_in_microseconds time )
+{
+    (void)self;
+    (void)time;
     return 0;
 }
 
 
 int main( int argc, char **argv )
 {
-    (void)argc;
-    (void)argv;
-    return test_jdksavdecc_pdu() ? EXIT_SUCCESS : EXIT_FAILURE;
+    int r=0;
+    const char *in_file_name="tests/test_jdksavdecc_pdu.pcap";
+    const char *out_file_name="output.pcap";
+    struct jdksavdecc_pdu_dispatch pdu_dispatch;
+    jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize = 5000000;
+    jdksavdecc_timestamp_in_microseconds time_step_in_microseconds = 10000;
+
+    if( argc>1 )
+    {
+        in_file_name=argv[1];
+    }
+    if( argc>2 )
+    {
+        out_file_name=argv[2];
+    }
+
+    jdksavdecc_log_info("%8s:%s","Starting",argv[0]);
+    
+    jdksavdecc_pdu_dispatch_init(&pdu_dispatch);
+    
+    r = jdksavdecc_test_run(
+        in_file_name,
+        out_file_name,
+        &pdu_dispatch,
+        &test_jdksavdecc_pdu_tick,
+        minimum_time_to_synthesize,
+        time_step_in_microseconds
+        );
+
+    return (r!=0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 
 

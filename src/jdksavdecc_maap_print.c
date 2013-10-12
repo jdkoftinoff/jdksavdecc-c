@@ -1,4 +1,3 @@
-
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -33,3 +32,43 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_maap_print.h"
+
+struct jdksavdecc_uint16_name jdksavdecc_maap_print_message_type[] =
+{
+    { JDKSAVDECC_MAAP_PROBE, "PROBE" },
+    { JDKSAVDECC_MAAP_DEFEND, "DEFEND" },
+    { JDKSAVDECC_MAAP_ANNOUNCE, "ANNOUNCE" },
+    {0,0}
+};
+
+void jdksavdecc_maap_print( FILE *f, struct jdksavdecc_maap const *p )
+{
+    jdksavdecc_print_label(f,"message_type");
+    jdksavdecc_print_uint16_name( f, jdksavdecc_maap_print_message_type, p->header.message_type );
+    jdksavdecc_print_eol( f );
+
+    jdksavdecc_print_label( f, "maap_version" );
+    jdksavdecc_print_uint16( f, p->header.maap_version );
+    jdksavdecc_print_eol( f );
+
+    jdksavdecc_print_label( f, "maap_data_length" );
+    jdksavdecc_print_uint16( f, p->header.maap_data_length );
+    jdksavdecc_print_eol( f );
+
+    jdksavdecc_print_label( f, "requested_start_address" );
+    jdksavdecc_print_eui48( f, p->requested_start_address );
+    jdksavdecc_print_eol( f );
+
+    jdksavdecc_print_label( f, "requested_count" );
+    jdksavdecc_print_uint16( f, p->requested_count );
+    jdksavdecc_print_eol( f );
+
+    jdksavdecc_print_label( f, "conflict_start_address" );
+    jdksavdecc_print_eui48( f, p->conflict_start_address );
+    jdksavdecc_print_eol( f );
+
+    jdksavdecc_print_label( f, "conflict_count" );
+    jdksavdecc_print_uint16( f, p->conflict_count );
+    jdksavdecc_print_eol( f );
+
+}

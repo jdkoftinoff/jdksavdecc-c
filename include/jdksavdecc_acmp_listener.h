@@ -34,11 +34,31 @@
 */
 
 #include "jdksavdecc_world.h"
+#include "jdksavdecc_state_machine.h"
 #include "jdksavdecc_acmp.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#ifndef JDKSAVDECC_ACMP_LISTENER_ENABLE_LOG
+# define JDKSAVDECC_ACMP_LISTENER_ENABLE_LOG (1)
+#endif
+
+#if JDKSAVDECC_ACMP_LISTENER_ENABLE_LOG
+# define jdksavdecc_acmp_listener_log jdksavdecc_log_info
+# ifndef jdksavdecc_acmp_listener_log_enter
+#  define jdksavdecc_acmp_listener_log_enter() jdksavdecc_acmp_listener_log("Enter:%s:%d",__FUNCTION__,__LINE__)
+# endif
+# ifndef jdksavdecc_acmp_listener_log_exit
+#  define jdksavdecc_acmp_listener_log_exit() jdksavdecc_acmp_listener_log("Exit:%s:%d",__FUNCTION__,__LINE__)
+# endif
+#else
+# define jdksavdecc_acmp_listener_interface_log(fmt, ...)
+# define jdksavdecc_acmp_listener_interface_log_enter()
+# define jdksavdecc_acmp_listener_interface_log_exit()
+#endif
+
 
 /** \addtogroup acmp_listener ACMPDU Listener State Machine - Clause 8.2.2.5 */
 /*@{*/
@@ -46,15 +66,37 @@ extern "C" {
 /// @todo acmp listener state machine implementation
 struct jdksavdecc_acmp_listener_state_machine
 {
-    uint32_t tag;
-    void *additional;
-
-    struct jdksavdecc_frame_sender *frame_sender;
-
-    void (*tick)( struct jdksavdecc_acmp_listener_state_machine *self, jdksavdecc_millisecond_time timestamp );
-    ssize_t (*rx_frame)( struct jdksavdecc_acmp_listener_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
-
+    struct jdksavdecc_state_machine base;
+    struct jdksavdecc_eui64 listener_entity_id;
 };
+
+void jdksavdecc_acmp_listener_state_machine_init(
+        struct jdksavdecc_acmp_listener_state_machine *self,
+        struct jdksavdecc_eui64 listener_entity_id,
+        struct jdksavdecc_frame_sender *sender,
+        uint32_t tag,
+        void *additional
+        );
+
+void jdksavdecc_acmp_listener_state_machine_destroy(
+        struct jdksavdecc_state_machine *self
+        );
+
+void jdksavdecc_acmp_listener_state_machine_tick(
+        struct jdksavdecc_state_machine *self,
+        jdksavdecc_timestamp_in_microseconds timestamp
+        );
+
+ssize_t jdksavdecc_acmp_listener_state_machine_rx_frame(
+        struct jdksavdecc_state_machine *self,
+        struct jdksavdecc_frame *rx_frame,
+        size_t pos
+        );
+
+void jdksavdecc_acmp_listener_state_machine_tx_frame(
+        struct jdksavdecc_state_machine *self,
+        struct jdksavdecc_frame const *frame
+        );
 
 /*@}*/
 #ifdef __cplusplus

@@ -33,3 +33,5 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aem_entity.h"
+
+char const *jdksavdecc_aem_entity_file = __FILE__;

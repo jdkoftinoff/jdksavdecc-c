@@ -33,3 +33,5 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_apc.h"
+
+char const *jdksavdecc_apc_file = __FILE__;
