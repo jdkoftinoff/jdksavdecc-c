@@ -42,142 +42,240 @@ extern "C" {
 #endif
 
 
-/** \addtogroup descriptor_storage Descriptor Storage
- *  @todo descriptor_storage
-*/
 /*@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_OFFSET_CHUNK_TYPE (0) /** All storage objects have a chunk_type code at offset 0 */
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_LEN_CHUNK_TYPE (4) /** The chunk_type code is a uint32_t */
 
 
-/**
- * Extract the uint32 value of the chunk_type field of the descriptor_storage_item object
+/** \addtogroup descriptor_storage_header Descriptor Storage Header
  *
- *
- * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
- *
- * @param base pointer to raw memory buffer to read from.
- * @param pos offset from base to read the field from;
- * @return the uint32_t chunk_type value
  */
-static inline uint32_t jdksavdecc_descriptor_storage_get_chunk_type( void const *base, ssize_t pos )
-{
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_DESCRIPTOR_STORAGE_OFFSET_CHUNK_TYPE);
-}
 
+/**@{*/
 
-/**
- * Store a uint32 value to thethe chunk_type field of the descriptor_storage object
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER { 0x41, 0x45, 0x4d, 0x31, 0x00, 0x00, 0x00, 0x00 }  /// file header: "AEM1\0\0\0\0"
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SIZE (0x8)
+
+/**@}*/
+
+/** \addtogroup descriptor_storage_toc Descriptor Storage Table of Contents
+ *
+ *  table of contents chunk:
+ *
+ *    offset   size    name
+ *  0x0000   4       length  = 8 + (num_entity_models * 0xc) + length of all entity_data chunks
+ *  0x0004   2       num_entity_models
+ *  0x0006   2       reserved1
+ *  0x0008   4       entity_data_offset[0]
+ *  0x000c   8       entity_model_id[0]
+ *  0x0014   4       entity_data_offset[1]
+ *  0x0018   8       entity_model_id[1]
+ *  ....etc...
  *
  *
- * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
- *
- * @param v The uint32_t chunk_type value.
- * @param base pointer to raw memory buffer to write to.
- * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_storage_set_chunk_type( uint32_t v, void *base, ssize_t pos )
-{
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STORAGE_OFFSET_CHUNK_TYPE);
-}
+
+/**@{*/
+
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_TOC_LENGTH_OFFSET (0x0000)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_TOC_NUM_ENTITY_MODELS_OFFSET (0x0004)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_TOC_ITEM_OFFSET (0x0008)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_TOC_ITEM_SIZE (0x000c)
+
+/**@}*/
 
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_OFFSET_CHUNK_SIZE (4) /** All storage objects have a chunk_size field at offset 4 */
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_LEN_CHUNK_SIZE (4) /** the chunk_size field is a uint32_t */
-
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_OFFSET_CONTENT (8) /** All storage objects's content starts at offset 8 */
-
-/**
- * Extract the uint32 value of the block_size field of the descriptor_storage_item object
+/** \addtogroup descriptor_storage_entities entity_data chunk
+ *  entity_data chunk:
  *
- *
- * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
- *
- * @param base pointer to raw memory buffer to read from.
- * @param pos offset from base to read the field from;
- * @return the uint32_t chunk_size value
+ *    offset   size    name
+ *  0x0000   4       length  = 8 + (num_configurations * 0x4) + length of all configuration_data chunks
+ *  0x0004   2       num_configurations
+ *  0x0006   2       reserved1
+ *  0x0008   4       configuration_data_offset[0]
+ *  0x000c   4       configuration_data_offset[1]
+ *  0x0010   4       configuration_data_offset[2]
+ *  ..etc..
+ *  content of all configuration_data chunks
+ *  ....
  */
-static inline uint32_t jdksavdecc_descriptor_storage_get_chunk_size( void const *base, ssize_t pos )
-{
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_DESCRIPTOR_STORAGE_OFFSET_CHUNK_SIZE);
-}
+
+/**@{*/
+
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ENTITY_DATA_LENGTH_OFFSET (0x0000)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ENTITY_DATA_NUM_CONFIGURATIONS_OFFSET (0x0004)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ENTITY_DATA_ITEM_OFFSET (0x0008)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ENTITY_DATA_ITEM_SIZE (0x0004)
+
+/**@}*/
 
 
-/**
- * Store a uint32 value to thethe chunk_size field of the descriptor_storage_item object
+/** \addtogroup descriptor_storage_configurations configuration_data chunk
+ *  configuration_data chunk:
  *
- *
- * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
- *
- * @param v The uint32_t chunk_size value.
- * @param base pointer to raw memory buffer to write to.
- * @param pos offset from base to write the field to;
+ *    offset   size    name
+ *  0x0000   4       length  = 8 + (num_descriptor_list_types * 0x6) + length of all descriptor_list_data chunks
+ *  0x0004   2       num_descriptor_list_types
+ *  0x0006   2       reserved1
+ *  0x0008   4       descriptor_list_data_offset[0]
+ *  0x000c   2       descriptor_list_data_type[0]
+ *  0x000e   4       descriptor_list_data_offset[1]
+ *  0x0012   2       descriptor_list_data_type[1]
+ *  ..etc..
+ *  content of all descriptor_list_data chunks
+ *  ....
  */
-static inline void jdksavdecc_descriptor_storage_set_chunk_size( uint32_t v, void *base, ssize_t pos )
-{
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STORAGE_OFFSET_CHUNK_SIZE);
-}
+
+/**@{*/
+
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_DATA_LENGTH_OFFSET (0x0000)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_DATA_NUM_CONFIGURATIONS_OFFSET (0x0004)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_DATA_ITEM_OFFSET (0x0008)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_DATA_ITEM_SIZE (0x0006)
+
+/**@}*/
 
 
+/** \addtogroup descriptor_storage_descriptors descriptor_list_data chunk
+ *  descriptor_list_data chunk:
+ *    offset   size    name
+ *  0x0000   4       length  = 8 + (num_descriptors * 0x6) + length of all descriptor_data chunks
+ *  0x0004   2       num_descriptors
+ *  0x0006   2       reserved1
+ *  0x0008   4       descriptor_data_offset[0]
+ *  0x000c   2       descriptor_data_length[0]
+ *  0x000e   4       descriptor_data_offset[1]
+ *  0x0012   2       descriptor_data_length[1]
+ *  ..etc..
+ *  ...content of all descriptor data...
+ */
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_OFFSET_DATA (8)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LEN_DATA (JDKSAVDECC_AEM_DESCRIPTOR_SIZE)
+/**@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_CHUNK_TYPE (0x64736370UL) /* 'dscp' */
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_DESCRIPTOR_LIST_DATA_LENGTH_OFFSET (0x0000)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_DESCRIPTOR_LIST_DATA_NUM_CONFIGURATIONS_OFFSET (0x0004)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_DESCRIPTOR_LIST_DATA_ITEM_OFFSET (0x0008)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_DESCRIPTOR_LIST_DATA_ITEM_SIZE (0x0006)
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LIST_OFFSET_BLOCK_SIZE (0)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LIST_LEN_BLOCK_SIZE (4)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LIST_OFFSET_DESCRIPTOR_TYPE (4)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LIST_LEN_DESCRIPTOR_TYPE (2)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LIST_OFFSET_DESCRIPTOR_COUNT (6)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LIST_LEN_DESCRIPTOR_COUNT (2)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LIST_OFFSET_ITEMS (8)
+/**@}*/
 
-
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LIST_CHUNK_TYPE (0x6463706cUL) /* 'dcpl' */
-
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_OFFSET_BLOCK_SIZE (0)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_LEN_BLOCK_SIZE (4)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_OFFSET_ITEM_LIST_COUNT (4)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_LEN_ITEM_LIST_COUNT (2)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_OFFSET_ITEM_LIST_RESERVED (6)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_LEN_ITEM_LIST_RESERVED (2)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_OFFSET_ITEM_LIST_ITEMS (8)
-
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_CHUNK_TYPE (0x636e6667) /* 'cnfg' */
-
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CHUNK_TYPE (0x73746f72UL) /* 'stor' */
-
-#ifndef JDKSAVDECC_CONFIGURATION_STORAGE_MAX_CONFIGURATIONS
-# define JDKSAVDECC_CONFIGURATION_STORAGE_MAX_CONFIGURATIONS (16)
-#endif
-
+/// jdksavdecc_descriptor_storage holds the information about how to read the storage item
 struct jdksavdecc_descriptor_storage
 {
+    /// Destroy the object
     void (*destroy)( struct jdksavdecc_descriptor_storage *self );
 
-    uint8_t const *data;
-    uint16_t configuration_count;
-    uint8_t const *configuration_data[JDKSAVDECC_CONFIGURATION_STORAGE_MAX_CONFIGURATIONS];
+    /// Read some data at offset of length length into buffer. Return length of data read.
+    uint32_t (*read_data)( struct jdksavdecc_descriptor_storage *self, void *buffer, uint32_t offset, uint32_t length );
+
+    /// generic pointer for accessing data
+    void const *user_ptr;
+
+    /// data file length
+    uint32_t storage_length;
 };
 
+/// Initialize descriptor_storage object with user_ptr and storage_length.
+/// user_ptr's use is dependant on subclass definition
 int jdksavdecc_descriptor_storage_init(
         struct jdksavdecc_descriptor_storage *self,
-        void const *data
+        void const *user_ptr,
+        uint32_t storage_length
         );
 
+/// Destroy descriptor_storage object
 void jdksavdecc_descriptor_storage_destroy(
         struct jdksavdecc_descriptor_storage *self
         );
 
-struct jdksavdecc_descriptor const *jdksavdecc_descriptor_storage_read(
+/// Initialize a descriptor_storage buffer object with a pointer to actual read-only data
+int jdksavdecc_descriptor_storage_buffer_init(
         struct jdksavdecc_descriptor_storage *self,
-        uint16_t config,
-        uint16_t descriptor_type,
-        uint16_t descriptor_index
+        void const *user_ptr,
+        uint32_t storage_length
         );
 
+/// Read data from a locally accessible read only data buffer
+uint32_t jdksavdecc_descriptor_storage_buffer_read_data(
+        struct jdksavdecc_descriptor_storage *self,
+        void *buffer,
+        uint32_t offset,
+        uint32_t length
+        );
+
+/// Destroy a descriptor_storate buffer object
+void jdksavdecc_descriptor_storage_buffer_destroy(
+        struct jdksavdecc_descriptor_storage *self
+        );
+
+#ifdef FOPEN_MAX
+
+/// Initialize a descriptor_storage file object with a specified read-only file via the file_name
+int jdksavdecc_descriptor_storage_file_init(
+        struct jdksavdecc_descriptor_storage *self,
+        const char *file_name
+        );
+
+/// Read data from a descriptor_storage file object
+uint32_t jdksavdecc_descriptor_storage_file_read_data(
+        struct jdksavdecc_descriptor_storage *self,
+        void *buffer,
+        uint32_t offset,
+        uint32_t length
+        );
+
+/// Close the file and destroy the descriptor_storage file object
+void jdksavdecc_descriptor_storage_file_destroy(
+        struct jdksavdecc_descriptor_storage *self
+        );
+
+#endif
+
+
+
+/// Read the count of entity models in the storage object
+uint16_t jdksavdecc_descriptor_storage_get_entity_model_count(
+        struct jdksavdecc_descriptor_storage *self
+        );
+
+/// Read the model_id for a entity model in the storage object
+struct jdksavdecc_eui64 jdksavdecc_descriptor_storage_get_entity_model_id(
+        struct jdksavdecc_descriptor_storage *self,
+        uint16_t entity_number
+        );
+
+/// Read the count of configurations for the specified entity number in the storage object
+uint16_t jdksavdecc_descriptor_storage_get_configuration_count(
+        uint16_t entity_number
+        );
+
+/// Read the count of descriptor lists used in the specified entity_number and configuration number
+uint16_t jdksavdecc_descriptor_storage_get_configuration_descriptor_list_count(
+        uint16_t entity_number,
+        uint16_t configuration_number
+        );
+
+/// Read the descriptor_type and descriptor count for one entry in the descriptor list in a configuration of an entity
+/// Returns the descriptor count, or 0 if there are none.
+/// Fills in *result_descriptor_type with the descriptor type
+uint16_t jdksavdecc_descriptor_storage_get_descriptor_types_count_and_type(
+        struct jdksavdecc_descriptor_storage *self,
+        uint16_t configuration_number,
+        uint16_t descriptor_type_number,
+        uint16_t *result_descriptor_type
+        );
+
+
+/// Read a descriptor for the specified entity, configuration, descriptor_type and descriptor_index into result buffer which has a length of result_buffer_len.
+/// Returns the length of the descriptor, or 0 if no descriptor.
+uint16_t jdksavdecc_descriptor_storage_read_descriptor(
+        struct jdksavdecc_descriptor_storage *self,
+        uint16_t entity_number,
+        uint16_t configuration_number,
+        uint16_t descriptor_type,
+        uint16_t descriptor_index,
+        uint16_t *result_buffer,
+        uint16_t result_buffer_len
+        );
 
 /*@}*/
 
