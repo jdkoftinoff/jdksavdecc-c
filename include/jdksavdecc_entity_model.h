@@ -69,20 +69,12 @@ struct jdksavdecc_entity_model
             );
 
 
-    uint16_t (*get_control)(
-            struct jdksavdecc_entity_model *self,
-            uint16_t configuration_number,
-            uint16_t descriptor_index,
-            uint8_t *result_buffer,
-            uint16_t result_buffer_len
-            );
-
     uint16_t (*set_control)(
             struct jdksavdecc_entity_model *self,
             uint16_t configuration_number,
             uint16_t descriptor_index,
-            uint8_t *result_buffer,
-            uint16_t result_buffer_len
+            uint8_t const *buffer,
+            uint16_t buffer_len
             );
 
 };

@@ -162,6 +162,7 @@ uint16_t jdksavdecc_descriptor_storage_get_entity_model_count(
         )
 {
     // \todo
+    (void)self;
     return 0;
 }
 
