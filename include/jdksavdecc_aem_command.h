@@ -172,7 +172,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
 #define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_OFFSET_AEM_LOCK_FLAGS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_OFFSET_LOCKED_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
-#define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
+#define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_OFFSET_DESCRIPTOR_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
+#define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_OFFSET_DESCRIPTOR_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+26)
+#define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+28)
 
 /*@}*/
 
@@ -186,7 +188,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
 #define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_RESPONSE_OFFSET_AEM_LOCK_FLAGS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+12)
 #define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_RESPONSE_OFFSET_LOCKED_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
-#define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
+#define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_RESPONSE_OFFSET_DESCRIPTOR_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+24)
+#define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_RESPONSE_OFFSET_DESCRIPTOR_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+26)
+#define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+28)
 
 /*@}*/
 
@@ -3113,6 +3117,70 @@ static inline void jdksavdecc_aem_command_lock_entity_set_locked_entity_id( stru
 
 
 
+/**
+ * Extract the uint16 value of the descriptor_type field of the COMMAND_LOCK_ENTITY object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t descriptor_type value
+ */
+static inline uint16_t jdksavdecc_aem_command_lock_entity_get_descriptor_type( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_OFFSET_DESCRIPTOR_TYPE);
+}
+
+
+/**
+ * Store a uint16 value to the descriptor_type field of the COMMAND_LOCK_ENTITY object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t descriptor_type value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_lock_entity_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_OFFSET_DESCRIPTOR_TYPE);
+}
+
+
+/**
+ * Extract the uint16 value of the descriptor_index field of the COMMAND_LOCK_ENTITY object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t descriptor_index value
+ */
+static inline uint16_t jdksavdecc_aem_command_lock_entity_get_descriptor_index( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_OFFSET_DESCRIPTOR_INDEX);
+}
+
+
+/**
+ * Store a uint16 value to the descriptor_index field of the COMMAND_LOCK_ENTITY object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t descriptor_index value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_lock_entity_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_OFFSET_DESCRIPTOR_INDEX);
+}
+
+
 
 /*@}*/
 
@@ -3130,6 +3198,8 @@ struct jdksavdecc_aem_command_lock_entity
     uint16_t command_type;
     uint32_t aem_lock_flags;
     struct jdksavdecc_eui64 locked_entity_id;
+    uint16_t descriptor_type;
+    uint16_t descriptor_index;
 };
 
 /**
@@ -3156,6 +3226,8 @@ static inline ssize_t jdksavdecc_aem_command_lock_entity_read( struct jdksavdecc
         p->command_type = jdksavdecc_aem_command_lock_entity_get_command_type( base, pos );
         p->aem_lock_flags = jdksavdecc_aem_command_lock_entity_get_aem_lock_flags( base, pos );
         p->locked_entity_id = jdksavdecc_aem_command_lock_entity_get_locked_entity_id( base, pos );
+        p->descriptor_type = jdksavdecc_aem_command_lock_entity_get_descriptor_type( base, pos );
+        p->descriptor_index = jdksavdecc_aem_command_lock_entity_get_descriptor_index( base, pos );
     }
     return r;
 }
@@ -3184,6 +3256,8 @@ static inline ssize_t jdksavdecc_aem_command_lock_entity_write( struct jdksavdec
         jdksavdecc_aem_command_lock_entity_set_command_type( p->command_type, base, pos );
         jdksavdecc_aem_command_lock_entity_set_aem_lock_flags( p->aem_lock_flags, base, pos );
         jdksavdecc_aem_command_lock_entity_set_locked_entity_id( p->locked_entity_id, base, pos );
+        jdksavdecc_aem_command_lock_entity_set_descriptor_type( p->descriptor_type, base, pos );
+        jdksavdecc_aem_command_lock_entity_set_descriptor_index( p->descriptor_index, base, pos );
     }
     return r;
 }
