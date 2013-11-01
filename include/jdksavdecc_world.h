@@ -62,7 +62,8 @@
 
 #include "jdksavdecc_log.h"
 
-#include "jdksavdecc_print.h"
+/* including this here causes compiler errors */
+//#include "jdksavdecc_print.h"
 
 #endif
 
