@@ -45,7 +45,7 @@
 void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self )
 {
     memset( self, 0, sizeof(*self) );
-    self->tick = jdksavdecc_pdu_dispatch_tick;
+    self->base.tick = jdksavdecc_pdu_dispatch_tick;
     self->set_frame_sender = jdksavdecc_pdu_dispatch_set_frame_sender;
     self->unknown = jdksavdecc_pdu_dispatch_unknown;
     self->rx_frame = jdksavdecc_pdu_dispatch_rx_frame;
@@ -68,8 +68,10 @@ void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self )
 }
 
 
-void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_timestamp_in_microseconds timestamp )
+int jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_state_machine *self_, jdksavdecc_timestamp_in_microseconds timestamp )
 {
+    struct jdksavdecc_pdu_dispatch *self = (struct jdksavdecc_pdu_dispatch *)self_;
+    
     struct jdksavdecc_state_machines *sms[] =
     {
         self->maap_state_machines,
@@ -96,7 +98,7 @@ void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavd
             sms[i]->base.tick( &sms[i]->base, timestamp );
         }
     }
-
+    return 0;
 }
 
 void jdksavdecc_pdu_dispatch_set_frame_sender( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender )
@@ -120,7 +122,7 @@ void jdksavdecc_pdu_dispatch_set_frame_sender( struct jdksavdecc_pdu_dispatch *s
     };
     unsigned int i;
     
-    self->frame_sender = sender;
+    self->base.frame_sender = sender;
     
     for( i=0; i<sizeof(sms)/sizeof(*sms); ++i )
     {
