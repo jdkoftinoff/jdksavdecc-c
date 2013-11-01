@@ -31,6 +31,7 @@
 */
 
 #include "jdksavdecc.h"
+#include <unistd.h>
 #include "jdksavdecc_pcapfile.h"
 #include "jdksavdecc_pdu_dispatch.h"
 #include "jdksavdecc_test.h"
@@ -54,11 +55,13 @@ int test_jdksavdecc_pdu_tick( struct jdksavdecc_pcapfile_reader *self, jdksavdec
 int main( int argc, char **argv )
 {
     int r=0;
-    const char *in_file_name="tests/test_jdksavdecc_pdu.pcap";
+    const char *in_file_name="test_jdksavdecc_pdu.pcap";
     const char *out_file_name="output.pcap";
     struct jdksavdecc_pdu_dispatch pdu_dispatch;
     jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize = 5000000;
     jdksavdecc_timestamp_in_microseconds time_step_in_microseconds = 10000;
+
+    chdir(getenv("HOME"));
 
     if( argc>1 )
     {
