@@ -59,6 +59,16 @@ struct jdksavdecc_pcapfile_record_header
         uint32_t orig_len;       /* actual length of packet */
 };
 
+int jdksavdecc_pcapfile_reader_dispatch_with_no_file(
+    struct jdksavdecc_pcapfile_reader *self, 
+    struct jdksavdecc_pdu_dispatch *dispatcher
+    );
+
+int jdksavdecc_pcapfile_reader_dispatch_frames_with_file(
+    struct jdksavdecc_pcapfile_reader *self, 
+    struct jdksavdecc_pdu_dispatch *dispatcher
+    );
+
 void jdksavdecc_pcapfile_reader_init(
     struct jdksavdecc_pcapfile_reader *self, 
     jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize,
@@ -217,7 +227,53 @@ int jdksavdecc_pcapfile_reader_read_frame( struct jdksavdecc_pcapfile_reader *se
     return r;
 }
 
-int jdksavdecc_pcapfile_reader_dispatch_frames( 
+int jdksavdecc_pcapfile_reader_dispatch_frames(
+    struct jdksavdecc_pcapfile_reader *self, 
+    struct jdksavdecc_pdu_dispatch *dispatcher 
+    )
+{
+    if( self->f )
+    {
+        return jdksavdecc_pcapfile_reader_dispatch_frames_with_file( self, dispatcher );
+    }
+    else
+    {
+        return jdksavdecc_pcapfile_reader_dispatch_with_no_file( self, dispatcher );
+    }
+}
+
+
+
+int jdksavdecc_pcapfile_reader_dispatch_with_no_file(
+    struct jdksavdecc_pcapfile_reader *self, 
+    struct jdksavdecc_pdu_dispatch *dispatcher
+    )
+{
+    int r=0;
+    jdksavdecc_timestamp_in_microseconds cur_time=0;
+    
+    // until we are finished dispatching all frames
+    while( r==0
+            && !dispatcher->base.terminated
+            && cur_time < self->minimum_time_to_synthesize )
+    {
+        
+        // notify the dispatcher about the tick time
+        dispatcher->base.tick( &dispatcher->base, cur_time );
+
+        // notify self about the tick time
+        if( self->tick && self->tick( self, cur_time )==0 )
+        {
+            r=1;
+        }
+
+        cur_time+=self->time_step_in_microseconds;
+    }
+        
+    return r;
+}
+
+int jdksavdecc_pcapfile_reader_dispatch_frames_with_file(
     struct jdksavdecc_pcapfile_reader *self, 
     struct jdksavdecc_pdu_dispatch *dispatcher 
     )
@@ -232,38 +288,38 @@ int jdksavdecc_pcapfile_reader_dispatch_frames(
         struct jdksavdecc_frame frame;
         int did_read_frame=0;
 
-        // If we have a file to read
-        if( self->f )
-        {
-            // Try read a frame from the file
-            did_read_frame=self->read_frame(self,&frame);
+        // Try read a frame from the file
+        did_read_frame=self->read_frame(self,&frame);
 
-            if( did_read_frame )
+        if( did_read_frame )
+        {
+            if (cur_time==0 )
             {
-                if (cur_time==0 )
-                {
-                    // Synchronize our time to the beginning file time
-                    cur_time=frame.time;
-                    next_time=cur_time;
-                }
-                else
-                {
-                    // Otherwise use the next packet time from the file as our next_time
-                    next_time=frame.time;
-                }
+                // Synchronize our time to the beginning file time
+                cur_time=frame.time;
+                next_time=cur_time;
             }
+            else
+            {
+                // Otherwise use the next packet time from the file as our next_time
+                next_time=frame.time;
+            }
+        }
+        else
+        {
+            r=1;
         }
 
         // Do we have tick functions to call?
-        if( self->tick || dispatcher->tick )
+        if( self->tick || dispatcher->base.tick )
         {
             // yes, simulate ticks every time_step_in_microseconds to get to this point
             while( r==0 && cur_time >= next_time + self->time_step_in_microseconds )
             {
-                if( dispatcher->tick )
+                if( dispatcher->base.tick )
                 {
                     // notify the dispatcher about the tick time
-                    dispatcher->tick( dispatcher, cur_time );
+                    dispatcher->base.tick( &dispatcher->base, cur_time );
                 }
                 if( self->tick )
                 {

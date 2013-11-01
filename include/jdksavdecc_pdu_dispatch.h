@@ -52,16 +52,13 @@ typedef ssize_t (*jdksavdecc_pdu_dispatch_proc)(
 
 struct jdksavdecc_pdu_dispatch
 {
-    uint32_t tag;
-    void *additional;
+    struct jdksavdecc_state_machine base;
 
-    struct jdksavdecc_frame_sender *frame_sender;
+    void (*set_frame_sender)(
+        struct jdksavdecc_pdu_dispatch *self,
+        struct jdksavdecc_frame_sender *sender
+        );
 
-    void (*destroy)( struct jdksavdecc_pdu_dispatch * );
-
-    void (*tick)( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_timestamp_in_microseconds timestamp );
-
-    void (*set_frame_sender)( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender );
     jdksavdecc_pdu_dispatch_proc rx_frame;
     jdksavdecc_pdu_dispatch_proc unknown;
     jdksavdecc_pdu_dispatch_proc avtpv0;
@@ -101,7 +98,7 @@ struct jdksavdecc_pdu_dispatch
 
 
 void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self );
-void jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_pdu_dispatch *self, jdksavdecc_timestamp_in_microseconds timestamp );
+int jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp );
 void jdksavdecc_pdu_dispatch_set_frame_sender( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender );
 
 ssize_t jdksavdecc_pdu_dispatch_rx_frame( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
