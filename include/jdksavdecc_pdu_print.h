@@ -35,6 +35,8 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_pdu.h"
+#include "jdksavdecc_print.h"
+
 
 #ifdef __cplusplus
 extern "C" {
