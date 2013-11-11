@@ -101,21 +101,28 @@ static inline uint64_t jdksavdecc_endian_reverse_uint64( uint64_t const *vin )
             ((uint64_t)(p[0])<<56);
 }
 
-static inline void jdksavdecc_uint8_read( uint8_t *host_value, void const *base, ssize_t pos )
-{
-    // fixme
-    uint8_t const *b = (uint8_t const *)base;
 
-    *host_value = b[pos];
+/// Read the uint8_t value at base[pos] and store it in *host_value. Returns new pos, or -1 if pos is out of bounds.
+static inline ssize_t jdksavdecc_uint8_read( uint8_t *host_value, void const *base, ssize_t pos, ssize_t len )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, 1 );
+    if( r>=0 )
+    {
+        uint8_t const *b = (uint8_t const *)base;
+        *host_value = b[pos];
+    }
+    return r;
 }
 
-
+/// get the uint8_t value at base[pos] and return it without bounds checking
 static inline uint8_t jdksavdecc_uint8_get( void const *base, ssize_t pos )
 {
     uint8_t const *b = (uint8_t const *)base;
     return b[pos];
 }
 
+
+/// store the uint8_t value v into base[pos]. Returns -1 if pos is out of bounds.
 static inline ssize_t jdksavdecc_uint8_write( uint8_t v, void *base, ssize_t pos, ssize_t len )
 {
     ssize_t r=jdksavdecc_validate_range( pos, len, 1 );
@@ -129,12 +136,14 @@ static inline ssize_t jdksavdecc_uint8_write( uint8_t v, void *base, ssize_t pos
     return r;
 }
 
+/// Set the uint8_t value at base[pos] to v without bounds checking
 static inline void jdksavdecc_uint8_set( uint8_t v, void *base, ssize_t pos )
 {
     uint8_t *b = (uint8_t *)base;
     b[pos] = v;
 }
 
+/// Read the network order Doublet value at base[pos] and store it in *host_value. Returns new pos, or -1 if pos is out of bounds.
 static inline void jdksavdecc_uint16_read( uint16_t *host_value, void const *base, ssize_t pos )
 {
     uint8_t const *b = ((uint8_t const *)base) + pos;
@@ -142,6 +151,7 @@ static inline void jdksavdecc_uint16_read( uint16_t *host_value, void const *bas
                 + b[1];
 }
 
+/// get the uint8_t value at base[pos] and return it without bounds checking
 static inline uint16_t jdksavdecc_uint16_get( void const *base, ssize_t pos )
 {
     uint8_t const *b = ((uint8_t const *)base) + pos;
