@@ -160,7 +160,7 @@ static inline ssize_t jdksavdecc_descriptor_storage_item_read(
         p->descriptor_index = jdksavdecc_uint16_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_DESCRIPTOR_INDEX_OFFSET );
         p->configuration_index = jdksavdecc_uint16_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_CONFIGURATION_INDEX_OFFSET );
         p->length = jdksavdecc_uint16_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LENGTH_OFFSET );
-        p->symbol_offset = jdksavdecc_uint32_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_OFFSET_OFFSET );
+        p->offset = jdksavdecc_uint32_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_OFFSET_OFFSET);
     }
     return r;
 }
