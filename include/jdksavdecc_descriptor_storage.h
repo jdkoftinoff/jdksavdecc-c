@@ -42,121 +42,74 @@ extern "C" {
 #endif
 
 
-/*@{*/
-
-
-
 /** \addtogroup descriptor_storage_header Descriptor Storage Header
  *
- */
-
-/**@{*/
-
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_VALUE { 'A', 'E', 'M', '1' }  /// file header: "AEM1"
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SIZE (0x8)
-
-/**@}*/
-
-/** \addtogroup descriptor_storage_toc Descriptor Storage Table of Contents
- *
- *  table of contents chunk:
- *
- *    offset   size    name
- *  0x0000   4       length  = 8 + (num_entity_models * 0xc) + length of all entity_data chunks
- *  0x0004   2       num_entity_models
- *  0x0006   2       reserved1
- *  0x0008   4       entity_data_offset[0]
- *  0x000c   8       entity_model_id[0]
- *  0x0014   4       entity_data_offset[1]
- *  0x0018   8       entity_model_id[1]
- *  ....etc...
- *
+ *  offset   size      symbol          Description
+ *  ------   ----      -------------   ---------------------------------------
+ *  0x0000     4       magic           Magic number "AEM1"
+ *  0x0004     4       toc_count       Count of descriptors
+ *  0x0008     4       toc_offset      Offset of descriptors table of contents
+ *  0x000c     4       symbol_count    Count of symbols
+ *  0x0010     4       symbol_offset   Offset of symbol table
  *
  */
 
 /**@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_TOC_LENGTH_OFFSET (0x0000)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_TOC_NUM_ENTITY_MODELS_OFFSET (0x0004)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_TOC_ITEM_OFFSET (0x0008)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_TOC_ITEM_SIZE (0x000c)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_VALUE { 'A', 'E', 'M', '1' }  /// "AEM1"
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_LENGTH (0x8)
+
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_OFFSET (0x0000)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_TOC_COUNT_OFFSET (0x0004)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_TOC_OFFSET_OFFSET (0x0008)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SYMBOL_COUNT_OFFSET (0x000c)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SYMBOL_OFFSET_OFFSET (0x0010)
 
 /**@}*/
 
 
-/** \addtogroup descriptor_storage_entities entity_data chunk
- *  entity_data chunk:
+/** \addtogroup descriptor_storage_item Descriptor item
  *
- *    offset   size    name
- *  0x0000   4       length  = 8 + (num_configurations * 0x4) + length of all configuration_data chunks
- *  0x0004   2       num_configurations
- *  0x0006   2       reserved1
- *  0x0008   4       configuration_data_offset[0]
- *  0x000c   4       configuration_data_offset[1]
- *  0x0010   4       configuration_data_offset[2]
- *  ..etc..
- *  content of all configuration_data chunks
- *  ....
- */
-
-/**@{*/
-
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ENTITY_DATA_LENGTH_OFFSET (0x0000)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ENTITY_DATA_NUM_CONFIGURATIONS_OFFSET (0x0004)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ENTITY_DATA_ITEM_OFFSET (0x0008)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ENTITY_DATA_ITEM_SIZE (0x0004)
-
-/**@}*/
-
-
-/** \addtogroup descriptor_storage_configurations configuration_data chunk
- *  configuration_data chunk:
+ *  offset   size      name                  Descriptrion
+ *  ------   ----      -------------         ---------------------------------------
+ *  0x0000     2       descriptor_type       Descriptor type
+ *  0x0002     2       descriptor_index      Descriptor index
+ *  0x0004     2       configuration_index   Configuration idnex
+ *  0x0006     2       length                Length of descriptor
+ *  0x0008     4       offset                Offset of descriptor from start of file
  *
- *    offset   size    name
- *  0x0000   4       length  = 8 + (num_descriptor_list_types * 0x6) + length of all descriptor_list_data chunks
- *  0x0004   2       num_descriptor_list_types
- *  0x0006   2       reserved1
- *  0x0008   4       descriptor_list_data_offset[0]
- *  0x000c   2       descriptor_list_data_type[0]
- *  0x000e   4       descriptor_list_data_offset[1]
- *  0x0012   2       descriptor_list_data_type[1]
- *  ..etc..
- *  content of all descriptor_list_data chunks
- *  ....
  */
-
 /**@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_DATA_LENGTH_OFFSET (0x0000)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_DATA_NUM_CONFIGURATIONS_OFFSET (0x0004)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_DATA_ITEM_OFFSET (0x0008)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_CONFIGURATION_DATA_ITEM_SIZE (0x0006)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_DESCRIPTOR_TYPE_OFFSET (0x0000)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_DESCRIPTOR_INDEX_OFFSET (0x0002)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_CONFIGURATION_INDEX_OFFSET (0x0004)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LENGTH_OFFSET (0x0006)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_OFFSET_OFFSET (0x0008)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LENGTH (0x000c)
 
 /**@}*/
 
-
-/** \addtogroup descriptor_storage_descriptors descriptor_list_data chunk
- *  descriptor_list_data chunk:
- *    offset   size    name
- *  0x0000   4       length  = 8 + (num_descriptors * 0x6) + length of all descriptor_data chunks
- *  0x0004   2       num_descriptors
- *  0x0006   2       reserved1
- *  0x0008   4       descriptor_data_offset[0]
- *  0x000c   2       descriptor_data_length[0]
- *  0x000e   4       descriptor_data_offset[1]
- *  0x0012   2       descriptor_data_length[1]
- *  ..etc..
- *  ...content of all descriptor data...
+/** \addtogroup descriptor_storage_symbol Symbol
+ *
+ *  offset   size      name                  Descriptrion
+ *  ------   ----      -------------         ---------------------------------------
+ *  0x0000     2       descriptor_type       Descriptor type
+ *  0x0002     2       descriptor_index      Descriptor index
+ *  0x0004     2       configuration_index   Configuration idnex
+ *  0x0006     4       symbol                Symbol
+ *
  */
-
 /**@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_DESCRIPTOR_LIST_DATA_LENGTH_OFFSET (0x0000)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_DESCRIPTOR_LIST_DATA_NUM_CONFIGURATIONS_OFFSET (0x0004)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_DESCRIPTOR_LIST_DATA_ITEM_OFFSET (0x0008)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_DESCRIPTOR_LIST_DATA_ITEM_SIZE (0x0006)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_DESCRIPTOR_TYPE_OFFSET (0x0000)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_DESCRIPTOR_INDEX_OFFSET (0x0002)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_CONFIGURATION_INDEX_OFFSET (0x0004)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_SYMBOL_OFFSET (0x0006)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_LENGTH (0x000a)
 
 /**@}*/
+
 
 /// jdksavdecc_descriptor_storage holds the information about how to read the storage item
 struct jdksavdecc_descriptor_storage
@@ -230,51 +183,35 @@ void jdksavdecc_descriptor_storage_file_destroy(
 
 #endif
 
-
-
-/// Read the count of entity models in the storage object
-uint16_t jdksavdecc_descriptor_storage_get_entity_model_count(
+/// Read the count of configurations in the storage object
+uint16_t jdksavdecc_descriptor_storage_get_configuration_count(
         struct jdksavdecc_descriptor_storage *self
         );
 
-/// Read the model_id for a entity model in the storage object
-struct jdksavdecc_eui64 jdksavdecc_descriptor_storage_get_entity_model_id(
-        struct jdksavdecc_descriptor_storage *self,
-        uint16_t entity_number
-        );
-
-/// Read the count of configurations for the specified entity number in the storage object
-uint16_t jdksavdecc_descriptor_storage_get_configuration_count(
-        uint16_t entity_number
-        );
-
-/// Read the count of descriptor lists used in the specified entity_number and configuration number
+/// Read the count of descriptor items used in the specified configuration number
 uint16_t jdksavdecc_descriptor_storage_get_configuration_descriptor_list_count(
-        uint16_t entity_number,
+        struct jdksavdecc_descriptor_storage *self,
         uint16_t configuration_number
         );
 
-/// Read the descriptor_type and descriptor count for one entry in the descriptor list in a configuration of an entity
-/// Returns the descriptor count, or 0 if there are none.
-/// Fills in *result_descriptor_type with the descriptor type
-uint16_t jdksavdecc_descriptor_storage_get_descriptor_types_count_and_type(
-        struct jdksavdecc_descriptor_storage *self,
-        uint16_t configuration_number,
-        uint16_t descriptor_type_number,
-        uint16_t *result_descriptor_type
-        );
-
-
-/// Read a descriptor for the specified entity, configuration, descriptor_type and descriptor_index into result buffer which has a length of result_buffer_len.
+/// Read a descriptor for the specified configuration, descriptor_type and descriptor_index into result buffer which has a length of result_buffer_len.
 /// Returns the length of the descriptor, or 0 if no descriptor.
 uint16_t jdksavdecc_descriptor_storage_read_descriptor(
         struct jdksavdecc_descriptor_storage *self,
-        uint16_t entity_number,
         uint16_t configuration_number,
         uint16_t descriptor_type,
         uint16_t descriptor_index,
         uint16_t *result_buffer,
         uint16_t result_buffer_len
+        );
+
+/// Read a symbol for the specified configuration, descriptor_type and descriptor_index. Returns 0 on success.
+int jdksavdecc_descriptor_storage_read_symbol(
+        struct jdksavdecc_descriptor_storage *self,
+        uint16_t configuration_number,
+        uint16_t descriptor_type,
+        uint16_t descriptor_index,
+        uint32_t *result_symbol
         );
 
 /*@}*/
