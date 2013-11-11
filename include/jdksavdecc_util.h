@@ -562,6 +562,28 @@ static inline void jdksavdecc_eui48_init( struct jdksavdecc_eui48 *self )
     }
 }
 
+static inline void jdksavdecc_eui48_init_from_uint64( struct jdksavdecc_eui48 *self, uint64_t other )
+{
+    self->value[0] = (uint8_t)((other>>(5*8)) & 0xff);
+    self->value[1] = (uint8_t)((other>>(4*8)) & 0xff);
+    self->value[2] = (uint8_t)((other>>(3*8)) & 0xff);
+    self->value[3] = (uint8_t)((other>>(2*8)) & 0xff);
+    self->value[4] = (uint8_t)((other>>(1*8)) & 0xff);
+    self->value[5] = (uint8_t)((other>>(0*8)) & 0xff);
+}
+
+static inline uint64_t jdksavdecc_eui48_convert_to_uint64( struct jdksavdecc_eui48 *self )
+{
+    uint64_t v = 0;
+    v |= ((uint64_t)self->value[0])<<(5*8);
+    v |= ((uint64_t)self->value[1])<<(4*8);
+    v |= ((uint64_t)self->value[2])<<(3*8);
+    v |= ((uint64_t)self->value[3])<<(2*8);
+    v |= ((uint64_t)self->value[4])<<(1*8);
+    v |= ((uint64_t)self->value[5])<<(0*8);
+    return v;
+}
+
 
 static inline void jdksavdecc_eui48_copy( struct jdksavdecc_eui48 *self, struct jdksavdecc_eui48 const *other )
 {
@@ -644,6 +666,32 @@ static inline void jdksavdecc_eui64_init( struct jdksavdecc_eui64 *self )
     {
         self->value[i] = 0;
     }
+}
+
+static inline void jdksavdecc_eui64_init_from_uint64( struct jdksavdecc_eui64 *self, uint64_t other )
+{
+    self->value[0] = (uint8_t)((other>>(7*8)) & 0xff);
+    self->value[1] = (uint8_t)((other>>(6*8)) & 0xff);
+    self->value[2] = (uint8_t)((other>>(5*8)) & 0xff);
+    self->value[3] = (uint8_t)((other>>(4*8)) & 0xff);
+    self->value[4] = (uint8_t)((other>>(3*8)) & 0xff);
+    self->value[5] = (uint8_t)((other>>(2*8)) & 0xff);
+    self->value[6] = (uint8_t)((other>>(1*8)) & 0xff);
+    self->value[7] = (uint8_t)((other>>(0*8)) & 0xff);
+}
+
+static inline uint64_t jdksavdecc_eui64_convert_to_uint64( struct jdksavdecc_eui64 *self )
+{
+    uint64_t v = 0;
+    v |= ((uint64_t)self->value[0])<<(7*8);
+    v |= ((uint64_t)self->value[1])<<(6*8);
+    v |= ((uint64_t)self->value[2])<<(5*8);
+    v |= ((uint64_t)self->value[3])<<(4*8);
+    v |= ((uint64_t)self->value[4])<<(3*8);
+    v |= ((uint64_t)self->value[5])<<(2*8);
+    v |= ((uint64_t)self->value[6])<<(1*8);
+    v |= ((uint64_t)self->value[7])<<(0*8);
+    return v;
 }
 
 
