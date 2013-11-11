@@ -110,6 +110,8 @@ extern "C" {
 
 /**@}*/
 
+/** \addtogroup jdksavdecc_descriptor_storage */
+/**@{*/
 
 /// jdksavdecc_descriptor_storage holds the information about how to read the storage item
 struct jdksavdecc_descriptor_storage
