@@ -53,6 +53,7 @@ extern "C" {
 /**@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER { 0x41, 0x45, 0x4d, 0x31, 0x00, 0x00, 0x00, 0x00 }  /// file header: "AEM1\0\0\0\0"
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_VALUE { 'A', 'E', 'M', '1' }  /// file header: "AEM1"
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SIZE (0x8)
 
 /**@}*/
