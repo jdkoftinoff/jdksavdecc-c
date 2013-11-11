@@ -57,13 +57,61 @@ extern "C" {
 /**@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_VALUE { 'A', 'E', 'M', '1' }  /// "AEM1"
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_LENGTH (0x8)
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_LENGTH (0x0014)
 
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_OFFSET (0x0000)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_TOC_COUNT_OFFSET (0x0004)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_TOC_OFFSET_OFFSET (0x0008)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SYMBOL_COUNT_OFFSET (0x000c)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SYMBOL_OFFSET_OFFSET (0x0010)
+
+struct jdksavdecc_descriptor_storage_header
+{
+    uint32_t magic;
+    uint32_t toc_count;
+    uint32_t toc_offset;
+    uint32_t symbol_count;
+    uint32_t symbol_offset;
+};
+
+static inline ssize_t jdksavdecc_descriptor_storage_header_read( 
+    struct jdksavdecc_descriptor_storage_header *p,
+    void const *base,
+    ssize_t pos,
+    size_t len
+    )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_LENGTH );
+    if( r>=0 ) 
+    {
+        p->magic = jdksavdecc_uint32_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_OFFSET );
+        p->toc_count = jdksavdecc_uint32_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_TOC_COUNT_OFFSET );
+        p->toc_offset = jdksavdecc_uint32_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_TOC_OFFSET_OFFSET );
+        p->symbol_count = jdksavdecc_uint32_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SYMBOL_COUNT_OFFSET );
+        p->symbol_offset = jdksavdecc_uint32_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SYMBOL_OFFSET_OFFSET );
+    }
+    return r;
+}
+
+
+static inline ssize_t jdksavdecc_descriptor_storage_header_write( 
+    struct jdksavdecc_descriptor_storage_header const *p,
+    void *base,
+    ssize_t pos,
+    size_t len
+    )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_LENGTH );
+    if( r>=0 ) 
+    {
+        jdksavdecc_uint32_set( p->magic, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_OFFSET );
+        jdksavdecc_uint32_set( p->toc_count, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_TOC_COUNT_OFFSET );
+        jdksavdecc_uint32_set( p->toc_offset, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_TOC_OFFSET_OFFSET );
+        jdksavdecc_uint32_set( p->symbol_count, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SYMBOL_COUNT_OFFSET );
+        jdksavdecc_uint32_set( p->symbol_offset, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_SYMBOL_OFFSET_OFFSET );
+    }
+    return r;
+}
 
 /**@}*/
 
@@ -81,12 +129,62 @@ extern "C" {
  */
 /**@{*/
 
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LENGTH (0x000c)
+
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_DESCRIPTOR_TYPE_OFFSET (0x0000)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_DESCRIPTOR_INDEX_OFFSET (0x0002)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_CONFIGURATION_INDEX_OFFSET (0x0004)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LENGTH_OFFSET (0x0006)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_OFFSET_OFFSET (0x0008)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LENGTH (0x000c)
+
+struct jdksavdecc_descriptor_storage_item
+{
+    uint16_t descriptor_type;
+    uint16_t descriptor_index;
+    uint16_t configuration_index;
+    uint16_t length;
+    uint32_t offset;
+};
+
+static inline ssize_t jdksavdecc_descriptor_storage_item_read( 
+    struct jdksavdecc_descriptor_storage_item *p,
+    void const *base,
+    ssize_t pos,
+    size_t len
+    )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LENGTH );
+    if( r>=0 ) 
+    {
+        p->descriptor_type = jdksavdecc_uint16_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_DESCRIPTOR_TYPE_OFFSET );
+        p->descriptor_index = jdksavdecc_uint16_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_DESCRIPTOR_INDEX_OFFSET );
+        p->configuration_index = jdksavdecc_uint16_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_CONFIGURATION_INDEX_OFFSET );
+        p->length = jdksavdecc_uint16_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LENGTH_OFFSET );
+        p->symbol_offset = jdksavdecc_uint32_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_OFFSET_OFFSET );
+    }
+    return r;
+}
+
+
+static inline ssize_t jdksavdecc_descriptor_storage_item_write( 
+    struct jdksavdecc_descriptor_storage_item const *p,
+    void *base,
+    ssize_t pos,
+    size_t len
+    )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LENGTH );
+    if( r>=0 ) 
+    {
+        jdksavdecc_uint16_set( p->descriptor_type, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_DESCRIPTOR_TYPE_OFFSET );
+        jdksavdecc_uint16_set( p->descriptor_index, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_DESCRIPTOR_INDEX_OFFSET );
+        jdksavdecc_uint16_set( p->configuration_index, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_CONFIGURATION_INDEX_OFFSET );
+        jdksavdecc_uint16_set( p->length, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_LENGTH_OFFSET );
+        jdksavdecc_uint32_set( p->offset, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_ITEM_OFFSET_OFFSET );
+    }
+    return r;
+}
+
 
 /**@}*/
 
@@ -101,12 +199,59 @@ extern "C" {
  *
  */
 /**@{*/
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_LENGTH (0x000a)
 
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_DESCRIPTOR_TYPE_OFFSET (0x0000)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_DESCRIPTOR_INDEX_OFFSET (0x0002)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_CONFIGURATION_INDEX_OFFSET (0x0004)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_SYMBOL_OFFSET (0x0006)
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_LENGTH (0x000a)
+
+struct jdksavdecc_descriptor_storage_symbol
+{
+    uint16_t descriptor_type;
+    uint16_t descriptor_index;
+    uint16_t configuration_index;
+    uint32_t symbol;
+};
+
+
+static inline ssize_t jdksavdecc_descriptor_storage_symbol_read( 
+    struct jdksavdecc_descriptor_storage_symbol *p,
+    void const *base,
+    ssize_t pos,
+    size_t len
+    )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_LENGTH );
+    if( r>=0 ) 
+    {
+        p->descriptor_type = jdksavdecc_uint16_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_DESCRIPTOR_TYPE_OFFSET );
+        p->descriptor_index = jdksavdecc_uint16_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_DESCRIPTOR_INDEX_OFFSET );
+        p->configuration_index = jdksavdecc_uint16_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_CONFIGURATION_INDEX_OFFSET );
+        p->symbol = jdksavdecc_uint32_get( base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_SYMBOL_OFFSET );
+    }
+    return r;
+}
+
+
+static inline ssize_t jdksavdecc_descriptor_storage_symbol_write( 
+    struct jdksavdecc_descriptor_storage_symbol const *p,
+    void *base,
+    ssize_t pos,
+    size_t len
+    )
+{
+    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_LENGTH );
+    if( r>=0 ) 
+    {
+        jdksavdecc_uint16_set( p->descriptor_type, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_DESCRIPTOR_TYPE_OFFSET );
+        jdksavdecc_uint16_set( p->descriptor_index, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_DESCRIPTOR_INDEX_OFFSET );
+        jdksavdecc_uint16_set( p->configuration_index, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_CONFIGURATION_INDEX_OFFSET );
+        jdksavdecc_uint32_set( p->symbol, base, pos+JDKSAVDECC_DESCRIPTOR_STORAGE_SYMBOL_SYMBOL_OFFSET );
+    }
+    return r;
+}
+
 
 /**@}*/
 
@@ -122,6 +267,9 @@ struct jdksavdecc_descriptor_storage
     /// Read some data at offset of length length into buffer. Return length of data read.
     uint32_t (*read_data)( struct jdksavdecc_descriptor_storage *self, void *buffer, uint32_t offset, uint32_t length );
 
+    /// Host ordered cache of header
+    struct jdksavdecc_descriptor_storage_header header;
+    
     /// generic pointer for accessing data
     void const *user_ptr;
 
