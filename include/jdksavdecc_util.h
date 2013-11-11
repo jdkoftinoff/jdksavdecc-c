@@ -66,6 +66,7 @@ static inline ssize_t jdksavdecc_validate_range( ssize_t bufpos, size_t buflen, 
 /** \addtogroup endian Endian helpers / data access */
 /*@{*/
 
+/// Reverses endian of uint16_t value at *vin and returns it
 static inline uint16_t jdksavdecc_endian_reverse_uint16( uint16_t const *vin )
 {
     uint8_t const *p = (uint8_t const * )(vin);
@@ -74,6 +75,7 @@ static inline uint16_t jdksavdecc_endian_reverse_uint16( uint16_t const *vin )
 
 }
 
+/// Reverses endian of uint32_t value at *vin and returns it
 static inline uint32_t jdksavdecc_endian_reverse_uint32( uint32_t const *vin )
 {
     uint8_t const *p = (uint8_t const *)vin;
@@ -84,6 +86,7 @@ static inline uint32_t jdksavdecc_endian_reverse_uint32( uint32_t const *vin )
             ((uint32_t)(p[0])<<24);
 }
 
+/// Reverses endian of uint64_t value at *vin and returns it
 static inline uint64_t jdksavdecc_endian_reverse_uint64( uint64_t const *vin )
 {
     uint8_t const *p = (uint8_t const *)vin;
