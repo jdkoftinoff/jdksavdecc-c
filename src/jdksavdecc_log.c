@@ -32,62 +32,23 @@
 
 
 #include "jdksavdecc_world.h"
-#include "jdksavdecc_maap.h"
 
 FILE *jdksavdecc_log_file=0;
 
-void jdksavdecc_log_error( const char *fmt, ... )
+void jdksavdecc_log_null( const char *fmt, ... );
+
+void (*jdksavdecc_log_debug)( const char *fmt, ... ) = jdksavdecc_log_null;
+void (*jdksavdecc_log_error)( const char *fmt, ... ) = jdksavdecc_log_null;
+void (*jdksavdecc_log_warning)( const char *fmt, ... )  = jdksavdecc_log_null;
+void (*jdksavdecc_log_info)( const char *fmt, ... )  = jdksavdecc_log_null;
+
+void jdksavdecc_log_null( const char *fmt, ... )
 {
     va_list args;
-    FILE *f=jdksavdecc_log_file;
-
-    if( !f )
-    {
-        f=stderr;
-    }
 
     va_start (args,fmt);
-    fprintf( f, "%12s", "ERROR:" );
-    vfprintf( f, fmt, args );
-    fputc('\n',f);
+
+    // Do Nothing
+    
     va_end(args);
-    fflush(jdksavdecc_log_file);
-}
-
-void jdksavdecc_log_warning( const char *fmt, ... )
-{
-    va_list args;
-    FILE *f=jdksavdecc_log_file;
-
-    if( !f )
-    {
-        f=stderr;
-    }
-
-
-    va_start (args,fmt);
-    fprintf( f, "%12s", "WARNING:" );
-    vfprintf( f, fmt, args );
-    fputc('\n',f);
-    va_end(args);
-    fflush(jdksavdecc_log_file);
-}
-
-void jdksavdecc_log_info( const char *fmt, ... )
-{
-    va_list args;
-    FILE *f=jdksavdecc_log_file;
-
-    if( !f )
-    {
-        f=stderr;
-    }
-
-
-    va_start (args,fmt);
-    fprintf( f, "%12s", "INFO:" );
-    vfprintf( f, fmt, args );
-    fputc('\n',f);
-    va_end(args);
-    fflush(jdksavdecc_log_file);
 }
