@@ -47,11 +47,10 @@ extern "C" {
 */
 /*@{*/
 
-extern FILE *jdksavdecc_log_file;
-
-extern void jdksavdecc_log_error( const char *fmt, ... );
-extern void jdksavdecc_log_warning( const char *fmt, ... );
-extern void jdksavdecc_log_info( const char *fmt, ... );
+extern void (*jdksavdecc_log_debug)( const char *fmt, ... );
+extern void (*jdksavdecc_log_info)( const char *fmt, ... );
+extern void (*jdksavdecc_log_warning)( const char *fmt, ... );
+extern void (*jdksavdecc_log_error)( const char *fmt, ... );
 
 /*@}*/
 
