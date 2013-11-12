@@ -155,21 +155,19 @@ void jdksavdecc_descriptor_storage_file_destroy(
 
 #endif
 
+int jdksavdecc_descriptor_storage_read_header(
+        struct jdksavdecc_descriptor_storage *self
+        );
 
-
-/// Read the count of configurations in the storage object
 uint16_t jdksavdecc_descriptor_storage_get_configuration_count(
         struct jdksavdecc_descriptor_storage *self
         );
 
-/// Read the count of descriptor items used in the specified configuration number
 uint16_t jdksavdecc_descriptor_storage_get_configuration_descriptor_list_count(
         struct jdksavdecc_descriptor_storage *self,
         uint16_t configuration_number
         );
 
-/// Read a descriptor for the specified configuration, descriptor_type and descriptor_index into result buffer which has a length of result_buffer_len.
-/// Returns the length of the descriptor, or 0 if no descriptor.
 uint16_t jdksavdecc_descriptor_storage_read_descriptor(
         struct jdksavdecc_descriptor_storage *self,
         uint16_t configuration_number,
@@ -179,7 +177,6 @@ uint16_t jdksavdecc_descriptor_storage_read_descriptor(
         uint16_t result_buffer_len
         );
 
-/// Read a symbol for the specified configuration, descriptor_type and descriptor_index. Returns 0 on success.
 int jdksavdecc_descriptor_storage_read_symbol(
         struct jdksavdecc_descriptor_storage *self,
         uint16_t configuration_number,
