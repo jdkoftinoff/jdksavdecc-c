@@ -333,6 +333,11 @@ void jdksavdecc_descriptor_storage_file_destroy(
 
 #endif
 
+/// Read the file header. Returns 0 on success, -1 if the header is not recognized or unable to read.
+int jdksavdecc_descriptor_storage_read_header(
+        struct jdksavdecc_descriptor_storage *self
+        );
+
 /// Read the count of configurations in the storage object
 uint16_t jdksavdecc_descriptor_storage_get_configuration_count(
         struct jdksavdecc_descriptor_storage *self
