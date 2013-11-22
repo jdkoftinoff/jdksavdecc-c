@@ -80,7 +80,7 @@ extern "C" {
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the struct jdksavdecc_eui64_t controller_entity_id value
+ * @return the struct jdksavdecc_eui64 controller_entity_id value
  */
 static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_aa_get_controller_entity_id( void const *base, ssize_t pos )
 {
@@ -94,7 +94,7 @@ static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_aa_get_controller_entity
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
  *
- * @param v The struct jdksavdecc_eui64_t controller_entity_id value.
+ * @param v The struct jdksavdecc_eui64 controller_entity_id value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
