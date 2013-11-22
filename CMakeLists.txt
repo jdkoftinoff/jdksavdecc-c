@@ -25,6 +25,10 @@ add_executable(test_jdksavdecc_acmp_controller tests/test_jdksavdecc_acmp_contro
 target_link_libraries(test_jdksavdecc_acmp_controller ${LIBS})
 add_test(test_jdksavdecc_acmp_controller ${CMAKE_CURRENT_BINARY_DIR}/test_jdksavdecc_acmp_controller)
 
+add_executable(test_jdksavdecc_acmp_conversations tests/test_jdksavdecc_acmp_conversations.c)
+target_link_libraries(test_jdksavdecc_acmp_conversations ${LIBS})
+add_test(test_jdksavdecc_acmp_conversations ${CMAKE_CURRENT_BINARY_DIR}/test_jdksavdecc_acmp_conversations)
+
 add_executable(test_jdksavdecc_acmp_listener tests/test_jdksavdecc_acmp_listener.c)
 target_link_libraries(test_jdksavdecc_acmp_listener ${LIBS})
 add_test(test_jdksavdecc_acmp_listener ${CMAKE_CURRENT_BINARY_DIR}/test_jdksavdecc_acmp_listener)
