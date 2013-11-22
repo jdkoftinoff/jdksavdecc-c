@@ -30,7 +30,6 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_app.h"
 

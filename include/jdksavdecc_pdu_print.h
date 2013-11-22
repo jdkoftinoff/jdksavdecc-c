@@ -37,7 +37,6 @@
 #include "jdksavdecc_pdu.h"
 #include "jdksavdecc_print.h"
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -45,12 +44,11 @@ extern "C" {
 /** \addtogroup print_pdu PDU Print Utilities */
 /*@{*/
 
-
 extern struct jdksavdecc_uint16_name jdksavdecc_pdu_print_cd_subtype[];
 
-void jdksavdecc_pdu_print( FILE *f, const uint8_t *p, size_t len, int dump_payload );
+void jdksavdecc_pdu_print(FILE *f, const uint8_t *p, size_t len, int dump_payload);
 
-void jdksavdecc_frame_print( FILE *f, struct jdksavdecc_frame const *p, int dump_payload );
+void jdksavdecc_frame_print(FILE *f, struct jdksavdecc_frame const *p, int dump_payload);
 
 /*@}*/
 
@@ -59,6 +57,3 @@ void jdksavdecc_frame_print( FILE *f, struct jdksavdecc_frame const *p, int dump
 #endif
 
 #endif
-
-
-

@@ -44,43 +44,39 @@ extern "C" {
 /*@{*/
 
 #ifndef JDKSAVDECC_STATE_MACHINE_ENABLE_LOG
-# define JDKSAVDECC_STATE_MACHINE_ENABLE_LOG (1)
+#define JDKSAVDECC_STATE_MACHINE_ENABLE_LOG (1)
 #endif
 
 #if JDKSAVDECC_STATE_MACHINE_ENABLE_LOG
-# define jdksavdecc_state_machine_log jdksavdecc_log_info
-# ifndef jdksavdecc_state_machine_log_enter
-#  define jdksavdecc_state_machine_log_enter() jdksavdecc_state_machine_log("Enter:%s:%d",__FUNCTION__,__LINE__)
-# endif
-# ifndef jdksavdecc_state_machine_log_exit
-#  define jdksavdecc_state_machine_log_exit() jdksavdecc_state_machine_log(" Exit:%s:%d",__FUNCTION__,__LINE__)
-# endif
+#define jdksavdecc_state_machine_log jdksavdecc_log_info
+#ifndef jdksavdecc_state_machine_log_enter
+#define jdksavdecc_state_machine_log_enter() jdksavdecc_state_machine_log("Enter:%s:%d", __FUNCTION__, __LINE__)
+#endif
+#ifndef jdksavdecc_state_machine_log_exit
+#define jdksavdecc_state_machine_log_exit() jdksavdecc_state_machine_log(" Exit:%s:%d", __FUNCTION__, __LINE__)
+#endif
 #else
-# define jdksavdecc_state_machine_log(fmt, ...)
-# define jdksavdecc_state_machine_log_enter()
-# define jdksavdecc_state_machine_log_exit()
+#define jdksavdecc_state_machine_log(fmt, ...)
+#define jdksavdecc_state_machine_log_enter()
+#define jdksavdecc_state_machine_log_exit()
 #endif
 
-
 /// Common base class for state machines
-struct jdksavdecc_state_machine
-{
+struct jdksavdecc_state_machine {
     /// Destructor
-    void (*destroy)( struct jdksavdecc_state_machine *self );
+    void (*destroy)(struct jdksavdecc_state_machine *self);
 
     /// Ask the state machine to terminate
-    void (*terminate)(
-            struct jdksavdecc_state_machine *self
-            );
+    void (*terminate)(struct jdksavdecc_state_machine *self);
 
     /// Time tick. Returns 0 on success, -1 on state machine terminated
-    int (*tick)( struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp );
+    int (*tick)(struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp);
 
     /// Received Frame
-    ssize_t (*rx_frame)( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+    ssize_t (*rx_frame)(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos);
 
     /// Transmit Frame
-    void (*tx_frame)( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame );
+    void (*tx_frame)(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame);
 
     /// Object to Transmit Frame with
     struct jdksavdecc_frame_sender *frame_sender;
@@ -98,36 +94,29 @@ struct jdksavdecc_state_machine
     int do_early_tick;
 };
 
-
 /// Initialize state machine
-void jdksavdecc_state_machine_init(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame_sender *frame_sender,
-        uint32_t tag,
-        void *additional
-        );
+void jdksavdecc_state_machine_init(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame_sender *frame_sender,
+                                   uint32_t tag, void *additional);
 
 /// Destroy state machine
-void jdksavdecc_state_machine_destroy( struct jdksavdecc_state_machine *self );
+void jdksavdecc_state_machine_destroy(struct jdksavdecc_state_machine *self);
 
 /// Ask the state machine to terminate
-void jdksavdecc_state_machine_terminate( struct jdksavdecc_state_machine *self );
+void jdksavdecc_state_machine_terminate(struct jdksavdecc_state_machine *self);
 
 /// Time tick.  Returns 0 on success, -1 on state machine terminated
-int jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp );
+int jdksavdecc_state_machine_tick(struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp);
 
 /// Received Frame
-ssize_t jdksavdecc_state_machine_rx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos );
+ssize_t jdksavdecc_state_machine_rx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos);
 
 /// Transmit Frame
-void jdksavdecc_state_machine_tx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame );
+void jdksavdecc_state_machine_tx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame);
 
 /*@}*/
-
 
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif

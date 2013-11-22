@@ -48,27 +48,20 @@ struct jdksavdecc_descriptor;
 /*@{*/
 struct jdksavdecc_descriptor_dispatch;
 
-typedef ssize_t (*jdksavdecc_descriptor_dispatch_proc)(
-        struct jdksavdecc_descriptor_dispatch *self,
-        struct jdksavdecc_frame *frame,
-        size_t pos
-        );
+typedef ssize_t (*jdksavdecc_descriptor_dispatch_proc)(struct jdksavdecc_descriptor_dispatch *self, struct jdksavdecc_frame *frame,
+                                                       size_t pos);
 
-struct jdksavdecc_descriptor_dispatch
-{
+struct jdksavdecc_descriptor_dispatch {
     uint32_t tag;
     void *additional;
 
     struct jdksavdecc_frame_sender *frame_sender;
     jdksavdecc_descriptor_dispatch_proc rx_frame;
-    jdksavdecc_descriptor_dispatch_proc command[ JDKSAVDECC_NUM_DESCRIPTOR_TYPES ];
+    jdksavdecc_descriptor_dispatch_proc command[JDKSAVDECC_NUM_DESCRIPTOR_TYPES];
 };
 
-ssize_t jdksavdec_descriptor_dispatch_rx_frame(
-        struct jdksavdecc_descriptor_dispatch *self,
-        struct jdksavdecc_frame *frame,
-        size_t pos
-        );
+ssize_t jdksavdec_descriptor_dispatch_rx_frame(struct jdksavdecc_descriptor_dispatch *self, struct jdksavdecc_frame *frame,
+                                               size_t pos);
 
 /*@}*/
 
@@ -77,4 +70,3 @@ ssize_t jdksavdec_descriptor_dispatch_rx_frame(
 #endif
 
 #endif
-

@@ -37,20 +37,18 @@
 #include "jdksavdecc_world.h"
 #endif
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 /** \addtogroup log logging
 */
 /*@{*/
 
-extern void (*jdksavdecc_log_debug)( const char *fmt, ... );
-extern void (*jdksavdecc_log_info)( const char *fmt, ... );
-extern void (*jdksavdecc_log_warning)( const char *fmt, ... );
-extern void (*jdksavdecc_log_error)( const char *fmt, ... );
+extern void (*jdksavdecc_log_debug)(const char *fmt, ...);
+extern void (*jdksavdecc_log_info)(const char *fmt, ...);
+extern void (*jdksavdecc_log_warning)(const char *fmt, ...);
+extern void (*jdksavdecc_log_error)(const char *fmt, ...);
 
 /*@}*/
 
@@ -59,4 +57,3 @@ extern void (*jdksavdecc_log_error)( const char *fmt, ... );
 #endif
 
 #endif
-

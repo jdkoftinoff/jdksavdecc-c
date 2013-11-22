@@ -41,14 +41,13 @@
 extern "C" {
 #endif
 
-
 /** \addtogroup maap_print MAAP Print
  *  @todo maap_print
 */
 /*@{*/
 
 extern struct jdksavdecc_uint16_name jdksavdecc_maap_print_message_type[];
-void jdksavdecc_maap_print( FILE *f, struct jdksavdecc_maap const *p );
+void jdksavdecc_maap_print(FILE *f, struct jdksavdecc_maap const *p);
 
 /*@}*/
 
@@ -57,4 +56,3 @@ void jdksavdecc_maap_print( FILE *f, struct jdksavdecc_maap const *p );
 #endif
 
 #endif
-

@@ -41,7 +41,6 @@
 extern "C" {
 #endif
 
-
 /** \addtogroup command_descriptor_dispatch_print Descriptor Dispatch Print
  *  @todo descriptor_dispatch_print
 */
@@ -54,4 +53,3 @@ extern "C" {
 #endif
 
 #endif
-

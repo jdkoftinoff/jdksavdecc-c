@@ -30,90 +30,78 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 #include "jdksavdecc_world.h"
 
-FILE *jdksavdecc_log_file=0;
+FILE *jdksavdecc_log_file = 0;
 
-void jdksavdecc_log_file_debug( const char *fmt, ... )
-{
+void jdksavdecc_log_file_debug(const char *fmt, ...) {
     va_list args;
-    FILE *f=jdksavdecc_log_file;
+    FILE *f = jdksavdecc_log_file;
 
-    if( !f )
-    {
-        f=stderr;
+    if (!f) {
+        f = stderr;
     }
 
-    va_start (args,fmt); 
-    fprintf( f, "%12s", "DEBUG  :" );
-    vfprintf( f, fmt, args );
-    fputc('\n',f);
+    va_start(args, fmt);
+    fprintf(f, "%12s", "DEBUG  :");
+    vfprintf(f, fmt, args);
+    fputc('\n', f);
     va_end(args);
     fflush(jdksavdecc_log_file);
 }
 
-void jdksavdecc_log_file_error( const char *fmt, ... )
-{
+void jdksavdecc_log_file_error(const char *fmt, ...) {
     va_list args;
-    FILE *f=jdksavdecc_log_file;
+    FILE *f = jdksavdecc_log_file;
 
-    if( !f )
-    {
-        f=stderr;
+    if (!f) {
+        f = stderr;
     }
 
-    va_start (args,fmt); 
-    fprintf( f, "%12s", "ERROR  :" );
-    vfprintf( f, fmt, args );
-    fputc('\n',f);
+    va_start(args, fmt);
+    fprintf(f, "%12s", "ERROR  :");
+    vfprintf(f, fmt, args);
+    fputc('\n', f);
     va_end(args);
     fflush(jdksavdecc_log_file);
 }
 
-void jdksavdecc_log_file_warning( const char *fmt, ... )
-{
+void jdksavdecc_log_file_warning(const char *fmt, ...) {
     va_list args;
-    FILE *f=jdksavdecc_log_file;
+    FILE *f = jdksavdecc_log_file;
 
-    if( !f )
-    {
-        f=stderr;
+    if (!f) {
+        f = stderr;
     }
 
-
-    va_start (args,fmt); 
-    fprintf( f, "%12s", "WARNING:" );
-    vfprintf( f, fmt, args );
-    fputc('\n',f);
+    va_start(args, fmt);
+    fprintf(f, "%12s", "WARNING:");
+    vfprintf(f, fmt, args);
+    fputc('\n', f);
     va_end(args);
     fflush(jdksavdecc_log_file);
 }
 
-void jdksavdecc_log_file_info( const char *fmt, ... )
-{
+void jdksavdecc_log_file_info(const char *fmt, ...) {
     va_list args;
-    FILE *f=jdksavdecc_log_file;
+    FILE *f = jdksavdecc_log_file;
 
-    if( !f )
-    {
-        f=stderr;
+    if (!f) {
+        f = stderr;
     }
 
-    va_start (args,fmt);
-    fprintf( f, "%12s", "INFO   :" );
-    vfprintf( f, fmt, args );
-    fputc('\n',f);
+    va_start(args, fmt);
+    fprintf(f, "%12s", "INFO   :");
+    vfprintf(f, fmt, args);
+    fputc('\n', f);
     va_end(args);
     fflush(jdksavdecc_log_file);
 }
 
-void jdksavdecc_log_file_init( FILE *f ) 
-{
+void jdksavdecc_log_file_init(FILE *f) {
     jdksavdecc_log_file = f;
     jdksavdecc_log_debug = jdksavdecc_log_file_debug;
-    jdksavdecc_log_error = jdksavdecc_log_file_error; 
-    jdksavdecc_log_warning = jdksavdecc_log_file_warning; 
-    jdksavdecc_log_info = jdksavdecc_log_file_info;     
+    jdksavdecc_log_error = jdksavdecc_log_file_error;
+    jdksavdecc_log_warning = jdksavdecc_log_file_warning;
+    jdksavdecc_log_info = jdksavdecc_log_file_info;
 }
-

@@ -45,78 +45,87 @@ extern "C" {
 /*@{*/
 
 #ifndef JDKSAVDECC_MAAP_ENABLE_LOG
-# define JDKSAVDECC_MAAP_ENABLE_LOG (1)
+#define JDKSAVDECC_MAAP_ENABLE_LOG (1)
 #endif
 
 #if JDKSAVDECC_MAAP_ENABLE_LOG
-# define jdksavdecc_maap_log jdksavdecc_log_info
-# ifndef jdksavdecc_maap_log_enter
-#  define jdksavdecc_maap_log_enter() jdksavdecc_maap_log("Enter:%s:%d",__FUNCTION__,__LINE__)
-# endif
-# ifndef jdksavdecc_maap_log_exit
-#  define jdksavdecc_maap_log_exit() jdksavdecc_maap_log("Exit:%s:%d",__FUNCTION__,__LINE__)
-# endif
+#define jdksavdecc_maap_log jdksavdecc_log_info
+#ifndef jdksavdecc_maap_log_enter
+#define jdksavdecc_maap_log_enter() jdksavdecc_maap_log("Enter:%s:%d", __FUNCTION__, __LINE__)
+#endif
+#ifndef jdksavdecc_maap_log_exit
+#define jdksavdecc_maap_log_exit() jdksavdecc_maap_log("Exit:%s:%d", __FUNCTION__, __LINE__)
+#endif
 #else
-# define jdksavdecc_maap_log(fmt, ...)
-# define jdksavdecc_maap_log_enter()
-# define jdksavdecc_maap_log_exit()
+#define jdksavdecc_maap_log(fmt, ...)
+#define jdksavdecc_maap_log_enter()
+#define jdksavdecc_maap_log_exit()
 #endif
 
 #define JDKSAVDECC_MAAP_PROBE_RETRANSMITS (3) /// See IEEE Std 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_PROBE_INTERVAL_BASE ((jdksavdecc_timestamp_in_microseconds)500000L) /// 500ms in microseconds - See IEEE Std 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_PROBE_INTERVAL_VARIATION ((jdksavdecc_timestamp_in_microseconds)100000L) /// 100ms in microseconds - See IEEE Std 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_BASE ((jdksavdecc_timestamp_in_microseconds)30000000L) /// 30s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_VARIATION ((jdksavdecc_timestamp_in_microseconds)2000000L) /// 2s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_PROBE_INTERVAL_BASE                                                                                        \
+    ((jdksavdecc_timestamp_in_microseconds)500000L) /// 500ms in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_PROBE_INTERVAL_VARIATION                                                                                   \
+    ((jdksavdecc_timestamp_in_microseconds)100000L) /// 100ms in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_BASE                                                                                     \
+    ((jdksavdecc_timestamp_in_microseconds)30000000L) /// 30s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_VARIATION                                                                                \
+    ((jdksavdecc_timestamp_in_microseconds)2000000L) /// 2s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
 
-#define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_START {{0x91,0xe0,0xf0,0x00,0x00,0x00}} /// See IEEE Std 1722-2011 Table B.4
+#define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_START                                                                              \
+    {                                                                                                                              \
+        { 0x91, 0xe0, 0xf0, 0x00, 0x00, 0x00 }                                                                                     \
+    } /// See IEEE Std 1722-2011 Table B.4
 extern struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_start;
 
-#define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_END {{0x91,0xe0,0xf0,0x00,0xFD,0xFF}} /// See IEEE Std 1722-2011 Table B.4
+#define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_END                                                                                \
+    {                                                                                                                              \
+        { 0x91, 0xe0, 0xf0, 0x00, 0xFD, 0xFF }                                                                                     \
+    } /// See IEEE Std 1722-2011 Table B.4
 extern struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_end;
 
-#define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_START {{0x91,0xe0,0xf0,0x00,0xFE,0x00}} /// See IEEE Std 1722-2011 Table B.4
+#define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_START                                                                                \
+    {                                                                                                                              \
+        { 0x91, 0xe0, 0xf0, 0x00, 0xFE, 0x00 }                                                                                     \
+    } /// See IEEE Std 1722-2011 Table B.4
 extern struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_start;
 
-#define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_END {{0x91,0xe0,0xf0,0x00,0xFE,0xFF}} /// See IEEE Std 1722-2011 Table B.4
+#define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_END                                                                                  \
+    {                                                                                                                              \
+        { 0x91, 0xe0, 0xf0, 0x00, 0xFE, 0xFF }                                                                                     \
+    } /// See IEEE Std 1722-2011 Table B.4
 extern struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_end;
 
-
-
-struct jdksavdecc_maap_common_control_header
-{
-    uint32_t cd:1;
-    uint32_t subtype:JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_WIDTH;
-    uint32_t sv:1;
-    uint32_t version:JDKSAVDECC_SUBTYPE_DATA_VERSION_WIDTH;
-    uint32_t message_type:JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_WIDTH;
-    uint32_t maap_version:JDKSAVDECC_SUBTYPE_DATA_STATUS_WIDTH;
-    uint32_t maap_data_length:JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_WIDTH;
+struct jdksavdecc_maap_common_control_header {
+    uint32_t cd : 1;
+    uint32_t subtype : JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_WIDTH;
+    uint32_t sv : 1;
+    uint32_t version : JDKSAVDECC_SUBTYPE_DATA_VERSION_WIDTH;
+    uint32_t message_type : JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_WIDTH;
+    uint32_t maap_version : JDKSAVDECC_SUBTYPE_DATA_STATUS_WIDTH;
+    uint32_t maap_data_length : JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_WIDTH;
     struct jdksavdecc_eui64 stream_id;
 };
 
-
-static inline ssize_t jdksavdecc_maap_common_control_header_read( struct jdksavdecc_maap_common_control_header *p, void const *base, ssize_t pos, size_t len )
-{
-    return jdksavdecc_common_control_header_read( (struct jdksavdecc_common_control_header *)p, base, pos, len );
+static inline ssize_t jdksavdecc_maap_common_control_header_read(struct jdksavdecc_maap_common_control_header *p, void const *base,
+                                                                 ssize_t pos, size_t len) {
+    return jdksavdecc_common_control_header_read((struct jdksavdecc_common_control_header *)p, base, pos, len);
 }
 
-static inline ssize_t jdksavdecc_maap_common_control_header_write( struct jdksavdecc_maap_common_control_header const *p, void *base, ssize_t pos, size_t len )
-{
-    return jdksavdecc_common_control_header_write( (struct jdksavdecc_common_control_header const *)p, base, pos, len );
+static inline ssize_t jdksavdecc_maap_common_control_header_write(struct jdksavdecc_maap_common_control_header const *p, void *base,
+                                                                  ssize_t pos, size_t len) {
+    return jdksavdecc_common_control_header_write((struct jdksavdecc_common_control_header const *)p, base, pos, len);
 }
-
 
 #define JDKSAVDECC_MAAP_PROBE (1)
 #define JDKSAVDECC_MAAP_DEFEND (2)
 #define JDKSAVDECC_MAAP_ANNOUNCE (3)
 
-
-#define JDKSAVDECC_MAAP_OFFSET_REQUESTED_START_ADDRESS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
-#define JDKSAVDECC_MAAP_OFFSET_REQUESTED_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+6)
-#define JDKSAVDECC_MAAP_OFFSET_CONFLICT_START_ADDRESS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
-#define JDKSAVDECC_MAAP_OFFSET_CONFLICT_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+14)
-#define JDKSAVDECC_MAAP_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+16)
-
+#define JDKSAVDECC_MAAP_OFFSET_REQUESTED_START_ADDRESS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
+#define JDKSAVDECC_MAAP_OFFSET_REQUESTED_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 6)
+#define JDKSAVDECC_MAAP_OFFSET_CONFLICT_START_ADDRESS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8)
+#define JDKSAVDECC_MAAP_OFFSET_CONFLICT_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14)
+#define JDKSAVDECC_MAAP_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16)
 
 /**
  * Extract the eui48 value of the requested_start_address field of the MAAP object from a network buffer.
@@ -128,11 +137,9 @@ static inline ssize_t jdksavdecc_maap_common_control_header_write( struct jdksav
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_eui48_t requested_start_address value
  */
-static inline struct jdksavdecc_eui48 jdksavdecc_maap_get_requested_start_address( void const *base, ssize_t pos )
-{
-    return jdksavdecc_eui48_get( base, pos + JDKSAVDECC_MAAP_OFFSET_REQUESTED_START_ADDRESS);
+static inline struct jdksavdecc_eui48 jdksavdecc_maap_get_requested_start_address(void const *base, ssize_t pos) {
+    return jdksavdecc_eui48_get(base, pos + JDKSAVDECC_MAAP_OFFSET_REQUESTED_START_ADDRESS);
 }
-
 
 /**
  * Store a eui48 value to the requested_start_address field of the MAAP object to a network buffer.
@@ -144,11 +151,9 @@ static inline struct jdksavdecc_eui48 jdksavdecc_maap_get_requested_start_addres
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_maap_set_requested_start_address( struct jdksavdecc_eui48 v, void *base, ssize_t pos )
-{
-    jdksavdecc_eui48_set( v, base, pos + JDKSAVDECC_MAAP_OFFSET_REQUESTED_START_ADDRESS);
+static inline void jdksavdecc_maap_set_requested_start_address(struct jdksavdecc_eui48 v, void *base, ssize_t pos) {
+    jdksavdecc_eui48_set(v, base, pos + JDKSAVDECC_MAAP_OFFSET_REQUESTED_START_ADDRESS);
 }
-
 
 /**
  * Extract the uint16 value of the requested_count field of the MAAP object from a network buffer.
@@ -160,11 +165,9 @@ static inline void jdksavdecc_maap_set_requested_start_address( struct jdksavdec
  * @param pos offset from base to read the field from;
  * @return the uint16_t requested_count value
  */
-static inline uint16_t jdksavdecc_maap_get_requested_count( void const *base, ssize_t pos )
-{
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_MAAP_OFFSET_REQUESTED_COUNT);
+static inline uint16_t jdksavdecc_maap_get_requested_count(void const *base, ssize_t pos) {
+    return jdksavdecc_uint16_get(base, pos + JDKSAVDECC_MAAP_OFFSET_REQUESTED_COUNT);
 }
-
 
 /**
  * Store a uint16 value to the requested_count field of the MAAP object to a network buffer.
@@ -176,11 +179,9 @@ static inline uint16_t jdksavdecc_maap_get_requested_count( void const *base, ss
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_maap_set_requested_count( uint16_t v, void *base, ssize_t pos )
-{
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_MAAP_OFFSET_REQUESTED_COUNT);
+static inline void jdksavdecc_maap_set_requested_count(uint16_t v, void *base, ssize_t pos) {
+    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_MAAP_OFFSET_REQUESTED_COUNT);
 }
-
 
 /**
  * Extract the eui48 value of the conflict_start_address field of the MAAP object from a network buffer.
@@ -192,11 +193,9 @@ static inline void jdksavdecc_maap_set_requested_count( uint16_t v, void *base, 
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_eui48_t conflict_start_address value
  */
-static inline struct jdksavdecc_eui48 jdksavdecc_maap_get_conflict_start_address( void const *base, ssize_t pos )
-{
-    return jdksavdecc_eui48_get( base, pos + JDKSAVDECC_MAAP_OFFSET_CONFLICT_START_ADDRESS);
+static inline struct jdksavdecc_eui48 jdksavdecc_maap_get_conflict_start_address(void const *base, ssize_t pos) {
+    return jdksavdecc_eui48_get(base, pos + JDKSAVDECC_MAAP_OFFSET_CONFLICT_START_ADDRESS);
 }
-
 
 /**
  * Store a eui48 value to the conflict_start_address field of the MAAP object to a network buffer.
@@ -208,11 +207,9 @@ static inline struct jdksavdecc_eui48 jdksavdecc_maap_get_conflict_start_address
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_maap_set_conflict_start_address( struct jdksavdecc_eui48 v, void *base, ssize_t pos )
-{
-    jdksavdecc_eui48_set( v, base, pos + JDKSAVDECC_MAAP_OFFSET_CONFLICT_START_ADDRESS);
+static inline void jdksavdecc_maap_set_conflict_start_address(struct jdksavdecc_eui48 v, void *base, ssize_t pos) {
+    jdksavdecc_eui48_set(v, base, pos + JDKSAVDECC_MAAP_OFFSET_CONFLICT_START_ADDRESS);
 }
-
 
 /**
  * Extract the uint16 value of the conflict_count field of the MAAP object from a network buffer.
@@ -224,11 +221,9 @@ static inline void jdksavdecc_maap_set_conflict_start_address( struct jdksavdecc
  * @param pos offset from base to read the field from;
  * @return the uint16_t conflict_count value
  */
-static inline uint16_t jdksavdecc_maap_get_conflict_count( void const *base, ssize_t pos )
-{
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_MAAP_OFFSET_CONFLICT_COUNT);
+static inline uint16_t jdksavdecc_maap_get_conflict_count(void const *base, ssize_t pos) {
+    return jdksavdecc_uint16_get(base, pos + JDKSAVDECC_MAAP_OFFSET_CONFLICT_COUNT);
 }
-
 
 /**
  * Store a uint16 value to the conflict_count field of the MAAP object to a network buffer.
@@ -240,15 +235,12 @@ static inline uint16_t jdksavdecc_maap_get_conflict_count( void const *base, ssi
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_maap_set_conflict_count( uint16_t v, void *base, ssize_t pos )
-{
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_MAAP_OFFSET_CONFLICT_COUNT);
+static inline void jdksavdecc_maap_set_conflict_count(uint16_t v, void *base, ssize_t pos) {
+    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_MAAP_OFFSET_CONFLICT_COUNT);
 }
 
-
 /// MAAP - IEEE Std 1722-2011 Annex B.2
-struct jdksavdecc_maap
-{
+struct jdksavdecc_maap {
     struct jdksavdecc_maap_common_control_header header;
     struct jdksavdecc_eui48 requested_start_address;
     uint16_t requested_count;
@@ -269,21 +261,14 @@ struct jdksavdecc_maap
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_maap_read(
-        struct jdksavdecc_maap *p,
-        void const *base,
-        ssize_t pos,
-        size_t len
-        )
-{
-    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_MAAP_LEN );
-    if( r>=0 )
-    {
-        jdksavdecc_maap_common_control_header_read( &p->header, base, pos, len );
-        p->requested_start_address = jdksavdecc_maap_get_requested_start_address( base, pos );
-        p->requested_count = jdksavdecc_maap_get_requested_count( base, pos );
-        p->conflict_start_address = jdksavdecc_maap_get_conflict_start_address( base, pos );
-        p->conflict_count = jdksavdecc_maap_get_conflict_count( base, pos );
+static inline ssize_t jdksavdecc_maap_read(struct jdksavdecc_maap *p, void const *base, ssize_t pos, size_t len) {
+    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_MAAP_LEN);
+    if (r >= 0) {
+        jdksavdecc_maap_common_control_header_read(&p->header, base, pos, len);
+        p->requested_start_address = jdksavdecc_maap_get_requested_start_address(base, pos);
+        p->requested_count = jdksavdecc_maap_get_requested_count(base, pos);
+        p->conflict_start_address = jdksavdecc_maap_get_conflict_start_address(base, pos);
+        p->conflict_count = jdksavdecc_maap_get_conflict_count(base, pos);
     }
     return r;
 }
@@ -301,32 +286,22 @@ static inline ssize_t jdksavdecc_maap_read(
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_maap_write(
-        struct jdksavdecc_maap const *p,
-        void *base,
-        size_t pos,
-        size_t len
-        )
-{
-    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_MAAP_LEN );
-    if( r>=0 )
-    {
-        jdksavdecc_maap_common_control_header_write( &p->header, base, pos, len );
-        jdksavdecc_maap_set_requested_start_address( p->requested_start_address, base, pos );
-        jdksavdecc_maap_set_requested_count( p->requested_count, base, pos );
-        jdksavdecc_maap_set_conflict_start_address( p->conflict_start_address, base, pos );
-        jdksavdecc_maap_set_conflict_count( p->conflict_count, base, pos );
+static inline ssize_t jdksavdecc_maap_write(struct jdksavdecc_maap const *p, void *base, size_t pos, size_t len) {
+    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_MAAP_LEN);
+    if (r >= 0) {
+        jdksavdecc_maap_common_control_header_write(&p->header, base, pos, len);
+        jdksavdecc_maap_set_requested_start_address(p->requested_start_address, base, pos);
+        jdksavdecc_maap_set_requested_count(p->requested_count, base, pos);
+        jdksavdecc_maap_set_conflict_start_address(p->conflict_start_address, base, pos);
+        jdksavdecc_maap_set_conflict_count(p->conflict_count, base, pos);
     }
     return r;
 }
 
 /*@}*/
 
-
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-
-

@@ -40,7 +40,6 @@
 extern "C" {
 #endif
 
-
 /** \addtogroup app_print APP Print
  *  @todo app_print
 */
@@ -53,4 +52,3 @@ extern "C" {
 #endif
 
 #endif
-

@@ -44,21 +44,21 @@
 #include <ctype.h>
 
 #ifdef _MSC_VER
-# include <BaseTsd.h> 
-# include "jdksavdecc_msstdint.h"
-# include "jdksavdecc_msinttypes.h"
-# ifndef ssize_t
-#  define ssize_t SSIZE_T
-# endif
-# ifndef __cplusplus
-#  ifndef inline
-#   define inline __inline
-#  endif
-# endif
+#include <BaseTsd.h>
+#include "jdksavdecc_msstdint.h"
+#include "jdksavdecc_msinttypes.h"
+#ifndef ssize_t
+#define ssize_t SSIZE_T
+#endif
+#ifndef __cplusplus
+#ifndef inline
+#define inline __inline
+#endif
+#endif
 #else
-# include <stdint.h>
-# include <inttypes.h>
-# include <stdbool.h>
+#include <stdint.h>
+#include <inttypes.h>
+#include <stdbool.h>
 #endif
 
 #include "jdksavdecc_log.h"
@@ -67,5 +67,3 @@
 //#include "jdksavdecc_print.h"
 
 #endif
-
-

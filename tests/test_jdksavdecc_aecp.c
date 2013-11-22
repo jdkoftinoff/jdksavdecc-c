@@ -1,4 +1,4 @@
-  
+
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -32,19 +32,10 @@
 
 #include "jdksavdecc.h"
 
-int test_jdksavdecc_aecp()
-{
-    return 0;
-}
+int test_jdksavdecc_aecp() { return 0; }
 
-
-int main( int argc, char **argv )
-{
+int main(int argc, char **argv) {
     (void)argc;
     (void)argv;
     return test_jdksavdecc_aecp() ? EXIT_SUCCESS : EXIT_FAILURE;
 }
-
-
-
-

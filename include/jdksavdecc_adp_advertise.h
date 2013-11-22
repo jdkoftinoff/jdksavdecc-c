@@ -37,16 +37,12 @@
 #include "jdksavdecc_adp_advertising_entity.h"
 #include "jdksavdecc_adp_advertising_interface.h"
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-

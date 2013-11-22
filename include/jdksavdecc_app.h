@@ -47,4 +47,3 @@ struct jdksavdec_appdu;
 #endif
 
 #endif
-

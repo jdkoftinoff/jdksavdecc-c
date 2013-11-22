@@ -30,9 +30,7 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aem_command.h"
-
 
 char const *jdksavdecc_aem_command_file = __FILE__;

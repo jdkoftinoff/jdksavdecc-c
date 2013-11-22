@@ -40,42 +40,35 @@
 extern "C" {
 #endif
 
-
-
 /** \addtogroup aecpdu AECPDU - Clause 9.2 */
 /*@{*/
 
-
-struct jdksavdecc_aecpdu_common_control_header
-{
-    uint32_t cd:1;
-    uint32_t subtype:JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_WIDTH;
-    uint32_t sv:1;
-    uint32_t version:JDKSAVDECC_SUBTYPE_DATA_VERSION_WIDTH;
-    uint32_t message_type:JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_WIDTH;
-    uint32_t status:JDKSAVDECC_SUBTYPE_DATA_STATUS_WIDTH;
-    uint32_t control_data_length:JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_WIDTH;
+struct jdksavdecc_aecpdu_common_control_header {
+    uint32_t cd : 1;
+    uint32_t subtype : JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_WIDTH;
+    uint32_t sv : 1;
+    uint32_t version : JDKSAVDECC_SUBTYPE_DATA_VERSION_WIDTH;
+    uint32_t message_type : JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_WIDTH;
+    uint32_t status : JDKSAVDECC_SUBTYPE_DATA_STATUS_WIDTH;
+    uint32_t control_data_length : JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_WIDTH;
     struct jdksavdecc_eui64 target_entity_id;
 };
 
-
-static inline ssize_t jdksavdecc_aecpdu_common_control_header_read( struct jdksavdecc_aecpdu_common_control_header *p, void const *base, ssize_t pos, size_t len )
-{
-    return jdksavdecc_common_control_header_read( (struct jdksavdecc_common_control_header *)p, base, pos, len );
+static inline ssize_t jdksavdecc_aecpdu_common_control_header_read(struct jdksavdecc_aecpdu_common_control_header *p,
+                                                                   void const *base, ssize_t pos, size_t len) {
+    return jdksavdecc_common_control_header_read((struct jdksavdecc_common_control_header *)p, base, pos, len);
 }
 
-static inline ssize_t jdksavdecc_aecpdu_common_control_header_write( struct jdksavdecc_aecpdu_common_control_header const *p, void *base, ssize_t pos, size_t len )
-{
-    return jdksavdecc_common_control_header_write( (struct jdksavdecc_common_control_header const *)p, base, pos, len );
+static inline ssize_t jdksavdecc_aecpdu_common_control_header_write(struct jdksavdecc_aecpdu_common_control_header const *p,
+                                                                    void *base, ssize_t pos, size_t len) {
+    return jdksavdecc_common_control_header_write((struct jdksavdecc_common_control_header const *)p, base, pos, len);
 }
 
-#define JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+0)
-#define JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+8)
-#define JDKSAVDECC_AECPDU_COMMON_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+10)
-
+#define JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
+#define JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8)
+#define JDKSAVDECC_AECPDU_COMMON_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10)
 
 /*@}*/
-
 
 /** \addtogroup aecp_message_type aecp_message_type : message_type field - Clause 9.2.1.1.5  */
 /*@{*/
@@ -103,7 +96,6 @@ static inline ssize_t jdksavdecc_aecpdu_common_control_header_write( struct jdks
 
 /*@}*/
 
-
 /** \addtogroup aecpdu_common AECPDU Common - Clause 9.2.1.1 */
 /*@{*/
 
@@ -117,11 +109,9 @@ static inline ssize_t jdksavdecc_aecpdu_common_control_header_write( struct jdks
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_eui64 controller_entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_common_get_controller_entity_id( void const *base, ssize_t pos )
-{
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_ENTITY_ID);
+static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_common_get_controller_entity_id(void const *base, ssize_t pos) {
+    return jdksavdecc_eui64_get(base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_ENTITY_ID);
 }
-
 
 /**
  * Store a eui64 value to the controller_entity_id field of the aecpdu_common object to a network buffer.
@@ -133,11 +123,9 @@ static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_common_get_controller_en
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aecpdu_common_set_controller_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
-{
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_ENTITY_ID);
+static inline void jdksavdecc_aecpdu_common_set_controller_entity_id(struct jdksavdecc_eui64 v, void *base, ssize_t pos) {
+    jdksavdecc_eui64_set(v, base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_ENTITY_ID);
 }
-
 
 /**
  * Extract the uint16 value of the sequence_id field of the aecpdu_common object from a network buffer.
@@ -149,11 +137,9 @@ static inline void jdksavdecc_aecpdu_common_set_controller_entity_id( struct jdk
  * @param pos offset from base to read the field from;
  * @return the uint16_t sequence_id value
  */
-static inline uint16_t jdksavdecc_aecpdu_common_get_sequence_id( void const *base, ssize_t pos )
-{
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID);
+static inline uint16_t jdksavdecc_aecpdu_common_get_sequence_id(void const *base, ssize_t pos) {
+    return jdksavdecc_uint16_get(base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID);
 }
-
 
 /**
  * Store a uint16 value to the sequence_id field of the aecpdu_common object to a network buffer.
@@ -165,24 +151,17 @@ static inline uint16_t jdksavdecc_aecpdu_common_get_sequence_id( void const *bas
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aecpdu_common_set_sequence_id( uint16_t v, void *base, ssize_t pos )
-{
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID);
+static inline void jdksavdecc_aecpdu_common_set_sequence_id(uint16_t v, void *base, ssize_t pos) {
+    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID);
 }
 
-
-
-
 /*@}*/
-
 
 /** \addtogroup aecpdu_common AECPDU Common - Clause 9.2.1.1 */
 /*@{*/
 
-
 /// AECPDU Common - Clause 9.2.1.1
-struct jdksavdecc_aecpdu_common
-{
+struct jdksavdecc_aecpdu_common {
     struct jdksavdecc_aecpdu_common_control_header header;
     struct jdksavdecc_eui64 controller_entity_id;
     uint16_t sequence_id;
@@ -201,14 +180,12 @@ struct jdksavdecc_aecpdu_common
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aecpdu_common_read( struct jdksavdecc_aecpdu_common *p, void const *base, ssize_t pos, size_t len )
-{
-    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_COMMON_LEN );
-    if( r>=0 )
-    {
-        jdksavdecc_aecpdu_common_control_header_read( &p->header, base, pos, len );
-        p->controller_entity_id = jdksavdecc_aecpdu_common_get_controller_entity_id( base, pos );
-        p->sequence_id = jdksavdecc_aecpdu_common_get_sequence_id( base, pos );
+static inline ssize_t jdksavdecc_aecpdu_common_read(struct jdksavdecc_aecpdu_common *p, void const *base, ssize_t pos, size_t len) {
+    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_COMMON_LEN);
+    if (r >= 0) {
+        jdksavdecc_aecpdu_common_control_header_read(&p->header, base, pos, len);
+        p->controller_entity_id = jdksavdecc_aecpdu_common_get_controller_entity_id(base, pos);
+        p->sequence_id = jdksavdecc_aecpdu_common_get_sequence_id(base, pos);
     }
     return r;
 }
@@ -226,25 +203,20 @@ static inline ssize_t jdksavdecc_aecpdu_common_read( struct jdksavdecc_aecpdu_co
  * @param len length of the raw memory buffer;
  * @return -1 if the buffer length is insufficent, otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aecpdu_common_write( struct jdksavdecc_aecpdu_common const *p, void *base, size_t pos, size_t len )
-{
-    ssize_t r=jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_COMMON_LEN );
-    if( r>=0 )
-    {
-        jdksavdecc_aecpdu_common_control_header_write( &p->header, base, pos, len );
-        jdksavdecc_aecpdu_common_set_controller_entity_id( p->controller_entity_id, base, pos );
-        jdksavdecc_aecpdu_common_set_sequence_id( p->sequence_id, base, pos );
+static inline ssize_t jdksavdecc_aecpdu_common_write(struct jdksavdecc_aecpdu_common const *p, void *base, size_t pos, size_t len) {
+    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_COMMON_LEN);
+    if (r >= 0) {
+        jdksavdecc_aecpdu_common_control_header_write(&p->header, base, pos, len);
+        jdksavdecc_aecpdu_common_set_controller_entity_id(p->controller_entity_id, base, pos);
+        jdksavdecc_aecpdu_common_set_sequence_id(p->sequence_id, base, pos);
     }
     return r;
 }
 
 /*@}*/
 
-
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-
-

@@ -1,4 +1,4 @@
-  
+
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -30,21 +30,12 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 #include "jdksavdecc.h"
 
-int test_jdksavdecc_adp_discover()
-{
-    return 0;
-}
+int test_jdksavdecc_adp_discover() { return 0; }
 
-
-int main( int argc, char **argv )
-{
+int main(int argc, char **argv) {
     (void)argc;
     (void)argv;
     return test_jdksavdecc_adp_discover() ? EXIT_SUCCESS : EXIT_FAILURE;
 }
-
-
-

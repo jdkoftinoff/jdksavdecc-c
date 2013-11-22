@@ -47,33 +47,31 @@ extern "C" {
 /*@{*/
 
 #ifndef JDKSAVDECC_ADP_ADVERTISING_ENTITY_ENABLE_LOG
-# define JDKSAVDECC_ADP_ADVERTISING_ENTITY_ENABLE_LOG (1)
+#define JDKSAVDECC_ADP_ADVERTISING_ENTITY_ENABLE_LOG (1)
 #endif
 
 #if JDKSAVDECC_ADP_ADVERTISING_ENTITY_ENABLE_LOG
-# define jdksavdecc_adp_advertising_entity_log jdksavdecc_log_info
-# ifndef jdksavdecc_adp_advertising_entity_log_enter
-#  define jdksavdecc_adp_advertising_entity_log_enter() jdksavdecc_adp_advertising_entity_log("Enter:%s:%d",__FUNCTION__,__LINE__)
-# endif
-# ifndef jdksavdecc_adp_advertising_entity_log_exit
-#  define jdksavdecc_adp_advertising_entity_log_exit() jdksavdecc_adp_advertising_entity_log(" Exit:%s:%d",__FUNCTION__,__LINE__)
-# endif
+#define jdksavdecc_adp_advertising_entity_log jdksavdecc_log_info
+#ifndef jdksavdecc_adp_advertising_entity_log_enter
+#define jdksavdecc_adp_advertising_entity_log_enter() jdksavdecc_adp_advertising_entity_log("Enter:%s:%d", __FUNCTION__, __LINE__)
+#endif
+#ifndef jdksavdecc_adp_advertising_entity_log_exit
+#define jdksavdecc_adp_advertising_entity_log_exit() jdksavdecc_adp_advertising_entity_log(" Exit:%s:%d", __FUNCTION__, __LINE__)
+#endif
 #else
-# define jdksavdecc_adp_advertising_entity_log(...)
-# define jdksavdecc_adp_advertising_entity_log_enter()
-# define jdksavdecc_adp_advertising_entity_log_exit()
+#define jdksavdecc_adp_advertising_entity_log(...)
+#define jdksavdecc_adp_advertising_entity_log_enter()
+#define jdksavdecc_adp_advertising_entity_log_exit()
 #endif
 
 /// See Clause 6.2.3
-struct jdksavdecc_adp_advertising_global_vars
-{
+struct jdksavdecc_adp_advertising_global_vars {
     jdksavdecc_timestamp_in_microseconds current_time;
     struct jdksavdecc_entity_info *entity_info;
 };
 
 /// See Clause 6.2.4.1
-struct jdksavdecc_adp_advertising_entity_vars
-{
+struct jdksavdecc_adp_advertising_entity_vars {
     /// See Clause 6.2.3
     struct jdksavdecc_adp_advertising_global_vars *global;
 
@@ -87,19 +85,13 @@ struct jdksavdecc_adp_advertising_entity_vars
 struct jdksavdecc_adp_advertising_entity_state_machine;
 
 // Pointer to a state machine state procedure
-typedef void (*jdksavdecc_adp_advertising_entity_state)(
-        struct jdksavdecc_adp_advertising_entity_state_machine *
-        );
+typedef void (*jdksavdecc_adp_advertising_entity_state)(struct jdksavdecc_adp_advertising_entity_state_machine *);
 
 // Pointer to a state machine state transition procedure
-typedef void (*jdksavdecc_adp_advertising_entity_state_transition)(
-        struct jdksavdecc_adp_advertising_entity_state_machine *
-        );
-
+typedef void (*jdksavdecc_adp_advertising_entity_state_transition)(struct jdksavdecc_adp_advertising_entity_state_machine *);
 
 /// See Clause 6.2.4
-struct jdksavdecc_adp_advertising_entity_state_machine
-{
+struct jdksavdecc_adp_advertising_entity_state_machine {
     /// Base class for a state machine
     struct jdksavdecc_state_machine base;
 
@@ -111,7 +103,7 @@ struct jdksavdecc_adp_advertising_entity_state_machine
 
     /// Overridable method for triggering all advertising interface state machines to send an advertise
     /// See Clause 6.2.4.2.1
-    void (*send_available)( struct jdksavdecc_adp_advertising_entity_state_machine * );
+    void (*send_available)(struct jdksavdecc_adp_advertising_entity_state_machine *);
 
     /// Pointer to the state transition procedure to call when transitioning into the INITIALIZE state
     /// See Clause 6.2.4.3
@@ -146,21 +138,16 @@ struct jdksavdecc_adp_advertising_entity_state_machine
 /// @param additional void * general purpose pointer for high level use
 /// @returns 0 on success
 ///
-int jdksavdecc_adp_advertising_entity_state_machine_init(
-        struct jdksavdecc_adp_advertising_entity_state_machine *self,
-        struct jdksavdecc_adp_advertising_global_vars *global,
-        uint32_t tag,
-        void *additional
-        );
+int jdksavdecc_adp_advertising_entity_state_machine_init(struct jdksavdecc_adp_advertising_entity_state_machine *self,
+                                                         struct jdksavdecc_adp_advertising_global_vars *global, uint32_t tag,
+                                                         void *additional);
 
 /// Destroy the state machine. Frees any allocated data
 ///
 /// @param self Pointer to state_machine base class
 /// @returns void
 ///
-void jdksavdecc_adp_advertising_entity_state_machine_destroy(
-        struct jdksavdecc_state_machine *self
-        );
+void jdksavdecc_adp_advertising_entity_state_machine_destroy(struct jdksavdecc_state_machine *self);
 
 /// Run the state machine current state
 ///
@@ -168,10 +155,8 @@ void jdksavdecc_adp_advertising_entity_state_machine_destroy(
 /// @param timestamp millisecond_time current time
 /// @returns integer 0 on success, -1 on state machine terminated
 ///
-int jdksavdecc_adp_advertising_entity_state_machine_tick(
-        struct jdksavdecc_state_machine *self,
-        jdksavdecc_timestamp_in_microseconds timestamp
-        );
+int jdksavdecc_adp_advertising_entity_state_machine_tick(struct jdksavdecc_state_machine *self,
+                                                         jdksavdecc_timestamp_in_microseconds timestamp);
 
 /// trigger all advertise interface state machines to send an advertise
 ///
@@ -179,9 +164,7 @@ int jdksavdecc_adp_advertising_entity_state_machine_tick(
 ///
 /// @param self Pointer to jdksavdecc_adp_advertising_entity_state_machine object
 ///
-void jdksavdecc_adp_advertising_entity_state_machine_send_available(
-        struct jdksavdecc_adp_advertising_entity_state_machine *self
-        );
+void jdksavdecc_adp_advertising_entity_state_machine_send_available(struct jdksavdecc_adp_advertising_entity_state_machine *self);
 
 /// Transition to the INITIALIZE state
 ///
@@ -189,9 +172,7 @@ void jdksavdecc_adp_advertising_entity_state_machine_send_available(
 ///
 /// @param self Pointer to jdksavdecc_adp_advertising_entity_state_machine object
 ///
-void jdksavdecc_adp_advertising_entity_state_machine_goto_initialize(
-        struct jdksavdecc_adp_advertising_entity_state_machine *self
-        );
+void jdksavdecc_adp_advertising_entity_state_machine_goto_initialize(struct jdksavdecc_adp_advertising_entity_state_machine *self);
 
 /// Process the INITIALIZE state
 ///
@@ -199,9 +180,7 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_initialize(
 ///
 /// @param self Pointer to jdksavdecc_adp_advertising_entity_state_machine object
 ///
-void jdksavdecc_adp_advertising_entity_state_machine_state_initialize(
-        struct jdksavdecc_adp_advertising_entity_state_machine *self
-        );
+void jdksavdecc_adp_advertising_entity_state_machine_state_initialize(struct jdksavdecc_adp_advertising_entity_state_machine *self);
 
 /// Transition to the ADVERTISE state
 ///
@@ -209,9 +188,7 @@ void jdksavdecc_adp_advertising_entity_state_machine_state_initialize(
 ///
 /// @param self Pointer to jdksavdecc_adp_advertising_entity_state_machine object
 ///
-void jdksavdecc_adp_advertising_entity_state_machine_goto_advertise(
-        struct jdksavdecc_adp_advertising_entity_state_machine *self
-        );
+void jdksavdecc_adp_advertising_entity_state_machine_goto_advertise(struct jdksavdecc_adp_advertising_entity_state_machine *self);
 
 /// Process the ADVERTISE state
 ///
@@ -219,9 +196,7 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_advertise(
 ///
 /// @param self Pointer to jdksavdecc_adp_advertising_entity_state_machine object
 ///
-void jdksavdecc_adp_advertising_entity_state_machine_state_advertise(
-        struct jdksavdecc_adp_advertising_entity_state_machine *self
-        );
+void jdksavdecc_adp_advertising_entity_state_machine_state_advertise(struct jdksavdecc_adp_advertising_entity_state_machine *self);
 
 /// Transition to the WAITING state
 ///
@@ -229,9 +204,7 @@ void jdksavdecc_adp_advertising_entity_state_machine_state_advertise(
 ///
 /// @param self Pointer to jdksavdecc_adp_advertising_entity_state_machine object
 ///
-void jdksavdecc_adp_advertising_entity_state_machine_goto_waiting(
-        struct jdksavdecc_adp_advertising_entity_state_machine *self
-        );
+void jdksavdecc_adp_advertising_entity_state_machine_goto_waiting(struct jdksavdecc_adp_advertising_entity_state_machine *self);
 
 /// Process the WAITING state
 ///
@@ -239,16 +212,12 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_waiting(
 ///
 /// @param self Pointer to jdksavdecc_adp_advertising_entity_state_machine object
 ///
-void jdksavdecc_adp_advertising_entity_state_machine_state_waiting(
-        struct jdksavdecc_adp_advertising_entity_state_machine *self
-        );
+void jdksavdecc_adp_advertising_entity_state_machine_state_waiting(struct jdksavdecc_adp_advertising_entity_state_machine *self);
 
 /*@}*/
-
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-
