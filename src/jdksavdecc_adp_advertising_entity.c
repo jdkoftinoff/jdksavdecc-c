@@ -101,7 +101,8 @@ void jdksavdecc_adp_advertising_entity_state_machine_destroy(
 /// @param timestamp jdksavdecc_millisecond_time current time
 /// @returns integer 0 on success, -1 on state machine terminated
 ///
-int jdksavdecc_advertising_entity_state_machine_tick(
+
+int jdksavdecc_adp_advertising_entity_state_machine_tick(
         struct jdksavdecc_state_machine *self_,
         jdksavdecc_timestamp_in_microseconds timestamp
         )
