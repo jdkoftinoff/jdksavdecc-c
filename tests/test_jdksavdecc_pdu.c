@@ -35,6 +35,9 @@
 #include "jdksavdecc_pcapfile.h"
 #include "jdksavdecc_pdu_dispatch.h"
 #include "jdksavdecc_test.h"
+#include "jdksavdecc_adp_advertising_entity.h"
+#include "jdksavdecc_adp_advertising_interface.h"
+#include "jdksavdecc_adp_print.h"
 
 int test_jdksavdecc_pdu( struct jdksavdecc_pcapfile_reader *reader, struct jdksavdecc_pcapfile_writer *writer )
 {
@@ -48,6 +51,9 @@ int test_jdksavdecc_pdu_tick( struct jdksavdecc_pcapfile_reader *self, jdksavdec
 {
     (void)self;
     (void)time;
+
+
+    jdksavdecc_log_info("Tick");
     return 0;
 }
 
@@ -75,16 +81,30 @@ int main( int argc, char **argv )
     jdksavdecc_log_info("%8s:%s","Starting",argv[0]);
     
     jdksavdecc_pdu_dispatch_init(&pdu_dispatch);
-    
-    r = jdksavdecc_test_run(
-        in_file_name,
-        out_file_name,
-        &pdu_dispatch,
-        &test_jdksavdecc_pdu_tick,
-        minimum_time_to_synthesize,
-        time_step_in_microseconds
-        );
+    {
+        struct jdksavdecc_adp_advertising_global_vars ad_globals;
+        struct jdksavdecc_adp_advertising_entity_state_machine ad_entity;
+        struct jdksavdecc_adp_advertising_interface_vars ad_interface_vars;
+        struct jdksavdecc_adp_advertising_interface_state_machine ad_interface;
 
+        ad_globals.current_time = 0;
+        jdksavdecc_eui64_init( &ad_globals.entity_info->advertising_info.association_id );
+
+        jdksavdecc_adp_advertising_entity_state_machine_init(&ad_entity,&ad_globals,0,NULL);
+        jdksavdecc_adp_advertising_interface_state_machine_init(&ad_interface,&ad_interface_vars,0,NULL);
+
+        pdu_dispatch.adp_advertiser_state_machines->add_state_machine(pdu_dispatch.adp_advertiser_state_machines,&ad_entity.base);
+        pdu_dispatch.adp_advertiser_state_machines->add_state_machine(pdu_dispatch.adp_advertiser_state_machines,&ad_interface.base);
+
+        r = jdksavdecc_test_run(
+                    in_file_name,
+                    out_file_name,
+                    &pdu_dispatch,
+                    &test_jdksavdecc_pdu_tick,
+                    minimum_time_to_synthesize,
+                    time_step_in_microseconds
+                    );
+    }
     return (r!=0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 
