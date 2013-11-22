@@ -58,6 +58,7 @@
 #else
 # include <stdint.h>
 # include <inttypes.h>
+# include <stdbool.h>
 #endif
 
 #include "jdksavdecc_log.h"
