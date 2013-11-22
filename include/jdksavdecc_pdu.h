@@ -613,48 +613,6 @@ static inline void jdksavdecc_common_stream_header_set_protocol_specific_header(
 
 /*@}*/
 
-/** \addtogroup frame raw ethernet frame */
-/*@{*/
-
-struct jdksavdecc_frame
-{
-    jdksavdecc_timestamp_in_microseconds time;
-    struct jdksavdecc_eui48 dest_address;
-    struct jdksavdecc_eui48 src_address;
-    uint16_t ethertype;
-    uint16_t tpid;
-    uint16_t pcp:3;
-    uint16_t dei:1;
-    uint16_t vid:12;
-    uint16_t length;
-    uint8_t payload[1500];
-};
-
-static inline void jdksavdecc_frame_init( struct jdksavdecc_frame *p )
-{
-    p->time=0;
-    jdksavdecc_eui48_init(&p->dest_address);
-    jdksavdecc_eui48_init(&p->src_address);
-    p->ethertype = 0;
-    p->length = 0;
-    p->tpid = 0;
-    p->pcp = 0;
-    p->dei = 0;
-    p->vid = 0;
-    memset(p->payload,0,sizeof(p->payload));
-}
-
-ssize_t jdksavdecc_frame_read( struct jdksavdecc_frame *p, void const *base, ssize_t pos, size_t len );
-ssize_t jdksavdecc_frame_write( struct jdksavdecc_frame const *p, void *base, ssize_t pos, size_t len );
-
-/*@}*/
-
-struct jdksavdecc_frame_sender
-{
-    void (*destroy)( struct jdksavdecc_frame_sender * );
-    void (*send)( struct jdksavdecc_frame_sender *, struct jdksavdecc_frame const *frame );
-};
-
 #ifdef __cplusplus
 }
 #endif
