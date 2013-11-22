@@ -131,7 +131,7 @@ char const * jdksavdecc_get_name_for_eui48_value( struct jdksavdecc_eui48_name c
 struct jdksavdecc_eui48_t const *avdecc_get_eui48_value_for_name( struct jdksavdecc_eui48_name const names[], char const *name );
 
 char const * jdksavdecc_get_name_for_eui64_value( struct jdksavdecc_eui64_name const names[], struct jdksavdecc_eui64 v );
-struct jdksavdecc_eui64_t const *avdecc_get_eui64_value_for_name( struct jdksavdecc_eui64_name const names[], char const *name );
+struct jdksavdecc_eui64 const *avdecc_get_eui64_value_for_name( struct jdksavdecc_eui64_name const names[], char const *name );
 
 void jdksavdecc_print_eol( FILE *f );
 void jdksavdecc_print_label( FILE *f, const char *v );
