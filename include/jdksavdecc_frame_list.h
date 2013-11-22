@@ -40,54 +40,36 @@
 extern "C" {
 #endif
 
-
 /** \addtogroup frame_list raw ethernet frame list */
 /*@{*/
 
 struct jdksavdecc_frame_list_item;
 
-struct jdksavdecc_frame_list
-{
+struct jdksavdecc_frame_list {
     struct jdksavdecc_frame_list_item *first;
     struct jdksavdecc_frame_list_item *last;
 };
 
-struct jdksavdecc_frame_list_item
-{
+struct jdksavdecc_frame_list_item {
     struct jdksavdecc_frame_list_item *next;
     struct jdksavdecc_frame_list_item *prev;
     struct jdksavdecc_frame frame;
     void *context;
 };
 
-int jdksavdecc_frame_list_init(
-    struct jdksavdecc_frame_list *self
-    );
-    
-void jdksavdecc_frame_list_destroy(
-    struct jdksavdecc_frame_list *self
-    );
+int jdksavdecc_frame_list_init(struct jdksavdecc_frame_list *self);
 
-    
-struct jdksavdecc_frame_list_item * jdksavdecc_frame_list_add(
-    struct jdksavdecc_frame_list *self,
-    struct jdksavdecc_frame const *frame,
-    void *context
-    );
+void jdksavdecc_frame_list_destroy(struct jdksavdecc_frame_list *self);
 
-void jdksavdecc_frame_list_delete(
-    struct jdksavdecc_frame_list *self,
-    struct jdksavdecc_frame_list_item *item
-    );
+struct jdksavdecc_frame_list_item *jdksavdecc_frame_list_add(struct jdksavdecc_frame_list *self,
+                                                             struct jdksavdecc_frame const *frame, void *context);
 
+void jdksavdecc_frame_list_delete(struct jdksavdecc_frame_list *self, struct jdksavdecc_frame_list_item *item);
 
 /*@}*/
-
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-
-

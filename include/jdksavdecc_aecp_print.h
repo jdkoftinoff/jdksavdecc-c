@@ -45,7 +45,6 @@
 extern "C" {
 #endif
 
-
 /** \addtogroup aecp_print AECP Print
  *  @todo aecp_print
 */
@@ -58,4 +57,3 @@ extern "C" {
 #endif
 
 #endif
-

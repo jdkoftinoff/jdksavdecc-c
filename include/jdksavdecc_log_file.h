@@ -43,17 +43,16 @@
 extern "C" {
 #endif
 
-
 /** \addtogroup log_file logging to FILE
 */
 /*@{*/
 
-extern void jdksavdecc_log_file_debug( const char *fmt, ... );
-extern void jdksavdecc_log_file_info( const char *fmt, ... );
-extern void jdksavdecc_log_file_warning( const char *fmt, ... );
-extern void jdksavdecc_log_file_error( const char *fmt, ... );
+extern void jdksavdecc_log_file_debug(const char *fmt, ...);
+extern void jdksavdecc_log_file_info(const char *fmt, ...);
+extern void jdksavdecc_log_file_warning(const char *fmt, ...);
+extern void jdksavdecc_log_file_error(const char *fmt, ...);
 
-void jdksavdecc_log_file_init( FILE *f );
+void jdksavdecc_log_file_init(FILE *f);
 
 /*@}*/
 
@@ -62,4 +61,3 @@ void jdksavdecc_log_file_init( FILE *f );
 #endif
 
 #endif
-

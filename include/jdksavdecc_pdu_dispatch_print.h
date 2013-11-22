@@ -40,7 +40,6 @@
 extern "C" {
 #endif
 
-
 /** \addtogroup pdu_dispatch_print PDU Dispatch Print
  *  @todo pdu_dispatch_print
 */
@@ -53,4 +52,3 @@ extern "C" {
 #endif
 
 #endif
-

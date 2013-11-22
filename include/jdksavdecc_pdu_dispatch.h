@@ -43,21 +43,12 @@ struct jdksavdecc_pdu_dispatch;
 struct jdksavdecc_command_dispatch;
 struct jdksavdecc_state_machines;
 
+typedef ssize_t (*jdksavdecc_pdu_dispatch_proc)(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos);
 
-typedef ssize_t (*jdksavdecc_pdu_dispatch_proc)(
-        struct jdksavdecc_pdu_dispatch *self,
-        struct jdksavdecc_frame *frame,
-        size_t pos
-        );
-
-struct jdksavdecc_pdu_dispatch
-{
+struct jdksavdecc_pdu_dispatch {
     struct jdksavdecc_state_machine base;
 
-    void (*set_frame_sender)(
-        struct jdksavdecc_pdu_dispatch *self,
-        struct jdksavdecc_frame_sender *sender
-        );
+    void (*set_frame_sender)(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender);
 
     jdksavdecc_pdu_dispatch_proc rx_frame;
     jdksavdecc_pdu_dispatch_proc unknown;
@@ -96,34 +87,39 @@ struct jdksavdecc_pdu_dispatch
     struct jdksavdecc_state_machines *aecp_hdcp_apm_responder_state_machines;
 };
 
+void jdksavdecc_pdu_dispatch_init(struct jdksavdecc_pdu_dispatch *self);
+int jdksavdecc_pdu_dispatch_tick(struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp);
+void jdksavdecc_pdu_dispatch_set_frame_sender(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender);
 
-void jdksavdecc_pdu_dispatch_init( struct jdksavdecc_pdu_dispatch *self );
-int jdksavdecc_pdu_dispatch_tick( struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp );
-void jdksavdecc_pdu_dispatch_set_frame_sender( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame_sender *sender );
-
-ssize_t jdksavdecc_pdu_dispatch_rx_frame( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_unknown( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_avtpv0( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_maap( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_acmpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_adpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem_command( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem_response( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_aa_command( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_aa_response( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_avc_command( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_avc_response( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_vendor_command( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_vendor_response( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_hdcp_apm_command( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-ssize_t jdksavdecc_pdu_dispatch_aecpdu_hdcp_apm_response( struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos );
-
+ssize_t jdksavdecc_pdu_dispatch_rx_frame(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_unknown(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_avtpv0(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_maap(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_acmpdu(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_adpdu(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame,
+                                                   size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_aem_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame,
+                                                    size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_aa_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame, size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_aa_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame,
+                                                   size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_avc_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame,
+                                                   size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_avc_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame,
+                                                    size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_vendor_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame,
+                                                      size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_vendor_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame,
+                                                       size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_hdcp_apm_command(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame,
+                                                        size_t pos);
+ssize_t jdksavdecc_pdu_dispatch_aecpdu_hdcp_apm_response(struct jdksavdecc_pdu_dispatch *self, struct jdksavdecc_frame *frame,
+                                                         size_t pos);
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-
-

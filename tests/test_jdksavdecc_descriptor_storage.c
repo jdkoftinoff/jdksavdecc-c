@@ -34,19 +34,10 @@
 #include "jdksavdecc_descriptor_storage.h"
 #include "jdksavdecc_descriptor_storage_gen.h"
 
-int test_jdksavdecc_descriptor_storage()
-{
-    return 0;
-}
+int test_jdksavdecc_descriptor_storage() { return 0; }
 
-
-int main( int argc, char **argv )
-{
+int main(int argc, char **argv) {
     (void)argc;
     (void)argv;
     return test_jdksavdecc_descriptor_storage() ? EXIT_SUCCESS : EXIT_FAILURE;
 }
-
-
-
-

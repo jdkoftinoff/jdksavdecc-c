@@ -1,4 +1,4 @@
-  
+
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -33,82 +33,57 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_frame_list.h"
 
-
-int jdksavdecc_frame_list_init(
-    struct jdksavdecc_frame_list *self
-    )
-{
+int jdksavdecc_frame_list_init(struct jdksavdecc_frame_list *self) {
     self->first = 0;
     self->last = 0;
     return 0;
 }
-    
-void jdksavdecc_frame_list_destroy(
-    struct jdksavdecc_frame_list *self
-    )
-{
+
+void jdksavdecc_frame_list_destroy(struct jdksavdecc_frame_list *self) {
     struct jdksavdecc_frame_list_item *item = self->last;
-    
-    while( item )
-    {
+
+    while (item) {
         struct jdksavdecc_frame_list_item *cur = item;
-        
-        if( cur->context )
-        {
-            free( cur->context );
+
+        if (cur->context) {
+            free(cur->context);
         }
-        
-        item=cur->prev;
-        
-        free( cur );
-    };
+
+        item = cur->prev;
+
+        free(cur);
+    }
+    ;
 }
-    
-struct jdksavdecc_frame_list_item * jdksavdecc_frame_list_add(
-    struct jdksavdecc_frame_list *self,
-    struct jdksavdecc_frame const *frame,
-    void *context
-    )
-{
-    struct jdksavdecc_frame_list_item *new_item = calloc(sizeof(struct jdksavdecc_frame_list_item),1);
-    if( new_item )
-    {
+
+struct jdksavdecc_frame_list_item *jdksavdecc_frame_list_add(struct jdksavdecc_frame_list *self,
+                                                             struct jdksavdecc_frame const *frame, void *context) {
+    struct jdksavdecc_frame_list_item *new_item = calloc(sizeof(struct jdksavdecc_frame_list_item), 1);
+    if (new_item) {
         new_item->prev = self->last;
         new_item->next = 0;
-        memcpy( &new_item->frame, frame, sizeof(new_item->frame) );
+        memcpy(&new_item->frame, frame, sizeof(new_item->frame));
         new_item->context = context;
-        if( !self->first )
-        {
+        if (!self->first) {
             self->first = new_item;
         }
-        
-        if( !self->last )
-        {
+
+        if (!self->last) {
             self->last = new_item;
         }
     }
     return new_item;
 }
 
-
-void jdksavdecc_frame_list_delete(
-    struct jdksavdecc_frame_list *self,
-    struct jdksavdecc_frame_list_item *item
-    )
-{
-    if( self->first == item )
-    {
+void jdksavdecc_frame_list_delete(struct jdksavdecc_frame_list *self, struct jdksavdecc_frame_list_item *item) {
+    if (self->first == item) {
         self->first = item->next;
     }
-    if( self->last == item )
-    {
+    if (self->last == item) {
         self->last = item->prev;
     }
-    if( item->context )
-    {
+    if (item->context) {
         free(item->context);
     }
     free(item);
-    
 }
-

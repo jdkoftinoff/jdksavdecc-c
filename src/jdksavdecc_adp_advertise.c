@@ -1,4 +1,4 @@
-  
+
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -29,7 +29,6 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
 */
-
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_adp_advertise.h"

@@ -43,29 +43,26 @@ extern "C" {
 /** \addtogroup state_machines jdksavdecc_state_machines - A collection of jdksavdecc_state_machine objects */
 /*@{*/
 
-
 #ifndef JDKSAVDECC_STATE_MACHINES_ENABLE_LOG
-# define JDKSAVDECC_STATE_MACHINES_ENABLE_LOG (1)
+#define JDKSAVDECC_STATE_MACHINES_ENABLE_LOG (1)
 #endif
 
 #if JDKSAVDECC_STATE_MACHINES_ENABLE_LOG
-# define jdksavdecc_state_machines_log jdksavdecc_log_info
-# ifndef jdksavdecc_state_machines_log_enter
-#  define jdksavdecc_state_machines_log_enter() jdksavdecc_state_machines_log("Enter:%s:%d",__FUNCTION__,__LINE__)
-# endif
-# ifndef jdksavdecc_state_machines_log_exit
-#  define jdksavdecc_state_machines_log_exit() jdksavdecc_state_machines_log(" Exit:%s:%d",__FUNCTION__,__LINE__)
-# endif
+#define jdksavdecc_state_machines_log jdksavdecc_log_info
+#ifndef jdksavdecc_state_machines_log_enter
+#define jdksavdecc_state_machines_log_enter() jdksavdecc_state_machines_log("Enter:%s:%d", __FUNCTION__, __LINE__)
+#endif
+#ifndef jdksavdecc_state_machines_log_exit
+#define jdksavdecc_state_machines_log_exit() jdksavdecc_state_machines_log(" Exit:%s:%d", __FUNCTION__, __LINE__)
+#endif
 #else
-# define jdksavdecc_state_machines_log(...)
-# define jdksavdecc_state_machines_log_enter()
-# define jdksavdecc_state_machines_log_exit()
+#define jdksavdecc_state_machines_log(...)
+#define jdksavdecc_state_machines_log_enter()
+#define jdksavdecc_state_machines_log_exit()
 #endif
 
-
 /// Container for multiple state machines
-struct jdksavdecc_state_machines
-{
+struct jdksavdecc_state_machines {
     /// IsA state machine
     struct jdksavdecc_state_machine base;
 
@@ -80,52 +77,30 @@ struct jdksavdecc_state_machines
 
     /// Add a state machine to the list.
     /// Returns 0 on success
-    int (*add_state_machine)(
-            struct jdksavdecc_state_machines *self,
-            struct jdksavdecc_state_machine *sm
-            );
+    int (*add_state_machine)(struct jdksavdecc_state_machines *self, struct jdksavdecc_state_machine *sm);
 };
 
 /// Initialize the state machine list.
-int jdksavdecc_state_machines_init(
-        struct jdksavdecc_state_machines *self,
-        int max_state_machines,
-        struct jdksavdecc_frame_sender *frame_sender,
-        uint32_t tag,
-        void *additional
-        );
+int jdksavdecc_state_machines_init(struct jdksavdecc_state_machines *self, int max_state_machines,
+                                   struct jdksavdecc_frame_sender *frame_sender, uint32_t tag, void *additional);
 
 /// Destroy the state machine list and deallocate the list
-void jdksavdecc_state_machines_destroy(
-        struct jdksavdecc_state_machine *self
-        );
+void jdksavdecc_state_machines_destroy(struct jdksavdecc_state_machine *self);
 
 /// Ask all the state machines to terminate
-void jdksavdecc_state_machines_terminate(
-        struct jdksavdecc_state_machine *self
-        );
+void jdksavdecc_state_machines_terminate(struct jdksavdecc_state_machine *self);
 
 /// Dispatch a tick to all state machines.
 /// Returns -1 when all state machines finish terminating
-int jdksavdecc_state_machines_tick(
-        struct jdksavdecc_state_machine *self,
-        jdksavdecc_timestamp_in_microseconds timestamp
-        );
+int jdksavdecc_state_machines_tick(struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp);
 
 /// Dispatch the rx_frame to all state machines.
 /// Returns the largest parsed octet count that the state machines returned
-ssize_t jdksavdecc_state_machines_rx_frame(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame *rx_frame,
-        size_t pos
-        );
+ssize_t jdksavdecc_state_machines_rx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos);
 
 /// Add a state machine to the list.
 /// Returns 0 on success, <0 if there is no room
-int jdksavdecc_state_machines_add_state_machine(
-        struct jdksavdecc_state_machines *self,
-        struct jdksavdecc_state_machine *s
-        );
+int jdksavdecc_state_machines_add_state_machine(struct jdksavdecc_state_machines *self, struct jdksavdecc_state_machine *s);
 
 /*@}*/
 
@@ -134,5 +109,3 @@ int jdksavdecc_state_machines_add_state_machine(
 #endif
 
 #endif
-
-

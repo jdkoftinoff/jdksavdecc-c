@@ -30,25 +30,23 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 #include "jdksavdecc_world.h"
 
-FILE *jdksavdecc_log_file=0;
+FILE *jdksavdecc_log_file = 0;
 
-void jdksavdecc_log_null( const char *fmt, ... );
+void jdksavdecc_log_null(const char *fmt, ...);
 
-void (*jdksavdecc_log_debug)( const char *fmt, ... ) = jdksavdecc_log_null;
-void (*jdksavdecc_log_error)( const char *fmt, ... ) = jdksavdecc_log_null;
-void (*jdksavdecc_log_warning)( const char *fmt, ... )  = jdksavdecc_log_null;
-void (*jdksavdecc_log_info)( const char *fmt, ... )  = jdksavdecc_log_null;
+void (*jdksavdecc_log_debug)(const char *fmt, ...) = jdksavdecc_log_null;
+void (*jdksavdecc_log_error)(const char *fmt, ...) = jdksavdecc_log_null;
+void (*jdksavdecc_log_warning)(const char *fmt, ...) = jdksavdecc_log_null;
+void (*jdksavdecc_log_info)(const char *fmt, ...) = jdksavdecc_log_null;
 
-void jdksavdecc_log_null( const char *fmt, ... )
-{
+void jdksavdecc_log_null(const char *fmt, ...) {
     va_list args;
 
-    va_start (args,fmt);
+    va_start(args, fmt);
 
     // Do Nothing
-    
+
     va_end(args);
 }

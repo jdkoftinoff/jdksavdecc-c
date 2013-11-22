@@ -44,34 +44,28 @@
 extern "C" {
 #endif
 
-
 /** \addtogroup log logging
 */
 /*@{*/
 
-struct jdksavdecc_log_aecp_context
-{
+struct jdksavdecc_log_aecp_context {
     struct jdksavdecc_eui64 entity_id;
     struct jdksavdecc_eui64 controller_id;
     struct jdksavdecc_eui48 destination_mac;
     uint16_t descriptor_type;
     uint16_t debug_descriptor_index;
-    uint16_t info_descriptor_index;    
-    uint16_t warning_descriptor_index;    
-    uint16_t error_descriptor_index;    
+    uint16_t info_descriptor_index;
+    uint16_t warning_descriptor_index;
+    uint16_t error_descriptor_index;
 };
 
-void jdksavdecc_log_aecp_debug( const char *fmt, ... );
-void jdksavdecc_log_aecp_info( const char *fmt, ... );
-void jdksavdecc_log_aecp_warning( const char *fmt, ... );
-void jdksavdecc_log_aecp_error( const char *fmt, ... );
+void jdksavdecc_log_aecp_debug(const char *fmt, ...);
+void jdksavdecc_log_aecp_info(const char *fmt, ...);
+void jdksavdecc_log_aecp_warning(const char *fmt, ...);
+void jdksavdecc_log_aecp_error(const char *fmt, ...);
 
-
-void jdksavdecc_log_aecp_init(
-        struct jdksavdecc_log_aecp_context *context,
-        struct jdksavdecc_frame_sender *frame_sender,
-        struct jdksavdecc_frame *frame_for_logging
-        );
+void jdksavdecc_log_aecp_init(struct jdksavdecc_log_aecp_context *context, struct jdksavdecc_frame_sender *frame_sender,
+                              struct jdksavdecc_frame *frame_for_logging);
 
 /*@}*/
 
@@ -80,4 +74,3 @@ void jdksavdecc_log_aecp_init(
 #endif
 
 #endif
-

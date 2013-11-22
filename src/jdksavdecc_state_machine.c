@@ -30,18 +30,11 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_state_machine.h"
 
-
-void jdksavdecc_state_machine_init(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame_sender *frame_sender,
-        uint32_t tag,
-        void *additional
-        )
-{
+void jdksavdecc_state_machine_init(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame_sender *frame_sender,
+                                   uint32_t tag, void *additional) {
     jdksavdecc_state_machine_log_enter();
     self->additional = 0;
     self->tag = 0;
@@ -57,24 +50,21 @@ void jdksavdecc_state_machine_init(
     jdksavdecc_state_machine_log_exit();
 }
 
-void jdksavdecc_state_machine_destroy( struct jdksavdecc_state_machine *self )
-{
+void jdksavdecc_state_machine_destroy(struct jdksavdecc_state_machine *self) {
     jdksavdecc_state_machine_log_enter();
     // zero all fields
-    memset(self,0,sizeof(*self));
+    memset(self, 0, sizeof(*self));
     jdksavdecc_state_machine_log_exit();
 }
 
-void jdksavdecc_state_machine_terminate( struct jdksavdecc_state_machine *self )
-{
+void jdksavdecc_state_machine_terminate(struct jdksavdecc_state_machine *self) {
     jdksavdecc_state_machine_log_enter();
     self->terminated = 1;
     jdksavdecc_state_machine_log_exit();
 }
 
-int jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp )
-{
-    int r=0;
+int jdksavdecc_state_machine_tick(struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp) {
+    int r = 0;
     jdksavdecc_state_machine_log_enter();
 
     // default is to ignore ticks
@@ -84,20 +74,16 @@ int jdksavdecc_state_machine_tick( struct jdksavdecc_state_machine *self, jdksav
     self->do_early_tick = 0;
 
     // A terminated state machine causes us to return -1
-    if( self->terminated )
-    {
-        r=-1;
-    }
-    else
-    {
-        r=0;
+    if (self->terminated) {
+        r = -1;
+    } else {
+        r = 0;
     }
     jdksavdecc_state_machine_log_exit();
     return r;
 }
 
-ssize_t jdksavdecc_state_machine_rx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos )
-{
+ssize_t jdksavdecc_state_machine_rx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos) {
     // Nothing to do - default is to ignore rx_frame
     jdksavdecc_state_machine_log_enter();
     (void)self;
@@ -107,13 +93,11 @@ ssize_t jdksavdecc_state_machine_rx_frame( struct jdksavdecc_state_machine *self
     return 0;
 }
 
-void jdksavdecc_state_machine_tx_frame( struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame )
-{
+void jdksavdecc_state_machine_tx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame) {
     /* Default is to give the frame to the frame_sender if there is one */
     jdksavdecc_state_machine_log_enter();
-    if( self->frame_sender )
-    {
-        self->frame_sender->send( self->frame_sender, frame );
+    if (self->frame_sender) {
+        self->frame_sender->send(self->frame_sender, frame);
     }
     jdksavdecc_state_machine_log_exit();
 }

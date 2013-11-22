@@ -41,7 +41,6 @@
 extern "C" {
 #endif
 
-
 /** \addtogroup command_dispatch_print Command Dispatch Print
  *  @todo command_dispatch_print
 */
@@ -54,4 +53,3 @@ extern "C" {
 #endif
 
 #endif
-

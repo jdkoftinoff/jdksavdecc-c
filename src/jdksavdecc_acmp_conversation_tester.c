@@ -1,4 +1,4 @@
-  
+
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -33,126 +33,74 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp_conversation_tester.h"
 
+#if 0
 
-int jdksavdecc_acmp_conversation_init(
-    struct jdksavdecc_acmp_conversation *self,
-    struct jdksavdecc_frame const * initial_connect_rx_command_frame
-    )
-{
+int jdksavdecc_acmp_conversation_init(struct jdksavdecc_acmp_conversation *self,
+                                      struct jdksavdecc_frame const *initial_connect_rx_command_frame) {
     return 0; // @todo
 }
 
-void jdksavdecc_acmp_conversation_update(
-    struct jdksavdecc_acmp_conversation *self,
-    struct jdksavdecc_frame const * acmpdu
-    )
-{
+void jdksavdecc_acmp_conversation_update(struct jdksavdecc_acmp_conversation *self, struct jdksavdecc_frame const *acmpdu) {
     // @todo
 }
 
-
-void jdksavdecc_acmp_conversation_log(
-    struct jdksavdecc_acmp_conversation *self
-    )
-{
+void jdksavdecc_acmp_conversation_log(struct jdksavdecc_acmp_conversation *self) {
     // @todo
 }
 
-int jdksavdecc_acmp_conversation_list_init(
-    struct jdksavdecc_acmp_conversation *self
-    )
-{
+int jdksavdecc_acmp_conversation_list_init(struct jdksavdecc_acmp_conversation *self) {
     // @todo
     return 0;
 }
 
-    
-void jdksavdecc_acmp_conversation_list_destroy(
-    struct jdksavdecc_acmp_conversation *self
-    )
-{
+void jdksavdecc_acmp_conversation_list_destroy(struct jdksavdecc_acmp_conversation *self) {
     // @todo
 }
 
+struct jdksavdecc_acmp_conversation_list_item *jdksavdecc_acmp_conversation_list_find(struct jdksavdecc_acmp_conversation *self,
+                                                                                      struct jdksavdecc_eui64 *talker_entity_id,
+                                                                                      uint16_t talker_unique_id,
+                                                                                      struct jdksavdecc_eui64 *listener_entity_id,
+                                                                                      uint16_t listener_unique_id) {
+    // @todo
+    return 0;
+}
 
 struct jdksavdecc_acmp_conversation_list_item *
-jdksavdecc_acmp_conversation_list_find(
-    struct jdksavdecc_acmp_conversation *self,
-    struct jdksavdecc_eui64 *talker_entity_id,
-    uint16_t talker_unique_id,
-    struct jdksavdecc_eui64 *listener_entity_id,
-    uint16_t listener_unique_id
-    )
-{
+jdksavdecc_acmp_conversation_list_find_by_frame(struct jdksavdecc_acmp_conversation *self,
+                                                struct jdksavdecc_frame const *connect_rx_command_frame) {
     // @todo
     return 0;
 }
-
 
 struct jdksavdecc_acmp_conversation_list_item *
-jdksavdecc_acmp_conversation_list_find_by_frame(
-    struct jdksavdecc_acmp_conversation *self,
-    struct jdksavdecc_frame const * connect_rx_command_frame
-    )
-{
-    // @todo
+jdksavdecc_acmp_conversation_list_create_or_add(struct jdksavdecc_acmp_conversation *self,
+                                                struct jdksavdecc_frame const *initial_connect_rx_command_frame) {
     return 0;
 }
 
-    
-struct jdksavdecc_acmp_conversation_list_item *
-jdksavdecc_acmp_conversation_list_create_or_add(
-    struct jdksavdecc_acmp_conversation *self,
-    struct jdksavdecc_frame const * initial_connect_rx_command_frame
-    )
-{
-    return 0;
-}
-
-void jdksavdecc_acmp_conversation_tester_init(
-        struct jdksavdecc_acmp_conversation_tester *self,
-        struct jdksavdecc_frame_sender *sender,
-        uint32_t tag,
-        void *additional
-        )
-{
+void jdksavdecc_acmp_conversation_tester_init(struct jdksavdecc_acmp_conversation_tester *self,
+                                              struct jdksavdecc_frame_sender *sender, uint32_t tag, void *additional) {
     // @todo
 }
 
-
-void jdksavdecc_acmp_conversation_tester_destroy(
-        struct jdksavdecc_state_machine *self
-        )
-{
+void jdksavdecc_acmp_conversation_tester_destroy(struct jdksavdecc_state_machine *self) {
     // @todo
 }
 
-
-void jdksavdecc_acmp_conversation_tester_tick(
-        struct jdksavdecc_state_machine *self,
-        jdksavdecc_timestamp_in_microseconds timestamp
-        )
-{
+void jdksavdecc_acmp_conversation_tester_tick(struct jdksavdecc_state_machine *self,
+                                              jdksavdecc_timestamp_in_microseconds timestamp) {
     // @todo
 }
 
-
-void jdksavdecc_acmp_conversation_tester_dump(
-        struct jdksavdecc_state_machine *self
-        )
-{
+void jdksavdecc_acmp_conversation_tester_dump(struct jdksavdecc_state_machine *self) {
     // @todo
 }
 
-
-ssize_t jdksavdecc_acmp_conversation_tester_rx_frame(
-        struct jdksavdecc_state_machine *self,
-        struct jdksavdecc_frame *rx_frame,
-        size_t pos
-        )
-{
+ssize_t jdksavdecc_acmp_conversation_tester_rx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame,
+                                                     size_t pos) {
     // @todo
     return -1;
 }
-
+#endif
 

@@ -86,6 +86,4 @@
 #include "jdksavdecc_state_machine.h"
 #include "jdksavdecc_state_machines.h"
 
-
 #endif
-

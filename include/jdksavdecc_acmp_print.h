@@ -41,7 +41,6 @@
 extern "C" {
 #endif
 
-
 /** \addtogroup acmp_print ACMP Print
  *  @todo acmp_print
 */
@@ -51,7 +50,6 @@ extern struct jdksavdecc_uint16_name jdksavdecc_acmpdu_print_message_type[];
 extern struct jdksavdecc_uint16_name jdksavdecc_acmpdu_print_status[];
 extern struct jdksavdecc_16bit_name jdksavdecc_acmpdu_print_flags[];
 
-
 /*@}*/
 
 #ifdef __cplusplus
@@ -59,4 +57,3 @@ extern struct jdksavdecc_16bit_name jdksavdecc_acmpdu_print_flags[];
 #endif
 
 #endif
-
