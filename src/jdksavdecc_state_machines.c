@@ -33,8 +33,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_state_machines.h"
 
-int jdksavdecc_state_machines_init(struct jdksavdecc_state_machines *self, int max_state_machines,
-                                   struct jdksavdecc_frame_sender *frame_sender, uint32_t tag, void *additional) {
+int jdksavdecc_state_machines_init(struct jdksavdecc_state_machines *self,
+                                   int max_state_machines,
+                                   struct jdksavdecc_frame_sender *frame_sender,
+                                   uint32_t tag, void *additional) {
     log_enter(0);
     jdksavdecc_state_machine_init(&self->base, frame_sender, tag, additional);
     self->base.destroy = jdksavdecc_state_machines_destroy;
@@ -43,7 +45,8 @@ int jdksavdecc_state_machines_init(struct jdksavdecc_state_machines *self, int m
     self->add_state_machine = jdksavdecc_state_machines_add_state_machine;
     self->max_state_machines = max_state_machines;
     self->num_state_machines = 0;
-    self->state_machines = calloc(sizeof(struct jdksavdecc_state_machine *), max_state_machines);
+    self->state_machines =
+        calloc(sizeof(struct jdksavdecc_state_machine *), max_state_machines);
     if (self->state_machines) {
         return 0;
     } else {
@@ -53,7 +56,8 @@ int jdksavdecc_state_machines_init(struct jdksavdecc_state_machines *self, int m
 }
 
 void jdksavdecc_state_machines_destroy(struct jdksavdecc_state_machine *self_) {
-    struct jdksavdecc_state_machines *self = (struct jdksavdecc_state_machines *)self_;
+    struct jdksavdecc_state_machines *self =
+        (struct jdksavdecc_state_machines *)self_;
     int i;
     log_enter(0);
 
@@ -67,12 +71,15 @@ void jdksavdecc_state_machines_destroy(struct jdksavdecc_state_machine *self_) {
     log_exit(0);
 }
 
-void jdksavdecc_state_machines_terminate(struct jdksavdecc_state_machine *self_) {
-    struct jdksavdecc_state_machines *self = (struct jdksavdecc_state_machines *)self_;
+void
+jdksavdecc_state_machines_terminate(struct jdksavdecc_state_machine *self_) {
+    struct jdksavdecc_state_machines *self =
+        (struct jdksavdecc_state_machines *)self_;
     int i;
     log_enter(0);
 
-    // Tell all sub state machines to terminate. Don't terminate self now, that happens after all sub state machines actually
+    // Tell all sub state machines to terminate. Don't terminate self now, that
+    // happens after all sub state machines actually
     // terminate
     for (i = 0; i < self->num_state_machines; ++i) {
         struct jdksavdecc_state_machine *sm = self->state_machines[i];
@@ -83,15 +90,20 @@ void jdksavdecc_state_machines_terminate(struct jdksavdecc_state_machine *self_)
     log_exit(0);
 }
 
-int jdksavdecc_state_machines_tick(struct jdksavdecc_state_machine *self_, jdksavdecc_timestamp_in_microseconds timestamp) {
+int
+jdksavdecc_state_machines_tick(struct jdksavdecc_state_machine *self_,
+                               jdksavdecc_timestamp_in_microseconds timestamp) {
     int r = 0;
-    struct jdksavdecc_state_machines *self = (struct jdksavdecc_state_machines *)self_;
+    struct jdksavdecc_state_machines *self =
+        (struct jdksavdecc_state_machines *)self_;
     int i;
     log_enter(0);
 
-    // Try run the base class tick. Continue with our tick if it is not terminated
+    // Try run the base class tick. Continue with our tick if it is not
+    // terminated
     if (jdksavdecc_state_machine_tick(&self->base, timestamp) == 0) {
-        // Run tick on all sub state machines. Keep track of how many sub state machines are terminated
+        // Run tick on all sub state machines. Keep track of how many sub state
+        // machines are terminated
         int num_state_machines_ended = 0;
         for (i = 0; i < self->num_state_machines; ++i) {
             struct jdksavdecc_state_machine *sm = self->state_machines[i];
@@ -116,8 +128,12 @@ int jdksavdecc_state_machines_tick(struct jdksavdecc_state_machine *self_, jdksa
     return r;
 }
 
-ssize_t jdksavdecc_state_machines_rx_frame(struct jdksavdecc_state_machine *self_, struct jdksavdecc_frame *rx_frame, size_t pos) {
-    struct jdksavdecc_state_machines *self = (struct jdksavdecc_state_machines *)self_;
+ssize_t
+jdksavdecc_state_machines_rx_frame(struct jdksavdecc_state_machine *self_,
+                                   struct jdksavdecc_frame *rx_frame,
+                                   size_t pos) {
+    struct jdksavdecc_state_machines *self =
+        (struct jdksavdecc_state_machines *)self_;
     int i;
     ssize_t max_r = -1;
     log_enter(0);
@@ -131,7 +147,8 @@ ssize_t jdksavdecc_state_machines_rx_frame(struct jdksavdecc_state_machine *self
         r = sm->rx_frame(sm, rx_frame, pos);
 
         // if the sub state machine needs an immediate tick
-        // because of this event, do the tick now for this sub state machine only,
+        // because of this event, do the tick now for this sub state machine
+        // only,
         // using the timestamp of the frame
 
         if (sm->do_early_tick) {
@@ -148,11 +165,14 @@ ssize_t jdksavdecc_state_machines_rx_frame(struct jdksavdecc_state_machine *self
     return max_r;
 }
 
-int jdksavdecc_state_machines_add_state_machine(struct jdksavdecc_state_machines *self, struct jdksavdecc_state_machine *s) {
+int jdksavdecc_state_machines_add_state_machine(
+    struct jdksavdecc_state_machines *self,
+    struct jdksavdecc_state_machine *s) {
     int r = -1;
     log_enter(0);
 
-    if (self->state_machines && (self->num_state_machines < self->max_state_machines)) {
+    if (self->state_machines &&
+        (self->num_state_machines < self->max_state_machines)) {
         r = 0;
         self->state_machines[self->num_state_machines++] = s;
     }

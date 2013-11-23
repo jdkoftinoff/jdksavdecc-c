@@ -103,4 +103,3 @@ ssize_t jdksavdecc_acmp_conversation_tester_rx_frame(struct jdksavdecc_state_mac
     return -1;
 }
 #endif
-

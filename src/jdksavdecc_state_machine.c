@@ -33,7 +33,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_state_machine.h"
 
-void jdksavdecc_state_machine_init(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame_sender *frame_sender,
+void jdksavdecc_state_machine_init(struct jdksavdecc_state_machine *self,
+                                   struct jdksavdecc_frame_sender *frame_sender,
                                    uint32_t tag, void *additional) {
     log_enter(0);
     self->additional = 0;
@@ -63,7 +64,9 @@ void jdksavdecc_state_machine_terminate(struct jdksavdecc_state_machine *self) {
     log_exit(0);
 }
 
-int jdksavdecc_state_machine_tick(struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp) {
+int
+jdksavdecc_state_machine_tick(struct jdksavdecc_state_machine *self,
+                              jdksavdecc_timestamp_in_microseconds timestamp) {
     int r = 0;
     log_enter(0);
 
@@ -83,7 +86,9 @@ int jdksavdecc_state_machine_tick(struct jdksavdecc_state_machine *self, jdksavd
     return r;
 }
 
-ssize_t jdksavdecc_state_machine_rx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos) {
+ssize_t jdksavdecc_state_machine_rx_frame(struct jdksavdecc_state_machine *self,
+                                          struct jdksavdecc_frame *rx_frame,
+                                          size_t pos) {
     // Nothing to do - default is to ignore rx_frame
     log_enter(0);
     (void)self;
@@ -93,7 +98,8 @@ ssize_t jdksavdecc_state_machine_rx_frame(struct jdksavdecc_state_machine *self,
     return 0;
 }
 
-void jdksavdecc_state_machine_tx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame) {
+void jdksavdecc_state_machine_tx_frame(struct jdksavdecc_state_machine *self,
+                                       struct jdksavdecc_frame const *frame) {
     /* Default is to give the frame to the frame_sender if there is one */
     log_enter(0);
     if (self->frame_sender) {

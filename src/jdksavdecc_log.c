@@ -33,11 +33,9 @@
 #include "jdksavdecc_world.h"
 
 bool jdksavdecc_log_subsystem_enable[32] = {
-    true, true, true, true, true, true, true, true,
-    true, true, true, true, true, true, true, true,
-    true, true, true, true, true, true, true, true,
-    true, true, true, true, true, true, true, true
-};    
+    true, true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true};
 
 void jdksavdecc_log_null(const char *fmt, ...);
 

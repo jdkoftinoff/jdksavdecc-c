@@ -56,9 +56,11 @@ void jdksavdecc_frame_list_destroy(struct jdksavdecc_frame_list *self) {
     ;
 }
 
-struct jdksavdecc_frame_list_item *jdksavdecc_frame_list_add(struct jdksavdecc_frame_list *self,
-                                                             struct jdksavdecc_frame const *frame, void *context) {
-    struct jdksavdecc_frame_list_item *new_item = calloc(sizeof(struct jdksavdecc_frame_list_item), 1);
+struct jdksavdecc_frame_list_item *
+jdksavdecc_frame_list_add(struct jdksavdecc_frame_list *self,
+                          struct jdksavdecc_frame const *frame, void *context) {
+    struct jdksavdecc_frame_list_item *new_item =
+        calloc(sizeof(struct jdksavdecc_frame_list_item), 1);
     if (new_item) {
         new_item->prev = self->last;
         new_item->next = 0;
@@ -75,7 +77,8 @@ struct jdksavdecc_frame_list_item *jdksavdecc_frame_list_add(struct jdksavdecc_f
     return new_item;
 }
 
-void jdksavdecc_frame_list_delete(struct jdksavdecc_frame_list *self, struct jdksavdecc_frame_list_item *item) {
+void jdksavdecc_frame_list_delete(struct jdksavdecc_frame_list *self,
+                                  struct jdksavdecc_frame_list_item *item) {
     if (self->first == item) {
         self->first = item->next;
     }

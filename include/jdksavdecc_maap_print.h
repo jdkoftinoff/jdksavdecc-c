@@ -52,4 +52,3 @@ void jdksavdecc_maap_print(FILE *f, struct jdksavdecc_maap const *p);
 #ifdef __cplusplus
 }
 #endif
-
