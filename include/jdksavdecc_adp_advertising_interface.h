@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ADP_ADVERTISING_INTERFACE_H
-#define JDKSAVDECC_ADP_ADVERTISING_INTERFACE_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -45,26 +43,6 @@ extern "C" {
 
 /** \addtogroup adp_advertise_interface ADP Advertising Interface State Machine - Clause 6.2.5 */
 /*@{*/
-
-#ifndef JDKSAVDECC_ADP_ADVERTISING_INTERFACE_ENABLE_LOG
-#define JDKSAVDECC_ADP_ADVERTISING_INTERFACE_ENABLE_LOG (1)
-#endif
-
-#if JDKSAVDECC_ADP_ADVERTISING_INTERFACE_ENABLE_LOG
-#define jdksavdecc_adp_advertising_interface_log jdksavdecc_log_info
-#ifndef jdksavdecc_adp_advertising_interface_log_enter
-#define jdksavdecc_adp_advertising_interface_log_enter()                                                                           \
-    jdksavdecc_adp_advertising_interface_log("Enter:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#ifndef jdksavdecc_adp_advertising_interface_log_exit
-#define jdksavdecc_adp_advertising_interface_log_exit()                                                                            \
-    jdksavdecc_adp_advertising_interface_log("Exit:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#else
-#define jdksavdecc_adp_advertising_interface_log(fmt, ...)
-#define jdksavdecc_adp_advertising_interface_log_enter()
-#define jdksavdecc_adp_advertising_interface_log_exit()
-#endif
 
 /// See Clause 6.2.5.1
 struct jdksavdecc_adp_advertising_interface_vars {
@@ -178,4 +156,3 @@ void jdksavdecc_adp_advertising_interface_state_machine_state_link_state_change(
 }
 #endif
 
-#endif

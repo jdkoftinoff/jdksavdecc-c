@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_AEM_COMMAND_H
-#define JDKSAVDECC_AEM_COMMAND_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -37662,4 +37660,3 @@ struct jdksavdecc_aem_command_get_stream_backup_response;
 }
 #endif
 
-#endif

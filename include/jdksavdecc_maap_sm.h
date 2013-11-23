@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_MAAP_SM_H
-#define JDKSAVDECC_MAAP_SM_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -45,23 +43,6 @@ extern "C" {
 /** \addtogroup maap MAAP - IEEE Std 1722-2011 Annex B.2 */
 /*@{*/
 
-#ifndef JDKSAVDECC_MAAP_SM_ENABLE_LOG
-#define JDKSAVDECC_MAAP_SM_ENABLE_LOG (1)
-#endif
-
-#if JDKSAVDECC_MAAP_SM_ENABLE_LOG
-#define jdksavdecc_maap_sm_log jdksavdecc_log_info
-#ifndef jdksavdecc_maap_sm_log_enter
-#define jdksavdecc_maap_sm_log_enter() jdksavdecc_maap_sm_log("Enter:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#ifndef jdksavdecc_maap_sm_log_exit
-#define jdksavdecc_maap_sm_log_exit() jdksavdecc_maap_sm_log("Exit:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#else
-#define jdksavdecc_maap_sm_log(fmt, ...)
-#define jdksavdecc_maap_sm_log_enter()
-#define jdksavdecc_maap_sm_log_exit()
-#endif
 
 /** \addtogroup maap_sm MAAP State Machine - IEEE Std 1722-2011 Annex B.3 */
 /*@{*/
@@ -167,4 +148,4 @@ void jdksavdecc_maap_state_machine_tx_frame(struct jdksavdecc_state_machine *sel
 }
 #endif
 
-#endif
+

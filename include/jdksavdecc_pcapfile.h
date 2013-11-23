@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_PCAPFILE_H
-#define JDKSAVDECC_PCAPFILE_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -96,4 +94,3 @@ void jdksavdecc_pcapfile_writer_send(struct jdksavdecc_frame_sender *self, struc
 }
 #endif
 
-#endif

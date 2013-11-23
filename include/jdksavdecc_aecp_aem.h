@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_AECP_AEM_H
-#define JDKSAVDECC_AECP_AEM_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -222,4 +220,3 @@ static inline ssize_t jdksavdecc_aecpdu_aem_write(struct jdksavdecc_aecpdu_aem c
 }
 #endif
 
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_FRAME_H
-#define JDKSAVDECC_FRAME_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -84,4 +82,3 @@ struct jdksavdecc_frame_sender {
 }
 #endif
 
-#endif

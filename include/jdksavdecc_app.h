@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_APP_H
-#define JDKSAVDECC_APP_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -44,6 +42,4 @@ extern "C" {
 struct jdksavdec_appdu;
 #ifdef __cplusplus
 }
-#endif
-
 #endif

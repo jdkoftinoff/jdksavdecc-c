@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_PRINT_H
-#define JDKSAVDECC_PRINT_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -154,6 +152,4 @@ extern char jdksavdecc_hexdig[16];
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

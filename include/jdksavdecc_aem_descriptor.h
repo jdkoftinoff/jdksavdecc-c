@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_AEM_DESCRIPTOR_H
-#define JDKSAVDECC_AEM_DESCRIPTOR_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -20196,4 +20194,3 @@ struct jdksavdecc_aem_ecc_private_256;
 }
 #endif
 
-#endif

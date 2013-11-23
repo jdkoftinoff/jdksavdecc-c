@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_DESCRIPTOR_DISPATCH_H
-#define JDKSAVDECC_DESCRIPTOR_DISPATCH_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -69,4 +67,3 @@ ssize_t jdksavdec_descriptor_dispatch_rx_frame(struct jdksavdecc_descriptor_disp
 }
 #endif
 
-#endif

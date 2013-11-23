@@ -50,7 +50,7 @@ int test_jdksavdecc_pdu_tick(struct jdksavdecc_pcapfile_reader *self, jdksavdecc
     (void)self;
     (void)time;
 
-    jdksavdecc_log_info("Tick");
+    log_info(JDKSAVDECC_SUBSYSTEM_PDU,"Tick");
     return 0;
 }
 
@@ -71,17 +71,25 @@ int main(int argc, char **argv) {
         out_file_name = argv[2];
     }
 
-    jdksavdecc_log_info("%8s:%s", "Starting", argv[0]);
+    log_info(JDKSAVDECC_SUBSYSTEM_GENERIC,"%8s:%s", "Starting", argv[0]);
 
     jdksavdecc_pdu_dispatch_init(&pdu_dispatch);
     {
+        struct jdksavdecc_entity_info entity_info;
+        //struct jdksavdecc_entity_model entity_model;
+        
         struct jdksavdecc_adp_advertising_global_vars ad_globals;
         struct jdksavdecc_adp_advertising_entity_state_machine ad_entity;
         struct jdksavdecc_adp_advertising_interface_vars ad_interface_vars;
         struct jdksavdecc_adp_advertising_interface_state_machine ad_interface;
 
         ad_globals.current_time = 0;
-        jdksavdecc_eui64_init(&ad_globals.entity_info->advertising_info.association_id);
+        ad_globals.entity_info = &entity_info;
+
+        entity_info.interfaces = &ad_interface;
+        entity_info.num_interfaces = 1;
+        
+        jdksavdecc_eui64_init(&entity_info.advertising_info.association_id);
 
         jdksavdecc_adp_advertising_entity_state_machine_init(&ad_entity, &ad_globals, 0, NULL);
         jdksavdecc_adp_advertising_interface_state_machine_init(&ad_interface, &ad_interface_vars, 0, NULL);

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ACMP_TALKER_H
-#define JDKSAVDECC_ACMP_TALKER_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -44,23 +42,6 @@ extern "C" {
 /** \addtogroup acmp_talker ACMPDU Talker State Machine - Clause 8.2.2.6 */
 /*@{*/
 
-#ifndef JDKSAVDECC_ACMP_TALKER_ENABLE_LOG
-#define JDKSAVDECC_ACMP_TALKER_ENABLE_LOG (1)
-#endif
-
-#if JDKSAVDECC_ACMP_TALKER_ENABLE_LOG
-#define jdksavdecc_acmp_talker_log jdksavdecc_log_info
-#ifndef jdksavdecc_acmp_talker_log_enter
-#define jdksavdecc_acmp_talker_log_enter() jdksavdecc_acmp_talker_log("Enter:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#ifndef jdksavdecc_acmp_talker_log_exit
-#define jdksavdecc_acmp_talker_log_exit() jdksavdecc_acmp_talker_log(" Exit:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#else
-#define jdksavdecc_acmp_talker_log(...)
-#define jdksavdecc_acmp_talker_log_enter()
-#define jdksavdecc_acmp_talker_log_exit()
-#endif
 
 struct jdksavdecc_acmp_talker_state_machine_vars {
     struct jdksavdecc_eui64 my_id;                                   /// See Clause 8.2.2.3.1
@@ -329,6 +310,4 @@ void jdksavdecc_acmp_talker_state_machine_state_get_connection(struct jdksavdecc
 /*@}*/
 #ifdef __cplusplus
 }
-#endif
-
 #endif

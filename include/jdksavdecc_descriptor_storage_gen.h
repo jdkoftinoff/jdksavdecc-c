@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_DESCRIPTOR_STORAGE_GEN_H
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_GEN_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -83,6 +81,4 @@ int jdksavdecc_descriptor_storage_gen_export_c(uint8_t const *buffer, size_t buf
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

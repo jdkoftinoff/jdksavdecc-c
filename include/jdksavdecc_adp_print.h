@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ADP_PRINT_H
-#define JDKSAVDECC_ADP_PRINT_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -61,4 +59,3 @@ void jdksavdecc_adpdu_print(FILE *f, struct jdksavdecc_adpdu const *p);
 }
 #endif
 
-#endif

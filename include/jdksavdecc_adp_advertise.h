@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ADP_ADVERTISE_H
-#define JDKSAVDECC_ADP_ADVERTISE_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -45,4 +43,3 @@ extern "C" {
 }
 #endif
 
-#endif

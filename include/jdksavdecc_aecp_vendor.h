@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_AECP_VENDOR_H
-#define JDKSAVDECC_AECP_VENDOR_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -49,6 +47,4 @@ extern "C" {
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

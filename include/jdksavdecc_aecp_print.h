@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_AECP_PRINT_H
-#define JDKSAVDECC_AECP_PRINT_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -56,4 +54,3 @@ extern "C" {
 }
 #endif
 
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_WORLD_H
-#define JDKSAVDECC_WORLD_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -44,26 +42,24 @@
 #include <ctype.h>
 
 #ifdef _MSC_VER
-#include <BaseTsd.h>
-#include "jdksavdecc_msstdint.h"
-#include "jdksavdecc_msinttypes.h"
-#ifndef ssize_t
-#define ssize_t SSIZE_T
-#endif
-#ifndef __cplusplus
-#ifndef inline
-#define inline __inline
-#endif
-#endif
+# if _MSC_VER < 1800
+#  include <BaseTsd.h>
+#  include "jdksavdecc_msstdint.h"
+#  include "jdksavdecc_msinttypes.h"
+#  ifndef ssize_t
+#   define ssize_t SSIZE_T
+#  endif
+#  ifndef __cplusplus
+#   ifndef inline
+#    define inline __inline
+#   endif
+#  endif
+#  endif
 #else
-#include <stdint.h>
-#include <inttypes.h>
-#include <stdbool.h>
+# include <stdint.h>
+# include <inttypes.h>
+# include <stdbool.h>
 #endif
 
 #include "jdksavdecc_log.h"
 
-/* including this here causes compiler errors */
-//#include "jdksavdecc_print.h"
-
-#endif

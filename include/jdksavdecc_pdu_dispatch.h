@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_PDU_DISPATCH_H
-#define JDKSAVDECC_PDU_DISPATCH_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -120,6 +118,4 @@ ssize_t jdksavdecc_pdu_dispatch_aecpdu_hdcp_apm_response(struct jdksavdecc_pdu_d
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

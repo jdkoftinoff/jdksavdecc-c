@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_PDU_H
-#define JDKSAVDECC_PDU_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -535,6 +533,4 @@ static inline void jdksavdecc_common_stream_header_set_protocol_specific_header(
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

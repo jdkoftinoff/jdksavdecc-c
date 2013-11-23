@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
         out_file_name = argv[2];
     }
 
-    jdksavdecc_log_info("%8s:%s", "Starting", argv[0]);
+    log_info(JDKSAVDECC_SUBSYSTEM_GENERIC,"%8s:%s", "Starting", argv[0]);
 
     jdksavdecc_pdu_dispatch_init(&pdu_dispatch);
     {

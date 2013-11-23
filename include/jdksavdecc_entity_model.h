@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ENTITY_MODEL_H
-#define JDKSAVDECC_ENTITY_MODEL_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -63,4 +61,3 @@ void jdksavdecc_entity_model_destroy(struct jdksavdecc_entity_model *self);
 }
 #endif
 
-#endif

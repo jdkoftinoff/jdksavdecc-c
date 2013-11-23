@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_STATE_MACHINE_H
-#define JDKSAVDECC_STATE_MACHINE_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -43,23 +41,6 @@ extern "C" {
 /** \addtogroup state_machine State Machine Base Interface */
 /*@{*/
 
-#ifndef JDKSAVDECC_STATE_MACHINE_ENABLE_LOG
-#define JDKSAVDECC_STATE_MACHINE_ENABLE_LOG (1)
-#endif
-
-#if JDKSAVDECC_STATE_MACHINE_ENABLE_LOG
-#define jdksavdecc_state_machine_log jdksavdecc_log_info
-#ifndef jdksavdecc_state_machine_log_enter
-#define jdksavdecc_state_machine_log_enter() jdksavdecc_state_machine_log("Enter:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#ifndef jdksavdecc_state_machine_log_exit
-#define jdksavdecc_state_machine_log_exit() jdksavdecc_state_machine_log(" Exit:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#else
-#define jdksavdecc_state_machine_log(fmt, ...)
-#define jdksavdecc_state_machine_log_enter()
-#define jdksavdecc_state_machine_log_exit()
-#endif
 
 /// Common base class for state machines
 struct jdksavdecc_state_machine {
@@ -119,4 +100,3 @@ void jdksavdecc_state_machine_tx_frame(struct jdksavdecc_state_machine *self, st
 }
 #endif
 
-#endif

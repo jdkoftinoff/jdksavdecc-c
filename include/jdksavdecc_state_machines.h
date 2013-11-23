@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_STATE_MACHINES_H
-#define JDKSAVDECC_STATE_MACHINES_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -42,24 +40,6 @@ extern "C" {
 
 /** \addtogroup state_machines jdksavdecc_state_machines - A collection of jdksavdecc_state_machine objects */
 /*@{*/
-
-#ifndef JDKSAVDECC_STATE_MACHINES_ENABLE_LOG
-#define JDKSAVDECC_STATE_MACHINES_ENABLE_LOG (1)
-#endif
-
-#if JDKSAVDECC_STATE_MACHINES_ENABLE_LOG
-#define jdksavdecc_state_machines_log jdksavdecc_log_info
-#ifndef jdksavdecc_state_machines_log_enter
-#define jdksavdecc_state_machines_log_enter() jdksavdecc_state_machines_log("Enter:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#ifndef jdksavdecc_state_machines_log_exit
-#define jdksavdecc_state_machines_log_exit() jdksavdecc_state_machines_log(" Exit:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#else
-#define jdksavdecc_state_machines_log(...)
-#define jdksavdecc_state_machines_log_enter()
-#define jdksavdecc_state_machines_log_exit()
-#endif
 
 /// Container for multiple state machines
 struct jdksavdecc_state_machines {
@@ -106,6 +86,4 @@ int jdksavdecc_state_machines_add_state_machine(struct jdksavdecc_state_machines
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ADP_H
-#define JDKSAVDECC_ADP_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -749,4 +747,3 @@ static inline ssize_t jdksavdecc_adpdu_write(struct jdksavdecc_adpdu const *p, v
 }
 #endif
 
-#endif

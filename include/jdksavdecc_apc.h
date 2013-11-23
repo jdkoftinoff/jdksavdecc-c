@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_APC_H
-#define JDKSAVDECC_APC_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -55,4 +53,3 @@ struct jdksavdec_apc_state_machine {
 }
 #endif
 
-#endif

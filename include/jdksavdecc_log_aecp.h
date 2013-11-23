@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_LOG_AECP_H
-#define JDKSAVDECC_LOG_AECP_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -73,4 +71,3 @@ void jdksavdecc_log_aecp_init(struct jdksavdecc_log_aecp_context *context, struc
 }
 #endif
 
-#endif

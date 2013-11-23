@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_COMMAND_DISPATCH_PRINT_H
-#define JDKSAVDECC_COMMAND_DISPATCH_PRINT_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -52,4 +50,3 @@ extern "C" {
 }
 #endif
 
-#endif
