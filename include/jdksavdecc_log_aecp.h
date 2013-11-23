@@ -62,7 +62,8 @@ void jdksavdecc_log_aecp_info(const char *fmt, ...);
 void jdksavdecc_log_aecp_warning(const char *fmt, ...);
 void jdksavdecc_log_aecp_error(const char *fmt, ...);
 
-void jdksavdecc_log_aecp_init(struct jdksavdecc_log_aecp_context *context, struct jdksavdecc_frame_sender *frame_sender,
+void jdksavdecc_log_aecp_init(struct jdksavdecc_log_aecp_context *context,
+                              struct jdksavdecc_frame_sender *frame_sender,
                               struct jdksavdecc_frame *frame_for_logging);
 
 /*@}*/
@@ -70,4 +71,3 @@ void jdksavdecc_log_aecp_init(struct jdksavdecc_log_aecp_context *context, struc
 #ifdef __cplusplus
 }
 #endif
-

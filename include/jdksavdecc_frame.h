@@ -67,18 +67,20 @@ static inline void jdksavdecc_frame_init(struct jdksavdecc_frame *p) {
     memset(p->payload, 0, sizeof(p->payload));
 }
 
-ssize_t jdksavdecc_frame_read(struct jdksavdecc_frame *p, void const *base, ssize_t pos, size_t len);
-ssize_t jdksavdecc_frame_write(struct jdksavdecc_frame const *p, void *base, ssize_t pos, size_t len);
+ssize_t jdksavdecc_frame_read(struct jdksavdecc_frame *p, void const *base,
+                              ssize_t pos, size_t len);
+ssize_t jdksavdecc_frame_write(struct jdksavdecc_frame const *p, void *base,
+                               ssize_t pos, size_t len);
 
 /*@}*/
 
 /** frame sender class */
 struct jdksavdecc_frame_sender {
     void (*destroy)(struct jdksavdecc_frame_sender *);
-    void (*send)(struct jdksavdecc_frame_sender *, struct jdksavdecc_frame const *frame);
+    void (*send)(struct jdksavdecc_frame_sender *,
+                 struct jdksavdecc_frame const *frame);
 };
 
 #ifdef __cplusplus
 }
 #endif
-

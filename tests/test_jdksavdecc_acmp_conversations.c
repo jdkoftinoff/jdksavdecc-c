@@ -54,16 +54,17 @@ int main(int argc, char **argv) {
         out_file_name = argv[2];
     }
 
-    log_info(JDKSAVDECC_SUBSYSTEM_GENERIC,"%8s:%s", "Starting", argv[0]);
+    log_info(JDKSAVDECC_SUBSYSTEM_GENERIC, "%8s:%s", "Starting", argv[0]);
 
     jdksavdecc_pdu_dispatch_init(&pdu_dispatch);
     {
         struct jdksavdecc_state_machine my_acmp_scanner;
 
-        pdu_dispatch.acmp_controller_state_machines->add_state_machine(pdu_dispatch.acmp_controller_state_machines,
-                                                                       &my_acmp_scanner);
+        pdu_dispatch.acmp_controller_state_machines->add_state_machine(
+            pdu_dispatch.acmp_controller_state_machines, &my_acmp_scanner);
 
-        r = jdksavdecc_test_run(in_file_name, out_file_name, &pdu_dispatch, 0, minimum_time_to_synthesize,
+        r = jdksavdecc_test_run(in_file_name, out_file_name, &pdu_dispatch, 0,
+                                minimum_time_to_synthesize,
                                 time_step_in_microseconds);
     }
     return (r != 0) ? EXIT_SUCCESS : EXIT_FAILURE;

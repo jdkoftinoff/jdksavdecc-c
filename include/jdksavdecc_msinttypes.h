@@ -53,7 +53,8 @@ typedef struct {
 
 // 7.8.1 Macros for format specifiers
 
-#if !defined(__cplusplus) || defined(__STDC_FORMAT_MACROS) // [   See footnote 185 at page 198
+#if !defined(__cplusplus) ||                                                   \
+    defined(__STDC_FORMAT_MACROS) // [   See footnote 185 at page 198
 
 // The fprintf macros for signed integers are:
 #define PRId8 "d"

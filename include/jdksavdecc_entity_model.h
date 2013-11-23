@@ -42,16 +42,25 @@ extern "C" {
 struct jdksavdecc_entity_model {
     void (*destroy)(struct jdksavdecc_entity_model *self);
 
-    struct jdksavdecc_eui64 (*get_entity_model_id)(struct jdksavdecc_entity_model *self);
+    struct jdksavdecc_eui64 (*get_entity_model_id)(
+        struct jdksavdecc_entity_model *self);
 
-    uint16_t (*read_descriptor)(struct jdksavdecc_entity_model *self, uint16_t configuration_number, uint16_t descriptor_type,
-                                uint16_t descriptor_index, uint8_t *result_buffer, uint16_t result_buffer_len);
+    uint16_t (*read_descriptor)(struct jdksavdecc_entity_model *self,
+                                uint16_t configuration_number,
+                                uint16_t descriptor_type,
+                                uint16_t descriptor_index,
+                                uint8_t *result_buffer,
+                                uint16_t result_buffer_len);
 
-    uint16_t (*get_control)(struct jdksavdecc_entity_model *self, uint16_t configuration_number, uint16_t descriptor_index,
-                            uint8_t *result_buffer, uint16_t result_buffer_len);
+    uint16_t (*get_control)(struct jdksavdecc_entity_model *self,
+                            uint16_t configuration_number,
+                            uint16_t descriptor_index, uint8_t *result_buffer,
+                            uint16_t result_buffer_len);
 
-    uint16_t (*set_control)(struct jdksavdecc_entity_model *self, uint16_t configuration_number, uint16_t descriptor_index,
-                            uint8_t const *buffer, uint16_t buffer_len);
+    uint16_t (*set_control)(struct jdksavdecc_entity_model *self,
+                            uint16_t configuration_number,
+                            uint16_t descriptor_index, uint8_t const *buffer,
+                            uint16_t buffer_len);
 };
 
 int jdksavdecc_entity_model_init(struct jdksavdecc_entity_model *self);
@@ -60,4 +69,3 @@ void jdksavdecc_entity_model_destroy(struct jdksavdecc_entity_model *self);
 #ifdef __cplusplus
 }
 #endif
-

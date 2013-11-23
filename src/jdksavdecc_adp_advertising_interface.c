@@ -33,9 +33,10 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_adp_advertising_interface.h"
 
-int jdksavdecc_adp_advertising_interface_state_machine_init(struct jdksavdecc_adp_advertising_interface_state_machine *self,
-                                                            struct jdksavdecc_adp_advertising_interface_vars *interface_vars,
-                                                            uint32_t tag, void *additional) {
+int jdksavdecc_adp_advertising_interface_state_machine_init(
+    struct jdksavdecc_adp_advertising_interface_state_machine *self,
+    struct jdksavdecc_adp_advertising_interface_vars *interface_vars,
+    uint32_t tag, void *additional) {
     log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
 
     jdksavdecc_state_machine_init(&self->base, 0, tag, additional);
@@ -47,21 +48,24 @@ int jdksavdecc_adp_advertising_interface_state_machine_init(struct jdksavdecc_ad
     return 0;
 }
 
-void jdksavdecc_adp_advertising_interface_state_machine_destroy(struct jdksavdecc_state_machine *self_) {
+void jdksavdecc_adp_advertising_interface_state_machine_destroy(
+    struct jdksavdecc_state_machine *self_) {
     struct jdksavdecc_adp_advertising_interface_state_machine *self =
         (struct jdksavdecc_adp_advertising_interface_state_machine *)self_;
     jdksavdecc_state_machine_destroy(&self->base);
 }
 
-void jdksavdecc_adp_advertising_interface_state_machine_tick(struct jdksavdecc_state_machine *self_,
-                                                             jdksavdecc_timestamp_in_microseconds timestamp) {
+void jdksavdecc_adp_advertising_interface_state_machine_tick(
+    struct jdksavdecc_state_machine *self_,
+    jdksavdecc_timestamp_in_microseconds timestamp) {
     struct jdksavdecc_adp_advertising_interface_state_machine *self =
         (struct jdksavdecc_adp_advertising_interface_state_machine *)self_;
     jdksavdecc_state_machine_tick(&self->base, timestamp);
 }
 
-ssize_t jdksavdecc_adp_advertising_interface_state_machine_rx_frame(struct jdksavdecc_state_machine *self_,
-                                                                    struct jdksavdecc_frame *rx_frame, size_t pos) {
+ssize_t jdksavdecc_adp_advertising_interface_state_machine_rx_frame(
+    struct jdksavdecc_state_machine *self_, struct jdksavdecc_frame *rx_frame,
+    size_t pos) {
     struct jdksavdecc_adp_advertising_interface_state_machine *self =
         (struct jdksavdecc_adp_advertising_interface_state_machine *)self_;
     (void)self;
@@ -94,20 +98,20 @@ void jdksavdecc_adp_advertising_interface_state_machine_state_initialize(
     (void)self;
 }
 
-void
-jdksavdecc_adp_advertising_interface_state_machine_goto_waiting(struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+void jdksavdecc_adp_advertising_interface_state_machine_goto_waiting(
+    struct jdksavdecc_adp_advertising_interface_state_machine *self) {
     // TODO:
     (void)self;
 }
 
-void
-jdksavdecc_adp_advertising_interface_state_machine_state_waiting(struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+void jdksavdecc_adp_advertising_interface_state_machine_state_waiting(
+    struct jdksavdecc_adp_advertising_interface_state_machine *self) {
     // TODO:
     (void)self;
 }
 
-void
-jdksavdecc_adp_advertising_interface_state_machine_goto_departing(struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+void jdksavdecc_adp_advertising_interface_state_machine_goto_departing(
+    struct jdksavdecc_adp_advertising_interface_state_machine *self) {
     // TODO:
     (void)self;
 }
@@ -118,8 +122,8 @@ void jdksavdecc_adp_advertising_interface_state_machine_state_departing(
     (void)self;
 }
 
-void
-jdksavdecc_adp_advertising_interface_state_machine_goto_advertise(struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+void jdksavdecc_adp_advertising_interface_state_machine_goto_advertise(
+    struct jdksavdecc_adp_advertising_interface_state_machine *self) {
     // TODO:
     (void)self;
 }
@@ -142,8 +146,8 @@ void jdksavdecc_adp_advertising_interface_state_machine_state_received_discover(
     (void)self;
 }
 
-void
-jdksavdecc_adp_advertising_interface_state_machine_goto_update_gm(struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+void jdksavdecc_adp_advertising_interface_state_machine_goto_update_gm(
+    struct jdksavdecc_adp_advertising_interface_state_machine *self) {
     // TODO:
     (void)self;
 }

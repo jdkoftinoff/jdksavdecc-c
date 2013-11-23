@@ -51,21 +51,25 @@ struct jdksavdecc_pcapfile_header {
 };
 
 struct jdksavdecc_pcapfile_record_header {
-    uint32_t ts_sec;   /* timestamp seconds */
-    uint32_t ts_usec;  /* timestamp microseconds or nanoseconds when format is nano */
+    uint32_t ts_sec;  /* timestamp seconds */
+    uint32_t ts_usec; /* timestamp microseconds or nanoseconds when format is
+                         nano */
     uint32_t incl_len; /* number of octets of packet saved in file */
     uint32_t orig_len; /* actual length of packet */
 };
 
-int jdksavdecc_pcapfile_reader_dispatch_with_no_file(struct jdksavdecc_pcapfile_reader *self,
-                                                     struct jdksavdecc_pdu_dispatch *dispatcher);
+int jdksavdecc_pcapfile_reader_dispatch_with_no_file(
+    struct jdksavdecc_pcapfile_reader *self,
+    struct jdksavdecc_pdu_dispatch *dispatcher);
 
-int jdksavdecc_pcapfile_reader_dispatch_frames_with_file(struct jdksavdecc_pcapfile_reader *self,
-                                                         struct jdksavdecc_pdu_dispatch *dispatcher);
+int jdksavdecc_pcapfile_reader_dispatch_frames_with_file(
+    struct jdksavdecc_pcapfile_reader *self,
+    struct jdksavdecc_pdu_dispatch *dispatcher);
 
-void jdksavdecc_pcapfile_reader_init(struct jdksavdecc_pcapfile_reader *self,
-                                     jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize,
-                                     jdksavdecc_timestamp_in_microseconds time_step_in_microseconds) {
+void jdksavdecc_pcapfile_reader_init(
+    struct jdksavdecc_pcapfile_reader *self,
+    jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize,
+    jdksavdecc_timestamp_in_microseconds time_step_in_microseconds) {
     self->f = 0;
     self->swapped = 0;
     self->nano = 0;
@@ -79,9 +83,13 @@ void jdksavdecc_pcapfile_reader_init(struct jdksavdecc_pcapfile_reader *self,
     self->tick = 0;
 }
 
-void jdksavdecc_pcapfile_reader_destroy(struct jdksavdecc_pcapfile_reader *self) { self->close(self); }
+void
+jdksavdecc_pcapfile_reader_destroy(struct jdksavdecc_pcapfile_reader *self) {
+    self->close(self);
+}
 
-int jdksavdecc_pcapfile_reader_open(struct jdksavdecc_pcapfile_reader *self, char const *fname) {
+int jdksavdecc_pcapfile_reader_open(struct jdksavdecc_pcapfile_reader *self,
+                                    char const *fname) {
     int r = 0;
 
     // if fname is set then open the file
@@ -101,32 +109,46 @@ int jdksavdecc_pcapfile_reader_open(struct jdksavdecc_pcapfile_reader *self, cha
         if (self->f) {
             struct jdksavdecc_pcapfile_header file_header;
             if (fread(&file_header, sizeof(file_header), 1, self->f) == 1) {
-                if (file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_SWAPPED) {
+                if (file_header.magic_number ==
+                    JDKSAVDECC_PCAPFILE_HEADER_MAGIC_SWAPPED) {
                     self->swapped = 1;
                     self->nano = 0;
                     r = 1;
-                } else if (file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NATIVE) {
+                } else if (file_header.magic_number ==
+                           JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NATIVE) {
                     self->swapped = 0;
                     self->nano = 0;
                     r = 1;
-                } else if (file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_SWAPPED) {
+                } else if (file_header.magic_number ==
+                           JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_SWAPPED) {
                     self->swapped = 1;
                     self->nano = 1;
                     r = 1;
-                } else if (file_header.magic_number == JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_NATIVE) {
+                } else if (file_header.magic_number ==
+                           JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NANO_NATIVE) {
                     self->swapped = 0;
                     self->nano = 1;
                     r = 1;
                 }
 
                 if (self->swapped) {
-                    file_header.magic_number = jdksavdecc_endian_reverse_uint32(&file_header.magic_number);
-                    file_header.version_major = jdksavdecc_endian_reverse_uint16(&file_header.version_major);
-                    file_header.version_minor = jdksavdecc_endian_reverse_uint16(&file_header.version_minor);
-                    file_header.thiszone = (int32_t)jdksavdecc_endian_reverse_uint32((uint32_t *)&file_header.thiszone);
-                    file_header.sigfigs = jdksavdecc_endian_reverse_uint32(&file_header.sigfigs);
-                    file_header.snaplen = jdksavdecc_endian_reverse_uint32(&file_header.snaplen);
-                    file_header.network = jdksavdecc_endian_reverse_uint32(&file_header.network);
+                    file_header.magic_number = jdksavdecc_endian_reverse_uint32(
+                        &file_header.magic_number);
+                    file_header.version_major =
+                        jdksavdecc_endian_reverse_uint16(
+                            &file_header.version_major);
+                    file_header.version_minor =
+                        jdksavdecc_endian_reverse_uint16(
+                            &file_header.version_minor);
+                    file_header.thiszone =
+                        (int32_t)jdksavdecc_endian_reverse_uint32(
+                            (uint32_t *)&file_header.thiszone);
+                    file_header.sigfigs =
+                        jdksavdecc_endian_reverse_uint32(&file_header.sigfigs);
+                    file_header.snaplen =
+                        jdksavdecc_endian_reverse_uint32(&file_header.snaplen);
+                    file_header.network =
+                        jdksavdecc_endian_reverse_uint32(&file_header.network);
                 }
             }
 
@@ -137,7 +159,8 @@ int jdksavdecc_pcapfile_reader_open(struct jdksavdecc_pcapfile_reader *self, cha
             }
         }
     } else {
-        // If fname is null then we don't try to open anything, we exist only to synthesize ticks
+        // If fname is null then we don't try to open anything, we exist only to
+        // synthesize ticks
         r = 1;
         self->f = 0;
     }
@@ -152,27 +175,39 @@ void jdksavdecc_pcapfile_reader_close(struct jdksavdecc_pcapfile_reader *self) {
     }
 }
 
-int jdksavdecc_pcapfile_reader_read_frame(struct jdksavdecc_pcapfile_reader *self, struct jdksavdecc_frame *frame) {
+int
+jdksavdecc_pcapfile_reader_read_frame(struct jdksavdecc_pcapfile_reader *self,
+                                      struct jdksavdecc_frame *frame) {
     int r = 0;
     if (self->f) {
         struct jdksavdecc_pcapfile_record_header frame_record;
         if (fread(&frame_record, sizeof(frame_record), 1, self->f) == 1) {
             uint8_t buf[2048];
             if (self->swapped) {
-                frame_record.ts_sec = jdksavdecc_endian_reverse_uint32(&frame_record.ts_sec);
-                frame_record.ts_usec = jdksavdecc_endian_reverse_uint32(&frame_record.ts_usec);
-                frame_record.incl_len = jdksavdecc_endian_reverse_uint32(&frame_record.incl_len);
-                frame_record.orig_len = jdksavdecc_endian_reverse_uint32(&frame_record.orig_len);
+                frame_record.ts_sec =
+                    jdksavdecc_endian_reverse_uint32(&frame_record.ts_sec);
+                frame_record.ts_usec =
+                    jdksavdecc_endian_reverse_uint32(&frame_record.ts_usec);
+                frame_record.incl_len =
+                    jdksavdecc_endian_reverse_uint32(&frame_record.incl_len);
+                frame_record.orig_len =
+                    jdksavdecc_endian_reverse_uint32(&frame_record.orig_len);
             }
 
             if (frame_record.incl_len <= sizeof(buf)) {
                 if (fread(buf, frame_record.incl_len, 1, self->f) == 1) {
-                    if (jdksavdecc_frame_read(frame, buf, 0, frame_record.incl_len) == frame_record.incl_len) {
+                    if (jdksavdecc_frame_read(frame, buf, 0,
+                                              frame_record.incl_len) ==
+                        frame_record.incl_len) {
                         if (self->nano) {
                             frame->time =
-                                ((uint64_t)frame_record.ts_sec * 1000000) + (frame_record.ts_usec / 1000); // convert nano to micro
+                                ((uint64_t)frame_record.ts_sec * 1000000) +
+                                (frame_record.ts_usec /
+                                 1000); // convert nano to micro
                         } else {
-                            frame->time = ((uint64_t)frame_record.ts_sec * 1000000) + (frame_record.ts_usec);
+                            frame->time =
+                                ((uint64_t)frame_record.ts_sec * 1000000) +
+                                (frame_record.ts_usec);
                         }
                         r = 1;
                     }
@@ -186,22 +221,27 @@ int jdksavdecc_pcapfile_reader_read_frame(struct jdksavdecc_pcapfile_reader *sel
     return r;
 }
 
-int jdksavdecc_pcapfile_reader_dispatch_frames(struct jdksavdecc_pcapfile_reader *self,
-                                               struct jdksavdecc_pdu_dispatch *dispatcher) {
+int jdksavdecc_pcapfile_reader_dispatch_frames(
+    struct jdksavdecc_pcapfile_reader *self,
+    struct jdksavdecc_pdu_dispatch *dispatcher) {
     if (self->f) {
-        return jdksavdecc_pcapfile_reader_dispatch_frames_with_file(self, dispatcher);
+        return jdksavdecc_pcapfile_reader_dispatch_frames_with_file(self,
+                                                                    dispatcher);
     } else {
-        return jdksavdecc_pcapfile_reader_dispatch_with_no_file(self, dispatcher);
+        return jdksavdecc_pcapfile_reader_dispatch_with_no_file(self,
+                                                                dispatcher);
     }
 }
 
-int jdksavdecc_pcapfile_reader_dispatch_with_no_file(struct jdksavdecc_pcapfile_reader *self,
-                                                     struct jdksavdecc_pdu_dispatch *dispatcher) {
+int jdksavdecc_pcapfile_reader_dispatch_with_no_file(
+    struct jdksavdecc_pcapfile_reader *self,
+    struct jdksavdecc_pdu_dispatch *dispatcher) {
     int r = 0;
     jdksavdecc_timestamp_in_microseconds cur_time = 0;
 
     // until we are finished dispatching all frames
-    while (r == 0 && !dispatcher->base.terminated && cur_time < self->minimum_time_to_synthesize) {
+    while (r == 0 && !dispatcher->base.terminated &&
+           cur_time < self->minimum_time_to_synthesize) {
 
         // notify the dispatcher about the tick time
         dispatcher->base.tick(&dispatcher->base, cur_time);
@@ -217,11 +257,13 @@ int jdksavdecc_pcapfile_reader_dispatch_with_no_file(struct jdksavdecc_pcapfile_
     return r;
 }
 
-int jdksavdecc_pcapfile_reader_dispatch_frames_with_file(struct jdksavdecc_pcapfile_reader *self,
-                                                         struct jdksavdecc_pdu_dispatch *dispatcher) {
+int jdksavdecc_pcapfile_reader_dispatch_frames_with_file(
+    struct jdksavdecc_pcapfile_reader *self,
+    struct jdksavdecc_pdu_dispatch *dispatcher) {
     int r = 0;
     jdksavdecc_timestamp_in_microseconds cur_time = 0;
-    jdksavdecc_timestamp_in_microseconds next_time = self->minimum_time_to_synthesize;
+    jdksavdecc_timestamp_in_microseconds next_time =
+        self->minimum_time_to_synthesize;
 
     // until we are finished dispatching all frames
     while (r == 0) {
@@ -237,7 +279,8 @@ int jdksavdecc_pcapfile_reader_dispatch_frames_with_file(struct jdksavdecc_pcapf
                 cur_time = frame.time;
                 next_time = cur_time;
             } else {
-                // Otherwise use the next packet time from the file as our next_time
+                // Otherwise use the next packet time from the file as our
+                // next_time
                 next_time = frame.time;
             }
         } else {
@@ -246,8 +289,10 @@ int jdksavdecc_pcapfile_reader_dispatch_frames_with_file(struct jdksavdecc_pcapf
 
         // Do we have tick functions to call?
         if (self->tick || dispatcher->base.tick) {
-            // yes, simulate ticks every time_step_in_microseconds to get to this point
-            while (r == 0 && cur_time >= next_time + self->time_step_in_microseconds) {
+            // yes, simulate ticks every time_step_in_microseconds to get to
+            // this point
+            while (r == 0 &&
+                   cur_time >= next_time + self->time_step_in_microseconds) {
                 if (dispatcher->base.tick) {
                     // notify the dispatcher about the tick time
                     dispatcher->base.tick(&dispatcher->base, cur_time);
@@ -286,9 +331,13 @@ void jdksavdecc_pcapfile_writer_init(struct jdksavdecc_pcapfile_writer *self) {
     self->inherited.send = jdksavdecc_pcapfile_writer_send;
 }
 
-void jdksavdecc_pcapfile_writer_destroy(struct jdksavdecc_pcapfile_writer *self) { self->close(self); }
+void
+jdksavdecc_pcapfile_writer_destroy(struct jdksavdecc_pcapfile_writer *self) {
+    self->close(self);
+}
 
-int jdksavdecc_pcapfile_writer_open(struct jdksavdecc_pcapfile_writer *self, char const *fname) {
+int jdksavdecc_pcapfile_writer_open(struct jdksavdecc_pcapfile_writer *self,
+                                    char const *fname) {
     int r = 0;
 #ifdef _MSC_VER
     errno_t e;
@@ -329,8 +378,10 @@ void jdksavdecc_pcapfile_writer_close(struct jdksavdecc_pcapfile_writer *self) {
     }
 }
 
-void jdksavdecc_pcapfile_writer_send(struct jdksavdecc_frame_sender *self_, struct jdksavdecc_frame const *frame) {
-    struct jdksavdecc_pcapfile_writer *self = (struct jdksavdecc_pcapfile_writer *)self_;
+void jdksavdecc_pcapfile_writer_send(struct jdksavdecc_frame_sender *self_,
+                                     struct jdksavdecc_frame const *frame) {
+    struct jdksavdecc_pcapfile_writer *self =
+        (struct jdksavdecc_pcapfile_writer *)self_;
     uint8_t buf[2048];
     ssize_t len;
     struct jdksavdecc_pcapfile_record_header frame_record;

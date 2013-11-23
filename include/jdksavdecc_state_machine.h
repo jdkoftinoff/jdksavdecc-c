@@ -41,7 +41,6 @@ extern "C" {
 /** \addtogroup state_machine State Machine Base Interface */
 /*@{*/
 
-
 /// Common base class for state machines
 struct jdksavdecc_state_machine {
     /// Destructor
@@ -51,13 +50,16 @@ struct jdksavdecc_state_machine {
     void (*terminate)(struct jdksavdecc_state_machine *self);
 
     /// Time tick. Returns 0 on success, -1 on state machine terminated
-    int (*tick)(struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp);
+    int (*tick)(struct jdksavdecc_state_machine *self,
+                jdksavdecc_timestamp_in_microseconds timestamp);
 
     /// Received Frame
-    ssize_t (*rx_frame)(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos);
+    ssize_t (*rx_frame)(struct jdksavdecc_state_machine *self,
+                        struct jdksavdecc_frame *rx_frame, size_t pos);
 
     /// Transmit Frame
-    void (*tx_frame)(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame);
+    void (*tx_frame)(struct jdksavdecc_state_machine *self,
+                     struct jdksavdecc_frame const *frame);
 
     /// Object to Transmit Frame with
     struct jdksavdecc_frame_sender *frame_sender;
@@ -71,12 +73,14 @@ struct jdksavdecc_state_machine {
     /// Auxiliary pointer for additional associations
     void *additional;
 
-    /// Flag used to trigger an early tick due to protocol handling message request
+    /// Flag used to trigger an early tick due to protocol handling message
+    /// request
     int do_early_tick;
 };
 
 /// Initialize state machine
-void jdksavdecc_state_machine_init(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame_sender *frame_sender,
+void jdksavdecc_state_machine_init(struct jdksavdecc_state_machine *self,
+                                   struct jdksavdecc_frame_sender *frame_sender,
                                    uint32_t tag, void *additional);
 
 /// Destroy state machine
@@ -86,17 +90,21 @@ void jdksavdecc_state_machine_destroy(struct jdksavdecc_state_machine *self);
 void jdksavdecc_state_machine_terminate(struct jdksavdecc_state_machine *self);
 
 /// Time tick.  Returns 0 on success, -1 on state machine terminated
-int jdksavdecc_state_machine_tick(struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp);
+int jdksavdecc_state_machine_tick(
+    struct jdksavdecc_state_machine *self,
+    jdksavdecc_timestamp_in_microseconds timestamp);
 
 /// Received Frame
-ssize_t jdksavdecc_state_machine_rx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos);
+ssize_t jdksavdecc_state_machine_rx_frame(struct jdksavdecc_state_machine *self,
+                                          struct jdksavdecc_frame *rx_frame,
+                                          size_t pos);
 
 /// Transmit Frame
-void jdksavdecc_state_machine_tx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame);
+void jdksavdecc_state_machine_tx_frame(struct jdksavdecc_state_machine *self,
+                                       struct jdksavdecc_frame const *frame);
 
 /*@}*/
 
 #ifdef __cplusplus
 }
 #endif
-

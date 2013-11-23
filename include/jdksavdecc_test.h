@@ -39,13 +39,14 @@
 extern "C" {
 #endif
 
-int jdksavdecc_test_run(char const *infilename, char const *outfilename, struct jdksavdecc_pdu_dispatch *pdu_dispatch,
-                        int (*tick)(struct jdksavdecc_pcapfile_reader *self, jdksavdecc_timestamp_in_microseconds time),
-                        jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize,
-                        jdksavdecc_timestamp_in_microseconds time_step_in_microseconds);
+int jdksavdecc_test_run(
+    char const *infilename, char const *outfilename,
+    struct jdksavdecc_pdu_dispatch *pdu_dispatch,
+    int (*tick)(struct jdksavdecc_pcapfile_reader *self,
+                jdksavdecc_timestamp_in_microseconds time),
+    jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize,
+    jdksavdecc_timestamp_in_microseconds time_step_in_microseconds);
 
 #ifdef __cplusplus
 }
 #endif
-
-

@@ -33,11 +33,13 @@
 #include "jdksavdecc_maap_print.h"
 
 struct jdksavdecc_uint16_name jdksavdecc_maap_print_message_type[] = {
-    {JDKSAVDECC_MAAP_PROBE, "PROBE"}, {JDKSAVDECC_MAAP_DEFEND, "DEFEND"}, {JDKSAVDECC_MAAP_ANNOUNCE, "ANNOUNCE"}, {0, 0}};
+    {JDKSAVDECC_MAAP_PROBE, "PROBE"},       {JDKSAVDECC_MAAP_DEFEND, "DEFEND"},
+    {JDKSAVDECC_MAAP_ANNOUNCE, "ANNOUNCE"}, {0, 0}};
 
 void jdksavdecc_maap_print(FILE *f, struct jdksavdecc_maap const *p) {
     jdksavdecc_print_label(f, "message_type");
-    jdksavdecc_print_uint16_name(f, jdksavdecc_maap_print_message_type, p->header.message_type);
+    jdksavdecc_print_uint16_name(f, jdksavdecc_maap_print_message_type,
+                                 p->header.message_type);
     jdksavdecc_print_eol(f);
 
     jdksavdecc_print_label(f, "maap_version");

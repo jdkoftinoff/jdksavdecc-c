@@ -32,54 +32,64 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_descriptor_storage_gen.h"
 
-void jdksavdecc_descriptor_storage_gen_init(struct jdksavdecc_descriptor_storage_gen *self, uint8_t *buffer, size_t buffer_size) {
+void jdksavdecc_descriptor_storage_gen_init(
+    struct jdksavdecc_descriptor_storage_gen *self, uint8_t *buffer,
+    size_t buffer_size) {
     /* @TODO */
     (void)self;
     (void)buffer;
     (void)buffer_size;
 }
 
-void jdksavdecc_descriptor_storage_gen_destroy(struct jdksavdecc_descriptor_storage_gen *self) {
+void jdksavdecc_descriptor_storage_gen_destroy(
+    struct jdksavdecc_descriptor_storage_gen *self) {
     /* @TODO */
     (void)self;
 }
 
-void jdksavdecc_descriptor_storage_gen_finish(struct jdksavdecc_descriptor_storage_gen *self) {
+void jdksavdecc_descriptor_storage_gen_finish(
+    struct jdksavdecc_descriptor_storage_gen *self) {
     /* @TODO */
     (void)self;
 }
 
-void jdksavdecc_descriptor_storage_gen_add_configuration(struct jdksavdecc_descriptor_storage_gen *self) {
+void jdksavdecc_descriptor_storage_gen_add_configuration(
+    struct jdksavdecc_descriptor_storage_gen *self) {
     /* @TODO */
     (void)self;
 }
 
-void jdksavdecc_descriptor_storage_gen_finish_configuration(struct jdksavdecc_descriptor_storage_gen *self) {
+void jdksavdecc_descriptor_storage_gen_finish_configuration(
+    struct jdksavdecc_descriptor_storage_gen *self) {
     /* @TODO */
     (void)self;
 }
 
-void jdksavdecc_descriptor_storage_gen_add_descriptor_list(struct jdksavdecc_descriptor_storage_gen *self,
-                                                           uint16_t descriptor_type) {
+void jdksavdecc_descriptor_storage_gen_add_descriptor_list(
+    struct jdksavdecc_descriptor_storage_gen *self, uint16_t descriptor_type) {
     /* @TODO */
     (void)self;
     (void)descriptor_type;
 }
 
-void jdksavdecc_descriptor_storage_gen_finish_descriptor_list(struct jdksavdecc_descriptor_storage_gen *self) {
+void jdksavdecc_descriptor_storage_gen_finish_descriptor_list(
+    struct jdksavdecc_descriptor_storage_gen *self) {
     /* @TODO */
     (void)self;
 }
 
-void jdksavdecc_descriptor_storage_gen_add_descriptor(struct jdksavdecc_descriptor_storage_gen *self,
-                                                      struct jdksavdecc_descriptor const *descriptor, uint16_t descriptor_len) {
+void jdksavdecc_descriptor_storage_gen_add_descriptor(
+    struct jdksavdecc_descriptor_storage_gen *self,
+    struct jdksavdecc_descriptor const *descriptor, uint16_t descriptor_len) {
     /* @TODO */
     (void)self;
     (void)descriptor;
     (void)descriptor_len;
 }
 
-int jdksavdecc_descriptor_storage_gen_export_binary(uint8_t const *buffer, size_t buffer_len, const char *fname) {
+int jdksavdecc_descriptor_storage_gen_export_binary(uint8_t const *buffer,
+                                                    size_t buffer_len,
+                                                    const char *fname) {
     /* @TODO */
     (void)buffer;
     (void)buffer_len;
@@ -87,7 +97,10 @@ int jdksavdecc_descriptor_storage_gen_export_binary(uint8_t const *buffer, size_
     return -1;
 }
 
-int jdksavdecc_descriptor_storage_gen_export_c(uint8_t const *buffer, size_t buffer_len, const char *fname_c, const char *fname_h) {
+int jdksavdecc_descriptor_storage_gen_export_c(uint8_t const *buffer,
+                                               size_t buffer_len,
+                                               const char *fname_c,
+                                               const char *fname_h) {
     /* @TODO */
     (void)buffer;
     (void)buffer_len;

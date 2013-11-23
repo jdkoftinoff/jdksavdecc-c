@@ -39,9 +39,9 @@
 extern "C" {
 #endif
 
-/** \addtogroup acmp_controller ACMPDU Controller State Machine - Clause 8.2.2.4 */
+/** \addtogroup acmp_controller ACMPDU Controller State Machine - Clause 8.2.2.4
+ */
 /*@{*/
-
 
 /// @todo acmp controller state machine implementation
 struct jdksavdecc_acmp_controller_state_machine {
@@ -49,19 +49,25 @@ struct jdksavdecc_acmp_controller_state_machine {
     struct jdksavdecc_eui64 controller_entity_id;
 };
 
-void jdksavdecc_acmp_controller_state_machine_init(struct jdksavdecc_acmp_controller_state_machine *self,
-                                                   struct jdksavdecc_eui64 controller_entity_id,
-                                                   struct jdksavdecc_frame_sender *sender, uint32_t tag, void *additional);
+void jdksavdecc_acmp_controller_state_machine_init(
+    struct jdksavdecc_acmp_controller_state_machine *self,
+    struct jdksavdecc_eui64 controller_entity_id,
+    struct jdksavdecc_frame_sender *sender, uint32_t tag, void *additional);
 
-void jdksavdecc_acmp_controller_state_machine_destroy(struct jdksavdecc_state_machine *self);
+void jdksavdecc_acmp_controller_state_machine_destroy(
+    struct jdksavdecc_state_machine *self);
 
-void jdksavdecc_acmp_controller_state_machine_tick(struct jdksavdecc_state_machine *self,
-                                                   jdksavdecc_timestamp_in_microseconds timestamp);
+void jdksavdecc_acmp_controller_state_machine_tick(
+    struct jdksavdecc_state_machine *self,
+    jdksavdecc_timestamp_in_microseconds timestamp);
 
-ssize_t jdksavdecc_acmp_controller_state_machine_rx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame,
-                                                          size_t pos);
+ssize_t jdksavdecc_acmp_controller_state_machine_rx_frame(
+    struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame,
+    size_t pos);
 
-void jdksavdecc_acmp_controller_state_machine_tx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame);
+void jdksavdecc_acmp_controller_state_machine_tx_frame(
+    struct jdksavdecc_state_machine *self,
+    struct jdksavdecc_frame const *frame);
 
 /*@}*/
 #ifdef __cplusplus
