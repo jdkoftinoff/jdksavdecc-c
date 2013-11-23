@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_UTIL_H
-#define JDKSAVDECC_UTIL_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -654,6 +652,4 @@ static inline void jdksavdecc_gptp_seconds_set(struct jdksavdecc_gptp_seconds v,
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

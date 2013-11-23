@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_H
-#define JDKSAVDECC_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -85,5 +83,3 @@
 
 #include "jdksavdecc_state_machine.h"
 #include "jdksavdecc_state_machines.h"
-
-#endif

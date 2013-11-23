@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_APS_H
-#define JDKSAVDECC_APS_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -53,6 +51,4 @@ struct jdksavdec_aps_state_machine {
 };
 #ifdef __cplusplus
 }
-#endif
-
 #endif

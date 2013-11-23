@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ACMP_H
-#define JDKSAVDECC_ACMP_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -629,4 +627,3 @@ int jdksavdecc_acmp_talker_stream_infos_init(struct jdksavdecc_acmp_talker_strea
 }
 #endif
 
-#endif

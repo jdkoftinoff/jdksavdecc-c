@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_TEST_H
-#define JDKSAVDECC_TEST_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -50,4 +48,4 @@ int jdksavdecc_test_run(char const *infilename, char const *outfilename, struct 
 }
 #endif
 
-#endif
+

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_AEM_ENTITY_H
-#define JDKSAVDECC_AEM_ENTITY_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -64,6 +62,4 @@ struct jdksavdecc_aem_entity_state_machine {
 };
 #ifdef __cplusplus
 }
-#endif
-
 #endif

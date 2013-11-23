@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ACMP_LISTENER_H
-#define JDKSAVDECC_ACMP_LISTENER_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -41,24 +39,6 @@
 extern "C" {
 #endif
 
-#ifndef JDKSAVDECC_ACMP_LISTENER_ENABLE_LOG
-#define JDKSAVDECC_ACMP_LISTENER_ENABLE_LOG (1)
-#endif
-
-#if JDKSAVDECC_ACMP_LISTENER_ENABLE_LOG
-#define jdksavdecc_acmp_listener_log jdksavdecc_log_info
-#ifndef jdksavdecc_acmp_listener_log_enter
-#define jdksavdecc_acmp_listener_log_enter() jdksavdecc_acmp_listener_log("Enter:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#ifndef jdksavdecc_acmp_listener_log_exit
-#define jdksavdecc_acmp_listener_log_exit() jdksavdecc_acmp_listener_log("Exit:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#else
-#define jdksavdecc_acmp_listener_interface_log(fmt, ...)
-#define jdksavdecc_acmp_listener_interface_log_enter()
-#define jdksavdecc_acmp_listener_interface_log_exit()
-#endif
-
 /** \addtogroup acmp_listener ACMPDU Listener State Machine - Clause 8.2.2.5 */
 /*@{*/
 
@@ -85,6 +65,4 @@ void jdksavdecc_acmp_listener_state_machine_tx_frame(struct jdksavdecc_state_mac
 /*@}*/
 #ifdef __cplusplus
 }
-#endif
-
 #endif

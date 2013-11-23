@@ -36,14 +36,14 @@
 int jdksavdecc_adp_advertising_interface_state_machine_init(struct jdksavdecc_adp_advertising_interface_state_machine *self,
                                                             struct jdksavdecc_adp_advertising_interface_vars *interface_vars,
                                                             uint32_t tag, void *additional) {
-    jdksavdecc_adp_advertising_interface_log_enter();
+    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
 
     jdksavdecc_state_machine_init(&self->base, 0, tag, additional);
 
     // TODO:
     (void)interface_vars;
 
-    jdksavdecc_adp_advertising_interface_log_exit();
+    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
     return 0;
 }
 

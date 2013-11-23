@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_LOG_FILE_H
-#define JDKSAVDECC_LOG_FILE_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -58,6 +56,4 @@ void jdksavdecc_log_file_init(FILE *f);
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

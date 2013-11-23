@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_LOG_H
-#define JDKSAVDECC_LOG_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -45,10 +43,78 @@ extern "C" {
 */
 /*@{*/
 
+enum {
+    JDKSAVDECC_SUBSYSTEM_GENERIC=0,
+    JDKSAVDECC_SUBSYSTEM_PDU,
+    JDKSAVDECC_SUBSYSTEM_AEM,
+    JDKSAVDECC_SUBSYSTEM_PROXY_APC,
+    JDKSAVDECC_SUBSYSTEM_PROXY_APS,
+    JDKSAVDECC_SUBSYSTEM_CONTROLLER,
+    JDKSAVDECC_SUBSYSTEM_ADVERTISER,
+    JDKSAVDECC_SUBSYSTEM_DISCOVER,
+    JDKSAVDECC_SUBSYSTEM_LISTENER,
+    JDKSAVDECC_SUBSYSTEM_TALKER,
+    JDKSAVDECC_SUBSYSTEM_RESPONDER,
+    JDKSAVDECC_SUBSYSTEM_MAAP,
+    JDKSAVDECC_SUBSYSTEM_ENTITY
+};
+
+
+
 extern void (*jdksavdecc_log_debug)(const char *fmt, ...);
 extern void (*jdksavdecc_log_info)(const char *fmt, ...);
 extern void (*jdksavdecc_log_warning)(const char *fmt, ...);
 extern void (*jdksavdecc_log_error)(const char *fmt, ...);
+extern bool jdksavdecc_log_subsystem_enable[32];
+
+#ifndef log_debug
+# ifdef JDKSAVDECC_DISABLE_LOG_DEBUG
+#  define log_debug(subsystem,...)
+# else
+#  define log_debug(subsystem,...) do { if( jdksavdecc_log_subsystem_enable[(subsystem)] && jdksavdecc_log_debug ) { jdksavdecc_log_debug(__VA_ARGS__); } } while(false)
+# endif
+#endif
+
+#ifndef log_info
+# ifdef JDKSAVDECC_DISABLE_LOG_INFO
+#  define log_info(subsystem,...)
+# else
+#  define log_info(subsystem,...) do { if( jdksavdecc_log_subsystem_enable[(subsystem)] && jdksavdecc_log_info) { jdksavdecc_log_info(__VA_ARGS__); } } while(false)
+# endif
+#endif
+
+#ifndef log_warning
+# ifdef JDKSAVDECC_DISABLE_LOG_WARNING
+#  define log_warning(subsystem,...)
+# else
+#  define log_warning(subsystem,...) do { if( jdksavdecc_log_subsystem_enable[(subsystem)] && jdksavdecc_log_warning) { jdksavdecc_log_warning(__VA_ARGS__); } } while(false)
+# endif
+#endif
+
+#ifndef log_error
+# ifdef JDKSAVDECC_DISABLE_LOG_ERROR
+#  define log_error(subsystem,...)
+# else
+#  define log_error(subsystem,...) do { if( jdksavdecc_log_subsystem_enable[(subsystem)] && jdksavdecc_log_error) { jdksavdecc_log_error(__VA_ARGS__); } } while(false)
+# endif
+#endif
+
+#ifndef log_enter
+# ifdef JDKSAVDECC_DISABLE_LOG_ENTER
+#  define log_enter(subsystem)
+# else
+#  define log_enter(subsystem) do { if( jdksavdecc_log_subsystem_enable[(subsystem)] && jdksavdecc_log_debug) { jdksavdecc_log_debug("ENTER:%s",__FUNCTION__); } } while(false)
+# endif
+#endif
+
+#ifndef log_exit
+# ifdef JDKSAVDECC_DISABLE_LOG_EXIT
+#  define log_exit(subsystem)
+# else
+#  define log_exit(subsystem) do { if( jdksavdecc_log_subsystem_enable[(subsystem)] && jdksavdecc_log_debug) { jdksavdecc_log_debug( "EXIT :%s",__FUNCTION__); } } while(false)
+# endif
+#endif
+
 
 /*@}*/
 
@@ -56,4 +122,3 @@ extern void (*jdksavdecc_log_error)(const char *fmt, ...);
 }
 #endif
 
-#endif

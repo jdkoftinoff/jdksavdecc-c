@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_DESCRIPTOR_STORAGE_H
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -289,4 +287,3 @@ int jdksavdecc_descriptor_storage_read_symbol(struct jdksavdecc_descriptor_stora
 }
 #endif
 
-#endif

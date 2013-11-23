@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_FRAME_LIST_H
-#define JDKSAVDECC_FRAME_LIST_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -72,4 +70,3 @@ void jdksavdecc_frame_list_delete(struct jdksavdecc_frame_list *self, struct jdk
 }
 #endif
 
-#endif

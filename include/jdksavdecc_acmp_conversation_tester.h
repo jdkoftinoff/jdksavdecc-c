@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ACMP_CONVERSATION_TESTER_H
-#define JDKSAVDECC_ACMP_CONVERSATION_TESTER_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -140,6 +138,4 @@ ssize_t jdksavdecc_acmp_conversation_tester_rx_frame(struct jdksavdecc_state_mac
 /*@}*/
 #ifdef __cplusplus
 }
-#endif
-
 #endif

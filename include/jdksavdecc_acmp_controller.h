@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ACMP_CONTROLLER_H
-#define JDKSAVDECC_ACMP_CONTROLLER_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -44,23 +42,6 @@ extern "C" {
 /** \addtogroup acmp_controller ACMPDU Controller State Machine - Clause 8.2.2.4 */
 /*@{*/
 
-#ifndef JDKSAVDECC_ACMP_CONTROLLER_ENABLE_LOG
-#define JDKSAVDECC_ACMP_CONTROLLER_ENABLE_LOG (1)
-#endif
-
-#if JDKSAVDECC_ACMP_CONTROLLER_ENABLE_LOG
-#define jdksavdecc_acmp_controller_log jdksavdecc_log_info
-#ifndef jdksavdecc_acmp_controller_log_enter
-#define jdksavdecc_acmp_controller_log_enter() jdksavdecc_acmp_controller_log("Enter:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#ifndef jdksavdecc_acmp_controller_log_exit
-#define jdksavdecc_acmp_controller_log_exit() jdksavdecc_acmp_controller_log("Exit:%s:%d", __FUNCTION__, __LINE__)
-#endif
-#else
-#define jdksavdecc_acmp_controller_interface_log(fmt, ...)
-#define jdksavdecc_acmp_controller_interface_log_enter()
-#define jdksavdecc_acmp_controller_interface_log_exit()
-#endif
 
 /// @todo acmp controller state machine implementation
 struct jdksavdecc_acmp_controller_state_machine {
@@ -85,6 +66,4 @@ void jdksavdecc_acmp_controller_state_machine_tx_frame(struct jdksavdecc_state_m
 /*@}*/
 #ifdef __cplusplus
 }
-#endif
-
 #endif

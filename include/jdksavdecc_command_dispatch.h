@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_COMMAND_DISPATCH_PRINT_H
-#define JDKSAVDECC_COMMAND_DISPATCH_PRINT_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -68,6 +66,4 @@ ssize_t jdksavdecc_command_dispatch_rx_frame(struct jdksavdecc_command_dispatch 
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

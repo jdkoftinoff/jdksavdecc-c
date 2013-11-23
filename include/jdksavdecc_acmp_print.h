@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_ACMP_PRINT_H
-#define JDKSAVDECC_ACMP_PRINT_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -54,6 +52,4 @@ extern struct jdksavdecc_16bit_name jdksavdecc_acmpdu_print_flags[];
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

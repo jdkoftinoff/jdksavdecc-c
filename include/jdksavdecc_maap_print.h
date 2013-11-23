@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JDKSAVDECC_MAAP_PRINT_H
-#define JDKSAVDECC_MAAP_PRINT_H
 
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
@@ -55,4 +53,3 @@ void jdksavdecc_maap_print(FILE *f, struct jdksavdecc_maap const *p);
 }
 #endif
 
-#endif
