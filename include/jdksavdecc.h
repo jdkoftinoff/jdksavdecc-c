@@ -34,12 +34,15 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_util.h"
 #include "jdksavdecc_pdu.h"
+#include "jdksavdecc_frame.h"
+#include "jdksavdecc_frame_list.h"
 
 #include "jdksavdecc_acmp.h"
 #include "jdksavdecc_acmp_controller.h"
 #include "jdksavdecc_acmp_listener.h"
 #include "jdksavdecc_acmp_talker.h"
 #include "jdksavdecc_acmp_print.h"
+#include "jdksavdecc_acmp_conversation_tester.h"
 
 #include "jdksavdecc_adp.h"
 #include "jdksavdecc_adp_advertise.h"
