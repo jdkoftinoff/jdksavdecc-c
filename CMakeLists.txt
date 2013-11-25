@@ -6,9 +6,9 @@ set(LIBS ${LIBS} ${CHECK_LIBRARIES} jdksavdecc-c)
 
 include_directories( include )
 
-file(GLOB_RECURSE JDKSAVDECC_C_INCLUDES include  "*.h" )
+file(GLOB_RECURSE JDKSAVDECC_C_INCLUDES "include/*.h" )
 
-file(GLOB_RECURSE JDKSAVDECC_C_SRC src  "*.c" )
+file(GLOB_RECURSE JDKSAVDECC_C_SRC "src/*.c" )
 
 add_library (jdksavdecc-c ${JDKSAVDECC_C_SRC} ${JDKSAVDECC_C_INCLUDES})
 
