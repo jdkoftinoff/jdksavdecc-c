@@ -61,4 +61,5 @@
 #include <stdbool.h>
 #endif
 
+#include "jdksavdecc_allocator.h"
 #include "jdksavdecc_log.h"
