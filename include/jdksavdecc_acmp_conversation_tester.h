@@ -32,6 +32,7 @@
 */
 
 #include "jdksavdecc_world.h"
+#include "jdksavdecc_allocator.h"
 #include "jdksavdecc_state_machine.h"
 #include "jdksavdecc_pdu_dispatch.h"
 #include "jdksavdecc_frame_list.h"

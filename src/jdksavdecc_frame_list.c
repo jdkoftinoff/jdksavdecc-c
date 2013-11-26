@@ -33,7 +33,9 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_frame_list.h"
 
-int jdksavdecc_frame_list_init(struct jdksavdecc_frame_list *self) {
+int jdksavdecc_frame_list_init(struct jdksavdecc_frame_list *self,
+                               struct jdksavdecc_allocator *allocator) {
+    self->allocator = allocator;
     self->first = 0;
     self->last = 0;
     return 0;
@@ -46,21 +48,21 @@ void jdksavdecc_frame_list_destroy(struct jdksavdecc_frame_list *self) {
         struct jdksavdecc_frame_list_item *cur = item;
 
         if (cur->context) {
-            free(cur->context);
+            jdksavdecc_delete(self->allocator, cur->context);
+            cur->context = 0;
         }
 
         item = cur->prev;
-
-        free(cur);
+        jdksavdecc_delete(self->allocator, cur);
     }
-    ;
 }
 
 struct jdksavdecc_frame_list_item *
 jdksavdecc_frame_list_add(struct jdksavdecc_frame_list *self,
                           struct jdksavdecc_frame const *frame, void *context) {
     struct jdksavdecc_frame_list_item *new_item =
-        calloc(sizeof(struct jdksavdecc_frame_list_item), 1);
+        jdksavdecc_new(self->allocator, struct jdksavdecc_frame_list_item);
+
     if (new_item) {
         new_item->prev = self->last;
         new_item->next = 0;
@@ -86,7 +88,31 @@ void jdksavdecc_frame_list_delete(struct jdksavdecc_frame_list *self,
         self->last = item->prev;
     }
     if (item->context) {
-        free(item->context);
+        jdksavdecc_delete(self->allocator, item->context);
+        item->context = 0;
     }
-    free(item);
+    jdksavdecc_delete(self->allocator, item);
+}
+
+struct jdksavdecc_frame_list_item *
+jdksavdecc_frame_list_find(struct jdksavdecc_frame_list *self,
+                           jdksavdecc_timestamp_in_microseconds timestamp) {
+    struct jdksavdecc_frame_list_item *result = 0;
+    struct jdksavdecc_frame_list_item *item = self->first;
+
+    if (self->first && self->last) {
+        if (timestamp >= self->first->frame.time &&
+            timestamp <= self->last->frame.time) {
+            while (item) {
+                if (item->frame.time < timestamp) {
+                    item = item->next;
+                } else {
+                    result = item;
+                    break;
+                }
+            }
+        }
+    }
+
+    return result;
 }

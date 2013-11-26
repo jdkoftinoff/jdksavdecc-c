@@ -33,6 +33,7 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_frame.h"
+#include "jdksavdecc_allocator.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -43,11 +44,15 @@ extern "C" {
 
 struct jdksavdecc_frame_list_item;
 
+/// Linked list of frame list items
 struct jdksavdecc_frame_list {
+    struct jdksavdecc_allocator *allocator;
     struct jdksavdecc_frame_list_item *first;
     struct jdksavdecc_frame_list_item *last;
 };
 
+/// a single element in the linked list of frame list items, along with a
+/// context pointer
 struct jdksavdecc_frame_list_item {
     struct jdksavdecc_frame_list_item *next;
     struct jdksavdecc_frame_list_item *prev;
@@ -55,17 +60,28 @@ struct jdksavdecc_frame_list_item {
     void *context;
 };
 
-int jdksavdecc_frame_list_init(struct jdksavdecc_frame_list *self);
+/// Initialize a frame list object
+int jdksavdecc_frame_list_init(struct jdksavdecc_frame_list *self,
+                               struct jdksavdecc_allocator *allocator);
 
+/// Deallocate the enclosed list items of a frame list object
 void jdksavdecc_frame_list_destroy(struct jdksavdecc_frame_list *self);
 
+/// Add a frame to the list
 struct jdksavdecc_frame_list_item *
     jdksavdecc_frame_list_add(struct jdksavdecc_frame_list *self,
                               struct jdksavdecc_frame const *frame,
                               void *context);
 
+/// Delete a frame from the linked list
 void jdksavdecc_frame_list_delete(struct jdksavdecc_frame_list *self,
                                   struct jdksavdecc_frame_list_item *item);
+
+/// Find the frame with the matching specified timestamp, or the nearest frame
+/// after the specified timestamp
+struct jdksavdecc_frame_list_item *
+    jdksavdecc_frame_list_find(struct jdksavdecc_frame_list *self,
+                               jdksavdecc_timestamp_in_microseconds timestamp);
 
 /*@}*/
 
