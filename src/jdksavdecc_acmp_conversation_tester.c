@@ -33,19 +33,58 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp_conversation_tester.h"
 
-#if 0
+#if 0 
 
 int jdksavdecc_acmp_conversation_init(struct jdksavdecc_acmp_conversation *self,
+                                      struct jdksavdecc_allocator *allocator,
                                       struct jdksavdecc_frame const *initial_connect_rx_command_frame) {
-    return 0; // @todo
+    int r=-1;
+    int i;
+
+    r=jdksavdecc_frame_list_init(&self->acmp_frames,allocator);
+    if( r==0 ) {
+        if( jdksavdecc_acmpdu_read(&self->current_state,initial_connect_rx_command_frame->payload,0,initial_connect_rx_command_frame->length)>0 ) {
+            for( i=0; i<16; ++i ) {
+                self->message_type_histogram[i] = 0;
+                self->message_type_timestamp[i] = 0;
+                self->message_type_status[i] = 0;
+            }
+            self->current_state_timestamp = initial_connect_rx_command_frame->time;
+            self->listener_entity_id = self->current_state.listener_entity_id;
+            self->listener_unique_id = self->current_state.listener_unique_id;
+            self->talker_entity_id = self->current_state.talker_entity_id;
+            self->talker_unique_id = self->current_state.talker_unique_id;
+            self->message_type_histogram[ JDKSAVDECC_ACMP_MESSAGE_TYPE_CONNECT_RX_COMMAND ]++;
+            self->message_type_timestamp[ JDKSAVDECC_ACMP_MESSAGE_TYPE_CONNECT_RX_COMMAND ] = initial_connect_rx_command_frame->time;
+            self->message_type_status[ JDKSAVDECC_ACMP_MESSAGE_TYPE_CONNECT_RX_COMMAND ] = self->current_state.header.status;
+            jdksavdecc_frame_list_add( &self->acmp_frames, initial_connect_rx_command_frame, 0 );
+        }
+        else {
+            jdksavdecc_frame_list_destroy( self->acmp_frames );
+            r=-1;
+        }
+    }
+
+    return r;
 }
 
 void jdksavdecc_acmp_conversation_update(struct jdksavdecc_acmp_conversation *self, struct jdksavdecc_frame const *acmpdu) {
-    // @todo
+    if( jdksavdecc_acmpdu_read(&self->current_state,acmpdu->payload,0,acmpdu->length)>0 ) {
+        self->message_type_histogram[ JDKSAVDECC_ACMP_MESSAGE_TYPE_CONNECT_RX_COMMAND ]++;
+        self->message_type_timestamp[ JDKSAVDECC_ACMP_MESSAGE_TYPE_CONNECT_RX_COMMAND ] = acmpdu->time;
+        self->message_type_status[ JDKSAVDECC_ACMP_MESSAGE_TYPE_CONNECT_RX_COMMAND ] = self->current_state.header.status;
+        jdksavdecc_frame_list_add(&self->acmp_frames,acmpdu,0);
+    }
 }
 
 void jdksavdecc_acmp_conversation_log(struct jdksavdecc_acmp_conversation *self) {
-    // @todo
+    log_info( JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS, "%08x:%04x->%08x:%04x:",
+              jdksavdecc_eui64_convert_to_uint64(&self->talker_entity_id),
+              self->talker_unique_id,
+              jdksavdecc_eui64_convert_to_uint64(&self->listener_entity_id),
+              self->listener_unique_id
+              );
+    log_info( JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS, "" );
 }
 
 int jdksavdecc_acmp_conversation_list_init(struct jdksavdecc_acmp_conversation *self) {
@@ -102,4 +141,5 @@ ssize_t jdksavdecc_acmp_conversation_tester_rx_frame(struct jdksavdecc_state_mac
     // @todo
     return -1;
 }
+
 #endif
