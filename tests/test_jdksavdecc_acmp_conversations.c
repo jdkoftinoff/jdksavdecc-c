@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
     jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize = 5000000;
     jdksavdecc_timestamp_in_microseconds time_step_in_microseconds = 10000;
 
-    _chdir(getenv("HOME"));
+    chdir(getenv("HOME"));
 
     if (argc > 1) {
         in_file_name = argv[1];
