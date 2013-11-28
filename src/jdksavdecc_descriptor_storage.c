@@ -64,7 +64,7 @@ uint32_t jdksavdecc_descriptor_storage_buffer_read_data(
     uint32_t r = 0;
     if (self->storage_length >= offset + length) {
         r = length;
-        memcpy(buffer, self->user_ptr + offset, length);
+        memcpy(buffer, (uint8_t *)(self->user_ptr) + offset, length);
     }
     return r;
 }

@@ -31,7 +31,6 @@
 */
 
 #include "jdksavdecc.h"
-#include <unistd.h>
 #include "jdksavdecc_pcapfile.h"
 #include "jdksavdecc_pdu_dispatch.h"
 #include "jdksavdecc_test.h"

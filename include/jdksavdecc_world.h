@@ -42,23 +42,29 @@
 #include <ctype.h>
 
 #ifdef _MSC_VER
-#if _MSC_VER < 1800
-#include <BaseTsd.h>
-#include "jdksavdecc_msstdint.h"
-#include "jdksavdecc_msinttypes.h"
-#ifndef ssize_t
-#define ssize_t SSIZE_T
-#endif
-#ifndef __cplusplus
-#ifndef inline
-#define inline __inline
-#endif
-#endif
-#endif
+# include <BaseTsd.h>
+# ifndef ssize_t
+#  define ssize_t SSIZE_T
+# endif
+# include <direct.h>
+# if _MSC_VER < 1800
+#  include "jdksavdecc_msstdint.h"
+#  include "jdksavdecc_msinttypes.h"
+# else
+#  include <stdint.h>
+#  include <inttypes.h>
+#  include <stdbool.h>
+# endif
+# ifndef __cplusplus
+#  ifndef inline
+#   define inline __inline
+#  endif
+# endif
 #else
-#include <stdint.h>
-#include <inttypes.h>
-#include <stdbool.h>
+# include <unistd.h>
+# include <stdint.h>
+# include <inttypes.h>
+# include <stdbool.h>
 #endif
 
 #include "jdksavdecc_allocator.h"

@@ -157,7 +157,7 @@ void jdksavdecc_pdu_print(FILE *f, const uint8_t *p, size_t len,
                 jdksavdecc_print_eol(f);
 
                 jdksavdecc_print_label(f, "control_data_length");
-                jdksavdecc_print_uint8(
+                jdksavdecc_print_uint16(
                     f, (uint16_t)
                     jdksavdecc_common_control_header_get_control_data_length(
                         p, 0));
