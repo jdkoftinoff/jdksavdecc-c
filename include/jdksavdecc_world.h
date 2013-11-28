@@ -60,6 +60,9 @@
 #   define inline __inline
 #  endif
 # endif
+# ifndef chdir
+#  define chdir _chdir
+# endif 
 #else
 # include <unistd.h>
 # include <stdint.h>
