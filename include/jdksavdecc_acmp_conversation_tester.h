@@ -61,11 +61,13 @@ struct jdksavdecc_acmp_conversation {
 
     int message_type_histogram[16];
     jdksavdecc_timestamp_in_microseconds message_type_timestamp[16];
+    uint8_t message_type_status[16];
 };
 
 /// Initiialize an ACMP Conversation tracker
 int jdksavdecc_acmp_conversation_init(
     struct jdksavdecc_acmp_conversation *self,
+    struct jdksavdecc_allocator *allocator,
     struct jdksavdecc_frame const *initial_connect_rx_command_frame);
 
 /// Update the conversation given the incoming associated acmpdu
