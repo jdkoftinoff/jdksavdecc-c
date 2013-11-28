@@ -31,11 +31,11 @@
 */
 
 #include "jdksavdecc.h"
-#include <unistd.h>
 #include "jdksavdecc_pcapfile.h"
 #include "jdksavdecc_pdu_dispatch.h"
 #include "jdksavdecc_test.h"
 #include "jdksavdecc_acmp_conversation_tester.h"
+
 
 int main(int argc, char **argv) {
     int r = 0;
@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
     jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize = 5000000;
     jdksavdecc_timestamp_in_microseconds time_step_in_microseconds = 10000;
 
-    chdir(getenv("HOME"));
+    _chdir(getenv("HOME"));
 
     if (argc > 1) {
         in_file_name = argv[1];
