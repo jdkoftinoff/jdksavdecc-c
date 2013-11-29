@@ -31,24 +31,35 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <errno.h>
-#include <assert.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <limits.h>
-#include <ctype.h>
 
 #ifdef _MSC_VER
-# include "jdksavdecc_ms.h"
-#else
-# include <unistd.h>
-# include <stdint.h>
-# include <inttypes.h>
-# include <stdbool.h>
+# include <BaseTsd.h>
+# ifndef ssize_t
+#  define ssize_t SSIZE_T
+# endif
+# include <direct.h>
+# if _MSC_VER < 1800
+#  include "jdksavdecc_msstdint.h"
+#  include "jdksavdecc_msinttypes.h"
+# else
+#  include <stdint.h>
+#  include <inttypes.h>
+#  include <stdbool.h>
+# endif
+# ifndef __cplusplus
+#  ifndef inline
+#   define inline __inline
+#  endif
+# endif
+# ifndef chdir
+#  define chdir _chdir
+# endif
+# ifndef __cplusplus
+#  ifndef bool
+#   define bool uint8_t
+#   define true (1)
+#   define false (0)
+#  endif
+# endif
 #endif
 
-#include "jdksavdecc_allocator.h"
-#include "jdksavdecc_log.h"
