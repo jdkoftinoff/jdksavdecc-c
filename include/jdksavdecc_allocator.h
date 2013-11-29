@@ -149,7 +149,6 @@ void jdksavdecc_simple_allocator_destroy(struct jdksavdecc_allocator *self);
 void *jdksavdecc_simple_allocator_alloc(struct jdksavdecc_allocator *self,
                                         int32_t length, int32_t count);
 
-
 void jdksavdecc_simple_allocator_free(struct jdksavdecc_allocator *self,
                                       const void *ptr);
 
