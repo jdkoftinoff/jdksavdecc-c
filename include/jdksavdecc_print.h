@@ -42,32 +42,6 @@ extern "C" {
 /** \addtogroup print Print Utilities */
 /*@{*/
 
-#ifndef JDKSAVDECC_ENABLE_PRINT
-#define JDKSAVDECC_ENABLE_PRINT (1)
-#endif
-
-#if JDKSAVDECC_ENABLE_PRINT
-
-#ifndef jdksavdecc_print
-#define jdksavdecc_print(f, fmt, ...) fprintf(f, fmt, ##__VA_ARGS__)
-#endif
-
-#ifndef jdksavdecc_printc
-#define jdksavdecc_printc(f, c) fputc((c), (f))
-#endif
-
-#else
-
-#ifndef jdksavdecc_print
-#define jdksavdecc_print(f, fmt, ...)
-#endif
-
-#ifndef jdksavdecc_printc
-#define jdksavdecc_printc(f, c)
-#endif
-
-#endif
-
 struct jdksavdecc_16bit_name {
     uint16_t bit_value;
     char const *name;
@@ -129,7 +103,7 @@ uint64_t jdksavdecc_get_uint64_value_for_name(
 
 char const *jdksavdecc_get_name_for_eui48_value(
     struct jdksavdecc_eui48_name const names[], struct jdksavdecc_eui48 v);
-struct jdksavdecc_eui48_t const *
+struct jdksjdksavdecc_eui48 const *
     avdecc_get_eui48_value_for_name(struct jdksavdecc_eui48_name const names[],
                                     char const *name);
 
@@ -139,43 +113,81 @@ struct jdksavdecc_eui64 const *
     avdecc_get_eui64_value_for_name(struct jdksavdecc_eui64_name const names[],
                                     char const *name);
 
-void jdksavdecc_print_eol(FILE *f);
-void jdksavdecc_print_label(FILE *f, const char *v);
-void jdksavdecc_print_hexdigits(FILE *f, uint8_t v);
-void jdksavdecc_print_block(FILE *f, const uint8_t *p, size_t sz,
-                            size_t start_pos, size_t end_pos);
+/** \addtogroup util_print Print Utilities */
+/*@{*/
 
-void jdksavdecc_print_uint8(FILE *f, uint8_t v);
-void jdksavdecc_print_uint16(FILE *f, uint16_t v);
-void jdksavdecc_print_uint32(FILE *f, uint32_t v);
-void jdksavdecc_print_uint64(FILE *f, uint64_t v);
-void jdksavdecc_print_eui48(FILE *f, struct jdksavdecc_eui48 v);
-void jdksavdecc_print_eui64(FILE *f, struct jdksavdecc_eui64 v);
-void jdksavdecc_print_streamid(FILE *f, struct jdksavdecc_eui64 v);
-void jdksavdecc_print_string(FILE *f, struct jdksavdecc_string const *v);
-void jdksavdecc_print_gptp_seconds(FILE *f, struct jdksavdecc_gptp_seconds v);
+struct jdksavdecc_printer {
+    char *buf;
+    size_t max_len;
+    size_t pos;
+};
 
-void jdksavdecc_print_16bit_names(FILE *f,
-                                  struct jdksavdecc_16bit_name const names[],
-                                  uint16_t v);
-void jdksavdecc_print_32bit_names(FILE *f,
-                                  struct jdksavdecc_32bit_name const names[],
-                                  uint32_t v);
-void jdksavdecc_print_uint16_name(FILE *f,
-                                  struct jdksavdecc_uint16_name const names[],
-                                  uint16_t v);
-void jdksavdecc_print_uint32_name(FILE *f,
-                                  struct jdksavdecc_uint32_name const names[],
-                                  uint32_t v);
-void jdksavdecc_print_uint64_name(FILE *f,
-                                  struct jdksavdecc_uint64_name const names[],
-                                  uint64_t v);
-void jdksavdecc_print_eui48_name(FILE *f,
-                                 struct jdksavdecc_eui48_name const names[],
-                                 struct jdksavdecc_eui48 v);
-void jdksavdecc_print_eui64_name(FILE *f,
-                                 struct jdksavdecc_eui64_name const names[],
-                                 struct jdksavdecc_eui64 v);
+static inline void jdksavdecc_printer_init(struct jdksavdecc_printer *self,
+                                           char *buf, size_t max_len) {
+    self->buf = buf;
+    self->max_len = max_len;
+    self->pos = 0;
+}
+
+static inline void jdksavdecc_printer_printc(struct jdksavdecc_printer *self,
+                                             char v) {
+    if (self->max_len - self->pos > 2) {
+        self->buf[self->pos++] = v;
+        self->buf[self->pos] = '\0';
+    }
+}
+
+void jdksavdecc_printer_print(struct jdksavdecc_printer *self, const char *fmt);
+void jdksavdecc_printer_print_eol(struct jdksavdecc_printer *self);
+void jdksavdecc_printer_print_label(struct jdksavdecc_printer *self,
+                                    const char *v);
+
+void jdksavdecc_printer_print_hexdigits(struct jdksavdecc_printer *self,
+                                        uint8_t v);
+
+void jdksavdecc_printer_print_block(struct jdksavdecc_printer *self,
+                                    const uint8_t *p, size_t sz,
+                                    size_t start_pos, size_t end_pos);
+
+void jdksavdecc_printer_print_uint8(struct jdksavdecc_printer *self, uint8_t v);
+void jdksavdecc_printer_print_uint16(struct jdksavdecc_printer *self,
+                                     uint16_t v);
+void jdksavdecc_printer_print_uint32(struct jdksavdecc_printer *self,
+                                     uint32_t v);
+void jdksavdecc_printer_print_uint64(struct jdksavdecc_printer *self,
+                                     uint64_t v);
+void jdksavdecc_printer_print_eui48(struct jdksavdecc_printer *self,
+                                    struct jdksavdecc_eui48 v);
+void jdksavdecc_printer_print_eui64(struct jdksavdecc_printer *self,
+                                    struct jdksavdecc_eui64 v);
+void jdksavdecc_printer_print_streamid(struct jdksavdecc_printer *self,
+                                       struct jdksavdecc_eui64 v);
+void jdksavdecc_printer_print_string(struct jdksavdecc_printer *self,
+                                     struct jdksavdecc_string const *v);
+void jdksavdecc_printer_print_gptp_seconds(struct jdksavdecc_printer *self,
+                                           struct jdksavdecc_gptp_seconds v);
+
+void jdksavdecc_printer_print_16bit_names(
+    struct jdksavdecc_printer *self, struct jdksavdecc_16bit_name const names[],
+    uint16_t v);
+void jdksavdecc_printer_print_32bit_names(
+    struct jdksavdecc_printer *self, struct jdksavdecc_32bit_name const names[],
+    uint32_t v);
+void jdksavdecc_printer_print_uint16_name(
+    struct jdksavdecc_printer *self,
+    struct jdksavdecc_uint16_name const names[], uint16_t v);
+void jdksavdecc_printer_print_uint32_name(
+    struct jdksavdecc_printer *self,
+    struct jdksavdecc_uint32_name const names[], uint32_t v);
+void jdksavdecc_printer_print_uint64_name(
+    struct jdksavdecc_printer *self,
+    struct jdksavdecc_uint64_name const names[], uint64_t v);
+void jdksavdecc_printer_print_eui48_name(
+    struct jdksavdecc_printer *self, struct jdksavdecc_eui48_name const names[],
+    struct jdksavdecc_eui48 v);
+void jdksavdecc_printer_print_eui64_name(
+    struct jdksavdecc_printer *self, struct jdksavdecc_eui64_name const names[],
+    struct jdksavdecc_eui64 v);
 
 extern char jdksavdecc_hexdig[16];
 

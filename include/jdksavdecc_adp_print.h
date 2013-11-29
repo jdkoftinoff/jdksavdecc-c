@@ -55,8 +55,10 @@ extern struct jdksavdecc_32bit_name
     jdksavdecc_adpdu_print_controller_capabilities[];
 
 void jdksavdecc_adpdu_print_common_control_header(
-    FILE *f, struct jdksavdecc_adpdu_common_control_header const *p);
-void jdksavdecc_adpdu_print(FILE *f, struct jdksavdecc_adpdu const *p);
+    struct jdksavdecc_printer *self,
+    struct jdksavdecc_adpdu_common_control_header const *p);
+void jdksavdecc_adpdu_print(struct jdksavdecc_printer *self,
+                            struct jdksavdecc_adpdu const *p);
 
 /*@}*/
 

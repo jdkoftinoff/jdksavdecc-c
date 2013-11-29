@@ -32,147 +32,223 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_print.h"
 
-char jdksavdecc_hexdig[16] = "0123456789ABCDEF";
+char jdksavdecc_printer_hexdig[16] = "0123456789ABCDEF";
 
-void jdksacdecc_print_eol(FILE *f) { jdksavdecc_printc(f, '\n'); }
-
-void jdksavdecc_print_label(FILE *f, char const *v) {
-    jdksavdecc_print(f, "%40s: ", v);
-}
-
-void jdksavdecc_print_hexdigits(FILE *f, uint8_t v) {
-    jdksavdecc_print(f, "%02" PRIX8, v);
-}
-
-void jdksavdecc_print_uint8(FILE *f, uint8_t v) {
-    jdksavdecc_print(f, "0x%02" PRIX8, v);
-}
-
-void jdksavdecc_print_uint16(FILE *f, uint16_t v) {
-    jdksavdecc_print(f, "0x%04" PRIX16, v);
-}
-
-void jdksavdecc_print_uint32(FILE *f, uint32_t v) {
-    jdksavdecc_print(f, "0x%08" PRIX32, v);
-}
-
-void jdksavdecc_print_uint64(FILE *f, uint64_t v) {
-    jdksavdecc_print(f, "0x%016" PRIX64, v);
-}
-
-void jdksavdecc_print_eui48(FILE *f, struct jdksavdecc_eui48 v) {
-    jdksavdecc_print_hexdigits(f, v.value[0]);
-    jdksavdecc_print(f, "%s", "-");
-    jdksavdecc_print_hexdigits(f, v.value[1]);
-    jdksavdecc_print(f, "%s", "-");
-    jdksavdecc_print_hexdigits(f, v.value[2]);
-    jdksavdecc_print(f, "%s", "-");
-    jdksavdecc_print_hexdigits(f, v.value[3]);
-    jdksavdecc_print(f, "%s", "-");
-    jdksavdecc_print_hexdigits(f, v.value[4]);
-    jdksavdecc_print(f, "%s", "-");
-    jdksavdecc_print_hexdigits(f, v.value[5]);
-}
-
-void jdksavdecc_print_eui64(FILE *f, struct jdksavdecc_eui64 v) {
-    jdksavdecc_print_hexdigits(f, v.value[0]);
-    jdksavdecc_print(f, "%s", ":");
-    jdksavdecc_print_hexdigits(f, v.value[1]);
-    jdksavdecc_print(f, "%s", ":");
-    jdksavdecc_print_hexdigits(f, v.value[2]);
-    jdksavdecc_print(f, "%s", ":");
-    jdksavdecc_print_hexdigits(f, v.value[3]);
-    jdksavdecc_print(f, "%s", ":");
-    jdksavdecc_print_hexdigits(f, v.value[4]);
-    jdksavdecc_print(f, "%s", ":");
-    jdksavdecc_print_hexdigits(f, v.value[5]);
-    jdksavdecc_print(f, "%s", ":");
-    jdksavdecc_print_hexdigits(f, v.value[6]);
-    jdksavdecc_print(f, "%s", ":");
-    jdksavdecc_print_hexdigits(f, v.value[7]);
-}
-
-void jdksavdecc_print_streamid(FILE *f, struct jdksavdecc_eui64 v) {
-    jdksavdecc_print_hexdigits(f, v.value[0]);
-    jdksavdecc_print(f, "%s", "-");
-    jdksavdecc_print_hexdigits(f, v.value[1]);
-    jdksavdecc_print(f, "%s", "-");
-    jdksavdecc_print_hexdigits(f, v.value[2]);
-    jdksavdecc_print(f, "%s", "-");
-    jdksavdecc_print_hexdigits(f, v.value[3]);
-    jdksavdecc_print(f, "%s", "-");
-    jdksavdecc_print_hexdigits(f, v.value[4]);
-    jdksavdecc_print(f, "%s", ":");
-    jdksavdecc_print_hexdigits(f, v.value[5]);
-    jdksavdecc_print(f, "%s", "-");
-    jdksavdecc_print_hexdigits(f, v.value[6]);
-    jdksavdecc_print(f, "%s", ":");
-    jdksavdecc_print_hexdigits(f, v.value[7]);
-}
-
-void jdksavdecc_print_block(FILE *f, const uint8_t *p, size_t sz,
-                            size_t start_pos, size_t end_pos) {
-    size_t pos;
-    size_t step = 32;
-    size_t indent = 42;
-
-    for (pos = start_pos; pos < sz && pos < end_pos; pos += step) {
-        size_t i = 0;
-
-        for (i = 0; i < indent; ++i) {
-            jdksavdecc_printc(f, ' ');
-        }
-
-        jdksavdecc_print_uint32(f, (uint32_t)pos);
-        jdksavdecc_printc(f, ':');
-
-        for (i = pos; i < (pos + step) && (i < sz) && (i < end_pos); ++i) {
-            jdksavdecc_printc(f, ' ');
-            jdksavdecc_print_hexdigits(f, p[i]);
-        }
-        jdksavdecc_print_eol(f);
+void jdksavdecc_printer_print(struct jdksavdecc_printer *self, char const *v) {
+    while (*v) {
+        jdksavdecc_printer_printc(self, *v++);
     }
 }
 
-void jdksavdecc_print_string(FILE *f, struct jdksavdecc_string const *v) {
+void jdksavdecc_printer_print_label(struct jdksavdecc_printer *self,
+                                    char const *v) {
+    size_t padded_size = 40;
+    size_t len = strlen(v);
+    size_t padding = 0;
+    size_t total_len = len;
+
+    if (len < padded_size) {
+        padding = padded_size - len;
+        total_len = 64;
+    }
+
+    if (self->max_len - self->pos > total_len + 1) {
+        size_t i;
+        for (i = 0; i < padding; ++i) {
+            self->buf[self->pos++] = ' ';
+        }
+
+        while (*v) {
+            jdksavdecc_printer_printc(self, *v++);
+        }
+    }
+}
+
+void jdksavdecc_printer_print_hexdigits(struct jdksavdecc_printer *self,
+                                        uint8_t v) {
+    if (self->max_len - self->pos > 3) {
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[v >> 4];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[v & 0xf];
+        self->buf[self->pos] = '\0';
+    }
+}
+
+void jdksavdecc_printer_print_uint8(struct jdksavdecc_printer *self,
+                                    uint8_t v) {
+    if (self->max_len - self->pos > 5) {
+        self->buf[self->pos++] = '0';
+        self->buf[self->pos++] = 'x';
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[v >> 4];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[v & 0xf];
+        self->buf[self->pos] = '\0';
+    }
+}
+
+void jdksavdecc_printer_print_uint16(struct jdksavdecc_printer *self,
+                                     uint16_t v) {
+    if (self->max_len - self->pos > 7) {
+        self->buf[self->pos++] = '0';
+        self->buf[self->pos++] = 'x';
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 12) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 8) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 4) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[v & 0xf];
+        self->buf[self->pos] = '\0';
+    }
+}
+
+void jdksavdecc_printer_print_uint32(struct jdksavdecc_printer *self,
+                                     uint32_t v) {
+    if (self->max_len - self->pos > 11) {
+        self->buf[self->pos++] = '0';
+        self->buf[self->pos++] = 'x';
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 28) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 24) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 20) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 16) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 12) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 8) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 4) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[v & 0xf];
+        self->buf[self->pos] = '\0';
+    }
+}
+
+void jdksavdecc_printer_print_uint64(struct jdksavdecc_printer *self,
+                                     uint64_t v) {
+    if (self->max_len - self->pos > 19) {
+        self->buf[self->pos++] = '0';
+        self->buf[self->pos++] = 'x';
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 60) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 56) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 52) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 48) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 44) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 40) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 36) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 32) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 28) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 24) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 20) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 16) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 12) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 8) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 4) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[v & 0xf];
+        self->buf[self->pos] = '\0';
+    }
+}
+
+void jdksavdecc_printer_print_eui48(struct jdksavdecc_printer *self,
+                                    struct jdksavdecc_eui48 v) {
+    jdksavdecc_printer_print_hexdigits(self, v.value[0]);
+    jdksavdecc_printer_print(self, "-");
+    jdksavdecc_printer_print_hexdigits(self, v.value[1]);
+    jdksavdecc_printer_print(self, "-");
+    jdksavdecc_printer_print_hexdigits(self, v.value[2]);
+    jdksavdecc_printer_print(self, "-");
+    jdksavdecc_printer_print_hexdigits(self, v.value[3]);
+    jdksavdecc_printer_print(self, "-");
+    jdksavdecc_printer_print_hexdigits(self, v.value[4]);
+    jdksavdecc_printer_print(self, "-");
+    jdksavdecc_printer_print_hexdigits(self, v.value[5]);
+}
+
+void jdksavdecc_printer_print_eui64(struct jdksavdecc_printer *self,
+                                    struct jdksavdecc_eui64 v) {
+    jdksavdecc_printer_print_hexdigits(self, v.value[0]);
+    jdksavdecc_printer_print(self, ":");
+    jdksavdecc_printer_print_hexdigits(self, v.value[1]);
+    jdksavdecc_printer_print(self, ":");
+    jdksavdecc_printer_print_hexdigits(self, v.value[2]);
+    jdksavdecc_printer_print(self, ":");
+    jdksavdecc_printer_print_hexdigits(self, v.value[3]);
+    jdksavdecc_printer_print(self, ":");
+    jdksavdecc_printer_print_hexdigits(self, v.value[4]);
+    jdksavdecc_printer_print(self, ":");
+    jdksavdecc_printer_print_hexdigits(self, v.value[5]);
+    jdksavdecc_printer_print(self, ":");
+    jdksavdecc_printer_print_hexdigits(self, v.value[6]);
+    jdksavdecc_printer_print(self, ":");
+    jdksavdecc_printer_print_hexdigits(self, v.value[7]);
+}
+
+void jdksavdecc_printer_print_streamid(struct jdksavdecc_printer *self,
+                                       struct jdksavdecc_eui64 v) {
+    jdksavdecc_printer_print_hexdigits(self, v.value[0]);
+    jdksavdecc_printer_print(self, "-");
+    jdksavdecc_printer_print_hexdigits(self, v.value[1]);
+    jdksavdecc_printer_print(self, "-");
+    jdksavdecc_printer_print_hexdigits(self, v.value[2]);
+    jdksavdecc_printer_print(self, "-");
+    jdksavdecc_printer_print_hexdigits(self, v.value[3]);
+    jdksavdecc_printer_print(self, "-");
+    jdksavdecc_printer_print_hexdigits(self, v.value[4]);
+    jdksavdecc_printer_print(self, ":");
+    jdksavdecc_printer_print_hexdigits(self, v.value[5]);
+    jdksavdecc_printer_print(self, "-");
+    jdksavdecc_printer_print_hexdigits(self, v.value[6]);
+    jdksavdecc_printer_print(self, ":");
+    jdksavdecc_printer_print_hexdigits(self, v.value[7]);
+}
+
+void jdksavdecc_printer_print_string(struct jdksavdecc_printer *self,
+                                     struct jdksavdecc_string const *v) {
     size_t i = 0;
     size_t len = jdksavdecc_string_length(v);
-    jdksavdecc_printc(f, '\"');
+    jdksavdecc_printer_printc(self, '\"');
     for (i = 0; i < len; ++i) {
         int8_t c = (int8_t)v->value[i];
         switch (c) {
         case '\"':
-            jdksavdecc_printc(f, '\\');
-            jdksavdecc_printc(f, '\"');
+            jdksavdecc_printer_printc(self, '\\');
+            jdksavdecc_printer_printc(self, '\"');
             break;
         case '\t':
-            jdksavdecc_printc(f, '\\');
-            jdksavdecc_printc(f, 't');
+            jdksavdecc_printer_printc(self, '\\');
+            jdksavdecc_printer_printc(self, 't');
             break;
         case '\r':
-            jdksavdecc_printc(f, '\\');
-            jdksavdecc_printc(f, 'r');
+            jdksavdecc_printer_printc(self, '\\');
+            jdksavdecc_printer_printc(self, 'r');
             break;
         case '\n':
-            jdksavdecc_printc(f, '\\');
-            jdksavdecc_printc(f, 'n');
+            jdksavdecc_printer_printc(self, '\\');
+            jdksavdecc_printer_printc(self, 'n');
             break;
         default:
             if (c < 0x20) {
-                jdksavdecc_printc(f, '\\');
-                jdksavdecc_printc(f, 'x');
-                jdksavdecc_print_hexdigits(f, (uint8_t)c);
+                jdksavdecc_printer_printc(self, '\\');
+                jdksavdecc_printer_printc(self, 'x');
+                jdksavdecc_printer_print_hexdigits(self, (uint8_t)c);
             } else {
-                jdksavdecc_printc(f, c);
+                jdksavdecc_printer_printc(self, c);
             }
         }
     }
-    jdksavdecc_printc(f, '\"');
+    jdksavdecc_printer_printc(self, '\"');
 }
 
-void jdksavdecc_print_gptp_seconds(FILE *f, struct jdksavdecc_gptp_seconds p) {
+void jdksavdecc_printer_print_gptp_seconds(struct jdksavdecc_printer *self,
+                                           struct jdksavdecc_gptp_seconds p) {
     uint64_t v = p.seconds;
-    jdksavdecc_print(f, "0x%012" PRIx64, v);
+    if (self->max_len - self->pos > 15) {
+        self->buf[self->pos++] = '0';
+        self->buf[self->pos++] = 'x';
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 44) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 40) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 36) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 32) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 28) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 24) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 20) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 16) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 12) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 8) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[(v >> 4) & 0xf];
+        self->buf[self->pos++] = jdksavdecc_printer_hexdig[v & 0xf];
+        self->buf[self->pos] = '\0';
+    }
 }
 
 char const *
@@ -381,85 +457,89 @@ jdksavdecc_get_name_for_eui64_value(struct jdksavdecc_eui64_name const names[],
     return 0;
 }
 
-void jdksavdecc_print_16bit_names(FILE *f,
-                                  struct jdksavdecc_16bit_name const names[],
-                                  uint16_t v) {
+void
+jdksavdecc_printer_print_16bit_names(struct jdksavdecc_printer *self,
+                                     struct jdksavdecc_16bit_name const names[],
+                                     uint16_t v) {
     size_t i = 0;
 
-    jdksavdecc_print(f, "%s", "[ ");
+    jdksavdecc_printer_print(self, "[ ");
     while (names[i].name) {
         if (names[i].bit_value & v) {
-            jdksavdecc_print(f, "%s", names[i].name);
-            jdksavdecc_print(f, "%s", " ");
+            jdksavdecc_printer_print(self, names[i].name);
+            jdksavdecc_printer_print(self, " ");
         }
         ++i;
     }
-    jdksavdecc_print(f, "%s", "]");
+    jdksavdecc_printer_print(self, "]");
 }
 
-void jdksavdecc_print_32bit_names(FILE *f,
-                                  struct jdksavdecc_32bit_name const names[],
-                                  uint32_t v) {
+void
+jdksavdecc_printer_print_32bit_names(struct jdksavdecc_printer *self,
+                                     struct jdksavdecc_32bit_name const names[],
+                                     uint32_t v) {
     size_t i = 0;
 
-    jdksavdecc_print(f, "%s", "[ ");
+    jdksavdecc_printer_print(self, "[ ");
     while (names[i].name) {
         if (names[i].bit_value & v) {
-            jdksavdecc_print(f, "%s", names[i].name);
-            jdksavdecc_print(f, "%s", " ");
+            jdksavdecc_printer_print(self, names[i].name);
+            jdksavdecc_printer_print(self, " ");
         }
         ++i;
     }
-    jdksavdecc_print(f, "%s", "]");
+    jdksavdecc_printer_print(self, "]");
 }
 
-void jdksavdecc_print_uint16_name(FILE *f,
-                                  struct jdksavdecc_uint16_name const names[],
-                                  uint16_t v) {
+void jdksavdecc_printer_print_uint16_name(
+    struct jdksavdecc_printer *self,
+    struct jdksavdecc_uint16_name const names[], uint16_t v) {
     char const *s = jdksavdecc_get_name_for_uint16_value(names, v);
     if (s) {
-        jdksavdecc_print(f, "%s", s);
+        jdksavdecc_printer_print(self, s);
     } else {
-        jdksavdecc_print_uint16(f, v);
+        jdksavdecc_printer_print_uint16(self, v);
     }
 }
 
-void jdksavdecc_print_uint32_name(FILE *f,
-                                  struct jdksavdecc_uint32_name const names[],
-                                  uint32_t v) {
+void jdksavdecc_printer_print_uint32_name(
+    struct jdksavdecc_printer *self,
+    struct jdksavdecc_uint32_name const names[], uint32_t v) {
     char const *s = jdksavdecc_get_name_for_uint32_value(names, v);
     if (s) {
-        jdksavdecc_print(f, "%s", s);
+        jdksavdecc_printer_print(self, s);
     } else {
-        jdksavdecc_print_uint32(f, v);
+        jdksavdecc_printer_print_uint32(self, v);
     }
 }
 
-void jdksavdecc_print_uint64_name(FILE *f,
-                                  struct jdksavdecc_uint64_name const names[],
-                                  uint64_t v) {
+void jdksavdecc_printer_print_uint64_name(
+    struct jdksavdecc_printer *self,
+    struct jdksavdecc_uint64_name const names[], uint64_t v) {
     char const *s = jdksavdecc_get_name_for_uint64_value(names, v);
     if (s) {
-        jdksavdecc_print(f, "%s", s);
+        jdksavdecc_printer_print(self, s);
     } else {
-        jdksavdecc_print_uint64(f, v);
+        jdksavdecc_printer_print_uint64(self, v);
     }
 }
 
-void jdksavdecc_print_eui48_name(FILE *f,
-                                 struct jdksavdecc_eui48_name const names[],
-                                 struct jdksavdecc_eui48 v) {
+void
+jdksavdecc_printer_print_eui48_name(struct jdksavdecc_printer *self,
+                                    struct jdksavdecc_eui48_name const names[],
+                                    struct jdksavdecc_eui48 v) {
     char const *s = jdksavdecc_get_name_for_eui48_value(names, v);
     if (s) {
-        jdksavdecc_print(f, "%s", s);
+        jdksavdecc_printer_print(self, s);
     }
 }
 
-void jdksavdecc_print_eui64_name(FILE *f,
-                                 struct jdksavdecc_eui64_name const names[],
-                                 struct jdksavdecc_eui64 v) {
+void
+jdksavdecc_printer_print_eui64_name(struct jdksavdecc_printer *self,
+                                    struct jdksavdecc_eui64_name const names[],
+                                    struct jdksavdecc_eui64 v) {
     char const *s = jdksavdecc_get_name_for_eui64_value(names, v);
     if (s) {
-        jdksavdecc_print(f, "%s", s);
+        jdksavdecc_printer_print(self, s);
     }
 }

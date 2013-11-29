@@ -42,12 +42,12 @@
 #include <ctype.h>
 
 #ifdef _MSC_VER
-# include "jdksavdecc_ms.h"
+#include "jdksavdecc_ms.h"
 #else
-# include <unistd.h>
-# include <stdint.h>
-# include <inttypes.h>
-# include <stdbool.h>
+#include <unistd.h>
+#include <stdint.h>
+#include <inttypes.h>
+#include <stdbool.h>
 #endif
 
 #include "jdksavdecc_allocator.h"
