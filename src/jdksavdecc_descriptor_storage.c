@@ -86,8 +86,14 @@ int jdksavdecc_descriptor_storage_file_init(
         self->user_ptr = (void *)f;
         /* \TODO Check header */
         if (fseek(f, 0, SEEK_END) == 0) {
-            self->storage_length = ftell(f);
-            r = 0;
+            long pos = ftell(f);
+            if( pos>=0 ) {
+                self->storage_length = (uint32_t)pos;
+                r = 0;
+            }
+            else {
+                fclose(f);
+            }
         } else {
             fclose(f);
         }
