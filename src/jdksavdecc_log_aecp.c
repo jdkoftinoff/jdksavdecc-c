@@ -90,7 +90,7 @@ void jdksavdecc_log_aecp_fill_and_send(uint32_t descriptor_index,
     jdksavdecc_common_control_header_set_status(JDKSAVDECC_AECP_STATUS_SUCCESS,
                                                 payload, 0);
     jdksavdecc_common_control_header_set_control_data_length(
-        pos - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN, payload, 0);
+        (uint32_t)(pos - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN), payload, 0);
     jdksavdecc_common_control_header_set_stream_id(
         jdksavdecc_log_aecp->entity_id, payload, 0);
 
