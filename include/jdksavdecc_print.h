@@ -138,7 +138,11 @@ static inline void jdksavdecc_printer_printc(struct jdksavdecc_printer *self,
 }
 
 void jdksavdecc_printer_print(struct jdksavdecc_printer *self, const char *fmt);
-void jdksavdecc_printer_print_eol(struct jdksavdecc_printer *self);
+
+static inline void jdksavdecc_printer_print_eol(struct jdksavdecc_printer *self) {
+    jdksavdecc_printer_printc(self,'\n');
+}
+
 void jdksavdecc_printer_print_label(struct jdksavdecc_printer *self,
                                     const char *v);
 
