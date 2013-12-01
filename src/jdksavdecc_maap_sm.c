@@ -33,6 +33,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_maap_sm.h"
 
+#if ENABLE_MAAP_TODO
+
 void jdksavdecc_maap_state_machine_init(
     struct jdksavdecc_maap_state_machine *self,
     jdksavdecc_timestamp_in_microseconds current_time,
@@ -238,5 +240,7 @@ void jdksavdecc_maap_action_sannounce(
 
     log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
 }
+#endif
+
 
 #endif
