@@ -36,7 +36,6 @@
 #include "jdksavdecc_test.h"
 #include "jdksavdecc_acmp_conversation_tester.h"
 
-
 int main(int argc, char **argv) {
     int r = 0;
     const char *in_file_name = "test_jdksavdecc_acmp_conversations.pcap";
