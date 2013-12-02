@@ -77,13 +77,14 @@ void jdksavdecc_acmp_conversation_update(struct jdksavdecc_acmp_conversation *se
 }
 
 void jdksavdecc_acmp_conversation_log(struct jdksavdecc_acmp_conversation *self) {
+    int i;
     log_info( JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS, "%08x:%04x->%08x:%04x:",
               jdksavdecc_eui64_convert_to_uint64(&self->talker_entity_id),
               self->talker_unique_id,
               jdksavdecc_eui64_convert_to_uint64(&self->listener_entity_id),
               self->listener_unique_id
               );
-    for( int i=0; i<16; ++i ) {
+    for( i=0; i<16; ++i ) {
         const char *message_type_name=
             jdksavdecc_get_name_for_uint16_value(
                 jdksavdecc_acmpdu_print_message_type,
