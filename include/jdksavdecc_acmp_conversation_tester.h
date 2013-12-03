@@ -65,15 +65,15 @@ struct jdksavdecc_acmp_conversation {
 };
 
 /// Initiialize an ACMP Conversation tracker
-int jdksavdecc_acmp_conversation_init(
-    struct jdksavdecc_acmp_conversation *self,
-    struct jdksavdecc_allocator *allocator,
-    struct jdksavdecc_frame const *initial_connect_rx_command_frame);
+int jdksavdecc_acmp_conversation_init(struct jdksavdecc_acmp_conversation *self,
+                                      struct jdksavdecc_allocator *allocator,
+                                      struct jdksavdecc_frame const *acmpdu,
+                                      ssize_t pos);
 
 /// Update the conversation given the incoming associated acmpdu
 void jdksavdecc_acmp_conversation_update(
     struct jdksavdecc_acmp_conversation *self,
-    struct jdksavdecc_frame const *acmpdu);
+    struct jdksavdecc_frame const *acmpdu, ssize_t pos);
 
 /// Log the results of the conversation tracker for this connection
 void
@@ -81,8 +81,7 @@ void
 
 /// Destroy the conversation
 void jdksavdecc_acmp_conversation_destroy(
-    struct jdksavdecc_acmp_conversation *self
-    );
+    struct jdksavdecc_acmp_conversation *self);
 
 struct jdksavdecc_acmp_conversation_list_item;
 
@@ -103,7 +102,7 @@ struct jdksavdecc_acmp_conversation_list_item {
 /// Initialize an ACMP Conversation object
 int jdksavdecc_acmp_conversation_list_init(
     struct jdksavdecc_acmp_conversation_list *self,
-    struct jdksavdecc_allocator *allocator );
+    struct jdksavdecc_allocator *allocator);
 
 /// Destroy an ACMP Conversation object
 void jdksavdecc_acmp_conversation_list_destroy(
@@ -123,14 +122,14 @@ struct jdksavdecc_acmp_conversation_list_item *
 struct jdksavdecc_acmp_conversation_list_item *
     jdksavdecc_acmp_conversation_list_find_by_frame(
         struct jdksavdecc_acmp_conversation_list *self,
-        struct jdksavdecc_frame const *connect_rx_command_frame);
+        struct jdksavdecc_frame const *connect_rx_command_frame, ssize_t pos);
 
 /// given the acmp frame, either find the associated conversation
 /// or create one for it
 struct jdksavdecc_acmp_conversation_list_item *
     jdksavdecc_acmp_conversation_list_create_or_update(
         struct jdksavdecc_acmp_conversation_list *self,
-        struct jdksavdecc_frame const *acmpdu);
+        struct jdksavdecc_frame const *acmpdu, ssize_t pos);
 
 /// state machine that tracks all ACMP conversatations seen on a network
 struct jdksavdecc_acmp_conversation_tester {
