@@ -76,9 +76,10 @@ extern int jdksavdecc_log_current_subsystem;
 #ifdef JDKSAVDECC_DISABLE_LOG_DEBUG
 #define log_debug(...)
 #else
-#define log_debug(...)                                              \
+#define log_debug(...)                                                         \
     do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] &&                    \
+        if (jdksavdecc_log_subsystem_enable                                    \
+                [(jdksavdecc_log_current_subsystem)] &&                        \
             jdksavdecc_log_debug) {                                            \
             jdksavdecc_log_debug(__VA_ARGS__);                                 \
         }                                                                      \
@@ -90,9 +91,10 @@ extern int jdksavdecc_log_current_subsystem;
 #ifdef JDKSAVDECC_DISABLE_LOG_INFO
 #define log_info(...)
 #else
-#define log_info(...)                                               \
+#define log_info(...)                                                          \
     do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] &&                    \
+        if (jdksavdecc_log_subsystem_enable                                    \
+                [(jdksavdecc_log_current_subsystem)] &&                        \
             jdksavdecc_log_info) {                                             \
             jdksavdecc_log_info(__VA_ARGS__);                                  \
         }                                                                      \
@@ -104,9 +106,10 @@ extern int jdksavdecc_log_current_subsystem;
 #ifdef JDKSAVDECC_DISABLE_LOG_WARNING
 #define log_warning(...)
 #else
-#define log_warning(...)                                            \
+#define log_warning(...)                                                       \
     do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] &&                    \
+        if (jdksavdecc_log_subsystem_enable                                    \
+                [(jdksavdecc_log_current_subsystem)] &&                        \
             jdksavdecc_log_warning) {                                          \
             jdksavdecc_log_warning(__VA_ARGS__);                               \
         }                                                                      \
@@ -118,9 +121,10 @@ extern int jdksavdecc_log_current_subsystem;
 #ifdef JDKSAVDECC_DISABLE_LOG_ERROR
 #define log_error(...)
 #else
-#define log_error(...)                                              \
+#define log_error(...)                                                         \
     do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] &&                    \
+        if (jdksavdecc_log_subsystem_enable                                    \
+                [(jdksavdecc_log_current_subsystem)] &&                        \
             jdksavdecc_log_error) {                                            \
             jdksavdecc_log_error(__VA_ARGS__);                                 \
         }                                                                      \

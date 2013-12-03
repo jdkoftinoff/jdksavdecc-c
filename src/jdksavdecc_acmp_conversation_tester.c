@@ -102,14 +102,14 @@ jdksavdecc_acmp_conversation_log(struct jdksavdecc_acmp_conversation *self) {
             jdksavdecc_acmpdu_print_message_type,
             self->current_state.header.message_type);
         if (message_type_name) {
-            log_info("%s count: %d",
-                     message_type_name, self->message_type_histogram[i]);
-            log_info("%s last time: %" PRIi64,
-                     message_type_name, self->message_type_timestamp[i]);
-            log_info("%s last status: %s",
-                     message_type_name, jdksavdecc_get_name_for_uint16_value(
-                                            jdksavdecc_acmpdu_print_status,
-                                            self->message_type_status[i]));
+            log_info("%s count: %d", message_type_name,
+                     self->message_type_histogram[i]);
+            log_info("%s last time: %" PRIi64, message_type_name,
+                     self->message_type_timestamp[i]);
+            log_info("%s last status: %s", message_type_name,
+                     jdksavdecc_get_name_for_uint16_value(
+                         jdksavdecc_acmpdu_print_status,
+                         self->message_type_status[i]));
         }
     }
     jdksavdecc_log_current_subsystem = log_state;
