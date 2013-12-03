@@ -66,13 +66,19 @@ extern void (*jdksavdecc_log_warning)(const char *fmt, ...);
 extern void (*jdksavdecc_log_error)(const char *fmt, ...);
 extern bool jdksavdecc_log_subsystem_enable[32];
 
+#if defined(JDKSAVDECC_HAS_THREADS) && JDKSAVDECC_HAS_THREADS
+extern __thread int jdksavdecc_log_current_subsystem;
+#else
+extern int jdksavdecc_log_current_subsystem;
+#endif
+
 #ifndef log_debug
 #ifdef JDKSAVDECC_DISABLE_LOG_DEBUG
-#define log_debug(subsystem, ...)
+#define log_debug(...)
 #else
-#define log_debug(subsystem, ...)                                              \
+#define log_debug(...)                                              \
     do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable[(subsystem)] &&                    \
+        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] &&                    \
             jdksavdecc_log_debug) {                                            \
             jdksavdecc_log_debug(__VA_ARGS__);                                 \
         }                                                                      \
@@ -82,11 +88,11 @@ extern bool jdksavdecc_log_subsystem_enable[32];
 
 #ifndef log_info
 #ifdef JDKSAVDECC_DISABLE_LOG_INFO
-#define log_info(subsystem, ...)
+#define log_info(...)
 #else
-#define log_info(subsystem, ...)                                               \
+#define log_info(...)                                               \
     do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable[(subsystem)] &&                    \
+        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] &&                    \
             jdksavdecc_log_info) {                                             \
             jdksavdecc_log_info(__VA_ARGS__);                                  \
         }                                                                      \
@@ -96,11 +102,11 @@ extern bool jdksavdecc_log_subsystem_enable[32];
 
 #ifndef log_warning
 #ifdef JDKSAVDECC_DISABLE_LOG_WARNING
-#define log_warning(subsystem, ...)
+#define log_warning(...)
 #else
-#define log_warning(subsystem, ...)                                            \
+#define log_warning(...)                                            \
     do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable[(subsystem)] &&                    \
+        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] &&                    \
             jdksavdecc_log_warning) {                                          \
             jdksavdecc_log_warning(__VA_ARGS__);                               \
         }                                                                      \
@@ -110,11 +116,11 @@ extern bool jdksavdecc_log_subsystem_enable[32];
 
 #ifndef log_error
 #ifdef JDKSAVDECC_DISABLE_LOG_ERROR
-#define log_error(subsystem, ...)
+#define log_error(...)
 #else
-#define log_error(subsystem, ...)                                              \
+#define log_error(...)                                              \
     do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable[(subsystem)] &&                    \
+        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] &&                    \
             jdksavdecc_log_error) {                                            \
             jdksavdecc_log_error(__VA_ARGS__);                                 \
         }                                                                      \
@@ -128,6 +134,7 @@ extern bool jdksavdecc_log_subsystem_enable[32];
 #else
 #define log_enter(subsystem)                                                   \
     do {                                                                       \
+        jdksavdecc_log_current_subsystem = subsystem;                          \
         if (jdksavdecc_log_subsystem_enable[(subsystem)] &&                    \
             jdksavdecc_log_debug) {                                            \
             jdksavdecc_log_debug("ENTER:%s", __FUNCTION__);                    \
@@ -142,6 +149,7 @@ extern bool jdksavdecc_log_subsystem_enable[32];
 #else
 #define log_exit(subsystem)                                                    \
     do {                                                                       \
+        jdksavdecc_log_current_subsystem = 0;                                  \
         if (jdksavdecc_log_subsystem_enable[(subsystem)] &&                    \
             jdksavdecc_log_debug) {                                            \
             jdksavdecc_log_debug("EXIT :%s", __FUNCTION__);                    \

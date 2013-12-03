@@ -32,6 +32,12 @@
 
 #include "jdksavdecc_world.h"
 
+#if defined(JDKSAVDECC_HAS_THREADS) && JDKSAVDECC_HAS_THREADS
+__thread int jdksavdecc_log_current_subsystem = 0;
+#else
+int jdksavdecc_log_current_subsystem = 0;
+#endif
+
 bool jdksavdecc_log_subsystem_enable[32] = {
     true, true, true, true, true, true, true, true, true, true, true,
     true, true, true, true, true, true, true, true, true, true, true,

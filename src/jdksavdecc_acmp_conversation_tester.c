@@ -90,7 +90,9 @@ jdksavdecc_acmp_conversation_update(struct jdksavdecc_acmp_conversation *self,
 void
 jdksavdecc_acmp_conversation_log(struct jdksavdecc_acmp_conversation *self) {
     int i;
-    log_info(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS, "%08x:%04x->%08x:%04x:",
+    int log_state = jdksavdecc_log_current_subsystem;
+    jdksavdecc_log_current_subsystem = JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS;
+    log_info("%08x:%04x->%08x:%04x:",
              jdksavdecc_eui64_convert_to_uint64(&self->talker_entity_id),
              self->talker_unique_id,
              jdksavdecc_eui64_convert_to_uint64(&self->listener_entity_id),
@@ -100,16 +102,17 @@ jdksavdecc_acmp_conversation_log(struct jdksavdecc_acmp_conversation *self) {
             jdksavdecc_acmpdu_print_message_type,
             self->current_state.header.message_type);
         if (message_type_name) {
-            log_info(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS, "%s count: %d",
+            log_info("%s count: %d",
                      message_type_name, self->message_type_histogram[i]);
-            log_info(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS, "%s last time: %" PRIi64,
+            log_info("%s last time: %" PRIi64,
                      message_type_name, self->message_type_timestamp[i]);
-            log_info(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS, "%s last status: %s",
+            log_info("%s last status: %s",
                      message_type_name, jdksavdecc_get_name_for_uint16_value(
                                             jdksavdecc_acmpdu_print_status,
                                             self->message_type_status[i]));
         }
     }
+    jdksavdecc_log_current_subsystem = log_state;
 }
 
 void jdksavdecc_acmp_conversation_destroy(
