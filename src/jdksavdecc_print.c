@@ -68,13 +68,12 @@ void jdksavdecc_printer_print_block(struct jdksavdecc_printer *self,
                                     const uint8_t *p, size_t sz,
                                     size_t start_pos, size_t end_pos) {
     size_t pos;
-    for( pos=start_pos; pos<end_pos && pos<sz; ++pos ) {
-        jdksavdecc_printer_print_hexdigits(self, p[pos] );
-        jdksavdecc_printer_printc(self,' ');
+    for (pos = start_pos; pos < end_pos && pos < sz; ++pos) {
+        jdksavdecc_printer_print_hexdigits(self, p[pos]);
+        jdksavdecc_printer_printc(self, ' ');
     }
     jdksavdecc_printer_print_eol(self);
 }
-
 
 void jdksavdecc_printer_print_hexdigits(struct jdksavdecc_printer *self,
                                         uint8_t v) {

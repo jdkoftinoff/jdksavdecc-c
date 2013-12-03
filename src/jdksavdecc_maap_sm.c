@@ -242,5 +242,4 @@ void jdksavdecc_maap_action_sannounce(
 }
 #endif
 
-
 #endif

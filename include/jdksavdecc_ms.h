@@ -31,35 +31,33 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 #ifdef _MSC_VER
-# include <BaseTsd.h>
-# ifndef ssize_t
-#  define ssize_t SSIZE_T
-# endif
-# include <direct.h>
-# if _MSC_VER < 1800
-#  include "jdksavdecc_msstdint.h"
-#  include "jdksavdecc_msinttypes.h"
-# else
-#  include <stdint.h>
-#  include <inttypes.h>
-#  include <stdbool.h>
-# endif
-# ifndef __cplusplus
-#  ifndef inline
-#   define inline __inline
-#  endif
-# endif
-# ifndef chdir
-#  define chdir _chdir
-# endif
-# ifndef __cplusplus
-#  ifndef bool
-#   define bool uint8_t
-#   define true (1)
-#   define false (0)
-#  endif
-# endif
+#include <BaseTsd.h>
+#ifndef ssize_t
+#define ssize_t SSIZE_T
 #endif
-
+#include <direct.h>
+#if _MSC_VER < 1800
+#include "jdksavdecc_msstdint.h"
+#include "jdksavdecc_msinttypes.h"
+#else
+#include <stdint.h>
+#include <inttypes.h>
+#include <stdbool.h>
+#endif
+#ifndef __cplusplus
+#ifndef inline
+#define inline __inline
+#endif
+#endif
+#ifndef chdir
+#define chdir _chdir
+#endif
+#ifndef __cplusplus
+#ifndef bool
+#define bool uint8_t
+#define true(1)
+#define false(0)
+#endif
+#endif
+#endif

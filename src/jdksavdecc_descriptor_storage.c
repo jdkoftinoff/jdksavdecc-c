@@ -87,11 +87,10 @@ int jdksavdecc_descriptor_storage_file_init(
         /* \TODO Check header */
         if (fseek(f, 0, SEEK_END) == 0) {
             long pos = ftell(f);
-            if( pos>=0 ) {
+            if (pos >= 0) {
                 self->storage_length = (uint32_t)pos;
                 r = 0;
-            }
-            else {
+            } else {
                 fclose(f);
             }
         } else {
