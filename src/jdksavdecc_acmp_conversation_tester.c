@@ -39,6 +39,8 @@ int jdksavdecc_acmp_conversation_init(struct jdksavdecc_acmp_conversation *self,
                                       ssize_t pos) {
     int r = -1;
     int i;
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
 
     r = jdksavdecc_frame_list_init(&self->acmp_frames, allocator);
     if (r == 0) {
@@ -67,6 +69,8 @@ int jdksavdecc_acmp_conversation_init(struct jdksavdecc_acmp_conversation *self,
         }
     }
 
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return r;
 }
 
@@ -74,6 +78,8 @@ void
 jdksavdecc_acmp_conversation_update(struct jdksavdecc_acmp_conversation *self,
                                     struct jdksavdecc_frame const *acmpdu,
                                     ssize_t pos) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     if (jdksavdecc_acmpdu_read(&self->current_state, acmpdu->payload, pos,
                                acmpdu->length) > 0) {
         self->message_type_histogram
@@ -85,12 +91,16 @@ jdksavdecc_acmp_conversation_update(struct jdksavdecc_acmp_conversation *self,
             self->current_state.header.status;
         jdksavdecc_frame_list_add(&self->acmp_frames, acmpdu, 0);
     }
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void
 jdksavdecc_acmp_conversation_log(struct jdksavdecc_acmp_conversation *self) {
     int i;
     int log_state = jdksavdecc_log_current_subsystem;
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     jdksavdecc_log_current_subsystem = JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS;
     log_info("%08x:%04x->%08x:%04x:",
              jdksavdecc_eui64_convert_to_uint64(&self->talker_entity_id),
@@ -113,31 +123,45 @@ jdksavdecc_acmp_conversation_log(struct jdksavdecc_acmp_conversation *self) {
         }
     }
     jdksavdecc_log_current_subsystem = log_state;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_acmp_conversation_destroy(
     struct jdksavdecc_acmp_conversation *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     jdksavdecc_frame_list_destroy(&self->acmp_frames);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 int jdksavdecc_acmp_conversation_list_init(
     struct jdksavdecc_acmp_conversation_list *self,
     struct jdksavdecc_allocator *allocator) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     self->allocator = allocator;
     self->first = 0;
     self->last = 0;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return 0;
 }
 
 void jdksavdecc_acmp_conversation_list_destroy(
     struct jdksavdecc_acmp_conversation_list *self) {
     struct jdksavdecc_acmp_conversation_list_item *item = self->last;
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     while (item) {
         jdksavdecc_acmp_conversation_destroy(&item->conversation);
         item = item->prev;
     }
     self->first = 0;
     self->last = 0;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 struct jdksavdecc_acmp_conversation_list_item *
@@ -148,6 +172,8 @@ jdksavdecc_acmp_conversation_list_find(
     // Start searching from the last item in the linked list, as usually the
     // messages are relating to recent connections
     struct jdksavdecc_acmp_conversation_list_item *item = self->last;
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     while (item) {
         if (jdksavdecc_eui64_compare(listener_entity_id,
                                      &item->conversation.listener_entity_id) ==
@@ -166,6 +192,8 @@ jdksavdecc_acmp_conversation_list_find(
         }
         item = item->prev;
     }
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return item;
 }
 
@@ -177,6 +205,9 @@ jdksavdecc_acmp_conversation_list_find_by_frame(
     uint16_t talker_unique_id;
     struct jdksavdecc_eui64 listener_entity_id;
     uint16_t listener_unique_id;
+    struct jdksavdecc_acmp_conversation_list_item *r;
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     talker_entity_id = jdksavdecc_acmpdu_get_talker_entity_id(
         connect_rx_command_frame->payload, pos);
     talker_unique_id = jdksavdecc_acmpdu_get_talker_unique_id(
@@ -185,9 +216,12 @@ jdksavdecc_acmp_conversation_list_find_by_frame(
         connect_rx_command_frame->payload, pos);
     listener_unique_id = jdksavdecc_acmpdu_get_listener_unique_id(
         connect_rx_command_frame->payload, pos);
-    return jdksavdecc_acmp_conversation_list_find(
+    r = jdksavdecc_acmp_conversation_list_find(
         self, &talker_entity_id, talker_unique_id, &listener_entity_id,
         listener_unique_id);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
+    return r;
 }
 
 struct jdksavdecc_acmp_conversation_list_item *
@@ -195,6 +229,8 @@ jdksavdecc_acmp_conversation_list_create_or_update(
     struct jdksavdecc_acmp_conversation_list *self,
     struct jdksavdecc_frame const *acmpdu, ssize_t pos) {
     struct jdksavdecc_acmp_conversation_list_item *item = 0;
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     // Try find an existing conversation that matches this packet
     item = jdksavdecc_acmp_conversation_list_find_by_frame(self, acmpdu, pos);
 
@@ -218,6 +254,8 @@ jdksavdecc_acmp_conversation_list_create_or_update(
     if (item) {
         jdksavdecc_acmp_conversation_update(&item->conversation, acmpdu, pos);
     }
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return item;
 }
 
@@ -225,6 +263,8 @@ void jdksavdecc_acmp_conversation_tester_init(
     struct jdksavdecc_acmp_conversation_tester *self,
     struct jdksavdecc_allocator *allocator,
     struct jdksavdecc_frame_sender *sender, uint32_t tag, void *additional) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
 
     jdksavdecc_state_machine_init(&self->base, sender, tag, additional);
 
@@ -233,21 +273,31 @@ void jdksavdecc_acmp_conversation_tester_init(
     self->base.tick = jdksavdecc_acmp_conversation_tester_tick;
     self->base.rx_frame = jdksavdecc_acmp_conversation_tester_rx_frame;
     jdksavdecc_acmp_conversation_list_init(&self->conversations, allocator);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_acmp_conversation_tester_destroy(
     struct jdksavdecc_state_machine *self_) {
     struct jdksavdecc_acmp_conversation_tester *self =
         (struct jdksavdecc_acmp_conversation_tester *)self_;
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     jdksavdecc_acmp_conversation_list_destroy(&self->conversations);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 int jdksavdecc_acmp_conversation_tester_tick(
     struct jdksavdecc_state_machine *self_,
     jdksavdecc_timestamp_in_microseconds timestamp) {
+    int r;
+
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
 
     // Do the normal tick work
-    int r = jdksavdecc_state_machine_tick(self_, timestamp);
+    r = jdksavdecc_state_machine_tick(self_, timestamp);
 
     // if we are not exiting, we may have additional work to do
     if (r == 0) {
@@ -261,6 +311,8 @@ int jdksavdecc_acmp_conversation_tester_tick(
             jdksavdecc_acmp_conversation_tester_dump(self);
         }
     }
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return r;
 }
 
@@ -268,10 +320,14 @@ void jdksavdecc_acmp_conversation_tester_dump(
     struct jdksavdecc_acmp_conversation_tester *self) {
     struct jdksavdecc_acmp_conversation_list_item *item =
         self->conversations.first;
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     while (item) {
         jdksavdecc_acmp_conversation_log(&item->conversation);
         item = item->next;
     }
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 ssize_t jdksavdecc_acmp_conversation_tester_rx_frame(
@@ -279,9 +335,13 @@ ssize_t jdksavdecc_acmp_conversation_tester_rx_frame(
     size_t pos) {
     struct jdksavdecc_acmp_conversation_tester *self =
         (struct jdksavdecc_acmp_conversation_tester *)self_;
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_DIAGNOSTICS);
+    log_enter();
     // assume that the frame is already validated to be a relevant ACMP frame
 
     jdksavdecc_acmp_conversation_list_create_or_update(&self->conversations,
                                                        rx_frame, pos);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return rx_frame->length;
 }

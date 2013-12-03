@@ -33,7 +33,9 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_maap_sm.h"
 
-//#define ENABLE_MAAP_TODO (1)
+#ifndef ENABLE_MAAP_TODO
+#define ENABLE_MAAP_TODO (0)
+#endif
 
 #if ENABLE_MAAP_TODO
 
@@ -50,7 +52,8 @@ void jdksavdecc_maap_state_machine_init(
                                     uint16_t count),
     struct jdksavdecc_frame_sender *frame_sender, uint32_t tag,
     void *additional) {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
 
     jdksavdecc_state_machine_init(&self->base, frame_sender, tag, additional);
     self->last_time = current_time;
@@ -66,18 +69,21 @@ void jdksavdecc_maap_state_machine_init(
     self->base.tx_frame = jdksavdecc_maap_state_machine_tx_frame;
     self->base.destroy = jdksavdecc_maap_state_machine_destroy;
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void
 jdksavdecc_maap_state_machine_destroy(struct jdksavdecc_state_machine *self_) {
     struct jdksavdecc_maap_state_machine *self =
         (struct jdksavdecc_maap_state_machine *)self_;
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
 
     jdksavdecc_state_machine_destroy(&self->base);
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 int jdksavdecc_maap_state_machine_tick(
@@ -85,12 +91,14 @@ int jdksavdecc_maap_state_machine_tick(
     jdksavdecc_timestamp_in_microseconds current_time) {
     struct jdksavdecc_maap_state_machine *self =
         (struct jdksavdecc_maap_state_machine *)self_;
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
 
     (void)self;
     (void)current_time;
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return 0;
 }
 
@@ -100,13 +108,15 @@ jdksavdecc_maap_state_machine_rx_frame(struct jdksavdecc_state_machine *self_,
                                        size_t pos) {
     struct jdksavdecc_maap_state_machine *self =
         (struct jdksavdecc_maap_state_machine *)self_;
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
 
     (void)self;
     (void)rx_frame;
     (void)pos;
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return 0;
 }
 
@@ -115,11 +125,13 @@ jdksavdecc_maap_state_machine_tx_frame(struct jdksavdecc_state_machine *self_,
                                        struct jdksavdecc_frame const *frame) {
     struct jdksavdecc_maap_state_machine *self =
         (struct jdksavdecc_maap_state_machine *)self_;
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
 
     (void)self;
     (void)frame;
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 #if 0
@@ -131,9 +143,11 @@ void jdksavdecc_maap_state_initial(
     struct jdksavdecc_maap *received_pdu
     )
 {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
-
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
+    // TODO
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 
@@ -144,9 +158,11 @@ void jdksavdecc_maap_state_probe(
     struct jdksavdecc_maap *received_pdu
     )
 {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
-
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
+    // TODO
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 
@@ -157,9 +173,11 @@ void jdksavdecc_maap_state_defend(
     struct jdksavdecc_maap *received_pdu
     )
 {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
-
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
+    // TODO
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 
@@ -171,9 +189,11 @@ void jdksavdecc_maap_action_generate_address(
     uint16_t count
     )
 {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
-
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
+    // TODO
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 
@@ -182,9 +202,11 @@ void jdksavdecc_maap_action_init_maap_probe_count(
     struct jdksavdecc_maap_state_machine *self
     )
 {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
-
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
+    // TODO
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 
@@ -193,9 +215,11 @@ void jdksavdecc_maap_action_dec_maap_probe_count(
     struct jdksavdecc_maap_state_machine *self
     )
 {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
-
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
+    // TODO
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 
@@ -205,9 +229,11 @@ void jdksavdecc_maap_action_compare_mac(
     struct jdksavdecc_maap *received_pdu
     )
 {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
-
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
+    // TODO
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 
@@ -216,9 +242,11 @@ void jdksavdecc_maap_action_sprobe(
     struct jdksavdecc_maap_state_machine *self
     )
 {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
-
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
+    // TODO
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 
@@ -227,9 +255,11 @@ void jdksavdecc_maap_action_sdefend(
     struct jdksavdecc_maap_state_machine *self
     )
 {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
-
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
+    // TODO
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 
@@ -238,9 +268,11 @@ void jdksavdecc_maap_action_sannounce(
     struct jdksavdecc_maap_state_machine *self
     )
 {
-    log_enter(JDKSAVDECC_SUBSYSTEM_MAAP);
-
-    log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
+    log_enter();
+    // TODO
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 #endif
 #else

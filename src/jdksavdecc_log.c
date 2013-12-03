@@ -33,7 +33,11 @@
 #include "jdksavdecc_world.h"
 
 #if defined(JDKSAVDECC_HAS_THREADS) && JDKSAVDECC_HAS_THREADS
+#ifdef __cplusplus
+thread_local int jdksavdecc_log_current_subsystem = 0;
+#else
 __thread int jdksavdecc_log_current_subsystem = 0;
+#endif
 #else
 int jdksavdecc_log_current_subsystem = 0;
 #endif

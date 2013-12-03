@@ -67,10 +67,33 @@ extern void (*jdksavdecc_log_error)(const char *fmt, ...);
 extern bool jdksavdecc_log_subsystem_enable[32];
 
 #if defined(JDKSAVDECC_HAS_THREADS) && JDKSAVDECC_HAS_THREADS
+#ifdef __cplusplus
+extern thread_local int jdksavdecc_log_current_subsystem;
+#else
 extern __thread int jdksavdecc_log_current_subsystem;
+#endif
 #else
 extern int jdksavdecc_log_current_subsystem;
 #endif
+
+typedef int jdksavdecc_log_state_t;
+
+static inline jdksavdecc_log_state_t
+jdksavdecc_log_save_state(int new_subsystem) {
+    jdksavdecc_log_state_t v = jdksavdecc_log_current_subsystem;
+    jdksavdecc_log_current_subsystem = new_subsystem;
+    return v;
+}
+
+static inline void
+jdksavdecc_log_restore_state(jdksavdecc_log_state_t old_state) {
+    jdksavdecc_log_current_subsystem = old_state;
+}
+
+#define JDKSAVDECC_LOG_SAVE(new_subsystem)                                     \
+    jdksavdecc_log_state_t _log_saved_state =                                  \
+        jdksavdecc_log_save_state((new_subsystem))
+#define JDKSAVDECC_LOG_RESTORE() jdksavdecc_log_restore_state(_log_saved_state)
 
 #ifndef log_debug
 #ifdef JDKSAVDECC_DISABLE_LOG_DEBUG
@@ -134,12 +157,12 @@ extern int jdksavdecc_log_current_subsystem;
 
 #ifndef log_enter
 #ifdef JDKSAVDECC_DISABLE_LOG_ENTER
-#define log_enter(subsystem)
+#define log_enter()
 #else
-#define log_enter(subsystem)                                                   \
+#define log_enter()                                                            \
     do {                                                                       \
-        jdksavdecc_log_current_subsystem = subsystem;                          \
-        if (jdksavdecc_log_subsystem_enable[(subsystem)] &&                    \
+        if (jdksavdecc_log_subsystem_enable                                    \
+                [(jdksavdecc_log_current_subsystem)] &&                        \
             jdksavdecc_log_debug) {                                            \
             jdksavdecc_log_debug("ENTER:%s", __FUNCTION__);                    \
         }                                                                      \
@@ -149,15 +172,16 @@ extern int jdksavdecc_log_current_subsystem;
 
 #ifndef log_exit
 #ifdef JDKSAVDECC_DISABLE_LOG_EXIT
-#define log_exit(subsystem)
+#define log_exit()
 #else
-#define log_exit(subsystem)                                                    \
+#define log_exit()                                                             \
     do {                                                                       \
-        jdksavdecc_log_current_subsystem = 0;                                  \
-        if (jdksavdecc_log_subsystem_enable[(subsystem)] &&                    \
+        if (jdksavdecc_log_subsystem_enable                                    \
+                [(jdksavdecc_log_current_subsystem)] &&                        \
             jdksavdecc_log_debug) {                                            \
             jdksavdecc_log_debug("EXIT :%s", __FUNCTION__);                    \
         }                                                                      \
+        jdksavdecc_log_current_subsystem = 0;                                  \
     } while (false)
 #endif
 #endif

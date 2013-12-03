@@ -47,7 +47,8 @@ int jdksavdecc_adp_advertising_entity_state_machine_init(
     struct jdksavdecc_adp_advertising_entity_state_machine *self,
     struct jdksavdecc_adp_advertising_global_vars *global, uint32_t tag,
     void *additional) {
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
 
     // Initialize base class without a frame sender since the interface state
     // machine sends the frames
@@ -84,7 +85,8 @@ int jdksavdecc_adp_advertising_entity_state_machine_init(
     // Go to the initialize state immediately
     self->goto_initialize(self);
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return 0;
 }
 
@@ -95,9 +97,11 @@ int jdksavdecc_adp_advertising_entity_state_machine_init(
 ///
 void jdksavdecc_adp_advertising_entity_state_machine_destroy(
     struct jdksavdecc_state_machine *self) {
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     jdksavdecc_state_machine_destroy(self);
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 /// Run the state machine current state
@@ -110,11 +114,12 @@ void jdksavdecc_adp_advertising_entity_state_machine_destroy(
 int jdksavdecc_adp_advertising_entity_state_machine_tick(
     struct jdksavdecc_state_machine *self_,
     jdksavdecc_timestamp_in_microseconds timestamp) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
     int r = -1;
     struct jdksavdecc_adp_advertising_entity_state_machine *self =
         (struct jdksavdecc_adp_advertising_entity_state_machine *)self_;
 
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     self->vars.global->current_time = timestamp;
     if (jdksavdecc_state_machine_tick(&self->base, timestamp) == 0) {
         if (self->state) {
@@ -123,7 +128,8 @@ int jdksavdecc_adp_advertising_entity_state_machine_tick(
             r = 0;
         }
     }
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return r;
 }
 
@@ -137,10 +143,12 @@ int jdksavdecc_adp_advertising_entity_state_machine_tick(
 void jdksavdecc_adp_advertising_entity_state_machine_send_available(
     struct jdksavdecc_adp_advertising_entity_state_machine *self) {
     struct jdksavdecc_entity_info *entity_info;
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     entity_info = self->vars.global->entity_info;
     entity_info->send_advertise_on_all_interfaces(entity_info);
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 /// Transition to the INITIALIZE state
@@ -152,11 +160,13 @@ void jdksavdecc_adp_advertising_entity_state_machine_send_available(
 ///
 void jdksavdecc_adp_advertising_entity_state_machine_goto_initialize(
     struct jdksavdecc_adp_advertising_entity_state_machine *self) {
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
 
     self->state = self->state_initialize;
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 /// Process the INITIALIZE state
@@ -168,12 +178,14 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_initialize(
 ///
 void jdksavdecc_adp_advertising_entity_state_machine_state_initialize(
     struct jdksavdecc_adp_advertising_entity_state_machine *self) {
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     self->vars.global->entity_info->advertising_info.available_index = 0;
 
     self->goto_advertise(self);
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 /// Transition to the ADVERTISE state
@@ -186,7 +198,8 @@ void jdksavdecc_adp_advertising_entity_state_machine_state_initialize(
 void jdksavdecc_adp_advertising_entity_state_machine_goto_advertise(
     struct jdksavdecc_adp_advertising_entity_state_machine *self) {
     jdksavdecc_timestamp_in_microseconds delta;
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
 
     self->send_available(self);
 
@@ -201,7 +214,8 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_advertise(
 
     self->goto_waiting(self);
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 /// Process the ADVERTISE state
@@ -213,11 +227,13 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_advertise(
 ///
 void jdksavdecc_adp_advertising_entity_state_machine_state_advertise(
     struct jdksavdecc_adp_advertising_entity_state_machine *self) {
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
 
     self->goto_waiting(self);
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 /// Transition to the WAITING state
@@ -229,11 +245,13 @@ void jdksavdecc_adp_advertising_entity_state_machine_state_advertise(
 ///
 void jdksavdecc_adp_advertising_entity_state_machine_goto_waiting(
     struct jdksavdecc_adp_advertising_entity_state_machine *self) {
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
 
     self->vars.global->entity_info->advertising_info.available_index++;
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 /// Process the WAITING state
@@ -245,12 +263,14 @@ void jdksavdecc_adp_advertising_entity_state_machine_goto_waiting(
 ///
 void jdksavdecc_adp_advertising_entity_state_machine_state_waiting(
     struct jdksavdecc_adp_advertising_entity_state_machine *self) {
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
 
     if (self->vars.global->current_time >=
         self->vars.reannounce_timer_timeout) {
         self->goto_advertise(self);
     }
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }

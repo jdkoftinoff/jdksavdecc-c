@@ -32,140 +32,220 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_adp_advertising_interface.h"
+#include "jdksavdecc_log.h"
 
 int jdksavdecc_adp_advertising_interface_state_machine_init(
     struct jdksavdecc_adp_advertising_interface_state_machine *self,
     struct jdksavdecc_adp_advertising_interface_vars *interface_vars,
     uint32_t tag, void *additional) {
-    log_enter(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
 
     jdksavdecc_state_machine_init(&self->base, 0, tag, additional);
 
     // TODO:
     (void)interface_vars;
 
-    log_exit(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return 0;
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_destroy(
     struct jdksavdecc_state_machine *self_) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
+
     struct jdksavdecc_adp_advertising_interface_state_machine *self =
         (struct jdksavdecc_adp_advertising_interface_state_machine *)self_;
     jdksavdecc_state_machine_destroy(&self->base);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_tick(
     struct jdksavdecc_state_machine *self_,
     jdksavdecc_timestamp_in_microseconds timestamp) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     struct jdksavdecc_adp_advertising_interface_state_machine *self =
         (struct jdksavdecc_adp_advertising_interface_state_machine *)self_;
     jdksavdecc_state_machine_tick(&self->base, timestamp);
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 ssize_t jdksavdecc_adp_advertising_interface_state_machine_rx_frame(
     struct jdksavdecc_state_machine *self_, struct jdksavdecc_frame *rx_frame,
     size_t pos) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     struct jdksavdecc_adp_advertising_interface_state_machine *self =
         (struct jdksavdecc_adp_advertising_interface_state_machine *)self_;
     (void)self;
     (void)rx_frame;
     (void)pos;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
     return 0;
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_tx_entity_available(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_tx_entity_departing(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_goto_initialize(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_state_initialize(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_goto_waiting(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_state_waiting(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_goto_departing(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_state_departing(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_goto_advertise(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_state_advertise(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_goto_received_discover(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_state_received_discover(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_goto_update_gm(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_state_update_gm(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_goto_link_state_change(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
 
 void jdksavdecc_adp_advertising_interface_state_machine_state_link_state_change(
     struct jdksavdecc_adp_advertising_interface_state_machine *self) {
+    JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_ADVERTISER);
+    log_enter();
     // TODO:
     (void)self;
+    log_exit();
+    JDKSAVDECC_LOG_RESTORE();
 }
