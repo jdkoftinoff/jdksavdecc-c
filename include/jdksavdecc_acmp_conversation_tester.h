@@ -125,12 +125,12 @@ struct jdksavdecc_acmp_conversation_list_item *
         struct jdksavdecc_acmp_conversation_list *self,
         struct jdksavdecc_frame const *connect_rx_command_frame);
 
-/// given the connect_rx_command frame, either find the associated conversation
+/// given the acmp frame, either find the associated conversation
 /// or create one for it
 struct jdksavdecc_acmp_conversation_list_item *
-    jdksavdecc_acmp_conversation_list_create_or_add(
+    jdksavdecc_acmp_conversation_list_create_or_update(
         struct jdksavdecc_acmp_conversation_list *self,
-        struct jdksavdecc_frame const *initial_connect_rx_command_frame);
+        struct jdksavdecc_frame const *acmpdu);
 
 /// state machine that tracks all ACMP conversatations seen on a network
 struct jdksavdecc_acmp_conversation_tester {

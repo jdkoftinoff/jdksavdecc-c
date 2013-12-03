@@ -184,26 +184,32 @@ jdksavdecc_acmp_conversation_list_find_by_frame(struct jdksavdecc_acmp_conversat
 }
 
 struct jdksavdecc_acmp_conversation_list_item *
-jdksavdecc_acmp_conversation_list_create_or_add(struct jdksavdecc_acmp_conversation_list *self,
-                                                struct jdksavdecc_frame const *initial_connect_rx_command_frame) {
+jdksavdecc_acmp_conversation_list_create_or_update(struct jdksavdecc_acmp_conversation_list *self,
+                                                struct jdksavdecc_frame const *acmpdu) {
     struct jdksavdecc_acmp_conversation_list_item *item = 0;
-    item = jdksavdecc_acmp_conversation_list_find_by_frame( self, initial_connect_rx_command_frame );
+    // Try find an existing conversation that matches this packet
+    item = jdksavdecc_acmp_conversation_list_find_by_frame( self, acmpdu );
+
+    // Did we find it?
     if( !item ) {
+        // No, then create a conversation item to track it
         item=jdksavdecc_new(self->allocator,struct jdksavdecc_acmp_conversation_list_item);
         if( item ) {
+            // creation success, initialize it
             jdksavdecc_acmp_conversation_init(
                         &item->conversation,
                         self->allocator,
-                        initial_connect_rx_command_frame
+                        acmpdu
                         );
-
+            // insert it into the end of the list
             item->next =0;
             item->prev =self->last;
             self->last=item;
         }
     }
+    // If we actually have found or created a conversation list item then track the stats
     if( item ) {
-        // TODO: track message statistics
+        jdksavdecc_acmp_conversation_update( &item->conversation, acmpdu );
     }
     return item;
 }
@@ -232,11 +238,11 @@ int jdksavdecc_acmp_conversation_tester_tick(struct jdksavdecc_state_machine *se
 
     // Do the normal tick work
     int r=jdksavdecc_state_machine_tick( self_, timestamp );
-    
+
     // if we are not exiting, we may have additional work to do
     if( r==0 ) {
         struct jdksavdecc_acmp_conversation_tester *self = (struct jdksavdecc_acmp_conversation_tester *)self_;
-        
+
         // Were we requested to dump all of the conversations to the logger?
         if( self->do_dump_all ) {
             // Yes, clear the request and do it
@@ -259,7 +265,7 @@ ssize_t jdksavdecc_acmp_conversation_tester_rx_frame(struct jdksavdecc_state_mac
                                                      size_t pos) {
     struct jdksavdecc_acmp_conversation_tester *self = (struct jdksavdecc_acmp_conversation_tester *)self_;
     // assume that the frame is already validated to be a relevant ACMP frame
-    
+
     jdksavdecc_acmp_conversation_list_create_or_add( &self->conversations, rx_frame );
     return rx_frame->length;
 }
