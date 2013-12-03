@@ -33,6 +33,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_maap_sm.h"
 
+//#define ENABLE_MAAP_TODO (1)
+
 #if ENABLE_MAAP_TODO
 
 void jdksavdecc_maap_state_machine_init(
@@ -241,5 +243,6 @@ void jdksavdecc_maap_action_sannounce(
     log_exit(JDKSAVDECC_SUBSYSTEM_MAAP);
 }
 #endif
-
+#else
+char const *jdksavdecc_maap_sm_file = __FILE__;
 #endif
