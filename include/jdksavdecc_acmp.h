@@ -683,7 +683,7 @@ typedef struct jdksavdecc_acmpdu jdksavdecc_acmp_command_response;
 struct jdksavdecc_acmp_listener_stream_info {
     struct jdksavdecc_eui64 talker_entity_id;
     uint16_t talker_unique_id;
-    int connected;
+    bool connected;
     struct jdksavdecc_eui64 stream_id;
     struct jdksavdecc_eui48 stream_dest_mac;
     struct jdksavdecc_eui64 controller_entity_id;
@@ -707,7 +707,7 @@ static inline void jdksavdecc_acmp_listener_stream_info_set(
     self->talker_entity_id = p->talker_entity_id;
     self->talker_unique_id = p->talker_unique_id;
     self->stream_dest_mac = p->stream_dest_mac;
-    self->connected = p->connection_count > 0 ? 1 : 0;
+    self->connected = p->connection_count > 0 ? true : false;
     self->flags = p->flags;
     self->stream_vlan_id = p->stream_vlan_id;
 }
