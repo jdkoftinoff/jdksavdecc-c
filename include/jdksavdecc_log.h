@@ -78,34 +78,28 @@ extern int jdksavdecc_log_current_subsystem;
 
 typedef int jdksavdecc_log_state_t;
 
-static inline jdksavdecc_log_state_t
-jdksavdecc_log_save_state(int new_subsystem) {
+static inline jdksavdecc_log_state_t jdksavdecc_log_save_state(int new_subsystem) {
     jdksavdecc_log_state_t v = jdksavdecc_log_current_subsystem;
     jdksavdecc_log_current_subsystem = new_subsystem;
     return v;
 }
 
-static inline void
-jdksavdecc_log_restore_state(jdksavdecc_log_state_t old_state) {
+static inline void jdksavdecc_log_restore_state(jdksavdecc_log_state_t old_state) {
     jdksavdecc_log_current_subsystem = old_state;
 }
 
-#define JDKSAVDECC_LOG_SAVE(new_subsystem)                                     \
-    jdksavdecc_log_state_t _log_saved_state =                                  \
-        jdksavdecc_log_save_state((new_subsystem))
+#define JDKSAVDECC_LOG_SAVE(new_subsystem) jdksavdecc_log_state_t _log_saved_state = jdksavdecc_log_save_state((new_subsystem))
 #define JDKSAVDECC_LOG_RESTORE() jdksavdecc_log_restore_state(_log_saved_state)
 
 #ifndef log_debug
 #ifdef JDKSAVDECC_DISABLE_LOG_DEBUG
 #define log_debug(...)
 #else
-#define log_debug(...)                                                         \
-    do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable                                    \
-                [(jdksavdecc_log_current_subsystem)] &&                        \
-            jdksavdecc_log_debug) {                                            \
-            jdksavdecc_log_debug(__VA_ARGS__);                                 \
-        }                                                                      \
+#define log_debug(...)                                                                                                         \
+    do {                                                                                                                       \
+        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] && jdksavdecc_log_debug) {                     \
+            jdksavdecc_log_debug(__VA_ARGS__);                                                                                 \
+        }                                                                                                                      \
     } while (false)
 #endif
 #endif
@@ -114,13 +108,11 @@ jdksavdecc_log_restore_state(jdksavdecc_log_state_t old_state) {
 #ifdef JDKSAVDECC_DISABLE_LOG_INFO
 #define log_info(...)
 #else
-#define log_info(...)                                                          \
-    do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable                                    \
-                [(jdksavdecc_log_current_subsystem)] &&                        \
-            jdksavdecc_log_info) {                                             \
-            jdksavdecc_log_info(__VA_ARGS__);                                  \
-        }                                                                      \
+#define log_info(...)                                                                                                          \
+    do {                                                                                                                       \
+        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] && jdksavdecc_log_info) {                      \
+            jdksavdecc_log_info(__VA_ARGS__);                                                                                  \
+        }                                                                                                                      \
     } while (false)
 #endif
 #endif
@@ -129,13 +121,11 @@ jdksavdecc_log_restore_state(jdksavdecc_log_state_t old_state) {
 #ifdef JDKSAVDECC_DISABLE_LOG_WARNING
 #define log_warning(...)
 #else
-#define log_warning(...)                                                       \
-    do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable                                    \
-                [(jdksavdecc_log_current_subsystem)] &&                        \
-            jdksavdecc_log_warning) {                                          \
-            jdksavdecc_log_warning(__VA_ARGS__);                               \
-        }                                                                      \
+#define log_warning(...)                                                                                                       \
+    do {                                                                                                                       \
+        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] && jdksavdecc_log_warning) {                   \
+            jdksavdecc_log_warning(__VA_ARGS__);                                                                               \
+        }                                                                                                                      \
     } while (false)
 #endif
 #endif
@@ -144,13 +134,11 @@ jdksavdecc_log_restore_state(jdksavdecc_log_state_t old_state) {
 #ifdef JDKSAVDECC_DISABLE_LOG_ERROR
 #define log_error(...)
 #else
-#define log_error(...)                                                         \
-    do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable                                    \
-                [(jdksavdecc_log_current_subsystem)] &&                        \
-            jdksavdecc_log_error) {                                            \
-            jdksavdecc_log_error(__VA_ARGS__);                                 \
-        }                                                                      \
+#define log_error(...)                                                                                                         \
+    do {                                                                                                                       \
+        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] && jdksavdecc_log_error) {                     \
+            jdksavdecc_log_error(__VA_ARGS__);                                                                                 \
+        }                                                                                                                      \
     } while (false)
 #endif
 #endif
@@ -159,13 +147,11 @@ jdksavdecc_log_restore_state(jdksavdecc_log_state_t old_state) {
 #ifdef JDKSAVDECC_DISABLE_LOG_ENTER
 #define log_enter()
 #else
-#define log_enter()                                                            \
-    do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable                                    \
-                [(jdksavdecc_log_current_subsystem)] &&                        \
-            jdksavdecc_log_debug) {                                            \
-            jdksavdecc_log_debug("ENTER:%s", __FUNCTION__);                    \
-        }                                                                      \
+#define log_enter()                                                                                                            \
+    do {                                                                                                                       \
+        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] && jdksavdecc_log_debug) {                     \
+            jdksavdecc_log_debug("ENTER:%s", __FUNCTION__);                                                                    \
+        }                                                                                                                      \
     } while (false)
 #endif
 #endif
@@ -174,14 +160,12 @@ jdksavdecc_log_restore_state(jdksavdecc_log_state_t old_state) {
 #ifdef JDKSAVDECC_DISABLE_LOG_EXIT
 #define log_exit()
 #else
-#define log_exit()                                                             \
-    do {                                                                       \
-        if (jdksavdecc_log_subsystem_enable                                    \
-                [(jdksavdecc_log_current_subsystem)] &&                        \
-            jdksavdecc_log_debug) {                                            \
-            jdksavdecc_log_debug("EXIT :%s", __FUNCTION__);                    \
-        }                                                                      \
-        jdksavdecc_log_current_subsystem = 0;                                  \
+#define log_exit()                                                                                                             \
+    do {                                                                                                                       \
+        if (jdksavdecc_log_subsystem_enable[(jdksavdecc_log_current_subsystem)] && jdksavdecc_log_debug) {                     \
+            jdksavdecc_log_debug("EXIT :%s", __FUNCTION__);                                                                    \
+        }                                                                                                                      \
+        jdksavdecc_log_current_subsystem = 0;                                                                                  \
     } while (false)
 #endif
 #endif

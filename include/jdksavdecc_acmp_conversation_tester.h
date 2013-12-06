@@ -71,17 +71,15 @@ int jdksavdecc_acmp_conversation_init(struct jdksavdecc_acmp_conversation *self,
                                       ssize_t pos);
 
 /// Update the conversation given the incoming associated acmpdu
-void jdksavdecc_acmp_conversation_update(
-    struct jdksavdecc_acmp_conversation *self,
-    struct jdksavdecc_frame const *acmpdu, ssize_t pos);
+void jdksavdecc_acmp_conversation_update(struct jdksavdecc_acmp_conversation *self,
+                                         struct jdksavdecc_frame const *acmpdu,
+                                         ssize_t pos);
 
 /// Log the results of the conversation tracker for this connection
-void
-    jdksavdecc_acmp_conversation_log(struct jdksavdecc_acmp_conversation *self);
+void jdksavdecc_acmp_conversation_log(struct jdksavdecc_acmp_conversation *self);
 
 /// Destroy the conversation
-void jdksavdecc_acmp_conversation_destroy(
-    struct jdksavdecc_acmp_conversation *self);
+void jdksavdecc_acmp_conversation_destroy(struct jdksavdecc_acmp_conversation *self);
 
 struct jdksavdecc_acmp_conversation_list_item;
 
@@ -100,36 +98,31 @@ struct jdksavdecc_acmp_conversation_list_item {
 };
 
 /// Initialize an ACMP Conversation object
-int jdksavdecc_acmp_conversation_list_init(
-    struct jdksavdecc_acmp_conversation_list *self,
-    struct jdksavdecc_allocator *allocator);
+int jdksavdecc_acmp_conversation_list_init(struct jdksavdecc_acmp_conversation_list *self,
+                                           struct jdksavdecc_allocator *allocator);
 
 /// Destroy an ACMP Conversation object
-void jdksavdecc_acmp_conversation_list_destroy(
-    struct jdksavdecc_acmp_conversation_list *self);
+void jdksavdecc_acmp_conversation_list_destroy(struct jdksavdecc_acmp_conversation_list *self);
 
 /// Search for a conversation that matches the specified talker_id, unique_id
 /// and listener_id and unique_id
-struct jdksavdecc_acmp_conversation_list_item *
-    jdksavdecc_acmp_conversation_list_find(
-        struct jdksavdecc_acmp_conversation_list *self,
-        struct jdksavdecc_eui64 *talker_entity_id, uint16_t talker_unique_id,
-        struct jdksavdecc_eui64 *listener_entity_id,
-        uint16_t listener_unique_id);
+struct jdksavdecc_acmp_conversation_list_item *jdksavdecc_acmp_conversation_list_find(struct jdksavdecc_acmp_conversation_list
+                                                                                      *self,
+                                                                                      struct jdksavdecc_eui64 *talker_entity_id,
+                                                                                      uint16_t talker_unique_id,
+                                                                                      struct jdksavdecc_eui64
+                                                                                      *listener_entity_id,
+                                                                                      uint16_t listener_unique_id);
 
 /// Search for a conversation that matches the specified connect_rx_command
 /// frame
-struct jdksavdecc_acmp_conversation_list_item *
-    jdksavdecc_acmp_conversation_list_find_by_frame(
-        struct jdksavdecc_acmp_conversation_list *self,
-        struct jdksavdecc_frame const *connect_rx_command_frame, ssize_t pos);
+struct jdksavdecc_acmp_conversation_list_item *jdksavdecc_acmp_conversation_list_find_by_frame(
+    struct jdksavdecc_acmp_conversation_list *self, struct jdksavdecc_frame const *connect_rx_command_frame, ssize_t pos);
 
 /// given the acmp frame, either find the associated conversation
 /// or create one for it
-struct jdksavdecc_acmp_conversation_list_item *
-    jdksavdecc_acmp_conversation_list_create_or_update(
-        struct jdksavdecc_acmp_conversation_list *self,
-        struct jdksavdecc_frame const *acmpdu, ssize_t pos);
+struct jdksavdecc_acmp_conversation_list_item *jdksavdecc_acmp_conversation_list_create_or_update(
+    struct jdksavdecc_acmp_conversation_list *self, struct jdksavdecc_frame const *acmpdu, ssize_t pos);
 
 /// state machine that tracks all ACMP conversatations seen on a network
 struct jdksavdecc_acmp_conversation_tester {
@@ -140,28 +133,26 @@ struct jdksavdecc_acmp_conversation_tester {
 };
 
 /// Initialize the ACMP conversation tester
-void jdksavdecc_acmp_conversation_tester_init(
-    struct jdksavdecc_acmp_conversation_tester *self,
-    struct jdksavdecc_allocator *allocator,
-    struct jdksavdecc_frame_sender *sender, uint32_t tag, void *additional);
+void jdksavdecc_acmp_conversation_tester_init(struct jdksavdecc_acmp_conversation_tester *self,
+                                              struct jdksavdecc_allocator *allocator,
+                                              struct jdksavdecc_frame_sender *sender,
+                                              uint32_t tag,
+                                              void *additional);
 
 /// Destroy the ACMP Conversation tester object
-void jdksavdecc_acmp_conversation_tester_destroy(
-    struct jdksavdecc_state_machine *self);
+void jdksavdecc_acmp_conversation_tester_destroy(struct jdksavdecc_state_machine *self);
 
 /// Some time elapsed for the ACMP Conversation tester
-int jdksavdecc_acmp_conversation_tester_tick(
-    struct jdksavdecc_state_machine *self,
-    jdksavdecc_timestamp_in_microseconds timestamp);
+int jdksavdecc_acmp_conversation_tester_tick(struct jdksavdecc_state_machine *self,
+                                             jdksavdecc_timestamp_in_microseconds timestamp);
 
 /// Dump the information about all known conversations
-void jdksavdecc_acmp_conversation_tester_dump(
-    struct jdksavdecc_acmp_conversation_tester *self);
+void jdksavdecc_acmp_conversation_tester_dump(struct jdksavdecc_acmp_conversation_tester *self);
 
 /// Receive an ACMPDU and track the associated state
-ssize_t jdksavdecc_acmp_conversation_tester_rx_frame(
-    struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame,
-    size_t pos);
+ssize_t jdksavdecc_acmp_conversation_tester_rx_frame(struct jdksavdecc_state_machine *self,
+                                                     struct jdksavdecc_frame *rx_frame,
+                                                     size_t pos);
 
 /*@}*/
 #ifdef __cplusplus

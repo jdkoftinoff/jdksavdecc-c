@@ -40,8 +40,7 @@ void jdksavdecc_printer_print(struct jdksavdecc_printer *self, char const *v) {
     }
 }
 
-void jdksavdecc_printer_print_label(struct jdksavdecc_printer *self,
-                                    char const *v) {
+void jdksavdecc_printer_print_label(struct jdksavdecc_printer *self, char const *v) {
     size_t padded_size = 40;
     size_t len = strlen(v);
     size_t padding = 0;
@@ -64,9 +63,8 @@ void jdksavdecc_printer_print_label(struct jdksavdecc_printer *self,
     }
 }
 
-void jdksavdecc_printer_print_block(struct jdksavdecc_printer *self,
-                                    const uint8_t *p, size_t sz,
-                                    size_t start_pos, size_t end_pos) {
+void
+jdksavdecc_printer_print_block(struct jdksavdecc_printer *self, const uint8_t *p, size_t sz, size_t start_pos, size_t end_pos) {
     size_t pos;
     for (pos = start_pos; pos < end_pos && pos < sz; ++pos) {
         jdksavdecc_printer_print_hexdigits(self, p[pos]);
@@ -75,8 +73,7 @@ void jdksavdecc_printer_print_block(struct jdksavdecc_printer *self,
     jdksavdecc_printer_print_eol(self);
 }
 
-void jdksavdecc_printer_print_hexdigits(struct jdksavdecc_printer *self,
-                                        uint8_t v) {
+void jdksavdecc_printer_print_hexdigits(struct jdksavdecc_printer *self, uint8_t v) {
     if (self->max_len - self->pos > 3) {
         self->buf[self->pos++] = jdksavdecc_printer_hexdig[v >> 4];
         self->buf[self->pos++] = jdksavdecc_printer_hexdig[v & 0xf];
@@ -84,8 +81,7 @@ void jdksavdecc_printer_print_hexdigits(struct jdksavdecc_printer *self,
     }
 }
 
-void jdksavdecc_printer_print_uint8(struct jdksavdecc_printer *self,
-                                    uint8_t v) {
+void jdksavdecc_printer_print_uint8(struct jdksavdecc_printer *self, uint8_t v) {
     if (self->max_len - self->pos > 5) {
         self->buf[self->pos++] = '0';
         self->buf[self->pos++] = 'x';
@@ -95,8 +91,7 @@ void jdksavdecc_printer_print_uint8(struct jdksavdecc_printer *self,
     }
 }
 
-void jdksavdecc_printer_print_uint16(struct jdksavdecc_printer *self,
-                                     uint16_t v) {
+void jdksavdecc_printer_print_uint16(struct jdksavdecc_printer *self, uint16_t v) {
     if (self->max_len - self->pos > 7) {
         self->buf[self->pos++] = '0';
         self->buf[self->pos++] = 'x';
@@ -108,8 +103,7 @@ void jdksavdecc_printer_print_uint16(struct jdksavdecc_printer *self,
     }
 }
 
-void jdksavdecc_printer_print_uint32(struct jdksavdecc_printer *self,
-                                     uint32_t v) {
+void jdksavdecc_printer_print_uint32(struct jdksavdecc_printer *self, uint32_t v) {
     if (self->max_len - self->pos > 11) {
         self->buf[self->pos++] = '0';
         self->buf[self->pos++] = 'x';
@@ -125,8 +119,7 @@ void jdksavdecc_printer_print_uint32(struct jdksavdecc_printer *self,
     }
 }
 
-void jdksavdecc_printer_print_uint64(struct jdksavdecc_printer *self,
-                                     uint64_t v) {
+void jdksavdecc_printer_print_uint64(struct jdksavdecc_printer *self, uint64_t v) {
     if (self->max_len - self->pos > 19) {
         self->buf[self->pos++] = '0';
         self->buf[self->pos++] = 'x';
@@ -150,8 +143,7 @@ void jdksavdecc_printer_print_uint64(struct jdksavdecc_printer *self,
     }
 }
 
-void jdksavdecc_printer_print_eui48(struct jdksavdecc_printer *self,
-                                    struct jdksavdecc_eui48 v) {
+void jdksavdecc_printer_print_eui48(struct jdksavdecc_printer *self, struct jdksavdecc_eui48 v) {
     jdksavdecc_printer_print_hexdigits(self, v.value[0]);
     jdksavdecc_printer_print(self, "-");
     jdksavdecc_printer_print_hexdigits(self, v.value[1]);
@@ -165,8 +157,7 @@ void jdksavdecc_printer_print_eui48(struct jdksavdecc_printer *self,
     jdksavdecc_printer_print_hexdigits(self, v.value[5]);
 }
 
-void jdksavdecc_printer_print_eui64(struct jdksavdecc_printer *self,
-                                    struct jdksavdecc_eui64 v) {
+void jdksavdecc_printer_print_eui64(struct jdksavdecc_printer *self, struct jdksavdecc_eui64 v) {
     jdksavdecc_printer_print_hexdigits(self, v.value[0]);
     jdksavdecc_printer_print(self, ":");
     jdksavdecc_printer_print_hexdigits(self, v.value[1]);
@@ -184,8 +175,7 @@ void jdksavdecc_printer_print_eui64(struct jdksavdecc_printer *self,
     jdksavdecc_printer_print_hexdigits(self, v.value[7]);
 }
 
-void jdksavdecc_printer_print_streamid(struct jdksavdecc_printer *self,
-                                       struct jdksavdecc_eui64 v) {
+void jdksavdecc_printer_print_streamid(struct jdksavdecc_printer *self, struct jdksavdecc_eui64 v) {
     jdksavdecc_printer_print_hexdigits(self, v.value[0]);
     jdksavdecc_printer_print(self, "-");
     jdksavdecc_printer_print_hexdigits(self, v.value[1]);
@@ -203,8 +193,7 @@ void jdksavdecc_printer_print_streamid(struct jdksavdecc_printer *self,
     jdksavdecc_printer_print_hexdigits(self, v.value[7]);
 }
 
-void jdksavdecc_printer_print_string(struct jdksavdecc_printer *self,
-                                     struct jdksavdecc_string const *v) {
+void jdksavdecc_printer_print_string(struct jdksavdecc_printer *self, struct jdksavdecc_string const *v) {
     size_t i = 0;
     size_t len = jdksavdecc_string_length(v);
     jdksavdecc_printer_printc(self, '\"');
@@ -240,8 +229,7 @@ void jdksavdecc_printer_print_string(struct jdksavdecc_printer *self,
     jdksavdecc_printer_printc(self, '\"');
 }
 
-void jdksavdecc_printer_print_gptp_seconds(struct jdksavdecc_printer *self,
-                                           struct jdksavdecc_gptp_seconds p) {
+void jdksavdecc_printer_print_gptp_seconds(struct jdksavdecc_printer *self, struct jdksavdecc_gptp_seconds p) {
     uint64_t v = p.seconds;
     if (self->max_len - self->pos > 15) {
         self->buf[self->pos++] = '0';
@@ -262,9 +250,7 @@ void jdksavdecc_printer_print_gptp_seconds(struct jdksavdecc_printer *self,
     }
 }
 
-char const *
-jdksavdecc_get_name_for_16bit_value(struct jdksavdecc_16bit_name const names[],
-                                    uint16_t v) {
+char const *jdksavdecc_get_name_for_16bit_value(struct jdksavdecc_16bit_name const names[], uint16_t v) {
     int i = 0;
 
     while (names[i].name) {
@@ -276,9 +262,7 @@ jdksavdecc_get_name_for_16bit_value(struct jdksavdecc_16bit_name const names[],
     return 0;
 }
 
-uint16_t
-jdksavdecc_get_16bit_value_for_name(struct jdksavdecc_16bit_name const names[],
-                                    char const *name) {
+uint16_t jdksavdecc_get_16bit_value_for_name(struct jdksavdecc_16bit_name const names[], char const *name) {
     int i = 0;
 
     while (names[i].name) {
@@ -290,9 +274,7 @@ jdksavdecc_get_16bit_value_for_name(struct jdksavdecc_16bit_name const names[],
     return 0;
 }
 
-char const *
-jdksavdecc_get_name_for_32bit_value(struct jdksavdecc_32bit_name const names[],
-                                    uint32_t v) {
+char const *jdksavdecc_get_name_for_32bit_value(struct jdksavdecc_32bit_name const names[], uint32_t v) {
     int i = 0;
 
     while (names[i].name) {
@@ -304,9 +286,7 @@ jdksavdecc_get_name_for_32bit_value(struct jdksavdecc_32bit_name const names[],
     return 0;
 }
 
-uint16_t
-jdksavdecc_get_32bit_value_for_name(struct jdksavdecc_32bit_name const names[],
-                                    char const *name) {
+uint16_t jdksavdecc_get_32bit_value_for_name(struct jdksavdecc_32bit_name const names[], char const *name) {
     int i = 0;
 
     while (names[i].name) {
@@ -318,8 +298,7 @@ jdksavdecc_get_32bit_value_for_name(struct jdksavdecc_32bit_name const names[],
     return 0;
 }
 
-uint16_t jdksavdecc_get_uint16_value_for_name(
-    struct jdksavdecc_uint16_name const names[], char const *name) {
+uint16_t jdksavdecc_get_uint16_value_for_name(struct jdksavdecc_uint16_name const names[], char const *name) {
     int i = 0;
 
     while (names[i].name) {
@@ -331,8 +310,7 @@ uint16_t jdksavdecc_get_uint16_value_for_name(
     return 0;
 }
 
-char const *jdksavdecc_get_name_for_uint16_value(
-    struct jdksavdecc_uint16_name const names[], uint16_t v) {
+char const *jdksavdecc_get_name_for_uint16_value(struct jdksavdecc_uint16_name const names[], uint16_t v) {
     int i = 0;
 
     while (names[i].name) {
@@ -344,8 +322,7 @@ char const *jdksavdecc_get_name_for_uint16_value(
     return 0;
 }
 
-uint32_t jdksavdecc_get_uint32_value_for_name(
-    struct jdksavdecc_uint32_name const names[], char const *name) {
+uint32_t jdksavdecc_get_uint32_value_for_name(struct jdksavdecc_uint32_name const names[], char const *name) {
     int i = 0;
 
     while (names[i].name) {
@@ -357,8 +334,7 @@ uint32_t jdksavdecc_get_uint32_value_for_name(
     return 0;
 }
 
-char const *jdksavdecc_get_name_for_uint32_value(
-    struct jdksavdecc_uint32_name const names[], uint32_t v) {
+char const *jdksavdecc_get_name_for_uint32_value(struct jdksavdecc_uint32_name const names[], uint32_t v) {
     int i = 0;
 
     while (names[i].name) {
@@ -370,8 +346,7 @@ char const *jdksavdecc_get_name_for_uint32_value(
     return 0;
 }
 
-uint64_t jdksavdecc_get_uint64_value_for_name(
-    struct jdksavdecc_uint64_name const names[], char const *name) {
+uint64_t jdksavdecc_get_uint64_value_for_name(struct jdksavdecc_uint64_name const names[], char const *name) {
     int i = 0;
 
     while (names[i].name) {
@@ -383,8 +358,7 @@ uint64_t jdksavdecc_get_uint64_value_for_name(
     return 0;
 }
 
-char const *jdksavdecc_get_name_for_uint64_value(
-    struct jdksavdecc_uint64_name const names[], uint64_t v) {
+char const *jdksavdecc_get_name_for_uint64_value(struct jdksavdecc_uint64_name const names[], uint64_t v) {
     int i = 0;
 
     while (names[i].name) {
@@ -396,9 +370,8 @@ char const *jdksavdecc_get_name_for_uint64_value(
     return 0;
 }
 
-struct jdksavdecc_eui48 const *
-jdksavdecc_get_eui48_value_for_name(struct jdksavdecc_eui48_name const names[],
-                                    char const *name) {
+struct jdksavdecc_eui48 const *jdksavdecc_get_eui48_value_for_name(struct jdksavdecc_eui48_name const names[],
+                                                                   char const *name) {
     int i = 0;
 
     while (names[i].name) {
@@ -410,9 +383,7 @@ jdksavdecc_get_eui48_value_for_name(struct jdksavdecc_eui48_name const names[],
     return 0;
 }
 
-char const *
-jdksavdecc_get_name_for_eui48_value(struct jdksavdecc_eui48_name const names[],
-                                    struct jdksavdecc_eui48 v) {
+char const *jdksavdecc_get_name_for_eui48_value(struct jdksavdecc_eui48_name const names[], struct jdksavdecc_eui48 v) {
     int i = 0;
 
     while (names[i].name) {
@@ -432,9 +403,8 @@ jdksavdecc_get_name_for_eui48_value(struct jdksavdecc_eui48_name const names[],
     return 0;
 }
 
-struct jdksavdecc_eui64 const *
-jdksavdecc_get_eui64_value_for_name(struct jdksavdecc_eui64_name const names[],
-                                    char const *name) {
+struct jdksavdecc_eui64 const *jdksavdecc_get_eui64_value_for_name(struct jdksavdecc_eui64_name const names[],
+                                                                   char const *name) {
     int i = 0;
 
     while (names[i].name) {
@@ -446,9 +416,7 @@ jdksavdecc_get_eui64_value_for_name(struct jdksavdecc_eui64_name const names[],
     return 0;
 }
 
-char const *
-jdksavdecc_get_name_for_eui64_value(struct jdksavdecc_eui64_name const names[],
-                                    struct jdksavdecc_eui64 v) {
+char const *jdksavdecc_get_name_for_eui64_value(struct jdksavdecc_eui64_name const names[], struct jdksavdecc_eui64 v) {
     int i = 0;
 
     while (names[i].name) {
@@ -469,9 +437,7 @@ jdksavdecc_get_name_for_eui64_value(struct jdksavdecc_eui64_name const names[],
 }
 
 void
-jdksavdecc_printer_print_16bit_names(struct jdksavdecc_printer *self,
-                                     struct jdksavdecc_16bit_name const names[],
-                                     uint16_t v) {
+jdksavdecc_printer_print_16bit_names(struct jdksavdecc_printer *self, struct jdksavdecc_16bit_name const names[], uint16_t v) {
     size_t i = 0;
 
     jdksavdecc_printer_print(self, "[ ");
@@ -486,9 +452,7 @@ jdksavdecc_printer_print_16bit_names(struct jdksavdecc_printer *self,
 }
 
 void
-jdksavdecc_printer_print_32bit_names(struct jdksavdecc_printer *self,
-                                     struct jdksavdecc_32bit_name const names[],
-                                     uint32_t v) {
+jdksavdecc_printer_print_32bit_names(struct jdksavdecc_printer *self, struct jdksavdecc_32bit_name const names[], uint32_t v) {
     size_t i = 0;
 
     jdksavdecc_printer_print(self, "[ ");
@@ -502,9 +466,8 @@ jdksavdecc_printer_print_32bit_names(struct jdksavdecc_printer *self,
     jdksavdecc_printer_print(self, "]");
 }
 
-void jdksavdecc_printer_print_uint16_name(
-    struct jdksavdecc_printer *self,
-    struct jdksavdecc_uint16_name const names[], uint16_t v) {
+void
+jdksavdecc_printer_print_uint16_name(struct jdksavdecc_printer *self, struct jdksavdecc_uint16_name const names[], uint16_t v) {
     char const *s = jdksavdecc_get_name_for_uint16_value(names, v);
     if (s) {
         jdksavdecc_printer_print(self, s);
@@ -513,9 +476,8 @@ void jdksavdecc_printer_print_uint16_name(
     }
 }
 
-void jdksavdecc_printer_print_uint32_name(
-    struct jdksavdecc_printer *self,
-    struct jdksavdecc_uint32_name const names[], uint32_t v) {
+void
+jdksavdecc_printer_print_uint32_name(struct jdksavdecc_printer *self, struct jdksavdecc_uint32_name const names[], uint32_t v) {
     char const *s = jdksavdecc_get_name_for_uint32_value(names, v);
     if (s) {
         jdksavdecc_printer_print(self, s);
@@ -524,9 +486,8 @@ void jdksavdecc_printer_print_uint32_name(
     }
 }
 
-void jdksavdecc_printer_print_uint64_name(
-    struct jdksavdecc_printer *self,
-    struct jdksavdecc_uint64_name const names[], uint64_t v) {
+void
+jdksavdecc_printer_print_uint64_name(struct jdksavdecc_printer *self, struct jdksavdecc_uint64_name const names[], uint64_t v) {
     char const *s = jdksavdecc_get_name_for_uint64_value(names, v);
     if (s) {
         jdksavdecc_printer_print(self, s);
@@ -535,20 +496,18 @@ void jdksavdecc_printer_print_uint64_name(
     }
 }
 
-void
-jdksavdecc_printer_print_eui48_name(struct jdksavdecc_printer *self,
-                                    struct jdksavdecc_eui48_name const names[],
-                                    struct jdksavdecc_eui48 v) {
+void jdksavdecc_printer_print_eui48_name(struct jdksavdecc_printer *self,
+                                         struct jdksavdecc_eui48_name const names[],
+                                         struct jdksavdecc_eui48 v) {
     char const *s = jdksavdecc_get_name_for_eui48_value(names, v);
     if (s) {
         jdksavdecc_printer_print(self, s);
     }
 }
 
-void
-jdksavdecc_printer_print_eui64_name(struct jdksavdecc_printer *self,
-                                    struct jdksavdecc_eui64_name const names[],
-                                    struct jdksavdecc_eui64 v) {
+void jdksavdecc_printer_print_eui64_name(struct jdksavdecc_printer *self,
+                                         struct jdksavdecc_eui64_name const names[],
+                                         struct jdksavdecc_eui64 v) {
     char const *s = jdksavdecc_get_name_for_eui64_value(names, v);
     if (s) {
         jdksavdecc_printer_print(self, s);

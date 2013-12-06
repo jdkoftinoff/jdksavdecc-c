@@ -35,7 +35,8 @@
 
 void jdksavdecc_state_machine_init(struct jdksavdecc_state_machine *self,
                                    struct jdksavdecc_frame_sender *frame_sender,
-                                   uint32_t tag, void *additional) {
+                                   uint32_t tag,
+                                   void *additional) {
     self->additional = 0;
     self->tag = 0;
     self->destroy = jdksavdecc_state_machine_destroy;
@@ -54,13 +55,9 @@ void jdksavdecc_state_machine_destroy(struct jdksavdecc_state_machine *self) {
     memset(self, 0, sizeof(*self));
 }
 
-void jdksavdecc_state_machine_terminate(struct jdksavdecc_state_machine *self) {
-    self->terminated = 1;
-}
+void jdksavdecc_state_machine_terminate(struct jdksavdecc_state_machine *self) { self->terminated = 1; }
 
-int
-jdksavdecc_state_machine_tick(struct jdksavdecc_state_machine *self,
-                              jdksavdecc_timestamp_in_microseconds timestamp) {
+int jdksavdecc_state_machine_tick(struct jdksavdecc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp) {
     int r = 0;
 
     // default is to ignore ticks
@@ -78,9 +75,8 @@ jdksavdecc_state_machine_tick(struct jdksavdecc_state_machine *self,
     return r;
 }
 
-ssize_t jdksavdecc_state_machine_rx_frame(struct jdksavdecc_state_machine *self,
-                                          struct jdksavdecc_frame *rx_frame,
-                                          size_t pos) {
+ssize_t
+jdksavdecc_state_machine_rx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos) {
     // Nothing to do - default is to ignore rx_frame
     (void)self;
     (void)rx_frame;
@@ -88,8 +84,7 @@ ssize_t jdksavdecc_state_machine_rx_frame(struct jdksavdecc_state_machine *self,
     return 0;
 }
 
-void jdksavdecc_state_machine_tx_frame(struct jdksavdecc_state_machine *self,
-                                       struct jdksavdecc_frame const *frame) {
+void jdksavdecc_state_machine_tx_frame(struct jdksavdecc_state_machine *self, struct jdksavdecc_frame const *frame) {
     /* Default is to give the frame to the frame_sender if there is one */
     log_enter();
     if (self->frame_sender) {

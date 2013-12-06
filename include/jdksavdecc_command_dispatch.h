@@ -45,9 +45,9 @@ extern "C" {
 
 struct jdksavdecc_command_dispatch;
 
-typedef ssize_t (*jdksavdecc_command_dispatch_proc)(
-    struct jdksavdecc_command_dispatch *self, struct jdksavdecc_frame *frame,
-    size_t pos);
+typedef ssize_t (*jdksavdecc_command_dispatch_proc)(struct jdksavdecc_command_dispatch *self,
+                                                    struct jdksavdecc_frame *frame,
+                                                    size_t pos);
 
 struct jdksavdecc_command_dispatch {
     uint32_t tag;
@@ -61,9 +61,8 @@ struct jdksavdecc_command_dispatch {
     jdksavdecc_command_dispatch_proc command[JDKSAVDECC_AEM_NUM_COMMANDS];
 };
 
-ssize_t jdksavdecc_command_dispatch_rx_frame(
-    struct jdksavdecc_command_dispatch *self, struct jdksavdecc_frame *frame,
-    size_t pos);
+ssize_t
+    jdksavdecc_command_dispatch_rx_frame(struct jdksavdecc_command_dispatch *self, struct jdksavdecc_frame *frame, size_t pos);
 
 /*@}*/
 

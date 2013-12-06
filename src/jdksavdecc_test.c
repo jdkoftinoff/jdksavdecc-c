@@ -33,26 +33,23 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_test.h"
 
-int jdksavdecc_test_run(
-    char const *in_file_name, char const *out_file_name,
-    struct jdksavdecc_pdu_dispatch *pdu_dispatch,
-    int (*tick)(struct jdksavdecc_pcapfile_reader *self,
-                jdksavdecc_timestamp_in_microseconds time),
-    jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize,
-    jdksavdecc_timestamp_in_microseconds time_step_in_microseconds) {
+int jdksavdecc_test_run(char const *in_file_name,
+                        char const *out_file_name,
+                        struct jdksavdecc_pdu_dispatch *pdu_dispatch,
+                        int (*tick)(struct jdksavdecc_pcapfile_reader *self, jdksavdecc_timestamp_in_microseconds time),
+                        jdksavdecc_timestamp_in_microseconds minimum_time_to_synthesize,
+                        jdksavdecc_timestamp_in_microseconds time_step_in_microseconds) {
     struct jdksavdecc_pcapfile_reader reader;
     struct jdksavdecc_pcapfile_writer writer;
 
-    jdksavdecc_pcapfile_reader_init(&reader, minimum_time_to_synthesize,
-                                    time_step_in_microseconds);
+    jdksavdecc_pcapfile_reader_init(&reader, minimum_time_to_synthesize, time_step_in_microseconds);
     if (!jdksavdecc_pcapfile_reader_open(&reader, in_file_name)) {
 #ifdef _MSC_VER
         char buf[1024];
         strerror_s(buf, sizeof(buf), errno);
         fprintf(stderr, "Error %s reading file: %s\n", buf, in_file_name);
 #else
-        fprintf(stderr, "Error %s reading file: %s\n", strerror(errno),
-                in_file_name);
+        fprintf(stderr, "Error %s reading file: %s\n", strerror(errno), in_file_name);
 #endif
         return 0;
     }
@@ -65,8 +62,7 @@ int jdksavdecc_test_run(
         strerror_s(buf, sizeof(buf), errno);
         fprintf(stderr, "Error %s writing file: %s\n", buf, in_file_name);
 #else
-        fprintf(stderr, "Error %s writing file: %s\n", strerror(errno),
-                in_file_name);
+        fprintf(stderr, "Error %s writing file: %s\n", strerror(errno), in_file_name);
 #endif
         reader.close(&reader);
         return 0;

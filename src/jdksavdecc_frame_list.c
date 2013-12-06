@@ -33,8 +33,7 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_frame_list.h"
 
-int jdksavdecc_frame_list_init(struct jdksavdecc_frame_list *self,
-                               struct jdksavdecc_allocator *allocator) {
+int jdksavdecc_frame_list_init(struct jdksavdecc_frame_list *self, struct jdksavdecc_allocator *allocator) {
     self->allocator = allocator;
     self->first = 0;
     self->last = 0;
@@ -58,10 +57,8 @@ void jdksavdecc_frame_list_destroy(struct jdksavdecc_frame_list *self) {
 }
 
 struct jdksavdecc_frame_list_item *
-jdksavdecc_frame_list_add(struct jdksavdecc_frame_list *self,
-                          struct jdksavdecc_frame const *frame, void *context) {
-    struct jdksavdecc_frame_list_item *new_item =
-        jdksavdecc_new(self->allocator, struct jdksavdecc_frame_list_item);
+jdksavdecc_frame_list_add(struct jdksavdecc_frame_list *self, struct jdksavdecc_frame const *frame, void *context) {
+    struct jdksavdecc_frame_list_item *new_item = jdksavdecc_new(self->allocator, struct jdksavdecc_frame_list_item);
 
     if (new_item) {
         new_item->prev = self->last;
@@ -79,8 +76,7 @@ jdksavdecc_frame_list_add(struct jdksavdecc_frame_list *self,
     return new_item;
 }
 
-void jdksavdecc_frame_list_delete(struct jdksavdecc_frame_list *self,
-                                  struct jdksavdecc_frame_list_item *item) {
+void jdksavdecc_frame_list_delete(struct jdksavdecc_frame_list *self, struct jdksavdecc_frame_list_item *item) {
     if (self->first == item) {
         self->first = item->next;
     }
@@ -94,15 +90,13 @@ void jdksavdecc_frame_list_delete(struct jdksavdecc_frame_list *self,
     jdksavdecc_delete(self->allocator, item);
 }
 
-struct jdksavdecc_frame_list_item *
-jdksavdecc_frame_list_find(struct jdksavdecc_frame_list *self,
-                           jdksavdecc_timestamp_in_microseconds timestamp) {
+struct jdksavdecc_frame_list_item *jdksavdecc_frame_list_find(struct jdksavdecc_frame_list *self,
+                                                              jdksavdecc_timestamp_in_microseconds timestamp) {
     struct jdksavdecc_frame_list_item *result = 0;
     struct jdksavdecc_frame_list_item *item = self->first;
 
     if (self->first && self->last) {
-        if (timestamp >= self->first->frame.time &&
-            timestamp <= self->last->frame.time) {
+        if (timestamp >= self->first->frame.time && timestamp <= self->last->frame.time) {
             while (item) {
                 if (item->frame.time < timestamp) {
                     item = item->next;

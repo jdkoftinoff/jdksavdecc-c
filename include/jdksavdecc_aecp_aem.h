@@ -82,10 +82,8 @@ extern "C" {
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_eui64 controller_entity_id value
  */
-static inline struct jdksavdecc_eui64
-jdksavdecc_aecpdu_aem_get_controller_entity_id(void const *base, ssize_t pos) {
-    return jdksavdecc_eui64_get(
-        base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID);
+static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_aem_get_controller_entity_id(void const *base, ssize_t pos) {
+    return jdksavdecc_eui64_get(base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID);
 }
 
 /**
@@ -100,11 +98,8 @@ jdksavdecc_aecpdu_aem_get_controller_entity_id(void const *base, ssize_t pos) {
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void
-jdksavdecc_aecpdu_aem_set_controller_entity_id(struct jdksavdecc_eui64 v,
-                                               void *base, ssize_t pos) {
-    jdksavdecc_eui64_set(
-        v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID);
+static inline void jdksavdecc_aecpdu_aem_set_controller_entity_id(struct jdksavdecc_eui64 v, void *base, ssize_t pos) {
+    jdksavdecc_eui64_set(v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID);
 }
 
 /**
@@ -119,10 +114,8 @@ jdksavdecc_aecpdu_aem_set_controller_entity_id(struct jdksavdecc_eui64 v,
  * @param pos offset from base to read the field from;
  * @return the uint16_t sequence_id value
  */
-static inline uint16_t jdksavdecc_aecpdu_aem_get_sequence_id(void const *base,
-                                                             ssize_t pos) {
-    return jdksavdecc_uint16_get(
-        base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID);
+static inline uint16_t jdksavdecc_aecpdu_aem_get_sequence_id(void const *base, ssize_t pos) {
+    return jdksavdecc_uint16_get(base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID);
 }
 
 /**
@@ -137,10 +130,8 @@ static inline uint16_t jdksavdecc_aecpdu_aem_get_sequence_id(void const *base,
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aecpdu_aem_set_sequence_id(uint16_t v, void *base,
-                                                         ssize_t pos) {
-    jdksavdecc_uint16_set(v, base,
-                          pos + JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID);
+static inline void jdksavdecc_aecpdu_aem_set_sequence_id(uint16_t v, void *base, ssize_t pos) {
+    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID);
 }
 
 /**
@@ -155,10 +146,8 @@ static inline void jdksavdecc_aecpdu_aem_set_sequence_id(uint16_t v, void *base,
  * @param pos offset from base to read the field from;
  * @return the uint16_t command_type value
  */
-static inline uint16_t jdksavdecc_aecpdu_aem_get_command_type(void const *base,
-                                                              ssize_t pos) {
-    return jdksavdecc_uint16_get(
-        base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE);
+static inline uint16_t jdksavdecc_aecpdu_aem_get_command_type(void const *base, ssize_t pos) {
+    return jdksavdecc_uint16_get(base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE);
 }
 
 /**
@@ -173,10 +162,8 @@ static inline uint16_t jdksavdecc_aecpdu_aem_get_command_type(void const *base,
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void
-jdksavdecc_aecpdu_aem_set_command_type(uint16_t v, void *base, ssize_t pos) {
-    jdksavdecc_uint16_set(v, base,
-                          pos + JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE);
+static inline void jdksavdecc_aecpdu_aem_set_command_type(uint16_t v, void *base, ssize_t pos) {
+    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE);
 }
 
 /*@}*/
@@ -206,14 +193,11 @@ struct jdksavdecc_aecpdu_aem {
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t
-jdksavdecc_aecpdu_aem_read(struct jdksavdecc_aecpdu_aem *p, void const *base,
-                           ssize_t pos, size_t len) {
+static inline ssize_t jdksavdecc_aecpdu_aem_read(struct jdksavdecc_aecpdu_aem *p, void const *base, ssize_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_AEM_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_common_read(&p->aecpdu_header, base, pos, len);
-        p->controller_entity_id =
-            jdksavdecc_aecpdu_aem_get_controller_entity_id(base, pos);
+        p->controller_entity_id = jdksavdecc_aecpdu_aem_get_controller_entity_id(base, pos);
         p->sequence_id = jdksavdecc_aecpdu_aem_get_sequence_id(base, pos);
         p->command_type = jdksavdecc_aecpdu_aem_get_command_type(base, pos);
     }
@@ -234,14 +218,11 @@ jdksavdecc_aecpdu_aem_read(struct jdksavdecc_aecpdu_aem *p, void const *base,
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t
-jdksavdecc_aecpdu_aem_write(struct jdksavdecc_aecpdu_aem const *p, void *base,
-                            size_t pos, size_t len) {
+static inline ssize_t jdksavdecc_aecpdu_aem_write(struct jdksavdecc_aecpdu_aem const *p, void *base, size_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_AEM_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_common_write(&p->aecpdu_header, base, pos, len);
-        jdksavdecc_aecpdu_aem_set_controller_entity_id(p->controller_entity_id,
-                                                       base, pos);
+        jdksavdecc_aecpdu_aem_set_controller_entity_id(p->controller_entity_id, base, pos);
         jdksavdecc_aecpdu_aem_set_sequence_id(p->sequence_id, base, pos);
         jdksavdecc_aecpdu_aem_set_command_type(p->command_type, base, pos);
     }

@@ -38,16 +38,14 @@
 #include "jdksavdecc_adp_advertising_interface.h"
 #include "jdksavdecc_adp_print.h"
 
-int test_jdksavdecc_pdu(struct jdksavdecc_pcapfile_reader *reader,
-                        struct jdksavdecc_pcapfile_writer *writer) {
+int test_jdksavdecc_pdu(struct jdksavdecc_pcapfile_reader *reader, struct jdksavdecc_pcapfile_writer *writer) {
     int r = 0;
     (void)reader;
     (void)writer;
     return r;
 }
 
-int test_jdksavdecc_pdu_tick(struct jdksavdecc_pcapfile_reader *self,
-                             jdksavdecc_timestamp_in_microseconds time) {
+int test_jdksavdecc_pdu_tick(struct jdksavdecc_pcapfile_reader *self, jdksavdecc_timestamp_in_microseconds time) {
     (void)self;
     (void)time;
 
@@ -92,17 +90,17 @@ int main(int argc, char **argv) {
 
         jdksavdecc_eui64_init(&entity_info.advertising_info.association_id);
 
-        jdksavdecc_adp_advertising_entity_state_machine_init(
-            &ad_entity, &ad_globals, 0, NULL);
-        jdksavdecc_adp_advertising_interface_state_machine_init(
-            &ad_interface, &ad_interface_vars, 0, NULL);
+        jdksavdecc_adp_advertising_entity_state_machine_init(&ad_entity, &ad_globals, 0, NULL);
+        jdksavdecc_adp_advertising_interface_state_machine_init(&ad_interface, &ad_interface_vars, 0, NULL);
 
-        pdu_dispatch.adp_advertiser_state_machines->add_state_machine(
-            pdu_dispatch.adp_advertiser_state_machines, &ad_entity.base);
-        pdu_dispatch.adp_advertiser_state_machines->add_state_machine(
-            pdu_dispatch.adp_advertiser_state_machines, &ad_interface.base);
+        pdu_dispatch.adp_advertiser_state_machines->add_state_machine(pdu_dispatch.adp_advertiser_state_machines,
+                                                                      &ad_entity.base);
+        pdu_dispatch.adp_advertiser_state_machines->add_state_machine(pdu_dispatch.adp_advertiser_state_machines,
+                                                                      &ad_interface.base);
 
-        r = jdksavdecc_test_run(in_file_name, out_file_name, &pdu_dispatch,
+        r = jdksavdecc_test_run(in_file_name,
+                                out_file_name,
+                                &pdu_dispatch,
                                 &test_jdksavdecc_pdu_tick,
                                 minimum_time_to_synthesize,
                                 time_step_in_microseconds);

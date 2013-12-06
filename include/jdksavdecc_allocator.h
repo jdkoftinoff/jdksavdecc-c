@@ -51,13 +51,12 @@ extern "C" {
     No initializers of the objects are called.
 */
 
-#define jdksavdecc_new(ALLOCATOR, T)                                           \
-    (T *)((ALLOCATOR)->alloc((ALLOCATOR), (int32_t)sizeof(T), 1))
+#define jdksavdecc_new(ALLOCATOR, T) (T *)((ALLOCATOR)->alloc((ALLOCATOR), (int32_t)sizeof(T), 1))
 
-#define jdksavdecc_delete(ALLOCATOR, PTR)                                      \
-    do {                                                                       \
-        if ((ALLOCATOR) != 0 && (PTR) != 0)                                    \
-            (ALLOCATOR)->free((ALLOCATOR), (PTR));                             \
+#define jdksavdecc_delete(ALLOCATOR, PTR)                                                                                      \
+    do {                                                                                                                       \
+        if ((ALLOCATOR) != 0 && (PTR) != 0)                                                                                    \
+            (ALLOCATOR)->free((ALLOCATOR), (PTR));                                                                             \
     } while (false)
 
 /** jdksavdecc_new_array
@@ -66,16 +65,13 @@ extern "C" {
     allocator to allocate from.
 */
 
-#define jdksavdecc_new_array(ALLOCATOR, T, COUNT)                              \
-    (T *)((ALLOCATOR)->alloc((ALLOCATOR), (int32_t)sizeof(T), (int32_t)(COUNT)))
+#define jdksavdecc_new_array(ALLOCATOR, T, COUNT) (T *)((ALLOCATOR)->alloc((ALLOCATOR), (int32_t)sizeof(T), (int32_t)(COUNT)))
 
 /** jdksavdecc_round_size
 
     Calculate size in bytes rounded up to the nearest 32bit word size.
 */
-#define jdksavdecc_round_size(VALUE)                                           \
-    (((VALUE) + (uint32_t)(sizeof(uint32_t)) - 1) &                            \
-     (uint32_t) ~(sizeof(uint32_t) - 1))
+#define jdksavdecc_round_size(VALUE) (((VALUE) + (uint32_t)(sizeof(uint32_t)) - 1) & (uint32_t) ~(sizeof(uint32_t) - 1))
 
 /** jdksavdecc_allocator
 
@@ -92,8 +88,7 @@ struct jdksavdecc_allocator {
     /**
        Allocate memory from the allocator.
     */
-    void *(*alloc)(struct jdksavdecc_allocator *self, int32_t length,
-                   int32_t count);
+    void *(*alloc)(struct jdksavdecc_allocator *self, int32_t length, int32_t count);
 
     void (*free)(struct jdksavdecc_allocator *self, const void *ptr);
 };
@@ -123,12 +118,9 @@ struct jdksavdecc_simple_allocator {
 */
 
 struct jdksavdecc_allocator *
-    jdksavdecc_simple_allocator_init(struct jdksavdecc_simple_allocator *self,
-                                     void *raw_memory,
-                                     int32_t raw_memory_length);
+    jdksavdecc_simple_allocator_init(struct jdksavdecc_simple_allocator *self, void *raw_memory, int32_t raw_memory_length);
 
-void
-    jdksavdecc_simple_allocator_reset(struct jdksavdecc_simple_allocator *self);
+void jdksavdecc_simple_allocator_reset(struct jdksavdecc_simple_allocator *self);
 
 /** jdksavdecc_simple_allocator_destroy
     simple allocators are allocated from raw memory and have no need to
@@ -146,11 +138,9 @@ void jdksavdecc_simple_allocator_destroy(struct jdksavdecc_allocator *self);
     @param count count of objects to allocate
     @returns memory void * or NULL if error
 */
-void *jdksavdecc_simple_allocator_alloc(struct jdksavdecc_allocator *self,
-                                        int32_t length, int32_t count);
+void *jdksavdecc_simple_allocator_alloc(struct jdksavdecc_allocator *self, int32_t length, int32_t count);
 
-void jdksavdecc_simple_allocator_free(struct jdksavdecc_allocator *self,
-                                      const void *ptr);
+void jdksavdecc_simple_allocator_free(struct jdksavdecc_allocator *self, const void *ptr);
 
 #if JDKSAVDECC_ENABLE_MALLOC
 
@@ -166,8 +156,7 @@ struct jdksavdecc_malloc_allocator {
    @returns pointer initialized object
 */
 
-struct jdksavdecc_allocator *
-    jdksavdecc_malloc_allocator_init(struct jdksavdecc_malloc_allocator *self);
+struct jdksavdecc_allocator *jdksavdecc_malloc_allocator_init(struct jdksavdecc_malloc_allocator *self);
 
 /** jdksavdecc_malloc_allocator_destroy
     simple allocators are allocated from raw memory and have no need to
@@ -176,15 +165,12 @@ struct jdksavdecc_allocator *
 
 void jdksavdecc_malloc_allocator_destroy(struct jdksavdecc_allocator *self);
 
-void *jdksavdecc_malloc_allocator_alloc(struct jdksavdecc_allocator *self,
-                                        int32_t length, int32_t count);
+void *jdksavdecc_malloc_allocator_alloc(struct jdksavdecc_allocator *self, int32_t length, int32_t count);
 
-void *jdksavdecc_malloc_allocator_realloc(struct jdksavdecc_allocator *self,
-                                          const void *orig_ptr, int32_t length,
-                                          int32_t count);
+void *
+    jdksavdecc_malloc_allocator_realloc(struct jdksavdecc_allocator *self, const void *orig_ptr, int32_t length, int32_t count);
 
-void jdksavdecc_malloc_allocator_free(struct jdksavdecc_allocator *self,
-                                      const void *ptr);
+void jdksavdecc_malloc_allocator_free(struct jdksavdecc_allocator *self, const void *ptr);
 
 #endif
 

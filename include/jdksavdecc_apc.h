@@ -46,10 +46,8 @@ struct jdksavdec_apc_state_machine {
     struct jdksavdecc_frame_sender *frame_sender;
 
     void (*destroy)(struct jdksavdec_apc_state_machine *);
-    void (*tick)(struct jdksavdec_apc_state_machine *self,
-                 jdksavdecc_timestamp_in_microseconds timestamp);
-    ssize_t (*rx_frame)(struct jdksavdec_apc_state_machine *self,
-                        struct jdksavdecc_frame *rx_frame, size_t pos);
+    void (*tick)(struct jdksavdec_apc_state_machine *self, jdksavdecc_timestamp_in_microseconds timestamp);
+    ssize_t (*rx_frame)(struct jdksavdec_apc_state_machine *self, struct jdksavdecc_frame *rx_frame, size_t pos);
 };
 #ifdef __cplusplus
 }

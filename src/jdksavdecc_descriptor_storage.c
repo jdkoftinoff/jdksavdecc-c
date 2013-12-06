@@ -33,9 +33,7 @@
 #include "jdksavdecc_descriptor_storage.h"
 
 int
-jdksavdecc_descriptor_storage_init(struct jdksavdecc_descriptor_storage *self,
-                                   void const *user_ptr,
-                                   uint32_t storage_length) {
+jdksavdecc_descriptor_storage_init(struct jdksavdecc_descriptor_storage *self, void const *user_ptr, uint32_t storage_length) {
     self->destroy = jdksavdecc_descriptor_storage_destroy;
     self->read_data = 0;
     self->user_ptr = user_ptr;
@@ -43,14 +41,11 @@ jdksavdecc_descriptor_storage_init(struct jdksavdecc_descriptor_storage *self,
     return 0;
 }
 
-void jdksavdecc_descriptor_storage_destroy(
-    struct jdksavdecc_descriptor_storage *self) {
-    (void)self;
-}
+void jdksavdecc_descriptor_storage_destroy(struct jdksavdecc_descriptor_storage *self) { (void)self; }
 
-int jdksavdecc_descriptor_storage_buffer_init(
-    struct jdksavdecc_descriptor_storage *self, void const *user_ptr,
-    uint32_t storage_length) {
+int jdksavdecc_descriptor_storage_buffer_init(struct jdksavdecc_descriptor_storage *self,
+                                              void const *user_ptr,
+                                              uint32_t storage_length) {
     self->destroy = jdksavdecc_descriptor_storage_buffer_destroy;
     self->read_data = jdksavdecc_descriptor_storage_buffer_read_data;
     self->user_ptr = user_ptr;
@@ -58,9 +53,10 @@ int jdksavdecc_descriptor_storage_buffer_init(
     return 0;
 }
 
-uint32_t jdksavdecc_descriptor_storage_buffer_read_data(
-    struct jdksavdecc_descriptor_storage *self, void *buffer, uint32_t offset,
-    uint32_t length) {
+uint32_t jdksavdecc_descriptor_storage_buffer_read_data(struct jdksavdecc_descriptor_storage *self,
+                                                        void *buffer,
+                                                        uint32_t offset,
+                                                        uint32_t length) {
     uint32_t r = 0;
     if (self->storage_length >= offset + length) {
         r = length;
@@ -69,15 +65,13 @@ uint32_t jdksavdecc_descriptor_storage_buffer_read_data(
     return r;
 }
 
-void jdksavdecc_descriptor_storage_buffer_destroy(
-    struct jdksavdecc_descriptor_storage *self) {
+void jdksavdecc_descriptor_storage_buffer_destroy(struct jdksavdecc_descriptor_storage *self) {
     jdksavdecc_descriptor_storage_destroy(self);
 }
 
 #ifdef FOPEN_MAX
 
-int jdksavdecc_descriptor_storage_file_init(
-    struct jdksavdecc_descriptor_storage *self, const char *file_name) {
+int jdksavdecc_descriptor_storage_file_init(struct jdksavdecc_descriptor_storage *self, const char *file_name) {
     int r = -1;
     FILE *f = fopen(file_name, "rb");
     self->destroy = jdksavdecc_descriptor_storage_file_destroy;
@@ -100,9 +94,10 @@ int jdksavdecc_descriptor_storage_file_init(
     return r;
 }
 
-uint32_t jdksavdecc_descriptor_storage_file_read_data(
-    struct jdksavdecc_descriptor_storage *self, void *buffer, uint32_t offset,
-    uint32_t length) {
+uint32_t jdksavdecc_descriptor_storage_file_read_data(struct jdksavdecc_descriptor_storage *self,
+                                                      void *buffer,
+                                                      uint32_t offset,
+                                                      uint32_t length) {
     uint32_t r = 0;
     if (self->user_ptr) {
         FILE *f = (FILE *)self->user_ptr;
@@ -118,8 +113,7 @@ uint32_t jdksavdecc_descriptor_storage_file_read_data(
     return r;
 }
 
-void jdksavdecc_descriptor_storage_file_destroy(
-    struct jdksavdecc_descriptor_storage *self) {
+void jdksavdecc_descriptor_storage_file_destroy(struct jdksavdecc_descriptor_storage *self) {
     if (self->user_ptr) {
         FILE *f = (FILE *)self->user_ptr;
         fclose(f);
@@ -128,21 +122,22 @@ void jdksavdecc_descriptor_storage_file_destroy(
 
 #endif
 
-int jdksavdecc_descriptor_storage_read_header(
-    struct jdksavdecc_descriptor_storage *self);
+int jdksavdecc_descriptor_storage_read_header(struct jdksavdecc_descriptor_storage *self);
 
-uint16_t jdksavdecc_descriptor_storage_get_configuration_count(
-    struct jdksavdecc_descriptor_storage *self);
+uint16_t jdksavdecc_descriptor_storage_get_configuration_count(struct jdksavdecc_descriptor_storage *self);
 
-uint16_t jdksavdecc_descriptor_storage_get_configuration_descriptor_list_count(
-    struct jdksavdecc_descriptor_storage *self, uint16_t configuration_number);
+uint16_t jdksavdecc_descriptor_storage_get_configuration_descriptor_list_count(struct jdksavdecc_descriptor_storage *self,
+                                                                               uint16_t configuration_number);
 
-uint16_t jdksavdecc_descriptor_storage_read_descriptor(
-    struct jdksavdecc_descriptor_storage *self, uint16_t configuration_number,
-    uint16_t descriptor_type, uint16_t descriptor_index,
-    uint16_t *result_buffer, uint16_t result_buffer_len);
+uint16_t jdksavdecc_descriptor_storage_read_descriptor(struct jdksavdecc_descriptor_storage *self,
+                                                       uint16_t configuration_number,
+                                                       uint16_t descriptor_type,
+                                                       uint16_t descriptor_index,
+                                                       uint16_t *result_buffer,
+                                                       uint16_t result_buffer_len);
 
-int jdksavdecc_descriptor_storage_read_symbol(
-    struct jdksavdecc_descriptor_storage *self, uint16_t configuration_number,
-    uint16_t descriptor_type, uint16_t descriptor_index,
-    uint32_t *result_symbol);
+int jdksavdecc_descriptor_storage_read_symbol(struct jdksavdecc_descriptor_storage *self,
+                                              uint16_t configuration_number,
+                                              uint16_t descriptor_type,
+                                              uint16_t descriptor_index,
+                                              uint32_t *result_symbol);

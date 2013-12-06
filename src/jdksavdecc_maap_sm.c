@@ -39,19 +39,20 @@
 
 #if ENABLE_MAAP_TODO
 
-void jdksavdecc_maap_state_machine_init(
-    struct jdksavdecc_maap_state_machine *self,
-    jdksavdecc_timestamp_in_microseconds current_time,
-    struct jdksavdecc_eui48 local_mac, struct jdksavdecc_eui48 base_of_range,
-    uint16_t desired_count,
-    void (*range_acquired_notification)(struct jdksavdecc_maap_state_machine *,
+void jdksavdecc_maap_state_machine_init(struct jdksavdecc_maap_state_machine *self,
+                                        jdksavdecc_timestamp_in_microseconds current_time,
+                                        struct jdksavdecc_eui48 local_mac,
                                         struct jdksavdecc_eui48 base_of_range,
-                                        uint16_t count),
-    void (*range_lost_notification)(struct jdksavdecc_maap_state_machine *,
-                                    struct jdksavdecc_eui48 base_of_range,
-                                    uint16_t count),
-    struct jdksavdecc_frame_sender *frame_sender, uint32_t tag,
-    void *additional) {
+                                        uint16_t desired_count,
+                                        void (*range_acquired_notification)(struct jdksavdecc_maap_state_machine *,
+                                                                            struct jdksavdecc_eui48 base_of_range,
+                                                                            uint16_t count),
+                                        void (*range_lost_notification)(struct jdksavdecc_maap_state_machine *,
+                                                                        struct jdksavdecc_eui48 base_of_range,
+                                                                        uint16_t count),
+                                        struct jdksavdecc_frame_sender *frame_sender,
+                                        uint32_t tag,
+                                        void *additional) {
     JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
     log_enter();
 
@@ -73,10 +74,8 @@ void jdksavdecc_maap_state_machine_init(
     JDKSAVDECC_LOG_RESTORE();
 }
 
-void
-jdksavdecc_maap_state_machine_destroy(struct jdksavdecc_state_machine *self_) {
-    struct jdksavdecc_maap_state_machine *self =
-        (struct jdksavdecc_maap_state_machine *)self_;
+void jdksavdecc_maap_state_machine_destroy(struct jdksavdecc_state_machine *self_) {
+    struct jdksavdecc_maap_state_machine *self = (struct jdksavdecc_maap_state_machine *)self_;
     JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
     log_enter();
 
@@ -86,11 +85,9 @@ jdksavdecc_maap_state_machine_destroy(struct jdksavdecc_state_machine *self_) {
     JDKSAVDECC_LOG_RESTORE();
 }
 
-int jdksavdecc_maap_state_machine_tick(
-    struct jdksavdecc_state_machine *self_,
-    jdksavdecc_timestamp_in_microseconds current_time) {
-    struct jdksavdecc_maap_state_machine *self =
-        (struct jdksavdecc_maap_state_machine *)self_;
+int jdksavdecc_maap_state_machine_tick(struct jdksavdecc_state_machine *self_,
+                                       jdksavdecc_timestamp_in_microseconds current_time) {
+    struct jdksavdecc_maap_state_machine *self = (struct jdksavdecc_maap_state_machine *)self_;
     JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
     log_enter();
 
@@ -103,11 +100,8 @@ int jdksavdecc_maap_state_machine_tick(
 }
 
 ssize_t
-jdksavdecc_maap_state_machine_rx_frame(struct jdksavdecc_state_machine *self_,
-                                       struct jdksavdecc_frame *rx_frame,
-                                       size_t pos) {
-    struct jdksavdecc_maap_state_machine *self =
-        (struct jdksavdecc_maap_state_machine *)self_;
+jdksavdecc_maap_state_machine_rx_frame(struct jdksavdecc_state_machine *self_, struct jdksavdecc_frame *rx_frame, size_t pos) {
+    struct jdksavdecc_maap_state_machine *self = (struct jdksavdecc_maap_state_machine *)self_;
     JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
     log_enter();
 
@@ -120,11 +114,8 @@ jdksavdecc_maap_state_machine_rx_frame(struct jdksavdecc_state_machine *self_,
     return 0;
 }
 
-void
-jdksavdecc_maap_state_machine_tx_frame(struct jdksavdecc_state_machine *self_,
-                                       struct jdksavdecc_frame const *frame) {
-    struct jdksavdecc_maap_state_machine *self =
-        (struct jdksavdecc_maap_state_machine *)self_;
+void jdksavdecc_maap_state_machine_tx_frame(struct jdksavdecc_state_machine *self_, struct jdksavdecc_frame const *frame) {
+    struct jdksavdecc_maap_state_machine *self = (struct jdksavdecc_maap_state_machine *)self_;
     JDKSAVDECC_LOG_SAVE(JDKSAVDECC_SUBSYSTEM_MAAP);
     log_enter();
 

@@ -45,8 +45,7 @@ extern "C" {
 /*@{*/
 
 extern struct jdksavdecc_uint16_name jdksavdecc_maap_print_message_type[];
-void jdksavdecc_maap_print(struct jdksavdecc_printer *self,
-                           struct jdksavdecc_maap const *p);
+void jdksavdecc_maap_print(struct jdksavdecc_printer *self, struct jdksavdecc_maap const *p);
 
 /*@}*/
 

@@ -34,8 +34,7 @@
 #include "jdksavdecc_allocator.h"
 
 struct jdksavdecc_allocator *
-jdksavdecc_simple_allocator_init(struct jdksavdecc_simple_allocator *self,
-                                 void *raw_memory, int32_t raw_memory_length) {
+jdksavdecc_simple_allocator_init(struct jdksavdecc_simple_allocator *self, void *raw_memory, int32_t raw_memory_length) {
     self->raw_memory = raw_memory;
     self->raw_memory_length = raw_memory_length;
     self->current_position = 0;
@@ -50,24 +49,20 @@ void jdksavdecc_simple_allocator_destroy(struct jdksavdecc_allocator *self) {
     (void)self;
 }
 
-void *jdksavdecc_simple_allocator_alloc(struct jdksavdecc_allocator *self_,
-                                        int32_t length, int32_t count) {
-    struct jdksavdecc_simple_allocator *self =
-        (struct jdksavdecc_simple_allocator *)self_;
+void *jdksavdecc_simple_allocator_alloc(struct jdksavdecc_allocator *self_, int32_t length, int32_t count) {
+    struct jdksavdecc_simple_allocator *self = (struct jdksavdecc_simple_allocator *)self_;
     void *result = 0;
     /* round up total size to 32 bit alignment */
     int32_t total_size_to_allocate = jdksavdecc_round_size(length * count);
-    if ((self->current_position + total_size_to_allocate) <=
-        (self->raw_memory_length)) {
+    if ((self->current_position + total_size_to_allocate) <= (self->raw_memory_length)) {
         result = ((char *)self->raw_memory) + self->current_position;
         self->current_position += total_size_to_allocate;
     }
     return result;
 }
 
-void *jdksavdecc_simple_allocator_realloc(struct jdksavdecc_allocator *self_,
-                                          const void *orig_ptr, int32_t length,
-                                          int32_t count) {
+void *
+jdksavdecc_simple_allocator_realloc(struct jdksavdecc_allocator *self_, const void *orig_ptr, int32_t length, int32_t count) {
     void *new_ptr = self_->alloc(self_, length, count);
     if (new_ptr) {
         memcpy(new_ptr, orig_ptr, jdksavdecc_round_size(length * count));
@@ -76,22 +71,17 @@ void *jdksavdecc_simple_allocator_realloc(struct jdksavdecc_allocator *self_,
     return new_ptr;
 }
 
-void jdksavdecc_simple_allocator_free(struct jdksavdecc_allocator *self_,
-                                      const void *ptr) {
+void jdksavdecc_simple_allocator_free(struct jdksavdecc_allocator *self_, const void *ptr) {
     (void)self_;
     (void)ptr;
     /* Do nothing; the simple allocator never frees */
 }
 
-void
-jdksavdecc_simple_allocator_reset(struct jdksavdecc_simple_allocator *self) {
-    self->current_position = 0;
-}
+void jdksavdecc_simple_allocator_reset(struct jdksavdecc_simple_allocator *self) { self->current_position = 0; }
 
 #if jdksavdecc_ENABLE_MALLOC
 
-struct jdksavdecc_allocator *
-jdksavdecc_malloc_allocator_init(struct jdksavdecc_malloc_allocator *self) {
+struct jdksavdecc_allocator *jdksavdecc_malloc_allocator_init(struct jdksavdecc_malloc_allocator *self) {
     self->base.destroy = jdksavdecc_malloc_allocator_destroy;
     self->base.alloc = jdksavdecc_malloc_allocator_alloc;
     self->base.realloc = jdksavdecc_malloc_allocator_realloc;
@@ -104,14 +94,12 @@ void jdksavdecc_malloc_allocator_destroy(struct jdksavdecc_allocator *self_) {
     /* nothing to destroy, we do not keep track of all mallocs and frees */
 }
 
-void *jdksavdecc_malloc_allocator_alloc(struct jdksavdecc_allocator *self,
-                                        int32_t length, int32_t count) {
+void *jdksavdecc_malloc_allocator_alloc(struct jdksavdecc_allocator *self, int32_t length, int32_t count) {
     (void)self;
     return jdksavdecc_DEFAULT_MALLOC(jdksavdecc_round_size(length * count));
 }
 
-void jdksavdecc_malloc_allocator_free(struct jdksavdecc_allocator_s *self,
-                                      const void *ptr) {
+void jdksavdecc_malloc_allocator_free(struct jdksavdecc_allocator_s *self, const void *ptr) {
     (void)self;
     free((void *)ptr);
 }

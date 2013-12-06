@@ -42,10 +42,9 @@ __thread int jdksavdecc_log_current_subsystem = 0;
 int jdksavdecc_log_current_subsystem = 0;
 #endif
 
-bool jdksavdecc_log_subsystem_enable[32] = {
-    true, true, true, true, true, true, true, true, true, true, true,
-    true, true, true, true, true, true, true, true, true, true, true,
-    true, true, true, true, true, true, true, true, true, true};
+bool jdksavdecc_log_subsystem_enable[32]
+    = {true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true,
+       true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true};
 
 void jdksavdecc_log_null(const char *fmt, ...);
 
