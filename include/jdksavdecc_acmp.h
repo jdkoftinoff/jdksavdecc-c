@@ -155,9 +155,10 @@ static inline ssize_t jdksavdecc_acmpdu_common_control_header_write(struct jdksa
 #define JDKSAVDECC_ACMP_STATUS_RESERVED (15)
 #define JDKSAVDECC_ACMP_STATUS_CONTROLLER_NOT_AUTHORIZED (16)
 #define JDKSAVDECC_ACMP_STATUS_INCOMPATIBLE_REQUEST (17)
-#define JDKSAVDECC_ACMP_STATUS_LISTENER_INVALID_CONNECTION                                                                     \
-    (18) /// New: The AVDECC Listener is being asked to connect to something that it cannot listen to, e.g. it is being asked to   \
-         /// listen to it's own AVDECC Talker stream.
+
+/// New: The AVDECC Listener is being asked to connect to something that it cannot listen to, e.g. it is being asked to
+/// listen to it's own AVDECC Talker stream.
+#define JDKSAVDECC_ACMP_STATUS_LISTENER_INVALID_CONNECTION (18)
 #define JDKSAVDECC_ACMP_STATUS_NOT_SUPPORTED (31)
 
 /*@}*/

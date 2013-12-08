@@ -42,24 +42,20 @@ extern "C" {
 /** \addtogroup maap MAAP - IEEE Std 1722-2011 Annex B.2 */
 /*@{*/
 
-#define JDKSAVDECC_MAAP_PROBE_RETRANSMITS (3) /// See IEEE Std 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_PROBE_INTERVAL_BASE                                                                                    \
-    ((jdksavdecc_timestamp_in_microseconds)500000L) /// 500ms in microseconds  \
-                                                    /// - See IEEE Std         \
-                                                    /// 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_PROBE_INTERVAL_VARIATION                                                                               \
-    ((jdksavdecc_timestamp_in_microseconds)100000L) /// 100ms in microseconds  \
-                                                    /// - See IEEE Std         \
-                                                    /// 1722-2011 Annex B.3.3
-#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_BASE                                                                                 \
-    ((jdksavdecc_timestamp_in_microseconds)30000000L) /// 30s in microseconds  \
-                                                      /// - See IEEE Std       \
-                                                      /// 1722-2011 Annex      \
-                                                      /// B.3.3
-#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_VARIATION                                                                            \
-    ((jdksavdecc_timestamp_in_microseconds)2000000L) /// 2s in microseconds -  \
-                                                     /// See IEEE Std          \
-                                                     /// 1722-2011 Annex B.3.3
+/// See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_PROBE_RETRANSMITS (3)
+
+/// 500ms in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_PROBE_INTERVAL_BASE ((jdksavdecc_timestamp_in_microseconds)500000L)
+
+/// 100ms in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_PROBE_INTERVAL_VARIATION ((jdksavdecc_timestamp_in_microseconds)100000L)
+
+/// 30s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_BASE ((jdksavdecc_timestamp_in_microseconds)30000000L)
+
+/// 2s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
+#define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_VARIATION ((jdksavdecc_timestamp_in_microseconds)2000000L)
 
 #define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_START                                                                          \
     {                                                                                                                          \

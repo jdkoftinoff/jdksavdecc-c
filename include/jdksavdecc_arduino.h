@@ -31,26 +31,74 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <errno.h>
-#include <assert.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <limits.h>
-#include <ctype.h>
+#include "jdksavdecc_world.h"
 
-#ifdef _MSC_VER
-#include "jdksavdecc_ms.h"
-#elif defined(__AVR__)
-#include "jdksavdecc_avr.h"
-#else
-#include <unistd.h>
+#if defined(__AVR__)
+
+#if !defined(__cplusplus)
+#define inline __inline__
+#endif
+
+typedef int ssize_t;
+
 #include <stdint.h>
 #include <inttypes.h>
 #include <stdbool.h>
+
+#ifndef PRIi8
+#define PRIi8 "hd"
 #endif
 
-#include "jdksavdecc_allocator.h"
-#include "jdksavdecc_log.h"
+#ifndef PRIu8
+#define PRIu8 "hu"
+#endif
+
+#ifndef PRIx8
+#define PRIx8 "hx"
+#endif
+
+#ifndef PRIi16
+#define PRIi16 "d"
+#endif
+
+#ifndef PRIu16
+#define PRIu16 "u"
+#endif
+
+#ifndef PRIx16
+#define PRIx16 "x"
+#endif
+
+#ifndef PRIi32
+#define PRIi32 "ld"
+#endif
+
+#ifndef PRIu32
+#define PRIu32 "lu"
+#endif
+
+#ifndef PRIx32
+#define PRIx32 "lx"
+#endif
+
+#ifndef PRIi64
+#define PRIi64 "ld"
+#endif
+
+#ifndef PRIu64
+#define PRIu64 "lu"
+#endif
+
+#ifndef PRIx64
+#define PRIx64 "lx"
+#endif
+
+#ifndef EXIT_SUCCESS
+#define EXIT_SUCCESS (0)
+#endif
+
+#ifndef EXIT_FAILURE
+#define EXIT_FAILURE (1)
+#endif
+
+#endif

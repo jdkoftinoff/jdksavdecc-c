@@ -60,10 +60,8 @@ extern struct jdksavdecc_eui48 jdksavdecc_multicast_adp_acmp;
     } /// See Annex B.1
 extern struct jdksavdecc_eui48 jdksavdecc_multicast_identification;
 
-#define JDKSAVDECC_MULTICAST_MAAP_MAC (0x91e0f000ff00ULL) /// See IEEE 1722a Annex B
-#define JDKSAVDECC_MULTICAST_ADP_ACMP_MAC                                                                                      \
-    (0x91e0f0010000ULL) /// See Annex    \
-                                                              /// B.1
+#define JDKSAVDECC_MULTICAST_MAAP_MAC (0x91e0f000ff00ULL)           /// See IEEE 1722a Annex B
+#define JDKSAVDECC_MULTICAST_ADP_ACMP_MAC (0x91e0f0010000ULL)       /// See Annex B.1
 #define JDKSAVDECC_MULTICAST_IDENTIFICATION_MAC (0x91e0f0010001ULL) /// See Annex B.1
 
 #define JDKSAVDECC_IDENTIFICATION_NOTIFICATION_CONTROLLER_ENTITY_ID                                                            \

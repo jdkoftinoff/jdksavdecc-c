@@ -33,6 +33,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_test.h"
 
+#if defined(FOPEN_MAX)
+
 int jdksavdecc_test_run(char const *in_file_name,
                         char const *out_file_name,
                         struct jdksavdecc_pdu_dispatch *pdu_dispatch,
@@ -78,3 +80,7 @@ int jdksavdecc_test_run(char const *in_file_name,
     writer.close(&writer);
     return 1;
 }
+
+#else
+const char *jdksavdecc_test_file = __FILE__;
+#endif

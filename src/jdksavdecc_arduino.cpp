@@ -1,5 +1,3 @@
-#pragma once
-
 /*
   Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -31,26 +29,17 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <errno.h>
-#include <assert.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <limits.h>
-#include <ctype.h>
+#include "jdksavdecc_world.h"
 
-#ifdef _MSC_VER
-#include "jdksavdecc_ms.h"
-#elif defined(__AVR__)
+#if defined(__AVR__) && defined(ARDUINO)
+
 #include "jdksavdecc_avr.h"
+
+// TODO
+char const *jdksavdecc_arduino_file = __FILE__;
+
 #else
-#include <unistd.h>
-#include <stdint.h>
-#include <inttypes.h>
-#include <stdbool.h>
+char const *jdksavdecc_arduino_file = __FILE__;
+
 #endif
 
-#include "jdksavdecc_allocator.h"
-#include "jdksavdecc_log.h"

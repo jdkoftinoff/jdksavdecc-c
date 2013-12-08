@@ -41,6 +41,10 @@ extern "C" {
 /** \addtogroup frame raw ethernet frame */
 /*@{*/
 
+#ifndef JDKSAVDECC_FRAME_MAX_PAYLOAD_SIZE
+#define JDKSAVDECC_FRAME_MAX_PAYLOAD_SIZE (640)
+#endif
+
 struct jdksavdecc_frame {
     jdksavdecc_timestamp_in_microseconds time;
     struct jdksavdecc_eui48 dest_address;
@@ -51,7 +55,7 @@ struct jdksavdecc_frame {
     uint16_t dei : 1;
     uint16_t vid : 12;
     uint16_t length;
-    uint8_t payload[1500];
+    uint8_t payload[JDKSAVDECC_FRAME_MAX_PAYLOAD_SIZE];
 };
 
 static inline void jdksavdecc_frame_init(struct jdksavdecc_frame *p) {

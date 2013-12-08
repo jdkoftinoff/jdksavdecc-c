@@ -34,6 +34,8 @@
 #include "jdksavdecc_pcapfile.h"
 #include "jdksavdecc_pdu_dispatch.h"
 
+#if defined(FOPEN_MAX)
+
 #define JDKSAVDECC_PCAPFILE_HEADER_MAGIC_NATIVE (0xa1b2c3d4UL)
 #define JDKSAVDECC_PCAPFILE_HEADER_MAGIC_SWAPPED (0xd4c3b2a1UL)
 
@@ -358,3 +360,6 @@ void jdksavdecc_pcapfile_writer_send(struct jdksavdecc_frame_sender *self_, stru
         }
     }
 }
+#else
+const char *jdksavdecc_pcapfile_file = __FILE__;
+#endif

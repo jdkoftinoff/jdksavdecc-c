@@ -89,8 +89,8 @@ void jdksavdecc_log_aecp_fill_and_send(uint32_t descriptor_index, const char *fm
 
     jdksavdecc_aem_command_set_control_set_controller_entity_id(jdksavdecc_log_aecp->controller_id, payload, 0);
     jdksavdecc_aem_command_set_control_set_sequence_id(jdksavdecc_log_aecp_sequence_id++, payload, 0);
-    jdksavdecc_aem_command_set_control_set_command_type(JDKSAVDECC_AEM_COMMAND_SET_CONTROL | 0x8000, payload, 0); // Unsolicited
-                                                                                                                  // response
+    jdksavdecc_aem_command_set_control_set_command_type(
+        JDKSAVDECC_AEM_COMMAND_SET_CONTROL | 0x8000, payload, 0); // Unsolicited response
     jdksavdecc_aem_command_set_control_set_descriptor_type(jdksavdecc_log_aecp->descriptor_type, payload, 0);
     jdksavdecc_aem_command_set_control_set_descriptor_index(descriptor_index, payload, 0);
     jdksavdecc_log_aecp_frame_for_logging->length = pos;
