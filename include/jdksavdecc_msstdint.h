@@ -31,7 +31,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#ifdef _MSC_VER 
+#ifdef _MSC_VER
 
 #ifndef _MSC_STDINT_H_ // [
 #define _MSC_STDINT_H_
@@ -255,5 +255,3 @@ typedef uint64_t uintmax_t;
 #endif // _MSC_STDINT_H_ ]
 
 #endif
-
-
