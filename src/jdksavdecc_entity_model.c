@@ -33,3 +33,4 @@
 #include "jdksavdecc_entity_model.h"
 
 char const *jdksavdecc_entity_model_file = __FILE__;
+
