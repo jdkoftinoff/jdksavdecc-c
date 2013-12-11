@@ -55,10 +55,12 @@ struct jdksavdecc_frame {
     uint16_t dei : 1;
     uint16_t vid : 12;
     uint16_t length;
-    uint8_t payload[JDKSAVDECC_FRAME_MAX_PAYLOAD_SIZE];
+    uint16_t max_payload_length;
+    uint8_t *payload;
 };
 
-static inline void jdksavdecc_frame_init(struct jdksavdecc_frame *p) {
+static inline void
+jdksavdecc_frame_init(struct jdksavdecc_frame *p, uint8_t *payload_memory, uint16_t max_payload_length, uint16_t length) {
     p->time = 0;
     jdksavdecc_eui48_init(&p->dest_address);
     jdksavdecc_eui48_init(&p->src_address);
@@ -68,7 +70,10 @@ static inline void jdksavdecc_frame_init(struct jdksavdecc_frame *p) {
     p->pcp = 0;
     p->dei = 0;
     p->vid = 0;
-    memset(p->payload, 0, sizeof(p->payload));
+    p->max_payload_length = max_payload_length;
+    p->length = length;
+    p->payload = payload_memory;
+    memset(p->payload, 0, max_payload_length);
 }
 
 ssize_t jdksavdecc_frame_read(struct jdksavdecc_frame *p, void const *base, ssize_t pos, size_t len);
