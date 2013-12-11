@@ -32,6 +32,7 @@
 */
 
 #include "jdksavdecc_world.h"
+#include "jdksavdecc_aem_descriptor.h"
 #include "jdksavdecc_descriptor_storage.h"
 
 #ifdef __cplusplus
