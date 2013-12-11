@@ -54,8 +54,6 @@
 
 #include "jdksavdecc_app.h"
 #include "jdksavdecc_app_print.h"
-#include "jdksavdecc_apc.h"
-#include "jdksavdecc_aps.h"
 
 #include "jdksavdecc_maap.h"
 #include "jdksavdecc_maap_print.h"
