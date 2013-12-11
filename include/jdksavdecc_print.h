@@ -159,7 +159,6 @@ void jdksavdecc_printer_print_eui64_name(struct jdksavdecc_printer *self,
 
 extern char jdksavdecc_hexdig[16];
 
-
 #ifdef __cplusplus
 }
 #endif

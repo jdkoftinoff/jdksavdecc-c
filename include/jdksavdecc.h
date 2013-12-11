@@ -35,7 +35,6 @@
 #include "jdksavdecc_util.h"
 #include "jdksavdecc_pdu.h"
 #include "jdksavdecc_frame.h"
-#include "jdksavdecc_frame_list.h"
 
 #include "jdksavdecc_acmp.h"
 #include "jdksavdecc_acmp_print.h"
@@ -64,4 +63,3 @@
 #include "jdksavdecc_descriptor_storage.h"
 
 #include "jdksavdecc_descriptor_storage_gen.h"
-

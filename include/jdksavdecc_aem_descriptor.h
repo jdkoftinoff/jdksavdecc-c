@@ -49,7 +49,7 @@ extern "C" {
 #define JDKSAVDECC_AEM_DESCRIPTOR_SIZE (508) /// Clause 7.2
 
 struct jdksavdecc_descriptor {
-    uint8_t data[ JDKSAVDECC_AEM_DESCRIPTOR_SIZE ];
+    uint8_t data[JDKSAVDECC_AEM_DESCRIPTOR_SIZE];
 };
 
 /*@}*/
