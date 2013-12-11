@@ -39,9 +39,6 @@
 extern "C" {
 #endif
 
-/** \addtogroup print Print Utilities */
-/*@{*/
-
 struct jdksavdecc_16bit_name {
     uint16_t bit_value;
     char const *name;
@@ -97,9 +94,6 @@ struct jdksjdksavdecc_eui48 const *avdecc_get_eui48_value_for_name(struct jdksav
 
 char const *jdksavdecc_get_name_for_eui64_value(struct jdksavdecc_eui64_name const names[], struct jdksavdecc_eui64 v);
 struct jdksavdecc_eui64 const *avdecc_get_eui64_value_for_name(struct jdksavdecc_eui64_name const names[], char const *name);
-
-/** \addtogroup util_print Print Utilities */
-/*@{*/
 
 struct jdksavdecc_printer {
     char *buf;
@@ -165,7 +159,6 @@ void jdksavdecc_printer_print_eui64_name(struct jdksavdecc_printer *self,
 
 extern char jdksavdecc_hexdig[16];
 
-/*@}*/
 
 #ifdef __cplusplus
 }
