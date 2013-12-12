@@ -33,7 +33,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_frame.h"
 
-ssize_t jdksavdecc_frame_read(struct jdksavdecc_frame *p, void const *base, ssize_t pos, size_t len) {
+ssize_t jdksavdecc_frame_read(struct jdksavdecc_frame *p, void const *base,
+                              ssize_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, 14);
     if (r >= 0) {
         size_t payload_offset;
@@ -68,14 +69,16 @@ ssize_t jdksavdecc_frame_read(struct jdksavdecc_frame *p, void const *base, ssiz
 
         if (r >= 0) {
             p->length = (uint16_t)(len - payload_offset);
-            memcpy(p->payload, ((uint8_t *)base) + pos + payload_offset, p->length);
+            memcpy(p->payload, ((uint8_t *)base) + pos + payload_offset,
+                   p->length);
             r = len;
         }
     }
     return r;
 }
 
-ssize_t jdksavdecc_frame_write(struct jdksavdecc_frame const *p, void *base, ssize_t pos, size_t len) {
+ssize_t jdksavdecc_frame_write(struct jdksavdecc_frame const *p, void *base,
+                               ssize_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, 14);
     if (r >= 0) {
         size_t payload_offset;
@@ -86,7 +89,8 @@ ssize_t jdksavdecc_frame_write(struct jdksavdecc_frame const *p, void *base, ssi
             payload_offset = 18;
             r = jdksavdecc_validate_range(pos, len, payload_offset);
             if (r >= 0) {
-                uint16_t tci = ((p->pcp & 0x7) << 13) | ((p->dei & 1) << 12) | ((p->vid) & 0xfff);
+                uint16_t tci = ((p->pcp & 0x7) << 13) | ((p->dei & 1) << 12) |
+                               ((p->vid) & 0xfff);
                 jdksavdecc_uint16_set(p->tpid, base, pos + 12);
                 jdksavdecc_uint16_set(tci, base, pos + 14);
                 jdksavdecc_uint16_set(p->ethertype, base, pos + 16);
@@ -96,9 +100,11 @@ ssize_t jdksavdecc_frame_write(struct jdksavdecc_frame const *p, void *base, ssi
             jdksavdecc_uint16_set(p->ethertype, base, pos + 12);
         }
 
-        r = jdksavdecc_validate_range(pos, len, pos + payload_offset + p->length);
+        r = jdksavdecc_validate_range(pos, len,
+                                      pos + payload_offset + p->length);
         if (r >= 0) {
-            memcpy(((uint8_t *)base) + pos + payload_offset, p->payload, p->length);
+            memcpy(((uint8_t *)base) + pos + payload_offset, p->payload,
+                   p->length);
         }
     }
 
