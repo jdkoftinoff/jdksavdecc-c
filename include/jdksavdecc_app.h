@@ -44,12 +44,12 @@ extern "C" {
 /** \addtogroup appdu_dns_sd APPDU DNS-SD definitions - See IEEE Std 1722.1-2013 Annex C.2 */
 /*@{*/
 
-#define JDKSAVDECC_APPDU_DNS_SD_SERVICE_NAME                                                                                   \
-    "_avdecc._tcp."                                  /// The assigned MDNS-SD service name - See IEEE Std 1722.1-2013 Annex C.2
-#define JDKSAVDECC_APPDU_IANA_SERVICE_NAME "avdecc"  /// The assigned IANA service name
-#define JDKSAVDECC_APPDU_TCP_PORT_STRING "17221"     /// Port as an ascii string - See IEEE Std 1722.1-2013 Annex C.2
-#define JDKSAVDECC_APPDU_TCP_PORT 17221              /// Port as an integer See IEEE Std 1722.1-2013 Annex C.2
-#define JDKSAVDECC_APPDU_TXT_FIELD_VERSION "Version" /// See IEEE Std 1722.1-2013 Annex C.3.1
+/// The assigned MDNS-SD service name - See IEEE Std 1722.1-2013 Annex C.2
+#define JDKSAVDECC_APPDU_DNS_SD_SERVICE_NAME "_avdecc._tcp."
+#define JDKSAVDECC_APPDU_IANA_SERVICE_NAME "avdecc"            /// The assigned IANA service name
+#define JDKSAVDECC_APPDU_TCP_PORT_STRING "17221"               /// Port as an ascii string - See IEEE Std 1722.1-2013 Annex C.2
+#define JDKSAVDECC_APPDU_TCP_PORT 17221                        /// Port as an integer See IEEE Std 1722.1-2013 Annex C.2
+#define JDKSAVDECC_APPDU_TXT_FIELD_VERSION "Version"           /// See IEEE Std 1722.1-2013 Annex C.3.1
 #define JDKSAVDECC_APPDU_TXT_FIELD_PRIORITY "Priority"         /// See IEEE Std 1722.1-2013 Annex C.3.2
 #define JDKSAVDECC_APPDU_TXT_FIELD_DESCRIPTION "Description"   /// See IEEE Std 1722.1-2013 Annex C.3.3
 #define JDKSAVDECC_APPDU_TXT_FIELD_MANUFACTURER "Manufacturer" /// See IEEE Std 1722.1-2013 Annex C.3.4
