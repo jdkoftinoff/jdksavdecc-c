@@ -40,8 +40,6 @@ extern "C" {
 /** \addtogroup util Utilities */
 /*@{*/
 
-struct jdksavdecc_pdu_dispatch;
-
 typedef uint64_t jdksavdecc_timestamp_in_microseconds;
 
 /**
@@ -55,8 +53,6 @@ typedef uint64_t jdksavdecc_timestamp_in_microseconds;
 static inline ssize_t jdksavdecc_validate_range(ssize_t bufpos, size_t buflen, size_t elem_size) {
     return ((size_t)(bufpos) + (size_t)elem_size <= (size_t)buflen) ? (ssize_t)(bufpos + elem_size) : (ssize_t) - 1;
 }
-
-/*@}*/
 
 /** \addtogroup endian Endian helpers / data access */
 /*@{*/
@@ -653,6 +649,7 @@ static inline void jdksavdecc_gptp_seconds_set(struct jdksavdecc_gptp_seconds v,
 
 /*@}*/
 
+/*@}*/
 #ifdef __cplusplus
 }
 #endif

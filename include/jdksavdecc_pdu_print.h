@@ -39,7 +39,7 @@
 extern "C" {
 #endif
 
-/** \addtogroup print_pdu PDU Print Utilities */
+/** \addtogroup util Utilities */
 /*@{*/
 
 extern struct jdksavdecc_uint16_name jdksavdecc_pdu_print_cd_subtype[];

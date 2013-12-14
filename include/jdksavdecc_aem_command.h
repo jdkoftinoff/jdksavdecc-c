@@ -38,12 +38,14 @@
 extern "C" {
 #endif
 
-/** \addtogroup command */
+/** \addtogroup aem AEM - Clause 7 */
+/*@{*/
+
+/** \addtogroup aem_command AEM Commands - Clause 7.4 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SIZE (524) /// Clause 9.2.1.1.7
 
-/*@}*/
 
 /** \addtogroup command command : Command Codes - Clause 7.4  */
 /*@{*/
@@ -304,7 +306,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_configuration_response SET_CONFIGURATION Response -
+/** \addtogroup command_set_configuration_response SET_CONFIGURATION Response
  * Clause 7.4.7.1 */
 /*@{*/
 
@@ -42460,13 +42462,17 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_response_w
     return r;
 }
 
-/*@}*/
-
 /** @todo Add read/write for the set/get stream backup commands and responses */
 struct jdksavdecc_aem_command_set_stream_backup;
 struct jdksavdecc_aem_command_set_stream_backup_response;
 struct jdksavdecc_aem_command_get_stream_backup;
 struct jdksavdecc_aem_command_get_stream_backup_response;
+
+/*@}*/
+
+/*@}*/
+
+/*@}*/
 
 #ifdef __cplusplus
 }

@@ -38,6 +38,9 @@
 extern "C" {
 #endif
 
+/** \addtogroup aecp AECP - Clause 9 */
+/*@{*/
+
 /** \addtogroup aecpdu_aa AECPDU Address Access - Clause 9.2.1.3 */
 /*@{*/
 
@@ -46,7 +49,6 @@ extern "C" {
 #define JDKSAVDECC_AECPDU_AA_OFFSET_TLV_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10)
 #define JDKSAVDECC_AECPDU_AA_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12)
 
-/*@}*/
 
 /** \addtogroup aecpdu_aa_tlv AECPDU Address Access TLV - Clause 9.2.1.3.3 */
 /*@{*/
@@ -55,8 +57,6 @@ extern "C" {
 #define JDKSAVDECC_AECPDU_AA_TLV_OFFSET_ADDRESS_UPPER (2)
 #define JDKSAVDECC_AECPDU_AA_TLV_OFFSET_ADDRESS_LOWER (6)
 #define JDKSAVDECC_AECPDU_AA_TLV_LEN (10)
-
-/*@}*/
 
 /*@}*/
 
@@ -224,7 +224,7 @@ static inline ssize_t jdksavdecc_aecpdu_aa_write(struct jdksavdecc_aecpdu_aa con
 
 /*@}*/
 
-/** \addtogroup aecpdu_tlv AECPDU Address Access TLV - Clause 9.2.1.3.3 */
+/** \addtogroup aecpdu_aa_tlv AECPDU Address Access TLV - Clause 9.2.1.3.3 */
 /*@{*/
 
 /**
@@ -325,7 +325,7 @@ static inline void jdksavdecc_aecpdu_aa_tlv_set_address_lower(uint32_t v, void *
 
 /*@}*/
 
-/** \addtogroup aecpdu_tlv AECPDU Address Access TLV - Clause 9.2.1.3.3 */
+/** \addtogroup aecpdu_aa_tlv AECPDU Address Access TLV - Clause 9.2.1.3.3 */
 /*@{*/
 
 /// AECPDU Address Access TLV - Clause 9.2.1.3.3
@@ -386,6 +386,11 @@ jdksavdecc_aecpdu_aa_tlv_write(struct jdksavdecc_aecpdu_aa_tlv const *p, void *b
 }
 
 /*@}*/
+
+/*@}*/
+
+/*@}*/
+    
 #ifdef __cplusplus
 }
 #endif

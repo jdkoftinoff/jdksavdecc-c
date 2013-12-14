@@ -38,6 +38,9 @@
 extern "C" {
 #endif
 
+/** \addtogroup util Utilities */
+/*@{*/
+
 /** \addtogroup frame raw ethernet frame */
 /*@{*/
 
@@ -81,6 +84,8 @@ struct jdksavdecc_frame_sender {
     void (*destroy)(struct jdksavdecc_frame_sender *);
     void (*send)(struct jdksavdecc_frame_sender *, struct jdksavdecc_frame const *frame);
 };
+
+/*@}*/
 
 #ifdef __cplusplus
 }

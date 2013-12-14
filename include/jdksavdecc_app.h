@@ -38,7 +38,7 @@
 extern "C" {
 #endif
 
-/** \addtogroup appdu AVDECC Proxy Protocol - See IEEE Std 1722.1-2013 Annex C */
+/** \addtogroup app APP - AVDECC Proxy Protocol */
 /*@{*/
 
 /** \addtogroup appdu_dns_sd APPDU DNS-SD definitions - See IEEE Std 1722.1-2013 Annex C.2 */
@@ -70,7 +70,7 @@ extern "C" {
 
 /*@}*/
 
-/**\addtogroup appdu_constants - See IEEE Std 1722.1-2013 Annex C.4 */
+/**\addtogroup appdu_constants APP constants and message types - See IEEE Std 1722.1-2013 Annex C.4 */
 /*@{*/
 
 #define JDKSAVDECC_APPDU_VERSION (0)                         /// See IEEE Std 1722.1-2013 Annex C.4.1
@@ -86,13 +86,17 @@ extern "C" {
 
 /*@}*/
 
-/**\addtogroup appdu_errors - See IEEE Std 1722.1-2013 Annex C.4 */
+/**\addtogroup appdu_errors APPDU parsing errors - See IEEE Std 1722.1-2013 Annex C.4 */
 /*@{*/
 
-#define JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT (-1) /// The buffer length is insufficent
-#define JDKSAVDECC_APPDU_ERROR_PAYLOAD_INCOMPLETE                                                                              \
-    (-2)                                           /// The network buffer does not contain enough bytes for the declared payload
-#define JDKSAVDECC_APPDU_ERROR_INVALID_HEADER (-3) /// The parsed data does not contain valid data
+/// The buffer length is insufficent
+#define JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT (-1)
+
+/// The network buffer does not contain enough bytes for the declared payload
+#define JDKSAVDECC_APPDU_ERROR_PAYLOAD_INCOMPLETE (-2)
+
+/// The parsed data does not contain valid data
+#define JDKSAVDECC_APPDU_ERROR_INVALID_HEADER (-3)
 
 /*@}*/
 

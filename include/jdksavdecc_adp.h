@@ -38,7 +38,10 @@
 extern "C" {
 #endif
 
-/** \addtogroup adp ADP Message Types - Clause 6.2.1.5 */
+/** \addtogroup adp ADP - Clause 6 */
+/*@{*/
+
+/** \addtogroup adpdu_msg ADP Message Types - Clause 6.2.1.5 */
 /*@{*/
 #define JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_AVAILABLE (0)
 #define JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_DEPARTING (1)
@@ -810,6 +813,8 @@ static inline ssize_t jdksavdecc_adpdu_write(struct jdksavdecc_adpdu const *p, v
     }
     return r;
 }
+
+/*@}*/
 
 /*@}*/
 

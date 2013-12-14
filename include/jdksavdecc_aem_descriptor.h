@@ -38,9 +38,16 @@
 extern "C" {
 #endif
 
+/** \addtogroup aem AEM - Clause 7 */
+/*@{*/
+
+/** \addtogroup aem_descriptor AEM Descriptors - Clause 7.2 */
+/*@{*/
+
 #define JDKSAVDECC_AEM_VALUES_TYPE_FLAG_READ_ONLY (0x8000)
 #define JDKSAVDECC_AEM_VALUES_TYPE_FLAG_UNKNOWN (0x4000)
 
+/// Clause 7.3.3
 #define JDKSAVDECC_AEM_UNITS(multiplier, code) ((multiplier << 8) + code)
 
 /** \addtogroup descriptor */
@@ -1187,8 +1194,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_external_port EXTERNAL_PORT_INPUT and
- * EXTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.14  */
+/** \addtogroup descriptor_external_port EXTERNAL_PORT_INPUT and EXTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.14  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_EXTERNAL_PORT_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1206,8 +1212,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_internal_port INTERNAL_PORT_INPUT and
- * INTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.15  */
+/** \addtogroup descriptor_internal_port INTERNAL_PORT_INPUT and INTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.15  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_INTERNAL_PORT_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1225,8 +1230,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_audio_cluster AUDIO_CLUSTER Descriptor - Clause
- * 7.2.16  */
+/** \addtogroup descriptor_audio_cluster AUDIO_CLUSTER Descriptor - Clause 7.2.16  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_AUDIO_CLUSTER_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1244,8 +1248,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_video_cluster VIDEO_CLUSTER Descriptor - Clause
- * 7.2.17  */
+/** \addtogroup descriptor_video_cluster VIDEO_CLUSTER Descriptor - Clause 7.2.17  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_VIDEO_CLUSTER_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1278,8 +1281,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_sensor_cluster SENSOR_CLUSTER Descriptor - Clause
- * 7.2.18  */
+/** \addtogroup descriptor_sensor_cluster SENSOR_CLUSTER Descriptor - Clause 7.2.18  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_SENSOR_CLUSTER_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1359,11 +1361,12 @@ struct jdksavdecc_descriptor {
 #define JDKSAVDECC_DESCRIPTOR_CONTROL_OFFSET_VALUE_DETAILS (104)
 #define JDKSAVDECC_DESCRIPTOR_CONTROL_LEN (104)
 
-#define JDKSAVDECC_DESCRIPTOR_CONTROL_VALUE_DETAILS_MAX_LENGTH (404) // See IEEE Std 1722.1-2013 Clause 7.2.22 Table 7.38
-                                                                     /*@}*/
+/// See IEEE Std 1722.1-2013 Clause 7.2.22 Table 7.38
+#define JDKSAVDECC_DESCRIPTOR_CONTROL_VALUE_DETAILS_MAX_LENGTH (404)
 
-/** \addtogroup descriptor_signal_selector SIGNAL_SELECTOR Descriptor - Clause
- * 7.2.23  */
+/*@}*/
+
+/** \addtogroup descriptor_signal_selector SIGNAL_SELECTOR Descriptor - Clause 7.2.23  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_SIGNAL_SELECTOR_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1428,8 +1431,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_matrix_signal Matrix Signal Descriptor - Clause
- * 7.2.26  */
+/** \addtogroup descriptor_matrix_signal Matrix Signal Descriptor - Clause 7.2.26  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_MATRIX_SIGNAL_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1441,8 +1443,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_signal_splitter SIGNAL_SPLITTER Descriptor - Clause
- * 7.2.27  */
+/** \addtogroup descriptor_signal_splitter SIGNAL_SPLITTER Descriptor - Clause 7.2.27  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_SIGNAL_SPLITTER_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1463,8 +1464,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_signal_combiner SIGNAL_COMBINER Descriptor - Clause
- * 7.2.28  */
+/** \addtogroup descriptor_signal_combiner SIGNAL_COMBINER Descriptor - Clause 7.2.28  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_SIGNAL_COMBINER_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1483,8 +1483,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_signal_demultiplexer SIGNAL_DEMULTIPLEXER Descriptor
- * - Clause 7.2.29  */
+/** \addtogroup descriptor_signal_demultiplexer SIGNAL_DEMULTIPLEXER Descriptor - Clause 7.2.29  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_SIGNAL_DEMULTIPLEXER_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1505,8 +1504,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_signal_multiplexer SIGNAL_MULTIPLEXER Descriptor -
- * Clause 7.2.30  */
+/** \addtogroup descriptor_signal_multiplexer SIGNAL_MULTIPLEXER Descriptor - Clause 7.2.30  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_SIGNAL_MULTIPLEXER_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1525,8 +1523,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_transcoder SIGNAL_TRANSCODER Descriptor - Clause
- * 7.2.31  */
+/** \addtogroup descriptor_transcoder SIGNAL_TRANSCODER Descriptor - Clause 7.2.31  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1563,8 +1560,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup descriptor_control_block CONTROL_BLOCK Descriptor - Clause
- * 7.2.33  */
+/** \addtogroup descriptor_control_block CONTROL_BLOCK Descriptor - Clause 7.2.33  */
 /*@{*/
 
 #define JDKSAVDECC_DESCRIPTOR_CONTROL_BLOCK_OFFSET_DESCRIPTOR_TYPE (0)
@@ -1578,8 +1574,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup values_type_max values_type_max : Maximum Counts for Value Types
- * - Clause 7.2.22  */
+/** \addtogroup values_type_max values_type_max : Maximum Counts for Value Types - Clause 7.2.22  */
 /*@{*/
 
 #define JDKSAVDECC_VALUES_TYPE_MAX_CONTROL_LINEAR_INT8 (0x40)
@@ -1622,8 +1617,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup values_type_matrix_max values_type_matrix_max : Maximum Counts
- * for Value Types - Clause 7.2.25  */
+/** \addtogroup values_type_matrix_max values_type_matrix_max : Maximum Counts for Value Types - Clause 7.2.25  */
 /*@{*/
 
 #define JDKSAVDECC_VALUES_TYPE_MATRIX_MAX_CONTROL_LINEAR_INT8 (0x40)
@@ -1666,9 +1660,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup transcoder_values_type_max transcoder_values_type_max : Maximum
- * Counts for Value Types of a SIGNAL_TRANSCODER -
- * Clause 7.2.31  */
+/** \addtogroup transcoder_values_type_max Maximum Counts for Value Types of a SIGNAL_TRANSCODER - Clause 7.2.31  */
 /*@{*/
 
 #define JDKSAVDECC_TRANSCODER_VALUES_TYPE_MAX_CONTROL_LINEAR_INT8 (0x41)
@@ -1707,8 +1699,7 @@ struct jdksavdecc_descriptor {
 
 /*@}*/
 
-/** \addtogroup mixer_value_formats mixer_value_formats : Maximum Sources per
- * Control Value Type - Clause 7.2.24  */
+/** \addtogroup mixer_value_formats mixer_value_formats : Maximum Sources per Control Value Type - Clause 7.2.24  */
 /*@{*/
 
 #define JDKSAVDECC_MIXER_VALUE_FORMATS_CONTROL_LINEAR_INT8 (0x68)
@@ -22735,12 +22726,17 @@ static inline ssize_t jdksavdecc_descriptor_control_block_write(struct jdksavdec
     return r;
 }
 
-/*@}*/
-
 /** @todo Add Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4
  * ECC_PRIVATE_256, 7.6.1.3 Key Chains */
 struct jdksavdecc_aem_ecc_public_256;
 struct jdksavdecc_aem_ecc_private_256;
+
+/*@}*/
+
+/*@}*/
+
+/*@}*/
+
 #ifdef __cplusplus
 }
 #endif

@@ -38,7 +38,9 @@
 extern "C" {
 #endif
 
-/** \addtogroup maap MAAP - IEEE Std 1722-2011 Annex B.2 */
+/** \addtogroup maap MAAP - Multicast Address Allocation Protocol
+  * See IEEE Std 1722-2011 Annex B.2 
+  */
 /*@{*/
 
 /// See IEEE Std 1722-2011 Annex B.3.3
@@ -56,30 +58,43 @@ extern "C" {
 /// 2s in microseconds - See IEEE Std 1722-2011 Annex B.3.3
 #define JDKSAVDECC_MAAP_ANNOUNCE_INTERVAL_VARIATION ((jdksavdecc_timestamp_in_microseconds)2000000L)
 
+/// See IEEE Std 1722-2011 Table B.4
 #define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_START                                                                          \
     {                                                                                                                          \
         { 0x91, 0xe0, 0xf0, 0x00, 0x00, 0x00 }                                                                                 \
-    } /// See IEEE Std 1722-2011 Table B.4
+    }
+
+/// See IEEE Std 1722-2011 Table B.4
 extern struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_start;
 
+/// See IEEE Std 1722-2011 Table B.4
 #define JDKSAVDECC_MAAP_DYNAMIC_ALLOCATION_POOL_END                                                                            \
     {                                                                                                                          \
         { 0x91, 0xe0, 0xf0, 0x00, 0xFD, 0xFF }                                                                                 \
-    } /// See IEEE Std 1722-2011 Table B.4
+    }
+
+/// See IEEE Std 1722-2011 Table B.4
 extern struct jdksavdecc_eui48 jdksavdecc_maap_dynamic_allocation_pool_end;
 
+/// See IEEE Std 1722-2011 Table B.4
 #define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_START                                                                            \
     {                                                                                                                          \
         { 0x91, 0xe0, 0xf0, 0x00, 0xFE, 0x00 }                                                                                 \
-    } /// See IEEE Std 1722-2011 Table B.4
+    }
+
+/// See IEEE Std 1722-2011 Table B.4
 extern struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_start;
 
+/// See IEEE Std 1722-2011 Table B.4
 #define JDKSAVDECC_MAAP_LOCAL_ALLOCATION_POOL_END                                                                              \
     {                                                                                                                          \
         { 0x91, 0xe0, 0xf0, 0x00, 0xFE, 0xFF }                                                                                 \
-    } /// See IEEE Std 1722-2011 Table B.4
+    }
+
+/// See IEEE Std 1722-2011 Table B.4
 extern struct jdksavdecc_eui48 jdksavdecc_maap_local_allocation_pool_end;
 
+/// See IEEE Std 1722-2011 Clause 5 and Annex B
 struct jdksavdecc_maap_common_control_header {
     uint32_t cd : 1;
     uint32_t subtype : JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_WIDTH;

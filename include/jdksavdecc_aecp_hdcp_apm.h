@@ -38,12 +38,18 @@
 extern "C" {
 #endif
 
-/** \addtogroup aecp_hdcp_apm HDCP APM
- *  @todo aecp_hdcp_apm
+/** \addtogroup aecp AECP - Clause 9 */
+/*@{*/
+
+/** \addtogroup aecpdu_hdcp_apm AECPDU HDCP APM
+ *  @todo aecpdu_hdcp_apm
 */
 /*@{*/
 
 /*@}*/
+
+/*@}*/
+
 #ifdef __cplusplus
 }
 #endif

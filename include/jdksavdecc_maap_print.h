@@ -39,6 +39,9 @@
 extern "C" {
 #endif
 
+/** \addtogroup maap MAAP - IEEE Std 1722-2011 Annex B.2 */
+/*@{*/
+
 /** \addtogroup maap_print MAAP Print
  *  @todo maap_print
 */
@@ -46,6 +49,8 @@ extern "C" {
 
 extern struct jdksavdecc_uint16_name jdksavdecc_maap_print_message_type[];
 void jdksavdecc_maap_print(struct jdksavdecc_printer *self, struct jdksavdecc_maap const *p);
+
+/*@}*/
 
 /*@}*/
 

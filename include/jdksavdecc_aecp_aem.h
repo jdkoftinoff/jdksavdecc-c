@@ -38,6 +38,13 @@
 extern "C" {
 #endif
 
+/** \addtogroup aecp AECP - Clause 9 */
+/*@{*/
+
+
+/** \addtogroup aecpdu_aem AECPDU AEM - Clause 9.2.1.2 */
+/*@{*/
+
 /** \addtogroup aecpdu_aem AECPDU AEM - Clause 9.2.1.2 */
 /*@{*/
 
@@ -48,7 +55,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup aem_status aem_status : status field - Clause 7.4  */
+/** \addtogroup aecpdu_aem_status AECPDU AEM status field - Clause 7.4  */
 /*@{*/
 
 #define JDKSAVDECC_AEM_STATUS_SUCCESS (0)
@@ -66,9 +73,6 @@ extern "C" {
 #define JDKSAVDECC_AEM_STATUS_STREAM_IS_RUNNING (12)
 
 /*@}*/
-
-/** \addtogroup aecpdu_aem AECPDU AEM - Clause 9.2.1.2 */
-/*@{*/
 
 /**
  * Extract the eui64 value of the controller_entity_id field of the AECPDU_AEM
@@ -230,6 +234,9 @@ static inline ssize_t jdksavdecc_aecpdu_aem_write(struct jdksavdecc_aecpdu_aem c
 }
 
 /*@}*/
+
+/*@}*/
+
 #ifdef __cplusplus
 }
 #endif

@@ -43,10 +43,15 @@
 extern "C" {
 #endif
 
+/** \addtogroup aecp AECP - Clause 9 */
+/*@{*/
+
 /** \addtogroup aecp_print AECP Print
  *  @todo aecp_print
 */
 /*@{*/
+
+/*@}*/
 
 /*@}*/
 

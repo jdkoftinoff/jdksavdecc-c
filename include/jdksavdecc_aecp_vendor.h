@@ -38,10 +38,15 @@
 extern "C" {
 #endif
 
+/** \addtogroup aecp AECP - Clause 9 */
+/*@{*/
+
 /** \addtogroup aecp_vendor AECP Vendor
  *  @todo aecp_vendor
 */
 /*@{*/
+
+/*@}*/
 
 /*@}*/
 

@@ -38,12 +38,18 @@
 extern "C" {
 #endif
 
+/** \addtogroup aecp AECP - Clause 9 */
+/*@{*/
+
 /** \addtogroup aecp_avc AECP AVC
  *  @todo aecp_avc
 */
 /*@{*/
 
 /*@}*/
+
+/*@}*/
+
 #ifdef __cplusplus
 }
 #endif

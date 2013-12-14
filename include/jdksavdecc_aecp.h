@@ -38,6 +38,9 @@
 extern "C" {
 #endif
 
+/** \addtogroup aecp AECP - Clause 9 */
+/*@{*/
+
 /** \addtogroup aecpdu AECPDU - Clause 9.2 */
 /*@{*/
 
@@ -72,8 +75,8 @@ static inline ssize_t jdksavdecc_aecpdu_common_control_header_write(struct jdksa
 
 /*@}*/
 
-/** \addtogroup aecp_message_type aecp_message_type : message_type field -
- * Clause 9.2.1.1.5  */
+/** \addtogroup aecp_message_type AECPDU message_type field
+ * See Clause 9.2.1.1.5  */
 /*@{*/
 
 #define JDKSAVDECC_AECP_MESSAGE_TYPE_AEM_COMMAND (0)
@@ -91,7 +94,7 @@ static inline ssize_t jdksavdecc_aecpdu_common_control_header_write(struct jdksa
 
 /*@}*/
 
-/** \addtogroup aecp_status aecp_status : status field - Clause 9.2.1.1.6  */
+/** \addtogroup aecp_status AECPDU status field - Clause 9.2.1.1.6  */
 /*@{*/
 
 #define JDKSAVDECC_AECP_STATUS_SUCCESS (0)
@@ -227,6 +230,8 @@ jdksavdecc_aecpdu_common_write(struct jdksavdecc_aecpdu_common const *p, void *b
     }
     return r;
 }
+
+/*@}*/
 
 /*@}*/
 

@@ -39,6 +39,9 @@
 extern "C" {
 #endif
 
+/** \addtogroup acmp ACMP - Clause 8 */
+/*@{*/
+
 /** \addtogroup acmp_print ACMP Print
  *  @todo acmp_print
 */
@@ -47,6 +50,8 @@ extern "C" {
 extern struct jdksavdecc_uint16_name jdksavdecc_acmpdu_print_message_type[];
 extern struct jdksavdecc_uint16_name jdksavdecc_acmpdu_print_status[];
 extern struct jdksavdecc_16bit_name jdksavdecc_acmpdu_print_flags[];
+
+/*@}*/
 
 /*@}*/
 

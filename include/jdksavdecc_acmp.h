@@ -38,6 +38,9 @@
 extern "C" {
 #endif
 
+/** \addtogroup acmp ACMP - Clause 8 */
+/*@{*/
+
 /** \addtogroup acmpdu ACMPDU - Clause 8.2.1 */
 /*@{*/
 
@@ -604,6 +607,8 @@ static inline ssize_t jdksavdecc_acmpdu_write(struct jdksavdecc_acmpdu const *p,
     }
     return r;
 }
+
+/*@}*/
 
 /*@}*/
 
