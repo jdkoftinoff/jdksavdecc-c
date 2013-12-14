@@ -38,6 +38,9 @@
 extern "C" {
 #endif
 
+/** \addtogroup descriptor_storage Descriptor Storage */
+/**@{*/
+
 /** \addtogroup descriptor_storage_header Descriptor Storage Header
  *
  *  | offset | size  | symbol           | Description                                  |
@@ -52,8 +55,8 @@ extern "C" {
 
 /**@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_VALUE                                                                       \
-    { 'A', 'E', 'M', '1' }
+/// "AEM1", as a network byte order uint32_t: 0x41454d31
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_VALUE (0x41454d31)
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_LENGTH (0x0014)
 
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_OFFSET (0x0000)
@@ -70,6 +73,18 @@ struct jdksavdecc_descriptor_storage_header {
     uint32_t symbol_offset;
 };
 
+/**
+ * Read the descriptor_storage_header from raw memory
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p pointer to jdksavdecc_descriptor_storage_header structure to fill in.
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the
+ *octet following the structure in the buffer.
+ */
 static inline ssize_t jdksavdecc_descriptor_storage_header_read(struct jdksavdecc_descriptor_storage_header *p,
                                                                 void const *base,
                                                                 ssize_t pos,
@@ -85,6 +100,18 @@ static inline ssize_t jdksavdecc_descriptor_storage_header_read(struct jdksavdec
     return r;
 }
 
+/**
+ * Store the descriptor_storage_header structure to a memory.
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p const pointer to jdksavdecc_descriptor_storage_header structure to read from.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the
+ *octet following the structure in the buffer.
+ */
 static inline ssize_t jdksavdecc_descriptor_storage_header_write(struct jdksavdecc_descriptor_storage_header const *p,
                                                                  void *base,
                                                                  ssize_t pos,
@@ -104,15 +131,13 @@ static inline ssize_t jdksavdecc_descriptor_storage_header_write(struct jdksavde
 
 /** \addtogroup descriptor_storage_item Descriptor item
  *
- *  offset   size      name                  Descriptrion
- *  ------   ----      -------------
- *---------------------------------------
- *  0x0000     2       descriptor_type       Descriptor type
- *  0x0002     2       descriptor_index      Descriptor index
- *  0x0004     2       configuration_index   Configuration idnex
- *  0x0006     2       length                Length of descriptor
- *  0x0008     4       offset                Offset of descriptor from start of
- *file
+ *  | offset |  size |     name             |       Description                            |
+ *  | ------ | ----- | -------------------- | -------------------------------------------- |
+ *  | 0x0000 |    2  |  descriptor_type     |  Descriptor type                             |
+ *  | 0x0002 |    2  |  descriptor_index    |  Descriptor index                            |
+ *  | 0x0004 |    2  |  configuration_index |  Configuration idnex                         |
+ *  | 0x0006 |    2  |  length              |  Length of descriptor                        |
+ *  | 0x0008 |    4  |  offset              |  Offset of descriptor from start of file     |
  *
  */
 /**@{*/
@@ -133,6 +158,18 @@ struct jdksavdecc_descriptor_storage_item {
     uint32_t offset;
 };
 
+/**
+ * Read the jdksavdecc_descriptor_storage_item from raw memory
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p pointer to jdksavdecc_descriptor_storage_item structure to fill in.
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the
+ *octet following the structure in the buffer.
+ */
 static inline ssize_t jdksavdecc_descriptor_storage_item_read(struct jdksavdecc_descriptor_storage_item *p,
                                                               void const *base,
                                                               ssize_t pos,
@@ -149,6 +186,18 @@ static inline ssize_t jdksavdecc_descriptor_storage_item_read(struct jdksavdecc_
     return r;
 }
 
+/**
+ * Store the jdksavdecc_descriptor_storage_item structure to a memory.
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p const pointer to jdksavdecc_descriptor_storage_item structure to read from.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the
+ *octet following the structure in the buffer.
+ */
 static inline ssize_t jdksavdecc_descriptor_storage_item_write(struct jdksavdecc_descriptor_storage_item const *p,
                                                                void *base,
                                                                ssize_t pos,
@@ -169,13 +218,12 @@ static inline ssize_t jdksavdecc_descriptor_storage_item_write(struct jdksavdecc
 
 /** \addtogroup descriptor_storage_symbol Symbol
  *
- *  offset   size      name                  Descriptrion
- *  ------   ----      -------------
- *---------------------------------------
- *  0x0000     2       descriptor_type       Descriptor type
- *  0x0002     2       descriptor_index      Descriptor index
- *  0x0004     2       configuration_index   Configuration idnex
- *  0x0006     4       symbol                Symbol
+ *  | offset  | size   |    name               |    Descriptrion          |
+ *  | ------- | ------ | --------------------- | ------------------------ |
+ *  | 0x0000  |  2     |   descriptor_type     |  Descriptor type         |
+ *  | 0x0002  |  2     |   descriptor_index    |  Descriptor index        |
+ *  | 0x0004  |  2     |   configuration_index |  Configuration idnex     |
+ *  | 0x0006  |  4     |   symbol              |  Symbol code             |
  *
  */
 /**@{*/
@@ -193,6 +241,18 @@ struct jdksavdecc_descriptor_storage_symbol {
     uint32_t symbol;
 };
 
+/**
+ * Read the jdksavdecc_descriptor_storage_symbol from raw memory
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p pointer to jdksavdecc_descriptor_storage_symbol structure to fill in.
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the
+ *octet following the structure in the buffer.
+ */
 static inline ssize_t jdksavdecc_descriptor_storage_symbol_read(struct jdksavdecc_descriptor_storage_symbol *p,
                                                                 void const *base,
                                                                 ssize_t pos,
@@ -208,6 +268,18 @@ static inline ssize_t jdksavdecc_descriptor_storage_symbol_read(struct jdksavdec
     return r;
 }
 
+/**
+ * Store the jdksavdecc_descriptor_storage_symbol structure to a memory.
+ *
+ * Bounds checking of the buffer size is done.
+ *
+ * @param p const pointer to jdksavdecc_descriptor_storage_symbol structure to read from.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ * @param len length of the raw memory buffer;
+ * @return -1 if the buffer length is insufficent, otherwise the offset of the
+ *octet following the structure in the buffer.
+ */
 static inline ssize_t jdksavdecc_descriptor_storage_symbol_write(struct jdksavdecc_descriptor_storage_symbol const *p,
                                                                  void *base,
                                                                  ssize_t pos,
@@ -322,6 +394,7 @@ int jdksavdecc_descriptor_storage_read_symbol(struct jdksavdecc_descriptor_stora
 
 /*@}*/
 
+/*@}*/
 #ifdef __cplusplus
 }
 #endif

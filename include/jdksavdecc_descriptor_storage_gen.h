@@ -39,9 +39,12 @@
 extern "C" {
 #endif
 
-/** \addtogroup descriptor_storage_gen Descriptor Storage Generator
- *  @todo descriptor_storage_gen
+/** \addtogroup descriptor_storage Descriptor Storage
 */
+/*@{*/
+
+/** \addtogroup descriptor_storage_gen Descriptor Storage Generator
+ */
 /*@{*/
 
 struct jdksavdecc_descriptor_storage_gen {
@@ -85,6 +88,7 @@ int jdksavdecc_descriptor_storage_gen_export_c(uint8_t const *buffer,
 
 /*@}*/
 
+/*@}*/
 #ifdef __cplusplus
 }
 #endif
