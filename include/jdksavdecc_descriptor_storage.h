@@ -40,20 +40,19 @@ extern "C" {
 
 /** \addtogroup descriptor_storage_header Descriptor Storage Header
  *
- *  offset   size      symbol          Description
- *  ------   ----      -------------   ---------------------------------------
- *  0x0000     4       magic           Magic number "AEM1"
- *  0x0004     4       toc_count       Count of descriptors
- *  0x0008     4       toc_offset      Offset of descriptors table of contents
- *  0x000c     4       symbol_count    Count of symbols
- *  0x0010     4       symbol_offset   Offset of symbol table
+ *  | offset | size  | symbol           | Description                                  |
+ *  | ------ | ----- | ---------------- | -------------------------------------------- |
+ *  | 0x0000 |   4   |   magic          | Magic number "AEM1" (0x41 0x45 0x4d 0x31)    |
+ *  | 0x0004 |   4   |   toc_count      | Count of descriptors                         |
+ *  | 0x0008 |   4   |   toc_offset     | Offset of descriptors table of contents      |
+ *  | 0x000c |   4   |   symbol_count   | Count of symbols                             |
+ *  | 0x0010 |   4   |   symbol_offset  | Offset of symbol table                       |
  *
  */
 
 /**@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_VALUE                                                                       \
-    { 'A', 'E', 'M', '1' } /// "AEM1"
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_VALUE  {'A','E','M','1'} /// "AEM1"
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_LENGTH (0x0014)
 
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_OFFSET (0x0000)
