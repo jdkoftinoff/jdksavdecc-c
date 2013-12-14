@@ -33,15 +33,17 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_app.h"
+#include "jdksavdecc_print.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /** \addtogroup app_print APP Print
- *  @todo app_print
 */
 /*@{*/
+
+    extern struct jdksavdecc_uint16_name jdksavdecc_appdu_print_message_type[];
 
 /*@}*/
 
