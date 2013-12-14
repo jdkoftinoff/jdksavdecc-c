@@ -38,8 +38,12 @@
 extern "C" {
 #endif
 
+/** \addtogroup appdu AVDECC Proxy Protocol - See IEEE Std 1722.1-2013 Annex C */
+/*@{*/
+
 /** \addtogroup appdu_dns_sd APPDU DNS-SD definitions - See IEEE Std 1722.1-2013 Annex C.2 */
 /*@{*/
+
 #define JDKSAVDECC_APPDU_DNS_SD_SERVICE_NAME                                                                                   \
     "_avdecc._tcp."                                  /// The assigned MDNS-SD service name - See IEEE Std 1722.1-2013 Annex C.2
 #define JDKSAVDECC_APPDU_IANA_SERVICE_NAME "avdecc"  /// The assigned IANA service name
@@ -50,10 +54,12 @@ extern "C" {
 #define JDKSAVDECC_APPDU_TXT_FIELD_DESCRIPTION "Description"   /// See IEEE Std 1722.1-2013 Annex C.3.3
 #define JDKSAVDECC_APPDU_TXT_FIELD_MANUFACTURER "Manufacturer" /// See IEEE Std 1722.1-2013 Annex C.3.4
 #define JDKSAVDECC_APPDU_TXT_FIELD_PATH "path"                 /// See IEEE Std 1722.1-2013 Annex C.3.5
-                                                               /*@}*/
+
+/*@}*/
 
 /**\addtogroup appdu_offset APPDU Offsets - See IEEE Std 1722.1-2013 Annex C.4 */
 /*@{*/
+
 #define JDKSAVDECC_APPDU_OFFSET_VERSION (0)        /// See IEEE Std 1722.1-2013 Annex C.4.1
 #define JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE (1)   /// See IEEE Std 1722.1-2013 Annex C.4.2
 #define JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH (2) /// See IEEE Std 1722.1-2013 Annex C.4.3
@@ -61,10 +67,12 @@ extern "C" {
 #define JDKSAVDECC_APPDU_OFFSET_RESERVED (10)      /// See IEEE Std 1722.1-2013 Annex C.4
 #define JDKSAVDECC_APPDU_OFFSET_PAYLOAD (12)       /// See IEEE Std 1722.1-2013 Annex C.4.5
 #define JDKSAVDECC_APPDU_HEADER_LEN (12)           /// See IEEE Std 1722.1-2013 Annex C.4
-                                                   /*@}*/
+
+/*@}*/
 
 /**\addtogroup appdu_constants - See IEEE Std 1722.1-2013 Annex C.4 */
 /*@{*/
+
 #define JDKSAVDECC_APPDU_VERSION (0)                         /// See IEEE Std 1722.1-2013 Annex C.4.1
 #define JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH (1500)           /// See IEEE Std 1722.1-2013 Annex C.4.3
 #define JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP (0)                /// See IEEE Std 1722.1-2103 Annex C.5.1.1
@@ -75,15 +83,18 @@ extern "C" {
 #define JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS (5)    /// See IEEE Std 1722.1-2103 Annex C.5.1.6
 #define JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC (6)    /// See IEEE Std 1722.1-2103 Annex C.5.1.7
 #define JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR (0xff)          /// See IEEE Std 1722.1-2103 Annex C.5.1.8
-                                                             /*@}*/
+
+/*@}*/
 
 /**\addtogroup appdu_errors - See IEEE Std 1722.1-2013 Annex C.4 */
 /*@{*/
+
 #define JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT (-1) /// The buffer length is insufficent
 #define JDKSAVDECC_APPDU_ERROR_PAYLOAD_INCOMPLETE                                                                              \
     (-2)                                           /// The network buffer does not contain enough bytes for the declared payload
 #define JDKSAVDECC_APPDU_ERROR_INVALID_HEADER (-3) /// The parsed data does not contain valid data
-                                                   /*@}*/
+
+/*@}*/
 
 /// The APPDU
 /// Note: payload always points to an existing packet buffer
