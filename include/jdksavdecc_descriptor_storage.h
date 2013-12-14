@@ -52,7 +52,8 @@ extern "C" {
 
 /**@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_VALUE  {'A','E','M','1'} /// "AEM1"
+#define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_VALUE                                                                       \
+    { 'A', 'E', 'M', '1' }
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_LENGTH (0x0014)
 
 #define JDKSAVDECC_DESCRIPTOR_STORAGE_HEADER_MAGIC_OFFSET (0x0000)
