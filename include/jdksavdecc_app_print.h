@@ -43,7 +43,7 @@ extern "C" {
 */
 /*@{*/
 
-    extern struct jdksavdecc_uint16_name jdksavdecc_appdu_print_message_type[];
+extern struct jdksavdecc_uint16_name jdksavdecc_appdu_print_message_type[];
 
 /*@}*/
 
