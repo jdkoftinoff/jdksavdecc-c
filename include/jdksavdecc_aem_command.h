@@ -46,7 +46,6 @@ extern "C" {
 
 #define JDKSAVDECC_AEM_COMMAND_SIZE (524) /// Clause 9.2.1.1.7
 
-
 /** \addtogroup command command : Command Codes - Clause 7.4  */
 /*@{*/
 

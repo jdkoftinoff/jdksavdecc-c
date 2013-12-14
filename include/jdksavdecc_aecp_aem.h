@@ -41,7 +41,6 @@ extern "C" {
 /** \addtogroup aecp AECP - Clause 9 */
 /*@{*/
 
-
 /** \addtogroup aecpdu_aem AECPDU AEM - Clause 9.2.1.2 */
 /*@{*/
 

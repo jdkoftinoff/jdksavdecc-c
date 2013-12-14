@@ -49,7 +49,6 @@ extern "C" {
 #define JDKSAVDECC_AECPDU_AA_OFFSET_TLV_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10)
 #define JDKSAVDECC_AECPDU_AA_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12)
 
-
 /** \addtogroup aecpdu_aa_tlv AECPDU Address Access TLV - Clause 9.2.1.3.3 */
 /*@{*/
 
@@ -390,7 +389,7 @@ jdksavdecc_aecpdu_aa_tlv_write(struct jdksavdecc_aecpdu_aa_tlv const *p, void *b
 /*@}*/
 
 /*@}*/
-    
+
 #ifdef __cplusplus
 }
 #endif

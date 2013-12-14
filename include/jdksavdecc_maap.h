@@ -39,7 +39,7 @@ extern "C" {
 #endif
 
 /** \addtogroup maap MAAP - Multicast Address Allocation Protocol
-  * See IEEE Std 1722-2011 Annex B.2 
+  * See IEEE Std 1722-2011 Annex B.2
   */
 /*@{*/
 

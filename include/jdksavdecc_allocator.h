@@ -40,7 +40,6 @@ extern "C" {
 /** \addtogroup util Utilities */
 /*@{*/
 
-
 #ifndef JDKSAVDECC_ENABLE_MALLOC
 /// If JDKSAVDECC_ENABLE_MALLOC compile time define is set to 0, then no usage of malloc and free will be used
 #define JDKSAVDECC_ENABLE_MALLOC 1
@@ -182,7 +181,6 @@ void jdksavdecc_malloc_allocator_free(struct jdksavdecc_allocator *self, const v
 /*@}*/
 
 /*@}*/
-
 
 #ifdef __cplusplus
 }
