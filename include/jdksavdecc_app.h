@@ -129,7 +129,7 @@ struct jdksavdecc_appdu {
  *point to the raw network buffer directly
  *
  */
-static inline ssize_t jdksavdec_appdu_read(struct jdksavdecc_appdu *p, void const *base, ssize_t pos, size_t len) {
+static inline ssize_t jdksavdecc_appdu_read(struct jdksavdecc_appdu *p, void const *base, ssize_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_APPDU_HEADER_LEN);
     if (r >= 0) {
         p->version = jdksavdecc_uint8_get(base, pos + JDKSAVDECC_APPDU_OFFSET_VERSION);
