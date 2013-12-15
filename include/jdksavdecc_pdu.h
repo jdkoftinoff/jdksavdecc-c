@@ -107,8 +107,7 @@ extern struct jdksavdecc_eui64 jdksavdecc_identification_notification_controller
 
 /*@}*/
 
-/** \addtogroup jdksavdecc_subtype_data AVTP subtype_data field - See IEEE Std
- * 1722-2011 Clause 5.3 */
+/** \addtogroup jdksavdecc_subtype_data AVTP subtype_data field - See IEEE Std 1722-2011 Clause 5.3 */
 /*@{*/
 
 #define JDKSAVDECC_SUBTYPE_DATA_CD_BIT (0)
@@ -279,8 +278,7 @@ static inline uint32_t jdksavdecc_subtype_data_set_tu(uint32_t subtype_data, uin
 
 /*@}*/
 
-/** \addtogroup avtp_common_control_header AVTP common control header - See IEEE
- * Std 1722-2011 Clause 5.3 */
+/** \addtogroup avtp_common_control_header AVTP common control header - See IEEE 1722-2011 Clause 5.3 */
 /*@{*/
 
 #define JDKSAVDECC_COMMON_CONTROL_HEADER_OFFSET_SUBTYPE_DATA (0)
@@ -397,8 +395,7 @@ ssize_t jdksavdecc_common_control_header_write(struct jdksavdecc_common_control_
 
 /*@}*/
 
-/** \addtogroup avtp_common_stream_header AVTP common stream header - See IEEE
- * Std 1722-2011 Clause 5.4 */
+/** \addtogroup avtp_common_stream_header AVTP common stream header - See IEEE Std 1722-2011 Clause 5.4 */
 /*@{*/
 
 #define JDKSAVDECC_COMMON_STREAM_HEADER_OFFSET_SUBTYPE_DATA (0)
