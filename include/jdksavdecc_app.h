@@ -131,30 +131,47 @@ struct jdksavdecc_appdu {
  */
 static inline ssize_t jdksavdecc_appdu_read(struct jdksavdecc_appdu *p, void const *base, ssize_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_APPDU_HEADER_LEN);
+    // clear the structure
+    memset(p, 0, sizeof(*p));
     if (r >= 0) {
         p->version = jdksavdecc_uint8_get(base, pos + JDKSAVDECC_APPDU_OFFSET_VERSION);
         if (p->version == JDKSAVDECC_APPDU_VERSION) {
             p->message_type = jdksavdecc_uint8_get(base, pos + JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE);
-            p->payload_length = jdksavdecc_uint16_get(base, pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH);
-            p->address = jdksavdecc_eui48_get(base, pos + JDKSAVDECC_APPDU_OFFSET_ADDRESS);
-            p->reserved = jdksavdecc_uint16_get(base, pos + JDKSAVDECC_APPDU_OFFSET_RESERVED);
 
-            // make sure that the payload_length is a reasonable number
-            if (p->payload_length <= JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH) {
-                // make sure we have enough data in the incoming buffer for the entire payload
-                r = jdksavdecc_validate_range(pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD, len, p->payload_length);
+            if( p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP
+               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST
+               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE
+               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP
+               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN
+               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS
+               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC
+               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR ) {
 
-                if (r >= 0) {
-                    // The payload is complete.
-                    // Make payload pointer point directly within incoming raw buffer
-                    p->payload = ((uint8_t *)base) + JDKSAVDECC_APPDU_OFFSET_PAYLOAD;
+
+                p->payload_length = jdksavdecc_uint16_get(base, pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH);
+                p->address = jdksavdecc_eui48_get(base, pos + JDKSAVDECC_APPDU_OFFSET_ADDRESS);
+                p->reserved = jdksavdecc_uint16_get(base, pos + JDKSAVDECC_APPDU_OFFSET_RESERVED);
+
+                // make sure that the payload_length is a reasonable number
+                if (p->payload_length <= JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH) {
+                    // make sure we have enough data in the incoming buffer for the entire payload
+                    r = jdksavdecc_validate_range(pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD, len, p->payload_length);
+
+                    if (r >= 0) {
+                        // The payload is complete.
+                        // Make payload pointer point directly within incoming raw buffer
+                        p->payload = ((uint8_t *)base) + JDKSAVDECC_APPDU_OFFSET_PAYLOAD;
+                    } else {
+                        // the raw buffer is incomplete.
+                        p->payload = 0;
+                        r = JDKSAVDECC_APPDU_ERROR_PAYLOAD_INCOMPLETE;
+                    }
                 } else {
-                    // the raw buffer is incomplete.
-                    p->payload = 0;
-                    r = JDKSAVDECC_APPDU_ERROR_PAYLOAD_INCOMPLETE;
+                    // The payload_length field is out of range.
+                    r = JDKSAVDECC_APPDU_ERROR_INVALID_HEADER;
                 }
             } else {
-                // The payload_length field is out of range.
+                // The message type is unrecognized.
                 r = JDKSAVDECC_APPDU_ERROR_INVALID_HEADER;
             }
         } else {
@@ -182,25 +199,38 @@ static inline ssize_t jdksavdecc_appdu_write(struct jdksavdecc_appdu const *p, v
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_APPDU_HEADER_LEN);
     if (r >= 0) {
         jdksavdecc_uint8_set(p->version, base, pos + JDKSAVDECC_APPDU_OFFSET_VERSION);
-        jdksavdecc_uint8_set(p->message_type, base, pos + JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE);
-        jdksavdecc_uint16_set(p->payload_length, base, pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH);
-        jdksavdecc_eui48_set(p->address, base, pos + JDKSAVDECC_APPDU_OFFSET_ADDRESS);
-        jdksavdecc_uint16_set(p->reserved, base, pos + JDKSAVDECC_APPDU_OFFSET_RESERVED);
-        if (p->payload_length > 0) {
-            if (p->payload && p->payload_length <= JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH) {
-                // We have a payload and the payload length is non zero, make sure we have space in the output buffer
-                r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_APPDU_OFFSET_PAYLOAD + p->payload_length);
-                if (r > 0) {
-                    // we have space so copy it over
-                    memcpy(((uint8_t *)base) + pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD, p->payload, p->payload_length);
+        if( p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP
+           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST
+           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE
+           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP
+           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN
+           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS
+           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC
+           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR ) {
+
+            jdksavdecc_uint8_set(p->message_type, base, pos + JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE);
+            jdksavdecc_uint16_set(p->payload_length, base, pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH);
+            jdksavdecc_eui48_set(p->address, base, pos + JDKSAVDECC_APPDU_OFFSET_ADDRESS);
+            jdksavdecc_uint16_set(p->reserved, base, pos + JDKSAVDECC_APPDU_OFFSET_RESERVED);
+            if (p->payload_length > 0) {
+                if (p->payload && p->payload_length <= JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH) {
+                    // We have a payload and the payload length is non zero, make sure we have space in the output buffer
+                    r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_APPDU_OFFSET_PAYLOAD + p->payload_length);
+                    if (r > 0) {
+                        // we have space so copy it over
+                        memcpy(((uint8_t *)base) + pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD, p->payload, p->payload_length);
+                    } else {
+                        // we don't have space, so return error
+                        r = JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT;
+                    }
                 } else {
-                    // we don't have space, so return error
-                    r = JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT;
+                    // we have payload length but no payload? that is invalid.
+                    r = JDKSAVDECC_APPDU_ERROR_INVALID_HEADER;
                 }
-            } else {
-                // we have payload length but no payload? that is invalid.
-                r = JDKSAVDECC_APPDU_ERROR_INVALID_HEADER;
             }
+        } else {
+            // The message type is unrecognized.
+            r = JDKSAVDECC_APPDU_ERROR_INVALID_HEADER;
         }
     }
     return r;
