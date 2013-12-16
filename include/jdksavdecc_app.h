@@ -138,15 +138,14 @@ static inline ssize_t jdksavdecc_appdu_read(struct jdksavdecc_appdu *p, void con
         if (p->version == JDKSAVDECC_APPDU_VERSION) {
             p->message_type = jdksavdecc_uint8_get(base, pos + JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE);
 
-            if( p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP
-               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST
-               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE
-               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP
-               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN
-               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS
-               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC
-               || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR ) {
-
+            if (p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP
+                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST
+                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE
+                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP
+                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN
+                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS
+                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC
+                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR) {
 
                 p->payload_length = jdksavdecc_uint16_get(base, pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH);
                 p->address = jdksavdecc_eui48_get(base, pos + JDKSAVDECC_APPDU_OFFSET_ADDRESS);
@@ -199,14 +198,14 @@ static inline ssize_t jdksavdecc_appdu_write(struct jdksavdecc_appdu const *p, v
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_APPDU_HEADER_LEN);
     if (r >= 0) {
         jdksavdecc_uint8_set(p->version, base, pos + JDKSAVDECC_APPDU_OFFSET_VERSION);
-        if( p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP
-           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST
-           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE
-           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP
-           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN
-           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS
-           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC
-           || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR ) {
+        if (p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP
+            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST
+            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE
+            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP
+            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN
+            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS
+            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC
+            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR) {
 
             jdksavdecc_uint8_set(p->message_type, base, pos + JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE);
             jdksavdecc_uint16_set(p->payload_length, base, pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH);
