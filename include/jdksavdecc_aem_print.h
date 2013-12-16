@@ -33,24 +33,25 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp.h"
-#include "jdksavdecc_aecp_aa.h"
 #include "jdksavdecc_aecp_aem.h"
-#include "jdksavdecc_aecp_avc.h"
-#include "jdksavdecc_aecp_hdcp_apm.h"
-#include "jdksavdecc_aecp_vendor.h"
+#include "jdksavdecc_aem_command.h"
+#include "jdksavdecc_aem_descriptor.h"
 #include "jdksavdecc_print.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/** \addtogroup aecp AECP - Clause 9 */
+/** \addtogroup aem AEM - Clause 7 */
 /*@{*/
 
-/** \addtogroup aecp_print AECP Print
+/** \addtogroup aem_print AEM Printing utilities
  *  @todo aecp_print
 */
 /*@{*/
+
+extern struct jdksavdecc_uint16_name jdksavdecc_aem_print_command[];
+extern struct jdksavdecc_uint16_name jdksavdecc_aem_print_descriptor_type[];
 
 /*@}*/
 

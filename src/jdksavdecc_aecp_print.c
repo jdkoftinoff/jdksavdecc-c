@@ -32,5 +32,3 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp_print.h"
-
-char const *jdksavdecc_aecp_print_file = __FILE__;
