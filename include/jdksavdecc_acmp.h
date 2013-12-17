@@ -136,7 +136,18 @@ static inline ssize_t jdksavdecc_acmpdu_common_control_header_write(struct jdksa
 
 /*@}*/
 
-/** \addtogroup acmp_status acmp_status : status field - Clause 8.2.1.6  */
+/** \addtogroup acmp_timeouts ACMP timeouts field - Clause 8.2.2  */
+/*@{*/
+#define JDKSAVDECC_ACMP_TIMEOUT_CONNECT_TX_COMMAND_MS (2000)
+#define JDKSAVDECC_ACMP_TIMEOUT_DISCONNECT_TX_COMMAND_MS (200)
+#define JDKSAVDECC_ACMP_TIMEOUT_GET_TX_STATE_COMMAND (200)
+#define JDKSAVDECC_ACMP_TIMEOUT_CONNECT_RX_COMMAND_MS (4500)
+#define JDKSAVDECC_ACMP_TIMEOUT_DISCONNECT_RX_COMMAND_MS (500)
+#define JDKSAVDECC_ACMP_TIMEOUT_GET_RX_STATE_COMMAND_MS (200)
+#define JDKSAVDECC_ACMP_TIMEOUT_GET_TX_CONNECTION_COMMAND (200)
+/*@}*/
+
+/** \addtogroup acmp_status ACMP status field - Clause 8.2.1.6  */
 /*@{*/
 
 #define JDKSAVDECC_ACMP_STATUS_SUCCESS (0)
