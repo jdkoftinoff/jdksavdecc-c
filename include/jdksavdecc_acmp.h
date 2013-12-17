@@ -116,8 +116,7 @@ static inline ssize_t jdksavdecc_acmpdu_common_control_header_write(struct jdksa
 
 /*@}*/
 
-/** \addtogroup acmp_message_type acmp_message_type : message_type field -
- * Clause 8.2.1.5  */
+/** \addtogroup acmp_message_type message_type field - Clause 8.2.1.5  */
 /*@{*/
 
 #define JDKSAVDECC_ACMP_MESSAGE_TYPE_CONNECT_TX_COMMAND (0)
