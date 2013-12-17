@@ -42,9 +42,17 @@ extern "C" {
 /*@{*/
 
 /** \addtogroup aecp_avc AECP AVC
- *  @todo aecp_avc
 */
 /*@{*/
+
+/** \addtogroup AECP_avc_status AECPDU AVC Status codes - Clause 9.2.1.4.3 */
+/*@{*/
+
+#define JDKSAVDECC_AECP_AVC_STATUS_SUCCESS (0)
+#define JDKSAVDECC_AECP_AVC_STATUS_NOT_IMPLEMENTED (1)
+#define JDKSAVDECC_AECP_AVC_STATUS_FAILURE (2)
+
+/*@}*/
 
 /*@}*/
 
