@@ -42,9 +42,26 @@ extern "C" {
 /*@{*/
 
 /** \addtogroup aecp_vendor AECP Vendor
- *  @todo aecp_vendor
 */
 /*@{*/
+
+/** \addtogroup aecp_vendor AECP Vendor Unique Offsets - Clause 9.2.1.5 */
+/*@{*/
+
+#define JDKSAVDECC_AECP_VENDOR_OFFSET_CONTROLLER_ENTITY_ID (0)
+#define JDKSAVDECC_AECP_VENDOR_OFFSET_SEQUENCE_ID (8)
+#define JDKSAVDECC_AECP_VENDOR_OFFSET_PROTOCOL_ID (10)
+#define JDKSAVDECC_AECP_VENDOR_LEN (16)
+
+/*@}*/
+
+/** \addtogroup aecp_vendor_status AECP Vendor Unique Status codes - Clause 9.2.1.5.3 */
+/*@{*/
+
+#define JDKSAVDECC_AECP_VENDOR_STATUS_SUCCESS (0)
+#define JDKSAVDECC_AECP_VENDOR_STATUS_NOT_IMPLEMENTED (1)
+
+/*@}*/
 
 /*@}*/
 
