@@ -73,6 +73,12 @@ extern "C" {
 
 /*@}*/
 
+/** \addtogroup aecpdu_aem_timeouts AECP AEM timeouts - Clause 9.2.1.2.5 */
+/*@{*/
+#define JDKSAVDECC_AEM_TIMEOUT_IN_MS (250)
+#define JDKSAVDECC_AEM_IN_PROGRESS_TIMEOUT_IN_MS (120)
+/*@}*/
+
 /**
  * Extract the eui64 value of the controller_entity_id field of the AECPDU_AEM
  *object from a network buffer.
