@@ -41,10 +41,32 @@ extern "C" {
 /** \addtogroup aecp AECP - Clause 9 */
 /*@{*/
 
-/** \addtogroup aecpdu_hdcp_apm AECPDU HDCP APM
+/** \addtogroup aecpdu_hdcp_apm AECP HDCP APM
  *  @todo aecpdu_hdcp_apm
 */
 /*@{*/
+
+/** \addtogroup aecpdu_hdcp_apm_offsets AECP HDCP Offsets - Clause 9.2.1.6 */
+/*@{*/
+
+#define JDKSAVDECC_AECP_HDCP_APM_OFFSET_CONTROLLER_ENTITY_ID (0)
+#define JDKSAVDECC_AECP_HDCP_APM_OFFSET_SEQUENCE_ID (8)
+#define JDKSAVDECC_AECP_HDCP_APM_OFFSET_HDCP_APM_LENGTH (10)
+#define JDKSAVDECC_AECP_HDCP_APM_OFFSET_HDCP_APM_FLAGS (12)
+#define JDKSAVDECC_AECP_HDCP_APM_OFFSET_RESERVED (13)
+#define JDKSAVDECC_AECP_HDCP_APM_OFFSET_HDCP_APM_FRAGMENT_OFFSET (14)
+#define JDKSAVDECC_AECP_HDCP_APM_LEN (16)
+
+/*@}*/
+
+/** \addtogroup aecpdu_hdcp_apm_status AECPDU HDCP Status codes - Clause 9.2.1.6.6 */
+/*@{*/
+
+#define JDKSAVDECC_AECP_HDCP_APM_STATUS_SUCCESS (0)
+#define JDKSAVDECC_AECP_HDCP_APM_STATUS_NOT_IMPLEMENTED (1)
+#define JDKSAVDECC_AECP_HDCP_APM_STATUS_FRAGMENT_MISSING (2)
+
+/*@}*/
 
 /*@}*/
 
