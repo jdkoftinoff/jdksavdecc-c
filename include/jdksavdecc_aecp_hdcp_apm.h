@@ -46,7 +46,7 @@ extern "C" {
 */
 /*@{*/
 
-/** \addtogroup aecpdu_hdcp_apm_offsets AECP HDCP Offsets - Clause 9.2.1.6 */
+/** \addtogroup aecpdu_hdcp_apm_offsets AECP HDCP APM Offsets - Clause 9.2.1.6 */
 /*@{*/
 
 #define JDKSAVDECC_AECP_HDCP_APM_OFFSET_CONTROLLER_ENTITY_ID (0)
@@ -59,7 +59,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup aecpdu_hdcp_apm_status AECPDU HDCP Status codes - Clause 9.2.1.6.6 */
+/** \addtogroup aecpdu_hdcp_apm_status AECP HDCP APM Status codes - Clause 9.2.1.6.6 */
 /*@{*/
 
 #define JDKSAVDECC_AECP_HDCP_APM_STATUS_SUCCESS (0)

@@ -41,8 +41,7 @@ extern "C" {
 /** \addtogroup aecp AECP - Clause 9 */
 /*@{*/
 
-/** \addtogroup aecp_avc AECP AVC
-*/
+/** \addtogroup aecp_avc AECP AVC - Claue 9.2.1.4.3 */
 /*@{*/
 
 /** \addtogroup AECP_avc_status AECPDU AVC Status codes - Clause 9.2.1.4.3 */

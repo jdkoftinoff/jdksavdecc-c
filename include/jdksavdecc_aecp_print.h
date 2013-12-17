@@ -60,7 +60,7 @@ extern struct jdksavdecc_uint16_name jdksavdecc_aecp_aem_print_status[];
 
 extern struct jdksavdecc_uint16_name jdksavdecc_aecp_aa_print_status[];
 
-struct struct jdksavdecc_uint16_name jdksavdecc_aecp_aa_print_mode[];
+extern struct jdksavdecc_uint16_name jdksavdecc_aecp_aa_print_mode[];
 
 extern struct jdksavdecc_uint16_name jdksavdecc_aecp_avc_print_status[];
 

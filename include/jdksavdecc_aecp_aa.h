@@ -41,13 +41,18 @@ extern "C" {
 /** \addtogroup aecp AECP - Clause 9 */
 /*@{*/
 
-/** \addtogroup AECP_AA AECP Address Access Offsets - Clause 9.2.1.3 */
+/** \addtogroup AECP_AA AECP Address Access - Clause 9.2.1.3 */
+/*@{*/
+
+/** \addtogroup AECP_AA_offsets AECP Address Access Offsets - Clause 9.2.1.3 */
 /*@{*/
 
 #define JDKSAVDECC_AECPDU_AA_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
 #define JDKSAVDECC_AECPDU_AA_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8)
 #define JDKSAVDECC_AECPDU_AA_OFFSET_TLV_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10)
 #define JDKSAVDECC_AECPDU_AA_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12)
+
+/*@}*/
 
 /** \addtogroup AECP_AA_tlv AECP Address Access TLV Offsets - Clause 9.2.1.3.3 */
 /*@{*/
@@ -87,8 +92,7 @@ extern "C" {
 #define JDKSAVDECC_AECP_AA_TIMEOUT_IN_MS (250)
 /*@}*/
 
-/** \addtogroup AECP_AA AECPDU Address Access - Clause 9.2.1.3 */
-/*@{*/
+
 
 /**
  * Extract the eui64 value of the controller_entity_id field of the aecp_aa
@@ -410,7 +414,6 @@ static inline ssize_t jdksavdecc_aecp_aa_tlv_write(struct jdksavdecc_aecp_aa_tlv
     return r;
 }
 
-/*@}*/
 
 /*@}*/
 
