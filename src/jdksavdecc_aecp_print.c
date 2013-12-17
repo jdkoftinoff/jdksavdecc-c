@@ -1,34 +1,83 @@
 
 /*
-  Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
-  All rights reserved.
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ All rights reserved.
 
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are met:
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
 
-   1. Redistributions of source code must retain the above copyright notice,
-      this list of conditions and the following disclaimer.
+ 1. Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
 
-   2. Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
 
-   3. Neither the name of J.D. Koftinoff Software, Ltd. nor the names of its
-      contributors may be used to endorse or promote products derived from
-      this software without specific prior written permission.
+ 3. Neither the name of J.D. Koftinoff Software, Ltd. nor the names of its
+ contributors may be used to endorse or promote products derived from
+ this software without specific prior written permission.
 
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-  POSSIBILITY OF SUCH DAMAGE.
-*/
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+ */
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aecp_print.h"
+
+struct jdksavdecc_uint16_name jdksavdecc_aecp_print_message_type[]
+    = {{JDKSAVDECC_AECP_MESSAGE_TYPE_AEM_COMMAND, "AEM_COMMAND"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_AEM_RESPONSE, "AEM_RESPONSE"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_ADDRESS_ACCESS_COMMAND, "ADDRESS_ACCESS_COMMAND"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_ADDRESS_ACCESS_RESPONSE, "ADDRESS_ACCESS_RESPONSE"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_AVC_COMMAND, "AVC_COMMAND"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_AVC_RESPONSE, "AVC_RESPONSE"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_VENDOR_UNIQUE_COMMAND, "VENDOR_UNIQUE_COMMAND"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_VENDOR_UNIQUE_RESPONSE, "VENDOR_UNIQUE_RESPONSE"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_HDCP_APM_COMMAND, "HDCP_APM_COMMAND"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_HDCP_APM_RESPONSE, "HDCP_APM_RESPONSE"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_EXTENDED_COMMAND, "EXTENDED_COMMAND"},
+       {JDKSAVDECC_AECP_MESSAGE_TYPE_EXTENDED_RESPONSE, "EXTENDED_RESPONSE"},
+       {0, 0}};
+
+struct jdksavdecc_uint16_name jdksavdecc_aecp_print_status[]
+    = {{JDKSAVDECC_AECP_STATUS_SUCCESS, "SUCCESS"}, {JDKSAVDECC_AECP_STATUS_NOT_IMPLEMENTED, "IMPLEMENTED"}, {0, 0}};
+
+struct jdksavdecc_uint16_name jdksavdecc_aecp_aem_print_status[]
+    = {{JDKSAVDECC_AECP_STATUS_SUCCESS, "SUCCESS"}, {JDKSAVDECC_AECP_STATUS_NOT_IMPLEMENTED, "IMPLEMENTED"}, {0, 0}};
+
+struct jdksavdecc_uint16_name jdksavdecc_aecp_aa_print_status[]
+    = {{JDKSAVDECC_AECP_AA_STATUS_SUCCESS, "SUCCESS"},
+       {JDKSAVDECC_AECP_AA_STATUS_NOT_IMPLEMENTED, "IMPLEMENTED"},
+       {JDKSAVDECC_AECP_AA_STATUS_ADDRESS_TOO_LOW, "ADDRESS_TOO_LOW"},
+       {JDKSAVDECC_AECP_AA_STATUS_ADDRESS_TOO_HIGH, "ADDRESS_TOO_HIGH"},
+       {JDKSAVDECC_AECP_AA_STATUS_ADDRESS_INVALID, "ADDRESS_INVALID"},
+       {JDKSAVDECC_AECP_AA_STATUS_TLV_INVALID, "TLV_INVALID"},
+       {JDKSAVDECC_AECP_AA_STATUS_DATA_INVALID, "DATA_INVALID"},
+       {JDKSAVDECC_AECP_AA_STATUS_UNSUPPORTED, "UNSUPPORTED"},
+       {0, 0}};
+
+struct jdksavdecc_uint16_name jdksavdecc_aecp_aa_print_mode[]
+    = {{JDKSAVDECC_AECP_AA_MODE_READ, "READ"},       {JDKSAVDECC_AECP_AA_MODE_WRITE, "WRITE"},
+       {JDKSAVDECC_AECP_AA_MODE_EXECUTE, "EXECUTE"}, {0, 0}};
+
+struct jdksavdecc_uint16_name jdksavdecc_aecp_avc_print_status[]
+    = {{JDKSAVDECC_AECP_AVC_STATUS_SUCCESS, "SUCCESS"}, {JDKSAVDECC_AECP_AVC_STATUS_NOT_IMPLEMENTED, "IMPLEMENTED"},
+       {JDKSAVDECC_AECP_AVC_STATUS_FAILURE, "FAILURE"}, {0, 0}};
+
+struct jdksavdecc_uint16_name jdksavdecc_aecp_hdcp_apm_print_status[]
+    = {{JDKSAVDECC_AECP_HDCP_APM_STATUS_SUCCESS, "SUCCESS"},
+       {JDKSAVDECC_AECP_HDCP_APM_STATUS_NOT_IMPLEMENTED, "IMPLEMENTED"},
+       {JDKSAVDECC_AECP_HDCP_APM_STATUS_FRAGMENT_MISSING, "FRAGMENT_MISSING"},
+       {0, 0}};
+
+struct jdksavdecc_uint16_name jdksavdecc_aecp_vendor_print_status[] = {
+    {JDKSAVDECC_AECP_VENDOR_STATUS_SUCCESS, "SUCCESS"}, {JDKSAVDECC_AECP_VENDOR_STATUS_NOT_IMPLEMENTED, "IMPLEMENTED"}, {0, 0}};
