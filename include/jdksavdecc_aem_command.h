@@ -174,8 +174,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_lock_entity_response LOCK_ENTITY Response - Clause
- * 7.4.2.1 */
+/** \addtogroup command_lock_entity_response LOCK_ENTITY Response - Clause 7.4.2.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -189,8 +188,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_entity_available ENTITY_AVAILABLE Command - Clause
- * 7.4.3.1 */
+/** \addtogroup command_entity_available ENTITY_AVAILABLE Command - Clause 7.4.3.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_ENTITY_AVAILABLE_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -200,8 +198,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_entity_available_response ENTITY_AVAILABLE Response -
- * Clause 7.4.3.1 */
+/** \addtogroup command_entity_available_response ENTITY_AVAILABLE Response - Clause 7.4.3.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_ENTITY_AVAILABLE_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -211,8 +208,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_controller_available CONTROLLER_AVAILABLE Command -
- * Clause 7.4.4.1 */
+/** \addtogroup command_controller_available CONTROLLER_AVAILABLE Command - Clause 7.4.4.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_CONTROLLER_AVAILABLE_COMMAND_OFFSET_CONTROLLER_ENTITY_ID                                        \
@@ -223,8 +219,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_controller_available_response CONTROLLER_AVAILABLE
- * Response - Clause 7.4.4.1 */
+/** \addtogroup command_controller_available_response CONTROLLER_AVAILABLE Response - Clause 7.4.4.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_CONTROLLER_AVAILABLE_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID                                       \
@@ -250,8 +245,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_read_descriptor_response READ_DESCRIPTOR Response -
- * Clause 7.4.5.2 */
+/** \addtogroup command_read_descriptor_response READ_DESCRIPTOR Response - Clause 7.4.5.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_READ_DESCRIPTOR_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -264,8 +258,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_write_descriptor WRITE_DESCRIPTOR Command - Clause
- * 7.4.6.1 */
+/** \addtogroup command_write_descriptor WRITE_DESCRIPTOR Command - Clause 7.4.6.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -278,8 +271,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_write_descriptor_response WRITE_DESCRIPTOR Response -
- * Clause 7.4.6.1 */
+/** \addtogroup command_write_descriptor_response WRITE_DESCRIPTOR Response - Clause 7.4.6.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -292,8 +284,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_configuration SET_CONFIGURATION Command - Clause
- * 7.4.7.1 */
+/** \addtogroup command_set_configuration SET_CONFIGURATION Command - Clause 7.4.7.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_CONFIGURATION_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -305,8 +296,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_configuration_response SET_CONFIGURATION Response
- * Clause 7.4.7.1 */
+/** \addtogroup command_set_configuration_response SET_CONFIGURATION Response Clause 7.4.7.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_CONFIGURATION_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -318,8 +308,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_configuration GET_CONFIGURATION Command - Clause
- * 7.4.8.1 */
+/** \addtogroup command_get_configuration GET_CONFIGURATION Command - Clause 7.4.8.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_CONFIGURATION_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -329,8 +318,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_configuration_response SET_CONFIGURATION Response -
- * Clause 7.4.8.2 */
+/** \addtogroup command_get_configuration_response SET_CONFIGURATION Response - Clause 7.4.8.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_CONFIGURATION_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -342,8 +330,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_stream_format SET_STREAM_FORMAT Command - Clause
- * 7.4.9.1 */
+/** \addtogroup command_set_stream_format SET_STREAM_FORMAT Command - Clause 7.4.9.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_STREAM_FORMAT_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -356,8 +343,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_stream_format_response SET_STREAM_FORMAT Response -
- * Clause 7.4.9.1 */
+/** \addtogroup command_set_stream_format_response SET_STREAM_FORMAT Response - Clause 7.4.9.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_STREAM_FORMAT_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -370,8 +356,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_stream_format GET_STREAM_FORMAT Command - Clause
- * 7.4.10.1 */
+/** \addtogroup command_get_stream_format GET_STREAM_FORMAT Command - Clause 7.4.10.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_STREAM_FORMAT_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -383,8 +368,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_stream_format_response GET_STREAM_FORMAT Response -
- * Clause 7.4.10.2 */
+/** \addtogroup command_get_stream_format_response GET_STREAM_FORMAT Response - Clause 7.4.10.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_STREAM_FORMAT_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -397,8 +381,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_video_format SET_VIDEO_FORMAT Command - Clause
- * 7.4.11.1 */
+/** \addtogroup command_set_video_format SET_VIDEO_FORMAT Command - Clause 7.4.11.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_VIDEO_FORMAT_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -414,8 +397,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_video_format_response SET_VIDEO_FORMAT Response -
- * Clause 7.4.11.1 */
+/** \addtogroup command_set_video_format_response SET_VIDEO_FORMAT Response - Clause 7.4.11.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_VIDEO_FORMAT_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -431,8 +413,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_video_format GET_VIDEO_FORMAT Command - Clause
- * 7.4.12.1 */
+/** \addtogroup command_get_video_format GET_VIDEO_FORMAT Command - Clause - 7.4.12.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_VIDEO_FORMAT_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -444,8 +425,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_video_format_response GET_VIDEO_FORMAT Response -
- * Clause 7.4.12.2 */
+/** \addtogroup command_get_video_format_response GET_VIDEO_FORMAT Response - Clause 7.4.12.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_VIDEO_FORMAT_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -461,8 +441,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_sensor_format SET_SENSOR_FORMAT Command - Clause
- * 7.4.13.1 */
+/** \addtogroup command_set_sensor_format SET_SENSOR_FORMAT Command - Clause 7.4.13.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_SENSOR_FORMAT_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -475,8 +454,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_sensor_format_response SET_SENSOR_FORMAT Response -
- * Clause 7.4.13.1 */
+/** \addtogroup command_set_sensor_format_response SET_SENSOR_FORMAT Response - Clause 7.4.13.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_SENSOR_FORMAT_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -489,8 +467,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_sensor_format GET_SENSOR_FORMAT Command - Clause
- * 7.4.14.1 */
+/** \addtogroup command_get_sensor_format GET_SENSOR_FORMAT Command - Clause 7.4.14.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_SENSOR_FORMAT_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -502,8 +479,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_sensor_format_response GET_SENSOR_FORMAT Response -
- * Clause 7.4.14.2 */
+/** \addtogroup command_get_sensor_format_response GET_SENSOR_FORMAT Response - Clause 7.4.14.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_SENSOR_FORMAT_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -516,8 +492,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_stream_info SET_STREAM_INFO Command - Clause
- * 7.4.15.1 */
+/** \addtogroup command_set_stream_info SET_STREAM_INFO Command - Clause 7.4.15.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -538,8 +513,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_stream_info_response SET_STREAM_INFO Response -
- * Clause 7.4.15.1 */
+/** \addtogroup command_set_stream_info_response SET_STREAM_INFO Response - Clause 7.4.15.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -561,8 +535,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_stream_info GET_STREAM_INFO Command - Clause
- * 7.4.16.1 */
+/** \addtogroup command_get_stream_info GET_STREAM_INFO Command - Clause 7.4.16.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_STREAM_INFO_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -574,8 +547,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_stream_info_response GET_STREAM_INFO Response -
- * Clause 7.4.16.2 */
+/** \addtogroup command_get_stream_info_response GET_STREAM_INFO Response - Clause 7.4.16.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_STREAM_INFO_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -656,8 +628,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_association_id SET_ASSOCIATION_ID Command - Clause
- * 7.4.19.1 */
+/** \addtogroup command_set_association_id SET_ASSOCIATION_ID Command - Clause 7.4.19.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_ASSOCIATION_ID_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -668,8 +639,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_association_id_response SET_ASSOCIATION_ID Response
- * - Clause 7.4.19.1 */
+/** \addtogroup command_set_association_id_response SET_ASSOCIATION_ID Response - Clause 7.4.19.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_ASSOCIATION_ID_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID                                         \
@@ -681,8 +651,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_association_id GET_ASSOCIATION_ID Command - Clause
- * 7.4.20.1 */
+/** \addtogroup command_get_association_id GET_ASSOCIATION_ID Command - Clause 7.4.20.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_ASSOCIATION_ID_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -692,8 +661,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_association_id_response GET_ASSOCIATION_ID Response
- * - Clause 7.4.20.2 */
+/** \addtogroup command_get_association_id_response GET_ASSOCIATION_ID Response - Clause 7.4.20.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_ASSOCIATION_ID_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID                                         \
@@ -705,8 +673,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_sampling_rate SET_SAMPLING_RATE Command - Clause
- * 7.4.21.1 */
+/** \addtogroup command_set_sampling_rate SET_SAMPLING_RATE Command - Clause 7.4.21.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_SAMPLING_RATE_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -719,8 +686,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_sampling_rate_response SET_SAMPLING_RATE Response -
- * Clause 7.4.21.1 */
+/** \addtogroup command_set_sampling_rate_response SET_SAMPLING_RATE Response - Clause 7.4.21.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_SAMPLING_RATE_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -733,8 +699,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_sampling_rate GET_SAMPLING_RATE Command - Clause
- * 7.4.22.1 */
+/** \addtogroup command_get_sampling_rate GET_SAMPLING_RATE Command - Clause 7.4.22.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_SAMPLING_RATE_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -746,8 +711,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_sampling_rate_response GET_SAMPLING_RATE Response -
- * Clause 7.4.22.2 */
+/** \addtogroup command_get_sampling_rate_response GET_SAMPLING_RATE Response - Clause 7.4.22.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_SAMPLING_RATE_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -760,8 +724,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_clock_source SET_CLOCK_SOURCE Command - Clause
- * 7.4.23.1 */
+/** \addtogroup command_set_clock_source SET_CLOCK_SOURCE Command - Clause 7.4.23.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -774,8 +737,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_clock_source_response SET_CLOCK_SOURCE Response -
- * Clause 7.4.23.1 */
+/** \addtogroup command_set_clock_source_response SET_CLOCK_SOURCE Response - Clause 7.4.23.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -788,8 +750,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_clock_source GET_CLOCK_SOURCE Command - Clause
- * 7.4.24.1 */
+/** \addtogroup command_get_clock_source GET_CLOCK_SOURCE Command - Clause 7.4.24.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_CLOCK_SOURCE_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -801,8 +762,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_clock_source_response GET_CLOCK_SOURCE Response -
- * Clause 7.4.24.2 */
+/** \addtogroup command_get_clock_source_response GET_CLOCK_SOURCE Response - Clause 7.4.24.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_CLOCK_SOURCE_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -828,8 +788,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_control_response SET_CONTROL Response - Clause
- * 7.4.25.1 */
+/** \addtogroup command_set_control_response SET_CONTROL Response - Clause 7.4.25.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -854,8 +813,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_control_response GET_CONTROL Response - Clause
- * 7.4.26.2 */
+/** \addtogroup command_get_control_response GET_CONTROL Response - Clause 7.4.26.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_CONTROL_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -868,8 +826,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_increment_control INCREMENT_CONTROL Command - Clause
- * 7.4.27.1 */
+/** \addtogroup command_increment_control INCREMENT_CONTROL Command - Clause 7.4.27.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_INCREMENT_CONTROL_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -883,8 +840,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_increment_control_response INCREMENT_CONTROL Response -
- * Clause 7.4.27.2 */
+/** \addtogroup command_increment_control_response INCREMENT_CONTROL Response - Clause 7.4.27.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_INCREMENT_CONTROL_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -897,8 +853,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_decrement_control DECREMENT_CONTROL Command - Clause
- * 7.4.28.1 */
+/** \addtogroup command_decrement_control DECREMENT_CONTROL Command - Clause 7.4.28.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_DECREMENT_CONTROL_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -912,8 +867,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_decrement_control_response DECREMENT_CONTROL Response -
- * Clause 7.4.28.2 */
+/** \addtogroup command_decrement_control_response DECREMENT_CONTROL Response - Clause 7.4.28.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_DECREMENT_CONTROL_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -926,8 +880,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_signal_selector SET_SIGNAL_SELECTOR Command - Clause
- * 7.4.29.1 */
+/** \addtogroup command_set_signal_selector SET_SIGNAL_SELECTOR Command - Clause 7.4.29.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_SIGNAL_SELECTOR_COMMAND_OFFSET_CONTROLLER_ENTITY_ID                                         \
@@ -944,8 +897,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_signal_selector_response SET_SIGNAL_SELECTOR
- * Response - Clause 7.4.29.1 */
+/** \addtogroup command_set_signal_selector_response SET_SIGNAL_SELECTOR Response - Clause 7.4.29.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_SIGNAL_SELECTOR_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID                                        \
@@ -962,8 +914,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_signal_selector GET_SIGNAL_SELECTOR Command - Clause
- * 7.4.30.1 */
+/** \addtogroup command_get_signal_selector GET_SIGNAL_SELECTOR Command - Clause 7.4.30.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_SIGNAL_SELECTOR_COMMAND_OFFSET_CONTROLLER_ENTITY_ID                                         \
@@ -976,8 +927,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_signal_selector_response GET_SIGNAL_SELECTOR
- * Response - Clause 7.4.30.2 */
+/** \addtogroup command_get_signal_selector_response GET_SIGNAL_SELECTOR Response - Clause 7.4.30.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_SIGNAL_SELECTOR_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID                                        \
@@ -1066,8 +1016,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_set_matrix_response SET_MATRIX Response - Clause
- * 7.4.33.2 */
+/** \addtogroup command_set_matrix_response SET_MATRIX Response - Clause 7.4.33.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_SET_MATRIX_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1104,8 +1053,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_matrix_response GET_MATRIX Response - Clause
- * 7.4.34.2 */
+/** \addtogroup command_get_matrix_response GET_MATRIX Response - Clause 7.4.34.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_MATRIX_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1124,8 +1072,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_start_streaming START_STREAMING Command - Clause
- * 7.4.35.1 */
+/** \addtogroup command_start_streaming START_STREAMING Command - Clause 7.4.35.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_START_STREAMING_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1137,8 +1084,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_start_streaming_response START_STREAMING Response -
- * Clause 7.4.35.1 */
+/** \addtogroup command_start_streaming_response START_STREAMING Response - Clause 7.4.35.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_START_STREAMING_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1163,8 +1109,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_stop_streaming_response STOP_STREAMING Response - Clause
- * 7.4.36.1 */
+/** \addtogroup command_stop_streaming_response STOP_STREAMING Response - Clause 7.4.36.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_STOP_STREAMING_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1259,8 +1204,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_avb_info_response GET_AVB_INFO Response  - Clause
- * 7.4.40.2 */
+/** \addtogroup command_get_avb_info_response GET_AVB_INFO Response  - Clause 7.4.40.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1289,8 +1233,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_as_path_response GET_AS_PATH Response  - Clause
- * 7.4.41.2 */
+/** \addtogroup command_get_as_path_response GET_AS_PATH Response  - Clause 7.4.41.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_AS_PATH_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1315,8 +1258,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_counters_response GET_COUNTERS Response  - Clause
- * 7.4.42.2 */
+/** \addtogroup command_get_counters_response GET_COUNTERS Response  - Clause 7.4.42.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_COUNTERS_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1369,8 +1311,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_audio_map_response GET_AUDIO_MAP Response  - Clause
- * 7.4.44.2 */
+/** \addtogroup command_get_audio_map_response GET_AUDIO_MAP Response  - Clause 7.4.44.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_AUDIO_MAP_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1387,8 +1328,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_add_audio_mappings ADD_AUDIO_MAPPINGS Command  - Clause
- * 7.4.45.1 */
+/** \addtogroup command_add_audio_mappings ADD_AUDIO_MAPPINGS Command  - Clause 7.4.45.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_ADD_AUDIO_MAPPINGS_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1472,8 +1412,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_get_video_map_response GET_VIDEO_MAP Response  - Clause
- * 7.4.47.2 */
+/** \addtogroup command_get_video_map_response GET_VIDEO_MAP Response  - Clause 7.4.47.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_GET_VIDEO_MAP_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1490,8 +1429,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_add_video_mappings ADD_VIDEO_MAPPINGS Command  - Clause
- * 7.4.48.1 */
+/** \addtogroup command_add_video_mappings ADD_VIDEO_MAPPINGS Command  - Clause 7.4.48.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_ADD_VIDEO_MAPPINGS_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1667,8 +1605,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_start_operation START_OPERATION Command  - Clause
- * 7.4.53.1 */
+/** \addtogroup command_start_operation START_OPERATION Command  - Clause 7.4.53.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_START_OPERATION_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1699,8 +1636,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_abort_operation ABORT_OPERATION Command  - Clause
- * 7.4.54.1 */
+/** \addtogroup command_abort_operation ABORT_OPERATION Command  - Clause 7.4.54.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_ABORT_OPERATION_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1758,8 +1694,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_auth_add_key_response AUTH_ADD_KEY Response  - Clause
- * 7.4.56.2 */
+/** \addtogroup command_auth_add_key_response AUTH_ADD_KEY Response  - Clause 7.4.56.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1770,8 +1705,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_auth_delete_key AUTH_DELETE_KEY Command  - Clause
- * 7.4.57.1 */
+/** \addtogroup command_auth_delete_key AUTH_DELETE_KEY Command  - Clause 7.4.57.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1794,8 +1728,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_auth_get_key_list AUTH_GET_KEY_LIST Command  - Clause
- * 7.4.58.1 */
+/** \addtogroup command_auth_get_key_list AUTH_GET_KEY_LIST Command  - Clause 7.4.58.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_LIST_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1831,8 +1764,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_auth_get_key_response AUTH_GET_KEY Response  - Clause
- * 7.4.59.2 */
+/** \addtogroup command_auth_get_key_response AUTH_GET_KEY Response  - Clause 7.4.59.2 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1941,8 +1873,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_auth_get_identity AUTH_GET_IDENTITY Command  - Clause
- * 7.4.63.1 */
+/** \addtogroup command_auth_get_identity AUTH_GET_IDENTITY Command  - Clause 7.4.63.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_AUTH_GET_IDENTITY_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -1990,8 +1921,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_auth_delete_token AUTH_DELETE_TOKEN Command  - Clause
- * 7.4.65.1 */
+/** \addtogroup command_auth_delete_token AUTH_DELETE_TOKEN Command  - Clause 7.4.65.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_TOKEN_COMMAND_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -2027,8 +1957,7 @@ extern "C" {
 
 /*@}*/
 
-/** \addtogroup command_authenticate_response AUTHENTICATE Response  - Clause
- * 7.4.66.1 */
+/** \addtogroup command_authenticate_response AUTHENTICATE Response  - Clause 7.4.66.1 */
 /*@{*/
 
 #define JDKSAVDECC_AEM_COMMAND_AUTHENTICATE_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
@@ -3206,8 +3135,7 @@ static inline ssize_t jdksavdecc_aem_command_lock_entity_write(struct jdksavdecc
 
 /*@}*/
 
-/** \addtogroup command_lock_entity_response LOCK_ENTITY Response - Clause
- * 7.4.2.1 */
+/** \addtogroup command_lock_entity_response LOCK_ENTITY Response - Clause 7.4.2.1 */
 /*@{*/
 
 /**
@@ -3376,8 +3304,7 @@ jdksavdecc_aem_command_lock_entity_response_set_locked_entity_id(struct jdksavde
 
 /*@}*/
 
-/** \addtogroup command_lock_entity_response LOCK_ENTITY Response - Clause
- * 7.4.2.1 */
+/** \addtogroup command_lock_entity_response LOCK_ENTITY Response - Clause 7.4.2.1 */
 /*@{*/
 
 /// LOCK_ENTITY Response - Clause 7.4.2.1
@@ -3453,8 +3380,7 @@ static inline ssize_t jdksavdecc_aem_command_lock_entity_response_write(
 
 /*@}*/
 
-/** \addtogroup command_entity_available ENTITY_AVAILABLE Command - Clause
- * 7.4.3.1 */
+/** \addtogroup command_entity_available ENTITY_AVAILABLE Command - Clause 7.4.3.1 */
 /*@{*/
 
 /**
@@ -3557,8 +3483,7 @@ static inline void jdksavdecc_aem_command_entity_available_set_command_type(uint
 
 /*@}*/
 
-/** \addtogroup command_entity_available ENTITY_AVAILABLE Command - Clause
- * 7.4.3.1 */
+/** \addtogroup command_entity_available ENTITY_AVAILABLE Command - Clause 7.4.3.1 */
 /*@{*/
 
 /// ENTITY_AVAILABLE Command - Clause 7.4.3.1
@@ -4715,8 +4640,7 @@ static inline ssize_t jdksavdecc_aem_command_read_descriptor_response_write(
 
 /*@}*/
 
-/** \addtogroup command_write_descriptor WRITE_DESCRIPTOR Command - Clause
- * 7.4.6.1 */
+/** \addtogroup command_write_descriptor WRITE_DESCRIPTOR Command - Clause 7.4.6.1 */
 /*@{*/
 
 /**
@@ -4883,8 +4807,7 @@ static inline void jdksavdecc_aem_command_write_descriptor_set_reserved(uint16_t
 
 /*@}*/
 
-/** \addtogroup command_write_descriptor WRITE_DESCRIPTOR Command - Clause
- * 7.4.6.1 */
+/** \addtogroup command_write_descriptor WRITE_DESCRIPTOR Command - Clause 7.4.6.1 */
 /*@{*/
 
 /// WRITE_DESCRIPTOR Command - Clause 7.4.6.1
@@ -5205,8 +5128,7 @@ static inline ssize_t jdksavdecc_aem_command_write_descriptor_response_write(
 
 /*@}*/
 
-/** \addtogroup command_set_configuration SET_CONFIGURATION Command - Clause
- * 7.4.7.1 */
+/** \addtogroup command_set_configuration SET_CONFIGURATION Command - Clause 7.4.7.1 */
 /*@{*/
 
 /**
@@ -5373,8 +5295,7 @@ static inline void jdksavdecc_aem_command_set_configuration_set_configuration_in
 
 /*@}*/
 
-/** \addtogroup command_set_configuration SET_CONFIGURATION Command - Clause
- * 7.4.7.1 */
+/** \addtogroup command_set_configuration SET_CONFIGURATION Command - Clause 7.4.7.1 */
 /*@{*/
 
 /// SET_CONFIGURATION Command - Clause 7.4.7.1
@@ -5696,8 +5617,7 @@ static inline ssize_t jdksavdecc_aem_command_set_configuration_response_write(
 
 /*@}*/
 
-/** \addtogroup command_get_configuration GET_CONFIGURATION Command - Clause
- * 7.4.8.1 */
+/** \addtogroup command_get_configuration GET_CONFIGURATION Command - Clause 7.4.8.1 */
 /*@{*/
 
 /**
@@ -5800,8 +5720,7 @@ static inline void jdksavdecc_aem_command_get_configuration_set_command_type(uin
 
 /*@}*/
 
-/** \addtogroup command_get_configuration GET_CONFIGURATION Command - Clause
- * 7.4.8.1 */
+/** \addtogroup command_get_configuration GET_CONFIGURATION Command - Clause 7.4.8.1 */
 /*@{*/
 
 /// GET_CONFIGURATION Command - Clause 7.4.8.1
@@ -6117,8 +6036,7 @@ static inline ssize_t jdksavdecc_aem_command_get_configuration_response_write(
 
 /*@}*/
 
-/** \addtogroup command_set_stream_format SET_STREAM_FORMAT Command - Clause
- * 7.4.9.1 */
+/** \addtogroup command_set_stream_format SET_STREAM_FORMAT Command - Clause 7.4.9.1 */
 /*@{*/
 
 /**
@@ -6319,8 +6237,7 @@ jdksavdecc_aem_command_set_stream_format_set_stream_format(struct jdksavdecc_eui
 
 /*@}*/
 
-/** \addtogroup command_set_stream_format SET_STREAM_FORMAT Command - Clause
- * 7.4.9.1 */
+/** \addtogroup command_set_stream_format SET_STREAM_FORMAT Command - Clause 7.4.9.1 */
 /*@{*/
 
 /// SET_STREAM_FORMAT Command - Clause 7.4.9.1
@@ -6680,8 +6597,7 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_format_response_write(
 
 /*@}*/
 
-/** \addtogroup command_get_stream_format GET_STREAM_FORMAT Command - Clause
- * 7.4.10.1 */
+/** \addtogroup command_get_stream_format GET_STREAM_FORMAT Command - Clause 7.4.10.1 */
 /*@{*/
 
 /**
@@ -6848,8 +6764,7 @@ static inline void jdksavdecc_aem_command_get_stream_format_set_descriptor_index
 
 /*@}*/
 
-/** \addtogroup command_get_stream_format GET_STREAM_FORMAT Command - Clause
- * 7.4.10.1 */
+/** \addtogroup command_get_stream_format GET_STREAM_FORMAT Command - Clause 7.4.10.1 */
 /*@{*/
 
 /// GET_STREAM_FORMAT Command - Clause 7.4.10.1
@@ -7206,8 +7121,7 @@ static inline ssize_t jdksavdecc_aem_command_get_stream_format_response_write(
 
 /*@}*/
 
-/** \addtogroup command_set_video_format SET_VIDEO_FORMAT Command - Clause
- * 7.4.11.1 */
+/** \addtogroup command_set_video_format SET_VIDEO_FORMAT Command - Clause 7.4.11.1 */
 /*@{*/
 
 /**
@@ -7502,8 +7416,7 @@ static inline void jdksavdecc_aem_command_set_video_format_set_frame_size(uint32
 
 /*@}*/
 
-/** \addtogroup command_set_video_format SET_VIDEO_FORMAT Command - Clause
- * 7.4.11.1 */
+/** \addtogroup command_set_video_format SET_VIDEO_FORMAT Command - Clause 7.4.11.1 */
 /*@{*/
 
 /// SET_VIDEO_FORMAT Command - Clause 7.4.11.1
@@ -7975,8 +7888,7 @@ static inline ssize_t jdksavdecc_aem_command_set_video_format_response_write(
 
 /*@}*/
 
-/** \addtogroup command_get_video_format GET_VIDEO_FORMAT Command - Clause
- * 7.4.12.1 */
+/** \addtogroup command_get_video_format GET_VIDEO_FORMAT Command - Clause 7.4.12.1 */
 /*@{*/
 
 /**
@@ -8143,8 +8055,7 @@ static inline void jdksavdecc_aem_command_get_video_format_set_descriptor_index(
 
 /*@}*/
 
-/** \addtogroup command_get_video_format GET_VIDEO_FORMAT Command - Clause
- * 7.4.12.1 */
+/** \addtogroup command_get_video_format GET_VIDEO_FORMAT Command - Clause 7.4.12.1 */
 /*@{*/
 
 /// GET_VIDEO_FORMAT Command - Clause 7.4.12.1
@@ -8604,8 +8515,7 @@ static inline ssize_t jdksavdecc_aem_command_get_video_format_response_write(
 
 /*@}*/
 
-/** \addtogroup command_set_sensor_format SET_SENSOR_FORMAT Command - Clause
- * 7.4.13.1 */
+/** \addtogroup command_set_sensor_format SET_SENSOR_FORMAT Command - Clause 7.4.13.1 */
 /*@{*/
 
 /**
@@ -8806,8 +8716,7 @@ jdksavdecc_aem_command_set_sensor_format_set_sensor_format(struct jdksavdecc_eui
 
 /*@}*/
 
-/** \addtogroup command_set_sensor_format SET_SENSOR_FORMAT Command - Clause
- * 7.4.13.1 */
+/** \addtogroup command_set_sensor_format SET_SENSOR_FORMAT Command - Clause 7.4.13.1 */
 /*@{*/
 
 /// SET_SENSOR_FORMAT Command - Clause 7.4.13.1
@@ -9167,8 +9076,7 @@ static inline ssize_t jdksavdecc_aem_command_set_sensor_format_response_write(
 
 /*@}*/
 
-/** \addtogroup command_get_sensor_format GET_SENSOR_FORMAT Command - Clause
- * 7.4.14.1 */
+/** \addtogroup command_get_sensor_format GET_SENSOR_FORMAT Command - Clause 7.4.14.1 */
 /*@{*/
 
 /**
@@ -9335,8 +9243,7 @@ static inline void jdksavdecc_aem_command_get_sensor_format_set_descriptor_index
 
 /*@}*/
 
-/** \addtogroup command_get_sensor_format GET_SENSOR_FORMAT Command - Clause
- * 7.4.14.1 */
+/** \addtogroup command_get_sensor_format GET_SENSOR_FORMAT Command - Clause 7.4.14.1 */
 /*@{*/
 
 /// GET_SENSOR_FORMAT Command - Clause 7.4.14.1
@@ -9693,8 +9600,7 @@ static inline ssize_t jdksavdecc_aem_command_get_sensor_format_response_write(
 
 /*@}*/
 
-/** \addtogroup command_set_stream_info SET_STREAM_INFO Command - Clause
- * 7.4.15.1 */
+/** \addtogroup command_set_stream_info SET_STREAM_INFO Command - Clause 7.4.15.1 */
 /*@{*/
 
 /**
@@ -10122,8 +10028,7 @@ jdksavdecc_aem_command_set_stream_info_set_msrp_failure_bridge_id(struct jdksavd
 
 /*@}*/
 
-/** \addtogroup command_set_stream_info SET_STREAM_INFO Command - Clause
- * 7.4.15.1 */
+/** \addtogroup command_set_stream_info SET_STREAM_INFO Command - Clause 7.4.15.1 */
 /*@{*/
 
 /// SET_STREAM_INFO Command - Clause 7.4.15.1
@@ -10760,8 +10665,7 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_info_response_write(
 
 /*@}*/
 
-/** \addtogroup command_get_stream_info GET_STREAM_INFO Command - Clause
- * 7.4.16.1 */
+/** \addtogroup command_get_stream_info GET_STREAM_INFO Command - Clause 7.4.16.1 */
 /*@{*/
 
 /**
@@ -10928,8 +10832,7 @@ static inline void jdksavdecc_aem_command_get_stream_info_set_descriptor_index(u
 
 /*@}*/
 
-/** \addtogroup command_get_stream_info GET_STREAM_INFO Command - Clause
- * 7.4.16.1 */
+/** \addtogroup command_get_stream_info GET_STREAM_INFO Command - Clause 7.4.16.1 */
 /*@{*/
 
 /// GET_STREAM_INFO Command - Clause 7.4.16.1
@@ -12889,8 +12792,7 @@ static inline ssize_t jdksavdecc_aem_command_get_name_response_write(struct jdks
 
 /*@}*/
 
-/** \addtogroup command_set_association_id SET_ASSOCIATION_ID Command - Clause
- * 7.4.19.1 */
+/** \addtogroup command_set_association_id SET_ASSOCIATION_ID Command - Clause 7.4.19.1 */
 /*@{*/
 
 /**
@@ -13027,8 +12929,7 @@ jdksavdecc_aem_command_set_association_id_set_association_id(struct jdksavdecc_e
 
 /*@}*/
 
-/** \addtogroup command_set_association_id SET_ASSOCIATION_ID Command - Clause
- * 7.4.19.1 */
+/** \addtogroup command_set_association_id SET_ASSOCIATION_ID Command - Clause 7.4.19.1 */
 /*@{*/
 
 /// SET_ASSOCIATION_ID Command - Clause 7.4.19.1
@@ -13314,8 +13215,7 @@ static inline ssize_t jdksavdecc_aem_command_set_association_id_response_write(
 
 /*@}*/
 
-/** \addtogroup command_get_association_id GET_ASSOCIATION_ID Command - Clause
- * 7.4.20.1 */
+/** \addtogroup command_get_association_id GET_ASSOCIATION_ID Command - Clause 7.4.20.1 */
 /*@{*/
 
 /**
@@ -13418,8 +13318,7 @@ static inline void jdksavdecc_aem_command_get_association_id_set_command_type(ui
 
 /*@}*/
 
-/** \addtogroup command_get_association_id GET_ASSOCIATION_ID Command - Clause
- * 7.4.20.1 */
+/** \addtogroup command_get_association_id GET_ASSOCIATION_ID Command - Clause 7.4.20.1 */
 /*@{*/
 
 /// GET_ASSOCIATION_ID Command - Clause 7.4.20.1
@@ -13702,8 +13601,7 @@ static inline ssize_t jdksavdecc_aem_command_get_association_id_response_write(
 
 /*@}*/
 
-/** \addtogroup command_set_sampling_rate SET_SAMPLING_RATE Command - Clause
- * 7.4.21.1 */
+/** \addtogroup command_set_sampling_rate SET_SAMPLING_RATE Command - Clause 7.4.21.1 */
 /*@{*/
 
 /**
@@ -13902,8 +13800,7 @@ static inline void jdksavdecc_aem_command_set_sampling_rate_set_sampling_rate(ui
 
 /*@}*/
 
-/** \addtogroup command_set_sampling_rate SET_SAMPLING_RATE Command - Clause
- * 7.4.21.1 */
+/** \addtogroup command_set_sampling_rate SET_SAMPLING_RATE Command - Clause 7.4.21.1 */
 /*@{*/
 
 /// SET_SAMPLING_RATE Command - Clause 7.4.21.1
@@ -14261,8 +14158,7 @@ static inline ssize_t jdksavdecc_aem_command_set_sampling_rate_response_write(
 
 /*@}*/
 
-/** \addtogroup command_get_sampling_rate GET_SAMPLING_RATE Command - Clause
- * 7.4.22.1 */
+/** \addtogroup command_get_sampling_rate GET_SAMPLING_RATE Command - Clause 7.4.22.1 */
 /*@{*/
 
 /**
@@ -14429,8 +14325,7 @@ static inline void jdksavdecc_aem_command_get_sampling_rate_set_descriptor_index
 
 /*@}*/
 
-/** \addtogroup command_get_sampling_rate GET_SAMPLING_RATE Command - Clause
- * 7.4.22.1 */
+/** \addtogroup command_get_sampling_rate GET_SAMPLING_RATE Command - Clause 7.4.22.1 */
 /*@{*/
 
 /// GET_SAMPLING_RATE Command - Clause 7.4.22.1
@@ -14785,8 +14680,7 @@ static inline ssize_t jdksavdecc_aem_command_get_sampling_rate_response_write(
 
 /*@}*/
 
-/** \addtogroup command_set_clock_source SET_CLOCK_SOURCE Command - Clause
- * 7.4.23.1 */
+/** \addtogroup command_set_clock_source SET_CLOCK_SOURCE Command - Clause 7.4.23.1 */
 /*@{*/
 
 /**
@@ -14985,8 +14879,7 @@ static inline void jdksavdecc_aem_command_set_clock_source_set_clock_source_inde
 
 /*@}*/
 
-/** \addtogroup command_set_clock_source SET_CLOCK_SOURCE Command - Clause
- * 7.4.23.1 */
+/** \addtogroup command_set_clock_source SET_CLOCK_SOURCE Command - Clause 7.4.23.1 */
 /*@{*/
 
 /// SET_CLOCK_SOURCE Command - Clause 7.4.23.1
@@ -15345,8 +15238,7 @@ static inline ssize_t jdksavdecc_aem_command_set_clock_source_response_write(
 
 /*@}*/
 
-/** \addtogroup command_get_clock_source GET_CLOCK_SOURCE Command - Clause
- * 7.4.24.1 */
+/** \addtogroup command_get_clock_source GET_CLOCK_SOURCE Command - Clause 7.4.24.1 */
 /*@{*/
 
 /**
@@ -15513,8 +15405,7 @@ static inline void jdksavdecc_aem_command_get_clock_source_set_descriptor_index(
 
 /*@}*/
 
-/** \addtogroup command_get_clock_source GET_CLOCK_SOURCE Command - Clause
- * 7.4.24.1 */
+/** \addtogroup command_get_clock_source GET_CLOCK_SOURCE Command - Clause 7.4.24.1 */
 /*@{*/
 
 /// GET_CLOCK_SOURCE Command - Clause 7.4.24.1
@@ -16113,8 +16004,7 @@ static inline ssize_t jdksavdecc_aem_command_set_control_write(struct jdksavdecc
 
 /*@}*/
 
-/** \addtogroup command_set_control_response SET_CONTROL Response - Clause
- * 7.4.25.1 */
+/** \addtogroup command_set_control_response SET_CONTROL Response - Clause 7.4.25.1 */
 /*@{*/
 
 /**
@@ -16281,8 +16171,7 @@ static inline void jdksavdecc_aem_command_set_control_response_set_descriptor_in
 
 /*@}*/
 
-/** \addtogroup command_set_control_response SET_CONTROL Response - Clause
- * 7.4.25.1 */
+/** \addtogroup command_set_control_response SET_CONTROL Response - Clause 7.4.25.1 */
 /*@{*/
 
 /// SET_CONTROL Response - Clause 7.4.25.1
@@ -16601,8 +16490,7 @@ static inline ssize_t jdksavdecc_aem_command_get_control_write(struct jdksavdecc
 
 /*@}*/
 
-/** \addtogroup command_get_control_response GET_CONTROL Response - Clause
- * 7.4.26.2 */
+/** \addtogroup command_get_control_response GET_CONTROL Response - Clause 7.4.26.2 */
 /*@{*/
 
 /**
@@ -16769,8 +16657,7 @@ static inline void jdksavdecc_aem_command_get_control_response_set_descriptor_in
 
 /*@}*/
 
-/** \addtogroup command_get_control_response GET_CONTROL Response - Clause
- * 7.4.26.2 */
+/** \addtogroup command_get_control_response GET_CONTROL Response - Clause 7.4.26.2 */
 /*@{*/
 
 /// GET_CONTROL Response - Clause 7.4.26.2
@@ -16846,8 +16733,7 @@ static inline ssize_t jdksavdecc_aem_command_get_control_response_write(
 
 /*@}*/
 
-/** \addtogroup command_increment_control INCREMENT_CONTROL Command - Clause
- * 7.4.27.1 */
+/** \addtogroup command_increment_control INCREMENT_CONTROL Command - Clause 7.4.27.1 */
 /*@{*/
 
 /**
@@ -17078,8 +16964,7 @@ static inline void jdksavdecc_aem_command_increment_control_set_reserved(uint16_
 
 /*@}*/
 
-/** \addtogroup command_increment_control INCREMENT_CONTROL Command - Clause
- * 7.4.27.1 */
+/** \addtogroup command_increment_control INCREMENT_CONTROL Command - Clause 7.4.27.1 */
 /*@{*/
 
 /// INCREMENT_CONTROL Command - Clause 7.4.27.1
@@ -17405,8 +17290,7 @@ static inline ssize_t jdksavdecc_aem_command_increment_control_response_write(
 
 /*@}*/
 
-/** \addtogroup command_decrement_control DECREMENT_CONTROL Command - Clause
- * 7.4.28.1 */
+/** \addtogroup command_decrement_control DECREMENT_CONTROL Command - Clause 7.4.28.1 */
 /*@{*/
 
 /**
@@ -17637,8 +17521,7 @@ static inline void jdksavdecc_aem_command_decrement_control_set_reserved(uint16_
 
 /*@}*/
 
-/** \addtogroup command_decrement_control DECREMENT_CONTROL Command - Clause
- * 7.4.28.1 */
+/** \addtogroup command_decrement_control DECREMENT_CONTROL Command - Clause 7.4.28.1 */
 /*@{*/
 
 /// DECREMENT_CONTROL Command - Clause 7.4.28.1
@@ -17964,8 +17847,7 @@ static inline ssize_t jdksavdecc_aem_command_decrement_control_response_write(
 
 /*@}*/
 
-/** \addtogroup command_set_signal_selector SET_SIGNAL_SELECTOR Command - Clause
- * 7.4.29.1 */
+/** \addtogroup command_set_signal_selector SET_SIGNAL_SELECTOR Command - Clause 7.4.29.1 */
 /*@{*/
 
 /**
@@ -18260,8 +18142,7 @@ static inline void jdksavdecc_aem_command_set_signal_selector_set_reserved(uint1
 
 /*@}*/
 
-/** \addtogroup command_set_signal_selector SET_SIGNAL_SELECTOR Command - Clause
- * 7.4.29.1 */
+/** \addtogroup command_set_signal_selector SET_SIGNAL_SELECTOR Command - Clause 7.4.29.1 */
 /*@{*/
 
 /// SET_SIGNAL_SELECTOR Command - Clause 7.4.29.1
@@ -18736,8 +18617,7 @@ static inline ssize_t jdksavdecc_aem_command_set_signal_selector_response_write(
 
 /*@}*/
 
-/** \addtogroup command_get_signal_selector GET_SIGNAL_SELECTOR Command - Clause
- * 7.4.30.1 */
+/** \addtogroup command_get_signal_selector GET_SIGNAL_SELECTOR Command - Clause 7.4.30.1 */
 /*@{*/
 
 /**
@@ -18904,8 +18784,7 @@ static inline void jdksavdecc_aem_command_get_signal_selector_set_descriptor_ind
 
 /*@}*/
 
-/** \addtogroup command_get_signal_selector GET_SIGNAL_SELECTOR Command - Clause
- * 7.4.30.1 */
+/** \addtogroup command_get_signal_selector GET_SIGNAL_SELECTOR Command - Clause 7.4.30.1 */
 /*@{*/
 
 /// GET_SIGNAL_SELECTOR Command - Clause 7.4.30.1
@@ -20783,8 +20662,7 @@ jdksavdecc_aem_command_set_matrix_write(struct jdksavdecc_aem_command_set_matrix
 
 /*@}*/
 
-/** \addtogroup command_set_matrix_response SET_MATRIX Response - Clause
- * 7.4.33.2 */
+/** \addtogroup command_set_matrix_response SET_MATRIX Response - Clause 7.4.33.2 */
 /*@{*/
 
 /**
@@ -21144,8 +21022,7 @@ static inline void jdksavdecc_aem_command_set_matrix_response_set_item_offset(ui
 
 /*@}*/
 
-/** \addtogroup command_set_matrix_response SET_MATRIX Response - Clause
- * 7.4.33.2 */
+/** \addtogroup command_set_matrix_response SET_MATRIX Response - Clause 7.4.33.2 */
 /*@{*/
 
 /// SET_MATRIX Response - Clause 7.4.33.2
@@ -21687,8 +21564,7 @@ jdksavdecc_aem_command_get_matrix_write(struct jdksavdecc_aem_command_get_matrix
 
 /*@}*/
 
-/** \addtogroup command_get_matrix_response GET_MATRIX Response - Clause
- * 7.4.34.2 */
+/** \addtogroup command_get_matrix_response GET_MATRIX Response - Clause 7.4.34.2 */
 /*@{*/
 
 /**
@@ -22048,8 +21924,7 @@ static inline void jdksavdecc_aem_command_get_matrix_response_set_item_offset(ui
 
 /*@}*/
 
-/** \addtogroup command_get_matrix_response GET_MATRIX Response - Clause
- * 7.4.34.2 */
+/** \addtogroup command_get_matrix_response GET_MATRIX Response - Clause 7.4.34.2 */
 /*@{*/
 
 /// GET_MATRIX Response - Clause 7.4.34.2
@@ -22142,8 +22017,7 @@ static inline ssize_t jdksavdecc_aem_command_get_matrix_response_write(
 
 /*@}*/
 
-/** \addtogroup command_start_streaming START_STREAMING Command - Clause
- * 7.4.35.1 */
+/** \addtogroup command_start_streaming START_STREAMING Command - Clause 7.4.35.1 */
 /*@{*/
 
 /**
@@ -22310,8 +22184,7 @@ static inline void jdksavdecc_aem_command_start_streaming_set_descriptor_index(u
 
 /*@}*/
 
-/** \addtogroup command_start_streaming START_STREAMING Command - Clause
- * 7.4.35.1 */
+/** \addtogroup command_start_streaming START_STREAMING Command - Clause 7.4.35.1 */
 /*@{*/
 
 /// START_STREAMING Command - Clause 7.4.35.1
@@ -22877,8 +22750,7 @@ static inline ssize_t jdksavdecc_aem_command_stop_streaming_write(struct jdksavd
 
 /*@}*/
 
-/** \addtogroup command_stop_streaming_response STOP_STREAMING Response - Clause
- * 7.4.36.1 */
+/** \addtogroup command_stop_streaming_response STOP_STREAMING Response - Clause 7.4.36.1 */
 /*@{*/
 
 /**
@@ -23045,8 +22917,7 @@ static inline void jdksavdecc_aem_command_stop_streaming_response_set_descriptor
 
 /*@}*/
 
-/** \addtogroup command_stop_streaming_response STOP_STREAMING Response - Clause
- * 7.4.36.1 */
+/** \addtogroup command_stop_streaming_response STOP_STREAMING Response - Clause 7.4.36.1 */
 /*@{*/
 
 /// STOP_STREAMING Response - Clause 7.4.36.1
@@ -24365,8 +24236,7 @@ static inline ssize_t jdksavdecc_aem_command_get_avb_info_write(struct jdksavdec
 
 /*@}*/
 
-/** \addtogroup command_get_avb_info_response GET_AVB_INFO Response  - Clause
- * 7.4.40.2 */
+/** \addtogroup command_get_avb_info_response GET_AVB_INFO Response  - Clause 7.4.40.2 */
 /*@{*/
 
 /**
@@ -24663,8 +24533,7 @@ static inline void jdksavdecc_aem_command_get_avb_info_response_set_msrp_mapping
 
 /*@}*/
 
-/** \addtogroup command_get_avb_info_response GET_AVB_INFO Response  - Clause
- * 7.4.40.2 */
+/** \addtogroup command_get_avb_info_response GET_AVB_INFO Response  - Clause 7.4.40.2 */
 /*@{*/
 
 /// GET_AVB_INFO Response  - Clause 7.4.40.2
@@ -24995,8 +24864,7 @@ static inline ssize_t jdksavdecc_aem_command_get_as_path_write(struct jdksavdecc
 
 /*@}*/
 
-/** \addtogroup command_get_as_path_response GET_AS_PATH Response  - Clause
- * 7.4.41.2 */
+/** \addtogroup command_get_as_path_response GET_AS_PATH Response  - Clause 7.4.41.2 */
 /*@{*/
 
 /**
@@ -25163,8 +25031,7 @@ static inline void jdksavdecc_aem_command_get_as_path_response_set_reserved(uint
 
 /*@}*/
 
-/** \addtogroup command_get_as_path_response GET_AS_PATH Response  - Clause
- * 7.4.41.2 */
+/** \addtogroup command_get_as_path_response GET_AS_PATH Response  - Clause 7.4.41.2 */
 /*@{*/
 
 /// GET_AS_PATH Response  - Clause 7.4.41.2
@@ -25483,8 +25350,7 @@ static inline ssize_t jdksavdecc_aem_command_get_counters_write(struct jdksavdec
 
 /*@}*/
 
-/** \addtogroup command_get_counters_response GET_COUNTERS Response  - Clause
- * 7.4.42.2 */
+/** \addtogroup command_get_counters_response GET_COUNTERS Response  - Clause 7.4.42.2 */
 /*@{*/
 
 /**
@@ -25683,8 +25549,7 @@ static inline void jdksavdecc_aem_command_get_counters_response_set_counters_val
 
 /*@}*/
 
-/** \addtogroup command_get_counters_response GET_COUNTERS Response  - Clause
- * 7.4.42.2 */
+/** \addtogroup command_get_counters_response GET_COUNTERS Response  - Clause 7.4.42.2 */
 /*@{*/
 
 /// GET_COUNTERS Response  - Clause 7.4.42.2
@@ -26558,8 +26423,7 @@ static inline ssize_t jdksavdecc_aem_command_get_audio_map_write(struct jdksavde
 
 /*@}*/
 
-/** \addtogroup command_get_audio_map_response GET_AUDIO_MAP Response  - Clause
- * 7.4.44.2 */
+/** \addtogroup command_get_audio_map_response GET_AUDIO_MAP Response  - Clause 7.4.44.2 */
 /*@{*/
 
 /**
@@ -26854,8 +26718,7 @@ static inline void jdksavdecc_aem_command_get_audio_map_response_set_reserved(ui
 
 /*@}*/
 
-/** \addtogroup command_get_audio_map_response GET_AUDIO_MAP Response  - Clause
- * 7.4.44.2 */
+/** \addtogroup command_get_audio_map_response GET_AUDIO_MAP Response  - Clause 7.4.44.2 */
 /*@{*/
 
 /// GET_AUDIO_MAP Response  - Clause 7.4.44.2
@@ -26941,8 +26804,7 @@ static inline ssize_t jdksavdecc_aem_command_get_audio_map_response_write(
 
 /*@}*/
 
-/** \addtogroup command_add_audio_mappings ADD_AUDIO_MAPPINGS Command  - Clause
- * 7.4.45.1 */
+/** \addtogroup command_add_audio_mappings ADD_AUDIO_MAPPINGS Command  - Clause 7.4.45.1 */
 /*@{*/
 
 /**
@@ -27173,8 +27035,7 @@ static inline void jdksavdecc_aem_command_add_audio_mappings_set_reserved(uint16
 
 /*@}*/
 
-/** \addtogroup command_add_audio_mappings ADD_AUDIO_MAPPINGS Command  - Clause
- * 7.4.45.1 */
+/** \addtogroup command_add_audio_mappings ADD_AUDIO_MAPPINGS Command  - Clause 7.4.45.1 */
 /*@{*/
 
 /// ADD_AUDIO_MAPPINGS Command  - Clause 7.4.45.1
@@ -28529,8 +28390,7 @@ static inline ssize_t jdksavdecc_aem_command_get_video_map_write(struct jdksavde
 
 /*@}*/
 
-/** \addtogroup command_get_video_map_response GET_VIDEO_MAP Response  - Clause
- * 7.4.47.2 */
+/** \addtogroup command_get_video_map_response GET_VIDEO_MAP Response  - Clause 7.4.47.2 */
 /*@{*/
 
 /**
@@ -28825,8 +28685,7 @@ static inline void jdksavdecc_aem_command_get_video_map_response_set_reserved(ui
 
 /*@}*/
 
-/** \addtogroup command_get_video_map_response GET_VIDEO_MAP Response  - Clause
- * 7.4.47.2 */
+/** \addtogroup command_get_video_map_response GET_VIDEO_MAP Response  - Clause 7.4.47.2 */
 /*@{*/
 
 /// GET_VIDEO_MAP Response  - Clause 7.4.47.2
@@ -28912,8 +28771,7 @@ static inline ssize_t jdksavdecc_aem_command_get_video_map_response_write(
 
 /*@}*/
 
-/** \addtogroup command_add_video_mappings ADD_VIDEO_MAPPINGS Command  - Clause
- * 7.4.48.1 */
+/** \addtogroup command_add_video_mappings ADD_VIDEO_MAPPINGS Command  - Clause 7.4.48.1 */
 /*@{*/
 
 /**
@@ -29144,8 +29002,7 @@ static inline void jdksavdecc_aem_command_add_video_mappings_set_reserved(uint16
 
 /*@}*/
 
-/** \addtogroup command_add_video_mappings ADD_VIDEO_MAPPINGS Command  - Clause
- * 7.4.48.1 */
+/** \addtogroup command_add_video_mappings ADD_VIDEO_MAPPINGS Command  - Clause 7.4.48.1 */
 /*@{*/
 
 /// ADD_VIDEO_MAPPINGS Command  - Clause 7.4.48.1
@@ -32158,8 +32015,7 @@ static inline ssize_t jdksavdecc_aem_command_remove_sensor_mappings_response_wri
 
 /*@}*/
 
-/** \addtogroup command_start_operation START_OPERATION Command  - Clause
- * 7.4.53.1 */
+/** \addtogroup command_start_operation START_OPERATION Command  - Clause 7.4.53.1 */
 /*@{*/
 
 /**
@@ -32390,8 +32246,7 @@ static inline void jdksavdecc_aem_command_start_operation_set_operation_type(uin
 
 /*@}*/
 
-/** \addtogroup command_start_operation START_OPERATION Command  - Clause
- * 7.4.53.1 */
+/** \addtogroup command_start_operation START_OPERATION Command  - Clause 7.4.53.1 */
 /*@{*/
 
 /// START_OPERATION Command  - Clause 7.4.53.1
@@ -32787,8 +32642,7 @@ static inline ssize_t jdksavdecc_aem_command_start_operation_response_write(
 
 /*@}*/
 
-/** \addtogroup command_abort_operation ABORT_OPERATION Command  - Clause
- * 7.4.54.1 */
+/** \addtogroup command_abort_operation ABORT_OPERATION Command  - Clause 7.4.54.1 */
 /*@{*/
 
 /**
@@ -33019,8 +32873,7 @@ static inline void jdksavdecc_aem_command_abort_operation_set_reserved(uint16_t 
 
 /*@}*/
 
-/** \addtogroup command_abort_operation ABORT_OPERATION Command  - Clause
- * 7.4.54.1 */
+/** \addtogroup command_abort_operation ABORT_OPERATION Command  - Clause 7.4.54.1 */
 /*@{*/
 
 /// ABORT_OPERATION Command  - Clause 7.4.54.1
@@ -34007,8 +33860,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_write(struct jdksavdec
 
 /*@}*/
 
-/** \addtogroup command_auth_add_key_response AUTH_ADD_KEY Response  - Clause
- * 7.4.56.2 */
+/** \addtogroup command_auth_add_key_response AUTH_ADD_KEY Response  - Clause 7.4.56.2 */
 /*@{*/
 
 /**
@@ -34143,8 +33995,7 @@ static inline void jdksavdecc_aem_command_auth_add_key_response_set_key_id(struc
 
 /*@}*/
 
-/** \addtogroup command_auth_add_key_response AUTH_ADD_KEY Response  - Clause
- * 7.4.56.2 */
+/** \addtogroup command_auth_add_key_response AUTH_ADD_KEY Response  - Clause 7.4.56.2 */
 /*@{*/
 
 /// AUTH_ADD_KEY Response  - Clause 7.4.56.2
@@ -34217,8 +34068,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_response_write(
 
 /*@}*/
 
-/** \addtogroup command_auth_delete_key AUTH_DELETE_KEY Command  - Clause
- * 7.4.57.1 */
+/** \addtogroup command_auth_delete_key AUTH_DELETE_KEY Command  - Clause 7.4.57.1 */
 /*@{*/
 
 /**
@@ -34353,8 +34203,7 @@ static inline void jdksavdecc_aem_command_auth_delete_key_set_key_id(struct jdks
 
 /*@}*/
 
-/** \addtogroup command_auth_delete_key AUTH_DELETE_KEY Command  - Clause
- * 7.4.57.1 */
+/** \addtogroup command_auth_delete_key AUTH_DELETE_KEY Command  - Clause 7.4.57.1 */
 /*@{*/
 
 /// AUTH_DELETE_KEY Command  - Clause 7.4.57.1
@@ -34638,8 +34487,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_response_write(
 
 /*@}*/
 
-/** \addtogroup command_auth_get_key_list AUTH_GET_KEY_LIST Command  - Clause
- * 7.4.58.1 */
+/** \addtogroup command_auth_get_key_list AUTH_GET_KEY_LIST Command  - Clause 7.4.58.1 */
 /*@{*/
 
 /**
@@ -34774,8 +34622,7 @@ static inline void jdksavdecc_aem_command_auth_get_key_list_set_keychainid_reser
 
 /*@}*/
 
-/** \addtogroup command_auth_get_key_list AUTH_GET_KEY_LIST Command  - Clause
- * 7.4.58.1 */
+/** \addtogroup command_auth_get_key_list AUTH_GET_KEY_LIST Command  - Clause 7.4.58.1 */
 /*@{*/
 
 /// AUTH_GET_KEY_LIST Command  - Clause 7.4.58.1
@@ -35306,8 +35153,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_write(struct jdksavdec
 
 /*@}*/
 
-/** \addtogroup command_auth_get_key_response AUTH_GET_KEY Response  - Clause
- * 7.4.59.2 */
+/** \addtogroup command_auth_get_key_response AUTH_GET_KEY Response  - Clause 7.4.59.2 */
 /*@{*/
 
 /**
@@ -35506,8 +35352,7 @@ static inline void jdksavdecc_aem_command_auth_get_key_response_set_reserved(uin
 
 /*@}*/
 
-/** \addtogroup command_auth_get_key_response AUTH_GET_KEY Response  - Clause
- * 7.4.59.2 */
+/** \addtogroup command_auth_get_key_response AUTH_GET_KEY Response  - Clause 7.4.59.2 */
 /*@{*/
 
 /// AUTH_GET_KEY Response  - Clause 7.4.59.2
@@ -37290,8 +37135,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_keychain_list_response_wri
 
 /*@}*/
 
-/** \addtogroup command_auth_get_identity AUTH_GET_IDENTITY Command  - Clause
- * 7.4.63.1 */
+/** \addtogroup command_auth_get_identity AUTH_GET_IDENTITY Command  - Clause 7.4.63.1 */
 /*@{*/
 
 /**
@@ -37394,8 +37238,7 @@ static inline void jdksavdecc_aem_command_auth_get_identity_set_command_type(uin
 
 /*@}*/
 
-/** \addtogroup command_auth_get_identity AUTH_GET_IDENTITY Command  - Clause
- * 7.4.63.1 */
+/** \addtogroup command_auth_get_identity AUTH_GET_IDENTITY Command  - Clause 7.4.63.1 */
 /*@{*/
 
 /// AUTH_GET_IDENTITY Command  - Clause 7.4.63.1
@@ -38095,8 +37938,7 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_token_response_write(
 
 /*@}*/
 
-/** \addtogroup command_auth_delete_token AUTH_DELETE_TOKEN Command  - Clause
- * 7.4.65.1 */
+/** \addtogroup command_auth_delete_token AUTH_DELETE_TOKEN Command  - Clause 7.4.65.1 */
 /*@{*/
 
 /**
@@ -38199,8 +38041,7 @@ static inline void jdksavdecc_aem_command_auth_delete_token_set_command_type(uin
 
 /*@}*/
 
-/** \addtogroup command_auth_delete_token AUTH_DELETE_TOKEN Command  - Clause
- * 7.4.65.1 */
+/** \addtogroup command_auth_delete_token AUTH_DELETE_TOKEN Command  - Clause 7.4.65.1 */
 /*@{*/
 
 /// AUTH_DELETE_TOKEN Command  - Clause 7.4.65.1
@@ -38757,8 +38598,7 @@ static inline ssize_t jdksavdecc_aem_command_authenticate_write(struct jdksavdec
 
 /*@}*/
 
-/** \addtogroup command_authenticate_response AUTHENTICATE Response  - Clause
- * 7.4.66.1 */
+/** \addtogroup command_authenticate_response AUTHENTICATE Response  - Clause 7.4.66.1 */
 /*@{*/
 
 /**
@@ -38925,8 +38765,7 @@ static inline void jdksavdecc_aem_command_authenticate_response_set_descriptor_i
 
 /*@}*/
 
-/** \addtogroup command_authenticate_response AUTHENTICATE Response  - Clause
- * 7.4.66.1 */
+/** \addtogroup command_authenticate_response AUTHENTICATE Response  - Clause 7.4.66.1 */
 /*@{*/
 
 /// AUTHENTICATE Response  - Clause 7.4.66.1
