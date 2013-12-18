@@ -33,6 +33,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_allocator.h"
 
+#if JDKSAVDECC_ENABLE_MICROSUPPORT==0
+
 struct jdksavdecc_allocator *
 jdksavdecc_simple_allocator_init(struct jdksavdecc_simple_allocator *self, void *raw_memory, int32_t raw_memory_length) {
     self->raw_memory = raw_memory;
@@ -104,4 +106,5 @@ void jdksavdecc_malloc_allocator_free(struct jdksavdecc_allocator_s *self, const
     free((void *)ptr);
 }
 
+#endif
 #endif

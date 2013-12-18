@@ -107,9 +107,90 @@ struct jdksavdecc_appdu {
     uint8_t message_type;            /// See IEEE Std 1722.1-2013 Annex C.4.2
     uint16_t payload_length;         /// See IEEE Std 1722.1-2013 Annex C.4.3
     struct jdksavdecc_eui48 address; /// See IEEE Std 1722.1-2013 Annex C.4
-    uint8_t reserved;                /// See IEEE Std 1722.1-2013 Annex C.4
+    uint16_t reserved;               /// See IEEE Std 1722.1-2013 Annex C.4
     uint8_t *payload;                /// See IEEE Std 1722.1-2013 Annex C.4.5
 };
+
+/// The APPDU with pre-allocated payload buffer
+struct jdksavdecc_fullappdu {
+    struct jdksavdecc_appdu base;
+    uint8_t payload_buffer[1500];
+};
+
+
+/** Initialize a jdksavdecc_appdu object.
+ *  Sets the payload member to 0,
+ *  It must be manually pointed to a payload or buffer of JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH octets
+ */
+
+static inline void jdksavdecc_appdu_init( struct jdksavdecc_appdu *self ) {
+    memset(self,0,sizeof(*self));
+}
+
+/** Initialize a jdksavdecc_fullappdu object.
+ *  Sets the payload member to point to the payload_buffer array,
+ */
+static inline void jdksavdecc_fullappdu_init( struct jdksavdecc_fullappdu *self ) {
+    memset(&self->base,0,sizeof(self->base));
+    self->base.payload = self->payload_buffer;
+}
+
+#if JDKSAVDECC_ENABLE_MICROSUPPORT == 1
+
+/** Parse a ProxyPDU from a microsupport buffer.
+ */
+ssize_t jdksavdecc_appdu_parse_buffer(struct jdksavdecc_appdu *self,
+                                      us_buffer_t *buffer);
+
+/** Flatten a ProxyPDU into a buffer. Returns true on success */
+ssize_t jdksavdecc_appdu_flatten_to_buffer(struct jdksavdecc_appdu const *self,
+                                           us_buffer_t *buffer);
+
+#endif
+
+
+/** Extract a 64 bit entity_id from the payload into result and return true on sucess */
+bool jdksavdecc_appdu_get_entity_id_from_payload(struct jdksavdecc_appdu const *self,struct jdksavdecc_eui64 *result);
+
+/** Create and flatten a NOP message */
+bool jdksavdecc_appdu_set_nop(struct jdksavdecc_appdu *self );
+
+/** Create an ENTITY_ID_REQUEST message */
+bool jdksavdecc_appdu_set_entity_id_request(struct jdksavdecc_appdu *self,
+                                            struct jdksavdecc_eui48 apc_primary_mac,
+                                            struct jdksavdecc_eui64 entity_id );
+
+/** Create an ENTITY_ID_RESPONSE message */
+bool jdksavdecc_appdu_set_entity_id_response(struct jdksavdecc_appdu *self,
+                                             struct jdksavdecc_eui48 apc_primary_mac,
+                                             struct jdksavdecc_eui64 entity_id );
+
+/** Create a LINK_UP message */
+bool jdksavdecc_appdu_set_link_up(struct jdksavdecc_appdu *self,
+                                  struct jdksavdecc_eui48 network_port_mac);
+
+/** Create a LINK_DOWN message */
+bool jdksavdecc_appdu_set_link_down(struct jdksavdecc_appdu *self,
+                                    struct jdksavdecc_eui48  network_port_mac);
+
+/** Create an AVDECC_FROM_APS message */
+bool jdksavdecc_appdu_set_avdecc_from_aps(struct jdksavdecc_appdu *self,
+                                          struct jdksavdecc_eui48 original_source_address,
+                                          uint16_t payload_length,
+                                          uint8_t const *payload);
+
+/** Create a AVDECC_FROM_APC message */
+bool jdksavdecc_appdu_set_avdecc_from_apc(struct jdksavdecc_appdu *self,
+                                          struct jdksavdecc_eui48 destination_address,
+                                          uint16_t payload_length,
+                                          uint8_t const *payload);
+
+/** Create a VENDOR message */
+bool jdksavdecc_appdu_set_vendor(struct jdksavdecc_appdu *self,
+                                 struct jdksavdecc_eui48 vendor_message_type,
+                                 uint16_t payload_length,
+                                 uint8_t const *payload);
+
 
 /**
  * Extract the jdksavdec_appdu structure from a network buffer.
@@ -129,57 +210,8 @@ struct jdksavdecc_appdu {
  *point to the raw network buffer directly
  *
  */
-static inline ssize_t jdksavdecc_appdu_read(struct jdksavdecc_appdu *p, void const *base, ssize_t pos, size_t len) {
-    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_APPDU_HEADER_LEN);
-    // clear the structure
-    memset(p, 0, sizeof(*p));
-    if (r >= 0) {
-        p->version = jdksavdecc_uint8_get(base, pos + JDKSAVDECC_APPDU_OFFSET_VERSION);
-        if (p->version == JDKSAVDECC_APPDU_VERSION) {
-            p->message_type = jdksavdecc_uint8_get(base, pos + JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE);
+ssize_t jdksavdecc_appdu_read(struct jdksavdecc_appdu *p, void const *base, ssize_t pos, size_t len);
 
-            if (p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP
-                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST
-                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE
-                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP
-                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN
-                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS
-                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC
-                || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR) {
-
-                p->payload_length = jdksavdecc_uint16_get(base, pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH);
-                p->address = jdksavdecc_eui48_get(base, pos + JDKSAVDECC_APPDU_OFFSET_ADDRESS);
-                p->reserved = jdksavdecc_uint16_get(base, pos + JDKSAVDECC_APPDU_OFFSET_RESERVED);
-
-                // make sure that the payload_length is a reasonable number
-                if (p->payload_length <= JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH) {
-                    // make sure we have enough data in the incoming buffer for the entire payload
-                    r = jdksavdecc_validate_range(pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD, len, p->payload_length);
-
-                    if (r >= 0) {
-                        // The payload is complete.
-                        // Make payload pointer point directly within incoming raw buffer
-                        p->payload = ((uint8_t *)base) + JDKSAVDECC_APPDU_OFFSET_PAYLOAD;
-                    } else {
-                        // the raw buffer is incomplete.
-                        p->payload = 0;
-                        r = JDKSAVDECC_APPDU_ERROR_PAYLOAD_INCOMPLETE;
-                    }
-                } else {
-                    // The payload_length field is out of range.
-                    r = JDKSAVDECC_APPDU_ERROR_INVALID_HEADER;
-                }
-            } else {
-                // The message type is unrecognized.
-                r = JDKSAVDECC_APPDU_ERROR_INVALID_HEADER;
-            }
-        } else {
-            // The protocol version is unsupported
-            r = JDKSAVDECC_APPDU_ERROR_INVALID_HEADER;
-        }
-    }
-    return r;
-}
 
 /**
  * Store the jdksavdecc_appdu_write structure to a network buffer.
@@ -194,46 +226,7 @@ static inline ssize_t jdksavdecc_appdu_read(struct jdksavdecc_appdu *p, void con
  * @return JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT if the buffer length is insufficent
  *         otherwise the offset of the octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_appdu_write(struct jdksavdecc_appdu const *p, void *base, size_t pos, size_t len) {
-    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_APPDU_HEADER_LEN);
-    if (r >= 0) {
-        jdksavdecc_uint8_set(p->version, base, pos + JDKSAVDECC_APPDU_OFFSET_VERSION);
-        if (p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP
-            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST
-            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE
-            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP
-            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN
-            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS
-            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC
-            || p->message_type == JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR) {
-
-            jdksavdecc_uint8_set(p->message_type, base, pos + JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE);
-            jdksavdecc_uint16_set(p->payload_length, base, pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH);
-            jdksavdecc_eui48_set(p->address, base, pos + JDKSAVDECC_APPDU_OFFSET_ADDRESS);
-            jdksavdecc_uint16_set(p->reserved, base, pos + JDKSAVDECC_APPDU_OFFSET_RESERVED);
-            if (p->payload_length > 0) {
-                if (p->payload && p->payload_length <= JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH) {
-                    // We have a payload and the payload length is non zero, make sure we have space in the output buffer
-                    r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_APPDU_OFFSET_PAYLOAD + p->payload_length);
-                    if (r > 0) {
-                        // we have space so copy it over
-                        memcpy(((uint8_t *)base) + pos + JDKSAVDECC_APPDU_OFFSET_PAYLOAD, p->payload, p->payload_length);
-                    } else {
-                        // we don't have space, so return error
-                        r = JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT;
-                    }
-                } else {
-                    // we have payload length but no payload? that is invalid.
-                    r = JDKSAVDECC_APPDU_ERROR_INVALID_HEADER;
-                }
-            }
-        } else {
-            // The message type is unrecognized.
-            r = JDKSAVDECC_APPDU_ERROR_INVALID_HEADER;
-        }
-    }
-    return r;
-}
+ssize_t jdksavdecc_appdu_write(struct jdksavdecc_appdu const *p, void *base, size_t pos, size_t len);
 
 /*@}*/
 #ifdef __cplusplus

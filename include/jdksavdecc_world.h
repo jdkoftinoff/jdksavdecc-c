@@ -31,6 +31,20 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
+
+// predefine JDKSAVDECC_ENABLE_MICROSUPPORT to be set to 1 
+// if you want jdksavdecc-c library to integrate nicely with the microsupport
+// library (see https://github.com/jdkoftinoff/microsupport)
+#ifndef JDKSAVDECC_ENABLE_MICROSUPPORT
+#define JDKSAVDECC_ENABLE_MICROSUPPORT (0)
+#endif
+
+#if JDKSAVDECC_ENABLE_MICROSUPPORT
+#include "us_world.h"
+#include "us_buffer.h"
+#include "us_allocator.h"
+#endif
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -53,3 +67,7 @@
 #endif
 
 #include "jdksavdecc_allocator.h"
+
+
+
+

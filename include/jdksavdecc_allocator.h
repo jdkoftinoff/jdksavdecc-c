@@ -33,6 +33,17 @@
 
 #include "jdksavdecc_world.h"
 
+#if JDKSAVDECC_ENABLE_MICROSUPPORT
+#define jdksavdecc_new us_new
+#define jdksavdecc_delete us_delete
+#define jdksavdecc_new_array us_new_array
+#define jdksavdecc_round_size us_round_size
+#define jdksavdecc_allocator us_allocator_s
+#define jdksavdecc_simple_allocator us_simple_allocator_s
+#define jdksavdecc_simple_allocator_init us_simple_allocator_init
+#define jdksavdecc_simple_allocator_reset us_simple_allocator_reset
+#else
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -184,4 +195,5 @@ void jdksavdecc_malloc_allocator_free(struct jdksavdecc_allocator *self, const v
 
 #ifdef __cplusplus
 }
+#endif
 #endif
