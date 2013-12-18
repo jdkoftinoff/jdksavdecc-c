@@ -92,8 +92,6 @@ extern "C" {
 #define JDKSAVDECC_AECP_AA_TIMEOUT_IN_MS (250)
 /*@}*/
 
-
-
 /**
  * Extract the eui64 value of the controller_entity_id field of the aecp_aa
  *object from a network buffer.
@@ -413,7 +411,6 @@ static inline ssize_t jdksavdecc_aecp_aa_tlv_write(struct jdksavdecc_aecp_aa_tlv
     }
     return r;
 }
-
 
 /*@}*/
 

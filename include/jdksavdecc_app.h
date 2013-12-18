@@ -117,21 +117,18 @@ struct jdksavdecc_fullappdu {
     uint8_t payload_buffer[1500];
 };
 
-
 /** Initialize a jdksavdecc_appdu object.
  *  Sets the payload member to 0,
  *  It must be manually pointed to a payload or buffer of JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH octets
  */
 
-static inline void jdksavdecc_appdu_init( struct jdksavdecc_appdu *self ) {
-    memset(self,0,sizeof(*self));
-}
+static inline void jdksavdecc_appdu_init(struct jdksavdecc_appdu *self) { memset(self, 0, sizeof(*self)); }
 
 /** Initialize a jdksavdecc_fullappdu object.
  *  Sets the payload member to point to the payload_buffer array,
  */
-static inline void jdksavdecc_fullappdu_init( struct jdksavdecc_fullappdu *self ) {
-    memset(&self->base,0,sizeof(self->base));
+static inline void jdksavdecc_fullappdu_init(struct jdksavdecc_fullappdu *self) {
+    memset(&self->base, 0, sizeof(self->base));
     self->base.payload = self->payload_buffer;
 }
 
@@ -139,39 +136,34 @@ static inline void jdksavdecc_fullappdu_init( struct jdksavdecc_fullappdu *self 
 
 /** Parse a ProxyPDU from a microsupport buffer.
  */
-ssize_t jdksavdecc_appdu_parse_buffer(struct jdksavdecc_appdu *self,
-                                      us_buffer_t *buffer);
+ssize_t jdksavdecc_appdu_parse_buffer(struct jdksavdecc_appdu *self, us_buffer_t *buffer);
 
 /** Flatten a ProxyPDU into a buffer. Returns true on success */
-ssize_t jdksavdecc_appdu_flatten_to_buffer(struct jdksavdecc_appdu const *self,
-                                           us_buffer_t *buffer);
+ssize_t jdksavdecc_appdu_flatten_to_buffer(struct jdksavdecc_appdu const *self, us_buffer_t *buffer);
 
 #endif
 
-
 /** Extract a 64 bit entity_id from the payload into result and return true on sucess */
-bool jdksavdecc_appdu_get_entity_id_from_payload(struct jdksavdecc_appdu const *self,struct jdksavdecc_eui64 *result);
+bool jdksavdecc_appdu_get_entity_id_from_payload(struct jdksavdecc_appdu const *self, struct jdksavdecc_eui64 *result);
 
 /** Create and flatten a NOP message */
-bool jdksavdecc_appdu_set_nop(struct jdksavdecc_appdu *self );
+bool jdksavdecc_appdu_set_nop(struct jdksavdecc_appdu *self);
 
 /** Create an ENTITY_ID_REQUEST message */
 bool jdksavdecc_appdu_set_entity_id_request(struct jdksavdecc_appdu *self,
                                             struct jdksavdecc_eui48 apc_primary_mac,
-                                            struct jdksavdecc_eui64 entity_id );
+                                            struct jdksavdecc_eui64 entity_id);
 
 /** Create an ENTITY_ID_RESPONSE message */
 bool jdksavdecc_appdu_set_entity_id_response(struct jdksavdecc_appdu *self,
                                              struct jdksavdecc_eui48 apc_primary_mac,
-                                             struct jdksavdecc_eui64 entity_id );
+                                             struct jdksavdecc_eui64 entity_id);
 
 /** Create a LINK_UP message */
-bool jdksavdecc_appdu_set_link_up(struct jdksavdecc_appdu *self,
-                                  struct jdksavdecc_eui48 network_port_mac);
+bool jdksavdecc_appdu_set_link_up(struct jdksavdecc_appdu *self, struct jdksavdecc_eui48 network_port_mac);
 
 /** Create a LINK_DOWN message */
-bool jdksavdecc_appdu_set_link_down(struct jdksavdecc_appdu *self,
-                                    struct jdksavdecc_eui48  network_port_mac);
+bool jdksavdecc_appdu_set_link_down(struct jdksavdecc_appdu *self, struct jdksavdecc_eui48 network_port_mac);
 
 /** Create an AVDECC_FROM_APS message */
 bool jdksavdecc_appdu_set_avdecc_from_aps(struct jdksavdecc_appdu *self,
@@ -190,7 +182,6 @@ bool jdksavdecc_appdu_set_vendor(struct jdksavdecc_appdu *self,
                                  struct jdksavdecc_eui48 vendor_message_type,
                                  uint16_t payload_length,
                                  uint8_t const *payload);
-
 
 /**
  * Extract the jdksavdec_appdu structure from a network buffer.
@@ -211,7 +202,6 @@ bool jdksavdecc_appdu_set_vendor(struct jdksavdecc_appdu *self,
  *
  */
 ssize_t jdksavdecc_appdu_read(struct jdksavdecc_appdu *p, void const *base, ssize_t pos, size_t len);
-
 
 /**
  * Store the jdksavdecc_appdu_write structure to a network buffer.
