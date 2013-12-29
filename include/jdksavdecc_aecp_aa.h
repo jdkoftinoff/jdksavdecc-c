@@ -215,7 +215,7 @@ struct jdksavdecc_aecp_aa {
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_AECP_AA_read(struct jdksavdecc_aecp_aa *p, void const *base, ssize_t pos, size_t len) {
+static inline ssize_t jdksavdecc_aecp_aa_read(struct jdksavdecc_aecp_aa *p, void const *base, ssize_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_AA_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_common_read(&p->aecpdu_header, base, pos, len);
