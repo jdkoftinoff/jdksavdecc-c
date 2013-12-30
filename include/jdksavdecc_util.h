@@ -502,6 +502,19 @@ static inline void jdksavdecc_eui48_set(struct jdksavdecc_eui48 v, void *base, s
     memcpy(((uint8_t *)base) + pos, v.value, sizeof(v.value));
 }
 
+static inline int jdksavdecc_eui48_is_zero(struct jdksavdecc_eui48 v) {
+    int r = 0;
+    if( v.value[0] == 0
+        && v.value[1] == 0
+        && v.value[2] == 0
+        && v.value[3] == 0
+        && v.value[4] == 0
+        && v.value[5] == 0 ) {
+        r=1;
+    }
+    return r;
+}
+
 /*@}*/
 
 /** \addtogroup eui64 eui64 */
@@ -592,6 +605,21 @@ static inline ssize_t jdksavdecc_eui64_write(struct jdksavdecc_eui64 const *host
 
 static inline void jdksavdecc_eui64_set(struct jdksavdecc_eui64 v, void *base, ssize_t pos) {
     memcpy(((uint8_t *)base) + pos, v.value, sizeof(v.value));
+}
+
+static inline int jdksavdecc_eui64_is_zero(struct jdksavdecc_eui64 v) {
+    int r = 0;
+    if( v.value[0] == 0
+        && v.value[1] == 0
+        && v.value[2] == 0
+        && v.value[3] == 0
+        && v.value[4] == 0
+        && v.value[5] == 0
+        && v.value[6] == 0
+        && v.value[7] == 0 ) {
+        r=1;
+    }
+    return r;
 }
 
 /*@}*/
