@@ -429,7 +429,7 @@ struct jdksavdecc_eui48 {
 static inline void jdksavdecc_eui48_init(struct jdksavdecc_eui48 *self) {
     size_t i;
     for (i = 0; i < sizeof(self->value); ++i) {
-        self->value[i] = 0;
+        self->value[i] = 0xff;
     }
 }
 
@@ -461,18 +461,7 @@ static inline void jdksavdecc_eui48_copy(struct jdksavdecc_eui48 *self, struct j
 }
 
 static inline int jdksavdecc_eui48_compare(struct jdksavdecc_eui48 const *self, struct jdksavdecc_eui48 const *other) {
-    size_t i;
-    int r = 0;
-    for (i = 0; i < sizeof(self->value); ++i) {
-        if (self->value[i] < other->value[i]) {
-            r = -1;
-            break;
-        }
-        if (self->value[i] > other->value[i]) {
-            r = -1;
-            break;
-        }
-    }
+    int r = memcmp(self->value,other->value,sizeof(self->value));
     return r;
 }
 
@@ -502,14 +491,27 @@ static inline void jdksavdecc_eui48_set(struct jdksavdecc_eui48 v, void *base, s
     memcpy(((uint8_t *)base) + pos, v.value, sizeof(v.value));
 }
 
-static inline int jdksavdecc_eui48_is_zero(struct jdksavdecc_eui48 v) {
+static inline int jdksavdecc_eui48_is_unset(struct jdksavdecc_eui48 v) {
     int r = 0;
-    if( v.value[0] == 0
-        && v.value[1] == 0
-        && v.value[2] == 0
-        && v.value[3] == 0
-        && v.value[4] == 0
-        && v.value[5] == 0 ) {
+    if( v.value[0] == 0xff
+        && v.value[1] == 0xff
+        && v.value[2] == 0xff
+        && v.value[3] == 0xff
+        && v.value[4] == 0xff
+        && v.value[5] == 0xff ) {
+        r=1;
+    }
+    return r;
+}
+
+static inline int jdksavdecc_eui48_is_set(struct jdksavdecc_eui48 v) {
+    int r = 0;
+    if( v.value[0] != 0xff
+        || v.value[1] != 0xff
+        || v.value[2] != 0xff
+        || v.value[3] != 0xff
+        || v.value[4] != 0xff
+        || v.value[5] != 0xff ) {
         r=1;
     }
     return r;
@@ -528,7 +530,7 @@ struct jdksavdecc_eui64 {
 static inline void jdksavdecc_eui64_init(struct jdksavdecc_eui64 *self) {
     size_t i;
     for (i = 0; i < sizeof(self->value); ++i) {
-        self->value[i] = 0;
+        self->value[i] = 0xff;
     }
 }
 
@@ -564,18 +566,7 @@ static inline void jdksavdecc_eui64_copy(struct jdksavdecc_eui64 *self, struct j
 }
 
 static inline int jdksavdecc_eui64_compare(struct jdksavdecc_eui64 const *self, struct jdksavdecc_eui64 const *other) {
-    size_t i;
-    int r = 0;
-    for (i = 0; i < sizeof(self->value); ++i) {
-        if (self->value[i] < other->value[i]) {
-            r = -1;
-            break;
-        }
-        if (self->value[i] > other->value[i]) {
-            r = -1;
-            break;
-        }
-    }
+    int r = memcmp(self->value,other->value,sizeof(self->value));
     return r;
 }
 
@@ -607,21 +598,35 @@ static inline void jdksavdecc_eui64_set(struct jdksavdecc_eui64 v, void *base, s
     memcpy(((uint8_t *)base) + pos, v.value, sizeof(v.value));
 }
 
-static inline int jdksavdecc_eui64_is_zero(struct jdksavdecc_eui64 v) {
+static inline int jdksavdecc_eui64_is_unset(struct jdksavdecc_eui64 v) {
     int r = 0;
-    if( v.value[0] == 0
-        && v.value[1] == 0
-        && v.value[2] == 0
-        && v.value[3] == 0
-        && v.value[4] == 0
-        && v.value[5] == 0
-        && v.value[6] == 0
-        && v.value[7] == 0 ) {
+    if( v.value[0] == 0xff
+        && v.value[1] == 0xff
+        && v.value[2] == 0xff
+        && v.value[3] == 0xff
+        && v.value[4] == 0xff
+        && v.value[5] == 0xff
+        && v.value[6] == 0xff
+        && v.value[7] == 0xff ) {
         r=1;
     }
     return r;
 }
 
+static inline int jdksavdecc_eui64_is_set(struct jdksavdecc_eui64 v) {
+    int r = 0;
+    if( v.value[0] != 0xff
+        || v.value[1] != 0xff
+        || v.value[2] != 0xff
+        || v.value[3] != 0xff
+        || v.value[4] != 0xff
+        || v.value[5] != 0xff
+        || v.value[6] != 0xff
+        || v.value[7] != 0xff ) {
+        r=1;
+    }
+    return r;
+}
 /*@}*/
 
 /** \addtogroup gptp GPTP time */

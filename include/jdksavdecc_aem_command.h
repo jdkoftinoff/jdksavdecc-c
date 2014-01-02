@@ -43,6 +43,7 @@ extern "C" {
 
 /** \addtogroup aem_command AEM Commands - Clause 7.4 */
 /*@{*/
+#define JDKSAVDECC_AEM_LOCK_TIMEOUT_MS (60*1000)
 
 /** \addtogroup command command : Command Codes - Clause 7.4  */
 /*@{*/
