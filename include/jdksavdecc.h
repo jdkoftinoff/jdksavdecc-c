@@ -61,3 +61,5 @@
 #include "jdksavdecc_descriptor_storage.h"
 
 #include "jdksavdecc_descriptor_storage_gen.h"
+#include "jdksavdecc_jdks.h"
+
