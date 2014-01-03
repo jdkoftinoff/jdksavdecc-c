@@ -61,6 +61,7 @@ void jdksavdecc_printer_print_label(struct jdksavdecc_printer *self, char const 
             jdksavdecc_printer_printc(self, *v++);
         }
     }
+    jdksavdecc_printer_printc(self,':');
 }
 
 void
@@ -185,11 +186,11 @@ void jdksavdecc_printer_print_streamid(struct jdksavdecc_printer *self, struct j
     jdksavdecc_printer_print_hexdigits(self, v.value[3]);
     jdksavdecc_printer_print(self, "-");
     jdksavdecc_printer_print_hexdigits(self, v.value[4]);
-    jdksavdecc_printer_print(self, ":");
-    jdksavdecc_printer_print_hexdigits(self, v.value[5]);
     jdksavdecc_printer_print(self, "-");
-    jdksavdecc_printer_print_hexdigits(self, v.value[6]);
+    jdksavdecc_printer_print_hexdigits(self, v.value[5]);
     jdksavdecc_printer_print(self, ":");
+    jdksavdecc_printer_print_hexdigits(self, v.value[6]);
+    jdksavdecc_printer_print(self, "-");
     jdksavdecc_printer_print_hexdigits(self, v.value[7]);
 }
 
