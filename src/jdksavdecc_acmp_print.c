@@ -104,7 +104,7 @@ void jdksavdecc_acmpdu_print(struct jdksavdecc_printer *self, struct jdksavdecc_
     jdksavdecc_printer_print_eui64(self, p->controller_entity_id);
     jdksavdecc_printer_print_eol(self);
 
-    jdksavdecc_printer_print_label(self, "controller_entity_id");
+    jdksavdecc_printer_print_label(self, "talker_entity_id");
     jdksavdecc_printer_print_eui64(self, p->talker_entity_id);
     jdksavdecc_printer_print_eol(self);
 
