@@ -44,6 +44,7 @@ extern "C" {
 /** \addtogroup aem_command AEM Commands - Clause 7.4 */
 /*@{*/
 #define JDKSAVDECC_AEM_LOCK_TIMEOUT_MS (60*1000)
+#define JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE (394) /// See IEEE Std 1722.1-2013 Table 7.115
 
 /** \addtogroup command command : Command Codes - Clause 7.4  */
 /*@{*/
