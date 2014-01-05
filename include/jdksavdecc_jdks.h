@@ -54,10 +54,14 @@ extern "C" {
     }
 
 /// Control type used for logging information
+//      vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT
+//      
 /// BLOB contains:
-///     Doublet source_descriptor_type
-///     Doublet source_descriptor_index
-///     Octet utf8_chars[0..500] with LF as line endings
+///     Offset 0  Doublet: source_descriptor_type
+///     Offset 2  Doublet: source_descriptor_index
+///     Offset 4  Octet: log_priority { 0 = error, 1=warning, 2=info, 3..0xffff = debug/trace
+///     Offset 5  Octet: reserved
+///     Offset 6  Octet array: utf8_chars[0..354] with no LF
 
 #define JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT \
     { \
