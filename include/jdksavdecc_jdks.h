@@ -35,6 +35,8 @@
 #include "jdksavdecc_util.h"
 #include "jdksavdecc_pdu.h"
 #include "jdksavdecc_frame.h"
+#include "jdksavdecc_aem_command.h"
+#include "jdksavdecc_aem_descriptor.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -45,16 +47,22 @@ extern "C" {
  */
 /*@{*/
 
-/// Multicast MAC address for logging via
-/// unsolicited SET_CONTROL of control descriptor of
-/// control type JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT
+/** \addtogroup jdks_log Logging mechanism using multicast AECP AEM Unsolicited SET_CONTROL Response
+ *  with a vendor defined blob control type
+ */
+/*@{*/
+
+/// Multicast MAC address 71:b3:d5:ed:cf:ff is reserved for logging via
+/// unsolicited SET_CONTROL of control descriptor of control type JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT
 #define JDKSAVDECC_JDKS_MULTICAST_LOG                                                                                          \
     {                                                                                                                          \
         { 0x71, 0xb3, 0xd5, 0xed, 0xcf, 0xff }                                                                                 \
     }
 
+extern struct jdksavdecc_eui48 jdksavdecc_jdks_multicast_log;
+
 /// Control type used for logging information
-//      vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT
+//      vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
 //      
 /// BLOB contains:
 ///     Offset 0  Doublet: source_descriptor_type
@@ -68,24 +76,74 @@ extern "C" {
         { 0x70, 0xb3, 0xd5, 0xed, 0xc0, 0x00, 0x00, 0x00 } \
     }
 
+extern struct jdksavdecc_eui64 jdksavdecc_jdks_aem_control_log_text;
+
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64 (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 0)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 8)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_TYPE (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 10)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_INDEX (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 12)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 14)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_RESERVED (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 15)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 16)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT
+#define JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN (JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE - JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN)
+
+
+struct jdksavdecc_jdks_log_control {
+    struct jdksavdecc_aem_command_set_control_response cmd;
+    struct jdksavdecc_eui64 vendor_eui64;
+    uint16_t blob_size;
+    uint16_t source_descriptor_type;
+    uint16_t source_descriptor_index;
+    uint8_t log_detail;
+    uint8_t reserved;
+    uint8_t text[JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN+1];
+};
+
+ssize_t jdksavdecc_jdks_log_control_read(
+    struct jdksavdecc_jdks_log_control *p,
+    void const *buf,
+    ssize_t pos,
+    size_t len);
+
+/*@}*/
+
+/** \addtogroup jdks_ipv4 JDKS Vendor specific blob control type for setting/getting ethernet port IPv4 parameters
+ */
+/*@{*/
+
 /// Control type for setting IPv4 parameters
+///
+/// vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_IPV4_PARAMETERS ( 70:b3:d5:ed:c0:00:00:01 )
+///
 /// BLOB contains:
 ///     Doublet interface_descriptor_type
 ///     Doublet interface_descriptor_index
-///     Quadlet flags
+///     Quadlet flags:
+///         bit 0 = static_enable
+///         bit 1 = link_local_enable
+///         bit 2 = dhcp_enable
+///         bit 3 = ipv4_address_valid
+///         bit 4 = ipv4_netmask_valid
+///         bit 5 = ipv4_gateway_valid
+///         bit 6 = ipv4_broadcast_valid
+///         bit 7 = dnsserver1_valid
+///         bit 8 = dnsserver2_valid
 ///     Quadlet ipv4_address
 ///     Quadlet ipv4_netmask
 ///     Quadlet ipv4_gateway
+///     Quadlet ipv4_broadcast
+///     Quadlet ipv4_dnsserver1
+///     Quadlet ipv4_dnsserver2
+
+
+/// Control type for setting/getting network IPV4 parameters
 #define JDKSAVDECC_JDKS_AEM_CONTROL_IPV4_PARAMETERS \
     {\
         { 0x70, 0xb3, 0xd5, 0xed, 0xc0, 0x00, 0x00, 0x01 } \
     }
 
-/// Control type for setting/getting network PHY parameters
-#define JDKSAVDECC_JDKS_AEM_CONTROL_PHY_PARAMETERS \
-    {\
-        { 0x70, 0xb3, 0xd5, 0xed, 0xc0, 0x00, 0x00, 0x02 } \
-    }
+extern struct jdksavdecc_eui64 jdksavdecc_jdks_aem_control_ipv4_parameters;
 
 
 #ifdef __cplusplus
