@@ -73,7 +73,12 @@ void jdksavdecc_descriptor_storage_buffer_destroy(struct jdksavdecc_descriptor_s
 
 int jdksavdecc_descriptor_storage_file_init(struct jdksavdecc_descriptor_storage *self, const char *file_name) {
     int r = -1;
+#if defined(WIN32)
+    FILE *f;
+    fopen_s(&f,file_name,"rb");
+#else
     FILE *f = fopen(file_name, "rb");
+#endif
     self->destroy = jdksavdecc_descriptor_storage_file_destroy;
     self->read_data = jdksavdecc_descriptor_storage_file_read_data;
     if (f) {
