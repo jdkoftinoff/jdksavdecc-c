@@ -61,15 +61,16 @@ extern "C" {
 
 extern struct jdksavdecc_eui48 jdksavdecc_jdks_multicast_log;
 
-/// Control type used for logging information
-//      vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
+/// Control type value used for logging information
 //      
-/// BLOB contains:
-///     Offset 0  Doublet: source_descriptor_type
-///     Offset 2  Doublet: source_descriptor_index
-///     Offset 4  Octet: log_priority { 0 = error, 1=warning, 2=info, 3..0xffff = debug/trace
-///     Offset 5  Octet: reserved
-///     Offset 6  Octet array: utf8_chars[0..354] with no LF
+//      Offset  0: vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
+//      Offset  8: blob_length is 8+text_length  
+///     Offset 10: Doublet: source_descriptor_type
+///     Offset 12:  Doublet: source_descriptor_index
+///     Offset 14:  Doublet: log_sequence_id log message number from this source
+///     Offset 16:  Octet: log_priority { 0 = error, 1=warning, 2=info, 3..0xffff = debug/trace
+///     Offset 17:  Octet: reserved
+///     Offset 18:  Octet array: utf8_chars[0..352] with no LF
 
 #define JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT \
     { \
@@ -82,9 +83,10 @@ extern struct jdksavdecc_eui64 jdksavdecc_jdks_aem_control_log_text;
 #define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 8)
 #define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_TYPE (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 10)
 #define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_INDEX (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 12)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 14)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_RESERVED (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 15)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 16)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_SEQUENCE_ID (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 14)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 16)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_RESERVED (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 17)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 18)
 #define JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT
 #define JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN (JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE - JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN)
 
@@ -95,6 +97,7 @@ struct jdksavdecc_jdks_log_control {
     uint16_t blob_size;
     uint16_t source_descriptor_type;
     uint16_t source_descriptor_index;
+    uint16_t log_sequence_id;
     uint8_t log_detail;
     uint8_t reserved;
     uint8_t text[JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN+1];

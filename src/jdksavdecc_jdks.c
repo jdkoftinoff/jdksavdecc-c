@@ -61,6 +61,11 @@ ssize_t jdksavdecc_jdks_log_control_read(
                     buf,
                     JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_INDEX +pos);
 
+                jdksavdecc_uint16_read(
+                    &p->log_sequence_id,
+                    buf,
+                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_SEQUENCE_ID +pos);
+
                 jdksavdecc_uint8_read(
                     &p->log_detail,
                     buf,
