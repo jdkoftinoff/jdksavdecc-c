@@ -2430,9 +2430,6 @@ static inline void jdksavdecc_aem_command_acquire_entity_set_descriptor_index(ui
 /// ACQUIRE_ENTITY Command - Clause 7.4.1.1
 struct jdksavdecc_aem_command_acquire_entity {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint32_t aem_acquire_flags;
     struct jdksavdecc_eui64 owner_entity_id;
     uint16_t descriptor_type;
@@ -2461,9 +2458,6 @@ static inline ssize_t jdksavdecc_aem_command_acquire_entity_read(struct jdksavde
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ACQUIRE_ENTITY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_acquire_entity_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_acquire_entity_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_acquire_entity_get_command_type(base, pos);
         p->aem_acquire_flags = jdksavdecc_aem_command_acquire_entity_get_aem_acquire_flags(base, pos);
         p->owner_entity_id = jdksavdecc_aem_command_acquire_entity_get_owner_entity_id(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_acquire_entity_get_descriptor_type(base, pos);
@@ -2494,9 +2488,6 @@ static inline ssize_t jdksavdecc_aem_command_acquire_entity_write(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ACQUIRE_ENTITY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_acquire_entity_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_acquire_entity_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_acquire_entity_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_acquire_entity_set_aem_acquire_flags(p->aem_acquire_flags, base, pos);
         jdksavdecc_aem_command_acquire_entity_set_owner_entity_id(p->owner_entity_id, base, pos);
         jdksavdecc_aem_command_acquire_entity_set_descriptor_type(p->descriptor_type, base, pos);
@@ -2748,9 +2739,6 @@ static inline void jdksavdecc_aem_command_acquire_entity_response_set_descriptor
 /// ACQUIRE_ENTITY Command Response - Clause 7.4.1.1
 struct jdksavdecc_aem_command_acquire_entity_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint32_t aem_acquire_flags;
     struct jdksavdecc_eui64 owner_entity_id;
     uint16_t descriptor_type;
@@ -2777,9 +2765,6 @@ static inline ssize_t jdksavdecc_aem_command_acquire_entity_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ACQUIRE_ENTITY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_acquire_entity_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_acquire_entity_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_acquire_entity_response_get_command_type(base, pos);
         p->aem_acquire_flags = jdksavdecc_aem_command_acquire_entity_response_get_aem_acquire_flags(base, pos);
         p->owner_entity_id = jdksavdecc_aem_command_acquire_entity_response_get_owner_entity_id(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_acquire_entity_response_get_descriptor_type(base, pos);
@@ -2809,9 +2794,6 @@ static inline ssize_t jdksavdecc_aem_command_acquire_entity_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ACQUIRE_ENTITY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_acquire_entity_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_acquire_entity_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_acquire_entity_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_acquire_entity_response_set_aem_acquire_flags(p->aem_acquire_flags, base, pos);
         jdksavdecc_aem_command_acquire_entity_response_set_owner_entity_id(p->owner_entity_id, base, pos);
         jdksavdecc_aem_command_acquire_entity_response_set_descriptor_type(p->descriptor_type, base, pos);
@@ -3059,9 +3041,6 @@ static inline void jdksavdecc_aem_command_lock_entity_set_descriptor_index(uint1
 /// LOCK_ENTITY Command - Clause 7.4.2.1
 struct jdksavdecc_aem_command_lock_entity {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint32_t aem_lock_flags;
     struct jdksavdecc_eui64 locked_entity_id;
     uint16_t descriptor_type;
@@ -3090,9 +3069,6 @@ static inline ssize_t jdksavdecc_aem_command_lock_entity_read(struct jdksavdecc_
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_lock_entity_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_lock_entity_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_lock_entity_get_command_type(base, pos);
         p->aem_lock_flags = jdksavdecc_aem_command_lock_entity_get_aem_lock_flags(base, pos);
         p->locked_entity_id = jdksavdecc_aem_command_lock_entity_get_locked_entity_id(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_lock_entity_get_descriptor_type(base, pos);
@@ -3122,9 +3098,6 @@ static inline ssize_t jdksavdecc_aem_command_lock_entity_write(struct jdksavdecc
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_lock_entity_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_lock_entity_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_lock_entity_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_lock_entity_set_aem_lock_flags(p->aem_lock_flags, base, pos);
         jdksavdecc_aem_command_lock_entity_set_locked_entity_id(p->locked_entity_id, base, pos);
         jdksavdecc_aem_command_lock_entity_set_descriptor_type(p->descriptor_type, base, pos);
@@ -3310,9 +3283,6 @@ jdksavdecc_aem_command_lock_entity_response_set_locked_entity_id(struct jdksavde
 /// LOCK_ENTITY Response - Clause 7.4.2.1
 struct jdksavdecc_aem_command_lock_entity_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint32_t aem_lock_flags;
     struct jdksavdecc_eui64 locked_entity_id;
 };
@@ -3339,9 +3309,6 @@ static inline ssize_t jdksavdecc_aem_command_lock_entity_response_read(struct jd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_lock_entity_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_lock_entity_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_lock_entity_response_get_command_type(base, pos);
         p->aem_lock_flags = jdksavdecc_aem_command_lock_entity_response_get_aem_lock_flags(base, pos);
         p->locked_entity_id = jdksavdecc_aem_command_lock_entity_response_get_locked_entity_id(base, pos);
     }
@@ -3369,9 +3336,6 @@ static inline ssize_t jdksavdecc_aem_command_lock_entity_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_LOCK_ENTITY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_lock_entity_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_lock_entity_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_lock_entity_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_lock_entity_response_set_aem_lock_flags(p->aem_lock_flags, base, pos);
         jdksavdecc_aem_command_lock_entity_response_set_locked_entity_id(p->locked_entity_id, base, pos);
     }
@@ -3489,9 +3453,6 @@ static inline void jdksavdecc_aem_command_entity_available_set_command_type(uint
 /// ENTITY_AVAILABLE Command - Clause 7.4.3.1
 struct jdksavdecc_aem_command_entity_available {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -3516,9 +3477,6 @@ static inline ssize_t jdksavdecc_aem_command_entity_available_read(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENTITY_AVAILABLE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_entity_available_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_entity_available_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_entity_available_get_command_type(base, pos);
     }
     return r;
 }
@@ -3545,9 +3503,6 @@ static inline ssize_t jdksavdecc_aem_command_entity_available_write(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENTITY_AVAILABLE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_entity_available_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_entity_available_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_entity_available_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -3665,9 +3620,6 @@ static inline void jdksavdecc_aem_command_entity_available_response_set_command_
 /// ENTITY_AVAILABLE Response - Clause 7.4.3.1
 struct jdksavdecc_aem_command_entity_available_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -3690,9 +3642,6 @@ static inline ssize_t jdksavdecc_aem_command_entity_available_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENTITY_AVAILABLE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_entity_available_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_entity_available_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_entity_available_response_get_command_type(base, pos);
     }
     return r;
 }
@@ -3718,9 +3667,6 @@ static inline ssize_t jdksavdecc_aem_command_entity_available_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENTITY_AVAILABLE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_entity_available_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_entity_available_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_entity_available_response_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -3838,9 +3784,6 @@ static inline void jdksavdecc_aem_command_controller_available_set_command_type(
 /// CONTROLLER_AVAILABLE Command - Clause 7.4.4.1
 struct jdksavdecc_aem_command_controller_available {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -3865,9 +3808,6 @@ static inline ssize_t jdksavdecc_aem_command_controller_available_read(struct jd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_CONTROLLER_AVAILABLE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_controller_available_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_controller_available_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_controller_available_get_command_type(base, pos);
     }
     return r;
 }
@@ -3895,9 +3835,6 @@ static inline ssize_t jdksavdecc_aem_command_controller_available_write(struct j
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_CONTROLLER_AVAILABLE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_controller_available_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_controller_available_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_controller_available_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -4017,9 +3954,6 @@ static inline void jdksavdecc_aem_command_controller_available_response_set_comm
 /// CONTROLLER_AVAILABLE Response - Clause 7.4.4.1
 struct jdksavdecc_aem_command_controller_available_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -4043,9 +3977,6 @@ static inline ssize_t jdksavdecc_aem_command_controller_available_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_CONTROLLER_AVAILABLE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_controller_available_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_controller_available_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_controller_available_response_get_command_type(base, pos);
     }
     return r;
 }
@@ -4071,9 +4002,6 @@ static inline ssize_t jdksavdecc_aem_command_controller_available_response_write
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_CONTROLLER_AVAILABLE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_controller_available_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_controller_available_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_controller_available_response_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -4319,9 +4247,6 @@ static inline void jdksavdecc_aem_command_read_descriptor_set_descriptor_index(u
 /// READ_DESCRIPTOR Command - Clause 7.4.5.1
 struct jdksavdecc_aem_command_read_descriptor {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t configuration_index;
     uint16_t reserved;
     uint16_t descriptor_type;
@@ -4350,9 +4275,6 @@ static inline ssize_t jdksavdecc_aem_command_read_descriptor_read(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_READ_DESCRIPTOR_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_read_descriptor_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_read_descriptor_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_read_descriptor_get_command_type(base, pos);
         p->configuration_index = jdksavdecc_aem_command_read_descriptor_get_configuration_index(base, pos);
         p->reserved = jdksavdecc_aem_command_read_descriptor_get_reserved(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_read_descriptor_get_descriptor_type(base, pos);
@@ -4383,9 +4305,6 @@ static inline ssize_t jdksavdecc_aem_command_read_descriptor_write(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_READ_DESCRIPTOR_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_read_descriptor_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_read_descriptor_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_read_descriptor_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_read_descriptor_set_configuration_index(p->configuration_index, base, pos);
         jdksavdecc_aem_command_read_descriptor_set_reserved(p->reserved, base, pos);
         jdksavdecc_aem_command_read_descriptor_set_descriptor_type(p->descriptor_type, base, pos);
@@ -4572,9 +4491,6 @@ static inline void jdksavdecc_aem_command_read_descriptor_response_set_reserved(
 /// READ_DESCRIPTOR Response - Clause 7.4.5.2
 struct jdksavdecc_aem_command_read_descriptor_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t configuration_index;
     uint16_t reserved;
 };
@@ -4599,9 +4515,6 @@ static inline ssize_t jdksavdecc_aem_command_read_descriptor_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_READ_DESCRIPTOR_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_read_descriptor_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_read_descriptor_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_read_descriptor_response_get_command_type(base, pos);
         p->configuration_index = jdksavdecc_aem_command_read_descriptor_response_get_configuration_index(base, pos);
         p->reserved = jdksavdecc_aem_command_read_descriptor_response_get_reserved(base, pos);
     }
@@ -4629,9 +4542,6 @@ static inline ssize_t jdksavdecc_aem_command_read_descriptor_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_READ_DESCRIPTOR_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_read_descriptor_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_read_descriptor_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_read_descriptor_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_read_descriptor_response_set_configuration_index(p->configuration_index, base, pos);
         jdksavdecc_aem_command_read_descriptor_response_set_reserved(p->reserved, base, pos);
     }
@@ -4813,9 +4723,6 @@ static inline void jdksavdecc_aem_command_write_descriptor_set_reserved(uint16_t
 /// WRITE_DESCRIPTOR Command - Clause 7.4.6.1
 struct jdksavdecc_aem_command_write_descriptor {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t configuration_index;
     uint16_t reserved;
 };
@@ -4842,9 +4749,6 @@ static inline ssize_t jdksavdecc_aem_command_write_descriptor_read(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_write_descriptor_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_write_descriptor_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_write_descriptor_get_command_type(base, pos);
         p->configuration_index = jdksavdecc_aem_command_write_descriptor_get_configuration_index(base, pos);
         p->reserved = jdksavdecc_aem_command_write_descriptor_get_reserved(base, pos);
     }
@@ -4873,9 +4777,6 @@ static inline ssize_t jdksavdecc_aem_command_write_descriptor_write(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_write_descriptor_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_write_descriptor_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_write_descriptor_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_write_descriptor_set_configuration_index(p->configuration_index, base, pos);
         jdksavdecc_aem_command_write_descriptor_set_reserved(p->reserved, base, pos);
     }
@@ -5060,9 +4961,6 @@ static inline void jdksavdecc_aem_command_write_descriptor_response_set_reserved
 /// WRITE_DESCRIPTOR Response - Clause 7.4.6.1
 struct jdksavdecc_aem_command_write_descriptor_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t configuration_index;
     uint16_t reserved;
 };
@@ -5087,9 +4985,6 @@ static inline ssize_t jdksavdecc_aem_command_write_descriptor_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_write_descriptor_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_write_descriptor_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_write_descriptor_response_get_command_type(base, pos);
         p->configuration_index = jdksavdecc_aem_command_write_descriptor_response_get_configuration_index(base, pos);
         p->reserved = jdksavdecc_aem_command_write_descriptor_response_get_reserved(base, pos);
     }
@@ -5117,9 +5012,6 @@ static inline ssize_t jdksavdecc_aem_command_write_descriptor_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_write_descriptor_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_write_descriptor_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_write_descriptor_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_write_descriptor_response_set_configuration_index(p->configuration_index, base, pos);
         jdksavdecc_aem_command_write_descriptor_response_set_reserved(p->reserved, base, pos);
     }
@@ -5301,9 +5193,6 @@ static inline void jdksavdecc_aem_command_set_configuration_set_configuration_in
 /// SET_CONFIGURATION Command - Clause 7.4.7.1
 struct jdksavdecc_aem_command_set_configuration {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t reserved;
     uint16_t configuration_index;
 };
@@ -5330,9 +5219,6 @@ static inline ssize_t jdksavdecc_aem_command_set_configuration_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CONFIGURATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_configuration_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_configuration_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_configuration_get_command_type(base, pos);
         p->reserved = jdksavdecc_aem_command_set_configuration_get_reserved(base, pos);
         p->configuration_index = jdksavdecc_aem_command_set_configuration_get_configuration_index(base, pos);
     }
@@ -5361,9 +5247,6 @@ static inline ssize_t jdksavdecc_aem_command_set_configuration_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CONFIGURATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_configuration_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_configuration_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_configuration_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_configuration_set_reserved(p->reserved, base, pos);
         jdksavdecc_aem_command_set_configuration_set_configuration_index(p->configuration_index, base, pos);
     }
@@ -5549,9 +5432,6 @@ jdksavdecc_aem_command_set_configuration_response_set_configuration_index(uint16
 /// SET_CONFIGURATION Response - Clause 7.4.7.1
 struct jdksavdecc_aem_command_set_configuration_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t reserved;
     uint16_t configuration_index;
 };
@@ -5576,9 +5456,6 @@ static inline ssize_t jdksavdecc_aem_command_set_configuration_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CONFIGURATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_configuration_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_configuration_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_configuration_response_get_command_type(base, pos);
         p->reserved = jdksavdecc_aem_command_set_configuration_response_get_reserved(base, pos);
         p->configuration_index = jdksavdecc_aem_command_set_configuration_response_get_configuration_index(base, pos);
     }
@@ -5606,9 +5483,6 @@ static inline ssize_t jdksavdecc_aem_command_set_configuration_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CONFIGURATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_configuration_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_configuration_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_configuration_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_configuration_response_set_reserved(p->reserved, base, pos);
         jdksavdecc_aem_command_set_configuration_response_set_configuration_index(p->configuration_index, base, pos);
     }
@@ -5726,9 +5600,6 @@ static inline void jdksavdecc_aem_command_get_configuration_set_command_type(uin
 /// GET_CONFIGURATION Command - Clause 7.4.8.1
 struct jdksavdecc_aem_command_get_configuration {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -5753,9 +5624,6 @@ static inline ssize_t jdksavdecc_aem_command_get_configuration_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CONFIGURATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_configuration_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_configuration_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_configuration_get_command_type(base, pos);
     }
     return r;
 }
@@ -5782,9 +5650,6 @@ static inline ssize_t jdksavdecc_aem_command_get_configuration_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CONFIGURATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_configuration_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_configuration_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_configuration_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -5968,9 +5833,6 @@ jdksavdecc_aem_command_get_configuration_response_set_configuration_index(uint16
 /// SET_CONFIGURATION Response - Clause 7.4.8.2
 struct jdksavdecc_aem_command_get_configuration_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t reserved;
     uint16_t configuration_index;
 };
@@ -5995,9 +5857,6 @@ static inline ssize_t jdksavdecc_aem_command_get_configuration_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CONFIGURATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_configuration_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_configuration_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_configuration_response_get_command_type(base, pos);
         p->reserved = jdksavdecc_aem_command_get_configuration_response_get_reserved(base, pos);
         p->configuration_index = jdksavdecc_aem_command_get_configuration_response_get_configuration_index(base, pos);
     }
@@ -6025,9 +5884,6 @@ static inline ssize_t jdksavdecc_aem_command_get_configuration_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CONFIGURATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_configuration_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_configuration_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_configuration_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_configuration_response_set_reserved(p->reserved, base, pos);
         jdksavdecc_aem_command_get_configuration_response_set_configuration_index(p->configuration_index, base, pos);
     }
@@ -6243,9 +6099,6 @@ jdksavdecc_aem_command_set_stream_format_set_stream_format(struct jdksavdecc_eui
 /// SET_STREAM_FORMAT Command - Clause 7.4.9.1
 struct jdksavdecc_aem_command_set_stream_format {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     struct jdksavdecc_eui64 stream_format;
@@ -6273,9 +6126,6 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_format_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_STREAM_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_stream_format_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_stream_format_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_stream_format_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_stream_format_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_stream_format_get_descriptor_index(base, pos);
         p->stream_format = jdksavdecc_aem_command_set_stream_format_get_stream_format(base, pos);
@@ -6305,9 +6155,6 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_format_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_STREAM_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_stream_format_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_stream_format_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_stream_format_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_stream_format_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_stream_format_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_stream_format_set_stream_format(p->stream_format, base, pos);
@@ -6526,9 +6373,6 @@ jdksavdecc_aem_command_set_stream_format_response_set_stream_format(struct jdksa
 /// SET_STREAM_FORMAT Response - Clause 7.4.9.1
 struct jdksavdecc_aem_command_set_stream_format_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     struct jdksavdecc_eui64 stream_format;
@@ -6554,9 +6398,6 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_format_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_STREAM_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_stream_format_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_stream_format_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_stream_format_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_stream_format_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_stream_format_response_get_descriptor_index(base, pos);
         p->stream_format = jdksavdecc_aem_command_set_stream_format_response_get_stream_format(base, pos);
@@ -6585,9 +6426,6 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_format_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_STREAM_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_stream_format_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_stream_format_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_stream_format_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_stream_format_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_stream_format_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_stream_format_response_set_stream_format(p->stream_format, base, pos);
@@ -6770,9 +6608,6 @@ static inline void jdksavdecc_aem_command_get_stream_format_set_descriptor_index
 /// GET_STREAM_FORMAT Command - Clause 7.4.10.1
 struct jdksavdecc_aem_command_get_stream_format {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -6799,9 +6634,6 @@ static inline ssize_t jdksavdecc_aem_command_get_stream_format_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_STREAM_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_stream_format_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_stream_format_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_stream_format_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_stream_format_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_stream_format_get_descriptor_index(base, pos);
     }
@@ -6830,9 +6662,6 @@ static inline ssize_t jdksavdecc_aem_command_get_stream_format_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_STREAM_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_stream_format_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_stream_format_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_stream_format_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_stream_format_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_stream_format_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -7050,9 +6879,6 @@ jdksavdecc_aem_command_get_stream_format_response_set_stream_format(struct jdksa
 /// GET_STREAM_FORMAT Response - Clause 7.4.10.2
 struct jdksavdecc_aem_command_get_stream_format_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     struct jdksavdecc_eui64 stream_format;
@@ -7078,9 +6904,6 @@ static inline ssize_t jdksavdecc_aem_command_get_stream_format_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_STREAM_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_stream_format_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_stream_format_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_stream_format_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_stream_format_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_stream_format_response_get_descriptor_index(base, pos);
         p->stream_format = jdksavdecc_aem_command_get_stream_format_response_get_stream_format(base, pos);
@@ -7109,9 +6932,6 @@ static inline ssize_t jdksavdecc_aem_command_get_stream_format_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_STREAM_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_stream_format_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_stream_format_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_stream_format_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_stream_format_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_stream_format_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_stream_format_response_set_stream_format(p->stream_format, base, pos);
@@ -7422,9 +7242,6 @@ static inline void jdksavdecc_aem_command_set_video_format_set_frame_size(uint32
 /// SET_VIDEO_FORMAT Command - Clause 7.4.11.1
 struct jdksavdecc_aem_command_set_video_format {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint32_t format_specific;
@@ -7455,9 +7272,6 @@ static inline ssize_t jdksavdecc_aem_command_set_video_format_read(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_VIDEO_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_video_format_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_video_format_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_video_format_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_video_format_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_video_format_get_descriptor_index(base, pos);
         p->format_specific = jdksavdecc_aem_command_set_video_format_get_format_specific(base, pos);
@@ -7490,9 +7304,6 @@ static inline ssize_t jdksavdecc_aem_command_set_video_format_write(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_VIDEO_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_video_format_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_video_format_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_video_format_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_video_format_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_video_format_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_video_format_set_format_specific(p->format_specific, base, pos);
@@ -7808,9 +7619,6 @@ static inline void jdksavdecc_aem_command_set_video_format_response_set_frame_si
 /// SET_VIDEO_FORMAT Response - Clause 7.4.11.1
 struct jdksavdecc_aem_command_set_video_format_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint32_t format_specific;
@@ -7839,9 +7647,6 @@ static inline ssize_t jdksavdecc_aem_command_set_video_format_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_VIDEO_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_video_format_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_video_format_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_video_format_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_video_format_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_video_format_response_get_descriptor_index(base, pos);
         p->format_specific = jdksavdecc_aem_command_set_video_format_response_get_format_specific(base, pos);
@@ -7873,9 +7678,6 @@ static inline ssize_t jdksavdecc_aem_command_set_video_format_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_VIDEO_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_video_format_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_video_format_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_video_format_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_video_format_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_video_format_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_video_format_response_set_format_specific(p->format_specific, base, pos);
@@ -8061,9 +7863,6 @@ static inline void jdksavdecc_aem_command_get_video_format_set_descriptor_index(
 /// GET_VIDEO_FORMAT Command - Clause 7.4.12.1
 struct jdksavdecc_aem_command_get_video_format {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -8090,9 +7889,6 @@ static inline ssize_t jdksavdecc_aem_command_get_video_format_read(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_VIDEO_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_video_format_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_video_format_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_video_format_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_video_format_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_video_format_get_descriptor_index(base, pos);
     }
@@ -8121,9 +7917,6 @@ static inline ssize_t jdksavdecc_aem_command_get_video_format_write(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_VIDEO_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_video_format_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_video_format_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_video_format_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_video_format_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_video_format_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -8435,9 +8228,6 @@ static inline void jdksavdecc_aem_command_get_video_format_response_set_frame_si
 /// GET_VIDEO_FORMAT Response - Clause 7.4.12.2
 struct jdksavdecc_aem_command_get_video_format_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint32_t format_specific;
@@ -8466,9 +8256,6 @@ static inline ssize_t jdksavdecc_aem_command_get_video_format_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_VIDEO_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_video_format_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_video_format_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_video_format_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_video_format_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_video_format_response_get_descriptor_index(base, pos);
         p->format_specific = jdksavdecc_aem_command_get_video_format_response_get_format_specific(base, pos);
@@ -8500,9 +8287,6 @@ static inline ssize_t jdksavdecc_aem_command_get_video_format_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_VIDEO_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_video_format_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_video_format_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_video_format_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_video_format_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_video_format_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_video_format_response_set_format_specific(p->format_specific, base, pos);
@@ -8722,9 +8506,6 @@ jdksavdecc_aem_command_set_sensor_format_set_sensor_format(struct jdksavdecc_eui
 /// SET_SENSOR_FORMAT Command - Clause 7.4.13.1
 struct jdksavdecc_aem_command_set_sensor_format {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     struct jdksavdecc_eui64 sensor_format;
@@ -8752,9 +8533,6 @@ static inline ssize_t jdksavdecc_aem_command_set_sensor_format_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SENSOR_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_sensor_format_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_sensor_format_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_sensor_format_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_sensor_format_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_sensor_format_get_descriptor_index(base, pos);
         p->sensor_format = jdksavdecc_aem_command_set_sensor_format_get_sensor_format(base, pos);
@@ -8784,9 +8562,6 @@ static inline ssize_t jdksavdecc_aem_command_set_sensor_format_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SENSOR_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_sensor_format_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_sensor_format_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_sensor_format_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_sensor_format_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_sensor_format_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_sensor_format_set_sensor_format(p->sensor_format, base, pos);
@@ -9005,9 +8780,6 @@ jdksavdecc_aem_command_set_sensor_format_response_set_sensor_format(struct jdksa
 /// SET_SENSOR_FORMAT Response - Clause 7.4.13.1
 struct jdksavdecc_aem_command_set_sensor_format_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     struct jdksavdecc_eui64 sensor_format;
@@ -9033,9 +8805,6 @@ static inline ssize_t jdksavdecc_aem_command_set_sensor_format_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SENSOR_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_sensor_format_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_sensor_format_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_sensor_format_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_sensor_format_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_sensor_format_response_get_descriptor_index(base, pos);
         p->sensor_format = jdksavdecc_aem_command_set_sensor_format_response_get_sensor_format(base, pos);
@@ -9064,9 +8833,6 @@ static inline ssize_t jdksavdecc_aem_command_set_sensor_format_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SENSOR_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_sensor_format_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_sensor_format_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_sensor_format_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_sensor_format_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_sensor_format_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_sensor_format_response_set_sensor_format(p->sensor_format, base, pos);
@@ -9249,9 +9015,6 @@ static inline void jdksavdecc_aem_command_get_sensor_format_set_descriptor_index
 /// GET_SENSOR_FORMAT Command - Clause 7.4.14.1
 struct jdksavdecc_aem_command_get_sensor_format {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -9278,9 +9041,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sensor_format_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SENSOR_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_sensor_format_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_sensor_format_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_sensor_format_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_sensor_format_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_sensor_format_get_descriptor_index(base, pos);
     }
@@ -9309,9 +9069,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sensor_format_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SENSOR_FORMAT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_sensor_format_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_sensor_format_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_sensor_format_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_sensor_format_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_sensor_format_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -9529,9 +9286,6 @@ jdksavdecc_aem_command_get_sensor_format_response_set_sensor_format(struct jdksa
 /// GET_SENSOR_FORMAT Response - Clause 7.4.14.2
 struct jdksavdecc_aem_command_get_sensor_format_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     struct jdksavdecc_eui64 sensor_format;
@@ -9557,9 +9311,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sensor_format_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SENSOR_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_sensor_format_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_sensor_format_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_sensor_format_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_sensor_format_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_sensor_format_response_get_descriptor_index(base, pos);
         p->sensor_format = jdksavdecc_aem_command_get_sensor_format_response_get_sensor_format(base, pos);
@@ -9588,9 +9339,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sensor_format_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SENSOR_FORMAT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_sensor_format_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_sensor_format_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_sensor_format_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_sensor_format_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_sensor_format_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_sensor_format_response_set_sensor_format(p->sensor_format, base, pos);
@@ -10034,9 +9782,6 @@ jdksavdecc_aem_command_set_stream_info_set_msrp_failure_bridge_id(struct jdksavd
 /// SET_STREAM_INFO Command - Clause 7.4.15.1
 struct jdksavdecc_aem_command_set_stream_info {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint32_t aem_stream_info_flags;
@@ -10071,9 +9816,6 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_info_read(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_stream_info_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_stream_info_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_stream_info_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_stream_info_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_stream_info_get_descriptor_index(base, pos);
         p->aem_stream_info_flags = jdksavdecc_aem_command_set_stream_info_get_aem_stream_info_flags(base, pos);
@@ -10110,9 +9852,6 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_info_write(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_stream_info_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_stream_info_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_stream_info_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_stream_info_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_stream_info_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_stream_info_set_aem_stream_info_flags(p->aem_stream_info_flags, base, pos);
@@ -10573,9 +10312,6 @@ jdksavdecc_aem_command_set_stream_info_response_set_msrp_failure_bridge_id(struc
 /// SET_STREAM_INFO Response - Clause 7.4.15.1
 struct jdksavdecc_aem_command_set_stream_info_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint32_t aem_stream_info_flags;
@@ -10608,9 +10344,6 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_info_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_stream_info_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_stream_info_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_stream_info_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_stream_info_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_stream_info_response_get_descriptor_index(base, pos);
         p->aem_stream_info_flags = jdksavdecc_aem_command_set_stream_info_response_get_aem_stream_info_flags(base, pos);
@@ -10646,9 +10379,6 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_info_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_stream_info_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_stream_info_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_stream_info_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_stream_info_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_stream_info_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_stream_info_response_set_aem_stream_info_flags(p->aem_stream_info_flags, base, pos);
@@ -10838,9 +10568,6 @@ static inline void jdksavdecc_aem_command_get_stream_info_set_descriptor_index(u
 /// GET_STREAM_INFO Command - Clause 7.4.16.1
 struct jdksavdecc_aem_command_get_stream_info {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -10867,9 +10594,6 @@ static inline ssize_t jdksavdecc_aem_command_get_stream_info_read(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_STREAM_INFO_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_stream_info_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_stream_info_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_stream_info_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_stream_info_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_stream_info_get_descriptor_index(base, pos);
     }
@@ -10898,9 +10622,6 @@ static inline ssize_t jdksavdecc_aem_command_get_stream_info_write(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_STREAM_INFO_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_stream_info_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_stream_info_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_stream_info_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_stream_info_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_stream_info_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -11353,9 +11074,6 @@ jdksavdecc_aem_command_get_stream_info_response_set_msrp_failure_bridge_id(struc
 /// GET_STREAM_INFO Response - Clause 7.4.16.2
 struct jdksavdecc_aem_command_get_stream_info_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint32_t aem_stream_info_flags;
@@ -11388,9 +11106,6 @@ static inline ssize_t jdksavdecc_aem_command_get_stream_info_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_STREAM_INFO_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_stream_info_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_stream_info_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_stream_info_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_stream_info_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_stream_info_response_get_descriptor_index(base, pos);
         p->aem_stream_info_flags = jdksavdecc_aem_command_get_stream_info_response_get_aem_stream_info_flags(base, pos);
@@ -11426,9 +11141,6 @@ static inline ssize_t jdksavdecc_aem_command_get_stream_info_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_STREAM_INFO_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_stream_info_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_stream_info_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_stream_info_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_stream_info_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_stream_info_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_stream_info_response_set_aem_stream_info_flags(p->aem_stream_info_flags, base, pos);
@@ -11713,9 +11425,6 @@ static inline void jdksavdecc_aem_command_set_name_set_name(struct jdksavdecc_st
 /// SET_NAME Command - Clause 7.4.17.1
 struct jdksavdecc_aem_command_set_name {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t name_index;
@@ -11742,9 +11451,6 @@ jdksavdecc_aem_command_set_name_read(struct jdksavdecc_aem_command_set_name *p, 
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_NAME_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_name_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_name_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_name_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_name_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_name_get_descriptor_index(base, pos);
         p->name_index = jdksavdecc_aem_command_set_name_get_name_index(base, pos);
@@ -11773,9 +11479,6 @@ jdksavdecc_aem_command_set_name_write(struct jdksavdecc_aem_command_set_name con
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_NAME_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_name_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_name_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_name_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_name_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_name_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_name_set_name_index(p->name_index, base, pos);
@@ -12056,9 +11759,6 @@ static inline void jdksavdecc_aem_command_set_name_response_set_name(struct jdks
 /// SET_NAME Response - Clause 7.4.17.1
 struct jdksavdecc_aem_command_set_name_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t name_index;
@@ -12088,9 +11788,6 @@ static inline ssize_t jdksavdecc_aem_command_set_name_response_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_NAME_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_name_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_name_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_name_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_name_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_name_response_get_descriptor_index(base, pos);
         p->name_index = jdksavdecc_aem_command_set_name_response_get_name_index(base, pos);
@@ -12122,9 +11819,6 @@ static inline ssize_t jdksavdecc_aem_command_set_name_response_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_NAME_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_name_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_name_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_name_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_name_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_name_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_name_response_set_name_index(p->name_index, base, pos);
@@ -12372,9 +12066,6 @@ static inline void jdksavdecc_aem_command_get_name_set_configuration_index(uint1
 /// GET_NAME Command - Clause 7.4.18.1
 struct jdksavdecc_aem_command_get_name {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t name_index;
@@ -12400,9 +12091,6 @@ jdksavdecc_aem_command_get_name_read(struct jdksavdecc_aem_command_get_name *p, 
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_NAME_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_name_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_name_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_name_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_name_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_name_get_descriptor_index(base, pos);
         p->name_index = jdksavdecc_aem_command_get_name_get_name_index(base, pos);
@@ -12430,9 +12118,6 @@ jdksavdecc_aem_command_get_name_write(struct jdksavdecc_aem_command_get_name con
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_NAME_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_name_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_name_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_name_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_name_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_name_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_name_set_name_index(p->name_index, base, pos);
@@ -12712,9 +12397,6 @@ static inline void jdksavdecc_aem_command_get_name_response_set_name(struct jdks
 /// GET_NAME Response - Clause 7.4.18.2
 struct jdksavdecc_aem_command_get_name_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t name_index;
@@ -12744,9 +12426,6 @@ static inline ssize_t jdksavdecc_aem_command_get_name_response_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_NAME_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_name_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_name_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_name_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_name_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_name_response_get_descriptor_index(base, pos);
         p->name_index = jdksavdecc_aem_command_get_name_response_get_name_index(base, pos);
@@ -12778,9 +12457,6 @@ static inline ssize_t jdksavdecc_aem_command_get_name_response_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_NAME_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_name_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_name_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_name_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_name_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_name_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_name_response_set_name_index(p->name_index, base, pos);
@@ -12935,9 +12611,6 @@ jdksavdecc_aem_command_set_association_id_set_association_id(struct jdksavdecc_e
 /// SET_ASSOCIATION_ID Command - Clause 7.4.19.1
 struct jdksavdecc_aem_command_set_association_id {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 association_id;
 };
 
@@ -12963,9 +12636,6 @@ static inline ssize_t jdksavdecc_aem_command_set_association_id_read(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_ASSOCIATION_ID_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_association_id_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_association_id_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_association_id_get_command_type(base, pos);
         p->association_id = jdksavdecc_aem_command_set_association_id_get_association_id(base, pos);
     }
     return r;
@@ -12993,9 +12663,6 @@ static inline ssize_t jdksavdecc_aem_command_set_association_id_write(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_ASSOCIATION_ID_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_association_id_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_association_id_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_association_id_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_association_id_set_association_id(p->association_id, base, pos);
     }
     return r;
@@ -13150,9 +12817,6 @@ jdksavdecc_aem_command_set_association_id_response_set_association_id(struct jdk
 /// SET_ASSOCIATION_ID Response - Clause 7.4.19.1
 struct jdksavdecc_aem_command_set_association_id_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 association_id;
 };
 
@@ -13176,9 +12840,6 @@ static inline ssize_t jdksavdecc_aem_command_set_association_id_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_ASSOCIATION_ID_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_association_id_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_association_id_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_association_id_response_get_command_type(base, pos);
         p->association_id = jdksavdecc_aem_command_set_association_id_response_get_association_id(base, pos);
     }
     return r;
@@ -13205,9 +12866,6 @@ static inline ssize_t jdksavdecc_aem_command_set_association_id_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_ASSOCIATION_ID_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_association_id_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_association_id_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_association_id_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_association_id_response_set_association_id(p->association_id, base, pos);
     }
     return r;
@@ -13324,9 +12982,6 @@ static inline void jdksavdecc_aem_command_get_association_id_set_command_type(ui
 /// GET_ASSOCIATION_ID Command - Clause 7.4.20.1
 struct jdksavdecc_aem_command_get_association_id {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -13351,9 +13006,6 @@ static inline ssize_t jdksavdecc_aem_command_get_association_id_read(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_ASSOCIATION_ID_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_association_id_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_association_id_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_association_id_get_command_type(base, pos);
     }
     return r;
 }
@@ -13380,9 +13032,6 @@ static inline ssize_t jdksavdecc_aem_command_get_association_id_write(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_ASSOCIATION_ID_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_association_id_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_association_id_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_association_id_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -13536,9 +13185,6 @@ jdksavdecc_aem_command_get_association_id_response_set_association_id(struct jdk
 /// GET_ASSOCIATION_ID Response - Clause 7.4.20.2
 struct jdksavdecc_aem_command_get_association_id_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 association_id;
 };
 
@@ -13562,9 +13208,6 @@ static inline ssize_t jdksavdecc_aem_command_get_association_id_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_ASSOCIATION_ID_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_association_id_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_association_id_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_association_id_response_get_command_type(base, pos);
         p->association_id = jdksavdecc_aem_command_get_association_id_response_get_association_id(base, pos);
     }
     return r;
@@ -13591,9 +13234,6 @@ static inline ssize_t jdksavdecc_aem_command_get_association_id_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_ASSOCIATION_ID_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_association_id_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_association_id_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_association_id_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_association_id_response_set_association_id(p->association_id, base, pos);
     }
     return r;
@@ -13806,9 +13446,6 @@ static inline void jdksavdecc_aem_command_set_sampling_rate_set_sampling_rate(ui
 /// SET_SAMPLING_RATE Command - Clause 7.4.21.1
 struct jdksavdecc_aem_command_set_sampling_rate {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint32_t sampling_rate;
@@ -13836,9 +13473,6 @@ static inline ssize_t jdksavdecc_aem_command_set_sampling_rate_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SAMPLING_RATE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_sampling_rate_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_sampling_rate_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_sampling_rate_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_sampling_rate_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_sampling_rate_get_descriptor_index(base, pos);
         p->sampling_rate = jdksavdecc_aem_command_set_sampling_rate_get_sampling_rate(base, pos);
@@ -13868,9 +13502,6 @@ static inline ssize_t jdksavdecc_aem_command_set_sampling_rate_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SAMPLING_RATE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_sampling_rate_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_sampling_rate_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_sampling_rate_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_sampling_rate_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_sampling_rate_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_sampling_rate_set_sampling_rate(p->sampling_rate, base, pos);
@@ -14087,9 +13718,6 @@ static inline void jdksavdecc_aem_command_set_sampling_rate_response_set_samplin
 /// SET_SAMPLING_RATE Response - Clause 7.4.21.1
 struct jdksavdecc_aem_command_set_sampling_rate_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint32_t sampling_rate;
@@ -14115,9 +13743,6 @@ static inline ssize_t jdksavdecc_aem_command_set_sampling_rate_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SAMPLING_RATE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_sampling_rate_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_sampling_rate_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_sampling_rate_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_sampling_rate_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_sampling_rate_response_get_descriptor_index(base, pos);
         p->sampling_rate = jdksavdecc_aem_command_set_sampling_rate_response_get_sampling_rate(base, pos);
@@ -14146,9 +13771,6 @@ static inline ssize_t jdksavdecc_aem_command_set_sampling_rate_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SAMPLING_RATE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_sampling_rate_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_sampling_rate_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_sampling_rate_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_sampling_rate_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_sampling_rate_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_sampling_rate_response_set_sampling_rate(p->sampling_rate, base, pos);
@@ -14331,9 +13953,6 @@ static inline void jdksavdecc_aem_command_get_sampling_rate_set_descriptor_index
 /// GET_SAMPLING_RATE Command - Clause 7.4.22.1
 struct jdksavdecc_aem_command_get_sampling_rate {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -14360,9 +13979,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sampling_rate_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SAMPLING_RATE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_sampling_rate_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_sampling_rate_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_sampling_rate_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_sampling_rate_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_sampling_rate_get_descriptor_index(base, pos);
     }
@@ -14391,9 +14007,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sampling_rate_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SAMPLING_RATE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_sampling_rate_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_sampling_rate_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_sampling_rate_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_sampling_rate_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_sampling_rate_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -14609,9 +14222,6 @@ static inline void jdksavdecc_aem_command_get_sampling_rate_response_set_samplin
 /// GET_SAMPLING_RATE Response - Clause 7.4.22.2
 struct jdksavdecc_aem_command_get_sampling_rate_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint32_t sampling_rate;
@@ -14637,9 +14247,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sampling_rate_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SAMPLING_RATE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_sampling_rate_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_sampling_rate_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_sampling_rate_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_sampling_rate_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_sampling_rate_response_get_descriptor_index(base, pos);
         p->sampling_rate = jdksavdecc_aem_command_get_sampling_rate_response_get_sampling_rate(base, pos);
@@ -14668,9 +14275,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sampling_rate_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SAMPLING_RATE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_sampling_rate_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_sampling_rate_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_sampling_rate_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_sampling_rate_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_sampling_rate_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_sampling_rate_response_set_sampling_rate(p->sampling_rate, base, pos);
@@ -14885,9 +14489,6 @@ static inline void jdksavdecc_aem_command_set_clock_source_set_clock_source_inde
 /// SET_CLOCK_SOURCE Command - Clause 7.4.23.1
 struct jdksavdecc_aem_command_set_clock_source {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t clock_source_index;
@@ -14915,9 +14516,6 @@ static inline ssize_t jdksavdecc_aem_command_set_clock_source_read(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_clock_source_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_clock_source_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_clock_source_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_clock_source_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_clock_source_get_descriptor_index(base, pos);
         p->clock_source_index = jdksavdecc_aem_command_set_clock_source_get_clock_source_index(base, pos);
@@ -14947,9 +14545,6 @@ static inline ssize_t jdksavdecc_aem_command_set_clock_source_write(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_clock_source_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_clock_source_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_clock_source_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_clock_source_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_clock_source_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_clock_source_set_clock_source_index(p->clock_source_index, base, pos);
@@ -15167,9 +14762,6 @@ jdksavdecc_aem_command_set_clock_source_response_set_clock_source_index(uint16_t
 /// SET_CLOCK_SOURCE Response - Clause 7.4.23.1
 struct jdksavdecc_aem_command_set_clock_source_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t clock_source_index;
@@ -15195,9 +14787,6 @@ static inline ssize_t jdksavdecc_aem_command_set_clock_source_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_clock_source_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_clock_source_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_clock_source_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_clock_source_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_clock_source_response_get_descriptor_index(base, pos);
         p->clock_source_index = jdksavdecc_aem_command_set_clock_source_response_get_clock_source_index(base, pos);
@@ -15226,9 +14815,6 @@ static inline ssize_t jdksavdecc_aem_command_set_clock_source_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_clock_source_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_clock_source_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_clock_source_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_clock_source_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_clock_source_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_clock_source_response_set_clock_source_index(p->clock_source_index, base, pos);
@@ -15411,9 +14997,6 @@ static inline void jdksavdecc_aem_command_get_clock_source_set_descriptor_index(
 /// GET_CLOCK_SOURCE Command - Clause 7.4.24.1
 struct jdksavdecc_aem_command_get_clock_source {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -15440,9 +15023,6 @@ static inline ssize_t jdksavdecc_aem_command_get_clock_source_read(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CLOCK_SOURCE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_clock_source_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_clock_source_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_clock_source_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_clock_source_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_clock_source_get_descriptor_index(base, pos);
     }
@@ -15471,9 +15051,6 @@ static inline ssize_t jdksavdecc_aem_command_get_clock_source_write(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CLOCK_SOURCE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_clock_source_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_clock_source_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_clock_source_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_clock_source_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_clock_source_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -15690,9 +15267,6 @@ jdksavdecc_aem_command_get_clock_source_response_set_clock_source_index(uint16_t
 /// GET_CLOCK_SOURCE Response - Clause 7.4.24.2
 struct jdksavdecc_aem_command_get_clock_source_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t clock_source_index;
@@ -15718,9 +15292,6 @@ static inline ssize_t jdksavdecc_aem_command_get_clock_source_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CLOCK_SOURCE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_clock_source_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_clock_source_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_clock_source_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_clock_source_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_clock_source_response_get_descriptor_index(base, pos);
         p->clock_source_index = jdksavdecc_aem_command_get_clock_source_response_get_clock_source_index(base, pos);
@@ -15749,9 +15320,6 @@ static inline ssize_t jdksavdecc_aem_command_get_clock_source_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CLOCK_SOURCE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_clock_source_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_clock_source_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_clock_source_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_clock_source_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_clock_source_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_clock_source_response_set_clock_source_index(p->clock_source_index, base, pos);
@@ -15934,9 +15502,6 @@ static inline void jdksavdecc_aem_command_set_control_set_descriptor_index(uint1
 /// SET_CONTROL Command - Clause 7.4.25.1
 struct jdksavdecc_aem_command_set_control {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -15963,9 +15528,6 @@ static inline ssize_t jdksavdecc_aem_command_set_control_read(struct jdksavdecc_
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CONTROL_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_control_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_control_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_control_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_control_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_control_get_descriptor_index(base, pos);
     }
@@ -15993,9 +15555,6 @@ static inline ssize_t jdksavdecc_aem_command_set_control_write(struct jdksavdecc
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CONTROL_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_control_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_control_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_control_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_control_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_control_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -16177,9 +15736,6 @@ static inline void jdksavdecc_aem_command_set_control_response_set_descriptor_in
 /// SET_CONTROL Response - Clause 7.4.25.1
 struct jdksavdecc_aem_command_set_control_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -16206,9 +15762,6 @@ static inline ssize_t jdksavdecc_aem_command_set_control_response_read(struct jd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_control_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_control_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_control_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_control_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_control_response_get_descriptor_index(base, pos);
     }
@@ -16236,9 +15789,6 @@ static inline ssize_t jdksavdecc_aem_command_set_control_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_control_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_control_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_control_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_control_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_control_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -16420,9 +15970,6 @@ static inline void jdksavdecc_aem_command_get_control_set_descriptor_index(uint1
 /// GET_CONTROL Command - Clause 7.4.26.1
 struct jdksavdecc_aem_command_get_control {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -16449,9 +15996,6 @@ static inline ssize_t jdksavdecc_aem_command_get_control_read(struct jdksavdecc_
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CONTROL_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_control_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_control_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_control_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_control_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_control_get_descriptor_index(base, pos);
     }
@@ -16479,9 +16023,6 @@ static inline ssize_t jdksavdecc_aem_command_get_control_write(struct jdksavdecc
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CONTROL_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_control_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_control_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_control_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_control_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_control_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -16663,9 +16204,6 @@ static inline void jdksavdecc_aem_command_get_control_response_set_descriptor_in
 /// GET_CONTROL Response - Clause 7.4.26.2
 struct jdksavdecc_aem_command_get_control_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -16692,9 +16230,6 @@ static inline ssize_t jdksavdecc_aem_command_get_control_response_read(struct jd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CONTROL_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_control_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_control_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_control_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_control_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_control_response_get_descriptor_index(base, pos);
     }
@@ -16722,9 +16257,6 @@ static inline ssize_t jdksavdecc_aem_command_get_control_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_CONTROL_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_control_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_control_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_control_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_control_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_control_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -16970,9 +16502,6 @@ static inline void jdksavdecc_aem_command_increment_control_set_reserved(uint16_
 /// INCREMENT_CONTROL Command - Clause 7.4.27.1
 struct jdksavdecc_aem_command_increment_control {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t index_count;
@@ -17001,9 +16530,6 @@ static inline ssize_t jdksavdecc_aem_command_increment_control_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_INCREMENT_CONTROL_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_increment_control_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_increment_control_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_increment_control_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_increment_control_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_increment_control_get_descriptor_index(base, pos);
         p->index_count = jdksavdecc_aem_command_increment_control_get_index_count(base, pos);
@@ -17034,9 +16560,6 @@ static inline ssize_t jdksavdecc_aem_command_increment_control_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_INCREMENT_CONTROL_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_increment_control_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_increment_control_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_increment_control_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_increment_control_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_increment_control_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_increment_control_set_index_count(p->index_count, base, pos);
@@ -17222,9 +16745,6 @@ static inline void jdksavdecc_aem_command_increment_control_response_set_descrip
 /// INCREMENT_CONTROL Response - Clause 7.4.27.2
 struct jdksavdecc_aem_command_increment_control_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -17249,9 +16769,6 @@ static inline ssize_t jdksavdecc_aem_command_increment_control_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_INCREMENT_CONTROL_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_increment_control_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_increment_control_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_increment_control_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_increment_control_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_increment_control_response_get_descriptor_index(base, pos);
     }
@@ -17279,9 +16796,6 @@ static inline ssize_t jdksavdecc_aem_command_increment_control_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_INCREMENT_CONTROL_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_increment_control_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_increment_control_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_increment_control_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_increment_control_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_increment_control_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -17527,9 +17041,6 @@ static inline void jdksavdecc_aem_command_decrement_control_set_reserved(uint16_
 /// DECREMENT_CONTROL Command - Clause 7.4.28.1
 struct jdksavdecc_aem_command_decrement_control {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t index_count;
@@ -17558,9 +17069,6 @@ static inline ssize_t jdksavdecc_aem_command_decrement_control_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DECREMENT_CONTROL_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_decrement_control_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_decrement_control_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_decrement_control_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_decrement_control_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_decrement_control_get_descriptor_index(base, pos);
         p->index_count = jdksavdecc_aem_command_decrement_control_get_index_count(base, pos);
@@ -17591,9 +17099,6 @@ static inline ssize_t jdksavdecc_aem_command_decrement_control_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DECREMENT_CONTROL_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_decrement_control_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_decrement_control_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_decrement_control_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_decrement_control_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_decrement_control_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_decrement_control_set_index_count(p->index_count, base, pos);
@@ -17779,9 +17284,6 @@ static inline void jdksavdecc_aem_command_decrement_control_response_set_descrip
 /// DECREMENT_CONTROL Response - Clause 7.4.28.2
 struct jdksavdecc_aem_command_decrement_control_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -17806,9 +17308,6 @@ static inline ssize_t jdksavdecc_aem_command_decrement_control_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DECREMENT_CONTROL_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_decrement_control_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_decrement_control_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_decrement_control_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_decrement_control_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_decrement_control_response_get_descriptor_index(base, pos);
     }
@@ -17836,9 +17335,6 @@ static inline ssize_t jdksavdecc_aem_command_decrement_control_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DECREMENT_CONTROL_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_decrement_control_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_decrement_control_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_decrement_control_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_decrement_control_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_decrement_control_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -18148,9 +17644,6 @@ static inline void jdksavdecc_aem_command_set_signal_selector_set_reserved(uint1
 /// SET_SIGNAL_SELECTOR Command - Clause 7.4.29.1
 struct jdksavdecc_aem_command_set_signal_selector {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t signal_type;
@@ -18181,9 +17674,6 @@ static inline ssize_t jdksavdecc_aem_command_set_signal_selector_read(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SIGNAL_SELECTOR_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_signal_selector_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_signal_selector_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_signal_selector_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_signal_selector_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_signal_selector_get_descriptor_index(base, pos);
         p->signal_type = jdksavdecc_aem_command_set_signal_selector_get_signal_type(base, pos);
@@ -18214,9 +17704,6 @@ static inline ssize_t jdksavdecc_aem_command_set_signal_selector_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SIGNAL_SELECTOR_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_signal_selector_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_signal_selector_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_signal_selector_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_signal_selector_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_signal_selector_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_signal_selector_set_signal_type(p->signal_type, base, pos);
@@ -18536,9 +18023,6 @@ static inline void jdksavdecc_aem_command_set_signal_selector_response_set_reser
 /// SET_SIGNAL_SELECTOR Response - Clause 7.4.29.1
 struct jdksavdecc_aem_command_set_signal_selector_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t signal_type;
@@ -18568,9 +18052,6 @@ static inline ssize_t jdksavdecc_aem_command_set_signal_selector_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SIGNAL_SELECTOR_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_signal_selector_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_signal_selector_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_signal_selector_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_signal_selector_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_signal_selector_response_get_descriptor_index(base, pos);
         p->signal_type = jdksavdecc_aem_command_set_signal_selector_response_get_signal_type(base, pos);
@@ -18602,9 +18083,6 @@ static inline ssize_t jdksavdecc_aem_command_set_signal_selector_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_SIGNAL_SELECTOR_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_signal_selector_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_signal_selector_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_signal_selector_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_signal_selector_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_signal_selector_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_signal_selector_response_set_signal_type(p->signal_type, base, pos);
@@ -18790,9 +18268,6 @@ static inline void jdksavdecc_aem_command_get_signal_selector_set_descriptor_ind
 /// GET_SIGNAL_SELECTOR Command - Clause 7.4.30.1
 struct jdksavdecc_aem_command_get_signal_selector {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -18819,9 +18294,6 @@ static inline ssize_t jdksavdecc_aem_command_get_signal_selector_read(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SIGNAL_SELECTOR_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_signal_selector_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_signal_selector_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_signal_selector_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_signal_selector_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_signal_selector_get_descriptor_index(base, pos);
     }
@@ -18848,9 +18320,6 @@ static inline ssize_t jdksavdecc_aem_command_get_signal_selector_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SIGNAL_SELECTOR_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_signal_selector_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_signal_selector_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_signal_selector_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_signal_selector_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_signal_selector_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -19166,9 +18635,6 @@ static inline void jdksavdecc_aem_command_get_signal_selector_response_set_reser
 /// GET_SIGNAL_SELECTOR Response - Clause 7.4.30.2
 struct jdksavdecc_aem_command_get_signal_selector_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t signal_type;
@@ -19198,9 +18664,6 @@ static inline ssize_t jdksavdecc_aem_command_get_signal_selector_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SIGNAL_SELECTOR_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_signal_selector_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_signal_selector_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_signal_selector_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_signal_selector_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_signal_selector_response_get_descriptor_index(base, pos);
         p->signal_type = jdksavdecc_aem_command_get_signal_selector_response_get_signal_type(base, pos);
@@ -19232,9 +18695,6 @@ static inline ssize_t jdksavdecc_aem_command_get_signal_selector_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SIGNAL_SELECTOR_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_signal_selector_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_signal_selector_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_signal_selector_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_signal_selector_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_signal_selector_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_signal_selector_response_set_signal_type(p->signal_type, base, pos);
@@ -19419,9 +18879,6 @@ static inline void jdksavdecc_aem_command_set_mixer_set_descriptor_index(uint16_
 /// SET_MIXER Command - Clause 7.4.31.1
 struct jdksavdecc_aem_command_set_mixer {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -19445,9 +18902,6 @@ jdksavdecc_aem_command_set_mixer_read(struct jdksavdecc_aem_command_set_mixer *p
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MIXER_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_mixer_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_mixer_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_mixer_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_mixer_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_mixer_get_descriptor_index(base, pos);
     }
@@ -19473,9 +18927,6 @@ jdksavdecc_aem_command_set_mixer_write(struct jdksavdecc_aem_command_set_mixer c
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MIXER_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_mixer_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_mixer_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_mixer_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_mixer_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_mixer_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -19659,9 +19110,6 @@ static inline void jdksavdecc_aem_command_set_mixer_response_set_descriptor_inde
 /// SET_MIXER Response - Clause 7.4.31.1
 struct jdksavdecc_aem_command_set_mixer_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -19688,9 +19136,6 @@ static inline ssize_t jdksavdecc_aem_command_set_mixer_response_read(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MIXER_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_mixer_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_mixer_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_mixer_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_mixer_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_mixer_response_get_descriptor_index(base, pos);
     }
@@ -19719,9 +19164,6 @@ static inline ssize_t jdksavdecc_aem_command_set_mixer_response_write(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MIXER_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_mixer_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_mixer_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_mixer_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_mixer_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_mixer_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -19902,9 +19344,6 @@ static inline void jdksavdecc_aem_command_get_mixer_set_descriptor_index(uint16_
 /// GET_MIXER Command - Clause 7.4.32.1
 struct jdksavdecc_aem_command_get_mixer {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -19928,9 +19367,6 @@ jdksavdecc_aem_command_get_mixer_read(struct jdksavdecc_aem_command_get_mixer *p
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MIXER_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_mixer_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_mixer_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_mixer_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_mixer_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_mixer_get_descriptor_index(base, pos);
     }
@@ -19956,9 +19392,6 @@ jdksavdecc_aem_command_get_mixer_write(struct jdksavdecc_aem_command_get_mixer c
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MIXER_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_mixer_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_mixer_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_mixer_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_mixer_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_mixer_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -20142,9 +19575,6 @@ static inline void jdksavdecc_aem_command_get_mixer_response_set_descriptor_inde
 /// GET_MIXER Response - Clause 7.4.32.2
 struct jdksavdecc_aem_command_get_mixer_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -20171,9 +19601,6 @@ static inline ssize_t jdksavdecc_aem_command_get_mixer_response_read(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MIXER_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_mixer_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_mixer_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_mixer_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_mixer_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_mixer_response_get_descriptor_index(base, pos);
     }
@@ -20202,9 +19629,6 @@ static inline ssize_t jdksavdecc_aem_command_get_mixer_response_write(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MIXER_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_mixer_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_mixer_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_mixer_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_mixer_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_mixer_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -20578,9 +20002,6 @@ static inline void jdksavdecc_aem_command_set_matrix_set_item_offset(uint16_t v,
 /// SET_MATRIX Command - Clause 7.4.33.1
 struct jdksavdecc_aem_command_set_matrix {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t matrix_column;
@@ -20611,9 +20032,6 @@ jdksavdecc_aem_command_set_matrix_read(struct jdksavdecc_aem_command_set_matrix 
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MATRIX_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_matrix_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_matrix_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_matrix_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_matrix_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_matrix_get_descriptor_index(base, pos);
         p->matrix_column = jdksavdecc_aem_command_set_matrix_get_matrix_column(base, pos);
@@ -20645,9 +20063,6 @@ jdksavdecc_aem_command_set_matrix_write(struct jdksavdecc_aem_command_set_matrix
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MATRIX_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_matrix_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_matrix_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_matrix_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_matrix_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_matrix_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_matrix_set_matrix_column(p->matrix_column, base, pos);
@@ -21028,9 +20443,6 @@ static inline void jdksavdecc_aem_command_set_matrix_response_set_item_offset(ui
 /// SET_MATRIX Response - Clause 7.4.33.2
 struct jdksavdecc_aem_command_set_matrix_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t matrix_column;
@@ -21063,9 +20475,6 @@ static inline ssize_t jdksavdecc_aem_command_set_matrix_response_read(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MATRIX_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_matrix_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_matrix_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_matrix_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_matrix_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_matrix_response_get_descriptor_index(base, pos);
         p->matrix_column = jdksavdecc_aem_command_set_matrix_response_get_matrix_column(base, pos);
@@ -21098,9 +20507,6 @@ static inline ssize_t jdksavdecc_aem_command_set_matrix_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MATRIX_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_matrix_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_matrix_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_matrix_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_matrix_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_matrix_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_matrix_response_set_matrix_column(p->matrix_column, base, pos);
@@ -21480,9 +20886,6 @@ static inline void jdksavdecc_aem_command_get_matrix_set_item_offset(uint16_t v,
 /// GET_MATRIX Command - Clause 7.4.34.1
 struct jdksavdecc_aem_command_get_matrix {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t matrix_column;
@@ -21513,9 +20916,6 @@ jdksavdecc_aem_command_get_matrix_read(struct jdksavdecc_aem_command_get_matrix 
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MATRIX_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_matrix_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_matrix_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_matrix_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_matrix_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_matrix_get_descriptor_index(base, pos);
         p->matrix_column = jdksavdecc_aem_command_get_matrix_get_matrix_column(base, pos);
@@ -21547,9 +20947,6 @@ jdksavdecc_aem_command_get_matrix_write(struct jdksavdecc_aem_command_get_matrix
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MATRIX_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_matrix_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_matrix_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_matrix_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_matrix_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_matrix_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_matrix_set_matrix_column(p->matrix_column, base, pos);
@@ -21930,9 +21327,6 @@ static inline void jdksavdecc_aem_command_get_matrix_response_set_item_offset(ui
 /// GET_MATRIX Response - Clause 7.4.34.2
 struct jdksavdecc_aem_command_get_matrix_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t matrix_column;
@@ -21965,9 +21359,6 @@ static inline ssize_t jdksavdecc_aem_command_get_matrix_response_read(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MATRIX_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_matrix_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_matrix_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_matrix_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_matrix_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_matrix_response_get_descriptor_index(base, pos);
         p->matrix_column = jdksavdecc_aem_command_get_matrix_response_get_matrix_column(base, pos);
@@ -22000,9 +21391,6 @@ static inline ssize_t jdksavdecc_aem_command_get_matrix_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MATRIX_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_matrix_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_matrix_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_matrix_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_matrix_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_matrix_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_matrix_response_set_matrix_column(p->matrix_column, base, pos);
@@ -22190,9 +21578,6 @@ static inline void jdksavdecc_aem_command_start_streaming_set_descriptor_index(u
 /// START_STREAMING Command - Clause 7.4.35.1
 struct jdksavdecc_aem_command_start_streaming {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -22219,9 +21604,6 @@ static inline ssize_t jdksavdecc_aem_command_start_streaming_read(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_START_STREAMING_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_start_streaming_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_start_streaming_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_start_streaming_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_start_streaming_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_start_streaming_get_descriptor_index(base, pos);
     }
@@ -22250,9 +21632,6 @@ static inline ssize_t jdksavdecc_aem_command_start_streaming_write(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_START_STREAMING_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_start_streaming_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_start_streaming_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_start_streaming_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_start_streaming_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_start_streaming_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -22436,9 +21815,6 @@ static inline void jdksavdecc_aem_command_start_streaming_response_set_descripto
 /// START_STREAMING Response - Clause 7.4.35.1
 struct jdksavdecc_aem_command_start_streaming_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -22463,9 +21839,6 @@ static inline ssize_t jdksavdecc_aem_command_start_streaming_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_START_STREAMING_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_start_streaming_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_start_streaming_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_start_streaming_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_start_streaming_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_start_streaming_response_get_descriptor_index(base, pos);
     }
@@ -22493,9 +21866,6 @@ static inline ssize_t jdksavdecc_aem_command_start_streaming_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_START_STREAMING_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_start_streaming_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_start_streaming_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_start_streaming_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_start_streaming_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_start_streaming_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -22679,9 +22049,6 @@ static inline void jdksavdecc_aem_command_stop_streaming_set_descriptor_index(ui
 /// STOP_STREAMING Command - Clause 7.4.36.1
 struct jdksavdecc_aem_command_stop_streaming {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -22708,9 +22075,6 @@ static inline ssize_t jdksavdecc_aem_command_stop_streaming_read(struct jdksavde
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_STOP_STREAMING_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_stop_streaming_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_stop_streaming_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_stop_streaming_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_stop_streaming_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_stop_streaming_get_descriptor_index(base, pos);
     }
@@ -22739,9 +22103,6 @@ static inline ssize_t jdksavdecc_aem_command_stop_streaming_write(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_STOP_STREAMING_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_stop_streaming_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_stop_streaming_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_stop_streaming_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_stop_streaming_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_stop_streaming_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -22923,9 +22284,6 @@ static inline void jdksavdecc_aem_command_stop_streaming_response_set_descriptor
 /// STOP_STREAMING Response - Clause 7.4.36.1
 struct jdksavdecc_aem_command_stop_streaming_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -22950,9 +22308,6 @@ static inline ssize_t jdksavdecc_aem_command_stop_streaming_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_STOP_STREAMING_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_stop_streaming_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_stop_streaming_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_stop_streaming_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_stop_streaming_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_stop_streaming_response_get_descriptor_index(base, pos);
     }
@@ -22980,9 +22335,6 @@ static inline ssize_t jdksavdecc_aem_command_stop_streaming_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_STOP_STREAMING_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_stop_streaming_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_stop_streaming_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_stop_streaming_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_stop_streaming_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_stop_streaming_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -23112,9 +22464,6 @@ jdksavdecc_aem_command_register_unsolicited_notification_set_command_type(uint16
 /// REGISTER_UNSOLICITED_NOTIFICATION Command - Clause 7.4.37.1
 struct jdksavdecc_aem_command_register_unsolicited_notification {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -23138,9 +22487,6 @@ static inline ssize_t jdksavdecc_aem_command_register_unsolicited_notification_r
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REGISTER_UNSOLICITED_NOTIFICATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_register_unsolicited_notification_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_register_unsolicited_notification_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_register_unsolicited_notification_get_command_type(base, pos);
     }
     return r;
 }
@@ -23166,9 +22512,6 @@ static inline ssize_t jdksavdecc_aem_command_register_unsolicited_notification_w
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REGISTER_UNSOLICITED_NOTIFICATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_register_unsolicited_notification_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_register_unsolicited_notification_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_register_unsolicited_notification_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -23300,9 +22643,6 @@ jdksavdecc_aem_command_register_unsolicited_notification_response_set_command_ty
 /// REGISTER_UNSOLICITED_NOTIFICATION Response - Clause 7.4.37.1
 struct jdksavdecc_aem_command_register_unsolicited_notification_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -23326,10 +22666,6 @@ static inline ssize_t jdksavdecc_aem_command_register_unsolicited_notification_r
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REGISTER_UNSOLICITED_NOTIFICATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id
-            = jdksavdecc_aem_command_register_unsolicited_notification_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_register_unsolicited_notification_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_register_unsolicited_notification_response_get_command_type(base, pos);
     }
     return r;
 }
@@ -23355,10 +22691,6 @@ static inline ssize_t jdksavdecc_aem_command_register_unsolicited_notification_r
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REGISTER_UNSOLICITED_NOTIFICATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_register_unsolicited_notification_response_set_controller_entity_id(
-            p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_register_unsolicited_notification_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_register_unsolicited_notification_response_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -23489,9 +22821,6 @@ jdksavdecc_aem_command_deregister_unsolicited_notification_set_command_type(uint
 /// DEREGISTER_UNSOLICITED_NOTIFICATION Command - Clause 7.4.38.1
 struct jdksavdecc_aem_command_deregister_unsolicited_notification {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -23515,10 +22844,6 @@ static inline ssize_t jdksavdecc_aem_command_deregister_unsolicited_notification
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DEREGISTER_UNSOLICITED_NOTIFICATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id
-            = jdksavdecc_aem_command_deregister_unsolicited_notification_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_deregister_unsolicited_notification_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_deregister_unsolicited_notification_get_command_type(base, pos);
     }
     return r;
 }
@@ -23544,9 +22869,6 @@ static inline ssize_t jdksavdecc_aem_command_deregister_unsolicited_notification
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DEREGISTER_UNSOLICITED_NOTIFICATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_deregister_unsolicited_notification_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_deregister_unsolicited_notification_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_deregister_unsolicited_notification_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -23682,9 +23004,6 @@ jdksavdecc_aem_command_deregister_unsolicited_notification_response_set_command_
 /// DEREGISTER_UNSOLICITED_NOTIFICATION Response - Clause 7.4.38.1
 struct jdksavdecc_aem_command_deregister_unsolicited_notification_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -23709,10 +23028,6 @@ static inline ssize_t jdksavdecc_aem_command_deregister_unsolicited_notification
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DEREGISTER_UNSOLICITED_NOTIFICATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id
-            = jdksavdecc_aem_command_deregister_unsolicited_notification_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_deregister_unsolicited_notification_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_deregister_unsolicited_notification_response_get_command_type(base, pos);
     }
     return r;
 }
@@ -23738,10 +23053,6 @@ static inline ssize_t jdksavdecc_aem_command_deregister_unsolicited_notification
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DEREGISTER_UNSOLICITED_NOTIFICATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_deregister_unsolicited_notification_response_set_controller_entity_id(
-            p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_deregister_unsolicited_notification_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_deregister_unsolicited_notification_response_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -23923,9 +23234,6 @@ static inline void jdksavdecc_aem_command_identify_notification_set_descriptor_i
 /// IDENTIFY_NOTIFICATION Unsolicited Response - Clause 7.4.39.1
 struct jdksavdecc_aem_command_identify_notification {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -23952,9 +23260,6 @@ static inline ssize_t jdksavdecc_aem_command_identify_notification_read(struct j
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_identify_notification_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_identify_notification_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_identify_notification_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_identify_notification_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_identify_notification_get_descriptor_index(base, pos);
     }
@@ -23982,9 +23287,6 @@ static inline ssize_t jdksavdecc_aem_command_identify_notification_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_identify_notification_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_identify_notification_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_identify_notification_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_identify_notification_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_identify_notification_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -24166,9 +23468,6 @@ static inline void jdksavdecc_aem_command_get_avb_info_set_descriptor_index(uint
 /// GET_AVB_INFO Command  - Clause 7.4.40.1
 struct jdksavdecc_aem_command_get_avb_info {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -24195,9 +23494,6 @@ static inline ssize_t jdksavdecc_aem_command_get_avb_info_read(struct jdksavdecc
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_avb_info_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_avb_info_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_avb_info_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_avb_info_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_avb_info_get_descriptor_index(base, pos);
     }
@@ -24225,9 +23521,6 @@ static inline ssize_t jdksavdecc_aem_command_get_avb_info_write(struct jdksavdec
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_avb_info_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_avb_info_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_avb_info_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_avb_info_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_avb_info_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -24539,9 +23832,6 @@ static inline void jdksavdecc_aem_command_get_avb_info_response_set_msrp_mapping
 /// GET_AVB_INFO Response  - Clause 7.4.40.2
 struct jdksavdecc_aem_command_get_avb_info_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     struct jdksavdecc_eui64 as_grandmaster_id;
@@ -24572,9 +23862,6 @@ static inline ssize_t jdksavdecc_aem_command_get_avb_info_response_read(struct j
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_avb_info_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_avb_info_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_avb_info_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_avb_info_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_avb_info_response_get_descriptor_index(base, pos);
         p->as_grandmaster_id = jdksavdecc_aem_command_get_avb_info_response_get_as_grandmaster_id(base, pos);
@@ -24606,9 +23893,6 @@ static inline ssize_t jdksavdecc_aem_command_get_avb_info_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_avb_info_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_avb_info_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_avb_info_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_avb_info_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_avb_info_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_avb_info_response_set_as_grandmaster_id(p->as_grandmaster_id, base, pos);
@@ -24794,9 +24078,6 @@ static inline void jdksavdecc_aem_command_get_as_path_set_reserved(uint16_t v, v
 /// GET_AS_PATH Command  - Clause 7.4.41.1
 struct jdksavdecc_aem_command_get_as_path {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_index;
     uint16_t reserved;
 };
@@ -24823,9 +24104,6 @@ static inline ssize_t jdksavdecc_aem_command_get_as_path_read(struct jdksavdecc_
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AS_PATH_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_as_path_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_as_path_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_as_path_get_command_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_as_path_get_descriptor_index(base, pos);
         p->reserved = jdksavdecc_aem_command_get_as_path_get_reserved(base, pos);
     }
@@ -24853,9 +24131,6 @@ static inline ssize_t jdksavdecc_aem_command_get_as_path_write(struct jdksavdecc
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AS_PATH_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_as_path_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_as_path_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_as_path_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_as_path_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_as_path_set_reserved(p->reserved, base, pos);
     }
@@ -25037,9 +24312,6 @@ static inline void jdksavdecc_aem_command_get_as_path_response_set_reserved(uint
 /// GET_AS_PATH Response  - Clause 7.4.41.2
 struct jdksavdecc_aem_command_get_as_path_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_index;
     uint16_t reserved;
 };
@@ -25066,9 +24338,6 @@ static inline ssize_t jdksavdecc_aem_command_get_as_path_response_read(struct jd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AS_PATH_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_as_path_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_as_path_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_as_path_response_get_command_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_as_path_response_get_descriptor_index(base, pos);
         p->reserved = jdksavdecc_aem_command_get_as_path_response_get_reserved(base, pos);
     }
@@ -25096,9 +24365,6 @@ static inline ssize_t jdksavdecc_aem_command_get_as_path_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AS_PATH_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_as_path_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_as_path_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_as_path_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_as_path_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_as_path_response_set_reserved(p->reserved, base, pos);
     }
@@ -25280,9 +24546,6 @@ static inline void jdksavdecc_aem_command_get_counters_set_descriptor_index(uint
 /// GET_COUNTERS Command  - Clause 7.4.42.1
 struct jdksavdecc_aem_command_get_counters {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -25309,9 +24572,6 @@ static inline ssize_t jdksavdecc_aem_command_get_counters_read(struct jdksavdecc
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_COUNTERS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_counters_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_counters_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_counters_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_counters_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_counters_get_descriptor_index(base, pos);
     }
@@ -25339,9 +24599,6 @@ static inline ssize_t jdksavdecc_aem_command_get_counters_write(struct jdksavdec
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_COUNTERS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_counters_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_counters_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_counters_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_counters_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_counters_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -25555,9 +24812,6 @@ static inline void jdksavdecc_aem_command_get_counters_response_set_counters_val
 /// GET_COUNTERS Response  - Clause 7.4.42.2
 struct jdksavdecc_aem_command_get_counters_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint32_t counters_valid;
@@ -25585,9 +24839,6 @@ static inline ssize_t jdksavdecc_aem_command_get_counters_response_read(struct j
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_COUNTERS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_counters_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_counters_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_counters_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_counters_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_counters_response_get_descriptor_index(base, pos);
         p->counters_valid = jdksavdecc_aem_command_get_counters_response_get_counters_valid(base, pos);
@@ -25616,9 +24867,6 @@ static inline ssize_t jdksavdecc_aem_command_get_counters_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_COUNTERS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_counters_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_counters_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_counters_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_counters_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_counters_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_counters_response_set_counters_valid(p->counters_valid, base, pos);
@@ -25799,9 +25047,6 @@ static inline void jdksavdecc_aem_command_reboot_set_descriptor_index(uint16_t v
 /// REBOOT Command  - Clause 7.4.43.1
 struct jdksavdecc_aem_command_reboot {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -25825,9 +25070,6 @@ jdksavdecc_aem_command_reboot_read(struct jdksavdecc_aem_command_reboot *p, void
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REBOOT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_reboot_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_reboot_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_reboot_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_reboot_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_reboot_get_descriptor_index(base, pos);
     }
@@ -25853,9 +25095,6 @@ jdksavdecc_aem_command_reboot_write(struct jdksavdecc_aem_command_reboot const *
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REBOOT_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_reboot_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_reboot_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_reboot_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_reboot_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_reboot_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -26037,9 +25276,6 @@ static inline void jdksavdecc_aem_command_reboot_response_set_descriptor_index(u
 /// REBOOT Response - Clause 7.4.43.1
 struct jdksavdecc_aem_command_reboot_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -26066,9 +25302,6 @@ static inline ssize_t jdksavdecc_aem_command_reboot_response_read(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REBOOT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_reboot_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_reboot_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_reboot_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_reboot_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_reboot_response_get_descriptor_index(base, pos);
     }
@@ -26097,9 +25330,6 @@ static inline ssize_t jdksavdecc_aem_command_reboot_response_write(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REBOOT_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_reboot_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_reboot_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_reboot_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_reboot_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_reboot_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -26347,9 +25577,6 @@ static inline void jdksavdecc_aem_command_get_audio_map_set_reserved(uint16_t v,
 /// GET_AUDIO_MAP Command  - Clause 7.4.44.1
 struct jdksavdecc_aem_command_get_audio_map {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t map_index;
@@ -26378,9 +25605,6 @@ static inline ssize_t jdksavdecc_aem_command_get_audio_map_read(struct jdksavdec
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AUDIO_MAP_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_audio_map_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_audio_map_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_audio_map_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_audio_map_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_audio_map_get_descriptor_index(base, pos);
         p->map_index = jdksavdecc_aem_command_get_audio_map_get_map_index(base, pos);
@@ -26410,9 +25634,6 @@ static inline ssize_t jdksavdecc_aem_command_get_audio_map_write(struct jdksavde
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AUDIO_MAP_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_audio_map_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_audio_map_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_audio_map_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_audio_map_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_audio_map_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_audio_map_set_map_index(p->map_index, base, pos);
@@ -26724,9 +25945,6 @@ static inline void jdksavdecc_aem_command_get_audio_map_response_set_reserved(ui
 /// GET_AUDIO_MAP Response  - Clause 7.4.44.2
 struct jdksavdecc_aem_command_get_audio_map_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t map_index;
@@ -26755,9 +25973,6 @@ static inline ssize_t jdksavdecc_aem_command_get_audio_map_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AUDIO_MAP_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_audio_map_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_audio_map_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_audio_map_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_audio_map_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_audio_map_response_get_descriptor_index(base, pos);
         p->map_index = jdksavdecc_aem_command_get_audio_map_response_get_map_index(base, pos);
@@ -26789,9 +26004,6 @@ static inline ssize_t jdksavdecc_aem_command_get_audio_map_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_AUDIO_MAP_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_audio_map_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_audio_map_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_audio_map_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_audio_map_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_audio_map_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_audio_map_response_set_map_index(p->map_index, base, pos);
@@ -27041,9 +26253,6 @@ static inline void jdksavdecc_aem_command_add_audio_mappings_set_reserved(uint16
 /// ADD_AUDIO_MAPPINGS Command  - Clause 7.4.45.1
 struct jdksavdecc_aem_command_add_audio_mappings {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -27072,9 +26281,6 @@ static inline ssize_t jdksavdecc_aem_command_add_audio_mappings_read(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_AUDIO_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_add_audio_mappings_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_add_audio_mappings_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_add_audio_mappings_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_add_audio_mappings_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_add_audio_mappings_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_add_audio_mappings_get_number_of_mappings(base, pos);
@@ -27105,9 +26311,6 @@ static inline ssize_t jdksavdecc_aem_command_add_audio_mappings_write(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_AUDIO_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_add_audio_mappings_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_add_audio_mappings_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_add_audio_mappings_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_add_audio_mappings_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_add_audio_mappings_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_add_audio_mappings_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -27362,9 +26565,6 @@ static inline void jdksavdecc_aem_command_add_audio_mappings_response_set_reserv
 /// ADD_AUDIO_MAPPINGS Response  - Clause 7.4.45.1
 struct jdksavdecc_aem_command_add_audio_mappings_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -27391,9 +26591,6 @@ static inline ssize_t jdksavdecc_aem_command_add_audio_mappings_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_AUDIO_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_add_audio_mappings_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_add_audio_mappings_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_add_audio_mappings_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_add_audio_mappings_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_add_audio_mappings_response_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_add_audio_mappings_response_get_number_of_mappings(base, pos);
@@ -27423,9 +26620,6 @@ static inline ssize_t jdksavdecc_aem_command_add_audio_mappings_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_AUDIO_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_add_audio_mappings_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_add_audio_mappings_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_add_audio_mappings_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_add_audio_mappings_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_add_audio_mappings_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_add_audio_mappings_response_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -27675,9 +26869,6 @@ static inline void jdksavdecc_aem_command_remove_audio_mappings_set_reserved(uin
 /// REMOVE_AUDIO_MAPPINGS Command  - Clause 7.4.46.1
 struct jdksavdecc_aem_command_remove_audio_mappings {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -27706,9 +26897,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_audio_mappings_read(struct j
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_AUDIO_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_remove_audio_mappings_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_remove_audio_mappings_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_remove_audio_mappings_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_remove_audio_mappings_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_remove_audio_mappings_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_remove_audio_mappings_get_number_of_mappings(base, pos);
@@ -27738,9 +26926,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_audio_mappings_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_AUDIO_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_remove_audio_mappings_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_remove_audio_mappings_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_remove_audio_mappings_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_remove_audio_mappings_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_remove_audio_mappings_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_remove_audio_mappings_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -28000,9 +27185,6 @@ static inline void jdksavdecc_aem_command_remove_audio_mappings_response_set_res
 /// REMOVE_AUDIO_MAPPINGS Response  - Clause 7.4.46.1
 struct jdksavdecc_aem_command_remove_audio_mappings_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -28030,9 +27212,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_audio_mappings_response_read
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_AUDIO_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_remove_audio_mappings_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_remove_audio_mappings_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_remove_audio_mappings_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_remove_audio_mappings_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_remove_audio_mappings_response_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_remove_audio_mappings_response_get_number_of_mappings(base, pos);
@@ -28062,9 +27241,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_audio_mappings_response_writ
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_AUDIO_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_remove_audio_mappings_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_remove_audio_mappings_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_remove_audio_mappings_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_remove_audio_mappings_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_remove_audio_mappings_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_remove_audio_mappings_response_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -28314,9 +27490,6 @@ static inline void jdksavdecc_aem_command_get_video_map_set_reserved(uint16_t v,
 /// GET_VIDEO_MAP Command  - Clause 7.4.47.1
 struct jdksavdecc_aem_command_get_video_map {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t map_index;
@@ -28345,9 +27518,6 @@ static inline ssize_t jdksavdecc_aem_command_get_video_map_read(struct jdksavdec
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_VIDEO_MAP_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_video_map_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_video_map_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_video_map_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_video_map_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_video_map_get_descriptor_index(base, pos);
         p->map_index = jdksavdecc_aem_command_get_video_map_get_map_index(base, pos);
@@ -28377,9 +27547,6 @@ static inline ssize_t jdksavdecc_aem_command_get_video_map_write(struct jdksavde
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_VIDEO_MAP_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_video_map_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_video_map_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_video_map_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_video_map_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_video_map_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_video_map_set_map_index(p->map_index, base, pos);
@@ -28691,9 +27858,6 @@ static inline void jdksavdecc_aem_command_get_video_map_response_set_reserved(ui
 /// GET_VIDEO_MAP Response  - Clause 7.4.47.2
 struct jdksavdecc_aem_command_get_video_map_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t map_index;
@@ -28722,9 +27886,6 @@ static inline ssize_t jdksavdecc_aem_command_get_video_map_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_VIDEO_MAP_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_video_map_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_video_map_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_video_map_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_video_map_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_video_map_response_get_descriptor_index(base, pos);
         p->map_index = jdksavdecc_aem_command_get_video_map_response_get_map_index(base, pos);
@@ -28756,9 +27917,6 @@ static inline ssize_t jdksavdecc_aem_command_get_video_map_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_VIDEO_MAP_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_video_map_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_video_map_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_video_map_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_video_map_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_video_map_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_video_map_response_set_map_index(p->map_index, base, pos);
@@ -29008,9 +28166,6 @@ static inline void jdksavdecc_aem_command_add_video_mappings_set_reserved(uint16
 /// ADD_VIDEO_MAPPINGS Command  - Clause 7.4.48.1
 struct jdksavdecc_aem_command_add_video_mappings {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -29039,9 +28194,6 @@ static inline ssize_t jdksavdecc_aem_command_add_video_mappings_read(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_VIDEO_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_add_video_mappings_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_add_video_mappings_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_add_video_mappings_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_add_video_mappings_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_add_video_mappings_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_add_video_mappings_get_number_of_mappings(base, pos);
@@ -29072,9 +28224,6 @@ static inline ssize_t jdksavdecc_aem_command_add_video_mappings_write(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_VIDEO_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_add_video_mappings_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_add_video_mappings_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_add_video_mappings_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_add_video_mappings_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_add_video_mappings_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_add_video_mappings_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -29329,9 +28478,6 @@ static inline void jdksavdecc_aem_command_add_video_mappings_response_set_reserv
 /// ADD_VIDEO_MAPPINGS Response  - Clause 7.4.48.1
 struct jdksavdecc_aem_command_add_video_mappings_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -29358,9 +28504,6 @@ static inline ssize_t jdksavdecc_aem_command_add_video_mappings_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_VIDEO_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_add_video_mappings_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_add_video_mappings_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_add_video_mappings_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_add_video_mappings_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_add_video_mappings_response_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_add_video_mappings_response_get_number_of_mappings(base, pos);
@@ -29390,9 +28533,6 @@ static inline ssize_t jdksavdecc_aem_command_add_video_mappings_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_VIDEO_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_add_video_mappings_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_add_video_mappings_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_add_video_mappings_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_add_video_mappings_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_add_video_mappings_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_add_video_mappings_response_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -29642,9 +28782,6 @@ static inline void jdksavdecc_aem_command_remove_video_mappings_set_reserved(uin
 /// REMOVE_VIDEO_MAPPINGS Command  - Clause 7.4.49.1
 struct jdksavdecc_aem_command_remove_video_mappings {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -29673,9 +28810,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_video_mappings_read(struct j
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_VIDEO_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_remove_video_mappings_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_remove_video_mappings_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_remove_video_mappings_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_remove_video_mappings_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_remove_video_mappings_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_remove_video_mappings_get_number_of_mappings(base, pos);
@@ -29705,9 +28839,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_video_mappings_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_VIDEO_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_remove_video_mappings_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_remove_video_mappings_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_remove_video_mappings_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_remove_video_mappings_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_remove_video_mappings_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_remove_video_mappings_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -29967,9 +29098,6 @@ static inline void jdksavdecc_aem_command_remove_video_mappings_response_set_res
 /// REMOVE_VIDEO_MAPPINGS Response  - Clause 7.4.49.1
 struct jdksavdecc_aem_command_remove_video_mappings_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -29997,9 +29125,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_video_mappings_response_read
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_VIDEO_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_remove_video_mappings_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_remove_video_mappings_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_remove_video_mappings_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_remove_video_mappings_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_remove_video_mappings_response_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_remove_video_mappings_response_get_number_of_mappings(base, pos);
@@ -30029,9 +29154,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_video_mappings_response_writ
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_VIDEO_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_remove_video_mappings_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_remove_video_mappings_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_remove_video_mappings_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_remove_video_mappings_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_remove_video_mappings_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_remove_video_mappings_response_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -30281,9 +29403,6 @@ static inline void jdksavdecc_aem_command_get_sensor_map_set_reserved(uint16_t v
 /// GET_SENSOR_MAP Command  - Clause 7.4.50.1
 struct jdksavdecc_aem_command_get_sensor_map {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t map_index;
@@ -30312,9 +29431,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sensor_map_read(struct jdksavde
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SENSOR_MAP_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_sensor_map_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_sensor_map_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_sensor_map_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_sensor_map_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_sensor_map_get_descriptor_index(base, pos);
         p->map_index = jdksavdecc_aem_command_get_sensor_map_get_map_index(base, pos);
@@ -30345,9 +29461,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sensor_map_write(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SENSOR_MAP_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_sensor_map_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_sensor_map_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_sensor_map_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_sensor_map_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_sensor_map_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_sensor_map_set_map_index(p->map_index, base, pos);
@@ -30661,9 +29774,6 @@ static inline void jdksavdecc_aem_command_get_sensor_map_response_set_reserved(u
 /// GET_SENSOR_MAP Response  - Clause 7.4.50.2
 struct jdksavdecc_aem_command_get_sensor_map_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t map_index;
@@ -30692,9 +29802,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sensor_map_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SENSOR_MAP_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_sensor_map_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_sensor_map_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_sensor_map_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_sensor_map_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_sensor_map_response_get_descriptor_index(base, pos);
         p->map_index = jdksavdecc_aem_command_get_sensor_map_response_get_map_index(base, pos);
@@ -30726,9 +29833,6 @@ static inline ssize_t jdksavdecc_aem_command_get_sensor_map_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_SENSOR_MAP_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_sensor_map_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_sensor_map_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_sensor_map_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_sensor_map_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_sensor_map_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_sensor_map_response_set_map_index(p->map_index, base, pos);
@@ -30980,9 +30084,6 @@ static inline void jdksavdecc_aem_command_add_sensor_mappings_set_reserved(uint1
 /// ADD_SENSOR_MAPPINGS Command  - Clause 7.4.51.1
 struct jdksavdecc_aem_command_add_sensor_mappings {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -31011,9 +30112,6 @@ static inline ssize_t jdksavdecc_aem_command_add_sensor_mappings_read(struct jdk
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_SENSOR_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_add_sensor_mappings_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_add_sensor_mappings_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_add_sensor_mappings_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_add_sensor_mappings_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_add_sensor_mappings_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_add_sensor_mappings_get_number_of_mappings(base, pos);
@@ -31042,9 +30140,6 @@ static inline ssize_t jdksavdecc_aem_command_add_sensor_mappings_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_SENSOR_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_add_sensor_mappings_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_add_sensor_mappings_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_add_sensor_mappings_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_add_sensor_mappings_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_add_sensor_mappings_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_add_sensor_mappings_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -31301,9 +30396,6 @@ static inline void jdksavdecc_aem_command_add_sensor_mappings_response_set_reser
 /// ADD_SENSOR_MAPPINGS Response  - Clause 7.4.51.1
 struct jdksavdecc_aem_command_add_sensor_mappings_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -31331,9 +30423,6 @@ static inline ssize_t jdksavdecc_aem_command_add_sensor_mappings_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_SENSOR_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_add_sensor_mappings_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_add_sensor_mappings_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_add_sensor_mappings_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_add_sensor_mappings_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_add_sensor_mappings_response_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_add_sensor_mappings_response_get_number_of_mappings(base, pos);
@@ -31363,9 +30452,6 @@ static inline ssize_t jdksavdecc_aem_command_add_sensor_mappings_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ADD_SENSOR_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_add_sensor_mappings_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_add_sensor_mappings_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_add_sensor_mappings_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_add_sensor_mappings_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_add_sensor_mappings_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_add_sensor_mappings_response_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -31615,9 +30701,6 @@ static inline void jdksavdecc_aem_command_remove_sensor_mappings_set_reserved(ui
 /// REMOVE_SENSOR_MAPPINGS Command  - Clause 7.4.52.1
 struct jdksavdecc_aem_command_remove_sensor_mappings {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -31644,9 +30727,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_sensor_mappings_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_SENSOR_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_remove_sensor_mappings_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_remove_sensor_mappings_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_remove_sensor_mappings_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_remove_sensor_mappings_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_remove_sensor_mappings_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_remove_sensor_mappings_get_number_of_mappings(base, pos);
@@ -31676,9 +30756,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_sensor_mappings_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_SENSOR_MAPPINGS_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_remove_sensor_mappings_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_remove_sensor_mappings_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_remove_sensor_mappings_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_remove_sensor_mappings_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_remove_sensor_mappings_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_remove_sensor_mappings_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -31940,9 +31017,6 @@ static inline void jdksavdecc_aem_command_remove_sensor_mappings_response_set_re
 /// REMOVE_SENSOR_MAPPINGS Response  - Clause 7.4.52.1
 struct jdksavdecc_aem_command_remove_sensor_mappings_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t number_of_mappings;
@@ -31970,9 +31044,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_sensor_mappings_response_rea
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_SENSOR_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_remove_sensor_mappings_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_remove_sensor_mappings_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_remove_sensor_mappings_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_remove_sensor_mappings_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_remove_sensor_mappings_response_get_descriptor_index(base, pos);
         p->number_of_mappings = jdksavdecc_aem_command_remove_sensor_mappings_response_get_number_of_mappings(base, pos);
@@ -32002,9 +31073,6 @@ static inline ssize_t jdksavdecc_aem_command_remove_sensor_mappings_response_wri
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_REMOVE_SENSOR_MAPPINGS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_remove_sensor_mappings_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_remove_sensor_mappings_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_remove_sensor_mappings_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_remove_sensor_mappings_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_remove_sensor_mappings_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_remove_sensor_mappings_response_set_number_of_mappings(p->number_of_mappings, base, pos);
@@ -32252,9 +31320,6 @@ static inline void jdksavdecc_aem_command_start_operation_set_operation_type(uin
 /// START_OPERATION Command  - Clause 7.4.53.1
 struct jdksavdecc_aem_command_start_operation {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t operation_id;
@@ -32283,9 +31348,6 @@ static inline ssize_t jdksavdecc_aem_command_start_operation_read(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_START_OPERATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_start_operation_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_start_operation_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_start_operation_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_start_operation_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_start_operation_get_descriptor_index(base, pos);
         p->operation_id = jdksavdecc_aem_command_start_operation_get_operation_id(base, pos);
@@ -32316,9 +31378,6 @@ static inline ssize_t jdksavdecc_aem_command_start_operation_write(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_START_OPERATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_start_operation_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_start_operation_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_start_operation_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_start_operation_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_start_operation_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_start_operation_set_operation_id(p->operation_id, base, pos);
@@ -32568,9 +31627,6 @@ static inline void jdksavdecc_aem_command_start_operation_response_set_operation
 /// START_OPERATION Response  - Clause 7.4.53.1
 struct jdksavdecc_aem_command_start_operation_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t operation_id;
@@ -32597,9 +31653,6 @@ static inline ssize_t jdksavdecc_aem_command_start_operation_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_START_OPERATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_start_operation_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_start_operation_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_start_operation_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_start_operation_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_start_operation_response_get_descriptor_index(base, pos);
         p->operation_id = jdksavdecc_aem_command_start_operation_response_get_operation_id(base, pos);
@@ -32629,9 +31682,6 @@ static inline ssize_t jdksavdecc_aem_command_start_operation_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_START_OPERATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_start_operation_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_start_operation_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_start_operation_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_start_operation_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_start_operation_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_start_operation_response_set_operation_id(p->operation_id, base, pos);
@@ -32879,9 +31929,6 @@ static inline void jdksavdecc_aem_command_abort_operation_set_reserved(uint16_t 
 /// ABORT_OPERATION Command  - Clause 7.4.54.1
 struct jdksavdecc_aem_command_abort_operation {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t operation_id;
@@ -32910,9 +31957,6 @@ static inline ssize_t jdksavdecc_aem_command_abort_operation_read(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ABORT_OPERATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_abort_operation_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_abort_operation_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_abort_operation_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_abort_operation_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_abort_operation_get_descriptor_index(base, pos);
         p->operation_id = jdksavdecc_aem_command_abort_operation_get_operation_id(base, pos);
@@ -32943,9 +31987,6 @@ static inline ssize_t jdksavdecc_aem_command_abort_operation_write(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ABORT_OPERATION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_abort_operation_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_abort_operation_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_abort_operation_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_abort_operation_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_abort_operation_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_abort_operation_set_operation_id(p->operation_id, base, pos);
@@ -33195,9 +32236,6 @@ static inline void jdksavdecc_aem_command_abort_operation_response_set_reserved(
 /// ABORT_OPERATION Response  - Clause 7.4.54.1
 struct jdksavdecc_aem_command_abort_operation_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t operation_id;
@@ -33224,9 +32262,6 @@ static inline ssize_t jdksavdecc_aem_command_abort_operation_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ABORT_OPERATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_abort_operation_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_abort_operation_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_abort_operation_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_abort_operation_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_abort_operation_response_get_descriptor_index(base, pos);
         p->operation_id = jdksavdecc_aem_command_abort_operation_response_get_operation_id(base, pos);
@@ -33256,9 +32291,6 @@ static inline ssize_t jdksavdecc_aem_command_abort_operation_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ABORT_OPERATION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_abort_operation_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_abort_operation_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_abort_operation_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_abort_operation_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_abort_operation_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_abort_operation_response_set_operation_id(p->operation_id, base, pos);
@@ -33508,9 +32540,6 @@ static inline void jdksavdecc_aem_command_operation_status_response_set_percent_
 /// OPERATION_STATUS Unsolicited Response  - Clause 7.4.55.1
 struct jdksavdecc_aem_command_operation_status_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t operation_id;
@@ -33537,9 +32566,6 @@ static inline ssize_t jdksavdecc_aem_command_operation_status_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_OPERATION_STATUS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_operation_status_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_operation_status_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_operation_status_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_operation_status_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_operation_status_response_get_descriptor_index(base, pos);
         p->operation_id = jdksavdecc_aem_command_operation_status_response_get_operation_id(base, pos);
@@ -33569,9 +32595,6 @@ static inline ssize_t jdksavdecc_aem_command_operation_status_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_OPERATION_STATUS_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_operation_status_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_operation_status_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_operation_status_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_operation_status_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_operation_status_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_operation_status_response_set_operation_id(p->operation_id, base, pos);
@@ -33787,9 +32810,6 @@ static inline void jdksavdecc_aem_command_auth_add_key_set_reserved(uint16_t v, 
 /// AUTH_ADD_KEY Command  - Clause 7.4.56.1
 struct jdksavdecc_aem_command_auth_add_key {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 key_id;
     uint16_t key_type_key_length;
     uint16_t reserved;
@@ -33817,9 +32837,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_read(struct jdksavdecc
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_add_key_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_add_key_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_add_key_get_command_type(base, pos);
         p->key_id = jdksavdecc_aem_command_auth_add_key_get_key_id(base, pos);
         p->key_type_key_length = jdksavdecc_aem_command_auth_add_key_get_key_type_key_length(base, pos);
         p->reserved = jdksavdecc_aem_command_auth_add_key_get_reserved(base, pos);
@@ -33848,9 +32865,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_write(struct jdksavdec
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_add_key_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_add_key_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_add_key_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_add_key_set_key_id(p->key_id, base, pos);
         jdksavdecc_aem_command_auth_add_key_set_key_type_key_length(p->key_type_key_length, base, pos);
         jdksavdecc_aem_command_auth_add_key_set_reserved(p->reserved, base, pos);
@@ -34001,9 +33015,6 @@ static inline void jdksavdecc_aem_command_auth_add_key_response_set_key_id(struc
 /// AUTH_ADD_KEY Response  - Clause 7.4.56.2
 struct jdksavdecc_aem_command_auth_add_key_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 key_id;
 };
 
@@ -34029,9 +33040,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_response_read(struct j
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_add_key_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_add_key_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_add_key_response_get_command_type(base, pos);
         p->key_id = jdksavdecc_aem_command_auth_add_key_response_get_key_id(base, pos);
     }
     return r;
@@ -34058,9 +33066,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_add_key_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_add_key_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_add_key_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_add_key_response_set_key_id(p->key_id, base, pos);
     }
     return r;
@@ -34209,9 +33214,6 @@ static inline void jdksavdecc_aem_command_auth_delete_key_set_key_id(struct jdks
 /// AUTH_DELETE_KEY Command  - Clause 7.4.57.1
 struct jdksavdecc_aem_command_auth_delete_key {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 key_id;
 };
 
@@ -34237,9 +33239,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_read(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_delete_key_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_delete_key_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_delete_key_get_command_type(base, pos);
         p->key_id = jdksavdecc_aem_command_auth_delete_key_get_key_id(base, pos);
     }
     return r;
@@ -34267,9 +33266,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_write(struct jdksav
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_delete_key_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_key_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_key_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_delete_key_set_key_id(p->key_id, base, pos);
     }
     return r;
@@ -34422,9 +33418,6 @@ jdksavdecc_aem_command_auth_delete_key_response_set_key_id(struct jdksavdecc_eui
 /// AUTH_DELETE_KEY Response  - Clause 7.4.57.1
 struct jdksavdecc_aem_command_auth_delete_key_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 key_id;
 };
 
@@ -34448,9 +33441,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_delete_key_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_delete_key_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_delete_key_response_get_command_type(base, pos);
         p->key_id = jdksavdecc_aem_command_auth_delete_key_response_get_key_id(base, pos);
     }
     return r;
@@ -34477,9 +33467,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_delete_key_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_key_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_key_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_delete_key_response_set_key_id(p->key_id, base, pos);
     }
     return r;
@@ -34628,9 +33615,6 @@ static inline void jdksavdecc_aem_command_auth_get_key_list_set_keychainid_reser
 /// AUTH_GET_KEY_LIST Command  - Clause 7.4.58.1
 struct jdksavdecc_aem_command_auth_get_key_list {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t keychainid_reserved;
 };
 
@@ -34656,9 +33640,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_list_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_LIST_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_get_key_list_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_get_key_list_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_get_key_list_get_command_type(base, pos);
         p->keychainid_reserved = jdksavdecc_aem_command_auth_get_key_list_get_keychainid_reserved(base, pos);
     }
     return r;
@@ -34686,9 +33667,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_list_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_LIST_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_get_key_list_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_get_key_list_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_get_key_list_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_get_key_list_set_keychainid_reserved(p->keychainid_reserved, base, pos);
     }
     return r;
@@ -34875,9 +33853,6 @@ static inline void jdksavdecc_aem_command_auth_get_key_list_response_set_reserve
 /// AUTH_GET_KEY_LIST Response  - Clause 7.4.58.2
 struct jdksavdecc_aem_command_auth_get_key_list_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t keychainid_number_of_keys;
     uint16_t reserved;
 };
@@ -34902,9 +33877,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_list_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_LIST_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_get_key_list_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_get_key_list_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_get_key_list_response_get_command_type(base, pos);
         p->keychainid_number_of_keys
             = jdksavdecc_aem_command_auth_get_key_list_response_get_keychainid_number_of_keys(base, pos);
         p->reserved = jdksavdecc_aem_command_auth_get_key_list_response_get_reserved(base, pos);
@@ -34933,9 +33905,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_list_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_LIST_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_get_key_list_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_get_key_list_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_get_key_list_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_get_key_list_response_set_keychainid_number_of_keys(
             p->keychainid_number_of_keys, base, pos);
         jdksavdecc_aem_command_auth_get_key_list_response_set_reserved(p->reserved, base, pos);
@@ -35086,9 +34055,6 @@ static inline void jdksavdecc_aem_command_auth_get_key_set_key_id(struct jdksavd
 /// AUTH_GET_KEY Command  - Clause 7.4.59.1
 struct jdksavdecc_aem_command_auth_get_key {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 key_id;
 };
 
@@ -35114,9 +34080,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_read(struct jdksavdecc
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_get_key_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_get_key_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_get_key_get_command_type(base, pos);
         p->key_id = jdksavdecc_aem_command_auth_get_key_get_key_id(base, pos);
     }
     return r;
@@ -35143,9 +34106,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_write(struct jdksavdec
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_get_key_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_get_key_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_get_key_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_get_key_set_key_id(p->key_id, base, pos);
     }
     return r;
@@ -35358,9 +34318,6 @@ static inline void jdksavdecc_aem_command_auth_get_key_response_set_reserved(uin
 /// AUTH_GET_KEY Response  - Clause 7.4.59.2
 struct jdksavdecc_aem_command_auth_get_key_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 key_id;
     uint16_t key_type_key_length;
     uint16_t reserved;
@@ -35388,9 +34345,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_response_read(struct j
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_get_key_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_get_key_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_get_key_response_get_command_type(base, pos);
         p->key_id = jdksavdecc_aem_command_auth_get_key_response_get_key_id(base, pos);
         p->key_type_key_length = jdksavdecc_aem_command_auth_get_key_response_get_key_type_key_length(base, pos);
         p->reserved = jdksavdecc_aem_command_auth_get_key_response_get_reserved(base, pos);
@@ -35419,9 +34373,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_key_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_get_key_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_get_key_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_get_key_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_get_key_response_set_key_id(p->key_id, base, pos);
         jdksavdecc_aem_command_auth_get_key_response_set_key_type_key_length(p->key_type_key_length, base, pos);
         jdksavdecc_aem_command_auth_get_key_response_set_reserved(p->reserved, base, pos);
@@ -35638,9 +34589,6 @@ static inline void jdksavdecc_aem_command_auth_add_key_to_chain_set_key_id(struc
 /// AUTH_ADD_KEY_TO_CHAIN Command  - Clause 7.4.60.1
 struct jdksavdecc_aem_command_auth_add_key_to_chain {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t keychain_id;
     uint16_t reserved;
     struct jdksavdecc_eui64 key_id;
@@ -35668,9 +34616,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_to_chain_read(struct j
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_add_key_to_chain_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_add_key_to_chain_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_add_key_to_chain_get_command_type(base, pos);
         p->keychain_id = jdksavdecc_aem_command_auth_add_key_to_chain_get_keychain_id(base, pos);
         p->reserved = jdksavdecc_aem_command_auth_add_key_to_chain_get_reserved(base, pos);
         p->key_id = jdksavdecc_aem_command_auth_add_key_to_chain_get_key_id(base, pos);
@@ -35699,9 +34644,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_to_chain_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_add_key_to_chain_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_add_key_to_chain_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_add_key_to_chain_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_add_key_to_chain_set_keychain_id(p->keychain_id, base, pos);
         jdksavdecc_aem_command_auth_add_key_to_chain_set_reserved(p->reserved, base, pos);
         jdksavdecc_aem_command_auth_add_key_to_chain_set_key_id(p->key_id, base, pos);
@@ -35922,9 +34864,6 @@ jdksavdecc_aem_command_auth_add_key_to_chain_response_set_key_id(struct jdksavde
 /// AUTH_ADD_KEY_TO_CHAIN Response  - Clause 7.4.60.1
 struct jdksavdecc_aem_command_auth_add_key_to_chain_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t keychain_id;
     uint16_t reserved;
     struct jdksavdecc_eui64 key_id;
@@ -35951,9 +34890,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_to_chain_response_read
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_command_type(base, pos);
         p->keychain_id = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_keychain_id(base, pos);
         p->reserved = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_reserved(base, pos);
         p->key_id = jdksavdecc_aem_command_auth_add_key_to_chain_response_get_key_id(base, pos);
@@ -35982,9 +34918,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_key_to_chain_response_writ
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_KEY_TO_CHAIN_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_add_key_to_chain_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_add_key_to_chain_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_add_key_to_chain_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_add_key_to_chain_response_set_keychain_id(p->keychain_id, base, pos);
         jdksavdecc_aem_command_auth_add_key_to_chain_response_set_reserved(p->reserved, base, pos);
         jdksavdecc_aem_command_auth_add_key_to_chain_response_set_key_id(p->key_id, base, pos);
@@ -36204,9 +35137,6 @@ jdksavdecc_aem_command_auth_delete_key_from_chain_set_key_id(struct jdksavdecc_e
 /// AUTH_DELETE_KEY_FROM_CHAIN Command  - Clause 7.4.61.1
 struct jdksavdecc_aem_command_auth_delete_key_from_chain {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t keychain_id;
     uint16_t reserved;
     struct jdksavdecc_eui64 key_id;
@@ -36232,9 +35162,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_from_chain_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_delete_key_from_chain_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_delete_key_from_chain_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_delete_key_from_chain_get_command_type(base, pos);
         p->keychain_id = jdksavdecc_aem_command_auth_delete_key_from_chain_get_keychain_id(base, pos);
         p->reserved = jdksavdecc_aem_command_auth_delete_key_from_chain_get_reserved(base, pos);
         p->key_id = jdksavdecc_aem_command_auth_delete_key_from_chain_get_key_id(base, pos);
@@ -36263,9 +35190,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_from_chain_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_delete_key_from_chain_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_key_from_chain_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_key_from_chain_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_delete_key_from_chain_set_keychain_id(p->keychain_id, base, pos);
         jdksavdecc_aem_command_auth_delete_key_from_chain_set_reserved(p->reserved, base, pos);
         jdksavdecc_aem_command_auth_delete_key_from_chain_set_key_id(p->key_id, base, pos);
@@ -36497,9 +35421,6 @@ jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_key_id(struct jdk
 /// AUTH_DELETE_KEY_FROM_CHAIN Response  - Clause 7.4.61.1
 struct jdksavdecc_aem_command_auth_delete_key_from_chain_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t keychain_id;
     uint16_t reserved;
     struct jdksavdecc_eui64 key_id;
@@ -36526,10 +35447,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_from_chain_response
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id
-            = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_command_type(base, pos);
         p->keychain_id = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_keychain_id(base, pos);
         p->reserved = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_reserved(base, pos);
         p->key_id = jdksavdecc_aem_command_auth_delete_key_from_chain_response_get_key_id(base, pos);
@@ -36558,9 +35475,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_key_from_chain_response
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_KEY_FROM_CHAIN_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_keychain_id(p->keychain_id, base, pos);
         jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_reserved(p->reserved, base, pos);
         jdksavdecc_aem_command_auth_delete_key_from_chain_response_set_key_id(p->key_id, base, pos);
@@ -36745,9 +35659,6 @@ static inline void jdksavdecc_aem_command_auth_get_keychain_list_set_list_index(
 /// AUTH_GET_KEYCHAIN_LIST Command  - Clause 7.4.62.1
 struct jdksavdecc_aem_command_auth_get_keychain_list {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t keychain_id;
     uint16_t list_index;
 };
@@ -36772,9 +35683,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_keychain_list_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEYCHAIN_LIST_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_get_keychain_list_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_get_keychain_list_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_get_keychain_list_get_command_type(base, pos);
         p->keychain_id = jdksavdecc_aem_command_auth_get_keychain_list_get_keychain_id(base, pos);
         p->list_index = jdksavdecc_aem_command_auth_get_keychain_list_get_list_index(base, pos);
     }
@@ -36802,9 +35710,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_keychain_list_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEYCHAIN_LIST_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_get_keychain_list_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_get_keychain_list_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_get_keychain_list_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_get_keychain_list_set_keychain_id(p->keychain_id, base, pos);
         jdksavdecc_aem_command_auth_get_keychain_list_set_list_index(p->list_index, base, pos);
     }
@@ -37060,9 +35965,6 @@ jdksavdecc_aem_command_auth_get_keychain_list_response_set_number_of_keys(uint16
 /// AUTH_GET_KEYCHAIN_LIST Response  - Clause 7.4.62.2
 struct jdksavdecc_aem_command_auth_get_keychain_list_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t keychain_id;
     uint16_t list_index;
     uint16_t number_of_lists;
@@ -37090,9 +35992,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_keychain_list_response_rea
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEYCHAIN_LIST_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_get_keychain_list_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_get_keychain_list_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_get_keychain_list_response_get_command_type(base, pos);
         p->keychain_id = jdksavdecc_aem_command_auth_get_keychain_list_response_get_keychain_id(base, pos);
         p->list_index = jdksavdecc_aem_command_auth_get_keychain_list_response_get_list_index(base, pos);
         p->number_of_lists = jdksavdecc_aem_command_auth_get_keychain_list_response_get_number_of_lists(base, pos);
@@ -37122,9 +36021,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_keychain_list_response_wri
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_KEYCHAIN_LIST_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_get_keychain_list_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_get_keychain_list_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_get_keychain_list_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_get_keychain_list_response_set_keychain_id(p->keychain_id, base, pos);
         jdksavdecc_aem_command_auth_get_keychain_list_response_set_list_index(p->list_index, base, pos);
         jdksavdecc_aem_command_auth_get_keychain_list_response_set_number_of_lists(p->number_of_lists, base, pos);
@@ -37244,9 +36140,6 @@ static inline void jdksavdecc_aem_command_auth_get_identity_set_command_type(uin
 /// AUTH_GET_IDENTITY Command  - Clause 7.4.63.1
 struct jdksavdecc_aem_command_auth_get_identity {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -37271,9 +36164,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_identity_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_IDENTITY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_get_identity_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_get_identity_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_get_identity_get_command_type(base, pos);
     }
     return r;
 }
@@ -37300,9 +36190,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_identity_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_IDENTITY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_get_identity_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_get_identity_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_get_identity_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -37454,9 +36341,6 @@ jdksavdecc_aem_command_auth_get_identity_response_set_key_entity_id(struct jdksa
 /// AUTH_GET_IDENTITY Response  - Clause 7.4.62.2
 struct jdksavdecc_aem_command_auth_get_identity_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 key_entity_id;
 };
 
@@ -37480,9 +36364,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_identity_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_IDENTITY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_get_identity_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_get_identity_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_get_identity_response_get_command_type(base, pos);
         p->key_entity_id = jdksavdecc_aem_command_auth_get_identity_response_get_key_entity_id(base, pos);
     }
     return r;
@@ -37509,9 +36390,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_get_identity_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_GET_IDENTITY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_get_identity_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_get_identity_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_get_identity_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_get_identity_response_set_key_entity_id(p->key_entity_id, base, pos);
     }
     return r;
@@ -37694,9 +36572,6 @@ static inline void jdksavdecc_aem_command_auth_add_token_set_reserved(uint16_t v
 /// AUTH_ADD_TOKEN Command  - Clause 7.4.64.1
 struct jdksavdecc_aem_command_auth_add_token {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t token_length;
     uint16_t reserved;
 };
@@ -37723,9 +36598,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_token_read(struct jdksavde
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_TOKEN_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_add_token_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_add_token_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_add_token_get_command_type(base, pos);
         p->token_length = jdksavdecc_aem_command_auth_add_token_get_token_length(base, pos);
         p->reserved = jdksavdecc_aem_command_auth_add_token_get_reserved(base, pos);
     }
@@ -37754,9 +36626,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_token_write(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_TOKEN_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_add_token_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_add_token_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_add_token_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_auth_add_token_set_token_length(p->token_length, base, pos);
         jdksavdecc_aem_command_auth_add_token_set_reserved(p->reserved, base, pos);
     }
@@ -37876,9 +36745,6 @@ static inline void jdksavdecc_aem_command_auth_add_token_response_set_command_ty
 /// AUTH_ADD_TOKEN Response  - Clause 7.4.64.2
 struct jdksavdecc_aem_command_auth_add_token_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -37901,9 +36767,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_token_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_TOKEN_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_add_token_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_add_token_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_add_token_response_get_command_type(base, pos);
     }
     return r;
 }
@@ -37929,9 +36792,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_add_token_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_ADD_TOKEN_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_add_token_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_add_token_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_add_token_response_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -38047,9 +36907,6 @@ static inline void jdksavdecc_aem_command_auth_delete_token_set_command_type(uin
 /// AUTH_DELETE_TOKEN Command  - Clause 7.4.65.1
 struct jdksavdecc_aem_command_auth_delete_token {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -38074,9 +36931,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_token_read(struct jdksa
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_TOKEN_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_delete_token_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_delete_token_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_delete_token_get_command_type(base, pos);
     }
     return r;
 }
@@ -38103,9 +36957,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_token_write(struct jdks
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_TOKEN_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_delete_token_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_token_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_token_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -38223,9 +37074,6 @@ static inline void jdksavdecc_aem_command_auth_delete_token_response_set_command
 /// AUTH_DELETE_TOKEN Response  - Clause 7.4.65.1
 struct jdksavdecc_aem_command_auth_delete_token_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -38248,9 +37096,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_token_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_TOKEN_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_auth_delete_token_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_auth_delete_token_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_auth_delete_token_response_get_command_type(base, pos);
     }
     return r;
 }
@@ -38276,9 +37121,6 @@ static inline ssize_t jdksavdecc_aem_command_auth_delete_token_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTH_DELETE_TOKEN_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_auth_delete_token_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_token_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_auth_delete_token_response_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -38522,9 +37364,6 @@ static inline void jdksavdecc_aem_command_authenticate_set_reserved(uint16_t v, 
 /// AUTHENTICATE Command  - Clause 7.4.66.1
 struct jdksavdecc_aem_command_authenticate {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint16_t token_length;
@@ -38553,9 +37392,6 @@ static inline ssize_t jdksavdecc_aem_command_authenticate_read(struct jdksavdecc
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTHENTICATE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_authenticate_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_authenticate_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_authenticate_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_authenticate_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_authenticate_get_descriptor_index(base, pos);
         p->token_length = jdksavdecc_aem_command_authenticate_get_token_length(base, pos);
@@ -38585,9 +37421,6 @@ static inline ssize_t jdksavdecc_aem_command_authenticate_write(struct jdksavdec
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTHENTICATE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_authenticate_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_authenticate_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_authenticate_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_authenticate_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_authenticate_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_authenticate_set_token_length(p->token_length, base, pos);
@@ -38771,9 +37604,6 @@ static inline void jdksavdecc_aem_command_authenticate_response_set_descriptor_i
 /// AUTHENTICATE Response  - Clause 7.4.66.1
 struct jdksavdecc_aem_command_authenticate_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -38800,9 +37630,6 @@ static inline ssize_t jdksavdecc_aem_command_authenticate_response_read(struct j
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTHENTICATE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_authenticate_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_authenticate_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_authenticate_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_authenticate_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_authenticate_response_get_descriptor_index(base, pos);
     }
@@ -38830,9 +37657,6 @@ static inline ssize_t jdksavdecc_aem_command_authenticate_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_AUTHENTICATE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_authenticate_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_authenticate_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_authenticate_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_authenticate_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_authenticate_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -39016,9 +37840,6 @@ static inline void jdksavdecc_aem_command_deauthenticate_set_descriptor_index(ui
 /// DEAUTHENTICATE Command  - Clause 7.4.67.1
 struct jdksavdecc_aem_command_deauthenticate {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -39045,9 +37866,6 @@ static inline ssize_t jdksavdecc_aem_command_deauthenticate_read(struct jdksavde
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DEAUTHENTICATE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_deauthenticate_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_deauthenticate_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_deauthenticate_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_deauthenticate_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_deauthenticate_get_descriptor_index(base, pos);
     }
@@ -39076,9 +37894,6 @@ static inline ssize_t jdksavdecc_aem_command_deauthenticate_write(struct jdksavd
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DEAUTHENTICATE_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_deauthenticate_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_deauthenticate_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_deauthenticate_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_deauthenticate_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_deauthenticate_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -39262,9 +38077,6 @@ static inline void jdksavdecc_aem_command_deauthenticate_response_set_descriptor
 /// DEAUTHENTICATE Response  - Clause 7.4.67.1
 struct jdksavdecc_aem_command_deauthenticate_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -39289,9 +38101,6 @@ static inline ssize_t jdksavdecc_aem_command_deauthenticate_response_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DEAUTHENTICATE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_deauthenticate_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_deauthenticate_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_deauthenticate_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_deauthenticate_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_deauthenticate_response_get_descriptor_index(base, pos);
     }
@@ -39319,9 +38128,6 @@ static inline ssize_t jdksavdecc_aem_command_deauthenticate_response_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DEAUTHENTICATE_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_deauthenticate_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_deauthenticate_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_deauthenticate_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_deauthenticate_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_deauthenticate_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -39476,9 +38282,6 @@ jdksavdecc_aem_command_enable_transport_security_set_key_id(struct jdksavdecc_eu
 /// ENABLE_TRANSPORT_SECURITY Command  - Clause 7.4.68.1
 struct jdksavdecc_aem_command_enable_transport_security {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 key_id;
 };
 
@@ -39502,9 +38305,6 @@ static inline ssize_t jdksavdecc_aem_command_enable_transport_security_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_enable_transport_security_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_enable_transport_security_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_enable_transport_security_get_command_type(base, pos);
         p->key_id = jdksavdecc_aem_command_enable_transport_security_get_key_id(base, pos);
     }
     return r;
@@ -39531,9 +38331,6 @@ static inline ssize_t jdksavdecc_aem_command_enable_transport_security_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_enable_transport_security_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_enable_transport_security_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_enable_transport_security_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_enable_transport_security_set_key_id(p->key_id, base, pos);
     }
     return r;
@@ -39695,9 +38492,6 @@ jdksavdecc_aem_command_enable_transport_security_response_set_key_id(struct jdks
 /// ENABLE_TRANSPORT_SECURITY Response  - Clause 7.4.68.1
 struct jdksavdecc_aem_command_enable_transport_security_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     struct jdksavdecc_eui64 key_id;
 };
 
@@ -39722,9 +38516,6 @@ static inline ssize_t jdksavdecc_aem_command_enable_transport_security_response_
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_enable_transport_security_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_enable_transport_security_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_enable_transport_security_response_get_command_type(base, pos);
         p->key_id = jdksavdecc_aem_command_enable_transport_security_response_get_key_id(base, pos);
     }
     return r;
@@ -39751,9 +38542,6 @@ static inline ssize_t jdksavdecc_aem_command_enable_transport_security_response_
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENABLE_TRANSPORT_SECURITY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_enable_transport_security_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_enable_transport_security_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_enable_transport_security_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_enable_transport_security_response_set_key_id(p->key_id, base, pos);
     }
     return r;
@@ -39873,9 +38661,6 @@ static inline void jdksavdecc_aem_command_disable_transport_security_set_command
 /// DISABLE_TRANSPORT_SECURITY Command  - Clause 7.4.69.1
 struct jdksavdecc_aem_command_disable_transport_security {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -39898,9 +38683,6 @@ static inline ssize_t jdksavdecc_aem_command_disable_transport_security_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DISABLE_TRANSPORT_SECURITY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_disable_transport_security_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_disable_transport_security_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_disable_transport_security_get_command_type(base, pos);
     }
     return r;
 }
@@ -39926,9 +38708,6 @@ static inline ssize_t jdksavdecc_aem_command_disable_transport_security_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DISABLE_TRANSPORT_SECURITY_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_disable_transport_security_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_disable_transport_security_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_disable_transport_security_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -40055,9 +38834,6 @@ jdksavdecc_aem_command_disable_transport_security_response_set_command_type(uint
 /// DISABLE_TRANSPORT_SECURITY Response  - Clause 7.4.69.1
 struct jdksavdecc_aem_command_disable_transport_security_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
 };
 
 /**
@@ -40081,10 +38857,6 @@ static inline ssize_t jdksavdecc_aem_command_disable_transport_security_response
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DISABLE_TRANSPORT_SECURITY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id
-            = jdksavdecc_aem_command_disable_transport_security_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_disable_transport_security_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_disable_transport_security_response_get_command_type(base, pos);
     }
     return r;
 }
@@ -40110,9 +38882,6 @@ static inline ssize_t jdksavdecc_aem_command_disable_transport_security_response
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DISABLE_TRANSPORT_SECURITY_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_disable_transport_security_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_disable_transport_security_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_disable_transport_security_response_set_command_type(p->command_type, base, pos);
     }
     return r;
 }
@@ -40329,9 +39098,6 @@ jdksavdecc_aem_command_enable_stream_encryption_set_key_id(struct jdksavdecc_eui
 /// ENABLE_STREAM_ENCRYPTION Command  - Clause 7.4.70.1
 struct jdksavdecc_aem_command_enable_stream_encryption {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     struct jdksavdecc_eui64 key_id;
@@ -40357,9 +39123,6 @@ static inline ssize_t jdksavdecc_aem_command_enable_stream_encryption_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_enable_stream_encryption_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_enable_stream_encryption_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_enable_stream_encryption_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_enable_stream_encryption_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_enable_stream_encryption_get_descriptor_index(base, pos);
         p->key_id = jdksavdecc_aem_command_enable_stream_encryption_get_key_id(base, pos);
@@ -40388,9 +39151,6 @@ static inline ssize_t jdksavdecc_aem_command_enable_stream_encryption_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_enable_stream_encryption_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_enable_stream_encryption_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_enable_stream_encryption_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_enable_stream_encryption_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_enable_stream_encryption_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_enable_stream_encryption_set_key_id(p->key_id, base, pos);
@@ -40622,9 +39382,6 @@ jdksavdecc_aem_command_enable_stream_encryption_response_set_key_id(struct jdksa
 /// ENABLE_STREAM_ENCRYPTION Response  - Clause 7.4.70.1
 struct jdksavdecc_aem_command_enable_stream_encryption_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     struct jdksavdecc_eui64 key_id;
@@ -40651,9 +39408,6 @@ static inline ssize_t jdksavdecc_aem_command_enable_stream_encryption_response_r
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_enable_stream_encryption_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_enable_stream_encryption_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_enable_stream_encryption_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_enable_stream_encryption_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_enable_stream_encryption_response_get_descriptor_index(base, pos);
         p->key_id = jdksavdecc_aem_command_enable_stream_encryption_response_get_key_id(base, pos);
@@ -40682,9 +39436,6 @@ static inline ssize_t jdksavdecc_aem_command_enable_stream_encryption_response_w
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_ENABLE_STREAM_ENCRYPTION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_enable_stream_encryption_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_enable_stream_encryption_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_enable_stream_encryption_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_enable_stream_encryption_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_enable_stream_encryption_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_enable_stream_encryption_response_set_key_id(p->key_id, base, pos);
@@ -40870,9 +39621,6 @@ static inline void jdksavdecc_aem_command_disable_stream_encryption_set_descript
 /// DISABLE_STREAM_ENCRYPTION Command  - Clause 7.4.71.1
 struct jdksavdecc_aem_command_disable_stream_encryption {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -40897,9 +39645,6 @@ static inline ssize_t jdksavdecc_aem_command_disable_stream_encryption_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DISABLE_STREAM_ENCRYPTION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_disable_stream_encryption_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_disable_stream_encryption_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_disable_stream_encryption_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_disable_stream_encryption_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_disable_stream_encryption_get_descriptor_index(base, pos);
     }
@@ -40927,9 +39672,6 @@ static inline ssize_t jdksavdecc_aem_command_disable_stream_encryption_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DISABLE_STREAM_ENCRYPTION_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_disable_stream_encryption_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_disable_stream_encryption_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_disable_stream_encryption_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_disable_stream_encryption_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_disable_stream_encryption_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -41128,9 +39870,6 @@ jdksavdecc_aem_command_disable_stream_encryption_response_set_descriptor_index(u
 /// DISABLE_STREAM_ENCRYPTION Response  - Clause 7.4.71.1
 struct jdksavdecc_aem_command_disable_stream_encryption_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -41156,9 +39895,6 @@ static inline ssize_t jdksavdecc_aem_command_disable_stream_encryption_response_
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DISABLE_STREAM_ENCRYPTION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_disable_stream_encryption_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_disable_stream_encryption_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_disable_stream_encryption_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_disable_stream_encryption_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_disable_stream_encryption_response_get_descriptor_index(base, pos);
     }
@@ -41186,9 +39922,6 @@ static inline ssize_t jdksavdecc_aem_command_disable_stream_encryption_response_
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_DISABLE_STREAM_ENCRYPTION_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_disable_stream_encryption_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_disable_stream_encryption_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_disable_stream_encryption_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_disable_stream_encryption_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_disable_stream_encryption_response_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -41404,9 +40137,6 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_set_length(ui
 /// SET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.72.1
 struct jdksavdecc_aem_command_set_memory_object_length {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint64_t length;
@@ -41432,9 +40162,6 @@ static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_memory_object_length_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_memory_object_length_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_memory_object_length_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_memory_object_length_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_memory_object_length_get_descriptor_index(base, pos);
         p->length = jdksavdecc_aem_command_set_memory_object_length_get_length(base, pos);
@@ -41463,9 +40190,6 @@ static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_memory_object_length_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_memory_object_length_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_memory_object_length_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_memory_object_length_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_memory_object_length_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_memory_object_length_set_length(p->length, base, pos);
@@ -41695,9 +40419,6 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_
 /// SET_MEMORY_OBJECT_LENGTH Response  - Clause 7.4.72.2
 struct jdksavdecc_aem_command_set_memory_object_length_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint64_t length;
@@ -41724,9 +40445,6 @@ static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_response_r
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_set_memory_object_length_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_set_memory_object_length_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_set_memory_object_length_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_set_memory_object_length_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_set_memory_object_length_response_get_descriptor_index(base, pos);
         p->length = jdksavdecc_aem_command_set_memory_object_length_response_get_length(base, pos);
@@ -41755,9 +40473,6 @@ static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_response_w
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_set_memory_object_length_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_set_memory_object_length_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_set_memory_object_length_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_set_memory_object_length_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_set_memory_object_length_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_set_memory_object_length_response_set_length(p->length, base, pos);
@@ -41942,9 +40657,6 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_set_descripto
 /// SET_MEMORY_OBJECT_LENGTH Command  - Clause 7.4.73.1
 struct jdksavdecc_aem_command_get_memory_object_length {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
 };
@@ -41969,9 +40681,6 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_read(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_memory_object_length_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_memory_object_length_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_memory_object_length_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_memory_object_length_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_memory_object_length_get_descriptor_index(base, pos);
     }
@@ -41999,9 +40708,6 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_write(
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_memory_object_length_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_memory_object_length_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_memory_object_length_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_memory_object_length_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_memory_object_length_set_descriptor_index(p->descriptor_index, base, pos);
     }
@@ -42230,9 +40936,6 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_response_set_
 /// SET_MEMORY_OBJECT_LENGTH Response  - Clause 7.4.73.2
 struct jdksavdecc_aem_command_get_memory_object_length_response {
     struct jdksavdecc_aecpdu_aem aem_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
-    uint16_t command_type;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
     uint64_t length;
@@ -42259,9 +40962,6 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_response_r
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aem_command_get_memory_object_length_response_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aem_command_get_memory_object_length_response_get_sequence_id(base, pos);
-        p->command_type = jdksavdecc_aem_command_get_memory_object_length_response_get_command_type(base, pos);
         p->descriptor_type = jdksavdecc_aem_command_get_memory_object_length_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_memory_object_length_response_get_descriptor_index(base, pos);
         p->length = jdksavdecc_aem_command_get_memory_object_length_response_get_length(base, pos);
@@ -42290,9 +40990,6 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_response_w
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
-        jdksavdecc_aem_command_get_memory_object_length_response_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aem_command_get_memory_object_length_response_set_sequence_id(p->sequence_id, base, pos);
-        jdksavdecc_aem_command_get_memory_object_length_response_set_command_type(p->command_type, base, pos);
         jdksavdecc_aem_command_get_memory_object_length_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_memory_object_length_response_set_descriptor_index(p->descriptor_index, base, pos);
         jdksavdecc_aem_command_get_memory_object_length_response_set_length(p->length, base, pos);
