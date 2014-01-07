@@ -42,15 +42,41 @@
 extern "C" {
 #endif
 
-/** \addtogroup jdks Publically usable definitions and types under 
+/** \addtogroup jdks Publically usable definitions and types under
  * J.D. Koftinoff Software, Ltd.'s MAC-S (OUI-36) 70-B3-D5-ED-C
  */
 /*@{*/
 
 /** \addtogroup jdks_log Logging mechanism using multicast AECP AEM Unsolicited SET_CONTROL Response
- *  with a vendor defined blob control type
+ *  to the jdks notifications controller entity id (70:b3:d5:ed:cf:ff:ff:ff) with
+ *  a vendor defined blob control type.
+ *  Any AEM SET_CONTROL Response sent to the multicast MAC address 71:b3:d5:ed:cf:ff and controller_entity_id
+ *  of 70:b3:d5:ed:cf:ff:ff:ff may be interpreted as a vendor specific blob control value (See Clause 7.3.5.2.9)
+ *  if the vendor_eui64 field is 0:b3:d5:ed:c0:00:00:00 then the message is a logging message
+ *  and shall be interpreted as defined:
+ *
+ *      Offset  0: vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
+ *      Offset  8: blob_length is 8+text_length
+ *      Offset 10: Doublet: source_descriptor_type
+ *      Offset 12:  Doublet: source_descriptor_index
+ *      Offset 14:  Doublet: log_sequence_id log message number from this source
+ *      Offset 16:  Octet: log_priority { 0 = error, 1=warning, 2=info, 3..0xffff = debug/trace
+ *      Offset 17:  Octet: reserved
+ *      Offset 18:  Octet array: utf8_chars[0..352] with no LF
+ *
  */
 /*@{*/
+
+/// Special controller entity id used for JDKS notifications - only for use with
+/// controls with value_type set to CONTROL_VENDOR.
+
+#define JDKSAVDECC_JDKS_NOTIFICATIONS_CONTROLLER_ENTITY_ID \
+    { \
+        { 0x70, 0xb3, 0xd5, 0xed, 0xcf, 0xff, 0xff, 0xff } \
+    }
+
+extern struct jdksavdecc_eui64 jdksavdecc_jdks_notifications_controller_entity_id;
+
 
 /// Multicast MAC address 71:b3:d5:ed:cf:ff is reserved for logging via
 /// unsolicited SET_CONTROL of control descriptor of control type JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT
@@ -61,16 +87,6 @@ extern "C" {
 
 extern struct jdksavdecc_eui48 jdksavdecc_jdks_multicast_log;
 
-/// Control type value used for logging information
-//      
-//      Offset  0: vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
-//      Offset  8: blob_length is 8+text_length  
-///     Offset 10: Doublet: source_descriptor_type
-///     Offset 12:  Doublet: source_descriptor_index
-///     Offset 14:  Doublet: log_sequence_id log message number from this source
-///     Offset 16:  Octet: log_priority { 0 = error, 1=warning, 2=info, 3..0xffff = debug/trace
-///     Offset 17:  Octet: reserved
-///     Offset 18:  Octet array: utf8_chars[0..352] with no LF
 
 #define JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT \
     { \
@@ -103,11 +119,115 @@ struct jdksavdecc_jdks_log_control {
     uint8_t text[JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN+1];
 };
 
-ssize_t jdksavdecc_jdks_log_control_read(
+
+static inline ssize_t jdksavdecc_jdks_log_control_generate(
+        struct jdksavdecc_eui64 const *my_entity_id,
+        uint16_t source_descriptor_type,
+        uint16_t source_descriptor_index,
+        uint16_t *aecp_sequence_id,
+        uint16_t *logging_sequence_id,
+        uint8_t log_detail,
+        uint8_t reserved,
+        const char *utf8_log_string,
+        void *buf,
+        ssize_t pos,
+        size_t len ) {
+    ssize_t text_len = (ssize_t)strlen(utf8_log_string);
+    ssize_t expected_length = JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN + text_len;
+    ssize_t r = jdksavdecc_validate_range(pos,len,expected_length);
+    if( r>=0 ) {
+        ssize_t p;
+        struct jdksavdecc_aecpdu_aem aem;
+        aem.aecpdu_header.header.cd = true;
+        aem.aecpdu_header.header.subtype = JDKSAVDECC_SUBTYPE_AECP;
+        aem.aecpdu_header.header.sv = false;
+        aem.aecpdu_header.header.version = 0;
+        aem.aecpdu_header.header.message_type = JDKSAVDECC_AECP_MESSAGE_TYPE_AEM_RESPONSE;
+        aem.aecpdu_header.header.status = JDKSAVDECC_AEM_STATUS_SUCCESS;
+        aem.aecpdu_header.header.control_data_length = text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN;
+        aem.aecpdu_header.header.target_entity_id = *my_entity_id;
+        aem.aecpdu_header.controller_entity_id = jdksavdecc_jdks_notifications_controller_entity_id;
+        aem.aecpdu_header.sequence_id = *aecp_sequence_id;
+        aem.command_type = JDKSAVDECC_AEM_COMMAND_SET_CONTROL & 0x8000;
+        jdksavdecc_aecpdu_aem_write(&aem,buf,pos,len);
+        jdksavdecc_eui64_write( &jdksavdecc_jdks_aem_control_log_text, buf, pos+JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64, len );
+        jdksavdecc_uint16_write( text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN,
+                                 buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE,
+                                 len );
+        jdksavdecc_uint16_write( source_descriptor_type,
+                                 buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_TYPE,
+                                 len );
+        jdksavdecc_uint16_write( source_descriptor_index,
+                                 buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_INDEX,
+                                 len );
+        jdksavdecc_uint16_write( *logging_sequence_id,
+                                 buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_SEQUENCE_ID,
+                                 len );
+        jdksavdecc_uint8_write( log_detail,
+                                 buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL,
+                                 len );
+        jdksavdecc_uint8_write( reserved,
+                                 buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_RESERVED,
+                                 len );
+        memcpy( ((uint8_t *)buf) + pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT, utf8_log_string, text_len );
+        *aecp_sequence_id = *aecp_sequence_id + 1;
+        *logging_sequence_id = *logging_sequence_id + 1;
+    }
+    return r;
+}
+
+static inline ssize_t jdksavdecc_jdks_log_control_read(
     struct jdksavdecc_jdks_log_control *p,
     void const *buf,
     ssize_t pos,
-    size_t len);
+    size_t len) {
+    ssize_t r = jdksavdecc_validate_range(pos,len,JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN);
+    if( r>=0 ) {
+        jdksavdecc_eui64_read(&p->vendor_eui64, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64+pos, len);
+        if( jdksavdecc_eui64_compare(&jdksavdecc_jdks_aem_control_log_text,&p->vendor_eui64)==0 ) {
+            jdksavdecc_uint16_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
+            if( p->blob_size > (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN) &&
+                p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE ) {
+                uint16_t text_len =p->blob_size - (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN);
+                jdksavdecc_uint16_read(
+                    &p->source_descriptor_type,
+                    buf,
+                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_TYPE+pos);
+
+                jdksavdecc_uint16_read(
+                    &p->source_descriptor_index,
+                    buf,
+                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_INDEX +pos);
+
+                jdksavdecc_uint16_read(
+                    &p->log_sequence_id,
+                    buf,
+                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_SEQUENCE_ID +pos);
+
+                jdksavdecc_uint8_read(
+                    &p->log_detail,
+                    buf,
+                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL,
+                    len );
+
+                if( text_len < JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN ) {
+                    r=pos+JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT;
+                    memcpy( p->text, (uint8_t const *)buf+r, text_len);
+                    p->text[text_len+1]='\0';
+                    r+=text_len;
+                } else {
+                    r=-1;
+                }
+            } else {
+                r=-1;
+            }
+        } else {
+        r=-1;
+        }
+    }
+    return r;
+}
+
 
 /*@}*/
 
@@ -148,6 +268,7 @@ ssize_t jdksavdecc_jdks_log_control_read(
 
 extern struct jdksavdecc_eui64 jdksavdecc_jdks_aem_control_ipv4_parameters;
 
+/*@}*/
 
 #ifdef __cplusplus
 }
