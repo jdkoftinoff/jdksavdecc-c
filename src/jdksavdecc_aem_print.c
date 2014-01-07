@@ -267,7 +267,7 @@ void jdksavdecc_aem_set_control_command_print(struct jdksavdecc_printer *self,
     jdksavdecc_printer_print_label(self,"descriptor_index");
     jdksavdecc_printer_print_uint16(self,descriptor_index);
     jdksavdecc_printer_print_eol(self);
-    jdksavdecc_printer_print_label(self,"xcontent");
+    jdksavdecc_printer_print_label(self,"content");
     jdksavdecc_printer_print_block(
                 self,
                 p,
