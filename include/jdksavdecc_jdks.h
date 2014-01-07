@@ -122,6 +122,7 @@ struct jdksavdecc_jdks_log_control {
 
 static inline ssize_t jdksavdecc_jdks_log_control_generate(
         struct jdksavdecc_eui64 const *my_entity_id,
+        uint16_t descriptor_index,
         uint16_t source_descriptor_type,
         uint16_t source_descriptor_index,
         uint16_t *aecp_sequence_id,
@@ -136,19 +137,21 @@ static inline ssize_t jdksavdecc_jdks_log_control_generate(
     ssize_t expected_length = JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN + text_len;
     ssize_t r = jdksavdecc_validate_range(pos,len,expected_length);
     if( r>=0 ) {
-        struct jdksavdecc_aecpdu_aem aem;
-        aem.aecpdu_header.header.cd = true;
-        aem.aecpdu_header.header.subtype = JDKSAVDECC_SUBTYPE_AECP;
-        aem.aecpdu_header.header.sv = false;
-        aem.aecpdu_header.header.version = 0;
-        aem.aecpdu_header.header.message_type = JDKSAVDECC_AECP_MESSAGE_TYPE_AEM_RESPONSE;
-        aem.aecpdu_header.header.status = JDKSAVDECC_AEM_STATUS_SUCCESS;
-        aem.aecpdu_header.header.control_data_length = text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN;
-        aem.aecpdu_header.header.target_entity_id = *my_entity_id;
-        aem.aecpdu_header.controller_entity_id = jdksavdecc_jdks_notifications_controller_entity_id;
-        aem.aecpdu_header.sequence_id = *aecp_sequence_id;
-        aem.command_type = JDKSAVDECC_AEM_COMMAND_SET_CONTROL & 0x8000;
-        jdksavdecc_aecpdu_aem_write(&aem,buf,pos,len);
+        struct jdksavdecc_aem_command_set_control_response setctrl;
+        setctrl.aem_header.aecpdu_header.header.cd = true;
+        setctrl.aem_header.aecpdu_header.header.subtype = JDKSAVDECC_SUBTYPE_AECP;
+        setctrl.aem_header.aecpdu_header.header.sv = false;
+        setctrl.aem_header.aecpdu_header.header.version = 0;
+        setctrl.aem_header.aecpdu_header.header.message_type = JDKSAVDECC_AECP_MESSAGE_TYPE_AEM_RESPONSE;
+        setctrl.aem_header.aecpdu_header.header.status = JDKSAVDECC_AEM_STATUS_SUCCESS;
+        setctrl.aem_header.aecpdu_header.header.control_data_length = text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN;
+        setctrl.aem_header.aecpdu_header.header.target_entity_id = *my_entity_id;
+        setctrl.aem_header.aecpdu_header.controller_entity_id = jdksavdecc_jdks_notifications_controller_entity_id;
+        setctrl.aem_header.aecpdu_header.sequence_id = *aecp_sequence_id;
+        setctrl.aem_header.command_type = JDKSAVDECC_AEM_COMMAND_SET_CONTROL | 0x8000;
+        setctrl.descriptor_type = JDKSAVDECC_DESCRIPTOR_CONTROL;
+        setctrl.descriptor_index = descriptor_index;
+        jdksavdecc_aem_command_set_control_response_write(&setctrl, buf, pos, len);
         jdksavdecc_eui64_write( &jdksavdecc_jdks_aem_control_log_text, buf, pos+JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64, len );
         jdksavdecc_uint16_write( text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN,
                                  buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE,
