@@ -67,6 +67,13 @@ extern "C" {
  */
 /*@{*/
 
+#define JDKSAVDECC_JDKS_LOG_ERROR (0)
+#define JDKSAVDECC_JDKS_LOG_WARNING (1)
+#define JDKSAVDECC_JDKS_LOG_INFO (2)
+#define JDKSAVDECC_JDKS_LOG_DEBUG1 (3)
+#define JDKSAVDECC_JDKS_LOG_DEBUG2 (4)
+#define JDKSAVDECC_JDKS_LOG_DEBUG3 (5)
+
 /// Special controller entity id used for JDKS notifications - only for use with
 /// controls with value_type set to CONTROL_VENDOR.
 
