@@ -136,7 +136,6 @@ static inline ssize_t jdksavdecc_jdks_log_control_generate(
     ssize_t expected_length = JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN + text_len;
     ssize_t r = jdksavdecc_validate_range(pos,len,expected_length);
     if( r>=0 ) {
-        ssize_t p;
         struct jdksavdecc_aecpdu_aem aem;
         aem.aecpdu_header.header.cd = true;
         aem.aecpdu_header.header.subtype = JDKSAVDECC_SUBTYPE_AECP;
