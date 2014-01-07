@@ -53,6 +53,72 @@ extern "C" {
 extern struct jdksavdecc_uint16_name jdksavdecc_aem_print_command[];
 extern struct jdksavdecc_uint16_name jdksavdecc_aem_print_descriptor_type[];
 
+void jdksavdecc_aem_descriptor_print(struct jdksavdecc_printer *self,
+                           void const *p,
+                           ssize_t pos,
+                           size_t len);
+
+void jdksavdecc_aem_command_print(struct jdksavdecc_printer *self,
+                           struct jdksavdecc_aecpdu_aem const *msg,
+                           void const *p,
+                           ssize_t pos,
+                           size_t len);
+
+
+void jdksavdecc_aem_response_print(struct jdksavdecc_printer *self,
+                           struct jdksavdecc_aecpdu_aem const *msg,
+                           void const *p,
+                           ssize_t pos,
+                           size_t len);
+
+void jdksavdecc_aem_write_descriptor_command_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len );
+
+void jdksavdecc_aem_read_descriptor_response_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len );
+
+void jdksavdecc_aem_write_descriptor_response_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len );
+
+void jdksavdecc_aem_read_descriptor_command_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len );
+
+void jdksavdecc_aem_get_control_command_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len );
+
+void jdksavdecc_aem_set_control_command_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len );
+
+void jdksavdecc_aem_get_control_response_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len );
+
+void jdksavdecc_aem_set_control_response_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len );
+
 /*@}*/
 
 /*@}*/

@@ -68,6 +68,20 @@ extern struct jdksavdecc_uint16_name jdksavdecc_aecp_hdcp_apm_print_status[];
 
 extern struct jdksavdecc_uint16_name jdksavdecc_aecp_vendor_print_status[];
 
+
+void jdksavdecc_aecp_common_control_header_print(struct jdksavdecc_printer *self,
+                                                 struct jdksavdecc_aecpdu_common_control_header const *p);
+
+void jdksavdecc_aecp_common_print(struct jdksavdecc_printer *self,
+                                  struct jdksavdecc_aecpdu_common const *p);
+
+
+void jdksavdecc_aecp_print(struct jdksavdecc_printer *self,
+                           struct jdksavdecc_aecpdu_common const *msg,
+                           void const *p,
+                           ssize_t pos,
+                           size_t len);
+
 /*@}*/
 
 /*@}*/

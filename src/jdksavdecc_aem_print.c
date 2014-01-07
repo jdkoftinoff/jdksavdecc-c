@@ -153,3 +153,257 @@ struct jdksavdecc_uint16_name jdksavdecc_aem_print_descriptor_type[]
        {JDKSAVDECC_DESCRIPTOR_CONTROL_BLOCK, "CONTROL_BLOCK"},
        {JDKSAVDECC_DESCRIPTOR_INVALID, "INVALID"},
        {0, 0}};
+
+void jdksavdecc_aem_descriptor_print(struct jdksavdecc_printer *self,
+                           void const *p,
+                           ssize_t pos,
+                           size_t len) {
+    // All descriptors have descriptor_type and descriptor_index
+    uint16_t descriptor_type = jdksavdecc_uint16_get(p,pos+JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_DESCRIPTOR_TYPE);
+    uint16_t descriptor_index = jdksavdecc_uint16_get(p,pos+JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_DESCRIPTOR_INDEX);
+
+    jdksavdecc_printer_print_label(self,"descriptor_type");
+    jdksavdecc_printer_print_uint16_name(self,jdksavdecc_aem_print_descriptor_type,descriptor_type);
+    jdksavdecc_printer_print_eol(self);
+
+    jdksavdecc_printer_print_label(self,"descriptor_index");
+    jdksavdecc_printer_print_uint16(self,descriptor_index);
+    jdksavdecc_printer_print_eol(self);
+
+    jdksavdecc_printer_print_label(self,"content");
+    jdksavdecc_printer_print_block(self,p,len,pos+4,len);
+    jdksavdecc_printer_print_eol(self);
+}
+
+void jdksavdecc_aem_write_descriptor_command_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len ) {
+    jdksavdecc_printer_print_label(self,"configuration_index");
+    jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_write_descriptor_get_configuration_index(p,pos));
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"reserved");
+    jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_write_descriptor_get_reserved(p,pos));
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_aem_descriptor_print(self,p,pos+JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR_COMMAND_OFFSET_DESCRIPTOR,pos+msg->aecpdu_header.header.control_data_length-(JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR_COMMAND_OFFSET_DESCRIPTOR-JDKSAVDECC_COMMON_CONTROL_HEADER_LEN));
+}
+
+
+void jdksavdecc_aem_read_descriptor_response_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len ) {
+    jdksavdecc_printer_print_label(self,"configuration_index");
+    jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_read_descriptor_response_get_configuration_index(p,pos));
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"reserved");
+    jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_read_descriptor_response_get_reserved(p,pos));
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_aem_descriptor_print(self,p,pos+JDKSAVDECC_AEM_COMMAND_READ_DESCRIPTOR_RESPONSE_OFFSET_DESCRIPTOR,pos+msg->aecpdu_header.header.control_data_length-(JDKSAVDECC_AEM_COMMAND_READ_DESCRIPTOR_RESPONSE_OFFSET_DESCRIPTOR-JDKSAVDECC_COMMON_CONTROL_HEADER_LEN));
+}
+
+void jdksavdecc_aem_write_descriptor_response_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len ) {
+    jdksavdecc_printer_print_label(self,"configuration_index");
+    jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_write_descriptor_response_get_configuration_index(p,pos));
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"reserved");
+    jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_write_descriptor_response_get_reserved(p,pos));
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_aem_descriptor_print(self,p,pos+JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR_RESPONSE_OFFSET_DESCRIPTOR,pos+msg->aecpdu_header.header.control_data_length-(JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR_RESPONSE_OFFSET_DESCRIPTOR-JDKSAVDECC_COMMON_CONTROL_HEADER_LEN));
+}
+
+void jdksavdecc_aem_read_descriptor_command_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len ) {
+    uint16_t descriptor_type = jdksavdecc_aem_command_read_descriptor_get_descriptor_type(p,pos);
+    uint16_t descriptor_index = jdksavdecc_aem_command_read_descriptor_get_descriptor_index(p,pos);
+    jdksavdecc_printer_print_label(self,"configuration_index");
+    jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_read_descriptor_get_configuration_index(p,pos));
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"reserved");
+    jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_read_descriptor_get_reserved(p,pos));
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"descriptor_type");
+    jdksavdecc_printer_print_uint16_name(self,jdksavdecc_aem_print_descriptor_type,descriptor_type);
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"descriptor_index");
+    jdksavdecc_printer_print_uint16(self,descriptor_index);
+    jdksavdecc_printer_print_eol(self);
+}
+
+void jdksavdecc_aem_get_control_command_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len ) {
+    uint16_t descriptor_type = jdksavdecc_aem_command_get_control_get_descriptor_type(p,pos);
+    uint16_t descriptor_index = jdksavdecc_aem_command_get_control_get_descriptor_index(p,pos);
+    jdksavdecc_printer_print_label(self,"descriptor_type");
+    jdksavdecc_printer_print_uint16_name(self,jdksavdecc_aem_print_descriptor_type,descriptor_type);
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"descriptor_index");
+    jdksavdecc_printer_print_uint16(self,descriptor_index);
+    jdksavdecc_printer_print_eol(self);
+}
+
+void jdksavdecc_aem_set_control_command_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len ) {
+    uint16_t descriptor_type = jdksavdecc_aem_command_set_control_get_descriptor_type(p,pos);
+    uint16_t descriptor_index = jdksavdecc_aem_command_set_control_get_descriptor_index(p,pos);
+    jdksavdecc_printer_print_label(self,"descriptor_type");
+    jdksavdecc_printer_print_uint16_name(self,jdksavdecc_aem_print_descriptor_type,descriptor_type);
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"descriptor_index");
+    jdksavdecc_printer_print_uint16(self,descriptor_index);
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"xcontent");
+    jdksavdecc_printer_print_block(
+                self,
+                p,
+                len,pos+JDKSAVDECC_AEM_COMMAND_SET_CONTROL_COMMAND_OFFSET_VALUES,
+                pos+JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+msg->aecpdu_header.header.control_data_length);
+    jdksavdecc_printer_print_eol(self);
+}
+
+void jdksavdecc_aem_get_control_response_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len ) {
+    uint16_t descriptor_type = jdksavdecc_aem_command_get_control_response_get_descriptor_type(p,pos);
+    uint16_t descriptor_index = jdksavdecc_aem_command_get_control_response_get_descriptor_index(p,pos);
+    jdksavdecc_printer_print_label(self,"descriptor_type");
+    jdksavdecc_printer_print_uint16_name(self,jdksavdecc_aem_print_descriptor_type,descriptor_type);
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"descriptor_index");
+    jdksavdecc_printer_print_uint16(self,descriptor_index);
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"content");
+    jdksavdecc_printer_print_block(
+                self,
+                p,
+                len,
+                pos+JDKSAVDECC_AEM_COMMAND_GET_CONTROL_RESPONSE_OFFSET_VALUES,
+                pos+JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+msg->aecpdu_header.header.control_data_length);
+    jdksavdecc_printer_print_eol(self);
+}
+
+void jdksavdecc_aem_set_control_response_print(struct jdksavdecc_printer *self,
+                                                  struct jdksavdecc_aecpdu_aem const *msg,
+                                                  void const *p,
+                                                  ssize_t pos,
+                                                  size_t len ) {
+    uint16_t descriptor_type = jdksavdecc_aem_command_set_control_get_descriptor_type(p,pos);
+    uint16_t descriptor_index = jdksavdecc_aem_command_set_control_get_descriptor_index(p,pos);
+    jdksavdecc_printer_print_label(self,"descriptor_type");
+    jdksavdecc_printer_print_uint16_name(self,jdksavdecc_aem_print_descriptor_type,descriptor_type);
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"descriptor_index");
+    jdksavdecc_printer_print_uint16(self,descriptor_index);
+    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label(self,"content");
+    jdksavdecc_printer_print_block(
+                self,
+                p,
+                len,
+                pos+JDKSAVDECC_AEM_COMMAND_SET_CONTROL_COMMAND_OFFSET_VALUES,
+                pos+JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+msg->aecpdu_header.header.control_data_length);
+    jdksavdecc_printer_print_eol(self);
+}
+
+void jdksavdecc_aem_command_print(struct jdksavdecc_printer *self,
+                           struct jdksavdecc_aecpdu_aem const *msg,
+                           void const *p,
+                           ssize_t pos,
+                           size_t len) {
+    bool u=false;
+    uint16_t command_type = msg->command_type & 0x7fff;
+    if( (msg->command_type&0x8000) != 0 ) {
+        u=true;
+    }
+    jdksavdecc_printer_print_label(self,"u (unsolicited)");
+    jdksavdecc_printer_print(self,u ? "true" : "false");
+    jdksavdecc_printer_print_eol(self);
+
+    jdksavdecc_printer_print_label(self,"command_type");
+    jdksavdecc_printer_print_uint16_name(self,jdksavdecc_aem_print_command,command_type);
+    jdksavdecc_printer_print_eol(self);
+
+    switch(command_type) {
+    case JDKSAVDECC_AEM_COMMAND_READ_DESCRIPTOR:
+        jdksavdecc_aem_read_descriptor_command_print(self,msg,p,pos,len);
+        break;
+    case JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR:
+        jdksavdecc_aem_read_descriptor_command_print(self,msg,p,pos,len);
+        break;
+    case JDKSAVDECC_AEM_COMMAND_SET_CONTROL:
+        jdksavdecc_aem_set_control_command_print(self,msg,p,pos,len);
+        break;
+    case JDKSAVDECC_AEM_COMMAND_GET_CONTROL:
+        jdksavdecc_aem_get_control_command_print(self,msg,p,pos,len);
+        break;
+    default:
+        jdksavdecc_printer_print_label(self,"content");
+        jdksavdecc_printer_print_block(
+                    self,
+                    p,
+                    len,
+                    pos+JDKSAVDECC_AECPDU_AEM_LEN,
+                    pos+JDKSAVDECC_COMMON_CONTROL_HEADER_LEN+msg->aecpdu_header.header.control_data_length);
+        jdksavdecc_printer_print_block(self,p,len,pos+JDKSAVDECC_AECPDU_AEM_LEN,pos+msg->aecpdu_header.header.control_data_length-(JDKSAVDECC_AECPDU_AEM_LEN-JDKSAVDECC_COMMON_CONTROL_HEADER_LEN));
+        jdksavdecc_printer_print_eol(self);
+        break;
+    }
+}
+
+
+void jdksavdecc_aem_response_print(struct jdksavdecc_printer *self,
+                           struct jdksavdecc_aecpdu_aem const *msg,
+                           void const *p,
+                           ssize_t pos,
+                           size_t len) {
+    bool u=false;
+    uint16_t command_type = msg->command_type & 0x7fff;
+    if( (msg->command_type&0x8000) != 0 ) {
+        u=true;
+    }
+    jdksavdecc_printer_print_label(self,"u (unsolicited)");
+    jdksavdecc_printer_print(self,u ? "true" : "false");
+    jdksavdecc_printer_print_eol(self);
+
+    jdksavdecc_printer_print_label(self,"command_type");
+    jdksavdecc_printer_print_uint16_name(self,jdksavdecc_aem_print_command,command_type);
+    jdksavdecc_printer_print_eol(self);
+
+    switch(command_type) {
+    case JDKSAVDECC_AEM_COMMAND_READ_DESCRIPTOR:
+        jdksavdecc_aem_read_descriptor_response_print(self,msg,p,pos,len);
+        break;
+    case JDKSAVDECC_AEM_COMMAND_WRITE_DESCRIPTOR:
+        jdksavdecc_aem_read_descriptor_response_print(self,msg,p,pos,len);
+        break;
+    case JDKSAVDECC_AEM_COMMAND_SET_CONTROL:
+        jdksavdecc_aem_set_control_response_print(self,msg,p,pos,len);
+        break;
+    case JDKSAVDECC_AEM_COMMAND_GET_CONTROL:
+        jdksavdecc_aem_get_control_response_print(self,msg,p,pos,len);
+        break;
+    default:
+        jdksavdecc_printer_print_label(self,"content");
+        jdksavdecc_printer_print_block(self,p,len,pos+JDKSAVDECC_AECPDU_AEM_LEN,pos+msg->aecpdu_header.header.control_data_length-(JDKSAVDECC_AECPDU_AEM_LEN-JDKSAVDECC_COMMON_CONTROL_HEADER_LEN));
+        jdksavdecc_printer_print_eol(self);
+        break;
+    }
+}
+

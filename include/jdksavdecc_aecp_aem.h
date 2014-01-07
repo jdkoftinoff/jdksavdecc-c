@@ -183,8 +183,6 @@ static inline void jdksavdecc_aecpdu_aem_set_command_type(uint16_t v, void *base
 /// AECPDU AEM - Clause 9.2.1.2
 struct jdksavdecc_aecpdu_aem {
     struct jdksavdecc_aecpdu_common aecpdu_header;
-    struct jdksavdecc_eui64 controller_entity_id;
-    uint16_t sequence_id;
     uint16_t command_type;
 };
 
@@ -206,8 +204,6 @@ static inline ssize_t jdksavdecc_aecpdu_aem_read(struct jdksavdecc_aecpdu_aem *p
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_AEM_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_common_read(&p->aecpdu_header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aecpdu_aem_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aecpdu_aem_get_sequence_id(base, pos);
         p->command_type = jdksavdecc_aecpdu_aem_get_command_type(base, pos);
     }
     return r;
@@ -231,8 +227,6 @@ static inline ssize_t jdksavdecc_aecpdu_aem_write(struct jdksavdecc_aecpdu_aem c
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_AEM_LEN);
     if (r >= 0) {
         jdksavdecc_aecpdu_common_write(&p->aecpdu_header, base, pos, len);
-        jdksavdecc_aecpdu_aem_set_controller_entity_id(p->controller_entity_id, base, pos);
-        jdksavdecc_aecpdu_aem_set_sequence_id(p->sequence_id, base, pos);
         jdksavdecc_aecpdu_aem_set_command_type(p->command_type, base, pos);
     }
     return r;
