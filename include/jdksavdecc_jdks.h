@@ -226,7 +226,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
                 if( text_len < JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN ) {
                     r=pos+JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT;
                     memcpy( p->text, (uint8_t const *)buf+r, text_len);
-                    p->text[text_len+1]='\0';
+                    p->text[text_len]='\0';
                     r+=text_len;
                 } else {
                     r=-1;
