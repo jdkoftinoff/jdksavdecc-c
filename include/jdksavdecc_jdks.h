@@ -179,6 +179,9 @@ static inline ssize_t jdksavdecc_jdks_log_control_generate(
                                  buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_RESERVED,
                                  len );
         memcpy( ((uint8_t *)buf) + pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT, utf8_log_string, text_len );
+        memcpy( &buf[JDKSAVDECC_FRAME_HEADER_DA_OFFSET], jdksavdecc_jdks_multicast_log.value, 6 );
+        jdksavdecc_uint16_set( JDKSAVDECC_AVTP_ETHERTYPE, buf, JDKSAVDECC_FRAME_HEADER_ETHERTYPE_OFFSET );
+
         *aecp_sequence_id = *aecp_sequence_id + 1;
         *logging_sequence_id = *logging_sequence_id + 1;
     }
@@ -192,6 +195,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
     size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos,len,JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN);
     if( r>=0 ) {
+        jdksavdecc_aem_command_set_control_response_read(&p->cmd, buf, pos, len);
         jdksavdecc_eui64_read(&p->vendor_eui64, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64+pos, len);
         if( jdksavdecc_eui64_compare(&jdksavdecc_jdks_aem_control_log_text,&p->vendor_eui64)==0 ) {
             jdksavdecc_uint16_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
@@ -216,7 +220,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
                 jdksavdecc_uint8_read(
                     &p->log_detail,
                     buf,
-                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL,
+                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL+pos,
                     len );
 
                 if( text_len < JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN ) {
