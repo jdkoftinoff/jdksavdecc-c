@@ -51,8 +51,8 @@ extern "C" {
  *  to the jdks notifications controller entity id (70:b3:d5:ed:cf:ff:ff:ff) with
  *  a vendor defined blob control type.
  *  Any AEM SET_CONTROL Response sent to the multicast MAC address 71:b3:d5:ed:cf:ff and controller_entity_id
- *  of 70:b3:d5:ed:cf:ff:ff:ff may be interpreted as a vendor specific blob control value (See Clause 7.3.5.2.9)
- *  if the vendor_eui64 field is 0:b3:d5:ed:c0:00:00:00 then the message is a logging message
+ *  of 70:b3:d5:ff:ff:ed:cf:ff may be interpreted as a vendor specific blob control value (See Clause 7.3.5.2.9)
+ *  if the vendor_eui64 field is 70:b3:d5:ed:c0:00:00:00 then the message is a logging message
  *  and shall be interpreted as defined:
  *
  *      Offset  0: vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
@@ -79,7 +79,7 @@ extern "C" {
 
 #define JDKSAVDECC_JDKS_NOTIFICATIONS_CONTROLLER_ENTITY_ID \
     { \
-        { 0x70, 0xb3, 0xd5, 0xed, 0xcf, 0xff, 0xff, 0xff } \
+        { 0x70, 0xb3, 0xd5, 0xff, 0xff, 0xed, 0xcf, 0xff } \
     }
 
 extern struct jdksavdecc_eui64 jdksavdecc_jdks_notifications_controller_entity_id;
