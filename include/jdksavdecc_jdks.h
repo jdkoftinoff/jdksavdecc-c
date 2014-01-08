@@ -182,6 +182,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_generate(
         memcpy( &buf[JDKSAVDECC_FRAME_HEADER_DA_OFFSET], jdksavdecc_jdks_multicast_log.value, 6 );
         jdksavdecc_uint16_set( JDKSAVDECC_AVTP_ETHERTYPE, buf, JDKSAVDECC_FRAME_HEADER_ETHERTYPE_OFFSET );
 
+        // update the different sequence numbers
         *aecp_sequence_id = *aecp_sequence_id + 1;
         *logging_sequence_id = *logging_sequence_id + 1;
     }
