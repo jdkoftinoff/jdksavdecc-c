@@ -71,28 +71,24 @@ extern "C" {
  *  if the vendor_eui64 field is 70:b3:d5:ed:c0:00:00:00 then the message is a logging message
  *  and shall be interpreted as defined:
  *
- *      Offset  0:  vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
- *      Offset  8:  blob_length is 8+text_length
- *      Offset 10:  Doublet: source_descriptor_type
- *      Offset 12:  Doublet: source_descriptor_index
- *      Offset 14:  Doublet: log_sequence_id log message number from this source
- *      Offset 16:  Octet: log_priority { 0 = error, 1=warning, 2=info, 3..0x7f = debug/trace, 0xff=console data }
- *      Offset 17:  Octet: reserved
- *      Offset 18:  Octet array: utf8_chars[0..352]
+ *      Offset  0:  EUI64: vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
+ *      Offset  8:  Doublet: blob_length is 4+text_length
+ *      Offset 10:  Doublet: log_sequence_id log message number from this source
+ *      Offset 12:  Octet: log_priority { 0 = error, 1=warning, 2=info, 3..0x7f = debug/trace, 0xff=console data }
+ *      Offset 13:  Octet: reserved
+ *      Offset 14:  Octet array: utf8_chars[0..356]
  *
  * There can be a path back from the logging console to the logging source as well.  In this case,
  * the AECP SET_CONTROL Command is sent from the actual controller entity id, to the
  * targets entity id via the targets unicast MAC address.  The content is the same as the response except
  * the source_descriptor information is now target_descriptor and the log_priority shall be 0xff for console data.
  *
- *      Offset  0:  vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
- *      Offset  8:  blob_length is 8+text_length
- *      Offset 10:  Doublet: target_descriptor_type
- *      Offset 12:  Doublet: target_descriptor_index
- *      Offset 14:  Doublet: console_sequence_id
- *      Offset 16:  Octet: log_priority { 0xff=console data }
- *      Offset 17:  Octet: reserved
- *      Offset 18:  Octet array: utf8_chars[0..352]
+ *      Offset  0:  EUI64: vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
+ *      Offset  8:  Doublet: blob_length is 4+text_length
+ *      Offset 10:  Doublet: console_sequence_id
+ *      Offset 12:  Octet: log_priority { 0xff=console data }
+ *      Offset 13:  Octet: reserved
+ *      Offset 14:  Octet array: utf8_chars[0..356]
  *
  */
 /*@{*/
@@ -135,12 +131,10 @@ extern struct jdksavdecc_eui64 jdksavdecc_jdks_aem_control_log_text;
 
 #define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64 (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 0)
 #define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 8)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_TYPE (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 10)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_INDEX (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 12)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_SEQUENCE_ID (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 14)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 16)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_RESERVED (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 17)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 18)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_SEQUENCE_ID (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 10)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 12)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_RESERVED (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 13)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 14)
 #define JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT
 #define JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN (JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE - JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN)
 
@@ -153,8 +147,6 @@ struct jdksavdecc_jdks_log_control {
     struct jdksavdecc_aem_command_set_control_response cmd;
     struct jdksavdecc_eui64 vendor_eui64;
     uint16_t blob_size;
-    uint16_t source_descriptor_type;
-    uint16_t source_descriptor_index;
     uint16_t log_sequence_id;
     uint8_t log_detail;
     uint8_t reserved;
@@ -169,8 +161,6 @@ struct jdksavdecc_jdks_log_console_command {
     struct jdksavdecc_aem_command_set_control cmd;
     struct jdksavdecc_eui64 vendor_eui64;
     uint16_t blob_size;
-    uint16_t dest_descriptor_type;
-    uint16_t dest_descriptor_index;
     uint16_t log_sequence_id;
     uint8_t log_detail;
     uint8_t reserved;
@@ -186,12 +176,6 @@ struct jdksavdecc_jdks_log_console_command {
  *
  * @param descriptor_index
  *        index of the CONTROL descriptor that we are using for this data
- *
- * @param source_descriptor_type
- *        The type of the source of the log message. Usually JDKSAVDECC_DESCRIPTOR_ENTITY
- *
- * @param source_descriptor_index
- *        The descriptor index of the source of the log message. Usually 0
  *
  * @param aecp_sequence_id
  *        The pointer to the uint16_t of the variable used to track unsolicited response sequence_id.
@@ -233,8 +217,6 @@ struct jdksavdecc_jdks_log_console_command {
 static inline ssize_t jdksavdecc_jdks_log_control_generate(
         struct jdksavdecc_eui64 const *my_entity_id,
         uint16_t descriptor_index,
-        uint16_t source_descriptor_type,
-        uint16_t source_descriptor_index,
         uint16_t *aecp_sequence_id,
         uint16_t *logging_sequence_id,
         uint8_t log_detail,
@@ -266,12 +248,6 @@ static inline ssize_t jdksavdecc_jdks_log_control_generate(
         jdksavdecc_uint16_write( text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN,
                                  buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE,
                                  len );
-        jdksavdecc_uint16_write( source_descriptor_type,
-                                 buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_TYPE,
-                                 len );
-        jdksavdecc_uint16_write( source_descriptor_index,
-                                 buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_INDEX,
-                                 len );
         jdksavdecc_uint16_write( *logging_sequence_id,
                                  buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_SEQUENCE_ID,
                                  len );
@@ -302,12 +278,6 @@ static inline ssize_t jdksavdecc_jdks_log_control_generate(
  *
  * @param descriptor_index
  *        index of the CONTROL descriptor that we are using for this data
- *
- * @param source_descriptor_type
- *        The type of the source of the log message. Usually JDKSAVDECC_DESCRIPTOR_ENTITY
- *
- * @param source_descriptor_index
- *        The descriptor index of the source of the log message. Usually 0
  *
  * @param aecp_sequence_id
  *        The pointer to the uint16_t of the variable used to track unsolicited response sequence_id.
@@ -350,8 +320,6 @@ static inline ssize_t jdksavdecc_jdks_log_console_generate(
         struct jdksavdecc_eui64 const *my_entity_id,
         struct jdksavdecc_eui64 const *target_entity_id,
         uint16_t descriptor_index,
-        uint16_t source_descriptor_type,
-        uint16_t source_descriptor_index,
         uint16_t *aecp_sequence_id,
         uint16_t *logging_sequence_id,
         uint8_t log_detail,
@@ -382,12 +350,6 @@ static inline ssize_t jdksavdecc_jdks_log_console_generate(
         jdksavdecc_eui64_write( &jdksavdecc_jdks_aem_control_log_text, buf, pos+JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64, len );
         jdksavdecc_uint16_write( text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN,
                                  buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE,
-                                 len );
-        jdksavdecc_uint16_write( source_descriptor_type,
-                                 buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_TYPE,
-                                 len );
-        jdksavdecc_uint16_write( source_descriptor_index,
-                                 buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_INDEX,
                                  len );
         jdksavdecc_uint16_write( *logging_sequence_id,
                                  buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_SEQUENCE_ID,
@@ -516,15 +478,6 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
             if( p->blob_size > (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN) &&
                 p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE ) {
                 uint16_t text_len =p->blob_size - (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN);
-                jdksavdecc_uint16_read(
-                    &p->source_descriptor_type,
-                    buf,
-                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_TYPE+pos);
-
-                jdksavdecc_uint16_read(
-                    &p->source_descriptor_index,
-                    buf,
-                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_INDEX +pos);
 
                 jdksavdecc_uint16_read(
                     &p->log_sequence_id,
@@ -594,15 +547,6 @@ static inline ssize_t jdksavdecc_jdks_log_console_read(
             if( p->blob_size > (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN) &&
                 p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE ) {
                 uint16_t text_len =p->blob_size - (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN);
-                jdksavdecc_uint16_read(
-                    &p->dest_descriptor_type,
-                    buf,
-                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_TYPE+pos);
-
-                jdksavdecc_uint16_read(
-                    &p->dest_descriptor_index,
-                    buf,
-                    JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_SOURCE_DESCRIPTOR_INDEX +pos);
 
                 jdksavdecc_uint16_read(
                     &p->log_sequence_id,
