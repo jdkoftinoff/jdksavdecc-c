@@ -42,8 +42,24 @@
 extern "C" {
 #endif
 
-/** \addtogroup jdks Publically usable definitions and types under
- * J.D. Koftinoff Software, Ltd.'s MAC-S (OUI-36) 70-B3-D5-ED-C
+/** \addtogroup jdks Publically usable definitions and types under JDKS OUI-36
+ *
+ * J.D. Koftinoff Software, Ltd.'s MAC-S (OUI-36) is: 70-B3-D5-ED-C
+ *
+ * JDKS reserves the MAC range from 70:b3:d5:ed:cf:f0 to 70:b3:d5:ed:cf:f7 inclusive for experimental devices only
+ *
+ * The following Multicast MAC addresses owned by J.D. Koftinoff Software, Ltd.
+ * are available to be used by anyone as long as their usage conforms to the recommendations
+ * defined in this file.
+ *
+ *    71:b3:d5:ed:cf:ff = JDKSAVDECC_JDKS_MULTICAST_LOG for multicasting entity log messages
+ *
+ * All other MAC addresses are for use by J.D. Koftinoff Software Ltd. only.
+ *
+ * The following 1722.1-2013 vendor control types are defined here for use by anyone:
+ *
+ *    70:b3:d5:ed:c0:00:00:00 = JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT for a logging string value control.
+ *    70:b3:d5:ed:c0:00:00:01 = JDKSAVDECC_JDKS_AEM_CONTROL_IPV4_PARAMETERS for setting IPv4 ethernet parameters.
  */
 /*@{*/
 
