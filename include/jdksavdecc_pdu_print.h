@@ -44,6 +44,8 @@ extern "C" {
 
 extern struct jdksavdecc_uint16_name jdksavdecc_pdu_print_cd_subtype[];
 
+extern struct jdksavdecc_uint16_name jdksavdecc_1722a_pdu_print_cd_subtype[];
+
 void jdksavdecc_pdu_print(struct jdksavdecc_printer *self, const uint8_t *p, size_t len, int dump_payload);
 
 void jdksavdecc_frame_print(struct jdksavdecc_printer *self, struct jdksavdecc_frame const *p, int dump_payload);

@@ -99,20 +99,45 @@ extern struct jdksavdecc_eui64 jdksavdecc_identification_notification_controller
 #define JDKSAVDECC_STRING_REFERENCE(offset, index) (((offset) << 3) | (index & 0x7)) /// See Clause 7.3.6
 #define JDKSAVDECC_NO_STRING ((0x1fff << 3) + 7)                                     /// See Clause 7.3.6
 
-/** \addtogroup subtype AVTP Subtype definitions - See IEEE P1722a D5 */
+/** \addtogroup subtype AVTP 2011 Subtype definitions - See IEEE 1722-2011 and IEEE 1722.1-2013 */
 /*@{*/
 
 #define JDKSAVDECC_SUBTYPE_61883_IIDC (0x00)
 #define JDKSAVDECC_SUBTYPE_MMA (0x01)
-#define JDKSAVDECC_SUBTYPE_AVTP_AUDIO (0x02)
-#define JDKSAVDECC_SUBTYPE_AVTP_VIDEO (0x03)
-#define JDKSAVDECC_SUBTYPE_AVTP_CONTROL (0x04)
-#define JDKSAVDECC_SUBTYPE_VENDOR (0x6f)
 #define JDKSAVDECC_SUBTYPE_ADP (0x7a)
 #define JDKSAVDECC_SUBTYPE_AECP (0x7b)
 #define JDKSAVDECC_SUBTYPE_ACMP (0x7c)
 #define JDKSAVDECC_SUBTYPE_MAAP (0x7e)
 #define JDKSAVDECC_SUBTYPE_EXPERIMENTAL (0x7f)
+
+/*@}*/
+
+/** \addtogroup subtype AVTP p1722a Subtype definitions - See IEEE p1722a */
+/*@{*/
+
+#define JDKSAVDECC_1722A_SUBTYPE_61883_IIDC (0x00)
+#define JDKSAVDECC_1722A_SUBTYPE_MMA_STREAM (0x01)
+#define JDKSAVDECC_1722A_SUBTYPE_AAF (0x02)
+#define JDKSAVDECC_1722A_SUBTYPE_CVF (0x03)
+#define JDKSAVDECC_1722A_SUBTYPE_AUTOMOTIVE (0x04)
+#define JDKSAVDECC_1722A_SUBTYPE_CRS (0x05)
+#define JDKSAVDECC_1722A_SUBTYPE_CODED_AUDIO (0x06)
+#define JDKSAVDECC_1722A_SUBTYPE_TSCS (0x07)
+#define JDKSAVDECC_1722A_SUBTYPE_SDI (0x08)
+#define JDKSAVDECC_1722A_SUBTYPE_RAW (0x09)
+#define JDKSAVDECC_1722A_SUBTYPE_AESGCM_STREAM (0x6e)
+#define JDKSAVDECC_1722A_SUBTYPE_VENDOR_STREAM (0x6f)
+#define JDKSAVDECC_1722A_SUBTYPE_EXPERIMENTAL_STREAM (0x7f)
+#define JDKSAVDECC_1722A_SUBTYPE_MMA_CONTROL (0x81)
+#define JDKSAVDECC_1722A_SUBTYPE_ECC_SIGNED_CONTROL (0xec)
+#define JDKSAVDECC_1722A_SUBTYPE_ECC_ENC_CONTROL (0xed)
+#define JDKSAVDECC_1722A_SUBTYPE_AESGCM_CONTROL (0xee)
+#define JDKSAVDECC_1722A_SUBTYPE_VENDOR_CONTROL (0xef)
+#define JDKSAVDECC_1722A_SUBTYPE_ADP (0xfa)
+#define JDKSAVDECC_1722A_SUBTYPE_AECP (0xfb)
+#define JDKSAVDECC_1722A_SUBTYPE_ACMP (0xfc)
+#define JDKSAVDECC_1722A_SUBTYPE_MAAP (0xfe)
+#define JDKSAVDECC_1722A_SUBTYPE_EXPERIMENTAL (0xff)
 
 /*@}*/
 
@@ -199,6 +224,32 @@ static inline uint32_t jdksavdecc_subtype_data_get_status(uint32_t v) {
 static inline uint32_t jdksavdecc_subtype_data_set_status(uint32_t subtype_data, uint32_t v) {
     return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_STATUS_MASK)
            | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_STATUS_BIT)) & JDKSAVDECC_SUBTYPE_DATA_STATUS);
+}
+
+static inline ssize_t jdksavdecc_1722a_read_subtype(
+   uint8_t *host_value,
+   void const *base,
+   ssize_t pos,
+   size_t len ) {
+   ssize_t r=jdksavdecc_validate_range(pos,len,1);
+   if(r>=0) {
+       uint8_t const *b = (uint8_t const *)base;
+       *host_value = b[pos+0];
+   }
+   return r;
+}
+
+static inline ssize_t jdksavdecc_1722a_write_subtype(
+   uint8_t const *host_value,
+   void *base,
+   ssize_t pos,
+   size_t len ) {
+   ssize_t r=jdksavdecc_validate_range(pos,len,1);
+   if(r>=0) {
+       uint8_t *b = (uint8_t *)base;
+       b[pos+0] = *host_value;
+   }
+   return r;
 }
 
 #define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_BIT (31)
