@@ -171,6 +171,32 @@ static inline uint32_t jdksavdecc_subtype_data_set_subtype(uint32_t subtype_data
            | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_BIT)) & JDKSAVDECC_SUBTYPE_DATA_SUBTYPE);
 }
 
+static inline ssize_t jdksavdecc_1722a_read_subtype(
+   uint8_t *host_value,
+   void const *base,
+   ssize_t pos,
+   size_t len ) {
+   ssize_t r=jdksavdecc_validate_range(pos,len,1);
+   if(r>=0) {
+       uint8_t const *b = (uint8_t const *)base;
+       *host_value = b[pos+0];
+   }
+   return r;
+}
+
+static inline ssize_t jdksavdecc_1722a_write_subtype(
+   uint8_t const *host_value,
+   void *base,
+   ssize_t pos,
+   size_t len ) {
+   ssize_t r=jdksavdecc_validate_range(pos,len,1);
+   if(r>=0) {
+       uint8_t *b = (uint8_t *)base;
+       b[pos+0] = *host_value;
+   }
+   return r;
+}
+
 #define JDKSAVDECC_SUBTYPE_DATA_SV_BIT (8)
 #define JDKSAVDECC_SUBTYPE_DATA_SV (0x00800000UL)
 #define JDKSAVDECC_SUBTYPE_DATA_SV_MASK (~0x00800000UL)
@@ -226,31 +252,6 @@ static inline uint32_t jdksavdecc_subtype_data_set_status(uint32_t subtype_data,
            | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_STATUS_BIT)) & JDKSAVDECC_SUBTYPE_DATA_STATUS);
 }
 
-static inline ssize_t jdksavdecc_1722a_read_subtype(
-   uint8_t *host_value,
-   void const *base,
-   ssize_t pos,
-   size_t len ) {
-   ssize_t r=jdksavdecc_validate_range(pos,len,1);
-   if(r>=0) {
-       uint8_t const *b = (uint8_t const *)base;
-       *host_value = b[pos+0];
-   }
-   return r;
-}
-
-static inline ssize_t jdksavdecc_1722a_write_subtype(
-   uint8_t const *host_value,
-   void *base,
-   ssize_t pos,
-   size_t len ) {
-   ssize_t r=jdksavdecc_validate_range(pos,len,1);
-   if(r>=0) {
-       uint8_t *b = (uint8_t *)base;
-       b[pos+0] = *host_value;
-   }
-   return r;
-}
 
 #define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_BIT (31)
 #define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_WIDTH (11)
