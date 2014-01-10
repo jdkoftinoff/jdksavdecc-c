@@ -228,17 +228,23 @@ static inline ssize_t jdksavdecc_float_read(float *host_value, void const *base,
     ssize_t r = jdksavdecc_validate_range(pos, len, sizeof(*host_value));
 
     if (r >= 0) {
-        uint32_t host_value_int = jdksavdecc_uint32_get(base, pos);
-        float *hp = (float *)&host_value_int;
-        *host_value = *hp;
+        union {
+            uint32_t host_value_int;
+            float f;
+        } hp;
+        hp.host_value_int=jdksavdecc_uint32_get(base, pos);
+        *host_value = hp.f;
     }
     return r;
 }
 
 static inline float jdksavdecc_float_get(void const *base, ssize_t pos) {
-    uint32_t host_value_int = jdksavdecc_uint32_get(base, pos);
-    float *hp = (float *)&host_value_int;
-    return *hp;
+    union {
+        uint32_t host_value_int;
+        float f;
+    } hp;
+    hp.host_value_int = jdksavdecc_uint32_get(base, pos);
+    return hp.f;
 }
 
 static inline ssize_t jdksavdecc_float_write(float v, void *base, ssize_t pos, size_t len) {
@@ -254,25 +260,35 @@ static inline ssize_t jdksavdecc_float_write(float v, void *base, ssize_t pos, s
 }
 
 static inline void jdksavdecc_float_set(float v, void *base, ssize_t pos) {
-    uint32_t *host_value_int = ((uint32_t *)&v);
-    jdksavdecc_uint32_set(*host_value_int, base, pos);
+    union {
+        uint32_t *host_value_int;
+        float *f;
+    } hp;
+    hp.f = &v;
+    jdksavdecc_uint32_set(*(hp.host_value_int), base, pos);
 }
 
 static inline ssize_t jdksavdecc_double_read(double *host_value, void const *base, ssize_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, sizeof(*host_value));
 
     if (r >= 0) {
-        uint64_t host_value_int = jdksavdecc_uint64_get(base, pos);
-        double *hp = (double *)&host_value_int;
-        *host_value = *hp;
+        union {
+            uint64_t host_value_int;
+            float f;
+        } hp;
+        hp.host_value_int = jdksavdecc_uint64_get(base, pos);
+        *host_value = hp.f;
     }
     return r;
 }
 
 static inline double jdksavdecc_double_get(void const *base, ssize_t pos) {
-    uint64_t host_value_int = jdksavdecc_uint64_get(base, pos);
-    double *hp = (double *)&host_value_int;
-    return *hp;
+    union {
+        uint64_t host_value_int;
+        double d;
+    } hp;
+    hp.host_value_int = jdksavdecc_uint64_get(base, pos);
+    return hp.d;
 }
 
 static inline ssize_t jdksavdecc_double_write(double v, void *base, ssize_t pos, size_t len) {
@@ -288,8 +304,12 @@ static inline ssize_t jdksavdecc_double_write(double v, void *base, ssize_t pos,
 }
 
 static inline void jdksavdecc_double_set(double v, void *base, ssize_t pos) {
-    uint64_t *host_value_int = ((uint64_t *)&v);
-    jdksavdecc_uint64_set(*host_value_int, base, pos);
+    union {
+        uint64_t *host_value_int;
+        double *d;
+    } hp;
+    hp.d= &v;
+    jdksavdecc_uint64_set(*(hp.host_value_int), base, pos);
 }
 
 /*@}*/
