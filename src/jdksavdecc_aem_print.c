@@ -180,6 +180,7 @@ void jdksavdecc_aem_write_descriptor_command_print(struct jdksavdecc_printer *se
                                                   void const *p,
                                                   ssize_t pos,
                                                   size_t len ) {
+	(void)len;
     jdksavdecc_printer_print_label(self,"configuration_index");
     jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_write_descriptor_get_configuration_index(p,pos));
     jdksavdecc_printer_print_eol(self);
@@ -195,6 +196,7 @@ void jdksavdecc_aem_read_descriptor_response_print(struct jdksavdecc_printer *se
                                                   void const *p,
                                                   ssize_t pos,
                                                   size_t len ) {
+	(void)len;
     jdksavdecc_printer_print_label(self,"configuration_index");
     jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_read_descriptor_response_get_configuration_index(p,pos));
     jdksavdecc_printer_print_eol(self);
@@ -209,6 +211,7 @@ void jdksavdecc_aem_write_descriptor_response_print(struct jdksavdecc_printer *s
                                                   void const *p,
                                                   ssize_t pos,
                                                   size_t len ) {
+	(void)len;
     jdksavdecc_printer_print_label(self,"configuration_index");
     jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_write_descriptor_response_get_configuration_index(p,pos));
     jdksavdecc_printer_print_eol(self);
@@ -225,6 +228,8 @@ void jdksavdecc_aem_read_descriptor_command_print(struct jdksavdecc_printer *sel
                                                   size_t len ) {
     uint16_t descriptor_type = jdksavdecc_aem_command_read_descriptor_get_descriptor_type(p,pos);
     uint16_t descriptor_index = jdksavdecc_aem_command_read_descriptor_get_descriptor_index(p,pos);
+	(void)len;
+	(void)msg;
     jdksavdecc_printer_print_label(self,"configuration_index");
     jdksavdecc_printer_print_uint16(self,jdksavdecc_aem_command_read_descriptor_get_configuration_index(p,pos));
     jdksavdecc_printer_print_eol(self);
@@ -246,6 +251,8 @@ void jdksavdecc_aem_get_control_command_print(struct jdksavdecc_printer *self,
                                                   size_t len ) {
     uint16_t descriptor_type = jdksavdecc_aem_command_get_control_get_descriptor_type(p,pos);
     uint16_t descriptor_index = jdksavdecc_aem_command_get_control_get_descriptor_index(p,pos);
+	(void)msg;
+	(void)len;
     jdksavdecc_printer_print_label(self,"descriptor_type");
     jdksavdecc_printer_print_uint16_name(self,jdksavdecc_aem_print_descriptor_type,descriptor_type);
     jdksavdecc_printer_print_eol(self);
