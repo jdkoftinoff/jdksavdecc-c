@@ -54,6 +54,8 @@ bool jdksavdecc_adp_manager_init(
     void (*received_entity_available_or_departing)(
         struct jdksavdecc_adp_manager *self,
         void *context,
+        void const *source_address,
+        int source_address_len,
         struct jdksavdecc_adpdu *adpdu )
     ) {
     self->last_time_in_ms = 0;
@@ -85,7 +87,9 @@ void jdksavdecc_adp_manager_destroy(
 
 bool jdksavdecc_adp_manager_receive(
     struct jdksavdecc_adp_manager *self,
-    uint64_t time_in_milliseconds,
+    jdksavdecc_timestamp_in_milliseconds time_in_milliseconds,
+    void const *source_address,
+    int source_address_len,
     uint8_t const *buf,
     uint16_t len ) {
     struct jdksavdecc_adpdu incoming;
@@ -108,13 +112,23 @@ bool jdksavdecc_adp_manager_receive(
         case JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_AVAILABLE:
             // only handle incoming available messages if we have a place to give them to
             if( self->received_entity_available_or_departing ) {
-                self->received_entity_available_or_departing( self, self->context, &incoming );
+                self->received_entity_available_or_departing(
+                    self,
+                    self->context,
+                    source_address,
+                    source_address_len,
+                    &incoming );
             }
             break;
         case JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_DEPARTING:
             // only handle incoming departing messages if we have a place to give them to
             if( self->received_entity_available_or_departing ) {
-                self->received_entity_available_or_departing( self, self->context, &incoming );
+                self->received_entity_available_or_departing(
+                    self,
+                    self->context,
+                    source_address,
+                    source_address_len,
+                    &incoming );                
             }
             break;
         default:
@@ -126,12 +140,12 @@ bool jdksavdecc_adp_manager_receive(
 
 void jdksavdecc_adp_manager_tick(
     struct jdksavdecc_adp_manager *self,
-    uint64_t cur_time_in_ms ) {
+    jdksavdecc_timestamp_in_milliseconds cur_time_in_ms ) {
 
     // calculate the time since the last send
-    uint64_t difftime = cur_time_in_ms - self->last_time_in_ms;
+    jdksavdecc_timestamp_in_milliseconds difftime = cur_time_in_ms - self->last_time_in_ms;
 
-    uint64_t valid_time_in_ms = self->adpdu.header.valid_time;
+    jdksavdecc_timestamp_in_milliseconds valid_time_in_ms = self->adpdu.header.valid_time;
 
     // calculate the time in milliseconds between sends.
     // header.valid_time is in 2 second increments. We are to send
@@ -147,52 +161,56 @@ void jdksavdecc_adp_manager_tick(
     self->early_tick = false;
 
     // only send messages available/departing messages if we are not stopped
-    
+
+    // are we departing?
+    if( self->do_send_entity_departing ) {
+
+        // yes, we are sending an entity departing message.
+        // clear any do_send flags
+
+        self->do_send_entity_departing = false;
+        self->do_send_entity_available = false;
+
+        // change into pause state
+
+        self->stopped = true;
+
+        // record the time we send it
+
+        self->last_time_in_ms = cur_time_in_ms;
+
+        // send the departing
+
+        jdksavdecc_adp_manager_send_entity_departing(self);
+
+        // reset the available_index to 0
+
+        self->adpdu.available_index = 0;
+    }
+
     if( !self->stopped ) {
-        if( ( difftime > valid_time_in_ms )
-            || (self->do_send_entity_available || self->do_send_entity_departing) ) {
+        // if we are running and it is time to send an available, set the flag
+        if( difftime > valid_time_in_ms ) {
+            self->do_send_entity_available = true;
+        }
 
-            // are we departing?
-            if( self->do_send_entity_departing ) {
+        // if the flag is set for whatever reason and we are running then send the available and clear the flag
+        if( self->do_send_entity_available ) {
+            // we are to send entity available message
+            // clear the request flag
 
-                // yes, we are sending an entity departing message.
-                // clear any do_send flags
+            self->do_send_entity_available = false;
 
-                self->do_send_entity_departing = false;
-                self->do_send_entity_available = false;
+            // record the time we send it
 
-                // change into pause state
+            self->last_time_in_ms = cur_time_in_ms;
 
-                self->stopped = true;
+            // send the available
 
-                // record the time we send it
-
-                self->last_time_in_ms = cur_time_in_ms;
-
-                // send the departing
-
-                jdksavdecc_adp_manager_send_entity_departing(self);
-
-                // reset the available_index to 0
-
-                self->adpdu.available_index = 0;
-            } else if( self->do_send_entity_available ) {
-
-                // we are to send entity available message
-                // clear the request flag
-
-                self->do_send_entity_available = false;
-
-                // record the time we send it
-
-                self->last_time_in_ms = cur_time_in_ms;
-
-                // send the available
-
-                jdksavdecc_adp_manager_send_entity_available(self);
-            }
+            jdksavdecc_adp_manager_send_entity_available(self);
         }
     }
+
 
     // are we asked to send an entity discover message?
 

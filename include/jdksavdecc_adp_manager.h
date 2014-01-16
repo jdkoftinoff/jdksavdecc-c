@@ -60,7 +60,7 @@ struct jdksavdecc_adp_manager {
     struct jdksavdecc_adpdu adpdu;
 
     /// The system time in milliseconds that the last ADPDU was sent
-    uint64_t last_time_in_ms;
+    jdksavdecc_timestamp_in_milliseconds last_time_in_ms;
 
     /// A flag to notify higher level code that the state machine is requesting an immediate tick again
     bool early_tick;
@@ -92,6 +92,8 @@ struct jdksavdecc_adp_manager {
     void (*received_entity_available_or_departing)(
         struct jdksavdecc_adp_manager *self,
         void *context,
+        void const *source_address,
+        int source_address_len,
         struct jdksavdecc_adpdu *adpdu );
 };
 
@@ -108,6 +110,8 @@ bool jdksavdecc_adp_manager_init(
     void (*received_entity_available_or_departing)(
         struct jdksavdecc_adp_manager *self,
         void *context,
+        void const *source_address,
+        int source_address_len,
         struct jdksavdecc_adpdu *adpdu )
     );
 
@@ -117,14 +121,16 @@ void jdksavdecc_adp_manager_destroy(struct jdksavdecc_adp_manager *self );
 /// Receive an ADPU and process it
 bool jdksavdecc_adp_manager_receive(
     struct jdksavdecc_adp_manager *self,
-    uint64_t time_in_milliseconds,
+    jdksavdecc_timestamp_in_milliseconds time_in_milliseconds,
+    void const *source_address,
+    int source_address_len,
     uint8_t const *buf,
     uint16_t len );
 
 /// Notify the state machine that time has passed. Call asap if early_tick is true.
 void jdksavdecc_adp_manager_tick(
     struct jdksavdecc_adp_manager *self,
-    uint64_t cur_time_in_ms );
+    jdksavdecc_timestamp_in_milliseconds cur_time_in_ms );
 
 /// Tell the advertiser to stop advertising. Incoming messages will still be reported.
 static inline void jdksavdecc_adp_manager_stop(
