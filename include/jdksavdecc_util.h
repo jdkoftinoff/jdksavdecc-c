@@ -42,6 +42,8 @@ extern "C" {
 
 typedef uint64_t jdksavdecc_timestamp_in_microseconds;
 
+typedef uint64_t jdksavdecc_timestamp_in_milliseconds;
+
 /**
  * Validate buffer position in a buffer len for an element of elem_size.
  *
