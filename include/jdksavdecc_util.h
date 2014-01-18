@@ -40,9 +40,13 @@ extern "C" {
 /** \addtogroup util Utilities */
 /*@{*/
 
-typedef uint64_t jdksavdecc_timestamp_in_microseconds;
+#ifndef JDKSAVDECC_TIMESTAMP_TYPE
+# define JDKSAVDECC_TIMESTAMP_TYPE uint64_t
+#endif
 
-typedef uint64_t jdksavdecc_timestamp_in_milliseconds;
+typedef JDKSAVDECC_TIMESTAMP_TYPE jdksavdecc_timestamp_in_microseconds;
+
+typedef JDKSAVDECC_TIMESTAMP_TYPE jdksavdecc_timestamp_in_milliseconds;
 
 /**
  * Validate buffer position in a buffer len for an element of elem_size.
