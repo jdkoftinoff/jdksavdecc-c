@@ -265,7 +265,6 @@ static void jdksavdecc_adp_manager_send_entity_departing( struct jdksavdecc_adp_
 
     if( len>0 ) {
         self->frame_send( self, self->context, buf, (uint16_t)len );
-        self->adpdu.available_index++;
     }
 }
 
