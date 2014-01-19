@@ -41,6 +41,8 @@
 
 typedef int ssize_t;
 
+#define JDKSAVDECC_TIMESTAMP_TYPE uint32_t
+
 #include <stdint.h>
 #include <inttypes.h>
 #include <stdbool.h>
