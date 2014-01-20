@@ -196,9 +196,6 @@ struct jdksavdecc_jdks_log_console_command {
  * @param buf
  *        The raw ethernet frame packet, starting at DA,SA,Ethertype
  *
- * @param pos
- *        The position of the ethernet frame's payload data, usually 14 unless it is vlan tagged.
- *
  * @param len
  *        The length of the memory at buf
  *
@@ -213,8 +210,8 @@ static inline ssize_t jdksavdecc_jdks_log_control_generate(
         uint8_t reserved,
         const char *utf8_log_string,
         void *buf,
-        ssize_t pos,
         size_t len ) {
+    int pos=14;
     ssize_t text_len = (ssize_t)strlen(utf8_log_string);
     ssize_t expected_length = JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN + text_len;
     ssize_t r = jdksavdecc_validate_range(pos,len,expected_length);
@@ -289,9 +286,6 @@ static inline ssize_t jdksavdecc_jdks_log_control_generate(
  * @param buf
  *        The raw ethernet frame packet, starting at DA,SA,Ethertype
  *
- * @param pos
- *        The position of the ethernet frame's payload data, usually 14 unless it is vlan tagged.
- *
  * @param len
  *        The length of the memory at buf
  *
@@ -306,9 +300,9 @@ static inline ssize_t jdksavdecc_jdks_log_console_generate(
         uint8_t log_detail,
         uint8_t reserved,
         const char *utf8_log_string,
-        void *buf,
-        ssize_t pos,
+        uint8_t *buf,
         size_t len ) {
+    int pos=14;
     ssize_t text_len = (ssize_t)strlen(utf8_log_string);
     ssize_t expected_length = JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN + text_len;
     ssize_t r = jdksavdecc_validate_range(pos,len,expected_length);
@@ -356,9 +350,6 @@ static inline ssize_t jdksavdecc_jdks_log_console_generate(
  * @param buf
  *        The raw ethernet frame packet, starting at DA,SA,Ethertype
  *
- * @param pos
- *        The position of the ethernet frame's payload data, usually 14 unless it is vlan tagged.
- *
  * @param len
  *        The length of the memory at buf
  *
@@ -367,9 +358,9 @@ static inline ssize_t jdksavdecc_jdks_log_console_generate(
 static inline bool jdksavdecc_jdks_is_log(
         struct jdksavdecc_jdks_log_control *p,
         void const *buf,
-        ssize_t pos,
         size_t len) {
     bool is_log_response = false;
+    int pos=14;
     ssize_t r = jdksavdecc_validate_range(pos,len,JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN);
     if( r>=0 ) {
         jdksavdecc_aem_command_set_control_response_read(&p->cmd, buf, pos, len);
@@ -394,9 +385,6 @@ static inline bool jdksavdecc_jdks_is_log(
  * @param buf
  *        The raw ethernet frame packet, starting at DA,SA,Ethertype
  *
- * @param pos
- *        The position of the ethernet frame's payload data, usually 14 unless it is vlan tagged.
- *
  * @param len
  *        The length of the memory at buf
  *
@@ -405,9 +393,9 @@ static inline bool jdksavdecc_jdks_is_log(
 static inline bool jdksavdecc_jdks_is_console_command(
         struct jdksavdecc_jdks_log_console_command *p,
         void const *buf,
-        ssize_t pos,
         size_t len) {
     bool is_console = false;
+    int pos=14;
     ssize_t r = jdksavdecc_validate_range(pos,len,JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN);
     if( r>=0 ) {
         jdksavdecc_aem_command_set_control_read(&p->cmd, buf, pos, len);
@@ -432,9 +420,6 @@ static inline bool jdksavdecc_jdks_is_console_command(
  * @param buf
  *        The raw ethernet frame packet, starting at DA,SA,Ethertype
  *
- * @param pos
- *        The position of the ethernet frame's payload data, usually 14 unless it is vlan tagged.
- *
  * @param len
  *        The length of the memory at buf
  *
@@ -442,10 +427,10 @@ static inline bool jdksavdecc_jdks_is_console_command(
  */
 
 static inline ssize_t jdksavdecc_jdks_log_control_read(
-    struct jdksavdecc_jdks_log_control *p,
-    void const *buf,
-    ssize_t pos,
-    size_t len) {
+        struct jdksavdecc_jdks_log_control *p,
+        void const *buf,
+        size_t len) {
+    int pos=14;
     ssize_t r = jdksavdecc_validate_range(pos,len,JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN);
     if( r>=0 ) {
         jdksavdecc_aem_command_set_control_response_read(&p->cmd, buf, pos, len);
@@ -494,10 +479,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
  *        Pointer to the jdksavdecc_jdks_log_console_command structure that will be filled in on success
  *
  * @param buf
- *        The raw ethernet frame packet, starting at DA,SA,Ethertype
- *
- * @param pos
- *        The position of the ethernet frame's payload data, usually 14 unless it is vlan tagged.
+ *        The raw ethernet frame packet, starting at DA,SA,Ethertype *
  *
  * @param len
  *        The length of the memory at buf
@@ -506,10 +488,10 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
  */
 
 static inline ssize_t jdksavdecc_jdks_log_console_read(
-    struct jdksavdecc_jdks_log_console_command *p,
-    void const *buf,
-    ssize_t pos,
-    size_t len) {
+        struct jdksavdecc_jdks_log_console_command *p,
+        void const *buf,
+        size_t len) {
+    int pos=14;
     ssize_t r = jdksavdecc_validate_range(pos,len,JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN);
     if( r>=0 ) {
         jdksavdecc_aem_command_set_control_read(&p->cmd, buf, pos, len);
