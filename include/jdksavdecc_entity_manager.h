@@ -63,16 +63,27 @@ struct jdksavdecc_entity_manager_inflight_command_info {
     /// This is the timestamp of the last command that we sent to another entity
     jdksavdecc_timestamp_in_milliseconds sent_time;
 
+    /// This is the number of milliseconds before the message times out
+    uint16_t time_out_in_ms;
+
     /// This is the entity id that was the target of the last command that we sent
     struct jdksavdecc_eui64 target_entity_id;
 
-    /// This is the comamnd_type of the last command that we sent to another entity
+    /// This is the command_type of the last command that we sent to another entity
     uint16_t command_type;
 
     /// This is the sequence id of the command that was sent
     uint16_t sequence_id;
+
+    /// This is the pointer to the function to call when the command timed out
+    void (*timed_out)(
+            struct jdksavdecc_entity_manager_inflight_command_info *self,
+            void *context );
 };
 
+int jdksavdecc_entity_manager_inflight_command_info_compare(
+        void const *lhs,
+        void const *rhs );
 
 struct jdksavdecc_entity_manager_inflight_commands {
     int num_inflight_commands;
@@ -86,7 +97,7 @@ bool jdksacdecc_entity_manager_inflight_commands_full( struct jdksavdecc_entity_
 void jdksavdecc_entity_manager_inflight_commands_sort(
         struct jdksavdecc_entity_manager_inflight_commands *self );
 
-void jdksavdecc_entity_manager_inflight_commands_add(
+bool jdksavdecc_entity_manager_inflight_commands_add(
         struct jdksavdecc_entity_manager_inflight_commands *self,
         struct jdksavdecc_entity_manager_inflight_command_info const *info );
 
@@ -95,11 +106,16 @@ int jdksavdecc_entity_manager_inflight_commands_find(
         struct jdksavdecc_eui64 const *target_entity_id,
         uint16_t sequence_id );
 
-int jdksavdecc_entity_manager_inflight_commands_remove(
+void jdksavdecc_entity_manager_inflight_commands_tick(
+        struct jdksavdecc_entity_manager_inflight_commands *self,
+        jdksavdecc_timestamp_in_milliseconds cur_time,
+        void *context );
+
+void jdksavdecc_entity_manager_inflight_commands_remove(
         struct jdksavdecc_entity_manager_inflight_commands *self,
         int num );
 
-int jdksavdecc_entity_manager_inflight_commands_remove_target(
+void jdksavdecc_entity_manager_inflight_commands_remove_target(
         struct jdksavdecc_entity_manager_inflight_commands *self,
         struct jdksavdecc_eui64 const *target_entity_id );
 
