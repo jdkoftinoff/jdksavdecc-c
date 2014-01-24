@@ -34,11 +34,13 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_adp.h"
 #include "jdksavdecc_adp_manager.h"
+#include "jdksavdecc_acmp.h"
 #include "jdksavdecc_aecp.h"
 #include "jdksavdecc_aecp_aa.h"
 #include "jdksavdecc_aecp_aem.h"
 #include "jdksavdecc_aem_command.h"
 #include "jdksavdecc_aem_descriptor.h"
+#include "jdksavdecc_inflight.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -54,70 +56,7 @@ extern "C" {
 #define JDKSAVDECC_ENTITY_MANAGER_MAX_REGISTERED_CONTROLLERS (8)
 #endif
 
-#ifndef JDKSAVDECC_ENTITY_MANAGER_MAX_INFLIGHT_COMMANDS
-#define JDKSAVDECC_ENTITY_MANAGER_MAX_INFLIGHT_COMMANDS (1)
-#endif
 
-
-struct jdksavdecc_entity_manager_inflight_command_info {
-    /// This is the timestamp of the last command that we sent to another entity
-    jdksavdecc_timestamp_in_milliseconds sent_time;
-
-    /// This is the number of milliseconds before the message times out
-    uint16_t time_out_in_ms;
-
-    /// This is the entity id that was the target of the last command that we sent
-    struct jdksavdecc_eui64 target_entity_id;
-
-    /// This is the command_type of the last command that we sent to another entity
-    uint16_t command_type;
-
-    /// This is the sequence id of the command that was sent
-    uint16_t sequence_id;
-
-    /// This is the pointer to the function to call when the command timed out
-    void (*timed_out)(
-            struct jdksavdecc_entity_manager_inflight_command_info *self,
-            void *context );
-};
-
-int jdksavdecc_entity_manager_inflight_command_info_compare(
-        void const *lhs,
-        void const *rhs );
-
-struct jdksavdecc_entity_manager_inflight_commands {
-    int num_inflight_commands;
-    struct jdksavdecc_entity_manager_inflight_command_info inflight_commands[ JDKSAVDECC_ENTITY_MANAGER_MAX_INFLIGHT_COMMANDS ];
-};
-
-void jdksavdecc_entity_manager_inflight_commands_init( struct jdksavdecc_entity_manager_inflight_commands *self );
-
-bool jdksacdecc_entity_manager_inflight_commands_full( struct jdksavdecc_entity_manager_inflight_commands *self );
-
-void jdksavdecc_entity_manager_inflight_commands_sort(
-        struct jdksavdecc_entity_manager_inflight_commands *self );
-
-bool jdksavdecc_entity_manager_inflight_commands_add(
-        struct jdksavdecc_entity_manager_inflight_commands *self,
-        struct jdksavdecc_entity_manager_inflight_command_info const *info );
-
-int jdksavdecc_entity_manager_inflight_commands_find(
-        struct jdksavdecc_entity_manager_inflight_commands *self,
-        struct jdksavdecc_eui64 const *target_entity_id,
-        uint16_t sequence_id );
-
-void jdksavdecc_entity_manager_inflight_commands_tick(
-        struct jdksavdecc_entity_manager_inflight_commands *self,
-        jdksavdecc_timestamp_in_milliseconds cur_time,
-        void *context );
-
-void jdksavdecc_entity_manager_inflight_commands_remove(
-        struct jdksavdecc_entity_manager_inflight_commands *self,
-        int num );
-
-void jdksavdecc_entity_manager_inflight_commands_remove_target(
-        struct jdksavdecc_entity_manager_inflight_commands *self,
-        struct jdksavdecc_eui64 const *target_entity_id );
 
 
 /// jdksavdecc_entity_manager is a base class for an AEM entity
@@ -168,7 +107,7 @@ struct jdksavdecc_entity_manager {
     struct jdksavdecc_eui48 registered_controllers_mac_address[JDKSAVDECC_ENTITY_MANAGER_MAX_REGISTERED_CONTROLLERS];
 
     /// The map of inflight commands
-    struct jdksavdecc_entity_manager_inflight_commands inflight_commands;
+    struct jdksavdecc_inflight_commands inflight_commands;
 
     /// Destroy an entity manager
     void (*destroy)( struct jdksavdecc_entity_manager *self );
@@ -185,7 +124,7 @@ struct jdksavdecc_entity_manager {
             uint8_t const *buf,
             uint16_t len );
 
-    /// The function that is to be called when an incoming AECPDU is received
+    /// The function that is to be called when an incoming AECPDU or ACMPDU is received
     /// returns true if the message was recognized and handled.
     /// When the message is handeld, this function is
     /// allowed to modify the data pointed to by buf for sending responses
@@ -206,6 +145,14 @@ struct jdksavdecc_entity_manager {
 
     /// Check to make sure the command is allowed or disallowed due to acquire or locking
     uint8_t (*validate_permissions)( struct jdksavdecc_aecpdu_aem const *aem );
+
+    /// The received pdu contains a valid ACMP message
+    uint8_t (*received_acmpdu)(
+            struct jdksavdecc_entity_manager *self,
+            struct jdksavdecc_acmpdu const *acmp,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+            uint8_t *buf,
+            uint16_t len);
 
     /// The received pdu contains a valid AEM command for me.
     /// Fill in the response in place in the pdu and return an AECP AEM status code
@@ -808,5 +755,10 @@ uint8_t jdksavdecc_entity_manager_receive_aa_execute(
 /*@}*/
 
 /*@}*/
+
+#ifdef __cplusplus
+}
+#endif
+
 
 

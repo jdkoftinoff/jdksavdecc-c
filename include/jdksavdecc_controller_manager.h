@@ -276,3 +276,6 @@ void jdksavdecc_controller_manager_received_entity_available_or_departing(
 /*@}*/
 
 
+#ifdef __cplusplus
+}
+#endif
