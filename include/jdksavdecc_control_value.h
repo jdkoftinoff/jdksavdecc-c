@@ -117,37 +117,56 @@ bool jdksavdecc_control_value_is_array(
 
 /*@}*/
 
-/** \addtogroup aem_control_value_as_string Helper functions to determine values of an item in a control descriptor as strings */
+/** \addtogroup aem_control_as_string Helper functions to determine values of an item in a control descriptor as strings */
 /*@{*/
-bool jdksavdecc_control_value_get_item_current_as_string(
+
+bool jdksavdecc_control_value_get_item_as_string(
+      uint8_t const *descriptor,
+      uint16_t descriptor_len,
+      uint16_t item,
+      uint8_t const *control_data,
+      uint16_t control_data_len,
+      char *string_buf,
+      size_t string_buf_max_len );
+
+bool jdksavdecc_control_value_set_item_from_string(
+      uint8_t const *descriptor,
+      uint16_t descriptor_len,
+      uint16_t item,
+      uint8_t const *control_data,
+      uint16_t control_data_len,
+      char *string_buf,
+      size_t string_buf_max_len );
+
+bool jdksavdecc_control_descriptor_get_item_current_as_string(
       uint8_t const *descriptor,
       uint16_t descriptor_len,
       uint16_t item,
       char *string_buf,
       size_t string_buf_max_len );
 
-bool jdksavdecc_control_value_get_item_minimum_as_string(
+bool jdksavdecc_control_descriptor_get_item_minimum_as_string(
       uint8_t const *descriptor,
       uint16_t descriptor_len,
       uint16_t item,
       char *string_buf,
       size_t string_buf_max_len );
 
-bool jdksavdecc_control_value_get_item_maximum_as_string(
+bool jdksavdecc_control_descriptor_get_item_maximum_as_string(
       uint8_t const *descriptor,
       uint16_t descriptor_len,
       uint16_t item,
       char *string_buf,
       size_t string_buf_max_len );
 
-bool jdksavdecc_control_value_get_item_step_as_string(
+bool jdksavdecc_control_descriptor_get_item_step_as_string(
       uint8_t const *descriptor,
       uint16_t descriptor_len,
       uint16_t item,
       char *string_buf,
       size_t string_buf_max_len );
 
-bool jdksavdecc_control_value_get_item_default_as_string(
+bool jdksavdecc_control_descriptor_get_item_default_as_string(
       uint8_t const *descriptor,
       uint16_t descriptor_len,
       uint16_t item,
@@ -155,37 +174,6 @@ bool jdksavdecc_control_value_get_item_default_as_string(
       size_t string_buf_max_len );
 
 /*@}*/
-
-
-/** \addtogroup aem_control_value_as_int8 Helper functions to determine values of an item in a control descriptor as int8 */
-/*@{*/
-bool jdksavdecc_control_value_get_item_minimum_as_int8(
-      uint8_t const *descriptor,
-      uint16_t descriptor_len,
-      uint16_t item,
-      int8_t *result_value );
-
-bool jdksavdecc_control_value_get_item_maximum_as_string(
-      uint8_t const *descriptor,
-      uint16_t descriptor_len,
-      uint16_t item,
-      char *string_buf);
-
-bool jdksavdecc_control_value_get_item_step_as_string(
-      uint8_t const *descriptor,
-      uint16_t descriptor_len,
-      uint16_t item,
-      char *string_buf );
-
-bool jdksavdecc_control_value_get_item_default_as_string(
-      uint8_t const *descriptor,
-      uint16_t descriptor_len,
-      uint16_t item,
-      char *string_buf);
-
-/*@}*/
-
-
 
 
 /*@}*/
