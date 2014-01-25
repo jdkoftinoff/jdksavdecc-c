@@ -509,7 +509,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_MSRP_FAILURE_CODE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 46)
 #define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 47)
 #define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_MSRP_FAILURE_BRIDGE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 48)
-#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 56)
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_STREAM_VLAN_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 56)
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_RESERVED2 (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 58)
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 60)
 
 /*@}*/
 
@@ -9774,6 +9776,73 @@ jdksavdecc_aem_command_set_stream_info_set_msrp_failure_bridge_id(struct jdksavd
     jdksavdecc_eui64_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_MSRP_FAILURE_BRIDGE_ID);
 }
 
+
+/**
+ * Extract the uint16 value of the stream_vlan_id field of the
+ *COMMAND_SET_STREAM_INFO object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's
+ *responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t stream_vlan_id value
+ */
+static inline uint16_t jdksavdecc_aem_command_set_stream_info_get_stream_vlan_id(void const *base, ssize_t pos) {
+    return jdksavdecc_uint16_get(base, pos + JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_STREAM_VLAN_ID);
+}
+
+/**
+ * Store a uint16_t value to the stream_vlan_id field of the
+ *COMMAND_SET_STREAM_INFO object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's
+ *responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t stream_vlan_id value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void
+jdksavdecc_aem_command_set_stream_info_set_stream_vlan_id(uint16_t v, void *base, ssize_t pos) {
+    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_STREAM_VLAN_ID);
+}
+
+
+/**
+ * Extract the uint16_t value of the reserved2 field of the COMMAND_SET_STREAM_INFO
+ *object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's
+ *responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint16_t reserved2 value
+ */
+static inline uint16_t jdksavdecc_aem_command_set_stream_info_get_reserved2(void const *base, ssize_t pos) {
+    return jdksavdecc_uint16_get(base, pos + JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_RESERVED2);
+}
+
+/**
+ * Store a uint16_t value to the reserved2 field of the COMMAND_SET_STREAM_INFO
+ *object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's
+ *responsibility to pre-validate base and pos.
+ *
+ * @param v The uint16_t reserved2 value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_set_stream_info_set_reserved2(uint16_t v, void *base, ssize_t pos) {
+    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_COMMAND_OFFSET_RESERVED2);
+}
+
 /*@}*/
 
 /** \addtogroup command_set_stream_info SET_STREAM_INFO Command - Clause 7.4.15.1 */
@@ -9792,6 +9861,8 @@ struct jdksavdecc_aem_command_set_stream_info {
     uint8_t msrp_failure_code;
     uint8_t reserved;
     struct jdksavdecc_eui64 msrp_failure_bridge_id;
+    uint16_t stream_vlan_id;
+    uint16_t reserved2;
 };
 
 /**
@@ -9826,6 +9897,8 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_info_read(struct jdksavd
         p->msrp_failure_code = jdksavdecc_aem_command_set_stream_info_get_msrp_failure_code(base, pos);
         p->reserved = jdksavdecc_aem_command_set_stream_info_get_reserved(base, pos);
         p->msrp_failure_bridge_id = jdksavdecc_aem_command_set_stream_info_get_msrp_failure_bridge_id(base, pos);
+        p->stream_vlan_id = jdksavdecc_aem_command_set_stream_info_get_stream_vlan_id(base, pos);
+        p->reserved2 = jdksavdecc_aem_command_set_stream_info_get_reserved2(base, pos);
     }
     return r;
 }
@@ -9862,6 +9935,8 @@ static inline ssize_t jdksavdecc_aem_command_set_stream_info_write(struct jdksav
         jdksavdecc_aem_command_set_stream_info_set_msrp_failure_code(p->msrp_failure_code, base, pos);
         jdksavdecc_aem_command_set_stream_info_set_reserved(p->reserved, base, pos);
         jdksavdecc_aem_command_set_stream_info_set_msrp_failure_bridge_id(p->msrp_failure_bridge_id, base, pos);
+        jdksavdecc_aem_command_set_stream_info_set_stream_vlan_id(p->stream_vlan_id, base, pos);
+        jdksavdecc_aem_command_set_stream_info_set_reserved2(p->reserved2, base, pos);
     }
     return r;
 }
