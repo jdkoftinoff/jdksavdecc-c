@@ -825,7 +825,7 @@ struct jdksavdecc_descriptor {
 /** \addtogroup values_vendor Vendor Value Details - Clause 7.3.5.2.9  */
 /*@{*/
 
-#define JDKSAVDECC_VALUES_VENDOR_OFFSET_ENTITY_ID (0)
+#define JDKSAVDECC_VALUES_VENDOR_OFFSET_VENDOR_EUI64 (0)
 #define JDKSAVDECC_VALUES_VENDOR_OFFSET_BLOB_SIZE (8)
 #define JDKSAVDECC_VALUES_VENDOR_OFFSET_BINARY_BLOB (12)
 #define JDKSAVDECC_VALUES_VENDOR_LEN (12)
@@ -4281,7 +4281,7 @@ jdksavdecc_values_gptp_time_write(struct jdksavdecc_values_gptp_time const *p, v
 /*@{*/
 
 /**
- * Extract the eui64 value of the entity_id field of the VALUES_VENDOR object
+ * Extract the eui64 value of the vendor_eui64 field of the VALUES_VENDOR object
  *from a network buffer.
  *
  *
@@ -4292,12 +4292,12 @@ jdksavdecc_values_gptp_time_write(struct jdksavdecc_values_gptp_time const *p, v
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_eui64 entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_values_vendor_get_entity_id(void const *base, ssize_t pos) {
-    return jdksavdecc_eui64_get(base, pos + JDKSAVDECC_VALUES_VENDOR_OFFSET_ENTITY_ID);
+static inline struct jdksavdecc_eui64 jdksavdecc_values_vendor_get_vendor_eui64(void const *base, ssize_t pos) {
+    return jdksavdecc_eui64_get(base, pos + JDKSAVDECC_VALUES_VENDOR_OFFSET_VENDOR_EUI64);
 }
 
 /**
- * Store a eui64 value to the entity_id field of the VALUES_VENDOR object to a
+ * Store a eui64 value to the vendor_eui64 field of the VALUES_VENDOR object to a
  *network buffer.
  *
  *
@@ -4308,8 +4308,8 @@ static inline struct jdksavdecc_eui64 jdksavdecc_values_vendor_get_entity_id(voi
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_vendor_set_entity_id(struct jdksavdecc_eui64 v, void *base, ssize_t pos) {
-    jdksavdecc_eui64_set(v, base, pos + JDKSAVDECC_VALUES_VENDOR_OFFSET_ENTITY_ID);
+static inline void jdksavdecc_values_vendor_set_vendor_eui64(struct jdksavdecc_eui64 v, void *base, ssize_t pos) {
+    jdksavdecc_eui64_set(v, base, pos + JDKSAVDECC_VALUES_VENDOR_OFFSET_VENDOR_EUI64);
 }
 
 /**
@@ -4351,8 +4351,8 @@ static inline void jdksavdecc_values_vendor_set_blob_size(uint32_t v, void *base
 
 /// Vendor Value Details - Clause 7.3.5.2.9
 struct jdksavdecc_values_vendor {
-    struct jdksavdecc_eui64 entity_id;
-    uint32_t blob_size;
+    struct jdksavdecc_eui64 vendor_eui64;
+    uint16_t blob_size;
 };
 
 /**
@@ -4373,7 +4373,7 @@ static inline ssize_t
 jdksavdecc_values_vendor_read(struct jdksavdecc_values_vendor *p, void const *base, ssize_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_VALUES_VENDOR_LEN);
     if (r >= 0) {
-        p->entity_id = jdksavdecc_values_vendor_get_entity_id(base, pos);
+        p->vendor_eui64 = jdksavdecc_values_vendor_get_vendor_eui64(base, pos);
         p->blob_size = jdksavdecc_values_vendor_get_blob_size(base, pos);
     }
     return r;
@@ -4397,7 +4397,7 @@ static inline ssize_t
 jdksavdecc_values_vendor_write(struct jdksavdecc_values_vendor const *p, void *base, size_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_VALUES_VENDOR_LEN);
     if (r >= 0) {
-        jdksavdecc_values_vendor_set_entity_id(p->entity_id, base, pos);
+        jdksavdecc_values_vendor_set_vendor_eui64(p->vendor_eui64, base, pos);
         jdksavdecc_values_vendor_set_blob_size(p->blob_size, base, pos);
     }
     return r;
