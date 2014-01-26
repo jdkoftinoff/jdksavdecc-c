@@ -72,10 +72,10 @@ extern "C" {
  *  and shall be interpreted as defined:
  *
  *      Offset  0:  EUI64: vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
- *      Offset  8:  Doublet: blob_length is 2+text_length
- *      Offset 10:  Octet: log_priority { 0 = error, 1=warning, 2=info, 3..0x7f = debug/trace, 0xff=console data }
- *      Offset 11:  Octet: reserved
- *      Offset 12:  Octet array: utf8_chars[0..356]
+ *      Offset  8:  Quadlet: blob_length is 2+text_length
+ *      Offset 12:  Octet: log_priority { 0 = error, 1=warning, 2=info, 3..0x7f = debug/trace, 0xff=console data }
+ *      Offset 13:  Octet: reserved
+ *      Offset 14:  Octet array: utf8_chars[0..356]
  *
  * There can be a path back from the logging console to the logging source as well.  In this case,
  * the AECP SET_CONTROL Command is sent from the actual controller entity id, to the
@@ -83,10 +83,10 @@ extern "C" {
  * the source_descriptor information is now target_descriptor and the log_priority shall be 0xff for console data.
  *
  *      Offset  0:  EUI64: vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT ( 70:b3:d5:ed:c0:00:00:00 )
- *      Offset  8:  Doublet: blob_length is 2+text_length
- *      Offset 10:  Octet: log_priority { 0xff=console data }
- *      Offset 11:  Octet: reserved
- *      Offset 12:  Octet array: utf8_chars[0..356]
+ *      Offset  8:  Quadlet: blob_length is 2+text_length
+ *      Offset 12:  Octet: log_priority { 0xff=console data }
+ *      Offset 13:  Octet: reserved
+ *      Offset 14:  Octet array: utf8_chars[0..356]
  *
  */
 /*@{*/
@@ -129,9 +129,9 @@ extern struct jdksavdecc_eui64 jdksavdecc_jdks_aem_control_log_text;
 
 #define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64 (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 0)
 #define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 8)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 10)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_RESERVED (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 11)
-#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 12)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 12)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_RESERVED (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 13)
+#define JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT (JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN + 14)
 #define JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT
 #define JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN (JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE - JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN)
 
@@ -143,7 +143,7 @@ extern struct jdksavdecc_eui64 jdksavdecc_jdks_aem_control_log_text;
 struct jdksavdecc_jdks_log_control {
     struct jdksavdecc_aem_command_set_control_response cmd;
     struct jdksavdecc_eui64 vendor_eui64;
-    uint16_t blob_size;
+    uint32_t blob_size;
     uint8_t log_detail;
     uint8_t reserved;
     uint8_t text[JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN+1];
@@ -156,7 +156,7 @@ struct jdksavdecc_jdks_log_control {
 struct jdksavdecc_jdks_log_console_command {
     struct jdksavdecc_aem_command_set_control cmd;
     struct jdksavdecc_eui64 vendor_eui64;
-    uint16_t blob_size;
+    uint32_t blob_size;
     uint8_t log_detail;
     uint8_t reserved;
     uint8_t text[JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN+1];
@@ -232,7 +232,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_generate(
         setctrl.descriptor_index = descriptor_index;
         jdksavdecc_aem_command_set_control_response_write(&setctrl, buf, pos, len);
         jdksavdecc_eui64_write( &jdksavdecc_jdks_aem_control_log_text, buf, pos+JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64, len );
-        jdksavdecc_uint16_write( text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN,
+        jdksavdecc_uint32_write( text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN,
                                  buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE,
                                  len );
         jdksavdecc_uint8_write( log_detail,
@@ -323,7 +323,7 @@ static inline ssize_t jdksavdecc_jdks_log_console_generate(
         setctrl.descriptor_index = descriptor_index;
         jdksavdecc_aem_command_set_control_response_write(&setctrl, buf, pos, len);
         jdksavdecc_eui64_write( &jdksavdecc_jdks_aem_control_log_text, buf, pos+JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64, len );
-        jdksavdecc_uint16_write( text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN,
+        jdksavdecc_uint32_write( text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN,
                                  buf,pos + JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE,
                                  len );
         jdksavdecc_uint8_write( log_detail,
@@ -366,7 +366,7 @@ static inline bool jdksavdecc_jdks_is_log(
         jdksavdecc_aem_command_set_control_response_read(&p->cmd, buf, pos, len);
         jdksavdecc_eui64_read(&p->vendor_eui64, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64+pos, len);
         if( jdksavdecc_eui64_compare(&jdksavdecc_jdks_aem_control_log_text,&p->vendor_eui64)==0 ) {
-            jdksavdecc_uint16_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
+            jdksavdecc_uint32_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
             if( p->blob_size > (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN) &&
                     p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE ) {
                 is_log_response=true;
@@ -401,7 +401,7 @@ static inline bool jdksavdecc_jdks_is_console_command(
         jdksavdecc_aem_command_set_control_read(&p->cmd, buf, pos, len);
         jdksavdecc_eui64_read(&p->vendor_eui64, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64+pos, len);
         if( jdksavdecc_eui64_compare(&jdksavdecc_jdks_aem_control_log_text,&p->vendor_eui64)==0 ) {
-            jdksavdecc_uint16_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
+            jdksavdecc_uint32_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
             if( p->blob_size > (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN) &&
                     p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE ) {
                 is_console=true;
@@ -436,7 +436,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
         jdksavdecc_aem_command_set_control_response_read(&p->cmd, buf, pos, len);
         jdksavdecc_eui64_read(&p->vendor_eui64, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64+pos, len);
         if( jdksavdecc_eui64_compare(&jdksavdecc_jdks_aem_control_log_text,&p->vendor_eui64)==0 ) {
-            jdksavdecc_uint16_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
+            jdksavdecc_uint32_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
             if( p->blob_size > (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN) &&
                 p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE ) {
                 uint16_t text_len =p->blob_size - (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN);
@@ -497,7 +497,7 @@ static inline ssize_t jdksavdecc_jdks_log_console_read(
         jdksavdecc_aem_command_set_control_read(&p->cmd, buf, pos, len);
         jdksavdecc_eui64_read(&p->vendor_eui64, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64+pos, len);
         if( jdksavdecc_eui64_compare(&jdksavdecc_jdks_aem_control_log_text,&p->vendor_eui64)==0 ) {
-            jdksavdecc_uint16_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
+            jdksavdecc_uint32_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
             if( p->blob_size > (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN) &&
                 p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE ) {
                 uint16_t text_len =p->blob_size - (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN);
