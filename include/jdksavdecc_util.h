@@ -708,6 +708,16 @@ static inline void jdksavdecc_gptp_seconds_set(struct jdksavdecc_gptp_seconds v,
 
 /*@}*/
 
+/// Typedef for a pointer to a procedure that can be used to
+/// lookup a localized_string from a localized string index, given a context/tag
+/// which would refer to an entity model.
+typedef struct jdksavdecc_string const * (*jdksavdecc_localized_string_lookup_proc)(
+      void *context,
+      const char *locale_name,
+      uint16_t localized_string_id
+      );
+
+
 /*@}*/
 #ifdef __cplusplus
 }
