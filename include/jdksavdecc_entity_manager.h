@@ -40,6 +40,7 @@
 #include "jdksavdecc_aecp_aem.h"
 #include "jdksavdecc_aem_command.h"
 #include "jdksavdecc_aem_descriptor.h"
+#include "jdksavdecc_entity_model.h"
 #include "jdksavdecc_inflight.h"
 
 #ifdef __cplusplus
@@ -61,6 +62,9 @@ extern "C" {
 
 /// jdksavdecc_entity_manager is a base class for an AEM entity
 struct jdksavdecc_entity_manager {
+
+   /// The entity model
+   struct jdksavdecc_entity_model *entity_model;
 
     /// A flag to notify higher level code that the state machine is requesting an immediate tick again
     bool early_tick;
@@ -438,6 +442,7 @@ struct jdksavdecc_entity_manager {
 /// Initialize an entity manager with the context and frame sender procedure
 bool jdksavdecc_entity_manager_init(
         struct jdksavdecc_entity_manager *self,
+        struct jdksavdecc_entity_model *entity_model,
         void *context,
         void (*frame_send)(
             struct jdksavdecc_entity_manager *self,

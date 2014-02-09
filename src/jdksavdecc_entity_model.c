@@ -30,23 +30,9 @@
 */
 
 #include "jdksavdecc_world.h"
-#include "jdksavdecc_entity_manager.h"
-#include "jdksavdecc_controller_manager.h"
+#include "jdksavdecc_entity_model.h"
 
-#ifdef TODO
-
-bool jdksavdecc_controller_manager_init(
-        struct jdksavdecc_controller_manager *self,
-        struct jdksavdecc_entity_model *entity_model,
-        void *context,
-        void (*frame_send)(struct jdksavdecc_entity_manager *, void *, const uint8_t *, uint16_t) ) {
-    bool r=false;
-    memset(self,0,sizeof(self));
-    r=jdksavdecc_entity_manager_init(&self->base,entity_model,context,frame_send);
-    if( r ) {
-        self->base.destroy = jdksavdecc_controller_manager_destroy;
-    }
-    return r;
+void jdksavdecc_entity_model_destroy( struct jdksavdecc_entity_model *self ) {
+    (void)self;
 }
 
-#endif

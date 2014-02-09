@@ -31,20 +31,25 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_descriptor_storage.h"
+#include "jdksavdecc_entity_model.h"
 
 bool
 jdksavdecc_descriptor_storage_init(struct jdksavdecc_descriptor_storage *self, void const *user_ptr, uint32_t storage_length) {
-    self->destroy = jdksavdecc_descriptor_storage_destroy;
+    jdksavdecc_entity_model_init(&self->base);
+    self->base.destroy = jdksavdecc_descriptor_storage_destroy;
     self->read_data = 0;
     self->user_ptr = user_ptr;
     self->storage_length = storage_length;
-    self->get_configuration_count = 0;
-    self->read_descriptor = 0;
+    self->base.get_configuration_count = 0;
+    self->base.read_descriptor = 0;
     self->read_symbol = 0;
     return true;
 }
 
-void jdksavdecc_descriptor_storage_destroy(struct jdksavdecc_descriptor_storage *self) { (void)self; }
+void jdksavdecc_descriptor_storage_destroy(struct jdksavdecc_entity_model *self)
+{
+    jdksavdecc_entity_model_destroy(self);
+}
 
 bool jdksavdecc_descriptor_storage_buffer_init(struct jdksavdecc_descriptor_storage *self,
                                               void const *user_ptr,
@@ -52,11 +57,11 @@ bool jdksavdecc_descriptor_storage_buffer_init(struct jdksavdecc_descriptor_stor
     bool r=false;
     jdksavdecc_descriptor_storage_init( self, user_ptr, storage_length );
 
-    self->destroy = jdksavdecc_descriptor_storage_buffer_destroy;
+    self->base.destroy = jdksavdecc_descriptor_storage_buffer_destroy;
     self->read_data = jdksavdecc_descriptor_storage_buffer_read_data;
-    self->get_configuration_count =
+    self->base.get_configuration_count =
         jdksavdecc_descriptor_storage_buffer_get_configuration_count;
-    self->read_descriptor =
+    self->base.read_descriptor =
         jdksavdecc_descriptor_storage_buffer_read_descriptor;
     self->read_symbol =
         jdksavdecc_descriptor_storage_buffer_read_symbol;
@@ -82,7 +87,7 @@ uint32_t jdksavdecc_descriptor_storage_buffer_read_data(struct jdksavdecc_descri
     return r;
 }
 
-void jdksavdecc_descriptor_storage_buffer_destroy(struct jdksavdecc_descriptor_storage *self) {
+void jdksavdecc_descriptor_storage_buffer_destroy(struct jdksavdecc_entity_model *self) {
     jdksavdecc_descriptor_storage_destroy(self);
 }
 
@@ -101,8 +106,9 @@ bool jdksavdecc_descriptor_storage_buffer_read_header(struct jdksavdecc_descript
     return r;
 }
 
-uint16_t jdksavdecc_descriptor_storage_buffer_get_configuration_count(struct jdksavdecc_descriptor_storage *self) {
+uint16_t jdksavdecc_descriptor_storage_buffer_get_configuration_count(struct jdksavdecc_entity_model *self_) {
     uint16_t r=0;
+    struct jdksavdecc_descriptor_storage *self = (struct jdksavdecc_descriptor_storage *)self_;
     uint32_t num_items = self->header.toc_count;
 
     if( num_items>0 ) {
@@ -151,13 +157,14 @@ static int jdksavdecc_descriptor_storage_buffer_compare_item(
 }
 
 uint16_t jdksavdecc_descriptor_storage_buffer_read_descriptor(
-        struct jdksavdecc_descriptor_storage *self,
+        struct jdksavdecc_entity_model *self_,
         uint16_t configuration_number,
         uint16_t descriptor_type,
         uint16_t descriptor_index,
         uint16_t *result_buffer,
         uint16_t result_buffer_len) {
     uint16_t r=0;
+    struct jdksavdecc_descriptor_storage *self = (struct jdksavdecc_descriptor_storage *)self_;
     void *p;
     void *descriptor_items;
     struct jdksavdecc_descriptor_storage_item key;
@@ -252,7 +259,7 @@ bool jdksavdecc_descriptor_storage_file_init(struct jdksavdecc_descriptor_storag
 #else
     FILE *f = fopen(file_name, "rb");
 #endif
-    self->destroy = jdksavdecc_descriptor_storage_file_destroy;
+    self->base.destroy = jdksavdecc_descriptor_storage_file_destroy;
     self->read_data = jdksavdecc_descriptor_storage_file_read_data;
     if (f) {
         self->user_ptr = (void *)f;
@@ -293,7 +300,9 @@ uint32_t jdksavdecc_descriptor_storage_file_read_data(struct jdksavdecc_descript
     return r;
 }
 
-void jdksavdecc_descriptor_storage_file_destroy(struct jdksavdecc_descriptor_storage *self) {
+void jdksavdecc_descriptor_storage_file_destroy(struct jdksavdecc_entity_model *self_) {
+    struct jdksavdecc_descriptor_storage *self = (struct jdksavdecc_descriptor_storage *)self_;
+
     if (self->user_ptr) {
         FILE *f = (FILE *)self->user_ptr;
         if( f ) {

@@ -1,3 +1,5 @@
+#pragma once
+
 /*
   Copyright (c) 2014, J.D. Koftinoff Software, Ltd.
   All rights reserved.
@@ -30,23 +32,52 @@
 */
 
 #include "jdksavdecc_world.h"
-#include "jdksavdecc_entity_manager.h"
-#include "jdksavdecc_controller_manager.h"
+#include "jdksavdecc_aem_descriptor.h"
 
-#ifdef TODO
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-bool jdksavdecc_controller_manager_init(
-        struct jdksavdecc_controller_manager *self,
-        struct jdksavdecc_entity_model *entity_model,
-        void *context,
-        void (*frame_send)(struct jdksavdecc_entity_manager *, void *, const uint8_t *, uint16_t) ) {
-    bool r=false;
-    memset(self,0,sizeof(self));
-    r=jdksavdecc_entity_manager_init(&self->base,entity_model,context,frame_send);
-    if( r ) {
-        self->base.destroy = jdksavdecc_controller_manager_destroy;
-    }
-    return r;
+/** \addtogroup entity model Entity Model */
+/**@{*/
+
+struct jdksavdecc_entity_model {
+    /// Destroy the object
+    void (*destroy)(struct jdksavdecc_entity_model *self);
+
+    void *additional_data;
+    int additional_tag;
+
+    /// Read the count of configurations
+    uint16_t (*get_configuration_count)(struct jdksavdecc_entity_model *self);
+
+    /// Read a descriptor for the specified configuration, descriptor_type and
+    /// descriptor_index into result buffer which has a length of
+    /// result_buffer_len.
+    /// Returns the length of the descriptor, or 0 if no descriptor.
+    uint16_t (*read_descriptor)(
+            struct jdksavdecc_entity_model *self,
+            uint16_t configuration_number,
+            uint16_t descriptor_type,
+            uint16_t descriptor_index,
+            uint16_t *result_buffer,
+            uint16_t result_buffer_len);
+
+};
+
+void jdksavdecc_entity_model_destroy( struct jdksavdecc_entity_model *self );
+
+static inline void jdksavdecc_entity_model_init( struct jdksavdecc_entity_model *self ) {
+    self->destroy = jdksavdecc_entity_model_destroy;
+    self->additional_data = 0;
+    self->additional_tag = 0;
+    self->get_configuration_count = 0;
+    self->read_descriptor = 0;
 }
 
+
+/*@}*/
+
+#ifdef __cplusplus
+}
 #endif

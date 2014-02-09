@@ -32,13 +32,16 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_entity_manager.h"
 
+
 #ifdef TODO
 
 bool jdksavdecc_entity_manager_init(
         struct jdksavdecc_entity_manager *self,
+        struct jdksavdecc_entity_model *entity_model,
         void *context,
         void (*frame_send)(struct jdksavdecc_entity_manager *, void *, const uint8_t *, uint16_t) ) {
     memset(self,0,sizeof(*self));
+    self->entity_model = entity_model;
     self->context = context;
     self->frame_send = frame_send;
     self->destroy = jdksavdecc_entity_manager_destroy;

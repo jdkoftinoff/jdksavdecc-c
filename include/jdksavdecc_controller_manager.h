@@ -216,6 +216,7 @@ struct jdksavdecc_controller_manager {
 /// received_entity_available_or_departing function
 bool jdksavdecc_controller_manager_init(
         struct jdksavdecc_controller_manager *self,
+        struct jdksavdecc_entity_model *entity_model,
         void *context,
         void (*frame_send)(
             struct jdksavdecc_entity_manager *self,

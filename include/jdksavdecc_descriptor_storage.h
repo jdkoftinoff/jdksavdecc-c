@@ -33,6 +33,7 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aem_descriptor.h"
+#include "jdksavdecc_entity_model.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -303,8 +304,7 @@ static inline ssize_t jdksavdecc_descriptor_storage_symbol_write(struct jdksavde
 /// jdksavdecc_descriptor_storage holds the information about how to read the
 /// storage item
 struct jdksavdecc_descriptor_storage {
-    /// Destroy the object
-    void (*destroy)(struct jdksavdecc_descriptor_storage *self);
+    struct jdksavdecc_entity_model base;
 
     /// Read some data at offset of length length into buffer. Return length of
     /// data read.
@@ -319,53 +319,43 @@ struct jdksavdecc_descriptor_storage {
     /// data file length
     uint32_t storage_length;
 
-    /// Read the count of configurations in the storage object
-    uint16_t (*get_configuration_count)(struct jdksavdecc_descriptor_storage *self);
-
-    /// Read a descriptor for the specified configuration, descriptor_type and
-    /// descriptor_index into result buffer which has a length of
-    /// result_buffer_len.
-    /// Returns the length of the descriptor, or 0 if no descriptor.
-    uint16_t (*read_descriptor)(struct jdksavdecc_descriptor_storage *self,
-                                                           uint16_t configuration_number,
-                                                           uint16_t descriptor_type,
-                                                           uint16_t descriptor_index,
-                                                           uint16_t *result_buffer,
-                                                           uint16_t result_buffer_len);
-
     /// Read a symbol for the specified configuration, descriptor_type and
     /// descriptor_index. Returns true on success
-    bool (*read_symbol)(struct jdksavdecc_descriptor_storage *self,
-                                                  uint16_t configuration_number,
-                                                  uint16_t descriptor_type,
-                                                  uint16_t descriptor_index,
-                                                  uint32_t *result_symbol);
+    bool (*read_symbol)(
+                struct jdksavdecc_descriptor_storage *self,
+                uint16_t configuration_number,
+                uint16_t descriptor_type,
+                uint16_t descriptor_index,
+                uint32_t *result_symbol);
 
 };
 
 /// Initialize descriptor_storage object with user_ptr and storage_length.
 /// user_ptr's use is dependant on subclass definition
-bool jdksavdecc_descriptor_storage_init(struct jdksavdecc_descriptor_storage *self,
-                                       void const *user_ptr,
-                                       uint32_t storage_length);
+bool jdksavdecc_descriptor_storage_init(
+                struct jdksavdecc_descriptor_storage *self,
+                void const *user_ptr,
+                uint32_t storage_length);
 
 /// Destroy descriptor_storage object
-void jdksavdecc_descriptor_storage_destroy(struct jdksavdecc_descriptor_storage *self);
+void jdksavdecc_descriptor_storage_destroy(struct jdksavdecc_entity_model *self);
 
 /// Initialize a descriptor_storage buffer object with a pointer to actual
 /// read-only data
-bool jdksavdecc_descriptor_storage_buffer_init(struct jdksavdecc_descriptor_storage *self,
-                                              void const *user_ptr,
-                                              uint32_t storage_length);
+bool jdksavdecc_descriptor_storage_buffer_init(
+                struct jdksavdecc_descriptor_storage *self,
+                void const *user_ptr,
+                uint32_t storage_length);
 
 /// Read data from a locally accessible read only data buffer
-uint32_t jdksavdecc_descriptor_storage_buffer_read_data(struct jdksavdecc_descriptor_storage *self,
-                                                        void *buffer,
-                                                        uint32_t offset,
-                                                        uint32_t length);
+uint32_t jdksavdecc_descriptor_storage_buffer_read_data(
+                struct jdksavdecc_descriptor_storage *self,
+                void *buffer,
+                uint32_t offset,
+                uint32_t length);
 
 /// Destroy a descriptor_storate buffer object
-void jdksavdecc_descriptor_storage_buffer_destroy(struct jdksavdecc_descriptor_storage *self);
+void jdksavdecc_descriptor_storage_buffer_destroy(struct jdksavdecc_entity_model *self);
 
 #ifdef FOPEN_MAX
 
@@ -374,13 +364,14 @@ void jdksavdecc_descriptor_storage_buffer_destroy(struct jdksavdecc_descriptor_s
 bool jdksavdecc_descriptor_storage_file_init(struct jdksavdecc_descriptor_storage *self, const char *file_name);
 
 /// Read data from a descriptor_storage file object
-uint32_t jdksavdecc_descriptor_storage_file_read_data(struct jdksavdecc_descriptor_storage *self,
-                                                      void *buffer,
-                                                      uint32_t offset,
-                                                      uint32_t length);
+uint32_t jdksavdecc_descriptor_storage_file_read_data(
+                struct jdksavdecc_descriptor_storage *self,
+                void *buffer,
+                uint32_t offset,
+                uint32_t length);
 
 /// Close the file and destroy the descriptor_storage file object
-void jdksavdecc_descriptor_storage_file_destroy(struct jdksavdecc_descriptor_storage *self);
+void jdksavdecc_descriptor_storage_file_destroy(struct jdksavdecc_entity_model *self);
 
 #endif
 
@@ -393,7 +384,7 @@ bool jdksavdecc_descriptor_storage_file_read_header(struct jdksavdecc_descriptor
 bool jdksavdecc_descriptor_storage_buffer_read_header(struct jdksavdecc_descriptor_storage *self);
 
 /// Read the count of configurations in the storage object
-uint16_t jdksavdecc_descriptor_storage_buffer_get_configuration_count(struct jdksavdecc_descriptor_storage *self);
+uint16_t jdksavdecc_descriptor_storage_buffer_get_configuration_count(struct jdksavdecc_entity_model *self);
 
 
 /// Read a descriptor for the specified configuration, descriptor_type and
@@ -401,7 +392,7 @@ uint16_t jdksavdecc_descriptor_storage_buffer_get_configuration_count(struct jdk
 /// result_buffer_len.
 /// Returns the length of the descriptor, or 0 if no descriptor.
 uint16_t jdksavdecc_descriptor_storage_buffer_read_descriptor(
-        struct jdksavdecc_descriptor_storage *self,
+        struct jdksavdecc_entity_model *self,
         uint16_t configuration_number,
         uint16_t descriptor_type,
         uint16_t descriptor_index,
@@ -426,10 +417,10 @@ bool jdksavdecc_descriptor_storage_buffer_read_symbol(
 /**
  jdksavdecc_descriptor_storage_symbol_dispatch_proc is a pointer to a function that
  is expected to handle an incoming message for a specific symbol.
- 
+
  It is given the configuration number, the descriptor type and index,
  and the incoming frame.
- 
+
  It is expected to return an AEM Status code ( See IEEE Std 1722.1 Clause 7.126 )
 */
 typedef uint16_t (*jdksavdecc_descriptor_storage_symbol_dispatch_proc)(
@@ -477,6 +468,7 @@ static inline bool jdksavdecc_descriptor_storage_symbols_init(
     return true;
 }
 
+
 bool jdksavdecc_descriptor_storage_symbols_add(
         struct jdksavdecc_descriptor_storage_symbols *self,
         bool sort,
@@ -485,7 +477,7 @@ bool jdksavdecc_descriptor_storage_symbols_add(
         uint16_t aem_command_type,
         jdksavdecc_descriptor_storage_symbol_dispatch_proc handler );
 
-jdksavdecc_descriptor_storage_symbol_dispatch_proc jdksavdecc_descriptor_storage_symbols_find(
+jdksavdecc_descriptor_storage_symbol_dispatch_proc jdksavdecc_descriptor_storage_find_symbol(
         struct jdksavdecc_descriptor_storage_symbols *self,
         uint32_t symbol,
         uint16_t aecp_message_type,
