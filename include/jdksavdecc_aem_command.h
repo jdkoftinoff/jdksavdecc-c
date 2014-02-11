@@ -1204,7 +1204,13 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10)
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_DESCRIPTOR_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12)
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_DESCRIPTOR_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14)
-#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16)
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_GPTP_GRANDMASTER_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16)
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_PROPEGATION_DELAY (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24)
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_GPTP_DOMAIN_NUMBER (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 28)
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_FLAGS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 29)
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_MSRP_MAPPINGS_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 30)
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_MSRP_MAPPINGS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 32)
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 32)
 
 /*@}*/
 
@@ -1216,9 +1222,10 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10)
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_DESCRIPTOR_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12)
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_DESCRIPTOR_INDEX (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14)
-#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_AS_GRANDMASTER_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16)
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_GPTP_GRANDMASTER_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16)
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_PROPEGATION_DELAY (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24)
-#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_RESERVED (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 28)
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_GPTP_DOMAIN_NUMBER (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 28)
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_FLAGS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 29)
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_MSRP_MAPPINGS_COUNT (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 30)
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_MSRP_MAPPINGS (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 32)
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 32)
@@ -23894,7 +23901,7 @@ static inline void jdksavdecc_aem_command_get_avb_info_response_set_descriptor_i
 }
 
 /**
- * Extract the eui64 value of the as_grandmaster_id field of the
+ * Extract the eui64 value of the gptp_grandmaster_id field of the
  *COMMAND_GET_AVB_INFO_RESPONSE object from a network buffer.
  *
  *
@@ -23905,13 +23912,13 @@ static inline void jdksavdecc_aem_command_get_avb_info_response_set_descriptor_i
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_eui64 as_grandmaster_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_get_avb_info_response_get_as_grandmaster_id(void const *base,
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_get_avb_info_response_get_gptp_grandmaster_id(void const *base,
                                                                                                          ssize_t pos) {
-    return jdksavdecc_eui64_get(base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_AS_GRANDMASTER_ID);
+    return jdksavdecc_eui64_get(base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_GPTP_GRANDMASTER_ID);
 }
 
 /**
- * Store a eui64 value to the as_grandmaster_id field of the
+ * Store a eui64 value to the gptp_grandmaster_id field of the
  *COMMAND_GET_AVB_INFO_RESPONSE object to a network buffer.
  *
  *
@@ -23923,8 +23930,8 @@ static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_get_avb_info_respon
  * @param pos offset from base to write the field to;
  */
 static inline void
-jdksavdecc_aem_command_get_avb_info_response_set_as_grandmaster_id(struct jdksavdecc_eui64 v, void *base, ssize_t pos) {
-    jdksavdecc_eui64_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_AS_GRANDMASTER_ID);
+jdksavdecc_aem_command_get_avb_info_response_set_gptp_grandmaster_id(struct jdksavdecc_eui64 v, void *base, ssize_t pos) {
+    jdksavdecc_eui64_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_GPTP_GRANDMASTER_ID);
 }
 
 /**
@@ -23960,7 +23967,7 @@ static inline void jdksavdecc_aem_command_get_avb_info_response_set_propegation_
 }
 
 /**
- * Extract the uint16 value of the reserved field of the
+ * Extract the uint8 value of the gptp_domain_number field of the
  *COMMAND_GET_AVB_INFO_RESPONSE object from a network buffer.
  *
  *
@@ -23969,26 +23976,59 @@ static inline void jdksavdecc_aem_command_get_avb_info_response_set_propegation_
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t reserved value
+ * @return the uint8_t gptp_domain_number value
  */
-static inline uint16_t jdksavdecc_aem_command_get_avb_info_response_get_reserved(void const *base, ssize_t pos) {
-    return jdksavdecc_uint16_get(base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_RESERVED);
+static inline uint16_t jdksavdecc_aem_command_get_avb_info_response_get_gptp_domain_number(void const *base, ssize_t pos) {
+    return jdksavdecc_uint8_get(base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_GPTP_DOMAIN_NUMBER);
 }
 
 /**
- * Store a uint16 value to the reserved field of the
+ * Store a uint8 value to the gptp_domain_number field of the
  *COMMAND_GET_AVB_INFO_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t reserved value.
+ * @param v The uint8_t reserved value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_get_avb_info_response_set_reserved(uint16_t v, void *base, ssize_t pos) {
-    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_RESERVED);
+static inline void jdksavdecc_aem_command_get_avb_info_response_set_gptp_domain_number(uint16_t v, void *base, ssize_t pos) {
+    jdksavdecc_uint8_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_GPTP_DOMAIN_NUMBER);
+}
+
+
+/**
+ * Extract the uint8 value of the flags field of the
+ *COMMAND_GET_AVB_INFO_RESPONSE object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's
+ *responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint8_t flags value
+ */
+static inline uint8_t jdksavdecc_aem_command_get_avb_info_response_get_flags(void const *base, ssize_t pos) {
+    return jdksavdecc_uint8_get(base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_FLAGS);
+}
+
+/**
+ * Store a uint8 value to the flags field of the
+ *COMMAND_GET_AVB_INFO_RESPONSE object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's
+ *responsibility to pre-validate base and pos.
+ *
+ * @param v The uint8_t flags value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_aem_command_get_avb_info_response_set_flags(uint8_t v, void *base, ssize_t pos) {
+    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_FLAGS);
 }
 
 /**
@@ -24033,9 +24073,10 @@ struct jdksavdecc_aem_command_get_avb_info_response {
     struct jdksavdecc_aecpdu_aem aem_header;
     uint16_t descriptor_type;
     uint16_t descriptor_index;
-    struct jdksavdecc_eui64 as_grandmaster_id;
+    struct jdksavdecc_eui64 gptp_grandmaster_id;
     uint32_t propegation_delay;
-    uint16_t reserved;
+    uint8_t gptp_domain_number;
+    uint8_t flags;
     uint16_t msrp_mappings_count;
 };
 
@@ -24063,9 +24104,10 @@ static inline ssize_t jdksavdecc_aem_command_get_avb_info_response_read(struct j
         jdksavdecc_aecpdu_aem_read(&p->aem_header, base, pos, len);
         p->descriptor_type = jdksavdecc_aem_command_get_avb_info_response_get_descriptor_type(base, pos);
         p->descriptor_index = jdksavdecc_aem_command_get_avb_info_response_get_descriptor_index(base, pos);
-        p->as_grandmaster_id = jdksavdecc_aem_command_get_avb_info_response_get_as_grandmaster_id(base, pos);
+        p->gptp_grandmaster_id = jdksavdecc_aem_command_get_avb_info_response_get_gptp_grandmaster_id(base, pos);
         p->propegation_delay = jdksavdecc_aem_command_get_avb_info_response_get_propegation_delay(base, pos);
-        p->reserved = jdksavdecc_aem_command_get_avb_info_response_get_reserved(base, pos);
+        p->gptp_domain_number = jdksavdecc_aem_command_get_avb_info_response_get_gptp_domain_number(base, pos);
+        p->flags = jdksavdecc_aem_command_get_avb_info_response_get_flags(base, pos);
         p->msrp_mappings_count = jdksavdecc_aem_command_get_avb_info_response_get_msrp_mappings_count(base, pos);
     }
     return r;
@@ -24094,9 +24136,10 @@ static inline ssize_t jdksavdecc_aem_command_get_avb_info_response_write(
         jdksavdecc_aecpdu_aem_write(&p->aem_header, base, pos, len);
         jdksavdecc_aem_command_get_avb_info_response_set_descriptor_type(p->descriptor_type, base, pos);
         jdksavdecc_aem_command_get_avb_info_response_set_descriptor_index(p->descriptor_index, base, pos);
-        jdksavdecc_aem_command_get_avb_info_response_set_as_grandmaster_id(p->as_grandmaster_id, base, pos);
+        jdksavdecc_aem_command_get_avb_info_response_set_gptp_grandmaster_id(p->gptp_grandmaster_id, base, pos);
         jdksavdecc_aem_command_get_avb_info_response_set_propegation_delay(p->propegation_delay, base, pos);
-        jdksavdecc_aem_command_get_avb_info_response_set_reserved(p->reserved, base, pos);
+        jdksavdecc_aem_command_get_avb_info_response_set_gptp_domain_number(p->gptp_domain_number, base, pos);
+        jdksavdecc_aem_command_get_avb_info_response_set_flags(p->flags, base, pos);
         jdksavdecc_aem_command_get_avb_info_response_set_msrp_mappings_count(p->msrp_mappings_count, base, pos);
     }
     return r;
