@@ -34,6 +34,7 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_aem_command.h"
 #include "jdksavdecc_aem_descriptor.h"
+#include "jdksavdecc_entity_model.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -98,557 +99,601 @@ extern "C" {
 
 /// bode plot point: See IEEE Std 1722.1-2013 Clause 7.3.5.2.5
 struct jdksavdecc_control_bode_plot_point {
-   float frequency_hz;
-   float magnitude_db;
-   float phase_rad;
+    float frequency_hz;
+    float magnitude_db;
+    float phase_rad;
 };
 
 #define JDKSAVDECC_CONTROL_VENDOR_BLOB_MAX_LEN (JDKSAVDECC_AEM_DESCRIPTOR_SIZE-JDKSAVDECC_DESCRIPTOR_CONTROL_LEN )
 
 struct jdksavdecc_control_vendor_blob {
-   struct jdksavdecc_eui64 vendor_eui64;
-   uint16_t blob_len;
-   uint8_t blob_data[ JDKSAVDECC_CONTROL_VENDOR_BLOB_MAX_LEN ];
+    struct jdksavdecc_eui64 vendor_eui64;
+    uint16_t blob_len;
+    uint8_t blob_data[ JDKSAVDECC_CONTROL_VENDOR_BLOB_MAX_LEN ];
 };
 
-struct jdksavdecc_control {
-   void const *descriptor;
-   uint16_t descriptor_len;
-   jdksavdecc_localized_string_lookup_proc string_lookup;
+struct jdksavdecc_control_info {
+    void const *descriptor_data;
+    uint16_t descriptor_len;
 };
+
+bool jdksavdecc_control_init(
+        struct jdksavdecc_control_info *self,
+        void const *descriptor_data,
+        uint16_t descriptor_len
+        );
+
+struct jdksavdecc_eui64 jdksavdecc_control_get_control_type(
+        struct jdksavdecc_control_info const *control_info );
+
+uint16_t jdksavdecc_control_get_control_value_type(
+        struct jdksavdecc_control_info const *control_info );
+
+uint16_t jdksavdecc_control_get_control_value_type(
+        struct jdksavdecc_control_info const *control_info );
 
 static inline bool jdksavdecc_control_is_value_readonly(
-      struct jdksavdecc_control const *control_info ) {
-   bool r=false;
-   uint16_t v;
-   if( control_info->descriptor_len >= JDKSAVDECC_DESCRIPTOR_CONTROL_LEN ) {
-      v=jdksavdecc_descriptor_control_get_control_value_type(control_info->descriptor,0);
-      r=((v&JDKSAVDECC_CONTROL_VALUE_MASK_READONLY)!=0);
-   }
-   return r;
+        struct jdksavdecc_control_info const *control_info ) {
+    bool r=false;
+    uint16_t v;
+    if( control_info->descriptor_len >= JDKSAVDECC_DESCRIPTOR_CONTROL_LEN ) {
+        v=jdksavdecc_descriptor_control_get_control_value_type(control_info->descriptor_data,0);
+        r=((v&JDKSAVDECC_CONTROL_VALUE_MASK_READONLY)!=0);
+    }
+    return r;
 }
 
 static inline bool jdksavdecc_control_is_value_unknown(
-      struct jdksavdecc_control const *control_info ) {
-   bool r=false;
-   uint16_t v;
-   if( control_info->descriptor_len >= JDKSAVDECC_DESCRIPTOR_CONTROL_LEN ) {
-      v=jdksavdecc_descriptor_control_get_control_value_type(control_info->descriptor,0);
-      r=((v&JDKSAVDECC_CONTROL_VALUE_MASK_UNKNOWN)!=0);
-   }
-   return r;
+        struct jdksavdecc_control_info const *control_info ) {
+    bool r=false;
+    uint16_t v;
+    if( control_info->descriptor_len >= JDKSAVDECC_DESCRIPTOR_CONTROL_LEN ) {
+        v=jdksavdecc_descriptor_control_get_control_value_type(control_info->descriptor_data,0);
+        r=((v&JDKSAVDECC_CONTROL_VALUE_MASK_UNKNOWN)!=0);
+    }
+    return r;
 }
 
+bool jdksavdecc_control_get_localized_description(
+        struct jdksavdecc_control_info const *control_info,
+        char *string_buf,
+        size_t string_buf_max_len,
+        struct jdksavdecc_entity_model *entity_model,
+        uint16_t locale_id );
+
 uint16_t jdksavdecc_control_get_num_items(
-      struct jdksavdecc_control const *control_info );
+        struct jdksavdecc_control_info const *control_info );
+
+bool jdksavdecc_control_get_item_localized_description(
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        char *string_buf,
+        size_t string_buf_max_len,
+        struct jdksavdecc_entity_model *entity_model,
+        uint16_t locale_id );
 
 bool jdksavdecc_control_is_numeric(
-      struct jdksavdecc_control const *control_info );
+        struct jdksavdecc_control_info const *control_info );
+
+bool jdksavdecc_control_is_integer(
+        struct jdksavdecc_control_info const *control_info );
 
 bool jdksavdecc_control_uses_multiplier(
-      struct jdksavdecc_control const *control_info );
+        struct jdksavdecc_control_info const *control_info );
 
 bool jdksavdecc_control_is_floating_point(
-      struct jdksavdecc_control const *control_info );
+        struct jdksavdecc_control_info const *control_info );
 
 bool jdksavdecc_control_is_selector(
-      struct jdksavdecc_control const *control_info );
+        struct jdksavdecc_control_info const *control_info );
 
 bool jdksavdecc_control_is_linear(
-      struct jdksavdecc_control const *control_info );
+        struct jdksavdecc_control_info const *control_info );
 
 bool jdksavdecc_control_is_array(
-      struct jdksavdecc_control const *control_info );
+        struct jdksavdecc_control_info const *control_info );
 
 bool jdksavdecc_control_is_vendor_blob(
-      struct jdksavdecc_control const *control_info );
+        struct jdksavdecc_control_info const *control_info );
 
 bool jdksavdecc_control_get_vendor_id(
-      struct jdksavdecc_control const *control_info,
-      struct jdksavdecc_eui64 *result_vendor_eui64 );
+        struct jdksavdecc_control_info const *control_info,
+        struct jdksavdecc_eui64 *result_vendor_eui64 );
 
 uint16_t jdksavdecc_control_get_vendor_blob_length(
-      struct jdksavdecc_control const *control_info );
+        struct jdksavdecc_control_info const *control_info );
 
 bool jdksavdecc_control_get_vendor_blob(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      uint8_t *blob_buf,
-      size_t blob_buf_max_len );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        uint8_t *blob_buf,
+        size_t blob_buf_max_len );
 
 bool jdksavdecc_control_set_vendor_blob(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      uint8_t const *blob_buf,
-      size_t blob_buf_max_len );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        uint8_t const *blob_buf,
+        size_t blob_buf_max_len );
 
 int jdksavdecc_control_get_item_multiplier_power(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item );
 
 double jdksavdecc_control_get_item_multiplier(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item );
 
 char const *jdksavdecc_control_get_item_units_as_string(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item );
 
 bool jdksavdecc_control_get_item_as_string(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      char *string_buf,
-      size_t string_buf_max_len );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        char *string_buf,
+        size_t string_buf_max_len,
+        struct jdksavdecc_entity_model *entity_model,
+        uint16_t locale_id );
 
 bool jdksavdecc_control_set_item_from_string(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      char const *string_buf,
-      size_t string_buf_max_len );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        char const *string_buf,
+        size_t string_buf_max_len );
 
 bool jdksavdecc_control_get_item_current_as_string(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      char *string_buf,
-      size_t string_buf_max_len );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        char *string_buf,
+        size_t string_buf_max_len,
+        struct jdksavdecc_entity_model *entity_model,
+        uint16_t locale_id  );
 
 bool jdksavdecc_control_get_item_minimum_as_string(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      char *string_buf,
-      size_t string_buf_max_len );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        char *string_buf,
+        size_t string_buf_max_len,
+        struct jdksavdecc_entity_model *entity_model,
+        uint16_t locale_id  );
 
 bool jdksavdecc_control_get_item_maximum_as_string(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      char *string_buf,
-      size_t string_buf_max_len );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        char *string_buf,
+        size_t string_buf_max_len,
+        struct jdksavdecc_entity_model *entity_model,
+        uint16_t locale_id  );
 
 bool jdksavdecc_control_get_item_step_as_string(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      char *string_buf,
-      size_t string_buf_max_len );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        char *string_buf,
+        size_t string_buf_max_len,
+        struct jdksavdecc_entity_model *entity_model,
+        uint16_t locale_id  );
 
 bool jdksavdecc_control_get_item_default_as_string(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      char *string_buf,
-      size_t string_buf_max_len );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        char *string_buf,
+        size_t string_buf_max_len,
+        struct jdksavdecc_entity_model *entity_model,
+        uint16_t locale_id  );
 
 ///
 bool jdksavdecc_control_get_item_as_int8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      int8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        int8_t *result );
 
 bool jdksavdecc_control_set_item_from_int8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      int8_t new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        int8_t new_value );
 
 bool jdksavdecc_control_get_item_current_as_int8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int8_t *result );
 
 bool jdksavdecc_control_get_item_minimum_as_int8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int8_t *result );
 
 bool jdksavdecc_control_get_item_maximum_as_int8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int8_t *result );
 
 bool jdksavdecc_control_get_item_step_as_int8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int8_t *result );
 
 bool jdksavdecc_control_get_item_default_as_int8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int8_t *result );
 
 ///
 bool jdksavdecc_control_get_item_as_uint8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      uint8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        uint8_t *result );
 
 bool jdksavdecc_control_set_item_from_uint8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      uint8_t new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        uint8_t new_value );
 
 bool jdksavdecc_control_get_item_current_as_uint8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *result );
 
 bool jdksavdecc_control_get_item_minimum_as_uint8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *result );
 
 bool jdksavdecc_control_get_item_maximum_as_uint8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *result );
 
 bool jdksavdecc_control_get_item_step_as_uint8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *result );
 
 bool jdksavdecc_control_get_item_default_as_uint8(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *result );
 
 ///
 bool jdksavdecc_control_get_item_as_int16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      int16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        int16_t *result );
 
 bool jdksavdecc_control_set_item_from_int16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      int16_t new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        int16_t new_value );
 
 bool jdksavdecc_control_get_item_current_as_int16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int16_t *result );
 
 bool jdksavdecc_control_get_item_minimum_as_int16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int16_t *result );
 
 bool jdksavdecc_control_get_item_maximum_as_int16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int16_t *result );
 
 bool jdksavdecc_control_get_item_step_as_int16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int16_t *result );
 
 bool jdksavdecc_control_get_item_default_as_int16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int16_t *result );
 
 ///
 bool jdksavdecc_control_get_item_as_uint16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      uint16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        uint16_t *result );
 
 bool jdksavdecc_control_set_item_from_uint16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      uint16_t new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        uint16_t new_value );
 
 bool jdksavdecc_control_get_item_current_as_uint16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint16_t *result );
 
 bool jdksavdecc_control_get_item_minimum_as_uint16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint16_t *result );
 
 bool jdksavdecc_control_get_item_maximum_as_uint16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint16_t *result );
 
 bool jdksavdecc_control_get_item_step_as_uint16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint16_t *result );
 
 bool jdksavdecc_control_get_item_default_as_uint16(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint16_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint16_t *result );
 
 ///
 bool jdksavdecc_control_get_item_as_int32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      int32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        int32_t *result );
 
 bool jdksavdecc_control_set_item_from_int32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      int32_t new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        int32_t new_value );
 
 bool jdksavdecc_control_get_item_current_as_int32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int32_t *result );
 
 bool jdksavdecc_control_get_item_minimum_as_int32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int32_t *result );
 
 bool jdksavdecc_control_get_item_maximum_as_int32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int32_t *result );
 
 bool jdksavdecc_control_get_item_step_as_int32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int32_t *result );
 
 bool jdksavdecc_control_get_item_default_as_int32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int32_t *result );
 
 ///
 bool jdksavdecc_control_get_item_as_uint32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      uint32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        uint32_t *result );
 
 bool jdksavdecc_control_set_item_from_uint32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      uint32_t new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        uint32_t new_value );
 
 bool jdksavdecc_control_get_item_current_as_uint32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint32_t *result );
 
 bool jdksavdecc_control_get_item_minimum_as_uint32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint32_t *result );
 
 bool jdksavdecc_control_get_item_maximum_as_uint32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint32_t *result );
 
 bool jdksavdecc_control_get_item_step_as_uint32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint32_t *result );
 
 bool jdksavdecc_control_get_item_default_as_uint32(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint32_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint32_t *result );
 
 
 ///
 bool jdksavdecc_control_get_item_as_int64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      int64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        int64_t *result );
 
 bool jdksavdecc_control_set_item_from_int64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      int64_t new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        int64_t new_value );
 
 bool jdksavdecc_control_get_item_current_as_int64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int64_t *result );
 
 bool jdksavdecc_control_get_item_minimum_as_int64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int64_t *result );
 
 bool jdksavdecc_control_get_item_maximum_as_int64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int64_t *result );
 
 bool jdksavdecc_control_get_item_step_as_int64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int64_t *result );
 
 bool jdksavdecc_control_get_item_default_as_int64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      int64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        int64_t *result );
 
 ///
 bool jdksavdecc_control_get_item_as_uint64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      uint64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        uint64_t *result );
 
 bool jdksavdecc_control_set_item_from_uint64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      uint64_t new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        uint64_t new_value );
 
 bool jdksavdecc_control_get_item_current_as_uint64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint64_t *result );
 
 bool jdksavdecc_control_get_item_minimum_as_uint64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint64_t *result );
 
 bool jdksavdecc_control_get_item_maximum_as_uint64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint64_t *result );
 
 bool jdksavdecc_control_get_item_step_as_uint64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint64_t *result );
 
 bool jdksavdecc_control_get_item_default_as_uint64(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint64_t *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint64_t *result );
 
 ///
 bool jdksavdecc_control_get_bode_plot_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      struct jdksavdecc_control_bode_plot_point *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        struct jdksavdecc_control_bode_plot_point *result );
 
 bool jdksavdecc_control_set_bode_plot_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      struct jdksavdecc_control_bode_plot_point const *new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        struct jdksavdecc_control_bode_plot_point const *new_value );
 
 bool jdksavdecc_control_get_bode_plot_layout(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      struct jdksavdecc_values_bode_plot *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        struct jdksavdecc_values_bode_plot *result );
 
 bool jdksavdecc_control_get_current_bode_plot_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      struct jdksavdecc_control_bode_plot_point *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        struct jdksavdecc_control_bode_plot_point *result );
 
 ///
 bool jdksavdecc_control_get_smpte_time_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      struct jdksavdecc_values_smpte_time *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        struct jdksavdecc_values_smpte_time *result );
 
 bool jdksavdecc_control_set_smpte_time_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      struct jdksavdecc_values_smpte_time const *new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        struct jdksavdecc_values_smpte_time const *new_value );
 
 bool jdksavdecc_control_get_current_smpte_time_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      struct jdksavdecc_values_smpte_time *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        struct jdksavdecc_values_smpte_time *result );
 
 ///
 bool jdksavdecc_control_get_sample_rate_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      struct jdksavdecc_values_sample_rate *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        struct jdksavdecc_values_sample_rate *result );
 
 bool jdksavdecc_control_set_sample_rate_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      struct jdksavdecc_values_sample_rate const *new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        struct jdksavdecc_values_sample_rate const *new_value );
 
 bool jdksavdecc_control_get_current_sample_rate_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      struct jdksavdecc_values_sample_rate *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        struct jdksavdecc_values_sample_rate *result );
 
 ///
 bool jdksavdecc_control_get_gptp_time_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t const *control_data,
-      uint16_t control_data_len,
-      struct jdksavdecc_values_gptp_time *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t const *control_data,
+        uint16_t control_data_len,
+        struct jdksavdecc_values_gptp_time *result );
 
 bool jdksavdecc_control_set_gptp_time_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      uint8_t *control_data,
-      uint16_t control_data_len,
-      struct jdksavdecc_values_gptp_time const *new_value );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        uint8_t *control_data,
+        uint16_t control_data_len,
+        struct jdksavdecc_values_gptp_time const *new_value );
 
 bool jdksavdecc_control_get_current_gptp_time_item(
-      struct jdksavdecc_control const *control_info,
-      uint16_t item,
-      struct jdksavdecc_values_gptp_time *result );
+        struct jdksavdecc_control_info const *control_info,
+        uint16_t item,
+        struct jdksavdecc_values_gptp_time *result );
 
 
 /*@}*/
