@@ -23978,7 +23978,7 @@ static inline void jdksavdecc_aem_command_get_avb_info_response_set_propegation_
  * @param pos offset from base to read the field from;
  * @return the uint8_t gptp_domain_number value
  */
-static inline uint16_t jdksavdecc_aem_command_get_avb_info_response_get_gptp_domain_number(void const *base, ssize_t pos) {
+static inline uint8_t jdksavdecc_aem_command_get_avb_info_response_get_gptp_domain_number(void const *base, ssize_t pos) {
     return jdksavdecc_uint8_get(base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_GPTP_DOMAIN_NUMBER);
 }
 
@@ -23994,7 +23994,7 @@ static inline uint16_t jdksavdecc_aem_command_get_avb_info_response_get_gptp_dom
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_get_avb_info_response_set_gptp_domain_number(uint16_t v, void *base, ssize_t pos) {
+static inline void jdksavdecc_aem_command_get_avb_info_response_set_gptp_domain_number(uint8_t v, void *base, ssize_t pos) {
     jdksavdecc_uint8_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_GPTP_DOMAIN_NUMBER);
 }
 
