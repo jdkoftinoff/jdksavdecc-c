@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="..\CMakeLists.txt" />
+    <CustomBuild Include="CMakeFiles\fc8f220e353abb3d2e34b8f8e105a8ee\ALL_BUILD.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMakeFiles\ALL_BUILD" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{BD4716DA-292F-4EDB-9ADA-561D9600ACD6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

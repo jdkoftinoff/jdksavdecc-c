@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{145D1E15-65A8-4A9E-AB13-B1E9FD1B2206}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>jdksavdecc-c</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">jdksavdecc-c.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">jdksavdecc-c</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">jdksavdecc-c.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">jdksavdecc-c</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\MinSizeRel\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">jdksavdecc-c.dir\MinSizeRel\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">jdksavdecc-c</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\RelWithDebInfo\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">jdksavdecc-c.dir\RelWithDebInfo\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">jdksavdecc-c</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+    </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/Debug/jdksavdecc-c.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat></DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>Release</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/Release/jdksavdecc-c.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat></DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>MinSizeRel</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/MinSizeRel/jdksavdecc-c.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>RelWithDebInfo</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/RelWithDebInfo/jdksavdecc-c.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"c:\Program Files (x86)\CMake 2.8\bin\cmake.exe" "-HC:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c" "-BC:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013" --check-stamp-file "C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/CMakeLists.txt;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\CMakeLists.txt;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeVS12FindMake.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystem.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerId.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CompilerId\VS-10.vcxproj.in;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeClDeps.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeFindBinUtils.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-CXX.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerId.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CompilerId\VS-10.vcxproj.in;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeClDeps.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeFindBinUtils.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC-C.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCompilerCommon.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerABI.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeParseImplicitLinkInfo.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompilerABI.c;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC-CXX.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCompilerCommon.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerABI.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeParseImplicitLinkInfo.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompilerABI.cpp;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCXXCompiler.cmake;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"c:\Program Files (x86)\CMake 2.8\bin\cmake.exe" "-HC:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c" "-BC:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013" --check-stamp-file "C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/CMakeLists.txt;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\CMakeLists.txt;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeVS12FindMake.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystem.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerId.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CompilerId\VS-10.vcxproj.in;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeClDeps.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeFindBinUtils.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-CXX.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerId.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CompilerId\VS-10.vcxproj.in;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeClDeps.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeFindBinUtils.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC-C.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCompilerCommon.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerABI.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeParseImplicitLinkInfo.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompilerABI.c;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC-CXX.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCompilerCommon.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerABI.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeParseImplicitLinkInfo.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompilerABI.cpp;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCXXCompiler.cmake;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"c:\Program Files (x86)\CMake 2.8\bin\cmake.exe" "-HC:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c" "-BC:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013" --check-stamp-file "C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/CMakeLists.txt;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\CMakeLists.txt;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeVS12FindMake.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystem.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerId.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CompilerId\VS-10.vcxproj.in;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeClDeps.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeFindBinUtils.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-CXX.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerId.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CompilerId\VS-10.vcxproj.in;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeClDeps.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeFindBinUtils.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC-C.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCompilerCommon.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerABI.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeParseImplicitLinkInfo.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompilerABI.c;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC-CXX.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCompilerCommon.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerABI.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeParseImplicitLinkInfo.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompilerABI.cpp;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCXXCompiler.cmake;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"c:\Program Files (x86)\CMake 2.8\bin\cmake.exe" "-HC:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c" "-BC:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013" --check-stamp-file "C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/CMakeLists.txt;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\CMakeLists.txt;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeVS12FindMake.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystem.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerId.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CompilerId\VS-10.vcxproj.in;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeClDeps.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeFindBinUtils.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-CXX.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerId.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CompilerId\VS-10.vcxproj.in;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeClDeps.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeFindBinUtils.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC-C.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestRCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCompilerCommon.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerABI.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeParseImplicitLinkInfo.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompilerABI.c;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC-CXX.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-MSVC.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCXXCompiler.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeTestCompilerCommon.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeDetermineCompilerABI.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeParseImplicitLinkInfo.cmake;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompilerABI.cpp;c:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXCompiler.cmake.in;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\2.8.11.2\CMakeCXXCompiler.cmake;C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\Jeff Koftinoff\Source\Repos\jdksavdecc-c\vs2013\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\jdksavdecc.h" />
+    <ClInclude Include="..\include\jdksavdecc_acmp.h" />
+    <ClInclude Include="..\include\jdksavdecc_acmp_print.h" />
+    <ClInclude Include="..\include\jdksavdecc_adp.h" />
+    <ClInclude Include="..\include\jdksavdecc_adp_manager.h" />
+    <ClInclude Include="..\include\jdksavdecc_adp_print.h" />
+    <ClInclude Include="..\include\jdksavdecc_aecp.h" />
+    <ClInclude Include="..\include\jdksavdecc_aecp_aa.h" />
+    <ClInclude Include="..\include\jdksavdecc_aecp_aem.h" />
+    <ClInclude Include="..\include\jdksavdecc_aecp_avc.h" />
+    <ClInclude Include="..\include\jdksavdecc_aecp_hdcp_apm.h" />
+    <ClInclude Include="..\include\jdksavdecc_aecp_print.h" />
+    <ClInclude Include="..\include\jdksavdecc_aecp_vendor.h" />
+    <ClInclude Include="..\include\jdksavdecc_aem_command.h" />
+    <ClInclude Include="..\include\jdksavdecc_aem_descriptor.h" />
+    <ClInclude Include="..\include\jdksavdecc_aem_print.h" />
+    <ClInclude Include="..\include\jdksavdecc_allocator.h" />
+    <ClInclude Include="..\include\jdksavdecc_app.h" />
+    <ClInclude Include="..\include\jdksavdecc_app_print.h" />
+    <ClInclude Include="..\include\jdksavdecc_avr.h" />
+    <ClInclude Include="..\include\jdksavdecc_control.h" />
+    <ClInclude Include="..\include\jdksavdecc_controller_manager.h" />
+    <ClInclude Include="..\include\jdksavdecc_descriptor_storage.h" />
+    <ClInclude Include="..\include\jdksavdecc_descriptor_storage_gen.h" />
+    <ClInclude Include="..\include\jdksavdecc_entity_manager.h" />
+    <ClInclude Include="..\include\jdksavdecc_entity_model.h" />
+    <ClInclude Include="..\include\jdksavdecc_frame.h" />
+    <ClInclude Include="..\include\jdksavdecc_inflight.h" />
+    <ClInclude Include="..\include\jdksavdecc_jdks.h" />
+    <ClInclude Include="..\include\jdksavdecc_maap.h" />
+    <ClInclude Include="..\include\jdksavdecc_maap_print.h" />
+    <ClInclude Include="..\include\jdksavdecc_ms.h" />
+    <ClInclude Include="..\include\jdksavdecc_msinttypes.h" />
+    <ClInclude Include="..\include\jdksavdecc_msstdint.h" />
+    <ClInclude Include="..\include\jdksavdecc_pdu.h" />
+    <ClInclude Include="..\include\jdksavdecc_pdu_print.h" />
+    <ClInclude Include="..\include\jdksavdecc_print.h" />
+    <ClInclude Include="..\include\jdksavdecc_util.h" />
+    <ClInclude Include="..\include\jdksavdecc_world.h" />
+    <ClCompile Include="..\src\jdksavdecc.c"  />
+    <ClCompile Include="..\src\jdksavdecc_acmp_print.c"  />
+    <ClCompile Include="..\src\jdksavdecc_adp_manager.c"  />
+    <ClCompile Include="..\src\jdksavdecc_adp_print.c"  />
+    <ClCompile Include="..\src\jdksavdecc_aecp_print.c"  />
+    <ClCompile Include="..\src\jdksavdecc_aem_descriptor.c"  />
+    <ClCompile Include="..\src\jdksavdecc_aem_print.c"  />
+    <ClCompile Include="..\src\jdksavdecc_allocator.c"  />
+    <ClCompile Include="..\src\jdksavdecc_app.c"  />
+    <ClCompile Include="..\src\jdksavdecc_app_print.c"  />
+    <ClCompile Include="..\src\jdksavdecc_control.c"  />
+    <ClCompile Include="..\src\jdksavdecc_controller_manager.c"  />
+    <ClCompile Include="..\src\jdksavdecc_descriptor_storage.c"  />
+    <ClCompile Include="..\src\jdksavdecc_descriptor_storage_gen.c"  />
+    <ClCompile Include="..\src\jdksavdecc_entity_manager.c"  />
+    <ClCompile Include="..\src\jdksavdecc_entity_model.c"  />
+    <ClCompile Include="..\src\jdksavdecc_frame.c"  />
+    <ClCompile Include="..\src\jdksavdecc_inflight.c"  />
+    <ClCompile Include="..\src\jdksavdecc_jdks.c"  />
+    <ClCompile Include="..\src\jdksavdecc_maap.c"  />
+    <ClCompile Include="..\src\jdksavdecc_maap_print.c"  />
+    <ClCompile Include="..\src\jdksavdecc_pdu.c"  />
+    <ClCompile Include="..\src\jdksavdecc_pdu_print.c"  />
+    <ClCompile Include="..\src\jdksavdecc_print.c"  />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/ZERO_CHECK.vcxproj">
+      <Project>045E899E-8694-4062-B49B-D788644072BA</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
