@@ -1,0 +1,3 @@
+C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/CMakeFiles/ALL_BUILD.dir
+C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/CMakeFiles/jdksavdecc-c.dir

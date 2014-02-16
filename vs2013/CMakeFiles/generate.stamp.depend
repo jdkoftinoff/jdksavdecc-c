@@ -1,0 +1,54 @@
+# CMake generation dependency list for this directory.
+C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/CMakeLists.txt
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeVS12FindMake.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeDetermineSystem.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeSystem.cmake.in
+C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/CMakeFiles/2.8.11.2/CMakeSystem.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeDetermineCCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeDetermineCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeDetermineCompilerId.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CompilerId/VS-10.vcxproj.in
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeClDeps.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeFindBinUtils.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCCompiler.cmake.in
+C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/CMakeFiles/2.8.11.2/CMakeCCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeDetermineCXXCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeDetermineCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows-CXX.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeDetermineCompilerId.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CompilerId/VS-10.vcxproj.in
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeClDeps.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeFindBinUtils.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCXXCompiler.cmake.in
+C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/CMakeFiles/2.8.11.2/CMakeCXXCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeSystemSpecificInformation.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeGenericSystem.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/WindowsPaths.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCInformation.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows-MSVC-C.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows-MSVC.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeDetermineRCCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeRCCompiler.cmake.in
+C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/CMakeFiles/2.8.11.2/CMakeRCCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeRCInformation.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeTestRCCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCommonLanguageInclude.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeTestCCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeTestCompilerCommon.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeDetermineCompilerABI.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeParseImplicitLinkInfo.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCCompiler.cmake.in
+C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/CMakeFiles/2.8.11.2/CMakeCCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCXXInformation.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows-MSVC-CXX.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows-MSVC.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCommonLanguageInclude.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeTestCXXCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeTestCompilerCommon.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeDetermineCompilerABI.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeParseImplicitLinkInfo.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCXXCompiler.cmake.in
+C:/Users/Jeff Koftinoff/Source/Repos/jdksavdecc-c/vs2013/CMakeFiles/2.8.11.2/CMakeCXXCompiler.cmake
