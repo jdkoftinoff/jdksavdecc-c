@@ -1,5 +1,6 @@
 # Object files
 *.o
+*.obj
 
 # Libraries
 *.lib
@@ -15,3 +16,15 @@
 *.exe
 *.out
 *.app
+
+# Other
+
+*.sdf
+*.suo
+*.pdb
+*.idb
+*.ipch
+*.log
+*.tlog
+*.lastbuildstate
+
