@@ -32,6 +32,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_entity_manager.h"
 
+const char *jdksavdecc_inflight_file = __FILE__;
+
 #ifdef TODO
 
 void jdksavdecc_inflight_command_info_init(

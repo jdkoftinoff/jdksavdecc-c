@@ -32,3 +32,5 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_control.h"
 
+const char *jdkavdecc_control_file = __FILE__;
+

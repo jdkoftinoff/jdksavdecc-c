@@ -33,6 +33,8 @@
 #include "jdksavdecc_entity_manager.h"
 #include "jdksavdecc_controller_manager.h"
 
+const char *jdkavdecc_controller_manager_file = __FILE__;
+
 #ifdef TODO
 
 bool jdksavdecc_controller_manager_init(

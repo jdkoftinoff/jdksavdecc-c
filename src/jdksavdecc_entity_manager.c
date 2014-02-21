@@ -32,6 +32,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_entity_manager.h"
 
+const char *jdkavdecc_entity_manager_file = __FILE__;
+
 
 #ifdef TODO
 
