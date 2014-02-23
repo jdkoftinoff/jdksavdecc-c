@@ -39,82 +39,194 @@ jdksavdecc_descriptor_storage_gen_init(
         uint32_t max_descriptors,
         struct jdksavdecc_descriptor_storage_gen_symbol *symbol_space,
         uint32_t max_symbols ) {
-    /* @TODO */
     jdksavdecc_entity_model_init(&self->base);
+    self->descriptors = descriptor_space;
+    self->num_descriptors = 0;
+    self->max_descriptors = max_descriptors;
+    self->symbols = symbol_space;
+    self->num_symbols = 0;
+    self->max_symbols = max_symbols;
+
     self->base.destroy = jdksavdecc_descriptor_storage_gen_destroy;
+    self->base.get_configuration_count = jdksavdecc_descriptor_storage_gen_get_configuration_count;
+    self->base.read_descriptor = jdksavdecc_descriptor_storage_gen_read_descriptor;
+    self->base.write_descriptor = jdksavdecc_descriptor_storage_gen_write_descriptor;
+    self->base.read_localized_string = jdksavdecc_descriptor_storage_gen_read_localized_string;
+    self->add_descriptor = jdksavdecc_descriptor_storage_gen_add_descriptor;
+    self->find_descriptor = jdksavdecc_descriptor_storage_gen_find_descriptor;
+    self->add_symbol = jdksavdecc_descriptor_storage_gen_add_symbol;
+    self->sort_descriptors = jdksavdecc_descriptor_storage_gen_sort_descriptors;
+    self->sort_symbols = jdksavdecc_descriptor_storage_gen_sort_symbols;
+    self->find_symbol = jdksavdecc_descriptor_storage_gen_find_symbol;
 }
 
 void jdksavdecc_descriptor_storage_gen_destroy(struct jdksavdecc_entity_model *self) {
     jdksavdecc_entity_model_destroy(self);
 }
 
-void jdksavdecc_descriptor_storage_gen_finish(struct jdksavdecc_descriptor_storage_gen *self) {
-    /* @TODO */
-    (void)self;
-}
 
 /// Read the count of configurations in the storage object
 uint16_t jdksavdecc_descriptor_storage_gen_get_configuration_count(struct jdksavdecc_entity_model *self_) {
     struct jdksavdecc_descriptor_storage_gen *self = (struct jdksavdecc_descriptor_storage_gen *)self_;
     /* @TODO */
+    (void)self;
     return 0;
 }
 
-/// Read a descriptor for the specified configuration, descriptor_type and
-/// descriptor_index into result buffer which has a length of
-/// result_buffer_len.
-/// Returns the length of the descriptor, or 0 if no descriptor.
 uint16_t jdksavdecc_descriptor_storage_gen_read_descriptor(
         struct jdksavdecc_entity_model *self_,
-        uint16_t configuration_number,
+        uint16_t configuration_index,
         uint16_t descriptor_type,
         uint16_t descriptor_index,
         uint16_t *result_buffer,
         uint16_t result_buffer_len) {
     struct jdksavdecc_descriptor_storage_gen *self = (struct jdksavdecc_descriptor_storage_gen *)self_;
     /* @TODO */
+    (void)self;
+    (void)configuration_index;
+    (void)descriptor_type;
+    (void)descriptor_index;
+    (void)result_buffer;
+    (void)result_buffer_len;
+
     return 0;
 }
 
 
+uint16_t jdksavdecc_descriptor_storage_gen_write_descriptor(
+        struct jdksavdecc_entity_model *self_,
+        uint16_t configuration_index,
+        uint16_t descriptor_type,
+        uint16_t descriptor_index,
+        uint16_t const *descriptor_data,
+        uint16_t descriptor_data_len) {
+    struct jdksavdecc_descriptor_storage_gen *self = (struct jdksavdecc_descriptor_storage_gen *)self_;
+    (void)self;
+    (void)configuration_index;
+    (void)descriptor_type;
+    (void)descriptor_index;
+    (void)descriptor_data;
+    (void)descriptor_data_len;
 
-bool jdksavdecc_descriptor_storage_symbols_add(
-        struct jdksavdecc_descriptor_storage_symbols *self,
-        bool sort,
-        uint32_t symbol,
-        uint16_t aecp_message_type,
-        uint16_t aem_command_type,
-        jdksavdecc_descriptor_storage_symbol_dispatch_proc handler ) {
-    bool r=false;
-    return r;
+    return 0;
 }
 
-jdksavdecc_descriptor_storage_symbol_dispatch_proc jdksavdecc_descriptor_storage_find_symbol(
-        struct jdksavdecc_descriptor_storage_symbols *self,
-        uint32_t symbol,
-        uint16_t aecp_message_type,
-        uint16_t aem_command_type ) {
-    jdksavdecc_descriptor_storage_symbol_dispatch_proc r=0;
+
+uint16_t jdksavdecc_descriptor_storage_gen_read_localized_string(
+        struct jdksavdecc_entity_model *self_,
+        uint16_t configuration_index,
+        uint16_t locale_id,
+        uint16_t localized_string_id,
+        struct jdksavdecc_string *result) {
+    struct jdksavdecc_descriptor_storage_gen *self = (struct jdksavdecc_descriptor_storage_gen *)self_;
     /* @TODO */
     (void)self;
+    (void)configuration_index;
+    (void)locale_id;
+    (void)localized_string_id;
+    (void)result;
     return 0;
 }
+
+
+bool jdksavdecc_descriptor_storage_gen_add_descriptor(
+        struct jdksavdecc_descriptor_storage_gen *self,
+        uint16_t configuration_index,
+        uint16_t descriptor_type,
+        uint16_t descriptor_index,
+        uint8_t const *descriptor_data,
+        uint16_t descriptor_len) {
+    /* @TODO */
+    (void)self;
+    (void)configuration_index;
+    (void)descriptor_type;
+    (void)descriptor_index;
+    (void)descriptor_data;
+    (void)descriptor_len;
+    return false;
+}
+
+
+struct jdksavdecc_descriptor_storage_gen_descriptor *jdksavdecc_descriptor_storage_gen_find_descriptor(
+        struct jdksavdecc_descriptor_storage_gen *self,
+        uint16_t configuration_index,
+        uint16_t descriptor_type,
+        uint16_t descriptor_index ) {
+    /* @TODO */
+    (void)self;
+    (void)configuration_index;
+    (void)descriptor_type;
+    (void)descriptor_index;
+    return 0;
+}
+
+bool jdksavdecc_descriptor_storage_gen_add_symbol(
+        struct jdksavdecc_descriptor_storage_gen *self,
+        uint16_t configuration_index,
+        uint16_t descriptor_type,
+        uint16_t descriptor_index,
+        uint8_t const *descriptor_data,
+        uint16_t descriptor_len) {
+    /* @TODO */
+    (void)self;
+    (void)configuration_index;
+    (void)descriptor_type;
+    (void)descriptor_index;
+    (void)descriptor_data;
+    (void)descriptor_len;
+    return false;
+}
+
+void jdksavdecc_descriptor_storage_gen_sort_descriptors(struct jdksavdecc_descriptor_storage_gen *self) {
+    /* @TODO */
+    (void)self;
+}
+
+void jdksavdecc_descriptor_storage_gen_sort_symbols(struct jdksavdecc_descriptor_storage_gen *self) {
+    /* @TODO */
+    (void)self;
+}
+
+struct jdksavdecc_descriptor_storage_gen_symbol *jdksavdecc_descriptor_storage_gen_find_symbol(
+        struct jdksavdecc_descriptor_storage_gen *self,
+        uint16_t configuration_index,
+        uint16_t descriptor_type,
+        uint16_t descriptor_index ) {
+    /* @TODO */
+    (void)self;
+    (void)configuration_index;
+    (void)descriptor_type;
+    (void)descriptor_index;
+    return 0;
+}
+
 
 int jdksavdecc_descriptor_storage_gen_export_binary(
         struct jdksavdecc_descriptor_storage_gen *self,
         const char *fname) {
     /* @TODO */
     (void)self;
+    (void)fname;
     return 0;
 }
 
 int jdksavdecc_descriptor_storage_gen_export_c(
         struct jdksavdecc_descriptor_storage_gen *self,
+        const char *symbol_prefix,
+        const char *first_include_for_h,
+        const char *first_include_for_c,
         const char *prefix_h,
         const char *prefix_c,
         const char *fname_c,
         const char *fname_h) {
     /* @TODO */
     (void)self;
+    (void)symbol_prefix;
+    (void)first_include_for_c;
+    (void)first_include_for_h;
+    (void)prefix_h;
+    (void)prefix_c;
+    (void)fname_c;
+    (void)fname_h;
     return 0;
 }
