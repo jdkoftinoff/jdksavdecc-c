@@ -101,6 +101,13 @@ uint16_t jdksavdecc_entity_model_write_descriptor(
         uint16_t const *descriptor_data,
         uint16_t descriptor_data_length);
 
+uint16_t jdksavdecc_entity_model_read_localized_string(
+        struct jdksavdecc_entity_model *self,
+        uint16_t configuration_index,
+        uint16_t locale_id,
+        uint16_t localized_string_id,
+        struct jdksavdecc_string *result);
+
 static inline void jdksavdecc_entity_model_init( struct jdksavdecc_entity_model *self ) {
     self->destroy = jdksavdecc_entity_model_destroy;
     self->additional_data = 0;
