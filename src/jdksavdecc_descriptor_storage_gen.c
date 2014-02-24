@@ -68,7 +68,7 @@ void jdksavdecc_descriptor_storage_gen_destroy(struct jdksavdecc_entity_model *s
 /// Read the count of configurations in the storage object
 uint16_t jdksavdecc_descriptor_storage_gen_get_configuration_count(struct jdksavdecc_entity_model *self_) {
     struct jdksavdecc_descriptor_storage_gen *self = (struct jdksavdecc_descriptor_storage_gen *)self_;
-    /* @TODO */
+    /* TODO: */
     (void)self;
     return 0;
 }
@@ -81,7 +81,7 @@ uint16_t jdksavdecc_descriptor_storage_gen_read_descriptor(
         uint16_t *result_buffer,
         uint16_t result_buffer_len) {
     struct jdksavdecc_descriptor_storage_gen *self = (struct jdksavdecc_descriptor_storage_gen *)self_;
-    /* @TODO */
+    /* TODO: */
     (void)self;
     (void)configuration_index;
     (void)descriptor_type;
@@ -119,7 +119,7 @@ uint16_t jdksavdecc_descriptor_storage_gen_read_localized_string(
         uint16_t localized_string_id,
         struct jdksavdecc_string *result) {
     struct jdksavdecc_descriptor_storage_gen *self = (struct jdksavdecc_descriptor_storage_gen *)self_;
-    /* @TODO */
+    /* TODO: */
     (void)self;
     (void)configuration_index;
     (void)locale_id;
@@ -136,7 +136,7 @@ bool jdksavdecc_descriptor_storage_gen_add_descriptor(
         uint16_t descriptor_index,
         uint8_t const *descriptor_data,
         uint16_t descriptor_len) {
-    /* @TODO */
+    /* TODO: */
     (void)self;
     (void)configuration_index;
     (void)descriptor_type;
@@ -152,7 +152,7 @@ struct jdksavdecc_descriptor_storage_gen_descriptor *jdksavdecc_descriptor_stora
         uint16_t configuration_index,
         uint16_t descriptor_type,
         uint16_t descriptor_index ) {
-    /* @TODO */
+    /* TODO: */
     (void)self;
     (void)configuration_index;
     (void)descriptor_type;
@@ -167,7 +167,7 @@ bool jdksavdecc_descriptor_storage_gen_add_symbol(
         uint16_t descriptor_index,
         uint8_t const *descriptor_data,
         uint16_t descriptor_len) {
-    /* @TODO */
+    /* TODO: */
     (void)self;
     (void)configuration_index;
     (void)descriptor_type;
@@ -178,12 +178,12 @@ bool jdksavdecc_descriptor_storage_gen_add_symbol(
 }
 
 void jdksavdecc_descriptor_storage_gen_sort_descriptors(struct jdksavdecc_descriptor_storage_gen *self) {
-    /* @TODO */
+    /* TODO: */
     (void)self;
 }
 
 void jdksavdecc_descriptor_storage_gen_sort_symbols(struct jdksavdecc_descriptor_storage_gen *self) {
-    /* @TODO */
+    /* TODO: */
     (void)self;
 }
 
@@ -192,7 +192,7 @@ struct jdksavdecc_descriptor_storage_gen_symbol *jdksavdecc_descriptor_storage_g
         uint16_t configuration_index,
         uint16_t descriptor_type,
         uint16_t descriptor_index ) {
-    /* @TODO */
+    /* TODO: */
     (void)self;
     (void)configuration_index;
     (void)descriptor_type;
@@ -204,7 +204,7 @@ struct jdksavdecc_descriptor_storage_gen_symbol *jdksavdecc_descriptor_storage_g
 int jdksavdecc_descriptor_storage_gen_export_binary(
         struct jdksavdecc_descriptor_storage_gen *self,
         const char *fname) {
-    /* @TODO */
+    /* TODO: */
     (void)self;
     (void)fname;
     return 0;
@@ -219,7 +219,7 @@ int jdksavdecc_descriptor_storage_gen_export_c(
         const char *prefix_c,
         const char *fname_c,
         const char *fname_h) {
-    /* @TODO */
+    /* TODO: */
     (void)self;
     (void)symbol_prefix;
     (void)first_include_for_c;
