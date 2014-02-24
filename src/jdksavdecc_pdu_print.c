@@ -40,19 +40,19 @@ struct jdksavdecc_uint16_name jdksavdecc_pdu_print_cd_subtype[]
        {JDKSAVDECC_1722A_SUBTYPE_MMA_STREAM, "MMA_STREAM" },
        {JDKSAVDECC_1722A_SUBTYPE_AAF, "AAF" },
        {JDKSAVDECC_1722A_SUBTYPE_CVF, "CVF" },
-       {JDKSAVDECC_1722A_SUBTYPE_AUTOMOTIVE, "AUTOMOTIVE" },
-       {JDKSAVDECC_1722A_SUBTYPE_CRS, "CRS" },
-       {JDKSAVDECC_1722A_SUBTYPE_CODED_AUDIO, "CODED_AUDIO" },
-       {JDKSAVDECC_1722A_SUBTYPE_TSCS, "TSCS" },
+       {JDKSAVDECC_1722A_SUBTYPE_ACF, "ACF" },
+       {JDKSAVDECC_1722A_SUBTYPE_CRF, "CRF" },
+       {JDKSAVDECC_1722A_SUBTYPE_AWM, "AWM" },
+       {JDKSAVDECC_1722A_SUBTYPE_TSCF, "TSCF" },
        {JDKSAVDECC_1722A_SUBTYPE_SDI, "SDI" },
        {JDKSAVDECC_1722A_SUBTYPE_RAW, "RAW" },
-       {JDKSAVDECC_1722A_SUBTYPE_AESGCM_STREAM, "AESGCM_STREAM" },
+       {JDKSAVDECC_1722A_SUBTYPE_AES_STREAM, "AES_STREAM" },
        {JDKSAVDECC_1722A_SUBTYPE_VENDOR_STREAM, "VENDOR_STREAM" },
        {JDKSAVDECC_1722A_SUBTYPE_EXPERIMENTAL_STREAM, "EXPERIMENTAL_STREAM" },
        {JDKSAVDECC_1722A_SUBTYPE_MMA_CONTROL, "MMA_CONTROL" },
        {JDKSAVDECC_1722A_SUBTYPE_ECC_SIGNED_CONTROL, "ECC_SIGNED_CONTROL" },
        {JDKSAVDECC_1722A_SUBTYPE_ECC_ENC_CONTROL, "ECC_ENC_CONTROL" },
-       {JDKSAVDECC_1722A_SUBTYPE_AESGCM_CONTROL, "AESGCM_CONTROL" },
+       {JDKSAVDECC_1722A_SUBTYPE_AES_CONTROL, "AES_CONTROL" },
        {JDKSAVDECC_1722A_SUBTYPE_VENDOR_CONTROL, "VENDOR_CONTROL" },
        {JDKSAVDECC_1722A_SUBTYPE_ADP, "ADP" },
        {JDKSAVDECC_1722A_SUBTYPE_AECP, "AECP" },
@@ -151,12 +151,6 @@ void jdksavdecc_pdu_print(struct jdksavdecc_printer *self, const uint8_t *p, siz
             if (dump_payload && len > JDKSAVDECC_COMMON_CONTROL_HEADER_LEN) {
                 jdksavdecc_printer_print_label(self, "payload");
                 jdksavdecc_printer_print_block(self, p, len, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN, len);
-            }
-        } else if (version == 1) {
-            // TODO: Parse version 1 header
-            if (dump_payload) {
-                jdksavdecc_printer_print_label(self, "frame");
-                jdksavdecc_printer_print_block(self, p, len, 0, len);
             }
         }
     }
