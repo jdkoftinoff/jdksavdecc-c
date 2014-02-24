@@ -178,14 +178,14 @@ struct jdksavdecc_jdks_log_console_command {
  *
  * @param log_detail
  *        The logging detail of this message:
- *        @item 0 = ERROR
- *        @item 1 = WARNING
- *        @item 2 = INFO
- *        @item 3 = DEBUG1
- *        @item 4 = DEBUG2
- *        @item 5 = DEBUG3
+ *        @item 0 = Error
+ *        @item 1 = Warning
+ *        @item 2 = Info
+ *        @item 3 = Debug1
+ *        @item 4 = Debug2
+ *        @item 5 = Debug3
  *        @item 6..0xfe = reserved
- *        @item 0xff = CONSOLE
+ *        @item 0xff = Console
  *
  * @param reserved
  *        reserved value
@@ -268,14 +268,14 @@ static inline ssize_t jdksavdecc_jdks_log_control_generate(
  *
  * @param log_detail
  *        The logging detail of this message:
- *        @item 0 = ERROR
- *        @item 1 = WARNING
- *        @item 2 = INFO
- *        @item 3 = DEBUG1
- *        @item 4 = DEBUG2
- *        @item 5 = DEBUG3
+ *        @item 0 = Error
+ *        @item 1 = Warning
+ *        @item 2 = Info
+ *        @item 3 = Debug1
+ *        @item 4 = Debug2
+ *        @item 5 = Debug3
  *        @item 6..0xfe = reserved
- *        @item 0xff = CONSOLE
+ *        @item 0xff = Console
  *
  * @param reserved
  *        reserved value
