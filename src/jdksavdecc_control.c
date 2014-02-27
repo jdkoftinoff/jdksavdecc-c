@@ -52,12 +52,6 @@ uint16_t jdksavdecc_control_get_control_value_type(
     return 0;
 }
 
-uint16_t jdksavdecc_control_get_control_value_type(
-        struct jdksavdecc_control_info const *control_info ) {
-    // TODO
-    return 0;
-}
-
 bool jdksavdecc_control_get_localized_description(
         struct jdksavdecc_control_info const *control_info,
         char *string_buf,

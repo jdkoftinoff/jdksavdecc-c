@@ -129,9 +129,6 @@ struct jdksavdecc_eui64 jdksavdecc_control_get_control_type(
 uint16_t jdksavdecc_control_get_control_value_type(
         struct jdksavdecc_control_info const *control_info );
 
-uint16_t jdksavdecc_control_get_control_value_type(
-        struct jdksavdecc_control_info const *control_info );
-
 static inline bool jdksavdecc_control_is_value_readonly(
         struct jdksavdecc_control_info const *control_info ) {
     bool r=false;
