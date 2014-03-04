@@ -233,7 +233,7 @@ static inline uint32_t jdksavdecc_subtype_data_get_control_data(uint32_t v) {
     return (v & JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA) >> (31 - JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_BIT);
 }
 
-static inline uint32_t avtp_subtype_data_set_control_data(uint32_t subtype_data, uint32_t v) {
+static inline uint32_t jdksavdecc_avtp_subtype_data_set_control_data(uint32_t subtype_data, uint32_t v) {
     return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_MASK)
            | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_BIT)) & JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA);
 }
@@ -339,7 +339,7 @@ static inline uint32_t jdksavdecc_subtype_data_set_tu(uint32_t subtype_data, uin
 
 /*@}*/
 
-/** \addtogroup avtp_common_control_header AVTP common control header - See IEEE 1722-2011 Clause 5.3 */
+/** \addtogroup jdksavdecc_avtp_common_control_header AVTP common control header - See IEEE 1722-2011 Clause 5.3 */
 /*@{*/
 
 #define JDKSAVDECC_COMMON_CONTROL_HEADER_OFFSET_SUBTYPE_DATA (0)
@@ -402,7 +402,7 @@ static inline uint32_t jdksavdecc_common_control_header_get_control_data(void co
 
 static inline void jdksavdecc_common_control_header_set_control_data(uint32_t v, void *base, size_t pos) {
     uint32_t subtype_data = jdksavdecc_common_control_header_get_subtype_data(base, pos);
-    subtype_data = avtp_subtype_data_set_control_data(subtype_data, v);
+    subtype_data = jdksavdecc_avtp_subtype_data_set_control_data(subtype_data, v);
     jdksavdecc_common_control_header_set_subtype_data(subtype_data, base, pos);
 }
 
@@ -456,7 +456,7 @@ ssize_t jdksavdecc_common_control_header_write(struct jdksavdecc_common_control_
 
 /*@}*/
 
-/** \addtogroup avtp_common_stream_header AVTP common stream header - See IEEE Std 1722-2011 Clause 5.4 */
+/** \addtogroup jdksavdecc_avtp_common_stream_header AVTP common stream header - See IEEE Std 1722-2011 Clause 5.4 */
 /*@{*/
 
 #define JDKSAVDECC_COMMON_STREAM_HEADER_OFFSET_SUBTYPE_DATA (0)
