@@ -120,9 +120,13 @@ static inline void jdksavdecc_uint8_set(uint8_t v, void *base, ssize_t pos) {
 
 /// Read the network order Doublet value at base[pos] and store it in
 /// *host_value. Returns new pos, or -1 if pos is out of bounds.
-static inline void jdksavdecc_uint16_read(uint16_t *host_value, void const *base, ssize_t pos) {
-    uint8_t const *b = ((uint8_t const *)base) + pos;
-    *host_value = (((uint16_t)b[0]) << 8) + b[1];
+static inline ssize_t jdksavdecc_uint16_read(uint16_t *host_value, void const *base, ssize_t pos, ssize_t len) {
+    ssize_t r = jdksavdecc_validate_range(pos, len, 1);
+    if (r >= 0) {
+        uint8_t const *b = ((uint8_t const *)base) + pos;
+        *host_value = (((uint64_t)b[0]) << (8 * 1)) + b[1];
+    }
+    return r;
 }
 
 /// get the uint8_t value at base[pos] and return it without bounds checking
@@ -149,9 +153,14 @@ static inline void jdksavdecc_uint16_set(uint16_t v, void *base, ssize_t pos) {
     b[1] = (uint8_t)((v) >> 0) & 0xff;
 }
 
-static inline void jdksavdecc_uint32_read(uint32_t *host_value, void const *base, ssize_t pos) {
-    uint8_t const *b = ((uint8_t const *)base) + pos;
-    *host_value = (((uint32_t)b[0]) << 24) + (((uint32_t)b[1]) << 16) + (((uint32_t)b[2]) << 8) + b[3];
+static inline ssize_t jdksavdecc_uint32_read(uint32_t *host_value, void const *base, ssize_t pos, ssize_t len) {
+    ssize_t r = jdksavdecc_validate_range(pos, len, 1);
+    if (r >= 0) {
+        uint8_t const *b = ((uint8_t const *)base) + pos;
+        *host_value = (((uint64_t)b[0]) << (8 * 3)) + (((uint64_t)b[1]) << (8 * 2))
+                     + (((uint64_t)b[2]) << (8 * 1)) + b[3];
+    }
+    return r;
 }
 
 static inline uint32_t jdksavdecc_uint32_get(void const *base, ssize_t pos) {
