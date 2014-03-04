@@ -123,11 +123,25 @@ bool jdksavdecc_control_init(
         uint16_t descriptor_len
         );
 
+static inline
 struct jdksavdecc_eui64 jdksavdecc_control_get_control_type(
-        struct jdksavdecc_control_info const *control_info );
+        struct jdksavdecc_control_info const *control_info )  {
+    struct jdksavdecc_eui64 r;
+    jdksavdecc_eui64_init(&r);
+    if( control_info->descriptor_data!=0 && control_info->descriptor_len >= JDKSAVDECC_DESCRIPTOR_CONTROL_LEN ) {
+        r=jdksavdecc_descriptor_control_get_control_type(control_info->descriptor_data,0);
+    }
+    return r;
+}
 
-uint16_t jdksavdecc_control_get_control_value_type(
-        struct jdksavdecc_control_info const *control_info );
+static inline uint16_t jdksavdecc_control_get_control_value_type(
+        struct jdksavdecc_control_info const *control_info )  {
+    uint16_t r=JDKSAVDECC_CONTROL_VALUE_EXPANSION;
+    if( control_info->descriptor_data!=0 && control_info->descriptor_len >= JDKSAVDECC_DESCRIPTOR_CONTROL_LEN ) {
+        r=jdksavdecc_descriptor_control_get_control_value_type(control_info->descriptor_data,0) & JDKSAVDECC_CONTROL_VALUE_MASK;
+    }
+    return r;
+}
 
 static inline bool jdksavdecc_control_is_value_readonly(
         struct jdksavdecc_control_info const *control_info ) {
@@ -151,12 +165,14 @@ static inline bool jdksavdecc_control_is_value_unknown(
     return r;
 }
 
+
 bool jdksavdecc_control_get_localized_description(
         struct jdksavdecc_control_info const *control_info,
-        char *string_buf,
-        size_t string_buf_max_len,
         struct jdksavdecc_entity_model *entity_model,
-        uint16_t locale_id );
+        uint16_t configuration_index,
+        uint16_t locale_id,
+        struct jdksavdecc_string *result
+        );
 
 uint16_t jdksavdecc_control_get_num_items(
         struct jdksavdecc_control_info const *control_info );
@@ -164,10 +180,11 @@ uint16_t jdksavdecc_control_get_num_items(
 bool jdksavdecc_control_get_item_localized_description(
         struct jdksavdecc_control_info const *control_info,
         uint16_t item,
-        char *string_buf,
-        size_t string_buf_max_len,
         struct jdksavdecc_entity_model *entity_model,
-        uint16_t locale_id );
+        uint16_t configuration_index,
+        uint16_t locale_id,
+        struct jdksavdecc_string *result
+        );
 
 bool jdksavdecc_control_is_numeric(
         struct jdksavdecc_control_info const *control_info );

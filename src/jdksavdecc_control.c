@@ -37,46 +37,76 @@ bool jdksavdecc_control_init(
         void const *descriptor_data,
         uint16_t descriptor_len
         ) {
-    // TODO
-    return false;
+    self->descriptor_data = descriptor_data;
+    self->descriptor_len = descriptor_len;
+    return true;
 }
 
-struct jdksavdecc_eui64 jdksavdecc_control_get_control_type(
-        struct jdksavdecc_control_info const *control_info )  {
-    // TODO
-}
 
-uint16_t jdksavdecc_control_get_control_value_type(
-        struct jdksavdecc_control_info const *control_info )  {
-    // TODO
-    return 0;
-}
 
 bool jdksavdecc_control_get_localized_description(
         struct jdksavdecc_control_info const *control_info,
-        char *string_buf,
-        size_t string_buf_max_len,
         struct jdksavdecc_entity_model *entity_model,
-        uint16_t locale_id ) {
-    // TODO
-    return false;
+        uint16_t configuration_index,
+        uint16_t locale_id,
+        struct jdksavdecc_string *result
+        ) {
+    bool r=false;
+
+    if( control_info->descriptor_data!=0 && control_info->descriptor_len >= JDKSAVDECC_DESCRIPTOR_CONTROL_LEN ) {
+        uint16_t localized_string_id=jdksavdecc_descriptor_control_get_localized_description(
+                    control_info->descriptor_data, 0 );
+
+        jdksavdecc_string_init(result);
+        entity_model->read_localized_string(
+                    entity_model,
+                    configuration_index,
+                    locale_id,
+                    localized_string_id,
+                    result
+                );
+        r=true;
+    }
+
+    return r;
 }
 
 uint16_t jdksavdecc_control_get_num_items(
         struct jdksavdecc_control_info const *control_info ) {
-    // TODO
-    return 0;
+    uint16_t r=0;
+    if( control_info->descriptor_data!=0 && control_info->descriptor_len >= JDKSAVDECC_DESCRIPTOR_CONTROL_LEN ) {
+        r=jdksavdecc_descriptor_control_get_number_of_values( control_info->descriptor_data, 0 );
+    }
+    return r;
 }
 
 bool jdksavdecc_control_get_item_localized_description(
         struct jdksavdecc_control_info const *control_info,
         uint16_t item,
-        char *string_buf,
-        size_t string_buf_max_len,
         struct jdksavdecc_entity_model *entity_model,
-        uint16_t locale_id ) {
-    // TODO
-    return false;
+        uint16_t configuration_index,
+        uint16_t locale_id,
+        struct jdksavdecc_string *result
+        ) {
+    bool r=false;
+
+    if( control_info->descriptor_data!=0 && control_info->descriptor_len >= JDKSAVDECC_DESCRIPTOR_CONTROL_LEN ) {
+
+        uint16_t localized_string_id=0xffff;
+
+        // TODO
+        jdksavdecc_string_init(result);
+
+        entity_model->read_localized_string(
+                    entity_model,
+                    configuration_index,
+                    locale_id,
+                    localized_string_id,
+                    result);
+        r=true;
+    }
+
+    return r;
 }
 
 bool jdksavdecc_control_is_numeric(
