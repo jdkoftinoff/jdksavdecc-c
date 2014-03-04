@@ -348,7 +348,7 @@ static inline uint32_t jdksavdecc_subtype_data_set_tu(uint32_t subtype_data, uin
 
 static inline uint32_t jdksavdecc_common_control_header_get_subtype_data(void const *base, size_t pos) {
     uint32_t subtype_data;
-    jdksavdecc_uint32_read(&subtype_data, base, pos + JDKSAVDECC_COMMON_CONTROL_HEADER_OFFSET_SUBTYPE_DATA);
+    jdksavdecc_uint32_read(&subtype_data, base, pos + JDKSAVDECC_COMMON_CONTROL_HEADER_OFFSET_SUBTYPE_DATA, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN );
     return subtype_data;
 }
 
@@ -469,7 +469,7 @@ ssize_t jdksavdecc_common_control_header_write(struct jdksavdecc_common_control_
 
 static inline uint32_t jdksavdecc_common_stream_header_get_subtype_data(void const *base, size_t pos) {
     uint32_t subtype_data;
-    jdksavdecc_uint32_read(&subtype_data, base, pos + JDKSAVDECC_COMMON_STREAM_HEADER_OFFSET_SUBTYPE_DATA);
+    jdksavdecc_uint32_read(&subtype_data, base, pos + JDKSAVDECC_COMMON_STREAM_HEADER_OFFSET_SUBTYPE_DATA, JDKSAVDECC_COMMON_STREAM_HEADER_OFFSET_SUBTYPE_DATA);
     return subtype_data;
 }
 
