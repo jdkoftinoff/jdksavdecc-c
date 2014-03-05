@@ -439,7 +439,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
             jdksavdecc_uint32_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos);
             if( p->blob_size > (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN) &&
                 p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE ) {
-                uint16_t text_len =p->blob_size - (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN);
+                uint16_t text_len =p->blob_size - (2);
 
                 jdksavdecc_uint8_read(
                     &p->log_detail,
@@ -458,7 +458,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
                     r=pos+JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT;
                     memcpy( p->text, (uint8_t const *)buf+r, text_len);
                     p->text[text_len]='\0';
-                    r+=text_len;
+                    r=text_len;
                 } else {
                     r=-1;
                 }
