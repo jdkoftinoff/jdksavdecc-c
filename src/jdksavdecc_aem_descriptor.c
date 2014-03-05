@@ -272,22 +272,22 @@ ssize_t jdksavdecc_aem_write_values_format_array_uint16(uint16_t minimum_value,
                                                         uint8_t multiplier,
                                                         uint8_t unit_code,
                                                         uint16_t localized_string_reference,
-                                                        uint8_t *current_values,
+                                                        uint16_t *current_values,
                                                         int16_t num_values,
                                                         void *buf,
                                                         ssize_t pos,
                                                         ssize_t buf_len) {
     ssize_t r = pos;
     int i;
-    r = jdksavdecc_uint16_write((uint16_t)minimum_value, buf, r, buf_len);
-    r = jdksavdecc_uint16_write((uint16_t)maximum_value, buf, r, buf_len);
-    r = jdksavdecc_uint16_write((uint16_t)step_value, buf, r, buf_len);
-    r = jdksavdecc_uint16_write((uint16_t)default_value, buf, r, buf_len);
+    r = jdksavdecc_uint16_write(minimum_value, buf, r, buf_len);
+    r = jdksavdecc_uint16_write(maximum_value, buf, r, buf_len);
+    r = jdksavdecc_uint16_write(step_value, buf, r, buf_len);
+    r = jdksavdecc_uint16_write(default_value, buf, r, buf_len);
     r = jdksavdecc_uint16_write(JDKSAVDECC_AEM_UNITS(multiplier, unit_code), buf, r, buf_len);
     r = jdksavdecc_uint16_write(localized_string_reference, buf, r, buf_len);
 
     for (i = 0; i < num_values; i++) {
-        r = jdksavdecc_uint16_write((uint16_t)current_values[i], buf, r, buf_len);
+        r = jdksavdecc_uint16_write(current_values[i], buf, r, buf_len);
     }
 
     return r;

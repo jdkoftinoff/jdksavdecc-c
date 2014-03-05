@@ -124,7 +124,7 @@ static inline ssize_t jdksavdecc_uint16_read(uint16_t *host_value, void const *b
     ssize_t r = jdksavdecc_validate_range(pos, len, 2);
     if (r >= 0) {
         uint8_t const *b = ((uint8_t const *)base) + pos;
-        *host_value = (((uint64_t)b[0]) << (8 * 1)) + b[1];
+        *host_value = (((uint16_t)b[0]) << (8 * 1)) + b[1];
     }
     return r;
 }
@@ -157,8 +157,8 @@ static inline ssize_t jdksavdecc_uint32_read(uint32_t *host_value, void const *b
     ssize_t r = jdksavdecc_validate_range(pos, len, 4);
     if (r >= 0) {
         uint8_t const *b = ((uint8_t const *)base) + pos;
-        *host_value = (((uint64_t)b[0]) << (8 * 3)) + (((uint64_t)b[1]) << (8 * 2))
-                     + (((uint64_t)b[2]) << (8 * 1)) + b[3];
+        *host_value = (((uint32_t)b[0]) << (8 * 3)) + (((uint32_t)b[1]) << (8 * 2))
+                     + (((uint32_t)b[2]) << (8 * 1)) + b[3];
     }
     return r;
 }
