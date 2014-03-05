@@ -32,6 +32,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_descriptor_storage_gen.h"
 
+#ifdef TODO
+
 void
 jdksavdecc_descriptor_storage_gen_init(
         struct jdksavdecc_descriptor_storage_gen *self,
@@ -230,3 +232,6 @@ int jdksavdecc_descriptor_storage_gen_export_c(
     (void)fname_h;
     return 0;
 }
+
+#endif
+

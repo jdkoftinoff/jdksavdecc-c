@@ -33,6 +33,8 @@
 #include "jdksavdecc_descriptor_storage.h"
 #include "jdksavdecc_entity_model.h"
 
+#ifdef TODO
+
 bool
 jdksavdecc_descriptor_storage_init(struct jdksavdecc_descriptor_storage *self, void const *user_ptr, uint32_t storage_length) {
     jdksavdecc_entity_model_init(&self->base);
@@ -407,4 +409,5 @@ jdksavdecc_descriptor_storage_symbol_dispatch_proc jdksavdecc_descriptor_storage
 
 
 
+#endif
 
