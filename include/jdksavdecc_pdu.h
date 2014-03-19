@@ -144,9 +144,16 @@ extern struct jdksavdecc_eui64 jdksavdecc_identification_notification_controller
 /** \addtogroup jdksavdecc_subtype_data AVTP subtype_data field - See IEEE Std 1722-2011 Clause 5.3 */
 /*@{*/
 
-#define JDKSAVDECC_SUBTYPE_DATA_CD_BIT (0)
-#define JDKSAVDECC_SUBTYPE_DATA_CD (0x80000000UL)
-#define JDKSAVDECC_SUBTYPE_DATA_CD_MASK (~0x80000000UL)
+#define JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_WIDTH (7)
+#define JDKSAVDECC_SUBTYPE_DATA_VERSION_WIDTH (3)
+#define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_WIDTH (4)
+#define JDKSAVDECC_SUBTYPE_DATA_STATUS_WIDTH (5)
+#define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_WIDTH (11)
+#define JDKSAVDECC_SUBTYPE_DATA_STREAM_MR_WIDTH (1)
+#define JDKSAVDECC_SUBTYPE_DATA_STREAM_GV_WIDTH (1)
+#define JDKSAVDECC_SUBTYPE_DATA_STREAM_TV_WIDTH (1)
+#define JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM_WIDTH (8)
+#define JDKSAVDECC_SUBTYPE_DATA_STREAM_TU_WIDTH (1)
 
 static inline bool jdksavdecc_subtype_data_get_cd( void const *base, size_t pos ) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
@@ -159,10 +166,6 @@ static inline void jdksavdecc_subtype_data_set_cd(bool v, void *base, size_t pos
     p[0] = (p[0]&0x7f) | n;
 }
 
-#define JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_BIT (7)
-#define JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_WIDTH (7)
-#define JDKSAVDECC_SUBTYPE_DATA_SUBTYPE (0x7f000000UL)
-#define JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_MASK (~0x7f000000UL)
 
 static inline uint8_t jdksavdecc_subtype_data_get_subtype( void const *base, size_t pos ) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
@@ -201,10 +204,6 @@ static inline ssize_t jdksavdecc_1722a_write_subtype(
    return r;
 }
 
-#define JDKSAVDECC_SUBTYPE_DATA_SV_BIT (8)
-#define JDKSAVDECC_SUBTYPE_DATA_SV (0x00800000UL)
-#define JDKSAVDECC_SUBTYPE_DATA_SV_MASK (~0x00800000UL)
-
 static inline bool jdksavdecc_subtype_data_get_sv(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
     return (bool)(p[1] >> 7) & 1;
@@ -214,11 +213,6 @@ static inline void jdksavdecc_subtype_data_set_sv(bool v, void *base, size_t pos
     uint8_t *p = ((uint8_t *)base) + pos;
     p[1] = (p[1]&0x7f) | (v?0x80 : 0x00 );
 }
-
-#define JDKSAVDECC_SUBTYPE_DATA_VERSION_BIT (11)
-#define JDKSAVDECC_SUBTYPE_DATA_VERSION_WIDTH (3)
-#define JDKSAVDECC_SUBTYPE_DATA_VERSION (uint32_t)(0x00700000UL)
-#define JDKSAVDECC_SUBTYPE_DATA_VERSION_MASK (uint32_t)(0xFF8FFFFFUL)
 
 static inline uint8_t jdksavdecc_subtype_data_get_version(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
@@ -230,11 +224,6 @@ static inline void jdksavdecc_subtype_data_set_version(uint8_t v, void *base, si
     p[1] = (p[1]&0x8f) | ((v&0x7)<<4);
 }
 
-#define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_BIT (15)
-#define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_WIDTH (4)
-#define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA (uint32_t)(0x000f0000UL)
-#define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_MASK (uint32_t)(0xFFF0FFFFUL)
-
 static inline uint8_t jdksavdecc_subtype_data_get_control_data(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
     return (p[1]&0xf)>>0;
@@ -244,11 +233,6 @@ static inline void jdksavdecc_avtp_subtype_data_set_control_data(uint8_t v, void
     uint8_t *p = ((uint8_t *)base) + pos;
     p[1] = (p[1]&0xf0) | ((v&0xf)<<0);
 }
-
-#define JDKSAVDECC_SUBTYPE_DATA_STATUS_BIT (20)
-#define JDKSAVDECC_SUBTYPE_DATA_STATUS_WIDTH (5)
-#define JDKSAVDECC_SUBTYPE_DATA_STATUS (uint32_t)(0x0000f800UL)
-#define JDKSAVDECC_SUBTYPE_DATA_STATUS_MASK (uint32_t)(0xFFFF07FFUL)
 
 static inline uint8_t jdksavdecc_subtype_data_get_status(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
@@ -260,11 +244,6 @@ static inline void jdksavdecc_subtype_data_set_status(uint8_t v, void *base, siz
     p[2] = (p[2]&0x07) | ((v&0x1f)<<3);
 }
 
-
-#define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_BIT (31)
-#define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_WIDTH (11)
-#define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH (uint32_t)(0x000007ffUL)
-#define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_MASK (uint32_t)(0xFFFFF800UL)
 
 static inline uint16_t jdksavdecc_subtype_data_get_control_data_length(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
@@ -278,11 +257,6 @@ static inline void jdksavdecc_subtype_data_set_control_data_length(uint16_t v, v
     p[3] = (uint8_t)(v&0xff);
 }
 
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_MR_BIT (12)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_MR_WIDTH (1)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_MR (uint32_t)(0x00080000UL)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_MR_MASK (~JDKSAVDECC_SUBTYPE_DATA_STREAM_MR)
-
 
 static inline bool jdksavdecc_subtype_data_get_mr(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
@@ -295,11 +269,6 @@ static inline void jdksavdecc_subtype_data_set_mr(bool v, void *base, size_t pos
 }
 
 
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_GV_BIT (14)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_GV_WIDTH (1)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_GV (uint32_t)(0x00020000UL)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_GV_MASK (~JDKSAVDECC_SUBTYPE_DATA_STREAM_GV)
-
 static inline bool jdksavdecc_subtype_data_get_gv(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
     return (bool)((p[1] >> 1) & 1);
@@ -310,10 +279,6 @@ static inline void jdksavdecc_subtype_data_set_gv(bool v, void *base, size_t pos
     p[1] = (p[1]&0xfd) | (v?0x02 : 0x00 );
 }
 
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_TV_BIT (15)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_TV_WIDTH (1)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_TV (uint32_t)(0x00010000UL)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_TV_MASK (~JDKSAVDECC_SUBTYPE_DATA_STREAM_TV)
 
 static inline bool jdksavdecc_subtype_data_get_tv(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
@@ -325,10 +290,6 @@ static inline void jdksavdecc_subtype_data_set_tv(bool v, void *base, size_t pos
     p[1] = (p[1]&0xfe) | (v?0x01 : 0x00 );
 }
 
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM_BIT (22)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM_WIDTH (8)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM (uint32_t)(0x0000ff00UL)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM_MASK (~JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM)
 
 static inline uint8_t jdksavdecc_subtype_data_get_sequence_num(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
@@ -339,11 +300,6 @@ static inline void jdksavdecc_subtype_data_set_sequence_num(uint8_t v, void *bas
     uint8_t *p = ((uint8_t *)base) + pos;
     p[2] = v;
 }
-
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_TU_BIT (31)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_TU_WIDTH (1)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_TU (uint32_t)(0x00000001UL)
-#define JDKSAVDECC_SUBTYPE_DATA_STREAM_TU_MASK (~JDKSAVDECC_SUBTYPE_DATA_STREAM_TU)
 
 static inline bool jdksavdecc_subtype_data_get_tu(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
@@ -364,17 +320,6 @@ static inline void jdksavdecc_subtype_data_set_tu(bool v, void *base, size_t pos
 #define JDKSAVDECC_COMMON_CONTROL_HEADER_OFFSET_STREAM_ID (4)
 #define JDKSAVDECC_COMMON_CONTROL_HEADER_LEN (12)
 
-/** TODO
-static inline uint32_t jdksavdecc_common_control_header_get_subtype_data(void const *base, size_t pos) {
-    uint32_t subtype_data;
-    jdksavdecc_uint32_read(&subtype_data, base, pos + JDKSAVDECC_COMMON_CONTROL_HEADER_OFFSET_SUBTYPE_DATA, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN );
-    return subtype_data;
-}
-*/
-
-static inline void jdksavdecc_common_control_header_set_subtype_data(uint32_t subtype_data, void *base, size_t pos) {
-    jdksavdecc_uint32_set(subtype_data, base, pos + JDKSAVDECC_COMMON_CONTROL_HEADER_OFFSET_SUBTYPE_DATA);
-}
 
 static inline bool jdksavdecc_common_control_header_get_cd(void const *base, size_t pos) {
 
