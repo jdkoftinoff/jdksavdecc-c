@@ -148,13 +148,15 @@ extern struct jdksavdecc_eui64 jdksavdecc_identification_notification_controller
 #define JDKSAVDECC_SUBTYPE_DATA_CD (0x80000000UL)
 #define JDKSAVDECC_SUBTYPE_DATA_CD_MASK (~0x80000000UL)
 
-static inline uint32_t jdksavdecc_subtype_data_get_cd(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_CD) >> (31 - JDKSAVDECC_SUBTYPE_DATA_CD_BIT);
+static inline bool jdksavdecc_subtype_data_get_cd( void const *base, size_t pos ) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (bool)(p[0] >> 7) & 1;
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_cd(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_CD_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_CD_BIT)) & JDKSAVDECC_SUBTYPE_DATA_CD);
+static inline void jdksavdecc_subtype_data_set_cd(bool v, void *base, size_t pos) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    uint8_t n = v ? 0x80 : 0x00;
+    p[0] = (p[0]&0x7f) | n;
 }
 
 #define JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_BIT (7)
@@ -162,26 +164,28 @@ static inline uint32_t jdksavdecc_subtype_data_set_cd(uint32_t subtype_data, uin
 #define JDKSAVDECC_SUBTYPE_DATA_SUBTYPE (0x7f000000UL)
 #define JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_MASK (~0x7f000000UL)
 
-static inline uint32_t jdksavdecc_subtype_data_get_subtype(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_SUBTYPE) >> (31 - JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_BIT);
+static inline uint8_t jdksavdecc_subtype_data_get_subtype( void const *base, size_t pos ) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (p[0]&0x7f);
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_subtype(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_BIT)) & JDKSAVDECC_SUBTYPE_DATA_SUBTYPE);
+static inline void jdksavdecc_subtype_data_set_subtype(uint8_t v, void *base, size_t pos) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[0] = (p[0]&0x80) | v;
 }
 
 static inline ssize_t jdksavdecc_1722a_read_subtype(
-   uint8_t *host_value,
-   void const *base,
-   ssize_t pos,
-   size_t len ) {
-   ssize_t r=jdksavdecc_validate_range(pos,len,1);
-   if(r>=0) {
-       uint8_t const *b = (uint8_t const *)base;
-       *host_value = b[pos+0];
-   }
-   return r;
+        uint8_t *host_value,
+        void const *base,
+        ssize_t pos,
+        size_t len ) {
+    ssize_t r=jdksavdecc_validate_range(pos,len,1);
+    if(r>=0) {
+        uint8_t const *b = (uint8_t const *)base;
+        *host_value = b[pos+0];
+    }
+
+    return r;
 }
 
 static inline ssize_t jdksavdecc_1722a_write_subtype(
@@ -201,13 +205,14 @@ static inline ssize_t jdksavdecc_1722a_write_subtype(
 #define JDKSAVDECC_SUBTYPE_DATA_SV (0x00800000UL)
 #define JDKSAVDECC_SUBTYPE_DATA_SV_MASK (~0x00800000UL)
 
-static inline uint32_t jdksavdecc_subtype_data_get_sv(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_SV) >> (31 - JDKSAVDECC_SUBTYPE_DATA_SV_BIT);
+static inline bool jdksavdecc_subtype_data_get_sv(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (bool)(p[1] >> 7) & 1;
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_sv(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_SV_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_SV_BIT)) & JDKSAVDECC_SUBTYPE_DATA_SV);
+static inline void jdksavdecc_subtype_data_set_sv(bool v, void *base, size_t pos) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[1] = (p[1]&0x7f) | (v?0x80 : 0x00 );
 }
 
 #define JDKSAVDECC_SUBTYPE_DATA_VERSION_BIT (11)
@@ -215,13 +220,14 @@ static inline uint32_t jdksavdecc_subtype_data_set_sv(uint32_t subtype_data, uin
 #define JDKSAVDECC_SUBTYPE_DATA_VERSION (uint32_t)(0x00700000UL)
 #define JDKSAVDECC_SUBTYPE_DATA_VERSION_MASK (uint32_t)(0xFF8FFFFFUL)
 
-static inline uint32_t jdksavdecc_subtype_data_get_version(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_VERSION) >> (31 - JDKSAVDECC_SUBTYPE_DATA_VERSION_BIT);
+static inline uint8_t jdksavdecc_subtype_data_get_version(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (p[1]&0x70)>>4;
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_version(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_VERSION_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_VERSION_BIT)) & JDKSAVDECC_SUBTYPE_DATA_VERSION);
+static inline void jdksavdecc_subtype_data_set_version(uint8_t v, void *base, size_t pos ) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[1] = (p[1]&0x8f) | ((v&0x7)<<4);
 }
 
 #define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_BIT (15)
@@ -229,13 +235,14 @@ static inline uint32_t jdksavdecc_subtype_data_set_version(uint32_t subtype_data
 #define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA (uint32_t)(0x000f0000UL)
 #define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_MASK (uint32_t)(0xFFF0FFFFUL)
 
-static inline uint32_t jdksavdecc_subtype_data_get_control_data(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA) >> (31 - JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_BIT);
+static inline uint8_t jdksavdecc_subtype_data_get_control_data(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (p[1]&0xf)>>0;
 }
 
-static inline uint32_t jdksavdecc_avtp_subtype_data_set_control_data(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_BIT)) & JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA);
+static inline void jdksavdecc_avtp_subtype_data_set_control_data(uint8_t v, void *base, size_t pos ) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[1] = (p[1]&0xf0) | ((v&0xf)<<0);
 }
 
 #define JDKSAVDECC_SUBTYPE_DATA_STATUS_BIT (20)
@@ -243,13 +250,14 @@ static inline uint32_t jdksavdecc_avtp_subtype_data_set_control_data(uint32_t su
 #define JDKSAVDECC_SUBTYPE_DATA_STATUS (uint32_t)(0x0000f800UL)
 #define JDKSAVDECC_SUBTYPE_DATA_STATUS_MASK (uint32_t)(0xFFFF07FFUL)
 
-static inline uint32_t jdksavdecc_subtype_data_get_status(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_STATUS) >> (31 - JDKSAVDECC_SUBTYPE_DATA_STATUS_BIT);
+static inline uint8_t jdksavdecc_subtype_data_get_status(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (p[2]&0xf8)>>3;
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_status(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_STATUS_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_STATUS_BIT)) & JDKSAVDECC_SUBTYPE_DATA_STATUS);
+static inline void jdksavdecc_subtype_data_set_status(uint8_t v, void *base, size_t pos ) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[2] = (p[2]&0x07) | ((v&0x1f)<<3);
 }
 
 
@@ -258,13 +266,16 @@ static inline uint32_t jdksavdecc_subtype_data_set_status(uint32_t subtype_data,
 #define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH (uint32_t)(0x000007ffUL)
 #define JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_MASK (uint32_t)(0xFFFFF800UL)
 
-static inline uint32_t jdksavdecc_subtype_data_get_control_data_length(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH) >> (31 - JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_BIT);
+static inline uint16_t jdksavdecc_subtype_data_get_control_data_length(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    uint16_t v = ((uint16_t)p[2]) + (((uint16_t)p[3])&0x3ff);
+    return v;
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_control_data_length(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_BIT)) & JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH);
+static inline void jdksavdecc_subtype_data_set_control_data_length(uint16_t v, void *base, size_t pos ) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[2] = (p[2]&0xf8) + (uint8_t)((v>>8)&0x07);
+    p[3] = (uint8_t)(v&0xff);
 }
 
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_MR_BIT (12)
@@ -272,27 +283,31 @@ static inline uint32_t jdksavdecc_subtype_data_set_control_data_length(uint32_t 
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_MR (uint32_t)(0x00080000UL)
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_MR_MASK (~JDKSAVDECC_SUBTYPE_DATA_STREAM_MR)
 
-static inline uint32_t jdksavdecc_subtype_data_get_mr(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_STREAM_MR) >> (31 - JDKSAVDECC_SUBTYPE_DATA_STREAM_MR_BIT);
+
+static inline bool jdksavdecc_subtype_data_get_mr(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (bool)((p[1] >> 3) & 1);
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_mr(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_STREAM_MR_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_STREAM_MR_BIT)) & JDKSAVDECC_SUBTYPE_DATA_STREAM_MR);
+static inline void jdksavdecc_subtype_data_set_mr(bool v, void *base, size_t pos) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[1] = (p[1]&0xf7) | (v?0x08 : 0x00 );
 }
+
 
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_GV_BIT (14)
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_GV_WIDTH (1)
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_GV (uint32_t)(0x00020000UL)
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_GV_MASK (~JDKSAVDECC_SUBTYPE_DATA_STREAM_GV)
 
-static inline uint32_t jdksavdecc_subtype_data_get_gv(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_STREAM_GV) >> (31 - JDKSAVDECC_SUBTYPE_DATA_STREAM_GV_BIT);
+static inline bool jdksavdecc_subtype_data_get_gv(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (bool)((p[1] >> 1) & 1);
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_gv(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_STREAM_GV_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_STREAM_GV_BIT)) & JDKSAVDECC_SUBTYPE_DATA_STREAM_GV);
+static inline void jdksavdecc_subtype_data_set_gv(bool v, void *base, size_t pos) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[1] = (p[1]&0xfd) | (v?0x02 : 0x00 );
 }
 
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_TV_BIT (15)
@@ -300,13 +315,14 @@ static inline uint32_t jdksavdecc_subtype_data_set_gv(uint32_t subtype_data, uin
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_TV (uint32_t)(0x00010000UL)
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_TV_MASK (~JDKSAVDECC_SUBTYPE_DATA_STREAM_TV)
 
-static inline uint32_t jdksavdecc_subtype_data_get_tv(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_STREAM_TV) >> (31 - JDKSAVDECC_SUBTYPE_DATA_STREAM_TV_BIT);
+static inline bool jdksavdecc_subtype_data_get_tv(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (bool)((p[1] >> 0) & 1);
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_tv(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_STREAM_TV_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_STREAM_TV_BIT)) & JDKSAVDECC_SUBTYPE_DATA_STREAM_TV);
+static inline void jdksavdecc_subtype_data_set_tv(bool v, void *base, size_t pos) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[1] = (p[1]&0xfe) | (v?0x01 : 0x00 );
 }
 
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM_BIT (22)
@@ -314,13 +330,14 @@ static inline uint32_t jdksavdecc_subtype_data_set_tv(uint32_t subtype_data, uin
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM (uint32_t)(0x0000ff00UL)
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM_MASK (~JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM)
 
-static inline uint32_t jdksavdecc_subtype_data_get_sequence_num(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM) >> (31 - JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM_BIT);
+static inline uint8_t jdksavdecc_subtype_data_get_sequence_num(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return p[2];
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_sequence_num(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM_BIT)) & JDKSAVDECC_SUBTYPE_DATA_STREAM_SEQUENCE_NUM);
+static inline void jdksavdecc_subtype_data_set_sequence_num(uint8_t v, void *base, size_t pos) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[2] = v;
 }
 
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_TU_BIT (31)
@@ -328,13 +345,14 @@ static inline uint32_t jdksavdecc_subtype_data_set_sequence_num(uint32_t subtype
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_TU (uint32_t)(0x00000001UL)
 #define JDKSAVDECC_SUBTYPE_DATA_STREAM_TU_MASK (~JDKSAVDECC_SUBTYPE_DATA_STREAM_TU)
 
-static inline uint32_t jdksavdecc_subtype_data_get_tu(uint32_t v) {
-    return (v & JDKSAVDECC_SUBTYPE_DATA_STREAM_TU) >> (31 - JDKSAVDECC_SUBTYPE_DATA_STREAM_TU_BIT);
+static inline bool jdksavdecc_subtype_data_get_tu(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (bool)((p[3] >> 0) & 1);
 }
 
-static inline uint32_t jdksavdecc_subtype_data_set_tu(uint32_t subtype_data, uint32_t v) {
-    return (subtype_data & JDKSAVDECC_SUBTYPE_DATA_STREAM_TU_MASK)
-           | ((v << (31 - JDKSAVDECC_SUBTYPE_DATA_STREAM_TU_BIT)) & JDKSAVDECC_SUBTYPE_DATA_STREAM_TU);
+static inline void jdksavdecc_subtype_data_set_tu(bool v, void *base, size_t pos) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[3] = (p[3]&0xfe) | (v?0x01 : 0x00 );
 }
 
 /*@}*/
@@ -346,84 +364,75 @@ static inline uint32_t jdksavdecc_subtype_data_set_tu(uint32_t subtype_data, uin
 #define JDKSAVDECC_COMMON_CONTROL_HEADER_OFFSET_STREAM_ID (4)
 #define JDKSAVDECC_COMMON_CONTROL_HEADER_LEN (12)
 
+/** TODO
 static inline uint32_t jdksavdecc_common_control_header_get_subtype_data(void const *base, size_t pos) {
     uint32_t subtype_data;
     jdksavdecc_uint32_read(&subtype_data, base, pos + JDKSAVDECC_COMMON_CONTROL_HEADER_OFFSET_SUBTYPE_DATA, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN );
     return subtype_data;
 }
+*/
 
 static inline void jdksavdecc_common_control_header_set_subtype_data(uint32_t subtype_data, void *base, size_t pos) {
     jdksavdecc_uint32_set(subtype_data, base, pos + JDKSAVDECC_COMMON_CONTROL_HEADER_OFFSET_SUBTYPE_DATA);
 }
 
-static inline uint32_t jdksavdecc_common_control_header_get_cd(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_cd(jdksavdecc_common_control_header_get_subtype_data(base, pos));
+static inline bool jdksavdecc_common_control_header_get_cd(void const *base, size_t pos) {
+
+    return jdksavdecc_subtype_data_get_cd(base,pos);
 }
 
-static inline void jdksavdecc_common_control_header_set_cd(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_control_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_cd(subtype_data, v);
-    jdksavdecc_common_control_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_control_header_set_cd(bool v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_cd(v, base, pos);
 }
 
 static inline uint32_t jdksavdecc_common_control_header_get_subtype(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_subtype(jdksavdecc_common_control_header_get_subtype_data(base, pos));
+    return jdksavdecc_subtype_data_get_subtype(base, pos);
 }
 
-static inline void jdksavdecc_common_control_header_set_subtype(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_control_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_subtype(subtype_data, v);
-    jdksavdecc_common_control_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_control_header_set_subtype(uint8_t v, void *base, size_t pos) {
+    uint8_t *p = ((uint8_t *)base) + pos;
+    p[0] = (p[0]&0x80) | (v&0x7f);
 }
 
 static inline uint32_t jdksavdecc_common_control_header_get_sv(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_sv(jdksavdecc_common_control_header_get_subtype_data(base, pos));
+    return jdksavdecc_subtype_data_get_sv(base, pos);
 }
 
-static inline void jdksavdecc_common_control_header_set_sv(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_control_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_sv(subtype_data, v);
-    jdksavdecc_common_control_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_control_header_set_sv(bool v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_sv(v, base, pos );
 }
 
 static inline uint32_t jdksavdecc_common_control_header_get_version(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_version(jdksavdecc_common_control_header_get_subtype_data(base, pos));
+    return jdksavdecc_subtype_data_get_version(base, pos);
 }
 
-static inline void jdksavdecc_common_control_header_set_version(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_control_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_version(subtype_data, v);
-    jdksavdecc_common_control_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_control_header_set_version(uint8_t v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_version(v,base,pos);
 }
 
-static inline uint32_t jdksavdecc_common_control_header_get_control_data(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_control_data(jdksavdecc_common_control_header_get_subtype_data(base, pos));
+static inline uint8_t jdksavdecc_common_control_header_get_control_data(void const *base, size_t pos) {
+    return jdksavdecc_subtype_data_get_control_data(base, pos);
 }
 
-static inline void jdksavdecc_common_control_header_set_control_data(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_control_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_avtp_subtype_data_set_control_data(subtype_data, v);
-    jdksavdecc_common_control_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_control_header_set_control_data(uint8_t v, void *base, size_t pos) {
+    jdksavdecc_avtp_subtype_data_set_control_data(v,base,pos);
 }
 
 static inline uint32_t jdksavdecc_common_control_header_get_status(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_status(jdksavdecc_common_control_header_get_subtype_data(base, pos));
+    return jdksavdecc_subtype_data_get_status(base, pos);
 }
 
-static inline void jdksavdecc_common_control_header_set_status(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_control_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_status(subtype_data, v);
-    jdksavdecc_common_control_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_control_header_set_status(uint8_t v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_status(v,base,pos);
 }
 
-static inline uint32_t jdksavdecc_common_control_header_get_control_data_length(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_control_data_length(jdksavdecc_common_control_header_get_subtype_data(base, pos));
+static inline uint16_t jdksavdecc_common_control_header_get_control_data_length(void const *base, size_t pos) {
+    uint8_t const *p = ((uint8_t const *)base) + pos;
+    return (((uint16_t)(p[2]&0x07))<<8) + p[3];
 }
 
-static inline void jdksavdecc_common_control_header_set_control_data_length(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_control_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_control_data_length(subtype_data, v);
-    jdksavdecc_common_control_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_control_header_set_control_data_length(uint16_t v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_control_data_length(v,base,pos);
 }
 
 static inline struct jdksavdecc_eui64 jdksavdecc_common_control_header_get_stream_id(void const *base, size_t pos) {
@@ -478,93 +487,75 @@ static inline void jdksavdecc_common_stream_header_set_subtype_data(uint32_t sub
 }
 
 static inline uint32_t jdksavdecc_common_stream_header_get_cd(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_cd(jdksavdecc_common_stream_header_get_subtype_data(base, pos));
+    return jdksavdecc_subtype_data_get_cd(base, pos);
 }
 
-static inline void jdksavdecc_common_stream_header_set_cd(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_stream_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_cd(subtype_data, v);
-    jdksavdecc_common_stream_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_stream_header_set_cd(bool v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_cd(v, base,pos );
 }
 
 static inline uint32_t jdksavdecc_common_stream_header_get_subtype(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_subtype(jdksavdecc_common_stream_header_get_subtype_data(base, pos));
+    return jdksavdecc_subtype_data_get_subtype(base, pos);
 }
 
-static inline void jdksavdecc_common_stream_header_set_subtype(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_stream_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_subtype(subtype_data, v);
-    jdksavdecc_common_stream_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_stream_header_set_subtype(uint8_t v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_subtype(v, base, pos );
 }
 
 static inline uint32_t jdksavdecc_common_stream_header_get_sv(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_sv(jdksavdecc_common_stream_header_get_subtype_data(base, pos));
+    return jdksavdecc_subtype_data_get_sv(base, pos);
 }
 
-static inline void jdksavdecc_common_stream_header_set_sv(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_stream_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_sv(subtype_data, v);
-    jdksavdecc_common_stream_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_stream_header_set_sv(bool v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_sv(v,base,pos);
 }
 
 static inline uint32_t jdksavdecc_common_stream_header_get_version(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_version(jdksavdecc_common_stream_header_get_subtype_data(base, pos));
+    return jdksavdecc_subtype_data_get_version(base, pos);
 }
 
-static inline void jdksavdecc_common_stream_header_set_version(uint32_t v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_stream_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_version(subtype_data, v);
-    jdksavdecc_common_stream_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_stream_header_set_version(uint8_t v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_version(v,base,pos);
 }
 
-static inline uint32_t jdksavdecc_common_stream_header_get_mr(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_mr(jdksavdecc_common_stream_header_get_subtype_data(base, pos));
+static inline bool jdksavdecc_common_stream_header_get_mr(void const *base, size_t pos) {
+    return jdksavdecc_subtype_data_get_mr(base,pos);
 }
 
-static inline void jdksavdecc_common_stream_header_set_mr(int v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_stream_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_mr(subtype_data, v);
-    jdksavdecc_common_stream_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_stream_header_set_mr(bool v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_mr(v,base,pos);
 }
 
-static inline uint32_t jdksavdecc_common_stream_header_get_gv(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_gv(jdksavdecc_common_stream_header_get_subtype_data(base, pos));
+static inline bool jdksavdecc_common_stream_header_get_gv(void const *base, size_t pos) {
+    return jdksavdecc_subtype_data_get_gv(base, pos);
 }
 
-static inline void jdksavdecc_common_stream_header_set_gv(int v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_stream_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_gv(subtype_data, v);
-    jdksavdecc_common_stream_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_stream_header_set_gv(bool v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_gv(v,base,pos);
 }
 
-static inline uint32_t jdksavdecc_common_stream_header_get_tv(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_tv(jdksavdecc_common_stream_header_get_subtype_data(base, pos));
+static inline bool jdksavdecc_common_stream_header_get_tv(void const *base, size_t pos) {
+    return jdksavdecc_subtype_data_get_tv(base, pos);
 }
 
-static inline void jdksavdecc_common_stream_header_set_tv(int v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_stream_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_tv(subtype_data, v);
-    jdksavdecc_common_stream_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_stream_header_set_tv(bool v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_tv(v,base,pos);
 }
 
-static inline uint32_t jdksavdecc_common_stream_header_get_sequence_num(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_sequence_num(jdksavdecc_common_stream_header_get_subtype_data(base, pos));
+static inline uint8_t jdksavdecc_common_stream_header_get_sequence_num(void const *base, size_t pos) {
+    return jdksavdecc_subtype_data_get_sequence_num(base, pos);
 }
 
-static inline void jdksavdecc_common_stream_header_set_sequence_num(int v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_stream_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_sequence_num(subtype_data, v);
-    jdksavdecc_common_stream_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_stream_header_set_sequence_num(uint8_t v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_sequence_num(v,base,pos);
 }
 
-static inline uint32_t jdksavdecc_common_stream_header_get_tu(void const *base, size_t pos) {
-    return jdksavdecc_subtype_data_get_tu(jdksavdecc_common_stream_header_get_subtype_data(base, pos));
+static inline bool jdksavdecc_common_stream_header_get_tu(void const *base, size_t pos) {
+    return jdksavdecc_subtype_data_get_tu(base, pos);
 }
 
-static inline void jdksavdecc_common_stream_header_set_tu(int v, void *base, size_t pos) {
-    uint32_t subtype_data = jdksavdecc_common_stream_header_get_subtype_data(base, pos);
-    subtype_data = jdksavdecc_subtype_data_set_tu(subtype_data, v);
-    jdksavdecc_common_stream_header_set_subtype_data(subtype_data, base, pos);
+static inline void jdksavdecc_common_stream_header_set_tu(bool v, void *base, size_t pos) {
+    jdksavdecc_subtype_data_set_tu(v,base,pos);
 }
 
 static inline struct jdksavdecc_eui64 jdksavdecc_common_stream_header_get_stream_id(void const *base, size_t pos) {
