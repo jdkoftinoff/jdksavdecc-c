@@ -2,6 +2,14 @@ cmake_minimum_required (VERSION 2.8)
 project (jdksavdecc-c)
 enable_testing()
 
+if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
+    add_definitions("/W2")
+else()
+    add_definitions("-Wall -Wextra")
+endif()
+
+
+
 set(LIBS ${LIBS} ${CHECK_LIBRARIES} jdksavdecc-c)
 
 include_directories( include )
