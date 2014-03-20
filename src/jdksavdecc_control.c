@@ -32,6 +32,8 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_control.h"
 
+#ifdef TODO
+
 bool jdksavdecc_control_init(
         struct jdksavdecc_control_info *self,
         void const *descriptor_data,
@@ -904,4 +906,8 @@ bool jdksavdecc_control_get_current_gptp_time_item(
     // TODO
     return false;
 }
+
+#endif
+
+
 
