@@ -59,14 +59,36 @@ static inline ssize_t jdksavdecc_aecpdu_common_control_header_read(struct jdksav
                                                                    void const *base,
                                                                    ssize_t pos,
                                                                    size_t len) {
-    return jdksavdecc_common_control_header_read((struct jdksavdecc_common_control_header *)p, base, pos, len);
+    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN);
+    if (r >= 0) {
+        p->cd = jdksavdecc_common_control_header_get_cd(base, pos);
+        p->subtype = jdksavdecc_common_control_header_get_subtype(base, pos);
+        p->sv = jdksavdecc_common_control_header_get_sv(base, pos);
+        p->version = jdksavdecc_common_control_header_get_version(base, pos);
+        p->message_type = jdksavdecc_common_control_header_get_control_data(base, pos);
+        p->status = jdksavdecc_common_control_header_get_status(base, pos);
+        p->control_data_length = jdksavdecc_common_control_header_get_control_data_length(base, pos);
+        p->target_entity_id = jdksavdecc_common_control_header_get_stream_id(base, pos);
+    }
+    return r;
 }
 
 static inline ssize_t jdksavdecc_aecpdu_common_control_header_write(struct jdksavdecc_aecpdu_common_control_header const *p,
                                                                     void *base,
                                                                     ssize_t pos,
                                                                     size_t len) {
-    return jdksavdecc_common_control_header_write((struct jdksavdecc_common_control_header const *)p, base, pos, len);
+    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN);
+    if (r >= 0) {
+        jdksavdecc_common_control_header_set_cd(p->cd, base, pos);
+        jdksavdecc_common_control_header_set_subtype(p->subtype, base, pos);
+        jdksavdecc_common_control_header_set_sv(p->sv, base, pos);
+        jdksavdecc_common_control_header_set_version(p->version, base, pos);
+        jdksavdecc_common_control_header_set_control_data(p->message_type, base, pos);
+        jdksavdecc_common_control_header_set_status(p->status, base, pos);
+        jdksavdecc_common_control_header_set_control_data_length(p->control_data_length, base, pos);
+        jdksavdecc_common_control_header_set_stream_id(p->target_entity_id, base, pos);
+    }
+    return r;
 }
 
 #define JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
