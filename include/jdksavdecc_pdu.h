@@ -157,7 +157,7 @@ extern struct jdksavdecc_eui64 jdksavdecc_identification_notification_controller
 
 static inline bool jdksavdecc_subtype_data_get_cd( void const *base, size_t pos ) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
-    return (bool)(p[0] >> 7) & 1;
+    return (bool)(((p[0] >> 7) & 1) != 0);
 }
 
 static inline void jdksavdecc_subtype_data_set_cd(bool v, void *base, size_t pos) {
@@ -206,7 +206,7 @@ static inline ssize_t jdksavdecc_1722a_write_subtype(
 
 static inline bool jdksavdecc_subtype_data_get_sv(void const *base, size_t pos) {
     uint8_t const *p = ((uint8_t const *)base) + pos;
-    return (bool)(p[1] >> 7) & 1;
+    return (bool)(((p[1] >> 7) & 1) != 0);
 }
 
 static inline void jdksavdecc_subtype_data_set_sv(bool v, void *base, size_t pos) {
