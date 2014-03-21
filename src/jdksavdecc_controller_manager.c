@@ -33,6 +33,7 @@
 #include "jdksavdecc_entity_manager.h"
 #include "jdksavdecc_controller_manager.h"
 
+#ifdef TODO
 bool jdksavdecc_controller_manager_init(
         struct jdksavdecc_controller_manager *self,
         struct jdksavdecc_entity_model *entity_model,
@@ -45,3 +46,6 @@ bool jdksavdecc_controller_manager_init(
     }
     return r;
 }
+
+#endif
+
