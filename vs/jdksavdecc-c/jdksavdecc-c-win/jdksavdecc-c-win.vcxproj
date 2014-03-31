@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include\jdksavdecc.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_acmp.h" />
+    <ClInclude Include="..\..\..\include\jdksavdecc_acmp_manager.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_acmp_print.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_adp.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_adp_manager.h" />
@@ -97,6 +98,8 @@
     <ClInclude Include="..\..\..\include\jdksavdecc_aem_print.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_allocator.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_app.h" />
+    <ClInclude Include="..\..\..\include\jdksavdecc_app_apc_manager.h" />
+    <ClInclude Include="..\..\..\include\jdksavdecc_app_aps_manager.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_app_print.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_avr.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_control.h" />
@@ -109,18 +112,23 @@
     <ClInclude Include="..\..\..\include\jdksavdecc_inflight.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_jdks.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_maap.h" />
+    <ClInclude Include="..\..\..\include\jdksavdecc_maap_manager.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_maap_print.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_ms.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_msinttypes.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_msstdint.h" />
+    <ClInclude Include="..\..\..\include\jdksavdecc_pcapfile.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_pdu.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_pdu_print.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_print.h" />
+    <ClInclude Include="..\..\..\include\jdksavdecc_state_machine.h" />
+    <ClInclude Include="..\..\..\include\jdksavdecc_state_machines.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_util.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_world.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\jdksavdecc.c" />
+    <ClCompile Include="..\..\..\src\jdksavdecc_acmp_manager.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_acmp_print.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_adp_manager.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_adp_print.c" />
@@ -129,6 +137,8 @@
     <ClCompile Include="..\..\..\src\jdksavdecc_aem_print.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_allocator.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_app.c" />
+    <ClCompile Include="..\..\..\src\jdksavdecc_app_apc_manager.c" />
+    <ClCompile Include="..\..\..\src\jdksavdecc_app_aps_manager.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_app_print.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_control.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_controller_manager.c" />
@@ -140,10 +150,14 @@
     <ClCompile Include="..\..\..\src\jdksavdecc_inflight.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_jdks.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_maap.c" />
+    <ClCompile Include="..\..\..\src\jdksavdecc_maap_manager.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_maap_print.c" />
+    <ClCompile Include="..\..\..\src\jdksavdecc_pcapfile.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_pdu.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_pdu_print.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_print.c" />
+    <ClCompile Include="..\..\..\src\jdksavdecc_state_machine.c" />
+    <ClCompile Include="..\..\..\src\jdksavdecc_state_machines.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
