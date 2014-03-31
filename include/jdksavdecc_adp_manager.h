@@ -163,4 +163,8 @@ static inline bool jdksavdecc_adp_manager_is_stopped( struct jdksavdecc_adp_mana
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
+
 

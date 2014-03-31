@@ -110,4 +110,9 @@ static inline void jdksavdecc_maap_manager_stop(
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
+
+
 

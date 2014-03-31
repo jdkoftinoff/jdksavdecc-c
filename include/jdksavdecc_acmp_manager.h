@@ -208,4 +208,8 @@ static inline void jdksavdecc_acmp_controller_manager_stop(
 
 /*@}*/
 
+#ifdef __cplusplus
+}
+#endif
+
 
