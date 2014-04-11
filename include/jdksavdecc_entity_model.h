@@ -60,7 +60,7 @@ struct jdksavdecc_entity_model {
             uint16_t configuration_index,
             uint16_t descriptor_type,
             uint16_t descriptor_index,
-            uint16_t *result_buffer,
+            uint8_t *result_buffer,
             uint16_t result_buffer_len);
 
     /// Write the descriptor data for the specified configuration, descriptor_type and
@@ -71,7 +71,7 @@ struct jdksavdecc_entity_model {
             uint16_t configuration_index,
             uint16_t descriptor_type,
             uint16_t descriptor_index,
-            uint16_t const *descriptor_data,
+            uint8_t const *descriptor_data,
             uint16_t descriptor_data_length);
 
     uint16_t (*read_localized_string)(
@@ -90,7 +90,7 @@ uint16_t jdksavdecc_entity_model_read_descriptor(
         uint16_t configuration_index,
         uint16_t descriptor_type,
         uint16_t descriptor_index,
-        uint16_t *result_buffer,
+        uint8_t *result_buffer,
         uint16_t result_buffer_len);
 
 uint16_t jdksavdecc_entity_model_write_descriptor(
@@ -98,7 +98,7 @@ uint16_t jdksavdecc_entity_model_write_descriptor(
         uint16_t configuration_index,
         uint16_t descriptor_type,
         uint16_t descriptor_index,
-        uint16_t const *descriptor_data,
+        uint8_t const *descriptor_data,
         uint16_t descriptor_data_length);
 
 uint16_t jdksavdecc_entity_model_read_localized_string(

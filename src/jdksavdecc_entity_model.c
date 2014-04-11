@@ -41,7 +41,7 @@ uint16_t jdksavdecc_entity_model_read_descriptor(
         uint16_t configuration_number,
         uint16_t descriptor_type,
         uint16_t descriptor_index,
-        uint16_t *result_buffer,
+        uint8_t *result_buffer,
         uint16_t result_buffer_len) {
     (void)self;
     (void)configuration_number;
@@ -57,7 +57,7 @@ uint16_t jdksavdecc_entity_model_write_descriptor(
         uint16_t configuration_number,
         uint16_t descriptor_type,
         uint16_t descriptor_index,
-        uint16_t const *descriptor_data,
+        uint8_t const *descriptor_data,
         uint16_t descriptor_data_length) {
     (void)self;
     (void)configuration_number;

@@ -42,10 +42,13 @@ static uint8_t jdksavdecc_test_descriptor_storage_data[] = {
 };
 
 bool jdksavdecc_test_descriptor_storage_create(struct jdksavdecc_descriptor_storage *self) {
-    jdksavdecc_descriptor_storage_init(
+    bool r=false;
+
+    r=jdksavdecc_descriptor_storage_buffer_init(
                 self,
                 jdksavdecc_test_descriptor_storage_data,
                 sizeof(jdksavdecc_test_descriptor_storage_data)
                 );
-    return true;
+
+    return r;
 }

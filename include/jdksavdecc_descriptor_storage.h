@@ -396,7 +396,7 @@ uint16_t jdksavdecc_descriptor_storage_buffer_read_descriptor(
         uint16_t configuration_number,
         uint16_t descriptor_type,
         uint16_t descriptor_index,
-        uint16_t *result_buffer,
+        uint8_t *result_buffer,
         uint16_t result_buffer_len);
 
 /// Read a symbol for the specified configuration, descriptor_type and
