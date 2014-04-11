@@ -1,6 +1,8 @@
-cmake_minimum_required (VERSION 2.8) 
+cmake_minimum_required (VERSION 2.8)
 project (jdksavdecc-c)
 enable_testing()
+
+option(TODO "Enable TODO items that are in progress" OFF)
 
 if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
     add_definitions("/W2")
@@ -8,7 +10,10 @@ else()
     add_definitions("-Wall -Wextra")
 endif()
 
-
+if(TODO MATCHES "ON")
+   add_definitions("-DTODO=1")
+   message(STATUS "TODO items that are in progress are enabled for compling")
+endif()
 
 set(LIBS ${LIBS} ${CHECK_LIBRARIES} jdksavdecc-c)
 
