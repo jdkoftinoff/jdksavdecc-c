@@ -41,4 +41,12 @@ INSTALL(FILES
 
 link_directories( ${JDKSAVDECC_C_BINARY_DIR} )
 
-
+if(TESTS MATCHES "ON")
+   file(GLOB JDKSAVDECC_C_TESTS "tests/*.c")
+   foreach(item ${JDKSAVDECC_C_TESTS})
+      GET_FILENAME_COMPONENT(testname ${item} NAME_WE )
+      add_executable(${testname} ${item})
+      target_link_libraries(${testname} ${LIBS} )
+      add_test(NAME ${testname} COMMAND ${testname} )
+   endforeach(item)
+endif()
