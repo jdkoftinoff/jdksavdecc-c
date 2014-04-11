@@ -33,3 +33,11 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_app_aps_manager.h"
 
+#ifdef TODO
+
+#else
+
+const char *jdksavdecc_app_aps_manager_file = __FILE__;
+
+#endif
+

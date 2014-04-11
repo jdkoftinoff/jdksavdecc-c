@@ -32,3 +32,12 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp_manager.h"
+
+#ifdef TODO
+
+#else
+
+const char *jdksavdecc_acmp_manager_file = __FILE__;
+
+#endif
+

@@ -232,6 +232,8 @@ int jdksavdecc_descriptor_storage_gen_export_c(
     (void)fname_h;
     return 0;
 }
+#else
+const char *jdksavdecc_descriptor_storage_gen_file = __FILE__;
 
 #endif
 

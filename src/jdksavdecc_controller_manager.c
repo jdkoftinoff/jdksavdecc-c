@@ -46,6 +46,9 @@ bool jdksavdecc_controller_manager_init(
     }
     return r;
 }
+#else
+
+const char *jdksavdecc_controller_manager_file = __FILE__;
 
 #endif
 

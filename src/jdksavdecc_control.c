@@ -907,6 +907,9 @@ bool jdksavdecc_control_get_current_gptp_time_item(
     return false;
 }
 
+#else
+const char *jdksavdecc_control_file = __FILE__;
+
 #endif
 
 

@@ -408,6 +408,8 @@ jdksavdecc_descriptor_storage_symbol_dispatch_proc jdksavdecc_descriptor_storage
 
 
 
+#else
+const char *jdksavdecc_descriptor_storage_file = __FILE__;
 
 #endif
 

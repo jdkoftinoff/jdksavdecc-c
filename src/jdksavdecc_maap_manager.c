@@ -32,3 +32,10 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_maap_manager.h"
+
+#ifdef TODO
+
+#else
+
+const char *jdksavdecc_maap_manager_file = __FILE__;
+#endif
