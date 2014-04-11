@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFBE608118F7A3EE00CF800F /* jdksavdecc_test_descriptor_storage.h in Headers */ = {isa = PBXBuildFile; fileRef = BFBE608018F7A3EE00CF800F /* jdksavdecc_test_descriptor_storage.h */; };
+		BFBE608318F7A3FC00CF800F /* jdksavdecc_test_descriptor_storage.c in Sources */ = {isa = PBXBuildFile; fileRef = BFBE608218F7A3FC00CF800F /* jdksavdecc_test_descriptor_storage.c */; };
 		BFC6784718E8FFF700D717EB /* jdksavdecc.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC677FD18E8FFF700D717EB /* jdksavdecc.h */; };
 		BFC6784818E8FFF700D717EB /* jdksavdecc_acmp.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC677FE18E8FFF700D717EB /* jdksavdecc_acmp.h */; };
 		BFC6784918E8FFF700D717EB /* jdksavdecc_acmp_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC677FF18E8FFF700D717EB /* jdksavdecc_acmp_manager.h */; };
@@ -88,6 +90,8 @@
 
 /* Begin PBXFileReference section */
 		BF97C8AC18E8FFAF00F30CC5 /* libjdksavdecc-c.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libjdksavdecc-c.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFBE608018F7A3EE00CF800F /* jdksavdecc_test_descriptor_storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jdksavdecc_test_descriptor_storage.h; path = include/test/jdksavdecc_test_descriptor_storage.h; sourceTree = "<group>"; };
+		BFBE608218F7A3FC00CF800F /* jdksavdecc_test_descriptor_storage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = jdksavdecc_test_descriptor_storage.c; path = src/test/jdksavdecc_test_descriptor_storage.c; sourceTree = "<group>"; };
 		BFC677FD18E8FFF700D717EB /* jdksavdecc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc.h; sourceTree = "<group>"; };
 		BFC677FE18E8FFF700D717EB /* jdksavdecc_acmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_acmp.h; sourceTree = "<group>"; };
 		BFC677FF18E8FFF700D717EB /* jdksavdecc_acmp_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdksavdecc_acmp_manager.h; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 		BF97C8A318E8FFAF00F30CC5 = {
 			isa = PBXGroup;
 			children = (
+				BFBE607F18F7A3DF00CF800F /* test */,
 				BFC677FC18E8FFF700D717EB /* include */,
 				BFC6782918E8FFF700D717EB /* src */,
 				BF97C8AD18E8FFAF00F30CC5 /* Products */,
@@ -193,6 +198,15 @@
 				BF97C8AC18E8FFAF00F30CC5 /* libjdksavdecc-c.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BFBE607F18F7A3DF00CF800F /* test */ = {
+			isa = PBXGroup;
+			children = (
+				BFBE608218F7A3FC00CF800F /* jdksavdecc_test_descriptor_storage.c */,
+				BFBE608018F7A3EE00CF800F /* jdksavdecc_test_descriptor_storage.h */,
+			);
+			name = test;
 			sourceTree = "<group>";
 		};
 		BFC677FC18E8FFF700D717EB /* include */ = {
@@ -337,6 +351,7 @@
 				BFC6785818E8FFF700D717EB /* jdksavdecc_allocator.h in Headers */,
 				BFC6786A18E8FFF700D717EB /* jdksavdecc_msstdint.h in Headers */,
 				BFC6786E18E8FFF700D717EB /* jdksavdecc_print.h in Headers */,
+				BFBE608118F7A3EE00CF800F /* jdksavdecc_test_descriptor_storage.h in Headers */,
 				BFC6785318E8FFF700D717EB /* jdksavdecc_aecp_print.h in Headers */,
 				BFC6789318E9010A00D717EB /* jdksavdecc_app_apc_manager.h in Headers */,
 			);
@@ -417,6 +432,7 @@
 				BFC6787918E8FFF700D717EB /* jdksavdecc_aem_descriptor.c in Sources */,
 				BFC6787818E8FFF700D717EB /* jdksavdecc_aecp_print.c in Sources */,
 				BFC6789718E9011900D717EB /* jdksavdecc_app_apc_manager.c in Sources */,
+				BFBE608318F7A3FC00CF800F /* jdksavdecc_test_descriptor_storage.c in Sources */,
 				BFC6787518E8FFF700D717EB /* jdksavdecc_acmp_print.c in Sources */,
 				BFC6787D18E8FFF700D717EB /* jdksavdecc_app_print.c in Sources */,
 				BFC6788618E8FFF700D717EB /* jdksavdecc_jdks.c in Sources */,
@@ -503,6 +519,7 @@
 		BF97C8B118E8FFAF00F30CC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				EXECUTABLE_PREFIX = lib;
@@ -513,12 +530,14 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_PEDANTIC = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = include;
 			};
 			name = Debug;
 		};
 		BF97C8B218E8FFAF00F30CC5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				EXECUTABLE_PREFIX = lib;
@@ -526,6 +545,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_PEDANTIC = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = include;
 			};
 			name = Release;
 		};

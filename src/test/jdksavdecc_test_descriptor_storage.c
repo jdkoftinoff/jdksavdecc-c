@@ -1,5 +1,6 @@
+
 /*
-  Copyright (c) 2014, J.D. Koftinoff Software, Ltd.
+  Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without
@@ -30,65 +31,21 @@
 */
 
 #include "jdksavdecc_world.h"
-#include "jdksavdecc_entity_manager.h"
+#include "test/jdksavdecc_test_descriptor_storage.h"
 
-const char *jdksavdecc_inflight_file = __FILE__;
+static uint8_t jdksavdecc_test_descriptor_storage_data[] = {
+    0x41, 0x45, 0x4d, 0x31, // Magic number "AEM1"
+    0x00, 0x00, 0x00, 0x00, // toc_count
+    0x00, 0x00, 0x00, 0x00, // toc_offset
+    0x00, 0x00, 0x00, 0x00, // symbol_count
+    0x00, 0x00, 0x00, 0x00, // symbol_offset
+};
 
-#ifdef TODO1
-
-void jdksavdecc_inflight_command_info_init(
-        struct jdksavdecc_inflight_command_info *self) {
+bool jdksavdecc_test_descriptor_storage_create(struct jdksavdecc_descriptor_storage *self) {
+    jdksavdecc_descriptor_storage_init(
+                self,
+                jdksavdecc_test_descriptor_storage_data,
+                sizeof(jdksavdecc_test_descriptor_storage_data)
+                );
+    return true;
 }
-
-int jdksavdecc_inflight_command_info_compare(
-        void const *lhs,
-        void const *rhs ) {
-}
-
-
-void jdksavdecc_inflight_commands_init( struct jdksavdecc_inflight_commands *self ) {
-}
-
-
-bool jdksacdecc_entity_manager_inflight_commands_full( struct jdksavdecc_inflight_commands *self ) {
-}
-
-
-void jdksavdecc_inflight_commands_sort(
-        struct jdksavdecc_inflight_commands *self ) {
-}
-
-
-bool jdksavdecc_inflight_commands_add(
-        struct jdksavdecc_inflight_commands *self,
-        struct jdksavdecc_inflight_command_info const *info ) {
-}
-
-
-int jdksavdecc_inflight_commands_find(
-        struct jdksavdecc_inflight_commands *self,
-        struct jdksavdecc_eui64 const *target_entity_id,
-        uint16_t sequence_id ) {
-}
-
-
-void jdksavdecc_inflight_commands_tick(
-        struct jdksavdecc_inflight_commands *self,
-        jdksavdecc_timestamp_in_milliseconds cur_time,
-        void *context ) {
-}
-
-
-void jdksavdecc_inflight_commands_remove(
-        struct jdksavdecc_inflight_commands *self,
-        int num ) {
-}
-
-
-void jdksavdecc_inflight_commands_remove_target(
-        struct jdksavdecc_inflight_commands *self,
-        struct jdksavdecc_eui64 const *target_entity_id ) {
-}
-
-
-#endif
