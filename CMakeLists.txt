@@ -3,7 +3,9 @@ project (jdksavdecc-c)
 enable_testing()
 
 option(TODO "Enable TODO items that are in progress" OFF)
-option(TESTS "Enable extended test code in library" OFF)
+option(TESTS "Enable building of extended test code in library" ON)
+option(EXAMPLES "Enable building of example programs" ON)
+option(TOOLS "Enable building of tools" ON)
 
 if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
     add_definitions("/W2")
@@ -41,6 +43,25 @@ INSTALL(FILES
 
 link_directories( ${JDKSAVDECC_C_BINARY_DIR} )
 
+
+if(EXAMPLES MATCHES "ON")
+    file(GLOB JDKSAVDECC_C_EXAMPLES "examples/*.c")
+    foreach(item ${JDKSAVDECC_C_EXAMPLES})
+      GET_FILENAME_COMPONENT(examplename ${item} NAME_WE )
+      add_executable(${examplename} ${item})
+      target_link_libraries(${examplename} ${LIBS} )
+    endforeach(item)
+endif()
+
+if(TOOLS MATCHES "ON")
+    file(GLOB JDKSAVDECC_C_TOOLS_DEV "tools-dev/*.c")
+    foreach(item ${JDKSAVDECC_C_TOOLS_DEV})
+      GET_FILENAME_COMPONENT(toolname ${item} NAME_WE )
+      add_executable(${toolname} ${item})
+      target_link_libraries(${toolname} ${LIBS} )
+    endforeach(item)
+endif()
+
 if(TESTS MATCHES "ON")
    file(GLOB JDKSAVDECC_C_TESTS "tests/*.c")
    foreach(item ${JDKSAVDECC_C_TESTS})
@@ -50,3 +71,4 @@ if(TESTS MATCHES "ON")
       add_test(NAME ${testname} COMMAND ${testname} )
    endforeach(item)
 endif()
+
