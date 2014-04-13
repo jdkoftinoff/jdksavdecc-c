@@ -319,15 +319,6 @@ struct jdksavdecc_descriptor_storage {
     /// data file length
     uint32_t storage_length;
 
-    /// Read a symbol for the specified configuration, descriptor_type and
-    /// descriptor_index. Returns true on success
-    bool (*read_symbol)(
-                struct jdksavdecc_descriptor_storage *self,
-                uint16_t configuration_number,
-                uint16_t descriptor_type,
-                uint16_t descriptor_index,
-                uint32_t *result_symbol);
-
 };
 
 /// Initialize descriptor_storage object with user_ptr and storage_length.
@@ -402,7 +393,7 @@ uint16_t jdksavdecc_descriptor_storage_buffer_read_descriptor(
 /// Read a symbol for the specified configuration, descriptor_type and
 /// descriptor_index. Returns true on success
 bool jdksavdecc_descriptor_storage_buffer_read_symbol(
-        struct jdksavdecc_descriptor_storage *self,
+        struct jdksavdecc_entity_model *self,
         uint16_t configuration_number,
         uint16_t descriptor_type,
         uint16_t descriptor_index,

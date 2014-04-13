@@ -53,18 +53,76 @@ extern "C" {
 /** \addtogroup entity_manager  */
 /*@{*/
 
+struct jdksavdecc_symbol_dispatch;
+struct jdksavdecc_entity_manager;
+
+struct jdksavdecc_symbol_dispatch {
+    uint16_t configuration;
+    uint32_t symbol;
+
+    /// Notify the item that time has passed.
+    void (*tick)(
+            struct jdksavdecc_entity_manager *self,
+            uint32_t symbol,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms );
+
+    /// The pdu contains a valid Read Descriptor Command
+    /// Fill in the response in place in the pdu and return an AECP AEM status code
+    uint8_t (*receive_read_descriptor_command)(
+            struct jdksavdecc_entity_manager *entity_manager,
+            uint32_t symbol,
+            struct jdksavdecc_aecpdu_aem const *aem,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+            uint8_t *buf,
+            uint16_t len);
+
+    /// The pdu contains a valid Command to set or change something
+    /// SET_NAME, SET_CONTROL, INCREMENT_CONTROL, DECREMENT_CONTROL, SET_MIXER,
+    /// SET_MATRIX, SET_SIGNAL_SELECTOR, etc
+    /// Fill in the response in place in the pdu and return an AECP AEM status code
+    uint8_t (*receive_set_command)(
+            struct jdksavdecc_entity_manager *entity_manager,
+            uint32_t symbol,
+            struct jdksavdecc_aecpdu_aem const *aem,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+            uint8_t *buf,
+            uint16_t len);
+
+    /// The pdu contains a valid Command to get something
+    /// GET_NAME, GET_CONTROL, GET_MIXER, GET_MATRIX, GET_SIGNAL_SELECTOR, etc
+    /// Fill in the response in place in the pdu and return an AECP AEM status code
+    uint8_t (*receive_get_command)(
+            struct jdksavdecc_entity_manager *entity_manager,
+            uint32_t symbol,
+            struct jdksavdecc_aecpdu_aem const *aem,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+            uint8_t *buf,
+            uint16_t len);
+};
+
+#ifndef JDKSAVDECC_ENTITY_MANAGER_MAX_CONFIGURATIONS
+# define JDKSAVDECC_ENTITY_MANAGER_MAX_CONFIGURATIONS (1)
+#endif
+
+#ifndef JDKSAVDECC_ENTITY_MANAGER_MAX_SYMBOLS_PER_CONFIGURATION
+# define JDKSAVDECC_ENTITY_MANAGER_MAX_SYMBOLS_PER_CONFIGURATION (32)
+#endif
+
 #ifndef JDKSAVDECC_ENTITY_MANAGER_MAX_REGISTERED_CONTROLLERS
 #define JDKSAVDECC_ENTITY_MANAGER_MAX_REGISTERED_CONTROLLERS (8)
 #endif
 
-
-
-
 /// jdksavdecc_entity_manager is a base class for an AEM entity
 struct jdksavdecc_entity_manager {
 
-   /// The entity model
-   struct jdksavdecc_entity_model *entity_model;
+    /// The entity model
+    struct jdksavdecc_entity_model *entity_model;
+
+    /// The symbol dispatch table size
+    int symbol_dispatch_table_num_entries;
+
+    /// The symbol dispatch table
+    struct jdksavdecc_symbol_dispatch *symbol_dispatch_table;
 
     /// A flag to notify higher level code that the state machine is requesting an immediate tick again
     bool early_tick;
@@ -337,6 +395,61 @@ struct jdksavdecc_entity_manager {
             uint8_t *buf,
             uint16_t len);
 
+    /// The pdu contains a valid Increment Control Command
+    /// Fill in the response in place in the pdu and return an AECP AEM status code
+    uint8_t (*receive_increment_control_command)(
+            struct jdksavdecc_entity_manager *self,
+            struct jdksavdecc_aecpdu_aem const *aem,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+            uint8_t *buf,
+            uint16_t len);
+
+    /// The pdu contains a valid Decrement Control Command
+    /// Fill in the response in place in the pdu and return an AECP AEM status code
+    uint8_t (*receive_decrement_control_command)(
+            struct jdksavdecc_entity_manager *self,
+            struct jdksavdecc_aecpdu_aem const *aem,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+            uint8_t *buf,
+            uint16_t len);
+
+    /// The pdu contains a valid Set Mixer Command
+    /// Fill in the response in place in the pdu and return an AECP AEM status code
+    uint8_t (*receive_set_mixer_command)(
+            struct jdksavdecc_entity_manager *self,
+            struct jdksavdecc_aecpdu_aem const *aem,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+            uint8_t *buf,
+            uint16_t len);
+
+    /// The pdu contains a valid Get Mixer Command
+    /// Fill in the response in place in the pdu and return an AECP AEM status code
+    uint8_t (*receive_get_mixer_command)(
+            struct jdksavdecc_entity_manager *self,
+            struct jdksavdecc_aecpdu_aem const *aem,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+            uint8_t *buf,
+            uint16_t len);
+
+    /// The pdu contains a valid Set Signal Selector Command
+    /// Fill in the response in place in the pdu and return an AECP AEM status code
+    uint8_t (*receive_set_signal_selector_command)(
+            struct jdksavdecc_entity_manager *self,
+            struct jdksavdecc_aecpdu_aem const *aem,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+            uint8_t *buf,
+            uint16_t len);
+
+    /// The pdu contains a valid Get Signal Selector Command
+    /// Fill in the response in place in the pdu and return an AECP AEM status code
+    uint8_t (*receive_get_signal_selector_command)(
+            struct jdksavdecc_entity_manager *self,
+            struct jdksavdecc_aecpdu_aem const *aem,
+            jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+            uint8_t *buf,
+            uint16_t len);
+
+
     /// The pdu contains a valid Register for Unsolicited Notifications Command
     /// Fill in the response in place in the pdu and return an AECP AEM status code
     uint8_t (*receive_register_unsolicited_notification_command)(
@@ -439,10 +552,14 @@ struct jdksavdecc_entity_manager {
 
 };
 
+
+
 /// Initialize an entity manager with the context and frame sender procedure
 bool jdksavdecc_entity_manager_init(
         struct jdksavdecc_entity_manager *self,
         struct jdksavdecc_entity_model *entity_model,
+        int num_entries,
+        struct jdksavdecc_symbol_dispatch *dispatch_table,
         void *context,
         void (*frame_send)(
             struct jdksavdecc_entity_manager *self,
@@ -454,6 +571,45 @@ bool jdksavdecc_entity_manager_init(
 /// Destroy any resources that the jdksavdecc_adp_manager uses
 void jdksavdecc_entity_manager_destroy(
         struct jdksavdecc_entity_manager *self );
+
+
+struct jdksavdecc_symbol_dispatch *jdksavdecc_entity_manager_find_symbol(
+        struct jdksavdecc_entity_manager *self,
+        uint16_t configuration,
+        uint32_t symbol );
+
+/// The pdu contains a valid Read Descriptor Command
+/// Fill in the response in place in the pdu and return an AECP AEM status code
+uint8_t jdksavdecc_entity_manager_dispatch_symbol_receive_read_descriptor_command(
+        struct jdksavdecc_entity_manager *self,
+        uint32_t symbol,
+        struct jdksavdecc_aecpdu_aem const *aem,
+        jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+        uint8_t *buf,
+        uint16_t len);
+
+/// The pdu contains a valid Command to set or change something
+/// SET_NAME, SET_CONTROL, INCREMENT_CONTROL, DECREMENT_CONTROL, SET_MIXER,
+/// SET_MATRIX, SET_SIGNAL_SELECTOR, etc
+/// Fill in the response in place in the pdu and return an AECP AEM status code
+uint8_t jdksavdecc_entity_manager_dispatch_symbol_set_command(
+        struct jdksavdecc_entity_manager *self,
+        uint32_t symbol,
+        struct jdksavdecc_aecpdu_aem const *aem,
+        jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+        uint8_t *buf,
+        uint16_t len);
+
+/// The pdu contains a valid Command to get something
+/// GET_NAME, GET_CONTROL, GET_MIXER, GET_MATRIX, GET_SIGNAL_SELECTOR, etc
+/// Fill in the response in place in the pdu and return an AECP AEM status code
+uint8_t jdksavdecc_entity_manager_dispatch_symbol_receive_get_command(
+        struct jdksavdecc_entity_manager *self,
+        uint32_t symbol,
+        struct jdksavdecc_aecpdu_aem const *aem,
+        jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+        uint8_t *buf,
+        uint16_t len);
 
 /// Receive an ADPU and process it
 bool jdksavdecc_entity_manager_receive(
@@ -476,7 +632,9 @@ void jdksavdecc_entity_manager_command_timed_out(
         uint16_t sequence_id);
 
 /// Check to make sure the command is allowed or disallowed due to acquire or locking
-uint8_t jdksavdecc_entity_manager_validate_permissions( struct jdksavdecc_aecpdu_aem const *aem );
+uint8_t jdksavdecc_entity_manager_validate_permissions(
+        struct jdksavdecc_entity_manager *self,
+        struct jdksavdecc_aecpdu_aem const *aem );
 
 /// The received pdu contains a valid AEM command for me.
 /// Fill in the response in place in the pdu and return an AECP AEM status code

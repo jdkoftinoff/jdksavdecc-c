@@ -42,9 +42,6 @@ jdksavdecc_descriptor_storage_init(struct jdksavdecc_descriptor_storage *self, v
     self->read_data = 0;
     self->user_ptr = user_ptr;
     self->storage_length = storage_length;
-    self->base.get_configuration_count = 0;
-    self->base.read_descriptor = 0;
-    self->read_symbol = 0;
     return true;
 }
 
@@ -65,7 +62,7 @@ bool jdksavdecc_descriptor_storage_buffer_init(struct jdksavdecc_descriptor_stor
         jdksavdecc_descriptor_storage_buffer_get_configuration_count;
     self->base.read_descriptor =
         jdksavdecc_descriptor_storage_buffer_read_descriptor;
-    self->read_symbol =
+    self->base.read_symbol =
         jdksavdecc_descriptor_storage_buffer_read_symbol;
 
     if( jdksavdecc_descriptor_storage_buffer_read_header(self) ) {
@@ -222,12 +219,13 @@ static int jdksavdecc_descriptor_storage_buffer_compare_symbol(
 
 
 bool jdksavdecc_descriptor_storage_buffer_read_symbol(
-        struct jdksavdecc_descriptor_storage *self,
+        struct jdksavdecc_entity_model *self_,
         uint16_t configuration_number,
         uint16_t descriptor_type,
         uint16_t descriptor_index,
         uint32_t *result_symbol) {
     bool r=false;
+    struct jdksavdecc_descriptor_storage *self = (struct jdksavdecc_descriptor_storage *)self_;
     void *p;
     void *descriptor_items;
     struct jdksavdecc_descriptor_storage_symbol key;

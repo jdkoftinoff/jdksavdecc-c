@@ -217,6 +217,8 @@ struct jdksavdecc_controller_manager {
 bool jdksavdecc_controller_manager_init(
         struct jdksavdecc_controller_manager *self,
         struct jdksavdecc_entity_model *entity_model,
+        int symbol_dispatch_table_num_entries,
+        struct jdksavdecc_symbol_dispatch *symbol_dispatch_table,
         void *context,
         void (*frame_send)(
             struct jdksavdecc_entity_manager *self,

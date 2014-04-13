@@ -32,15 +32,21 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_entity_manager.h"
 
-const char *jdkavdecc_entity_manager_file = __FILE__;
-
 bool jdksavdecc_entity_manager_init(
         struct jdksavdecc_entity_manager *self,
         struct jdksavdecc_entity_model *entity_model,
+        int symbol_dispatch_table_num_entries,
+        struct jdksavdecc_symbol_dispatch *symbol_dispatch_table,
         void *context,
-        void (*frame_send)(struct jdksavdecc_entity_manager *, void *, const uint8_t *, uint16_t) ) {
+        void (*frame_send)(
+            struct jdksavdecc_entity_manager *self,
+            void *context,
+            uint8_t const *buf,
+            uint16_t len ) ) {
     memset(self,0,sizeof(*self));
     self->entity_model = entity_model;
+    self->symbol_dispatch_table_num_entries = symbol_dispatch_table_num_entries;
+    self->symbol_dispatch_table = symbol_dispatch_table;
     self->context = context;
     self->frame_send = frame_send;
     self->destroy = jdksavdecc_entity_manager_destroy;
@@ -87,6 +93,52 @@ void jdksavdecc_entity_manager_destroy( struct jdksavdecc_entity_manager *self )
     (void)self;
 }
 
+struct jdksavdecc_symbol_dispatch *jdksavdecc_entity_manager_find_symbol(
+        struct jdksavdecc_entity_manager *self,
+        uint16_t configuration,
+        uint32_t symbol ) {
+
+}
+
+/// The pdu contains a valid Read Descriptor Command
+/// Fill in the response in place in the pdu and return an AECP AEM status code
+uint8_t jdksavdecc_entity_manager_dispatch_symbol_receive_read_descriptor_command(
+        struct jdksavdecc_entity_manager *self,
+        uint32_t symbol,
+        struct jdksavdecc_aecpdu_aem const *aem,
+        jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+        uint8_t *buf,
+        uint16_t len) {
+
+}
+
+/// The pdu contains a valid Command to set or change something
+/// SET_NAME, SET_CONTROL, INCREMENT_CONTROL, DECREMENT_CONTROL, SET_MIXER,
+/// SET_MATRIX, SET_SIGNAL_SELECTOR, etc
+/// Fill in the response in place in the pdu and return an AECP AEM status code
+uint8_t jdksavdecc_entity_manager_dispatch_symbol_set_command(
+        struct jdksavdecc_entity_manager *self,
+        uint32_t symbol,
+        struct jdksavdecc_aecpdu_aem const *aem,
+        jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+        uint8_t *buf,
+        uint16_t len) {
+
+}
+
+/// The pdu contains a valid Command to get something
+/// GET_NAME, GET_CONTROL, GET_MIXER, GET_MATRIX, GET_SIGNAL_SELECTOR, etc
+/// Fill in the response in place in the pdu and return an AECP AEM status code
+uint8_t jdksavdecc_entity_manager_dispatch_symbol_receive_get_command(
+        struct jdksavdecc_entity_manager *self,
+        uint32_t symbol,
+        struct jdksavdecc_aecpdu_aem const *aem,
+        jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
+        uint8_t *buf,
+        uint16_t len) {
+
+}
+
 /// Notify the state machine that time has passed. Call asap if early_tick is true.
 void jdksavdecc_entity_manager_tick(
         struct jdksavdecc_entity_manager *self,
@@ -130,8 +182,12 @@ void jdksavdecc_entity_manager_command_timed_out(
 }
 
 /// Check to make sure the command is allowed or disallowed due to acquire or locking
-uint8_t jdksavdecc_entity_manager_validate_permissions( struct jdksavdecc_aecpdu_aem const *aem ) {
+uint8_t jdksavdecc_entity_manager_validate_permissions(
+        struct jdksavdecc_entity_manager *self,
+        struct jdksavdecc_aecpdu_aem const *aem
+        ) {
     // TODO
+    (void)self;
     (void)aem;
     return JDKSAVDECC_AECP_STATUS_NOT_IMPLEMENTED;
 }

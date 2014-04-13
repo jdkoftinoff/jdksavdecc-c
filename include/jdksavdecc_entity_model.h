@@ -81,6 +81,16 @@ struct jdksavdecc_entity_model {
             uint16_t localized_string_id,
             struct jdksavdecc_string *result);
 
+    /// Read a symbol for the specified configuration, descriptor_type and
+    /// descriptor_index. Returns true on success
+    bool (*read_symbol)(
+                struct jdksavdecc_entity_model *self,
+                uint16_t configuration_number,
+                uint16_t descriptor_type,
+                uint16_t descriptor_index,
+                uint32_t *result_symbol);
+
+
 };
 
 void jdksavdecc_entity_model_destroy( struct jdksavdecc_entity_model *self );
@@ -108,6 +118,16 @@ uint16_t jdksavdecc_entity_model_read_localized_string(
         uint16_t localized_string_id,
         struct jdksavdecc_string *result);
 
+/// Read a symbol for the specified configuration, descriptor_type and
+/// descriptor_index. Returns true on success
+bool jdksavdecc_entity_model_read_symbol(
+        struct jdksavdecc_entity_model *self,
+        uint16_t configuration_number,
+        uint16_t descriptor_type,
+        uint16_t descriptor_index,
+        uint32_t *result_symbol);
+
+
 static inline void jdksavdecc_entity_model_init( struct jdksavdecc_entity_model *self ) {
     self->destroy = jdksavdecc_entity_model_destroy;
     self->additional_data = 0;
@@ -115,6 +135,7 @@ static inline void jdksavdecc_entity_model_init( struct jdksavdecc_entity_model 
     self->get_configuration_count = 0;
     self->read_descriptor = jdksavdecc_entity_model_read_descriptor;
     self->write_descriptor = jdksavdecc_entity_model_write_descriptor;
+    self->read_symbol = jdksavdecc_entity_model_read_symbol;
 }
 
 
