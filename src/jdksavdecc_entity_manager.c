@@ -95,7 +95,7 @@ void jdksavdecc_entity_manager_destroy( struct jdksavdecc_entity_manager *self )
 
 struct jdksavdecc_symbol_dispatch *jdksavdecc_entity_manager_find_symbol(
         struct jdksavdecc_entity_manager *self,
-        uint16_t configuration,
+        uint16_t configuration_number,
         uint32_t symbol ) {
 
 }
@@ -143,9 +143,11 @@ uint8_t jdksavdecc_entity_manager_dispatch_symbol_receive_get_command(
 void jdksavdecc_entity_manager_tick(
         struct jdksavdecc_entity_manager *self,
         jdksavdecc_timestamp_in_milliseconds cur_time_in_ms ) {
-    // TODO
+    // TODO: Run Entity State Machines
     (void)self;
     (void)cur_time_in_ms;
+    // TODO: Run Tick for all Talker/Listener state machines
+    // TODO: Run Tick for all symbols in the current configuration
 }
 
 /// The function that is to be called when an incoming AECPDU is received

@@ -35,6 +35,7 @@
 #include "jdksavdecc_adp.h"
 #include "jdksavdecc_adp_manager.h"
 #include "jdksavdecc_acmp.h"
+#include "jdksavdecc_acmp_manager.h"
 #include "jdksavdecc_aecp.h"
 #include "jdksavdecc_aecp_aa.h"
 #include "jdksavdecc_aecp_aem.h"
@@ -124,6 +125,8 @@ struct jdksavdecc_entity_manager {
     /// The symbol dispatch table
     struct jdksavdecc_symbol_dispatch *symbol_dispatch_table;
 
+    /// The talker
+
     /// A flag to notify higher level code that the state machine is requesting an immediate tick again
     bool early_tick;
 
@@ -206,7 +209,9 @@ struct jdksavdecc_entity_manager {
             uint16_t sequence_id);
 
     /// Check to make sure the command is allowed or disallowed due to acquire or locking
-    uint8_t (*validate_permissions)( struct jdksavdecc_aecpdu_aem const *aem );
+    uint8_t (*validate_permissions)(
+            struct jdksavdecc_entity_manager *self,
+            struct jdksavdecc_aecpdu_aem const *aem );
 
     /// The received pdu contains a valid ACMP message
     uint8_t (*received_acmpdu)(
@@ -575,7 +580,7 @@ void jdksavdecc_entity_manager_destroy(
 
 struct jdksavdecc_symbol_dispatch *jdksavdecc_entity_manager_find_symbol(
         struct jdksavdecc_entity_manager *self,
-        uint16_t configuration,
+        uint16_t configuration_number,
         uint32_t symbol );
 
 /// The pdu contains a valid Read Descriptor Command

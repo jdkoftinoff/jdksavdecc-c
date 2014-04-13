@@ -34,10 +34,15 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_acmp.h"
 #include "jdksavdecc_entity_model.h"
+#include "jdksavdecc_entity_manager.h"
+#include "jdksavdecc_state_machine.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+struct jdksavdecc_entity_manager;
+struct jdksavdecc_controller_manager;
 
 /** \addtogroup acmp ACMP - Clause 8 */
 /*@{*/
@@ -45,54 +50,56 @@ extern "C" {
 /** \addtogroup acmp_talker ACMP Talker State Machine */
 /*@{*/
 
-struct jdksavdecc_acmp_talker_manager {
+#ifndef JDKSAVDECC_ACMP_TALKER_MANAGER_MAX_LISTENERS_PER_STREAM
+#define JDKSAVDECC_ACMP_TALKER_MANAGER_MAX_LISTENERS_PER_STREAM (16)
+#endif
 
-    /// A flag used to notify the state machine to pause sending any messages
-    bool stopped;
+#ifndef JDKSAVDECC_ACMP_TALKER_MANAGER_MAX_STREAMS
+#define JDKSAVDECC_ACMP_TALKER_MANAGER_MAX_STREAMS (8)
+#endif
 
-    /// The context that the state machine is used in.
+
+struct jdksavdecc_acmp_talker_context {
+    struct jdksavdecc_eui48 destination_mac_address;
+    struct jdksavdecc_eui64 stream_id;
+    uint16_t talker_unique_id;
     void *context;
 
-    /// The function that the jdksavdecc_acmp_talker_manager calls in order to send an ACMPDU
-    void (*frame_send)(
-        struct jdksavdecc_acmp_talker_manager *self,
-        void *context,
-        uint8_t const *buf,
-        uint16_t len );
+    uint16_t connection_count;
+    uint16_t flags;
+    uint16_t stream_vlan_id;
+    struct jdksavdecc_eui64 listener_entity_id[JDKSAVDECC_ACMP_TALKER_MANAGER_MAX_LISTENERS_PER_STREAM];
+    uint16_t listener_unique_id[JDKSAVDECC_ACMP_TALKER_MANAGER_MAX_LISTENERS_PER_STREAM];
+};
+
+struct jdksavdecc_acmp_talker_manager {
+    struct jdksavdecc_state_machine *base;
+    struct jdksavdecc_entity_manager *entity_manager;
+    uint16_t talker_stream_sources;
+    struct jdksavdecc_acmp_talker_context talker_source[JDKSAVDECC_ACMP_TALKER_MANAGER_MAX_STREAMS];
 };
 
 bool jdksavdecc_acmp_talker_manager_init(
-    struct jdksavdecc_acmp_talker_manager *self,
-    void *context,
-    void (*frame_send)(
         struct jdksavdecc_acmp_talker_manager *self,
-        void *context,
-        uint8_t const *buf,
-        uint16_t len )
-    );
+        struct jdksavdecc_entity_manager *entity_manager,
+        struct jdksavdecc_frame_sender *frame_sender,
+        uint32_t tag,
+        void *additional);
 
 /// Destroy any resources that the jdksavdecc_acmp_talker_manager uses
-void jdksavdecc_acmp_talker_manager_destroy(struct jdksavdecc_acmp_talker_manager *self );
+void jdksavdecc_acmp_talker_manager_destroy(struct jdksavdecc_state_machine *self );
 
 /// Receive an ACMPDU and process it
-bool jdksavdecc_acmp_talker_manager_receive(
-    struct jdksavdecc_acmp_talker_manager *self,
-    jdksavdecc_timestamp_in_milliseconds time_in_milliseconds,
-    void const *source_address,
-    int source_address_len,
-    uint8_t const *buf,
-    uint16_t len );
+bool jdksavdecc_acmp_talker_manager_rx_frame(
+    struct jdksavdecc_state_machine *self,
+    struct jdksavdecc_frame *rx_frame,
+    size_t pos
+    );
 
 /// Notify the state machine that time has passed. Call asap if early_tick is true.
 void jdksavdecc_acmp_talker_manager_tick(
-    struct jdksavdecc_acmp_talker_manager *self,
-    jdksavdecc_timestamp_in_milliseconds cur_time_in_ms );
-
-/// Tell the state machine to stop. Incoming messages will still be reported.
-static inline void jdksavdecc_acmp_talker_manager_stop(
-    struct jdksavdecc_acmp_talker_manager *self) {
-    self->stopped = true;
-}
+    struct jdksavdecc_state_machine *self,
+    jdksavdecc_timestamp_in_microseconds timestamp);
 
 /*@}*/
 
@@ -100,109 +107,132 @@ static inline void jdksavdecc_acmp_talker_manager_stop(
 /** \addtogroup acmp_talker ACMP Listener State Machine */
 /*@{*/
 
-struct jdksavdecc_acmp_listener_manager {
+#ifndef JDKSAVDECC_ACMP_LISTENER_MANAGER_MAX_STREAMS
+#define JDKSAVDECC_ACMP_LISTENER_MANAGER_MAX_STREAMS (8)
+#endif
 
-    /// A flag used to notify the state machine to pause sending any messages
-    bool stopped;
+struct jdksavdecc_acmp_listener_context {
+    enum {
+        JDKSAVDECC_ACMP_LISTENER_STATE_DISABLED=0,
+        JDKSAVDECC_ACMP_LISTENER_STATE_DISCONNECTED,
+        JDKSAVDECC_ACMP_LISTENER_STATE_FAST_CONNECTION_IN_PROGRESS,
+        JDKSAVDECC_ACMP_LISTENER_STATE_CONNECTION_IN_PROGRESS,
+        JDKSAVDECC_ACMP_LISTENER_STATE_CONNECTED,
+        JDKSAVDECC_ACMP_LISTENER_STATE_DISCONNECTION_IN_PROGRESS,
+    } state;
 
-    /// The context that the state machine is used in.
+    struct jdksavdecc_eui48 destination_mac_address;
+    struct jdksavdecc_eui64 stream_id;
+    struct jdksavdecc_eui64 talker_entity_id;
+    uint16_t talker_unique_id;
+    uint16_t flags;
+    uint16_t stream_vlan_id;
     void *context;
-
-    /// The function that the jdksavdecc_acmp_listener_manager calls in order to send an ACMPDU
-    void (*frame_send)(
-        struct jdksavdecc_acmp_listener_manager *self,
-        void *context,
-        uint8_t const *buf,
-        uint16_t len );
 };
 
+struct jdksavdecc_acmp_listener_manager {
+    struct jdksavdecc_state_machine *base;
+    struct jdksavdecc_entity_manager *entity_manager;
+    uint16_t listener_stream_sinks;
+    struct jdksavdecc_acmp_listener_context listener_sink[JDKSAVDECC_ACMP_LISTENER_MANAGER_MAX_STREAMS];
+
+};
+
+
 bool jdksavdecc_acmp_listener_manager_init(
-    struct jdksavdecc_acmp_listener_manager *self,
-    void *context,
-    void (*frame_send)(
         struct jdksavdecc_acmp_listener_manager *self,
-        void *context,
-        uint8_t const *buf,
-        uint16_t len )
-    );
+        struct jdksavdecc_entity_manager *entity_manager,
+        struct jdksavdecc_frame_sender *frame_sender,
+        uint32_t tag,
+        void *additional);
 
 /// Destroy any resources that the jdksavdecc_acmp_listener_manager uses
-void jdksavdecc_acmp_listener_manager_destroy(struct jdksavdecc_acmp_listener_manager *self );
+void jdksavdecc_acmp_listener_manager_destroy(struct jdksavdecc_state_machine *self );
 
 /// Receive an ACMPDU and process it
-bool jdksavdecc_acmp_listener_manager_receive(
-    struct jdksavdecc_acmp_listener_manager *self,
-    jdksavdecc_timestamp_in_milliseconds time_in_milliseconds,
-    void const *source_address,
-    int source_address_len,
-    uint8_t const *buf,
-    uint16_t len );
+bool jdksavdecc_acmp_listener_manager_rx_frame(
+    struct jdksavdecc_state_machine *self,
+    struct jdksavdecc_frame *rx_frame,
+    size_t pos
+    );
 
 /// Notify the state machine that time has passed. Call asap if early_tick is true.
 void jdksavdecc_acmp_listener_manager_tick(
-    struct jdksavdecc_acmp_listener_manager *self,
-    jdksavdecc_timestamp_in_milliseconds cur_time_in_ms );
+    struct jdksavdecc_state_machine *self,
+    jdksavdecc_timestamp_in_microseconds timestamp);
 
-/// Tell the state machine to stop. Incoming messages will still be reported.
-static inline void jdksavdecc_acmp_listener_manager_stop(
-    struct jdksavdecc_acmp_listener_manager *self) {
-    self->stopped = true;
-}
 
 /*@}*/
 
 
-/** \addtogroup acmp_talker ACMP Controller State Machine */
+/** \addtogroup acmp_controller ACMP Controller State Machine */
 /*@{*/
 
+struct jdksavdecc_acmp_controller_stream_source {
+    struct jdksavdecc_eui64 talker_entity_id;
+    uint16_t talker_unique_id;
+    struct jdksavdecc_eui48 destination_mac_address;
+    struct jdksavdecc_eui64 stream_id;
+    uint16_t flags;
+    uint8_t status;
+    uint16_t connection_count;
+    uint16_t stream_vlan_id;
+};
+
+struct jdksavdecc_acmp_controller_stream_sink {
+    struct jdksavdecc_eui64 listener_entity_id;
+    uint16_t listener_unique_id;
+    uint16_t flags;
+    uint8_t status;
+};
+
+struct jdksavdecc_acmp_controller_connection {
+    enum {
+        JDKSAVDECC_ACMP_CONTROLLER_STREAM_SINK_STATE_DISABLED=0,
+        JDKSAVDECC_ACMP_CONTROLLER_STREAM_SINK_STATE_DISCONNECTED,
+        JDKSAVDECC_ACMP_CONTROLLER_STREAM_SINK_STATE_CONNECTING,
+        JDKSAVDECC_ACMP_CONTROLLER_STREAM_SINK_STATE_CONNECTED,
+        JDKSAVDECC_ACMP_CONTROLLER_STREAM_SINK_STATE_DISCONNECTING,
+        JDKSAVDECC_ACMP_CONTROLLER_STREAM_SINK_STATE_ERROR
+    } state;
+    struct jdksavdecc_eui64 talker_entity_id;
+    uint16_t talker_unique_id;
+    struct jdksavdecc_eui64 listener_entity_id;
+    uint16_t listener_unique_id;
+};
+
 struct jdksavdecc_acmp_controller_manager {
-
-    /// A flag used to notify the state machine to pause sending any messages
-    bool stopped;
-
-    /// The context that the state machine is used in.
-    void *context;
-
-    /// The function that the jdksavdecc_acmp_controller_manager calls in order to send an ACMPDU
-    void (*frame_send)(
-        struct jdksavdecc_acmp_controller_manager *self,
-        void *context,
-        uint8_t const *buf,
-        uint16_t len );
+    struct jdksavdecc_state_machine *base;
+    struct jdksavdecc_controller_manager *controller_manager;
+    int max_stream_sources;
+    struct jdksavdecc_acmp_controller_stream_source *stream_sources;
+    int max_stream_sinks;
+    struct jdksavdecc_acmp_controller_stream_source *stream_sinks;
+    int max_connections;
+    struct jdksavdecc_acmp_controller_connection *stream_connections;
 };
 
 bool jdksavdecc_acmp_controller_manager_init(
-    struct jdksavdecc_acmp_controller_manager *self,
-    void *context,
-    void (*frame_send)(
         struct jdksavdecc_acmp_controller_manager *self,
-        void *context,
-        uint8_t const *buf,
-        uint16_t len )
-    );
+        struct jdksavdecc_controller_manager *controller_manager,
+        struct jdksavdecc_frame_sender *frame_sender,
+        uint32_t tag,
+        void *additional);
 
 /// Destroy any resources that the jdksavdecc_acmp_controller_manager uses
-void jdksavdecc_acmp_controller_manager_destroy(struct jdksavdecc_acmp_controller_manager *self );
+void jdksavdecc_acmp_controller_manager_destroy(struct jdksavdecc_state_machine *self );
 
 /// Receive an ACMPDU and process it
-bool jdksavdecc_acmp_controller_manager_receive(
-    struct jdksavdecc_acmp_controller_manager *self,
-    jdksavdecc_timestamp_in_milliseconds time_in_milliseconds,
-    void const *source_address,
-    int source_address_len,
-    uint8_t const *buf,
-    uint16_t len );
+bool jdksavdecc_acmp_controller_manager_rx_frame(
+    struct jdksavdecc_state_machine *self,
+    struct jdksavdecc_frame *rx_frame,
+    size_t pos
+    );
 
 /// Notify the state machine that time has passed. Call asap if early_tick is true.
 void jdksavdecc_acmp_controller_manager_tick(
-    struct jdksavdecc_acmp_controller_manager *self,
-    jdksavdecc_timestamp_in_milliseconds cur_time_in_ms );
-
-/// Tell the state machine to stop. Incoming messages will still be reported.
-static inline void jdksavdecc_acmp_controller_manager_stop(
-    struct jdksavdecc_acmp_controller_manager *self) {
-    self->stopped = true;
-}
+    struct jdksavdecc_state_machine *self,
+    jdksavdecc_timestamp_in_microseconds timestamp);
 
 /*@}*/
 
