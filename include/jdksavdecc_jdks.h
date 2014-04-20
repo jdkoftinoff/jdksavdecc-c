@@ -437,9 +437,9 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
         jdksavdecc_eui64_read(&p->vendor_eui64, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64+pos, len);
         if( jdksavdecc_eui64_compare(&jdksavdecc_jdks_aem_control_log_text,&p->vendor_eui64)==0 ) {
             jdksavdecc_uint32_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos,len);
-            if( p->blob_size > (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN) &&
+            if( p->blob_size >= 2 &&
                 p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE ) {
-                uint16_t text_len =p->blob_size - (2);
+                uint16_t text_len =p->blob_size - 2;
 
                 jdksavdecc_uint8_read(
                     &p->log_detail,
@@ -456,8 +456,10 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
 
                 if( text_len < JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN ) {
                     r=pos+JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT;
-                    memcpy( p->text, (uint8_t const *)buf+r, text_len);
-                    p->text[text_len]='\0';
+                    if( text_len>0 ) {
+                        memcpy( p->text, (uint8_t const *)buf+r, text_len);
+                        p->text[text_len]='\0';
+                    }
                     r=text_len;
                 } else {
                     r=-1;
@@ -466,7 +468,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_read(
                 r=-1;
             }
         } else {
-        r=-1;
+            r=-1;
         }
     }
     return r;
@@ -498,9 +500,9 @@ static inline ssize_t jdksavdecc_jdks_log_console_read(
         jdksavdecc_eui64_read(&p->vendor_eui64, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_VENDOR_EUI64+pos, len);
         if( jdksavdecc_eui64_compare(&jdksavdecc_jdks_aem_control_log_text,&p->vendor_eui64)==0 ) {
             jdksavdecc_uint32_read(&p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE+pos,len);
-            if( p->blob_size > (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN) &&
+            if( p->blob_size >= 2 &&
                 p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE ) {
-                uint16_t text_len =p->blob_size - (JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT-JDKSAVDECC_AEM_COMMAND_SET_CONTROL_RESPONSE_LEN);
+                uint16_t text_len =p->blob_size - 2;
 
                 jdksavdecc_uint8_read(
                     &p->log_detail,
@@ -516,9 +518,11 @@ static inline ssize_t jdksavdecc_jdks_log_console_read(
 
                 if( text_len < JDKSAVDECC_JDKS_LOG_CONTROL_MAX_TEXT_LEN ) {
                     r=pos+JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_TEXT;
-                    memcpy( p->text, (uint8_t const *)buf+r, text_len);
-                    p->text[text_len]='\0';
-                    r+=text_len;
+                    if( text_len>0 ) {
+                        memcpy( p->text, (uint8_t const *)buf+r, text_len);
+                        p->text[text_len]='\0';
+                    }
+                    r=text_len;
                 } else {
                     r=-1;
                 }
@@ -526,7 +530,7 @@ static inline ssize_t jdksavdecc_jdks_log_console_read(
                 r=-1;
             }
         } else {
-        r=-1;
+            r=-1;
         }
     }
     return r;
