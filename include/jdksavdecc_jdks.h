@@ -314,7 +314,7 @@ static inline ssize_t jdksavdecc_jdks_log_console_generate(
         setctrl.aem_header.aecpdu_header.header.version = 0;
         setctrl.aem_header.aecpdu_header.header.message_type = JDKSAVDECC_AECP_MESSAGE_TYPE_AEM_COMMAND;
         setctrl.aem_header.aecpdu_header.header.status = JDKSAVDECC_AEM_STATUS_SUCCESS;
-        setctrl.aem_header.aecpdu_header.header.control_data_length = (uint32_t)text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN;
+        setctrl.aem_header.aecpdu_header.header.control_data_length = (uint32_t)text_len + JDKSAVDECC_JDKS_LOG_CONTROL_HEADER_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 2;
         setctrl.aem_header.aecpdu_header.header.target_entity_id = *target_entity_id;
         setctrl.aem_header.aecpdu_header.controller_entity_id = *my_entity_id;
         setctrl.aem_header.aecpdu_header.sequence_id = *sequence_id;
