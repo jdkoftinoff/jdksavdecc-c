@@ -35,6 +35,7 @@
 
 int main( int argc, const char **argv ) {
     bool r=false;
+#ifdef TODO
     struct jdksavdecc_descriptor_storage storage;
     if( jdksavdecc_test_descriptor_storage_create(&storage) ) {
         uint8_t descriptor_buffer[JDKSAVDECC_AEM_DESCRIPTOR_SIZE];
@@ -54,5 +55,6 @@ int main( int argc, const char **argv ) {
             r=true;
         }
     }
+#endif
     return r ? 0:255;
 }
