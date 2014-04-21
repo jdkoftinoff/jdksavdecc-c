@@ -97,7 +97,6 @@ struct jdksavdecc_symbol_dispatch *jdksavdecc_entity_manager_find_symbol(
         struct jdksavdecc_entity_manager *self,
         uint16_t configuration_number,
         uint32_t symbol ) {
-
 }
 
 /// The pdu contains a valid Read Descriptor Command

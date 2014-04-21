@@ -31,26 +31,7 @@
 */
 
 #include "jdksavdecc_world.h"
-#include "test/jdksavdecc_test_descriptor_storage.h"
 
-static uint8_t jdksavdecc_test_descriptor_storage_data[] = {
-/* Offset 0x0000 */
-    0x41, 0x45, 0x4d, 0x31, // Magic number "AEM1"
-    0x00, 0x00, 0x00, 0x00, // toc_count
-    0x00, 0x00, 0x00, 0x00, // toc_offset
-    0x00, 0x00, 0x00, 0x00, // symbol_count
-    0x00, 0x00, 0x00, 0x00, // symbol_offset
-/* Offset 0x0014 */
-};
-
-bool jdksavdecc_test_descriptor_storage_create(struct jdksavdecc_descriptor_storage *self) {
-    bool r=false;
-
-    r=jdksavdecc_descriptor_storage_buffer_init(
-                self,
-                jdksavdecc_test_descriptor_storage_data,
-                sizeof(jdksavdecc_test_descriptor_storage_data)
-                );
-
-    return r;
+int main( int argc, const char **argv ) {
+    return 255;
 }
