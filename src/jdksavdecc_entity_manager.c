@@ -32,6 +32,7 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_entity_manager.h"
 
+
 bool jdksavdecc_entity_manager_init(
         struct jdksavdecc_entity_manager *self,
         struct jdksavdecc_entity_model *entity_model,
@@ -97,6 +98,7 @@ struct jdksavdecc_symbol_dispatch *jdksavdecc_entity_manager_find_symbol(
         struct jdksavdecc_entity_manager *self,
         uint16_t configuration_number,
         uint32_t symbol ) {
+    return 0;
 }
 
 /// The pdu contains a valid Read Descriptor Command
@@ -108,7 +110,7 @@ uint8_t jdksavdecc_entity_manager_dispatch_symbol_receive_read_descriptor_comman
         jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
         uint8_t *buf,
         uint16_t len) {
-
+    return JDKSAVDECC_AECP_STATUS_NOT_IMPLEMENTED;
 }
 
 /// The pdu contains a valid Command to set or change something
@@ -122,7 +124,7 @@ uint8_t jdksavdecc_entity_manager_dispatch_symbol_set_command(
         jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
         uint8_t *buf,
         uint16_t len) {
-
+    return JDKSAVDECC_AECP_STATUS_NOT_IMPLEMENTED;
 }
 
 /// The pdu contains a valid Command to get something
@@ -135,7 +137,7 @@ uint8_t jdksavdecc_entity_manager_dispatch_symbol_receive_get_command(
         jdksavdecc_timestamp_in_milliseconds cur_time_in_ms,
         uint8_t *buf,
         uint16_t len) {
-
+    return JDKSAVDECC_AECP_STATUS_NOT_IMPLEMENTED;
 }
 
 /// Notify the state machine that time has passed. Call asap if early_tick is true.
@@ -727,3 +729,6 @@ uint8_t jdksavdecc_entity_manager_receive_aa_execute(
     (void)request;
     return JDKSAVDECC_AECP_STATUS_NOT_IMPLEMENTED;
 }
+
+
+
