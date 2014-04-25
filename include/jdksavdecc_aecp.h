@@ -45,13 +45,13 @@ extern "C" {
 /*@{*/
 
 struct jdksavdecc_aecpdu_common_control_header {
-    uint32_t cd : 1;
-    uint32_t subtype : JDKSAVDECC_SUBTYPE_DATA_SUBTYPE_WIDTH;
-    uint32_t sv : 1;
-    uint32_t version : JDKSAVDECC_SUBTYPE_DATA_VERSION_WIDTH;
-    uint32_t message_type : JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_WIDTH;
-    uint32_t status : JDKSAVDECC_SUBTYPE_DATA_STATUS_WIDTH;
-    uint32_t control_data_length : JDKSAVDECC_SUBTYPE_DATA_CONTROL_DATA_LENGTH_WIDTH;
+    uint8_t cd;
+    uint8_t subtype;
+    uint8_t sv;
+    uint8_t version;
+    uint8_t message_type;
+    uint8_t status;
+    uint16_t control_data_length;
     struct jdksavdecc_eui64 target_entity_id;
 };
 
@@ -222,9 +222,10 @@ static inline ssize_t
 jdksavdecc_aecpdu_common_read(struct jdksavdecc_aecpdu_common *p, void const *base, ssize_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_COMMON_LEN);
     if (r >= 0) {
-        jdksavdecc_aecpdu_common_control_header_read(&p->header, base, pos, len);
-        p->controller_entity_id = jdksavdecc_aecpdu_common_get_controller_entity_id(base, pos);
-        p->sequence_id = jdksavdecc_aecpdu_common_get_sequence_id(base, pos);
+        if( jdksavdecc_aecpdu_common_control_header_read(&p->header, base, pos, len) >=0 ) {
+            p->controller_entity_id = jdksavdecc_aecpdu_common_get_controller_entity_id(base, pos);
+            p->sequence_id = jdksavdecc_aecpdu_common_get_sequence_id(base, pos);
+        }
     }
     return r;
 }

@@ -203,8 +203,9 @@ struct jdksavdecc_aecpdu_aem {
 static inline ssize_t jdksavdecc_aecpdu_aem_read(struct jdksavdecc_aecpdu_aem *p, void const *base, ssize_t pos, size_t len) {
     ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_AEM_LEN);
     if (r >= 0) {
-        jdksavdecc_aecpdu_common_read(&p->aecpdu_header, base, pos, len);
-        p->command_type = jdksavdecc_aecpdu_aem_get_command_type(base, pos);
+        if( jdksavdecc_aecpdu_common_read(&p->aecpdu_header, base, pos, len) >= 0 ) {
+            p->command_type = jdksavdecc_aecpdu_aem_get_command_type(base, pos);
+        }
     }
     return r;
 }
