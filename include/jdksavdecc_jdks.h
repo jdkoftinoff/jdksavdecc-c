@@ -34,7 +34,6 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_util.h"
 #include "jdksavdecc_pdu.h"
-#include "jdksavdecc_frame.h"
 #include "jdksavdecc_aem_command.h"
 #include "jdksavdecc_aem_descriptor.h"
 

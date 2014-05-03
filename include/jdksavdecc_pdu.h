@@ -33,7 +33,6 @@
 
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_util.h"
-#include "jdksavdecc_frame.h"
 
 #ifdef __cplusplus
 extern "C" {
