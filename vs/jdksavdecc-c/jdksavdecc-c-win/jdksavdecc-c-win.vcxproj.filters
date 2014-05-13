@@ -72,6 +72,9 @@
     <ClCompile Include="..\..\..\src\test\jdksavdecc_test_descriptor_storage.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\jdksavdecc_frame.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\jdksavdecc.h">
@@ -174,6 +177,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\test\jdksavdecc_test_descriptor_storage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\jdksavdecc_frame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

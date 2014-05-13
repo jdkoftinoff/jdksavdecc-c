@@ -91,6 +91,7 @@
     <ClCompile Include="..\..\..\src\jdksavdecc_descriptor_storage.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_descriptor_storage_gen.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_entity_model.c" />
+    <ClCompile Include="..\..\..\src\jdksavdecc_frame.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_jdks.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_maap.c" />
     <ClCompile Include="..\..\..\src\jdksavdecc_maap_print.c" />
@@ -122,6 +123,7 @@
     <ClInclude Include="..\..\..\include\jdksavdecc_descriptor_storage.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_descriptor_storage_gen.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_entity_model.h" />
+    <ClInclude Include="..\..\..\include\jdksavdecc_frame.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_jdks.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_maap.h" />
     <ClInclude Include="..\..\..\include\jdksavdecc_maap_print.h" />
