@@ -24028,7 +24028,7 @@ static inline uint8_t jdksavdecc_aem_command_get_avb_info_response_get_flags(voi
  * @param pos offset from base to write the field to;
  */
 static inline void jdksavdecc_aem_command_get_avb_info_response_set_flags(uint8_t v, void *base, ssize_t pos) {
-    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_FLAGS);
+    jdksavdecc_uint8_set(v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_RESPONSE_OFFSET_FLAGS);
 }
 
 /**
