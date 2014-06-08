@@ -42,34 +42,42 @@ struct jdksavdecc_eui48 jdksavdecc_multicast_identification = JDKSAVDECC_MULTICA
 struct jdksavdecc_eui64 jdksavdecc_identification_notification_controller_entity_id
     = JDKSAVDECC_IDENTIFICATION_NOTIFICATION_CONTROLLER_ENTITY_ID;
 
-ssize_t
-jdksavdecc_common_control_header_read(struct jdksavdecc_common_control_header *p, void const *base, ssize_t pos, size_t len) {
-    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN);
-    if (r >= 0) {
-        p->cd = jdksavdecc_common_control_header_get_cd(base, pos);
-        p->subtype = jdksavdecc_common_control_header_get_subtype(base, pos);
-        p->sv = jdksavdecc_common_control_header_get_sv(base, pos);
-        p->version = jdksavdecc_common_control_header_get_version(base, pos);
-        p->control_data = jdksavdecc_common_control_header_get_control_data(base, pos);
-        p->status = jdksavdecc_common_control_header_get_status(base, pos);
-        p->control_data_length = jdksavdecc_common_control_header_get_control_data_length(base, pos);
-        p->stream_id = jdksavdecc_common_control_header_get_stream_id(base, pos);
+ssize_t jdksavdecc_common_control_header_read( struct jdksavdecc_common_control_header *p,
+                                               void const *base,
+                                               ssize_t pos,
+                                               size_t len )
+{
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN );
+    if ( r >= 0 )
+    {
+        p->cd = jdksavdecc_common_control_header_get_cd( base, pos );
+        p->subtype = jdksavdecc_common_control_header_get_subtype( base, pos );
+        p->sv = jdksavdecc_common_control_header_get_sv( base, pos );
+        p->version = jdksavdecc_common_control_header_get_version( base, pos );
+        p->control_data = jdksavdecc_common_control_header_get_control_data( base, pos );
+        p->status = jdksavdecc_common_control_header_get_status( base, pos );
+        p->control_data_length = jdksavdecc_common_control_header_get_control_data_length( base, pos );
+        p->stream_id = jdksavdecc_common_control_header_get_stream_id( base, pos );
     }
     return r;
 }
 
-ssize_t
-jdksavdecc_common_control_header_write(struct jdksavdecc_common_control_header const *p, void *base, ssize_t pos, size_t len) {
-    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN);
-    if (r >= 0) {
-        jdksavdecc_common_control_header_set_cd(p->cd, base, pos);
-        jdksavdecc_common_control_header_set_subtype(p->subtype, base, pos);
-        jdksavdecc_common_control_header_set_sv(p->sv, base, pos);
-        jdksavdecc_common_control_header_set_version(p->version, base, pos);
-        jdksavdecc_common_control_header_set_control_data(p->control_data, base, pos);
-        jdksavdecc_common_control_header_set_status(p->status, base, pos);
-        jdksavdecc_common_control_header_set_control_data_length(p->control_data_length, base, pos);
-        jdksavdecc_common_control_header_set_stream_id(p->stream_id, base, pos);
+ssize_t jdksavdecc_common_control_header_write( struct jdksavdecc_common_control_header const *p,
+                                                void *base,
+                                                ssize_t pos,
+                                                size_t len )
+{
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN );
+    if ( r >= 0 )
+    {
+        jdksavdecc_common_control_header_set_cd( p->cd, base, pos );
+        jdksavdecc_common_control_header_set_subtype( p->subtype, base, pos );
+        jdksavdecc_common_control_header_set_sv( p->sv, base, pos );
+        jdksavdecc_common_control_header_set_version( p->version, base, pos );
+        jdksavdecc_common_control_header_set_control_data( p->control_data, base, pos );
+        jdksavdecc_common_control_header_set_status( p->status, base, pos );
+        jdksavdecc_common_control_header_set_control_data_length( p->control_data_length, base, pos );
+        jdksavdecc_common_control_header_set_stream_id( p->stream_id, base, pos );
     }
     return r;
 }

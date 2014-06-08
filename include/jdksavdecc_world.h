@@ -35,7 +35,7 @@
 // if you want jdksavdecc-c library to integrate nicely with the microsupport
 // library (see https://github.com/jdkoftinoff/microsupport)
 #ifndef JDKSAVDECC_ENABLE_MICROSUPPORT
-#define JDKSAVDECC_ENABLE_MICROSUPPORT (0)
+#define JDKSAVDECC_ENABLE_MICROSUPPORT ( 0 )
 #endif
 
 #if JDKSAVDECC_ENABLE_MICROSUPPORT
@@ -56,7 +56,7 @@
 
 #ifdef _MSC_VER
 #include "jdksavdecc_ms.h"
-#elif defined(__AVR__)
+#elif defined( __AVR__ )
 #include "jdksavdecc_avr.h"
 #else
 #include <unistd.h>
@@ -64,4 +64,3 @@
 #include <inttypes.h>
 #include <stdbool.h>
 #endif
-

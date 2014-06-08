@@ -35,32 +35,33 @@
 struct jdksavdecc_uint16_name jdksavdecc_maap_print_message_type[]
     = {{JDKSAVDECC_MAAP_PROBE, "PROBE"}, {JDKSAVDECC_MAAP_DEFEND, "DEFEND"}, {JDKSAVDECC_MAAP_ANNOUNCE, "ANNOUNCE"}, {0, 0}};
 
-void jdksavdecc_maap_print(struct jdksavdecc_printer *self, struct jdksavdecc_maap const *p) {
-    jdksavdecc_printer_print_label(self, "message_type");
-    jdksavdecc_printer_print_uint16_name(self, jdksavdecc_maap_print_message_type, p->header.message_type);
-    jdksavdecc_printer_print_eol(self);
+void jdksavdecc_maap_print( struct jdksavdecc_printer *self, struct jdksavdecc_maap const *p )
+{
+    jdksavdecc_printer_print_label( self, "message_type" );
+    jdksavdecc_printer_print_uint16_name( self, jdksavdecc_maap_print_message_type, p->header.message_type );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "maap_version");
-    jdksavdecc_printer_print_uint16(self, p->header.maap_version);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "maap_version" );
+    jdksavdecc_printer_print_uint16( self, p->header.maap_version );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "maap_data_length");
-    jdksavdecc_printer_print_uint16(self, p->header.maap_data_length);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "maap_data_length" );
+    jdksavdecc_printer_print_uint16( self, p->header.maap_data_length );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "requested_start_address");
-    jdksavdecc_printer_print_eui48(self, p->requested_start_address);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "requested_start_address" );
+    jdksavdecc_printer_print_eui48( self, p->requested_start_address );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "requested_count");
-    jdksavdecc_printer_print_uint16(self, p->requested_count);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "requested_count" );
+    jdksavdecc_printer_print_uint16( self, p->requested_count );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "conflict_start_address");
-    jdksavdecc_printer_print_eui48(self, p->conflict_start_address);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "conflict_start_address" );
+    jdksavdecc_printer_print_eui48( self, p->conflict_start_address );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "conflict_count");
-    jdksavdecc_printer_print_uint16(self, p->conflict_count);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "conflict_count" );
+    jdksavdecc_printer_print_uint16( self, p->conflict_count );
+    jdksavdecc_printer_print_eol( self );
 }

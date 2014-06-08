@@ -33,9 +33,9 @@
 
 #include "jdksavdecc_world.h"
 
-#if defined(__AVR__)
+#if defined( __AVR__ )
 
-#if !defined(__cplusplus)
+#if !defined( __cplusplus )
 #define inline __inline__
 #endif
 
@@ -96,11 +96,11 @@ typedef int ssize_t;
 #endif
 
 #ifndef EXIT_SUCCESS
-#define EXIT_SUCCESS (0)
+#define EXIT_SUCCESS ( 0 )
 #endif
 
 #ifndef EXIT_FAILURE
-#define EXIT_FAILURE (1)
+#define EXIT_FAILURE ( 1 )
 #endif
 
 #endif

@@ -90,96 +90,108 @@ struct jdksavdecc_16bit_name jdksavdecc_adpdu_print_listener_capabilities[]
 struct jdksavdecc_32bit_name jdksavdecc_adpdu_print_controller_capabilities[]
     = {{JDKSAVDECC_ADP_CONTROLLER_CAPABILITY_IMPLEMENTED, "IMPLEMENTED"}, {0, 0}};
 
-void jdksavdecc_adpdu_print_common_control_header(struct jdksavdecc_printer *self,
-                                                  struct jdksavdecc_adpdu_common_control_header const *p) {
-    jdksavdecc_printer_print_label(self, "message_type");
-    jdksavdecc_printer_print_uint16_name(self, jdksavdecc_adpdu_print_message_type, p->message_type);
-    jdksavdecc_printer_print_eol(self);
+void jdksavdecc_adpdu_print_common_control_header( struct jdksavdecc_printer *self,
+                                                   struct jdksavdecc_adpdu_common_control_header const *p )
+{
+    jdksavdecc_printer_print_label( self, "message_type" );
+    jdksavdecc_printer_print_uint16_name( self, jdksavdecc_adpdu_print_message_type, p->message_type );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "valid_time (seconds)");
-    jdksavdecc_printer_print_uint16(self, p->valid_time * 2);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "valid_time (seconds)" );
+    jdksavdecc_printer_print_uint16( self, p->valid_time * 2 );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "control_data_length");
-    jdksavdecc_printer_print_uint16(self, p->control_data_length);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "control_data_length" );
+    jdksavdecc_printer_print_uint16( self, p->control_data_length );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "entity_id");
-    jdksavdecc_printer_print_eui64(self, p->entity_id);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "entity_id" );
+    jdksavdecc_printer_print_eui64( self, p->entity_id );
+    jdksavdecc_printer_print_eol( self );
 }
 
-void jdksavdecc_adpdu_print(struct jdksavdecc_printer *self, struct jdksavdecc_adpdu const *p) {
-    jdksavdecc_adpdu_print_common_control_header(self, &p->header);
+void jdksavdecc_adpdu_print( struct jdksavdecc_printer *self, struct jdksavdecc_adpdu const *p )
+{
+    jdksavdecc_adpdu_print_common_control_header( self, &p->header );
 
-    if (p->header.message_type != JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_DISCOVER) {
-        if (p->header.message_type != JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_DEPARTING) {
-            jdksavdecc_printer_print_label(self, "available_index");
-            jdksavdecc_printer_print_uint32(self, p->available_index);
-            jdksavdecc_printer_print_eol(self);
+    if ( p->header.message_type != JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_DISCOVER )
+    {
+        if ( p->header.message_type != JDKSAVDECC_ADP_MESSAGE_TYPE_ENTITY_DEPARTING )
+        {
+            jdksavdecc_printer_print_label( self, "available_index" );
+            jdksavdecc_printer_print_uint32( self, p->available_index );
+            jdksavdecc_printer_print_eol( self );
         }
 
-        jdksavdecc_printer_print_label(self, "entity_model_id");
-        jdksavdecc_printer_print_eui64(self, p->entity_model_id);
-        jdksavdecc_printer_print_eol(self);
+        jdksavdecc_printer_print_label( self, "entity_model_id" );
+        jdksavdecc_printer_print_eui64( self, p->entity_model_id );
+        jdksavdecc_printer_print_eol( self );
 
-        jdksavdecc_printer_print_label(self, "entity_capabilities");
-        jdksavdecc_printer_print_32bit_names(self, jdksavdecc_adpdu_print_entity_capabilities, p->entity_capabilities);
-        jdksavdecc_printer_print_eol(self);
+        jdksavdecc_printer_print_label( self, "entity_capabilities" );
+        jdksavdecc_printer_print_32bit_names( self, jdksavdecc_adpdu_print_entity_capabilities, p->entity_capabilities );
+        jdksavdecc_printer_print_eol( self );
 
-        if (p->talker_stream_sources > 0 && (p->talker_capabilities & JDKSAVDECC_ADP_TALKER_CAPABILITY_IMPLEMENTED) != 0) {
-            jdksavdecc_printer_print_label(self, "talker_stream_sources");
-            jdksavdecc_printer_print_uint16(self, p->talker_stream_sources);
-            jdksavdecc_printer_print_eol(self);
+        if ( p->talker_stream_sources > 0 && ( p->talker_capabilities & JDKSAVDECC_ADP_TALKER_CAPABILITY_IMPLEMENTED ) != 0 )
+        {
+            jdksavdecc_printer_print_label( self, "talker_stream_sources" );
+            jdksavdecc_printer_print_uint16( self, p->talker_stream_sources );
+            jdksavdecc_printer_print_eol( self );
 
-            jdksavdecc_printer_print_label(self, "talker_capabilities");
-            jdksavdecc_printer_print_16bit_names(self, jdksavdecc_adpdu_print_talker_capabilities, p->talker_capabilities);
-            jdksavdecc_printer_print_eol(self);
+            jdksavdecc_printer_print_label( self, "talker_capabilities" );
+            jdksavdecc_printer_print_16bit_names( self, jdksavdecc_adpdu_print_talker_capabilities, p->talker_capabilities );
+            jdksavdecc_printer_print_eol( self );
         }
 
-        if (p->listener_stream_sinks > 0) {
-            jdksavdecc_printer_print_label(self, "listener_stream_sinks");
-            jdksavdecc_printer_print_uint16(self, p->listener_stream_sinks);
-            jdksavdecc_printer_print_eol(self);
+        if ( p->listener_stream_sinks > 0 )
+        {
+            jdksavdecc_printer_print_label( self, "listener_stream_sinks" );
+            jdksavdecc_printer_print_uint16( self, p->listener_stream_sinks );
+            jdksavdecc_printer_print_eol( self );
 
-            jdksavdecc_printer_print_label(self, "listener_capabilities");
-            jdksavdecc_printer_print_16bit_names(self, jdksavdecc_adpdu_print_listener_capabilities, p->listener_capabilities);
-            jdksavdecc_printer_print_eol(self);
+            jdksavdecc_printer_print_label( self, "listener_capabilities" );
+            jdksavdecc_printer_print_16bit_names(
+                self, jdksavdecc_adpdu_print_listener_capabilities, p->listener_capabilities );
+            jdksavdecc_printer_print_eol( self );
         }
 
-        if ((p->controller_capabilities & JDKSAVDECC_ADP_CONTROLLER_CAPABILITY_IMPLEMENTED) != 0) {
-            jdksavdecc_printer_print_label(self, "controller_capabilities");
+        if ( ( p->controller_capabilities & JDKSAVDECC_ADP_CONTROLLER_CAPABILITY_IMPLEMENTED ) != 0 )
+        {
+            jdksavdecc_printer_print_label( self, "controller_capabilities" );
             jdksavdecc_printer_print_32bit_names(
-                self, jdksavdecc_adpdu_print_controller_capabilities, p->controller_capabilities);
-            jdksavdecc_printer_print_eol(self);
+                self, jdksavdecc_adpdu_print_controller_capabilities, p->controller_capabilities );
+            jdksavdecc_printer_print_eol( self );
         }
 
-        if ((p->entity_capabilities & JDKSAVDECC_ADP_ENTITY_CAPABILITY_GPTP_SUPPORTED) != 0) {
-            jdksavdecc_printer_print_label(self, "gptp_grandmaster_id");
-            jdksavdecc_printer_print_eui64(self, p->gptp_grandmaster_id);
-            jdksavdecc_printer_print_eol(self);
+        if ( ( p->entity_capabilities & JDKSAVDECC_ADP_ENTITY_CAPABILITY_GPTP_SUPPORTED ) != 0 )
+        {
+            jdksavdecc_printer_print_label( self, "gptp_grandmaster_id" );
+            jdksavdecc_printer_print_eui64( self, p->gptp_grandmaster_id );
+            jdksavdecc_printer_print_eol( self );
 
-            jdksavdecc_printer_print_label(self, "gptp_domain_number");
-            jdksavdecc_printer_print_uint16(self, p->gptp_domain_number);
-            jdksavdecc_printer_print_eol(self);
+            jdksavdecc_printer_print_label( self, "gptp_domain_number" );
+            jdksavdecc_printer_print_uint16( self, p->gptp_domain_number );
+            jdksavdecc_printer_print_eol( self );
         }
 
-        if ((p->entity_capabilities & JDKSAVDECC_ADP_ENTITY_CAPABILITY_AEM_IDENTIFY_CONTROL_INDEX_VALID) != 0) {
-            jdksavdecc_printer_print_label(self, "identify_control_index");
-            jdksavdecc_printer_print_uint16(self, p->identify_control_index);
-            jdksavdecc_printer_print_eol(self);
+        if ( ( p->entity_capabilities & JDKSAVDECC_ADP_ENTITY_CAPABILITY_AEM_IDENTIFY_CONTROL_INDEX_VALID ) != 0 )
+        {
+            jdksavdecc_printer_print_label( self, "identify_control_index" );
+            jdksavdecc_printer_print_uint16( self, p->identify_control_index );
+            jdksavdecc_printer_print_eol( self );
         }
 
-        if ((p->entity_capabilities & JDKSAVDECC_ADP_ENTITY_CAPABILITY_AEM_INTERFACE_INDEX_VALID) != 0) {
-            jdksavdecc_printer_print_label(self, "interface_index");
-            jdksavdecc_printer_print_uint16(self, p->interface_index);
-            jdksavdecc_printer_print_eol(self);
+        if ( ( p->entity_capabilities & JDKSAVDECC_ADP_ENTITY_CAPABILITY_AEM_INTERFACE_INDEX_VALID ) != 0 )
+        {
+            jdksavdecc_printer_print_label( self, "interface_index" );
+            jdksavdecc_printer_print_uint16( self, p->interface_index );
+            jdksavdecc_printer_print_eol( self );
         }
 
-        if ((p->entity_capabilities & JDKSAVDECC_ADP_ENTITY_CAPABILITY_ASSOCIATION_ID_VALID) != 0) {
-            jdksavdecc_printer_print_label(self, "association_id");
-            jdksavdecc_printer_print_eui64(self, p->association_id);
-            jdksavdecc_printer_print_eol(self);
+        if ( ( p->entity_capabilities & JDKSAVDECC_ADP_ENTITY_CAPABILITY_ASSOCIATION_ID_VALID ) != 0 )
+        {
+            jdksavdecc_printer_print_label( self, "association_id" );
+            jdksavdecc_printer_print_eui64( self, p->association_id );
+            jdksavdecc_printer_print_eol( self );
         }
     }
 }

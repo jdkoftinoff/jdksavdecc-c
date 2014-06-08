@@ -51,10 +51,10 @@ extern struct jdksavdecc_uint16_name jdksavdecc_acmpdu_print_message_type[];
 extern struct jdksavdecc_uint16_name jdksavdecc_acmpdu_print_status[];
 extern struct jdksavdecc_16bit_name jdksavdecc_acmpdu_print_flags[];
 
-void jdksavdecc_acmpdu_print_common_control_header(struct jdksavdecc_printer *self,
-                                                   struct jdksavdecc_acmpdu_common_control_header const *p);
+void jdksavdecc_acmpdu_print_common_control_header( struct jdksavdecc_printer *self,
+                                                    struct jdksavdecc_acmpdu_common_control_header const *p );
 
-void jdksavdecc_acmpdu_print(struct jdksavdecc_printer *self, struct jdksavdecc_acmpdu const *p);
+void jdksavdecc_acmpdu_print( struct jdksavdecc_printer *self, struct jdksavdecc_acmpdu const *p );
 
 /*@}*/
 

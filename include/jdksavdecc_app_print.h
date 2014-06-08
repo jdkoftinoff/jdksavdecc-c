@@ -48,7 +48,7 @@ extern "C" {
 
 extern struct jdksavdecc_uint16_name jdksavdecc_appdu_print_message_type[];
 
-void jdksavdecc_appdu_print_header(struct jdksavdecc_printer *self, struct jdksavdecc_appdu const *p);
+void jdksavdecc_appdu_print_header( struct jdksavdecc_printer *self, struct jdksavdecc_appdu const *p );
 
 /*@}*/
 

@@ -47,36 +47,36 @@ extern "C" {
 /** \addtogroup aecpdu_aem AECPDU AEM - Clause 9.2.1.2 */
 /*@{*/
 
-#define JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0)
-#define JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8)
-#define JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10)
-#define JDKSAVDECC_AECPDU_AEM_LEN (JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12)
+#define JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0 )
+#define JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
+#define JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
+#define JDKSAVDECC_AECPDU_AEM_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 
 /*@}*/
 
 /** \addtogroup aecpdu_aem_status AECPDU AEM status field - Clause 7.4  */
 /*@{*/
 
-#define JDKSAVDECC_AEM_STATUS_SUCCESS (0)
-#define JDKSAVDECC_AEM_STATUS_NOT_IMPLEMENTED (1)
-#define JDKSAVDECC_AEM_STATUS_NO_SUCH_DESCRIPTOR (2)
-#define JDKSAVDECC_AEM_STATUS_ENTITY_LOCKED (3)
-#define JDKSAVDECC_AEM_STATUS_ENTITY_ACQUIRED (4)
-#define JDKSAVDECC_AEM_STATUS_NOT_AUTHENTICATED (5)
-#define JDKSAVDECC_AEM_STATUS_AUTHENTICATION_DISABLED (6)
-#define JDKSAVDECC_AEM_STATUS_BAD_ARGUMENTS (7)
-#define JDKSAVDECC_AEM_STATUS_NO_RESOURCES (8)
-#define JDKSAVDECC_AEM_STATUS_IN_PROGRESS (9)
-#define JDKSAVDECC_AEM_STATUS_ENTITY_MISBEHAVING (10)
-#define JDKSAVDECC_AEM_STATUS_NOT_SUPPORTED (11)
-#define JDKSAVDECC_AEM_STATUS_STREAM_IS_RUNNING (12)
+#define JDKSAVDECC_AEM_STATUS_SUCCESS ( 0 )
+#define JDKSAVDECC_AEM_STATUS_NOT_IMPLEMENTED ( 1 )
+#define JDKSAVDECC_AEM_STATUS_NO_SUCH_DESCRIPTOR ( 2 )
+#define JDKSAVDECC_AEM_STATUS_ENTITY_LOCKED ( 3 )
+#define JDKSAVDECC_AEM_STATUS_ENTITY_ACQUIRED ( 4 )
+#define JDKSAVDECC_AEM_STATUS_NOT_AUTHENTICATED ( 5 )
+#define JDKSAVDECC_AEM_STATUS_AUTHENTICATION_DISABLED ( 6 )
+#define JDKSAVDECC_AEM_STATUS_BAD_ARGUMENTS ( 7 )
+#define JDKSAVDECC_AEM_STATUS_NO_RESOURCES ( 8 )
+#define JDKSAVDECC_AEM_STATUS_IN_PROGRESS ( 9 )
+#define JDKSAVDECC_AEM_STATUS_ENTITY_MISBEHAVING ( 10 )
+#define JDKSAVDECC_AEM_STATUS_NOT_SUPPORTED ( 11 )
+#define JDKSAVDECC_AEM_STATUS_STREAM_IS_RUNNING ( 12 )
 
 /*@}*/
 
 /** \addtogroup aecpdu_aem_timeouts AECP AEM timeouts - Clause 9.2.1.2.5 */
 /*@{*/
-#define JDKSAVDECC_AEM_TIMEOUT_IN_MS (250)
-#define JDKSAVDECC_AEM_IN_PROGRESS_TIMEOUT_IN_MS (120)
+#define JDKSAVDECC_AEM_TIMEOUT_IN_MS ( 250 )
+#define JDKSAVDECC_AEM_IN_PROGRESS_TIMEOUT_IN_MS ( 120 )
 /*@}*/
 
 /**
@@ -91,8 +91,9 @@ extern "C" {
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_eui64 controller_entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_aem_get_controller_entity_id(void const *base, ssize_t pos) {
-    return jdksavdecc_eui64_get(base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID);
+static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_aem_get_controller_entity_id( void const *base, ssize_t pos )
+{
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID );
 }
 
 /**
@@ -107,8 +108,9 @@ static inline struct jdksavdecc_eui64 jdksavdecc_aecpdu_aem_get_controller_entit
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aecpdu_aem_set_controller_entity_id(struct jdksavdecc_eui64 v, void *base, ssize_t pos) {
-    jdksavdecc_eui64_set(v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID);
+static inline void jdksavdecc_aecpdu_aem_set_controller_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+{
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_CONTROLLER_ENTITY_ID );
 }
 
 /**
@@ -123,8 +125,9 @@ static inline void jdksavdecc_aecpdu_aem_set_controller_entity_id(struct jdksavd
  * @param pos offset from base to read the field from;
  * @return the uint16_t sequence_id value
  */
-static inline uint16_t jdksavdecc_aecpdu_aem_get_sequence_id(void const *base, ssize_t pos) {
-    return jdksavdecc_uint16_get(base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID);
+static inline uint16_t jdksavdecc_aecpdu_aem_get_sequence_id( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID );
 }
 
 /**
@@ -139,8 +142,9 @@ static inline uint16_t jdksavdecc_aecpdu_aem_get_sequence_id(void const *base, s
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aecpdu_aem_set_sequence_id(uint16_t v, void *base, ssize_t pos) {
-    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID);
+static inline void jdksavdecc_aecpdu_aem_set_sequence_id( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_SEQUENCE_ID );
 }
 
 /**
@@ -155,8 +159,9 @@ static inline void jdksavdecc_aecpdu_aem_set_sequence_id(uint16_t v, void *base,
  * @param pos offset from base to read the field from;
  * @return the uint16_t command_type value
  */
-static inline uint16_t jdksavdecc_aecpdu_aem_get_command_type(void const *base, ssize_t pos) {
-    return jdksavdecc_uint16_get(base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE);
+static inline uint16_t jdksavdecc_aecpdu_aem_get_command_type( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE );
 }
 
 /**
@@ -171,8 +176,9 @@ static inline uint16_t jdksavdecc_aecpdu_aem_get_command_type(void const *base, 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aecpdu_aem_set_command_type(uint16_t v, void *base, ssize_t pos) {
-    jdksavdecc_uint16_set(v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE);
+static inline void jdksavdecc_aecpdu_aem_set_command_type( uint16_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AECPDU_AEM_OFFSET_COMMAND_TYPE );
 }
 
 /*@}*/
@@ -181,7 +187,8 @@ static inline void jdksavdecc_aecpdu_aem_set_command_type(uint16_t v, void *base
 /*@{*/
 
 /// AECPDU AEM - Clause 9.2.1.2
-struct jdksavdecc_aecpdu_aem {
+struct jdksavdecc_aecpdu_aem
+{
     struct jdksavdecc_aecpdu_common aecpdu_header;
     uint16_t command_type;
 };
@@ -200,11 +207,14 @@ struct jdksavdecc_aecpdu_aem {
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aecpdu_aem_read(struct jdksavdecc_aecpdu_aem *p, void const *base, ssize_t pos, size_t len) {
-    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_AEM_LEN);
-    if (r >= 0) {
-        if( jdksavdecc_aecpdu_common_read(&p->aecpdu_header, base, pos, len) >= 0 ) {
-            p->command_type = jdksavdecc_aecpdu_aem_get_command_type(base, pos);
+static inline ssize_t jdksavdecc_aecpdu_aem_read( struct jdksavdecc_aecpdu_aem *p, void const *base, ssize_t pos, size_t len )
+{
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_AEM_LEN );
+    if ( r >= 0 )
+    {
+        if ( jdksavdecc_aecpdu_common_read( &p->aecpdu_header, base, pos, len ) >= 0 )
+        {
+            p->command_type = jdksavdecc_aecpdu_aem_get_command_type( base, pos );
         }
     }
     return r;
@@ -224,11 +234,13 @@ static inline ssize_t jdksavdecc_aecpdu_aem_read(struct jdksavdecc_aecpdu_aem *p
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aecpdu_aem_write(struct jdksavdecc_aecpdu_aem const *p, void *base, size_t pos, size_t len) {
-    ssize_t r = jdksavdecc_validate_range(pos, len, JDKSAVDECC_AECPDU_AEM_LEN);
-    if (r >= 0) {
-        jdksavdecc_aecpdu_common_write(&p->aecpdu_header, base, pos, len);
-        jdksavdecc_aecpdu_aem_set_command_type(p->command_type, base, pos);
+static inline ssize_t jdksavdecc_aecpdu_aem_write( struct jdksavdecc_aecpdu_aem const *p, void *base, size_t pos, size_t len )
+{
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AECPDU_AEM_LEN );
+    if ( r >= 0 )
+    {
+        jdksavdecc_aecpdu_common_write( &p->aecpdu_header, base, pos, len );
+        jdksavdecc_aecpdu_aem_set_command_type( p->command_type, base, pos );
     }
     return r;
 }

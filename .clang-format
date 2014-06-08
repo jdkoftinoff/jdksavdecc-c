@@ -32,9 +32,9 @@ Standard:        Cpp11
 IndentWidth:     4
 TabWidth:        8
 UseTab:          false
-BreakBeforeBraces: Attach
+BreakBeforeBraces: Allman
 IndentFunctionDeclarationAfterType: true
-SpacesInParentheses: false
+SpacesInParentheses: true
 SpaceInEmptyParentheses: false
 SpacesInCStyleCastParentheses: false
 SpaceAfterControlStatementKeyword: true

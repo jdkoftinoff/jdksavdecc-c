@@ -37,6 +37,3 @@ struct jdksavdecc_eui48 jdksavdecc_jdks_multicast_log = JDKSAVDECC_JDKS_MULTICAS
 struct jdksavdecc_eui64 jdksavdecc_jdks_notifications_controller_entity_id = JDKSAVDECC_JDKS_NOTIFICATIONS_CONTROLLER_ENTITY_ID;
 struct jdksavdecc_eui64 jdksavdecc_jdks_aem_control_log_text = JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT;
 struct jdksavdecc_eui64 jdksavdecc_jdks_aem_control_ipv4_parameters = JDKSAVDECC_JDKS_AEM_CONTROL_IPV4_PARAMETERS;
-
-
-

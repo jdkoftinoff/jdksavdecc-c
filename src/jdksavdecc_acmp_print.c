@@ -78,65 +78,67 @@ struct jdksavdecc_16bit_name jdksavdecc_acmpdu_print_flags[]
        {JDKSAVDECC_ACMP_FLAG_SUPPORTS_ENCRYPTED, "SUPPORTS_ENCRYPTED"}, {JDKSAVDECC_ACMP_FLAG_ENCRYPTED_PDU, "ENCRYPTED_PDU"},
        {JDKSAVDECC_ACMP_FLAG_TALKER_FAILED, "TALKER_FAILED"},           {0, 0}};
 
-void jdksavdecc_acmpdu_print_common_control_header(struct jdksavdecc_printer *self,
-                                                   struct jdksavdecc_acmpdu_common_control_header const *p) {
-    jdksavdecc_printer_print_label(self, "message_type");
-    jdksavdecc_printer_print_uint16_name(self, jdksavdecc_acmpdu_print_message_type, p->message_type);
-    jdksavdecc_printer_print_eol(self);
+void jdksavdecc_acmpdu_print_common_control_header( struct jdksavdecc_printer *self,
+                                                    struct jdksavdecc_acmpdu_common_control_header const *p )
+{
+    jdksavdecc_printer_print_label( self, "message_type" );
+    jdksavdecc_printer_print_uint16_name( self, jdksavdecc_acmpdu_print_message_type, p->message_type );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "status");
-    jdksavdecc_printer_print_uint16_name(self, jdksavdecc_acmpdu_print_status, p->status);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "status" );
+    jdksavdecc_printer_print_uint16_name( self, jdksavdecc_acmpdu_print_status, p->status );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "control_data_length");
-    jdksavdecc_printer_print_uint16(self, p->control_data_length);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "control_data_length" );
+    jdksavdecc_printer_print_uint16( self, p->control_data_length );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "stream_id");
-    jdksavdecc_printer_print_streamid(self, p->stream_id);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "stream_id" );
+    jdksavdecc_printer_print_streamid( self, p->stream_id );
+    jdksavdecc_printer_print_eol( self );
 }
 
-void jdksavdecc_acmpdu_print(struct jdksavdecc_printer *self, struct jdksavdecc_acmpdu const *p) {
-    jdksavdecc_acmpdu_print_common_control_header(self, &p->header);
+void jdksavdecc_acmpdu_print( struct jdksavdecc_printer *self, struct jdksavdecc_acmpdu const *p )
+{
+    jdksavdecc_acmpdu_print_common_control_header( self, &p->header );
 
-    jdksavdecc_printer_print_label(self, "controller_entity_id");
-    jdksavdecc_printer_print_eui64(self, p->controller_entity_id);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "controller_entity_id" );
+    jdksavdecc_printer_print_eui64( self, p->controller_entity_id );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "talker_entity_id");
-    jdksavdecc_printer_print_eui64(self, p->talker_entity_id);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "talker_entity_id" );
+    jdksavdecc_printer_print_eui64( self, p->talker_entity_id );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "listener_entity_id");
-    jdksavdecc_printer_print_eui64(self, p->listener_entity_id);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "listener_entity_id" );
+    jdksavdecc_printer_print_eui64( self, p->listener_entity_id );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "talker_unique_id");
-    jdksavdecc_printer_print_uint16(self, p->talker_unique_id);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "talker_unique_id" );
+    jdksavdecc_printer_print_uint16( self, p->talker_unique_id );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "listener_unique_id");
-    jdksavdecc_printer_print_uint16(self, p->listener_unique_id);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "listener_unique_id" );
+    jdksavdecc_printer_print_uint16( self, p->listener_unique_id );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "stream_dest_mac");
-    jdksavdecc_printer_print_eui48(self, p->stream_dest_mac);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "stream_dest_mac" );
+    jdksavdecc_printer_print_eui48( self, p->stream_dest_mac );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "connection_count");
-    jdksavdecc_printer_print_uint16(self, p->connection_count);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "connection_count" );
+    jdksavdecc_printer_print_uint16( self, p->connection_count );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "sequence_id");
-    jdksavdecc_printer_print_uint16(self, p->sequence_id);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "sequence_id" );
+    jdksavdecc_printer_print_uint16( self, p->sequence_id );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "flags");
-    jdksavdecc_printer_print_16bit_names(self, jdksavdecc_acmpdu_print_flags, p->flags);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "flags" );
+    jdksavdecc_printer_print_16bit_names( self, jdksavdecc_acmpdu_print_flags, p->flags );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "stream_vlan_id");
-    jdksavdecc_printer_print_uint16(self, p->stream_vlan_id);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "stream_vlan_id" );
+    jdksavdecc_printer_print_uint16( self, p->stream_vlan_id );
+    jdksavdecc_printer_print_eol( self );
 }

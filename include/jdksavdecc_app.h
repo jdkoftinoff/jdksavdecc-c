@@ -60,29 +60,29 @@ extern "C" {
 /**\addtogroup appdu_offset APPDU Offsets - See IEEE Std 1722.1-2013 Annex C.4 */
 /*@{*/
 
-#define JDKSAVDECC_APPDU_OFFSET_VERSION (0)        /// See IEEE Std 1722.1-2013 Annex C.4.1
-#define JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE (1)   /// See IEEE Std 1722.1-2013 Annex C.4.2
-#define JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH (2) /// See IEEE Std 1722.1-2013 Annex C.4.3
-#define JDKSAVDECC_APPDU_OFFSET_ADDRESS (4)        /// See IEEE Std 1722.1-2013 Annex C.4.4
-#define JDKSAVDECC_APPDU_OFFSET_RESERVED (10)      /// See IEEE Std 1722.1-2013 Annex C.4
-#define JDKSAVDECC_APPDU_OFFSET_PAYLOAD (12)       /// See IEEE Std 1722.1-2013 Annex C.4.5
-#define JDKSAVDECC_APPDU_HEADER_LEN (12)           /// See IEEE Std 1722.1-2013 Annex C.4
+#define JDKSAVDECC_APPDU_OFFSET_VERSION ( 0 )        /// See IEEE Std 1722.1-2013 Annex C.4.1
+#define JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE ( 1 )   /// See IEEE Std 1722.1-2013 Annex C.4.2
+#define JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH ( 2 ) /// See IEEE Std 1722.1-2013 Annex C.4.3
+#define JDKSAVDECC_APPDU_OFFSET_ADDRESS ( 4 )        /// See IEEE Std 1722.1-2013 Annex C.4.4
+#define JDKSAVDECC_APPDU_OFFSET_RESERVED ( 10 )      /// See IEEE Std 1722.1-2013 Annex C.4
+#define JDKSAVDECC_APPDU_OFFSET_PAYLOAD ( 12 )       /// See IEEE Std 1722.1-2013 Annex C.4.5
+#define JDKSAVDECC_APPDU_HEADER_LEN ( 12 )           /// See IEEE Std 1722.1-2013 Annex C.4
 
 /*@}*/
 
 /**\addtogroup appdu_constants APP constants and message types - See IEEE Std 1722.1-2013 Annex C.4 */
 /*@{*/
 
-#define JDKSAVDECC_APPDU_VERSION (0)                         /// See IEEE Std 1722.1-2013 Annex C.4.1
-#define JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH (1500)           /// See IEEE Std 1722.1-2013 Annex C.4.3
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP (0)                /// See IEEE Std 1722.1-2103 Annex C.5.1.1
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST (1)  /// See IEEE Std 1722.1-2103 Annex C.5.1.2
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE (2) /// See IEEE Std 1722.1-2103 Annex C.5.1.3
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP (3)            /// See IEEE Std 1722.1-2103 Annex C.5.1.4
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN (4)          /// See IEEE Std 1722.1-2103 Annex C.5.1.5
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS (5)    /// See IEEE Std 1722.1-2103 Annex C.5.1.6
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC (6)    /// See IEEE Std 1722.1-2103 Annex C.5.1.7
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR (0xff)          /// See IEEE Std 1722.1-2103 Annex C.5.1.8
+#define JDKSAVDECC_APPDU_VERSION ( 0 )                         /// See IEEE Std 1722.1-2013 Annex C.4.1
+#define JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH ( 1500 )           /// See IEEE Std 1722.1-2013 Annex C.4.3
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP ( 0 )                /// See IEEE Std 1722.1-2103 Annex C.5.1.1
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST ( 1 )  /// See IEEE Std 1722.1-2103 Annex C.5.1.2
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE ( 2 ) /// See IEEE Std 1722.1-2103 Annex C.5.1.3
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP ( 3 )            /// See IEEE Std 1722.1-2103 Annex C.5.1.4
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN ( 4 )          /// See IEEE Std 1722.1-2103 Annex C.5.1.5
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS ( 5 )    /// See IEEE Std 1722.1-2103 Annex C.5.1.6
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC ( 6 )    /// See IEEE Std 1722.1-2103 Annex C.5.1.7
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR ( 0xff )          /// See IEEE Std 1722.1-2103 Annex C.5.1.8
 
 /*@}*/
 
@@ -90,19 +90,20 @@ extern "C" {
 /*@{*/
 
 /// The buffer length is insufficent
-#define JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT (-1)
+#define JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT ( -1 )
 
 /// The network buffer does not contain enough bytes for the declared payload
-#define JDKSAVDECC_APPDU_ERROR_PAYLOAD_INCOMPLETE (-2)
+#define JDKSAVDECC_APPDU_ERROR_PAYLOAD_INCOMPLETE ( -2 )
 
 /// The parsed data does not contain valid data
-#define JDKSAVDECC_APPDU_ERROR_INVALID_HEADER (-3)
+#define JDKSAVDECC_APPDU_ERROR_INVALID_HEADER ( -3 )
 
 /*@}*/
 
 /// The APPDU
 /// Note: payload always points to an existing packet buffer
-struct jdksavdecc_appdu {
+struct jdksavdecc_appdu
+{
     uint8_t version;                 /// See IEEE Std 1722.1-2013 Annex C.4.1
     uint8_t message_type;            /// See IEEE Std 1722.1-2013 Annex C.4.2
     uint16_t payload_length;         /// See IEEE Std 1722.1-2013 Annex C.4.3
@@ -112,7 +113,8 @@ struct jdksavdecc_appdu {
 };
 
 /// The APPDU with pre-allocated payload buffer
-struct jdksavdecc_fullappdu {
+struct jdksavdecc_fullappdu
+{
     struct jdksavdecc_appdu base;
     uint8_t payload_buffer[1500];
 };
@@ -122,13 +124,17 @@ struct jdksavdecc_fullappdu {
  *  It must be manually pointed to a payload or buffer of JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH octets
  */
 
-static inline void jdksavdecc_appdu_init(struct jdksavdecc_appdu *self) { memset(self, 0, sizeof(*self)); }
+static inline void jdksavdecc_appdu_init( struct jdksavdecc_appdu *self )
+{
+    memset( self, 0, sizeof( *self ) );
+}
 
 /** Initialize a jdksavdecc_fullappdu object.
  *  Sets the payload member to point to the payload_buffer array,
  */
-static inline void jdksavdecc_fullappdu_init(struct jdksavdecc_fullappdu *self) {
-    memset(&self->base, 0, sizeof(self->base));
+static inline void jdksavdecc_fullappdu_init( struct jdksavdecc_fullappdu *self )
+{
+    memset( &self->base, 0, sizeof( self->base ) );
     self->base.payload = self->payload_buffer;
 }
 
@@ -136,52 +142,52 @@ static inline void jdksavdecc_fullappdu_init(struct jdksavdecc_fullappdu *self) 
 
 /** Parse a ProxyPDU from a microsupport buffer.
  */
-ssize_t jdksavdecc_appdu_parse_buffer(struct jdksavdecc_appdu *self, us_buffer_t *buffer);
+ssize_t jdksavdecc_appdu_parse_buffer( struct jdksavdecc_appdu *self, us_buffer_t *buffer );
 
 /** Flatten a ProxyPDU into a buffer. Returns true on success */
-ssize_t jdksavdecc_appdu_flatten_to_buffer(struct jdksavdecc_appdu const *self, us_buffer_t *buffer);
+ssize_t jdksavdecc_appdu_flatten_to_buffer( struct jdksavdecc_appdu const *self, us_buffer_t *buffer );
 
 #endif
 
 /** Extract a 64 bit entity_id from the payload into result and return true on sucess */
-bool jdksavdecc_appdu_get_entity_id_from_payload(struct jdksavdecc_appdu const *self, struct jdksavdecc_eui64 *result);
+bool jdksavdecc_appdu_get_entity_id_from_payload( struct jdksavdecc_appdu const *self, struct jdksavdecc_eui64 *result );
 
 /** Create and flatten a NOP message */
-bool jdksavdecc_appdu_set_nop(struct jdksavdecc_appdu *self);
+bool jdksavdecc_appdu_set_nop( struct jdksavdecc_appdu *self );
 
 /** Create an ENTITY_ID_REQUEST message */
-bool jdksavdecc_appdu_set_entity_id_request(struct jdksavdecc_appdu *self,
-                                            struct jdksavdecc_eui48 apc_primary_mac,
-                                            struct jdksavdecc_eui64 entity_id);
+bool jdksavdecc_appdu_set_entity_id_request( struct jdksavdecc_appdu *self,
+                                             struct jdksavdecc_eui48 apc_primary_mac,
+                                             struct jdksavdecc_eui64 entity_id );
 
 /** Create an ENTITY_ID_RESPONSE message */
-bool jdksavdecc_appdu_set_entity_id_response(struct jdksavdecc_appdu *self,
-                                             struct jdksavdecc_eui48 apc_primary_mac,
-                                             struct jdksavdecc_eui64 entity_id);
+bool jdksavdecc_appdu_set_entity_id_response( struct jdksavdecc_appdu *self,
+                                              struct jdksavdecc_eui48 apc_primary_mac,
+                                              struct jdksavdecc_eui64 entity_id );
 
 /** Create a LINK_UP message */
-bool jdksavdecc_appdu_set_link_up(struct jdksavdecc_appdu *self, struct jdksavdecc_eui48 network_port_mac);
+bool jdksavdecc_appdu_set_link_up( struct jdksavdecc_appdu *self, struct jdksavdecc_eui48 network_port_mac );
 
 /** Create a LINK_DOWN message */
-bool jdksavdecc_appdu_set_link_down(struct jdksavdecc_appdu *self, struct jdksavdecc_eui48 network_port_mac);
+bool jdksavdecc_appdu_set_link_down( struct jdksavdecc_appdu *self, struct jdksavdecc_eui48 network_port_mac );
 
 /** Create an AVDECC_FROM_APS message */
-bool jdksavdecc_appdu_set_avdecc_from_aps(struct jdksavdecc_appdu *self,
-                                          struct jdksavdecc_eui48 original_source_address,
-                                          uint16_t payload_length,
-                                          uint8_t const *payload);
+bool jdksavdecc_appdu_set_avdecc_from_aps( struct jdksavdecc_appdu *self,
+                                           struct jdksavdecc_eui48 original_source_address,
+                                           uint16_t payload_length,
+                                           uint8_t const *payload );
 
 /** Create a AVDECC_FROM_APC message */
-bool jdksavdecc_appdu_set_avdecc_from_apc(struct jdksavdecc_appdu *self,
-                                          struct jdksavdecc_eui48 destination_address,
-                                          uint16_t payload_length,
-                                          uint8_t const *payload);
+bool jdksavdecc_appdu_set_avdecc_from_apc( struct jdksavdecc_appdu *self,
+                                           struct jdksavdecc_eui48 destination_address,
+                                           uint16_t payload_length,
+                                           uint8_t const *payload );
 
 /** Create a VENDOR message */
-bool jdksavdecc_appdu_set_vendor(struct jdksavdecc_appdu *self,
-                                 struct jdksavdecc_eui48 vendor_message_type,
-                                 uint16_t payload_length,
-                                 uint8_t const *payload);
+bool jdksavdecc_appdu_set_vendor( struct jdksavdecc_appdu *self,
+                                  struct jdksavdecc_eui48 vendor_message_type,
+                                  uint16_t payload_length,
+                                  uint8_t const *payload );
 
 /**
  * Extract the jdksavdec_appdu structure from a network buffer.
@@ -201,7 +207,7 @@ bool jdksavdecc_appdu_set_vendor(struct jdksavdecc_appdu *self,
  *point to the raw network buffer directly
  *
  */
-ssize_t jdksavdecc_appdu_read(struct jdksavdecc_appdu *p, void const *base, ssize_t pos, size_t len);
+ssize_t jdksavdecc_appdu_read( struct jdksavdecc_appdu *p, void const *base, ssize_t pos, size_t len );
 
 /**
  * Store the jdksavdecc_appdu_write structure to a network buffer.
@@ -216,7 +222,7 @@ ssize_t jdksavdecc_appdu_read(struct jdksavdecc_appdu *p, void const *base, ssiz
  * @return JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT if the buffer length is insufficent
  *         otherwise the offset of the octet following the structure in the buffer.
  */
-ssize_t jdksavdecc_appdu_write(struct jdksavdecc_appdu const *p, void *base, size_t pos, size_t len);
+ssize_t jdksavdecc_appdu_write( struct jdksavdecc_appdu const *p, void *base, size_t pos, size_t len );
 
 /*@}*/
 #ifdef __cplusplus

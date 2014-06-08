@@ -60,7 +60,7 @@ extern "C" {
 
 // Define _W64 macros to mark types changing their size, like intptr_t.
 #ifndef _W64
-#if !defined(__midl) && (defined(_X86_) || defined(_M_IX86)) && _MSC_VER >= 1300
+#if !defined( __midl ) && ( defined( _X86_ ) || defined( _M_IX86 ) ) && _MSC_VER >= 1300
 #define _W64 __w64
 #else
 #define _W64
@@ -74,7 +74,7 @@ extern "C" {
 // Visual Studio 6 and Embedded Visual C++ 4 doesn't
 // realize that, e.g. char has the same size as __int8
 // so we give up on __intX for them.
-#if (_MSC_VER < 1300)
+#if ( _MSC_VER < 1300 )
 typedef signed char int8_t;
 typedef signed short int16_t;
 typedef signed int int32_t;
@@ -127,17 +127,17 @@ typedef uint64_t uintmax_t;
 
 // 7.18.2 Limits of specified-width integer types
 
-#if !defined(__cplusplus) || defined(__STDC_LIMIT_MACROS) // [   See footnote 220 at page 257 and       \
+#if !defined( __cplusplus ) || defined( __STDC_LIMIT_MACROS ) // [   See footnote 220 at page 257 and       \
                                  // footnote 221 at page 259
 
 // 7.18.2.1 Limits of exact-width integer types
-#define INT8_MIN ((int8_t)_I8_MIN)
+#define INT8_MIN ( (int8_t)_I8_MIN )
 #define INT8_MAX _I8_MAX
-#define INT16_MIN ((int16_t)_I16_MIN)
+#define INT16_MIN ( (int16_t)_I16_MIN )
 #define INT16_MAX _I16_MAX
-#define INT32_MIN ((int32_t)_I32_MIN)
+#define INT32_MIN ( (int32_t)_I32_MIN )
 #define INT32_MAX _I32_MAX
-#define INT64_MIN ((int64_t)_I64_MIN)
+#define INT64_MIN ( (int64_t)_I64_MIN )
 #define INT64_MAX _I64_MAX
 #define UINT8_MAX _UI8_MAX
 #define UINT16_MAX _UI16_MAX
@@ -224,19 +224,19 @@ typedef uint64_t uintmax_t;
 
 // 7.18.4 Limits of other integer types
 
-#if !defined(__cplusplus) || defined(__STDC_CONSTANT_MACROS) // [   See footnote 224 at page 260
+#if !defined( __cplusplus ) || defined( __STDC_CONSTANT_MACROS ) // [   See footnote 224 at page 260
 
 // 7.18.4.1 Macros for minimum-width integer constants
 
-#define INT8_C(val) val##i8
-#define INT16_C(val) val##i16
-#define INT32_C(val) val##i32
-#define INT64_C(val) val##i64
+#define INT8_C( val ) val##i8
+#define INT16_C( val ) val##i16
+#define INT32_C( val ) val##i32
+#define INT64_C( val ) val##i64
 
-#define UINT8_C(val) val##ui8
-#define UINT16_C(val) val##ui16
-#define UINT32_C(val) val##ui32
-#define UINT64_C(val) val##ui64
+#define UINT8_C( val ) val##ui8
+#define UINT16_C( val ) val##ui16
+#define UINT32_C( val ) val##ui32
+#define UINT64_C( val ) val##ui64
 
 // 7.18.4.2 Macros for greatest-width integer constants
 // These #ifndef's are needed to prevent collisions with <boost/cstdint.hpp>.

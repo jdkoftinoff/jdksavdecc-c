@@ -41,11 +41,11 @@
 #include "jdksavdecc_msstdint.h"
 #include "jdksavdecc_msinttypes.h"
 #else
-# ifdef _WIN64
+#ifdef _WIN64
 typedef __int64 ssize_t;
-# else
+#else
 typedef __int32 ssize_t;
-# endif
+#endif
 #include <stdint.h>
 #include <inttypes.h>
 #include <stdbool.h>

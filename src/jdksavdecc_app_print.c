@@ -44,24 +44,25 @@ struct jdksavdecc_uint16_name jdksavdecc_appdu_print_message_type[]
        {JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR, "VENDOR"},
        {0, 0}};
 
-void jdksavdecc_appdu_print_header(struct jdksavdecc_printer *self, struct jdksavdecc_appdu const *p) {
-    jdksavdecc_printer_print_label(self, "version");
-    jdksavdecc_printer_print_uint8(self, p->version);
-    jdksavdecc_printer_print_eol(self);
+void jdksavdecc_appdu_print_header( struct jdksavdecc_printer *self, struct jdksavdecc_appdu const *p )
+{
+    jdksavdecc_printer_print_label( self, "version" );
+    jdksavdecc_printer_print_uint8( self, p->version );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "message_type");
-    jdksavdecc_printer_print_uint16_name(self, jdksavdecc_appdu_print_message_type, p->message_type);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "message_type" );
+    jdksavdecc_printer_print_uint16_name( self, jdksavdecc_appdu_print_message_type, p->message_type );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "payload_length");
-    jdksavdecc_printer_print_uint16(self, p->payload_length);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "payload_length" );
+    jdksavdecc_printer_print_uint16( self, p->payload_length );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "address");
-    jdksavdecc_printer_print_eui48(self, p->address);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "address" );
+    jdksavdecc_printer_print_eui48( self, p->address );
+    jdksavdecc_printer_print_eol( self );
 
-    jdksavdecc_printer_print_label(self, "reserved");
-    jdksavdecc_printer_print_uint16(self, p->reserved);
-    jdksavdecc_printer_print_eol(self);
+    jdksavdecc_printer_print_label( self, "reserved" );
+    jdksavdecc_printer_print_uint16( self, p->reserved );
+    jdksavdecc_printer_print_eol( self );
 }

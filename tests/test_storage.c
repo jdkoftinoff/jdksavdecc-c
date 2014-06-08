@@ -33,28 +33,28 @@
 #include "jdksavdecc_world.h"
 #include "test/jdksavdecc_test_descriptor_storage.h"
 
-int main( int argc, const char **argv ) {
-    bool r=false;
+int main( int argc, const char **argv )
+{
+    bool r = false;
 #ifdef TODO
     struct jdksavdecc_descriptor_storage storage;
-    if( jdksavdecc_test_descriptor_storage_create(&storage) ) {
+    if ( jdksavdecc_test_descriptor_storage_create( &storage ) )
+    {
         uint8_t descriptor_buffer[JDKSAVDECC_AEM_DESCRIPTOR_SIZE];
         uint16_t descriptor_len;
 
         descriptor_len = storage.base.read_descriptor(
-                    &storage.base,
-                    0,
-                    JDKSAVDECC_DESCRIPTOR_ENTITY,0,
-                    descriptor_buffer,
-                    sizeof(descriptor_buffer)
-                    );
-        if( descriptor_len==0 ) {
-            fprintf(stderr,"Unable to read entity descriptor\n");
-        } else {
-            fprintf(stdout, "Read entity descriptor, length %d\n", descriptor_len );
-            r=true;
+            &storage.base, 0, JDKSAVDECC_DESCRIPTOR_ENTITY, 0, descriptor_buffer, sizeof( descriptor_buffer ) );
+        if ( descriptor_len == 0 )
+        {
+            fprintf( stderr, "Unable to read entity descriptor\n" );
+        }
+        else
+        {
+            fprintf( stdout, "Read entity descriptor, length %d\n", descriptor_len );
+            r = true;
         }
     }
 #endif
-    return r ? 0:255;
+    return r ? 0 : 255;
 }
