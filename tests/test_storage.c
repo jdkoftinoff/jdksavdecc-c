@@ -33,7 +33,7 @@
 #include "jdksavdecc_world.h"
 #include "test/jdksavdecc_test_descriptor_storage.h"
 
-int main( int argc, const char **argv )
+int main()
 {
     bool r = false;
 #ifdef TODO
