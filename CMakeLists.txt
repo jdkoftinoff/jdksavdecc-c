@@ -7,7 +7,7 @@ option(TESTS "Enable building of extended test code in library" ON)
 option(EXAMPLES "Enable building of example programs" ON)
 option(TOOLS "Enable building of tools" ON)
 
-if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
+if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake|MSBuild)")
     add_definitions("/W2")
 else()
     add_definitions("-Wall -Wextra")
