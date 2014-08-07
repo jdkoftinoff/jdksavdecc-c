@@ -34,13 +34,6 @@ endif()
 
 add_library (jdksavdecc-c ${JDKSAVDECC_C_SRC} ${JDKSAVDECC_C_INCLUDES})
 
-INSTALL(TARGETS jdksavdecc-c DESTINATION "lib")
-
-INSTALL(FILES
-   ${JDKSAVDECC_C_INCLUDES}
-   DESTINATION include
-)
-
 link_directories( ${JDKSAVDECC_C_BINARY_DIR} )
 
 
@@ -71,4 +64,15 @@ if(TESTS MATCHES "ON")
       add_test(NAME ${testname} COMMAND ${testname} )
    endforeach(item)
 endif()
+
+INSTALL(TARGETS jdksavdecc-c DESTINATION "lib" EXPORT jdksavdecc-c-exports.cmake)
+
+EXPORT(TARGETS jdksavdecc-c FILE jdksavdecc-c-exports.cmake)
+
+INSTALL(FILES
+   ${JDKSAVDECC_C_INCLUDES}
+   DESTINATION include
+)
+
+INSTALL(EXPORT jdksavdecc-c-exports.cmake DESTINATION "lib")
 
