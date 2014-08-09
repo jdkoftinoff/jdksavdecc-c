@@ -85,18 +85,18 @@ struct jdksavdecc_eui64_name
 };
 
 char const *jdksavdecc_get_name_for_16bit_value( struct jdksavdecc_16bit_name const names[], uint16_t v );
-uint16_t jdksavdecc_get_16bit_value_for_name( struct jdksavdecc_16bit_name const names[], char const *name );
+int jdksavdecc_get_16bit_value_for_name( struct jdksavdecc_16bit_name const names[], char const *name, uint16_t *result );
 char const *jdksavdecc_get_name_for_32bit_value( struct jdksavdecc_32bit_name const names[], uint32_t v );
-uint16_t jdksavdecc_get_32bit_value_for_name( struct jdksavdecc_32bit_name const names[], char const *name );
+int jdksavdecc_get_32bit_value_for_name( struct jdksavdecc_32bit_name const names[], char const *name, uint32_t *result );
 
 char const *jdksavdecc_get_name_for_uint16_value( struct jdksavdecc_uint16_name const names[], uint16_t v );
-uint16_t jdksavdecc_get_uint16_value_for_name( struct jdksavdecc_uint16_name const names[], char const *name );
+int jdksavdecc_get_uint16_value_for_name( struct jdksavdecc_uint16_name const names[], char const *name, uint16_t *result );
 
 char const *jdksavdecc_get_name_for_uint32_value( struct jdksavdecc_uint32_name const names[], uint32_t v );
-uint32_t jdksavdecc_get_uint32_value_for_name( struct jdksavdecc_uint32_name const names[], char const *name );
+int jdksavdecc_get_uint32_value_for_name( struct jdksavdecc_uint32_name const names[], char const *name, uint32_t *result );
 
 char const *jdksavdecc_get_name_for_uint64_value( struct jdksavdecc_uint64_name const names[], uint64_t v );
-uint64_t jdksavdecc_get_uint64_value_for_name( struct jdksavdecc_uint64_name const names[], char const *name );
+int jdksavdecc_get_uint64_value_for_name( struct jdksavdecc_uint64_name const names[], char const *name, uint64_t *result );
 
 char const *jdksavdecc_get_name_for_eui48_value( struct jdksavdecc_eui48_name const names[], struct jdksavdecc_eui48 v );
 struct jdksjdksavdecc_eui48 const *avdecc_get_eui48_value_for_name( struct jdksavdecc_eui48_name const names[],
