@@ -275,12 +275,12 @@ void jdksavdecc_aem_set_control_command_print(
     jdksavdecc_printer_print_uint16( self, descriptor_index );
     jdksavdecc_printer_print_eol( self );
     jdksavdecc_printer_print_label( self, "content" );
-    jdksavdecc_printer_print_block(
-        self,
-        p,
-        len,
-        pos + JDKSAVDECC_AEM_COMMAND_SET_CONTROL_COMMAND_OFFSET_VALUES,
-        pos + JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + msg->aecpdu_header.header.control_data_length );
+    jdksavdecc_printer_print_block( self,
+                                    p,
+                                    len,
+                                    pos + JDKSAVDECC_AEM_COMMAND_SET_CONTROL_COMMAND_OFFSET_VALUES,
+                                    pos + JDKSAVDECC_COMMON_CONTROL_HEADER_LEN
+                                    + msg->aecpdu_header.header.control_data_length );
     jdksavdecc_printer_print_eol( self );
 }
 
@@ -296,12 +296,12 @@ void jdksavdecc_aem_get_control_response_print(
     jdksavdecc_printer_print_uint16( self, descriptor_index );
     jdksavdecc_printer_print_eol( self );
     jdksavdecc_printer_print_label( self, "content" );
-    jdksavdecc_printer_print_block(
-        self,
-        p,
-        len,
-        pos + JDKSAVDECC_AEM_COMMAND_GET_CONTROL_RESPONSE_OFFSET_VALUES,
-        pos + JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + msg->aecpdu_header.header.control_data_length );
+    jdksavdecc_printer_print_block( self,
+                                    p,
+                                    len,
+                                    pos + JDKSAVDECC_AEM_COMMAND_GET_CONTROL_RESPONSE_OFFSET_VALUES,
+                                    pos + JDKSAVDECC_COMMON_CONTROL_HEADER_LEN
+                                    + msg->aecpdu_header.header.control_data_length );
     jdksavdecc_printer_print_eol( self );
 }
 
@@ -317,12 +317,12 @@ void jdksavdecc_aem_set_control_response_print(
     jdksavdecc_printer_print_uint16( self, descriptor_index );
     jdksavdecc_printer_print_eol( self );
     jdksavdecc_printer_print_label( self, "content" );
-    jdksavdecc_printer_print_block(
-        self,
-        p,
-        len,
-        pos + JDKSAVDECC_AEM_COMMAND_SET_CONTROL_COMMAND_OFFSET_VALUES,
-        pos + JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + msg->aecpdu_header.header.control_data_length );
+    jdksavdecc_printer_print_block( self,
+                                    p,
+                                    len,
+                                    pos + JDKSAVDECC_AEM_COMMAND_SET_CONTROL_COMMAND_OFFSET_VALUES,
+                                    pos + JDKSAVDECC_COMMON_CONTROL_HEADER_LEN
+                                    + msg->aecpdu_header.header.control_data_length );
     jdksavdecc_printer_print_eol( self );
 }
 
@@ -359,12 +359,12 @@ void jdksavdecc_aem_command_print(
         break;
     default:
         jdksavdecc_printer_print_label( self, "content" );
-        jdksavdecc_printer_print_block(
-            self,
-            p,
-            len,
-            pos + JDKSAVDECC_AECPDU_AEM_LEN,
-            pos + JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + msg->aecpdu_header.header.control_data_length );
+        jdksavdecc_printer_print_block( self,
+                                        p,
+                                        len,
+                                        pos + JDKSAVDECC_AECPDU_AEM_LEN,
+                                        pos + JDKSAVDECC_COMMON_CONTROL_HEADER_LEN
+                                        + msg->aecpdu_header.header.control_data_length );
         jdksavdecc_printer_print_block( self,
                                         p,
                                         len,

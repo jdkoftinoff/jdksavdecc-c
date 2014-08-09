@@ -72,11 +72,14 @@ struct jdksavdecc_uint16_name jdksavdecc_acmpdu_print_status[]
        {JDKSAVDECC_ACMP_STATUS_NOT_SUPPORTED, "NOT_SUPPORTED"},
        {0, 0}};
 
-struct jdksavdecc_16bit_name jdksavdecc_acmpdu_print_flags[]
-    = {{JDKSAVDECC_ACMP_FLAG_CLASS_B, "CLASS B"},                       {JDKSAVDECC_ACMP_FLAG_FAST_CONNECT, "FAST_CONNECT"},
-       {JDKSAVDECC_ACMP_FLAG_SAVED_STATE, "SAVED_STATE"},               {JDKSAVDECC_ACMP_FLAG_STREAMING_WAIT, "STREAMING_WAIT"},
-       {JDKSAVDECC_ACMP_FLAG_SUPPORTS_ENCRYPTED, "SUPPORTS_ENCRYPTED"}, {JDKSAVDECC_ACMP_FLAG_ENCRYPTED_PDU, "ENCRYPTED_PDU"},
-       {JDKSAVDECC_ACMP_FLAG_TALKER_FAILED, "TALKER_FAILED"},           {0, 0}};
+struct jdksavdecc_16bit_name jdksavdecc_acmpdu_print_flags[] = {{JDKSAVDECC_ACMP_FLAG_CLASS_B, "CLASS B"},
+                                                                {JDKSAVDECC_ACMP_FLAG_FAST_CONNECT, "FAST_CONNECT"},
+                                                                {JDKSAVDECC_ACMP_FLAG_SAVED_STATE, "SAVED_STATE"},
+                                                                {JDKSAVDECC_ACMP_FLAG_STREAMING_WAIT, "STREAMING_WAIT"},
+                                                                {JDKSAVDECC_ACMP_FLAG_SUPPORTS_ENCRYPTED, "SUPPORTS_ENCRYPTED"},
+                                                                {JDKSAVDECC_ACMP_FLAG_ENCRYPTED_PDU, "ENCRYPTED_PDU"},
+                                                                {JDKSAVDECC_ACMP_FLAG_TALKER_FAILED, "TALKER_FAILED"},
+                                                                {0, 0}};
 
 void jdksavdecc_acmpdu_print_common_control_header( struct jdksavdecc_printer *self,
                                                     struct jdksavdecc_acmpdu_common_control_header const *p )
