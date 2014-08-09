@@ -335,7 +335,7 @@ int jdksavdecc_get_32bit_value_for_name( struct jdksavdecc_32bit_name const name
     {
         if ( strcmp( name, names[i].name ) == 0 )
         {
-            *result=names[i].bit_value;
+            *result = names[i].bit_value;
             return 1;
         }
         ++i;
@@ -351,7 +351,7 @@ int jdksavdecc_get_uint16_value_for_name( struct jdksavdecc_uint16_name const na
     {
         if ( strcmp( name, names[i].name ) == 0 )
         {
-            *result=names[i].value;
+            *result = names[i].value;
             return 1;
         }
         ++i;
@@ -382,7 +382,7 @@ int jdksavdecc_get_uint32_value_for_name( struct jdksavdecc_uint32_name const na
     {
         if ( strcmp( name, names[i].name ) == 0 )
         {
-            *result=names[i].value;
+            *result = names[i].value;
             return 1;
         }
         ++i;
@@ -413,7 +413,7 @@ int jdksavdecc_get_uint64_value_for_name( struct jdksavdecc_uint64_name const na
     {
         if ( strcmp( name, names[i].name ) == 0 )
         {
-            *result=names[i].value;
+            *result = names[i].value;
             return 1;
         }
         ++i;

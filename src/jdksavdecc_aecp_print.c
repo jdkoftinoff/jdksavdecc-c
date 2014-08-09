@@ -71,13 +71,15 @@ struct jdksavdecc_uint16_name jdksavdecc_aecp_aa_print_status[]
        {JDKSAVDECC_AECP_AA_STATUS_UNSUPPORTED, "UNSUPPORTED"},
        {0, 0}};
 
-struct jdksavdecc_uint16_name jdksavdecc_aecp_aa_print_mode[]
-    = {{JDKSAVDECC_AECP_AA_MODE_READ, "READ"},       {JDKSAVDECC_AECP_AA_MODE_WRITE, "WRITE"},
-       {JDKSAVDECC_AECP_AA_MODE_EXECUTE, "EXECUTE"}, {0, 0}};
+struct jdksavdecc_uint16_name jdksavdecc_aecp_aa_print_mode[] = {{JDKSAVDECC_AECP_AA_MODE_READ, "READ"},
+                                                                 {JDKSAVDECC_AECP_AA_MODE_WRITE, "WRITE"},
+                                                                 {JDKSAVDECC_AECP_AA_MODE_EXECUTE, "EXECUTE"},
+                                                                 {0, 0}};
 
-struct jdksavdecc_uint16_name jdksavdecc_aecp_avc_print_status[]
-    = {{JDKSAVDECC_AECP_AVC_STATUS_SUCCESS, "SUCCESS"}, {JDKSAVDECC_AECP_AVC_STATUS_NOT_IMPLEMENTED, "IMPLEMENTED"},
-       {JDKSAVDECC_AECP_AVC_STATUS_FAILURE, "FAILURE"}, {0, 0}};
+struct jdksavdecc_uint16_name jdksavdecc_aecp_avc_print_status[] = {{JDKSAVDECC_AECP_AVC_STATUS_SUCCESS, "SUCCESS"},
+                                                                    {JDKSAVDECC_AECP_AVC_STATUS_NOT_IMPLEMENTED, "IMPLEMENTED"},
+                                                                    {JDKSAVDECC_AECP_AVC_STATUS_FAILURE, "FAILURE"},
+                                                                    {0, 0}};
 
 struct jdksavdecc_uint16_name jdksavdecc_aecp_hdcp_apm_print_status[]
     = {{JDKSAVDECC_AECP_HDCP_APM_STATUS_SUCCESS, "SUCCESS"},
@@ -183,71 +185,71 @@ void jdksavdecc_aecp_print(
         jdksavdecc_printer_print_uint16( self, jdksavdecc_aecp_aa_get_tlv_count( p, pos ) );
         jdksavdecc_printer_print_eol( self );
         jdksavdecc_printer_print_label( self, "payload" );
-        jdksavdecc_printer_print_block(
-            self,
-            p,
-            len,
-            pos + JDKSAVDECC_AECPDU_AA_LEN,
-            pos + msg->header.control_data_length - ( JDKSAVDECC_AECPDU_AA_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
+        jdksavdecc_printer_print_block( self,
+                                        p,
+                                        len,
+                                        pos + JDKSAVDECC_AECPDU_AA_LEN,
+                                        pos + msg->header.control_data_length
+                                        - ( JDKSAVDECC_AECPDU_AA_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
         jdksavdecc_printer_print_eol( self );
         break;
     case JDKSAVDECC_AECP_MESSAGE_TYPE_AVC_COMMAND:
     case JDKSAVDECC_AECP_MESSAGE_TYPE_AVC_RESPONSE:
         jdksavdecc_aecp_common_print( self, msg );
         jdksavdecc_printer_print_label( self, "payload" );
-        jdksavdecc_printer_print_block(
-            self,
-            p,
-            len,
-            pos + JDKSAVDECC_AECPDU_COMMON_LEN,
-            pos + msg->header.control_data_length - ( JDKSAVDECC_AECPDU_COMMON_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
+        jdksavdecc_printer_print_block( self,
+                                        p,
+                                        len,
+                                        pos + JDKSAVDECC_AECPDU_COMMON_LEN,
+                                        pos + msg->header.control_data_length
+                                        - ( JDKSAVDECC_AECPDU_COMMON_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
         jdksavdecc_printer_print_eol( self );
         break;
     case JDKSAVDECC_AECP_MESSAGE_TYPE_HDCP_APM_COMMAND:
     case JDKSAVDECC_AECP_MESSAGE_TYPE_HDCP_APM_RESPONSE:
         jdksavdecc_aecp_common_print( self, msg );
         jdksavdecc_printer_print_label( self, "payload" );
-        jdksavdecc_printer_print_block(
-            self,
-            p,
-            len,
-            pos + JDKSAVDECC_AECPDU_COMMON_LEN,
-            pos + msg->header.control_data_length - ( JDKSAVDECC_AECPDU_COMMON_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
+        jdksavdecc_printer_print_block( self,
+                                        p,
+                                        len,
+                                        pos + JDKSAVDECC_AECPDU_COMMON_LEN,
+                                        pos + msg->header.control_data_length
+                                        - ( JDKSAVDECC_AECPDU_COMMON_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
         jdksavdecc_printer_print_eol( self );
         break;
     case JDKSAVDECC_AECP_MESSAGE_TYPE_VENDOR_UNIQUE_COMMAND:
     case JDKSAVDECC_AECP_MESSAGE_TYPE_VENDOR_UNIQUE_RESPONSE:
         jdksavdecc_aecp_common_print( self, msg );
         jdksavdecc_printer_print_label( self, "payload" );
-        jdksavdecc_printer_print_block(
-            self,
-            p,
-            len,
-            pos + JDKSAVDECC_AECPDU_COMMON_LEN,
-            pos + msg->header.control_data_length - ( JDKSAVDECC_AECPDU_COMMON_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
+        jdksavdecc_printer_print_block( self,
+                                        p,
+                                        len,
+                                        pos + JDKSAVDECC_AECPDU_COMMON_LEN,
+                                        pos + msg->header.control_data_length
+                                        - ( JDKSAVDECC_AECPDU_COMMON_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
         jdksavdecc_printer_print_eol( self );
         break;
     case JDKSAVDECC_AECP_MESSAGE_TYPE_EXTENDED_COMMAND:
     case JDKSAVDECC_AECP_MESSAGE_TYPE_EXTENDED_RESPONSE:
         jdksavdecc_aecp_common_print( self, msg );
         jdksavdecc_printer_print_label( self, "payload" );
-        jdksavdecc_printer_print_block(
-            self,
-            p,
-            len,
-            pos + JDKSAVDECC_AECPDU_COMMON_LEN,
-            pos + msg->header.control_data_length - ( JDKSAVDECC_AECPDU_COMMON_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
+        jdksavdecc_printer_print_block( self,
+                                        p,
+                                        len,
+                                        pos + JDKSAVDECC_AECPDU_COMMON_LEN,
+                                        pos + msg->header.control_data_length
+                                        - ( JDKSAVDECC_AECPDU_COMMON_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
         jdksavdecc_printer_print_eol( self );
         break;
     default:
         jdksavdecc_aecp_common_print( self, msg );
         jdksavdecc_printer_print_label( self, "payload" );
-        jdksavdecc_printer_print_block(
-            self,
-            p,
-            len,
-            pos + JDKSAVDECC_AECPDU_COMMON_LEN,
-            pos + msg->header.control_data_length - ( JDKSAVDECC_AECPDU_COMMON_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
+        jdksavdecc_printer_print_block( self,
+                                        p,
+                                        len,
+                                        pos + JDKSAVDECC_AECPDU_COMMON_LEN,
+                                        pos + msg->header.control_data_length
+                                        - ( JDKSAVDECC_AECPDU_COMMON_LEN - JDKSAVDECC_COMMON_CONTROL_HEADER_LEN ) );
         jdksavdecc_printer_print_eol( self );
         break;
     }
