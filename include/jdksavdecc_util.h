@@ -567,6 +567,8 @@ static inline void jdksavdecc_eui48_init_from_uint64( struct jdksavdecc_eui48 *s
     self->value[5] = ( uint8_t )( ( other >> ( 0 * 8 ) ) & 0xff );
 }
 
+int jdksavdecc_eui48_init_from_cstr( struct jdksavdecc_eui48 *self, const char *str );
+
 static inline uint64_t jdksavdecc_eui48_convert_to_uint64( struct jdksavdecc_eui48 const *self )
 {
     uint64_t v = 0;
@@ -679,6 +681,8 @@ static inline void jdksavdecc_eui64_init_from_uint64( struct jdksavdecc_eui64 *s
     self->value[6] = ( uint8_t )( ( other >> ( 1 * 8 ) ) & 0xff );
     self->value[7] = ( uint8_t )( ( other >> ( 0 * 8 ) ) & 0xff );
 }
+
+int jdksavdecc_eui64_init_from_cstr( struct jdksavdecc_eui64 *self, const char *str );
 
 static inline uint64_t jdksavdecc_eui64_convert_to_uint64( struct jdksavdecc_eui64 const *self )
 {

@@ -296,7 +296,7 @@ char const *jdksavdecc_get_name_for_16bit_value( struct jdksavdecc_16bit_name co
     return 0;
 }
 
-uint16_t jdksavdecc_get_16bit_value_for_name( struct jdksavdecc_16bit_name const names[], char const *name )
+int jdksavdecc_get_16bit_value_for_name( struct jdksavdecc_16bit_name const names[], char const *name, uint16_t *result )
 {
     int i = 0;
 
@@ -304,7 +304,8 @@ uint16_t jdksavdecc_get_16bit_value_for_name( struct jdksavdecc_16bit_name const
     {
         if ( strcmp( name, names[i].name ) == 0 )
         {
-            return names[i].bit_value;
+            *result = names[i].bit_value;
+            return 1;
         }
         ++i;
     }
@@ -326,7 +327,7 @@ char const *jdksavdecc_get_name_for_32bit_value( struct jdksavdecc_32bit_name co
     return 0;
 }
 
-uint16_t jdksavdecc_get_32bit_value_for_name( struct jdksavdecc_32bit_name const names[], char const *name )
+int jdksavdecc_get_32bit_value_for_name( struct jdksavdecc_32bit_name const names[], char const *name, uint32_t *result )
 {
     int i = 0;
 
@@ -334,14 +335,15 @@ uint16_t jdksavdecc_get_32bit_value_for_name( struct jdksavdecc_32bit_name const
     {
         if ( strcmp( name, names[i].name ) == 0 )
         {
-            return names[i].bit_value;
+            *result=names[i].bit_value;
+            return 1;
         }
         ++i;
     }
     return 0;
 }
 
-uint16_t jdksavdecc_get_uint16_value_for_name( struct jdksavdecc_uint16_name const names[], char const *name )
+int jdksavdecc_get_uint16_value_for_name( struct jdksavdecc_uint16_name const names[], char const *name, uint16_t *result )
 {
     int i = 0;
 
@@ -349,7 +351,8 @@ uint16_t jdksavdecc_get_uint16_value_for_name( struct jdksavdecc_uint16_name con
     {
         if ( strcmp( name, names[i].name ) == 0 )
         {
-            return names[i].value;
+            *result=names[i].value;
+            return 1;
         }
         ++i;
     }
@@ -371,7 +374,7 @@ char const *jdksavdecc_get_name_for_uint16_value( struct jdksavdecc_uint16_name 
     return 0;
 }
 
-uint32_t jdksavdecc_get_uint32_value_for_name( struct jdksavdecc_uint32_name const names[], char const *name )
+int jdksavdecc_get_uint32_value_for_name( struct jdksavdecc_uint32_name const names[], char const *name, uint32_t *result )
 {
     int i = 0;
 
@@ -379,7 +382,8 @@ uint32_t jdksavdecc_get_uint32_value_for_name( struct jdksavdecc_uint32_name con
     {
         if ( strcmp( name, names[i].name ) == 0 )
         {
-            return names[i].value;
+            *result=names[i].value;
+            return 1;
         }
         ++i;
     }
@@ -401,7 +405,7 @@ char const *jdksavdecc_get_name_for_uint32_value( struct jdksavdecc_uint32_name 
     return 0;
 }
 
-uint64_t jdksavdecc_get_uint64_value_for_name( struct jdksavdecc_uint64_name const names[], char const *name )
+int jdksavdecc_get_uint64_value_for_name( struct jdksavdecc_uint64_name const names[], char const *name, uint64_t *result )
 {
     int i = 0;
 
@@ -409,7 +413,8 @@ uint64_t jdksavdecc_get_uint64_value_for_name( struct jdksavdecc_uint64_name con
     {
         if ( strcmp( name, names[i].name ) == 0 )
         {
-            return names[i].value;
+            *result=names[i].value;
+            return 1;
         }
         ++i;
     }
