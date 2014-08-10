@@ -48,6 +48,9 @@ typedef JDKSAVDECC_TIMESTAMP_TYPE jdksavdecc_timestamp_in_microseconds;
 
 typedef JDKSAVDECC_TIMESTAMP_TYPE jdksavdecc_timestamp_in_milliseconds;
 
+int jdksavdecc_util_parse_nibble( uint8_t *result, char d1 );
+int jdksavdecc_util_parse_byte( uint8_t *result, char d1, char d2 );
+
 /**
  * Validate buffer position in a buffer len for an element of elem_size.
  *

@@ -300,14 +300,17 @@ int jdksavdecc_get_16bit_value_for_name( struct jdksavdecc_16bit_name const name
 {
     int i = 0;
 
-    while ( names[i].name )
+    if ( name )
     {
-        if ( strcmp( name, names[i].name ) == 0 )
+        while ( names[i].name )
         {
-            *result = names[i].bit_value;
-            return 1;
+            if ( strcmp( name, names[i].name ) == 0 )
+            {
+                *result = names[i].bit_value;
+                return 1;
+            }
+            ++i;
         }
-        ++i;
     }
     return 0;
 }
@@ -331,14 +334,17 @@ int jdksavdecc_get_32bit_value_for_name( struct jdksavdecc_32bit_name const name
 {
     int i = 0;
 
-    while ( names[i].name )
+    if ( name )
     {
-        if ( strcmp( name, names[i].name ) == 0 )
+        while ( names[i].name )
         {
-            *result = names[i].bit_value;
-            return 1;
+            if ( strcmp( name, names[i].name ) == 0 )
+            {
+                *result = names[i].bit_value;
+                return 1;
+            }
+            ++i;
         }
-        ++i;
     }
     return 0;
 }
@@ -347,14 +353,17 @@ int jdksavdecc_get_uint16_value_for_name( struct jdksavdecc_uint16_name const na
 {
     int i = 0;
 
-    while ( names[i].name )
+    if ( name )
     {
-        if ( strcmp( name, names[i].name ) == 0 )
+        while ( names[i].name )
         {
-            *result = names[i].value;
-            return 1;
+            if ( strcmp( name, names[i].name ) == 0 )
+            {
+                *result = names[i].value;
+                return 1;
+            }
+            ++i;
         }
-        ++i;
     }
     return 0;
 }
@@ -378,14 +387,17 @@ int jdksavdecc_get_uint32_value_for_name( struct jdksavdecc_uint32_name const na
 {
     int i = 0;
 
-    while ( names[i].name )
+    if ( name )
     {
-        if ( strcmp( name, names[i].name ) == 0 )
+        while ( names[i].name )
         {
-            *result = names[i].value;
-            return 1;
+            if ( strcmp( name, names[i].name ) == 0 )
+            {
+                *result = names[i].value;
+                return 1;
+            }
+            ++i;
         }
-        ++i;
     }
     return 0;
 }
@@ -409,14 +421,17 @@ int jdksavdecc_get_uint64_value_for_name( struct jdksavdecc_uint64_name const na
 {
     int i = 0;
 
-    while ( names[i].name )
+    if ( name )
     {
-        if ( strcmp( name, names[i].name ) == 0 )
+        while ( names[i].name )
         {
-            *result = names[i].value;
-            return 1;
+            if ( strcmp( name, names[i].name ) == 0 )
+            {
+                *result = names[i].value;
+                return 1;
+            }
+            ++i;
         }
-        ++i;
     }
     return 0;
 }
@@ -441,13 +456,16 @@ struct jdksavdecc_eui48 const *jdksavdecc_get_eui48_value_for_name( struct jdksa
 {
     int i = 0;
 
-    while ( names[i].name )
+    if ( name )
     {
-        if ( strcmp( name, names[i].name ) == 0 )
+        while ( names[i].name )
         {
-            return &names[i].value;
+            if ( strcmp( name, names[i].name ) == 0 )
+            {
+                return &names[i].value;
+            }
+            ++i;
         }
-        ++i;
     }
     return 0;
 }
@@ -482,13 +500,16 @@ struct jdksavdecc_eui64 const *jdksavdecc_get_eui64_value_for_name( struct jdksa
 {
     int i = 0;
 
-    while ( names[i].name )
+    if ( name )
     {
-        if ( strcmp( name, names[i].name ) == 0 )
+        while ( names[i].name )
         {
-            return &names[i].value;
+            if ( strcmp( name, names[i].name ) == 0 )
+            {
+                return &names[i].value;
+            }
+            ++i;
         }
-        ++i;
     }
     return 0;
 }
