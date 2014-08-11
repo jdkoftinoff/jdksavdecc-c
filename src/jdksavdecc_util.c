@@ -67,24 +67,29 @@ int jdksavdecc_util_parse_byte( uint8_t *result, char d1, char d2 )
     return jdksavdecc_util_parse_nibble( result, d1 ) && jdksavdecc_util_parse_nibble( result, d2 );
 }
 
+static inline int jdksavdecc_util_delim( char c )
+{
+    return c == ':' || c == '-';
+}
+
 int jdksavdecc_eui48_init_from_cstr( struct jdksavdecc_eui48 *self, const char *str )
 {
-    return jdksavdecc_util_parse_byte( &self->value[0], str[0], str[1] ) && str[2] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[1], str[3], str[4] ) && str[5] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[2], str[6], str[7] ) && str[8] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[3], str[9], str[10] ) && str[11] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[4], str[12], str[13] ) && str[14] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[5], str[15], str[16] ) && str[17] == '\0';
+    return jdksavdecc_util_parse_byte( &self->value[0], str[0], str[1] ) && jdksavdecc_util_delim( str[2] )
+           && jdksavdecc_util_parse_byte( &self->value[1], str[3], str[4] ) && jdksavdecc_util_delim( str[5] )
+           && jdksavdecc_util_parse_byte( &self->value[2], str[6], str[7] ) && jdksavdecc_util_delim( str[8] )
+           && jdksavdecc_util_parse_byte( &self->value[3], str[9], str[10] ) && jdksavdecc_util_delim( str[11] )
+           && jdksavdecc_util_parse_byte( &self->value[4], str[12], str[13] ) && jdksavdecc_util_delim( str[14] )
+           && jdksavdecc_util_parse_byte( &self->value[5], str[15], str[16] ) && jdksavdecc_util_delim( str[17] );
 }
 
 int jdksavdecc_eui64_init_from_cstr( struct jdksavdecc_eui64 *self, const char *str )
 {
-    return jdksavdecc_util_parse_byte( &self->value[0], str[0], str[1] ) && str[2] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[1], str[3], str[4] ) && str[5] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[2], str[6], str[7] ) && str[8] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[3], str[9], str[10] ) && str[11] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[4], str[12], str[13] ) && str[14] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[5], str[15], str[16] ) && str[17] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[6], str[18], str[19] ) && str[20] == ':'
-           && jdksavdecc_util_parse_byte( &self->value[7], str[21], str[22] ) && str[23] == '\0';
+    return jdksavdecc_util_parse_byte( &self->value[0], str[0], str[1] ) && jdksavdecc_util_delim( str[2] )
+           && jdksavdecc_util_parse_byte( &self->value[1], str[3], str[4] ) && jdksavdecc_util_delim( str[5] )
+           && jdksavdecc_util_parse_byte( &self->value[2], str[6], str[7] ) && jdksavdecc_util_delim( str[8] )
+           && jdksavdecc_util_parse_byte( &self->value[3], str[9], str[10] ) && jdksavdecc_util_delim( str[11] )
+           && jdksavdecc_util_parse_byte( &self->value[4], str[12], str[13] ) && jdksavdecc_util_delim( str[14] )
+           && jdksavdecc_util_parse_byte( &self->value[5], str[15], str[16] ) && jdksavdecc_util_delim( str[17] )
+           && jdksavdecc_util_parse_byte( &self->value[6], str[18], str[19] ) && jdksavdecc_util_delim( str[20] )
+           && jdksavdecc_util_parse_byte( &self->value[7], str[21], str[22] ) && jdksavdecc_util_delim( str[23] );
 }
