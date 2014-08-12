@@ -12355,7 +12355,7 @@ static inline void jdksavdecc_descriptor_avb_interface_set_domain_number( uint8_
 }
 
 /**
- * Extract the uint8 value of the log_sync_interval field of the
+ * Extract the int8 value of the log_sync_interval field of the
  *DESCRIPTOR_AVB_INTERFACE object from a network buffer.
  *
  *
@@ -12366,13 +12366,13 @@ static inline void jdksavdecc_descriptor_avb_interface_set_domain_number( uint8_
  * @param pos offset from base to read the field from;
  * @return the uint8_t log_sync_interval value
  */
-static inline uint8_t jdksavdecc_descriptor_avb_interface_get_log_sync_interval( void const *base, ssize_t pos )
+static inline int8_t jdksavdecc_descriptor_avb_interface_get_log_sync_interval( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint8_get( base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_SYNC_INTERVAL );
+    return (int8_t)jdksavdecc_uint8_get( base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_SYNC_INTERVAL );
 }
 
 /**
- * Store a uint8 value to the log_sync_interval field of the
+ * Store a int8 value to the log_sync_interval field of the
  *DESCRIPTOR_AVB_INTERFACE object to a network buffer.
  *
  *
@@ -12383,13 +12383,13 @@ static inline uint8_t jdksavdecc_descriptor_avb_interface_get_log_sync_interval(
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_avb_interface_set_log_sync_interval( uint8_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_avb_interface_set_log_sync_interval( int8_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint8_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_SYNC_INTERVAL );
+    jdksavdecc_uint8_set( (uint8_t)v, base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_SYNC_INTERVAL );
 }
 
 /**
- * Extract the uint8 value of the log_announce_interval field of the DESCRIPTOR_AVB_INTERFACE object from a network buffer.
+ * Extract the int8 value of the log_announce_interval field of the DESCRIPTOR_AVB_INTERFACE object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
@@ -12398,13 +12398,13 @@ static inline void jdksavdecc_descriptor_avb_interface_set_log_sync_interval( ui
  * @param pos offset from base to read the field from;
  * @return the uint8_t log_announce_interval value
  */
-static inline uint8_t jdksavdecc_descriptor_avb_interface_get_log_announce_interval( void const *base, ssize_t pos )
+static inline int8_t jdksavdecc_descriptor_avb_interface_get_log_announce_interval( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint8_get( base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_ANNOUNCE_INTERVAL );
+    return (int8_t)jdksavdecc_uint8_get( base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_ANNOUNCE_INTERVAL );
 }
 
 /**
- * Store a uint8 value to the log_announce_interval field of the DESCRIPTOR_AVB_INTERFACE object to a network buffer.
+ * Store a int8 value to the log_announce_interval field of the DESCRIPTOR_AVB_INTERFACE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
@@ -12413,13 +12413,13 @@ static inline uint8_t jdksavdecc_descriptor_avb_interface_get_log_announce_inter
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_avb_interface_set_log_announce_interval( uint8_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_avb_interface_set_log_announce_interval( int8_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint8_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_ANNOUNCE_INTERVAL );
+    jdksavdecc_uint8_set( (uint8_t)v, base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_ANNOUNCE_INTERVAL );
 }
 
 /**
- * Extract the uint8 value of the log_pdelay_interval field of the DESCRIPTOR_AVB_INTERFACE object from a network buffer.
+ * Extract the int8 value of the log_pdelay_interval field of the DESCRIPTOR_AVB_INTERFACE object from a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
@@ -12428,13 +12428,13 @@ static inline void jdksavdecc_descriptor_avb_interface_set_log_announce_interval
  * @param pos offset from base to read the field from;
  * @return the uint8_t log_pdelay_interval value
  */
-static inline uint8_t jdksavdecc_descriptor_avb_interface_get_log_pdelay_interval( void const *base, ssize_t pos )
+static inline int8_t jdksavdecc_descriptor_avb_interface_get_log_pdelay_interval( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint8_get( base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_PDELAY_INTERVAL );
+    return (int8_t)jdksavdecc_uint8_get( base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_PDELAY_INTERVAL );
 }
 
 /**
- * Store a uint8 value to the log_pdelay_interval field of the DESCRIPTOR_AVB_INTERFACE object to a network buffer.
+ * Store a int8 value to the log_pdelay_interval field of the DESCRIPTOR_AVB_INTERFACE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's responsibility to pre-validate base and pos.
@@ -12443,9 +12443,9 @@ static inline uint8_t jdksavdecc_descriptor_avb_interface_get_log_pdelay_interva
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_avb_interface_set_log_pdelay_interval( uint8_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_avb_interface_set_log_pdelay_interval( int8_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint8_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_PDELAY_INTERVAL );
+    jdksavdecc_uint8_set( (uint8_t)v, base, pos + JDKSAVDECC_DESCRIPTOR_AVB_INTERFACE_OFFSET_LOG_PDELAY_INTERVAL );
 }
 
 /**
@@ -12500,9 +12500,9 @@ struct jdksavdecc_descriptor_avb_interface
     uint8_t clock_accuracy;
     uint8_t priority2;
     uint8_t domain_number;
-    uint8_t log_sync_interval;
-    uint8_t log_announce_interval;
-    uint8_t log_pdelay_interval;
+    int8_t log_sync_interval;
+    int8_t log_announce_interval;
+    int8_t log_pdelay_interval;
     uint16_t port_number;
 };
 
