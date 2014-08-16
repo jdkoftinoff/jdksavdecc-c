@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BF1F669B18FB1953004D57E4 /* jdksavdecc_test_descriptor_storage.h in Headers */ = {isa = PBXBuildFile; fileRef = BF1F669A18FB1953004D57E4 /* jdksavdecc_test_descriptor_storage.h */; };
-		BF1F669E18FB1968004D57E4 /* jdksavdecc_test_descriptor_storage.c in Sources */ = {isa = PBXBuildFile; fileRef = BF1F669D18FB1968004D57E4 /* jdksavdecc_test_descriptor_storage.c */; };
 		BF6E4777192199CD00ACA1E4 /* jdksavdecc_frame.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6E4776192199CD00ACA1E4 /* jdksavdecc_frame.h */; };
 		BF6E4779192199DD00ACA1E4 /* jdksavdecc_frame.c in Sources */ = {isa = PBXBuildFile; fileRef = BF6E4778192199DD00ACA1E4 /* jdksavdecc_frame.c */; };
-		BFBE608118F7A3EE00CF800F /* jdksavdecc_test_descriptor_storage.h in Headers */ = {isa = PBXBuildFile; fileRef = BFBE608018F7A3EE00CF800F /* jdksavdecc_test_descriptor_storage.h */; };
 		BFBE608318F7A3FC00CF800F /* jdksavdecc_test_descriptor_storage.c in Sources */ = {isa = PBXBuildFile; fileRef = BFBE608218F7A3FC00CF800F /* jdksavdecc_test_descriptor_storage.c */; };
 		BFC6784718E8FFF700D717EB /* jdksavdecc.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC677FD18E8FFF700D717EB /* jdksavdecc.h */; };
 		BFC6784818E8FFF700D717EB /* jdksavdecc_acmp.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC677FE18E8FFF700D717EB /* jdksavdecc_acmp.h */; };
@@ -315,7 +313,6 @@
 				BFC6784A18E8FFF700D717EB /* jdksavdecc_acmp_print.h in Headers */,
 				BFC6786A18E8FFF700D717EB /* jdksavdecc_msstdint.h in Headers */,
 				BFC6786E18E8FFF700D717EB /* jdksavdecc_print.h in Headers */,
-				BFBE608118F7A3EE00CF800F /* jdksavdecc_test_descriptor_storage.h in Headers */,
 				BFC6785318E8FFF700D717EB /* jdksavdecc_aecp_print.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,7 +343,7 @@
 		BF97C8A418E8FFAF00F30CC5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "J.D. Koftinoff Software, Ltd.";
 			};
 			buildConfigurationList = BF97C8A718E8FFAF00F30CC5 /* Build configuration list for PBXProject "jdksavdecc-c" */;
@@ -388,7 +385,6 @@
 				BFC6788618E8FFF700D717EB /* jdksavdecc_jdks.c in Sources */,
 				BFC6787A18E8FFF700D717EB /* jdksavdecc_aem_print.c in Sources */,
 				BFC6787C18E8FFF700D717EB /* jdksavdecc_app.c in Sources */,
-				BF1F669E18FB1968004D57E4 /* jdksavdecc_test_descriptor_storage.c in Sources */,
 				BF6E4779192199DD00ACA1E4 /* jdksavdecc_frame.c in Sources */,
 				BFC6788318E8FFF700D717EB /* jdksavdecc_entity_model.c in Sources */,
 				BFC6788118E8FFF700D717EB /* jdksavdecc_descriptor_storage_gen.c in Sources */,
@@ -474,6 +470,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -492,6 +489,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = "TODO=1";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
