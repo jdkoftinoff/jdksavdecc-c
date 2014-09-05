@@ -84,9 +84,9 @@ static inline ssize_t jdksavdecc_aecpdu_common_control_header_write( struct jdks
     ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_COMMON_CONTROL_HEADER_LEN );
     if ( r >= 0 )
     {
-        jdksavdecc_common_control_header_set_cd( p->cd, base, pos );
+        jdksavdecc_common_control_header_set_cd( p->cd != 0, base, pos );
         jdksavdecc_common_control_header_set_subtype( p->subtype, base, pos );
-        jdksavdecc_common_control_header_set_sv( p->sv, base, pos );
+        jdksavdecc_common_control_header_set_sv( p->sv != 0, base, pos );
         jdksavdecc_common_control_header_set_version( p->version, base, pos );
         jdksavdecc_common_control_header_set_control_data( p->message_type, base, pos );
         jdksavdecc_common_control_header_set_status( p->status, base, pos );
