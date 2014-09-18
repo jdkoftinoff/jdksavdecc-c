@@ -45,7 +45,7 @@ extern "C" {
 /*@{*/
 
 #ifndef JDKSAVDECC_FRAME_MAX_PAYLOAD_SIZE
-#define JDKSAVDECC_FRAME_MAX_PAYLOAD_SIZE ( 640 )
+#define JDKSAVDECC_FRAME_MAX_PAYLOAD_SIZE ( 1500 )
 #endif
 
 struct jdksavdecc_frame
