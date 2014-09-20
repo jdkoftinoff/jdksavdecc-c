@@ -4025,10 +4025,8 @@ static inline ssize_t jdksavdecc_aem_command_controller_available_read( struct j
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aem_command_controller_available_write( struct jdksavdecc_aem_command_controller_available *p,
-                                                                         void *base,
-                                                                         size_t pos,
-                                                                         size_t len )
+static inline ssize_t jdksavdecc_aem_command_controller_available_write(
+    struct jdksavdecc_aem_command_controller_available const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_CONTROLLER_AVAILABLE_COMMAND_LEN );
     if ( r >= 0 )

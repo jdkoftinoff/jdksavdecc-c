@@ -27,12 +27,14 @@ if(TESTS MATCHES "ON")
    message(STATUS "Extended test code functions are enabled")
    file(GLOB JDKSAVDECC_C_INCLUDES "include/*.h" "include/tests/*.h" )
    file(GLOB JDKSAVDECC_C_SRC "src/*.c" "src/test/*.c")
+   file(GLOB JDKSAVDECC_CPP_SRC "src/*.cpp" )
 else()
    file(GLOB JDKSAVDECC_C_INCLUDES "include/*.h" )
    file(GLOB JDKSAVDECC_C_SRC "src/*.c")
+   file(GLOB JDKSAVDECC_CPP_SRC "src/*.cpp" )
 endif()
 
-add_library (jdksavdecc-c ${JDKSAVDECC_C_SRC} ${JDKSAVDECC_C_INCLUDES})
+add_library (jdksavdecc-c ${JDKSAVDECC_C_SRC} ${JDKSAVDECC_CPP_SRC} ${JDKSAVDECC_C_INCLUDES})
 
 link_directories( ${JDKSAVDECC_C_BINARY_DIR} )
 

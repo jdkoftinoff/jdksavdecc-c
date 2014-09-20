@@ -26,7 +26,7 @@
 		<key>4665A1C5A67B50C253562A553D314CBC1D6B80EC</key>
 		<string>../../..</string>
 		<key>CF2F6A42-7F0B-42FB-81E0-FC8D23789BA6</key>
-		<string>../../../jdksavdecc-c-devel</string>
+		<string>../..-devel</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:jdkoftinoff/jdksavdecc-c.git</string>

@@ -12,19 +12,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7e06670-7932-4cff-a02a-6855f0037d6d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jdksavdecc-c.iml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/jdksavdecc_plus.cpp" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/jdksavdecc_plus.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs-dev/footer.html" afterPath="$PROJECT_DIR$/docs-dev/footer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/format" afterPath="$PROJECT_DIR$/format" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs-dev/header.html" afterPath="$PROJECT_DIR$/docs-dev/header.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jdksavdecc-c.xcodeproj/project.xcworkspace/xcshareddata/jdksavdecc-c.xccheckout" afterPath="$PROJECT_DIR$/jdksavdecc-c.xcodeproj/project.xcworkspace/xcshareddata/jdksavdecc-c.xccheckout" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/jdksavdecc.h" afterPath="$PROJECT_DIR$/include/jdksavdecc.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/jdksavdecc_aem_command.h" afterPath="$PROJECT_DIR$/include/jdksavdecc_aem_command.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/jdksavdecc_frame.h" afterPath="$PROJECT_DIR$/include/jdksavdecc_frame.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.mk" afterPath="$PROJECT_DIR$/project.mk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jdksavdecc-c.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/jdksavdecc-c.xcodeproj/project.pbxproj" />
     </list>
     <ignored path="jdksavdecc-c.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,8 +50,8 @@
       <file leaf-file-name="jdksavdecc_plus.hpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/include/jdksavdecc_plus.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="6.1086955" vertical-offset="3270" max-vertical-offset="8565">
-              <caret line="499" column="0" selection-start-line="499" selection-start-column="0" selection-end-line="499" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.2173913" vertical-offset="7230" max-vertical-offset="41160">
+              <caret line="472" column="1" selection-start-line="472" selection-start-column="1" selection-end-line="472" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -81,8 +80,8 @@
       <file leaf-file-name="jdksavdecc_aem_command.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/jdksavdecc_aem_command.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="657355" max-vertical-offset="661890">
-              <caret line="43839" column="7" selection-start-line="43839" selection-start-column="7" selection-end-line="43839" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="657325" max-vertical-offset="661860">
+              <caret line="43837" column="7" selection-start-line="43837" selection-start-column="7" selection-end-line="43837" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -351,7 +350,9 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -413,8 +414,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/jdksavdecc_aem_command.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="657355" max-vertical-offset="661890">
-          <caret line="43839" column="7" selection-start-line="43839" selection-start-column="7" selection-end-line="43839" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="657325" max-vertical-offset="661860">
+          <caret line="43837" column="7" selection-start-line="43837" selection-start-column="7" selection-end-line="43837" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -437,8 +438,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/jdksavdecc_plus.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.1086955" vertical-offset="3270" max-vertical-offset="8565">
-          <caret line="499" column="0" selection-start-line="499" selection-start-column="0" selection-end-line="499" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.2173913" vertical-offset="7230" max-vertical-offset="41160">
+          <caret line="472" column="1" selection-start-line="472" selection-start-column="1" selection-end-line="472" selection-end-column="1" />
           <folding />
         </state>
       </provider>

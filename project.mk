@@ -1,10 +1,10 @@
 PROJECT=jdksavdecc-c
 PROJECT_NAME=jdksavdecc-c
-PROJECT_VERSION?=20130629
+PROJECT_VERSION?=20140919
 PROJECT_EMAIL=jeffk@jdkoftinoff.com
 PROJECT_LICENSE=BSD
 PROJECT_MAINTAINER=jeffk@jdkoftinoff.com
-PROJECT_COPYRIGHT=Copyright 2013
+PROJECT_COPYRIGHT=Copyright 2014
 PROJECT_DESCRIPTION=
 PROJECT_WEBSITE=https://jdksavdecc-c.statusbar.com/
 PROJECT_IDENTIFIER=org.statusbar.jdksavdecc-c
