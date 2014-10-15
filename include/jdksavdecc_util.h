@@ -673,6 +673,15 @@ static inline void jdksavdecc_eui64_init( struct jdksavdecc_eui64 *self )
     }
 }
 
+static inline void jdksavdecc_eui64_zero( struct jdksavdecc_eui64 *self )
+{
+    size_t i;
+    for ( i = 0; i < sizeof( self->value ); ++i )
+    {
+        self->value[i] = 0x00;
+    }
+}
+
 static inline void jdksavdecc_eui64_init_from_uint64( struct jdksavdecc_eui64 *self, uint64_t other )
 {
     self->value[0] = ( uint8_t )( ( other >> ( 7 * 8 ) ) & 0xff );
@@ -771,6 +780,29 @@ static inline int jdksavdecc_eui64_is_set( struct jdksavdecc_eui64 v )
     }
     return r;
 }
+
+static inline int jdksavdecc_eui64_is_zero( struct jdksavdecc_eui64 v )
+{
+    int r = 0;
+    if ( v.value[0] == 0x00 && v.value[1] == 0x00 && v.value[2] == 0x00 && v.value[3] == 0x00 && v.value[4] == 0x00
+         && v.value[5] == 0x00 && v.value[6] == 0x00 && v.value[7] == 0x00 )
+    {
+        r = 1;
+    }
+    return r;
+}
+
+static inline int jdksavdecc_eui64_is_not_zero( struct jdksavdecc_eui64 v )
+{
+    int r = 0;
+    if ( v.value[0] != 0x00 || v.value[1] != 0x00 || v.value[2] != 0x00 || v.value[3] != 0x00 || v.value[4] != 0x00
+         || v.value[5] != 0x00 || v.value[6] != 0x00 || v.value[7] != 0x00 )
+    {
+        r = 1;
+    }
+    return r;
+}
+
 /*@}*/
 
 /** \addtogroup gptp GPTP time */
