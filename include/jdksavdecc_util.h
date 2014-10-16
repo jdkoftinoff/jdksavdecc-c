@@ -560,6 +560,15 @@ static inline void jdksavdecc_eui48_init( struct jdksavdecc_eui48 *self )
     }
 }
 
+static inline void jdksavdecc_eui48_zero( struct jdksavdecc_eui48 *self )
+{
+    size_t i;
+    for ( i = 0; i < sizeof( self->value ); ++i )
+    {
+        self->value[i] = 0x00;
+    }
+}
+
 static inline void jdksavdecc_eui48_init_from_uint64( struct jdksavdecc_eui48 *self, uint64_t other )
 {
     self->value[0] = ( uint8_t )( ( other >> ( 5 * 8 ) ) & 0xff );
