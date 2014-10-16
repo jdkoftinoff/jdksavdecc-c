@@ -32,7 +32,4 @@
 
 #include "jdksavdecc_world.h"
 
-int main()
-{
-    return 255;
-}
+int main() { return 255; }

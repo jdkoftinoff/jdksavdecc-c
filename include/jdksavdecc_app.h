@@ -124,10 +124,7 @@ struct jdksavdecc_fullappdu
  *  It must be manually pointed to a payload or buffer of JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH octets
  */
 
-static inline void jdksavdecc_appdu_init( struct jdksavdecc_appdu *self )
-{
-    memset( self, 0, sizeof( *self ) );
-}
+static inline void jdksavdecc_appdu_init( struct jdksavdecc_appdu *self ) { memset( self, 0, sizeof( *self ) ); }
 
 /** Initialize a jdksavdecc_fullappdu object.
  *  Sets the payload member to point to the payload_buffer array,

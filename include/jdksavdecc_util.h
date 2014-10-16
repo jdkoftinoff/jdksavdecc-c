@@ -61,7 +61,7 @@ int jdksavdecc_util_parse_byte( uint8_t *result, char d1, char d2 );
  */
 static inline ssize_t jdksavdecc_validate_range( ssize_t bufpos, size_t buflen, size_t elem_size )
 {
-    return ( ( size_t )( bufpos ) + (size_t)elem_size <= (size_t)buflen ) ? ( ssize_t )( bufpos + elem_size ) : ( ssize_t ) - 1;
+    return ( ( size_t )( bufpos ) + (size_t)elem_size <= (size_t)buflen ) ? ( ssize_t )( bufpos + elem_size ) : (ssize_t)-1;
 }
 
 /** \addtogroup endian Endian helpers / data access */
@@ -813,10 +813,7 @@ struct jdksavdecc_gptp_seconds
     uint64_t seconds : 48;
 };
 
-static inline void jdksavdecc_gptp_seconds_init( struct jdksavdecc_gptp_seconds *self )
-{
-    self->seconds = 0;
-}
+static inline void jdksavdecc_gptp_seconds_init( struct jdksavdecc_gptp_seconds *self ) { self->seconds = 0; }
 
 static inline void jdksavdecc_gptp_seconds_read( struct jdksavdecc_gptp_seconds *host_value, void const *base, ssize_t pos )
 {
@@ -871,8 +868,9 @@ static inline void jdksavdecc_gptp_seconds_set( struct jdksavdecc_gptp_seconds v
 /// Typedef for a pointer to a procedure that can be used to
 /// lookup a localized_string from a localized string index, given a context/tag
 /// which would refer to an entity model.
-typedef struct jdksavdecc_string const
-    *( *jdksavdecc_localized_string_lookup_proc )( void *context, const char *locale_name, uint16_t localized_string_id );
+typedef struct jdksavdecc_string const *( *jdksavdecc_localized_string_lookup_proc )( void *context,
+                                                                                      const char *locale_name,
+                                                                                      uint16_t localized_string_id );
 
 /*@}*/
 #ifdef __cplusplus

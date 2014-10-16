@@ -54,10 +54,7 @@ namespace jdksavdecc
 template <typename T>
 struct wrap : public T
 {
-    wrap()
-    {
-        memset( this, 0, sizeof( *this ) );
-    }
+    wrap() { memset( this, 0, sizeof( *this ) ); }
 
     wrap( T const &other )
     {
@@ -67,20 +64,11 @@ struct wrap : public T
         }
     }
 
-    void reset()
-    {
-        memset( this, 0, sizeof( *this ) );
-    }
+    void reset() { memset( this, 0, sizeof( *this ) ); }
 
-    T *get()
-    {
-        return this;
-    }
+    T *get() { return this; }
 
-    T const *get() const
-    {
-        return this;
-    }
+    T const *get() const { return this; }
 
     T const &operator=( const T &other )
     {
@@ -91,47 +79,23 @@ struct wrap : public T
         return *this;
     }
 
-    bool operator==( T const &other )
-    {
-        return memcmp( this, &other, sizeof( *this ) ) == 0;
-    }
+    bool operator==( T const &other ) { return memcmp( this, &other, sizeof( *this ) ) == 0; }
 
-    bool operator!=( T const &other )
-    {
-        return memcmp( this, &other, sizeof( *this ) ) != 0;
-    }
+    bool operator!=( T const &other ) { return memcmp( this, &other, sizeof( *this ) ) != 0; }
 
-    bool operator<( T const &other )
-    {
-        return memcmp( this, &other, sizeof( *this ) ) < 0;
-    }
+    bool operator<( T const &other ) { return memcmp( this, &other, sizeof( *this ) ) < 0; }
 
-    bool operator<=( T const &other )
-    {
-        return memcmp( this, &other, sizeof( *this ) ) <= 0;
-    }
+    bool operator<=( T const &other ) { return memcmp( this, &other, sizeof( *this ) ) <= 0; }
 
-    bool operator>=( T const &other )
-    {
-        return memcmp( this, &other, sizeof( *this ) ) >= 0;
-    }
+    bool operator>=( T const &other ) { return memcmp( this, &other, sizeof( *this ) ) >= 0; }
 
-    bool operator>( T const &other )
-    {
-        return memcmp( this, &other, sizeof( *this ) ) > 0;
-    }
+    bool operator>( T const &other ) { return memcmp( this, &other, sizeof( *this ) ) > 0; }
 };
 
 struct acmpdu : wrap<jdksavdecc_acmpdu>
 {
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_acmpdu_read( this, base, pos, len );
-    };
-    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
-    {
-        return jdksavdecc_acmpdu_write( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_acmpdu_read( this, base, pos, len ); };
+    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const { return jdksavdecc_acmpdu_write( this, base, pos, len ); }
 };
 
 struct acmpdu_common_control_header : wrap<jdksavdecc_acmpdu_common_control_header>
@@ -148,14 +112,8 @@ struct acmpdu_common_control_header : wrap<jdksavdecc_acmpdu_common_control_head
 
 struct adpdu : wrap<jdksavdecc_adpdu>
 {
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_adpdu_read( this, base, pos, len );
-    }
-    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
-    {
-        return jdksavdecc_adpdu_write( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_adpdu_read( this, base, pos, len ); }
+    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const { return jdksavdecc_adpdu_write( this, base, pos, len ); }
 };
 struct adpdu_common_control_header : wrap<jdksavdecc_adpdu_common_control_header>
 {
@@ -170,21 +128,12 @@ struct adpdu_common_control_header : wrap<jdksavdecc_adpdu_common_control_header
 };
 struct aecp_aa : wrap<jdksavdecc_aecp_aa>
 {
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_aecp_aa_read( this, base, pos, len );
-    }
-    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
-    {
-        return jdksavdecc_aecp_aa_write( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_aecp_aa_read( this, base, pos, len ); }
+    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const { return jdksavdecc_aecp_aa_write( this, base, pos, len ); }
 };
 struct aecp_aa_tlv : wrap<jdksavdecc_aecp_aa_tlv>
 {
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_aecp_aa_tlv_read( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_aecp_aa_tlv_read( this, base, pos, len ); }
     ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
     {
         return jdksavdecc_aecp_aa_tlv_write( this, base, pos, len );
@@ -192,10 +141,7 @@ struct aecp_aa_tlv : wrap<jdksavdecc_aecp_aa_tlv>
 };
 struct aecpdu_aem : wrap<jdksavdecc_aecpdu_aem>
 {
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_aecpdu_aem_read( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_aecpdu_aem_read( this, base, pos, len ); }
     ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
     {
         return jdksavdecc_aecpdu_aem_write( this, base, pos, len );
@@ -1820,14 +1766,8 @@ struct write_descriptor_response : wrap<jdksavdecc_aem_command_write_descriptor_
 // struct aem_ecc_public_256 : wrap<jdksavdecc_aem_ecc_public_256 > {};
 struct appdu : wrap<jdksavdecc_appdu>
 {
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_appdu_read( this, base, pos, len );
-    }
-    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
-    {
-        return jdksavdecc_appdu_write( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_appdu_read( this, base, pos, len ); }
+    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const { return jdksavdecc_appdu_write( this, base, pos, len ); }
 };
 struct audio_mapping : wrap<jdksavdecc_audio_mapping>
 {
@@ -2327,13 +2267,9 @@ struct entity_model : wrap<jdksavdecc_entity_model>
 };
 struct eui48 : wrap<jdksavdecc_eui48>
 {
-    eui48()
-    {
-    }
+    eui48() {}
 
-    eui48( eui48 const &other ) : wrap<jdksavdecc_eui48>( other )
-    {
-    }
+    eui48( eui48 const &other ) : wrap<jdksavdecc_eui48>( other ) {}
 
     eui48( uint8_t v0, uint8_t v1, uint8_t v2, uint8_t v3, uint8_t v4, uint8_t v5 )
     {
@@ -2345,36 +2281,18 @@ struct eui48 : wrap<jdksavdecc_eui48>
         value[5] = v5;
     }
 
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_eui48_read( this, base, pos, len );
-    }
-    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
-    {
-        return jdksavdecc_eui48_write( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_eui48_read( this, base, pos, len ); }
+    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const { return jdksavdecc_eui48_write( this, base, pos, len ); }
 };
 struct eui64 : wrap<jdksavdecc_eui64>
 {
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_eui64_read( this, base, pos, len );
-    }
-    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
-    {
-        return jdksavdecc_eui64_write( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_eui64_read( this, base, pos, len ); }
+    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const { return jdksavdecc_eui64_write( this, base, pos, len ); }
 };
 struct frame : wrap<jdksavdecc_frame>
 {
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_frame_read( this, base, pos, len );
-    }
-    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
-    {
-        return jdksavdecc_frame_write( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_frame_read( this, base, pos, len ); }
+    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const { return jdksavdecc_frame_write( this, base, pos, len ); }
 };
 struct frame_sender : wrap<jdksavdecc_frame_sender>
 {
@@ -2393,14 +2311,8 @@ struct jdks_log_control : wrap<jdksavdecc_jdks_log_control>
 };
 struct maap : wrap<jdksavdecc_maap>
 {
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_maap_read( this, base, pos, len );
-    }
-    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
-    {
-        return jdksavdecc_maap_write( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_maap_read( this, base, pos, len ); }
+    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const { return jdksavdecc_maap_write( this, base, pos, len ); }
 };
 struct maap_common_control_header : wrap<jdksavdecc_maap_common_control_header>
 {
@@ -2470,14 +2382,8 @@ struct splitter_map : wrap<jdksavdecc_splitter_map>
 };
 struct avdecc_string : wrap<jdksavdecc_string>
 {
-    ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
-    {
-        return jdksavdecc_string_read( this, base, pos, len );
-    }
-    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const
-    {
-        return jdksavdecc_string_write( this, base, pos, len );
-    }
+    ssize_t read( const uint8_t *base, ssize_t pos, size_t len ) { return jdksavdecc_string_read( this, base, pos, len ); }
+    ssize_t write( uint8_t *base, ssize_t pos, size_t len ) const { return jdksavdecc_string_write( this, base, pos, len ); }
 };
 struct values_bode_plot : wrap<jdksavdecc_values_bode_plot>
 {
@@ -2559,19 +2465,11 @@ struct video_mappings_format : wrap<jdksavdecc_video_mappings_format>
 
 struct printer : wrap<jdksavdecc_printer>
 {
-    printer()
-    {
-    }
+    printer() {}
 
-    printer( char *buf, size_t buflen )
-    {
-        jdksavdecc_printer_init( this, buf, buflen );
-    }
+    printer( char *buf, size_t buflen ) { jdksavdecc_printer_init( this, buf, buflen ); }
 
-    void init( char *buf, size_t buflen )
-    {
-        jdksavdecc_printer_init( this, buf, buflen );
-    }
+    void init( char *buf, size_t buflen ) { jdksavdecc_printer_init( this, buf, buflen ); }
 
     printer &print( eui48 const &v )
     {
@@ -2694,10 +2592,7 @@ struct printer : wrap<jdksavdecc_printer>
     }
 
 #if !defined( JDKSAVDECC_CPP_NO_STDIO )
-    bool output( FILE *f )
-    {
-        return fwrite( buf, pos, 1, f ) == 1;
-    }
+    bool output( FILE *f ) { return fwrite( buf, pos, 1, f ) == 1; }
 #endif
 };
 
@@ -2712,15 +2607,9 @@ struct printer_with_buf : printer
 {
     char *allocated_buf;
 
-    printer_with_buf( size_t bufsz ) : allocated_buf( (char *)malloc( bufsz ) )
-    {
-        init( allocated_buf, bufsz );
-    }
+    printer_with_buf( size_t bufsz ) : allocated_buf( (char *)malloc( bufsz ) ) { init( allocated_buf, bufsz ); }
 
-    ~printer_with_buf()
-    {
-        free( allocated_buf );
-    }
+    ~printer_with_buf() { free( allocated_buf ); }
 };
 
 #if !defined( JDKSAVDECC_CPP_NO_IOSTREAM )

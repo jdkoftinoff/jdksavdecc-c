@@ -47,10 +47,7 @@ bool jdksavdecc_descriptor_storage_init( struct jdksavdecc_descriptor_storage *s
     return true;
 }
 
-void jdksavdecc_descriptor_storage_destroy( struct jdksavdecc_entity_model *self )
-{
-    jdksavdecc_entity_model_destroy( self );
-}
+void jdksavdecc_descriptor_storage_destroy( struct jdksavdecc_entity_model *self ) { jdksavdecc_entity_model_destroy( self ); }
 
 bool jdksavdecc_descriptor_storage_buffer_init( struct jdksavdecc_descriptor_storage *self,
                                                 void const *user_ptr,

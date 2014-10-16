@@ -240,10 +240,7 @@ ssize_t jdksavdecc_appdu_parse_buffer( struct jdksavdecc_appdu *self, us_buffer_
     return r;
 }
 
-ssize_t jdksavdecc_appdu_flatten_to_buffer( struct jdksavdecc_appdu const *self, us_buffer_t *buffer )
-{
-    return 0;
-}
+ssize_t jdksavdecc_appdu_flatten_to_buffer( struct jdksavdecc_appdu const *self, us_buffer_t *buffer ) { return 0; }
 
 #endif
 

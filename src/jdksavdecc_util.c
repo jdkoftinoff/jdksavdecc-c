@@ -67,10 +67,7 @@ int jdksavdecc_util_parse_byte( uint8_t *result, char d1, char d2 )
     return jdksavdecc_util_parse_nibble( result, d1 ) && jdksavdecc_util_parse_nibble( result, d2 );
 }
 
-static inline int jdksavdecc_util_delim( char c )
-{
-    return c == ':' || c == '-';
-}
+static inline int jdksavdecc_util_delim( char c ) { return c == ':' || c == '-'; }
 
 int jdksavdecc_eui48_init_from_cstr( struct jdksavdecc_eui48 *self, const char *str )
 {

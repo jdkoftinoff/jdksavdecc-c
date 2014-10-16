@@ -32,10 +32,7 @@
 #include "jdksavdecc_world.h"
 #include "jdksavdecc_entity_model.h"
 
-void jdksavdecc_entity_model_destroy( struct jdksavdecc_entity_model *self )
-{
-    (void)self;
-}
+void jdksavdecc_entity_model_destroy( struct jdksavdecc_entity_model *self ) { (void)self; }
 
 uint16_t jdksavdecc_entity_model_read_descriptor( struct jdksavdecc_entity_model *self,
                                                   uint16_t configuration_number,
