@@ -1,0 +1,23 @@
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+before_script:
+  - ./configure
+
+script:
+  - make && make check
+
+notifications:
+  recipients:
+    - jeffk@jdkoftinoff.com
+  email:
+    on_success: change
+    on_failure: always
+
+os:
+  - linux
+  - osx
+
