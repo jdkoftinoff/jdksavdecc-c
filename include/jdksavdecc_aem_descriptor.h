@@ -149,6 +149,15 @@ struct jdksavdecc_descriptor
 
 /*@}*/
 
+/** \addtogroup avb_interface_flags interface_flags : AVB INTERFACE Flags -
+ * Clause 7.2.8.1
+ */
+/*@{*/
+#define JDKSAVDECC_AVB_INTERFACE_FLAG_GPTP_GRANDMASTER_SUPPORTED (0x0001)
+#define JDKSAVDECC_AVB_INTERFACE_FLAG_GPTP_SUPPORTED (0x0002)
+#define JDKSAVDECC_AVB_INTERFACE_FLAG_SRP_SUPPORTED (0x0004)
+/*@}*/
+
 /** \addtogroup clock_source_type clock_source_type : CLOCK_SOURCE Types -
  * Clause 7.2.9.2  */
 /*@{*/
