@@ -2327,6 +2327,24 @@ struct entity_model : wrap<jdksavdecc_entity_model>
 };
 struct eui48 : wrap<jdksavdecc_eui48>
 {
+    eui48()
+    {
+    }
+
+    eui48( eui48 const &other ) : wrap<jdksavdecc_eui48>( other )
+    {
+    }
+
+    eui48( uint8_t v0, uint8_t v1, uint8_t v2, uint8_t v3, uint8_t v4, uint8_t v5 )
+    {
+        value[0] = v0;
+        value[1] = v1;
+        value[2] = v2;
+        value[3] = v3;
+        value[4] = v4;
+        value[5] = v5;
+    }
+
     ssize_t read( const uint8_t *base, ssize_t pos, size_t len )
     {
         return jdksavdecc_eui48_read( this, base, pos, len );
