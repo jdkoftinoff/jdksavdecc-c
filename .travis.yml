@@ -21,3 +21,19 @@ os:
   - linux
   - osx
 
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "QWtK4zNY/GD6SWEoYUyUyWCANQKJx8VRWCy5EDz99av1sKAKooyfxsAPaphWM7ImA7IDg8o5iysC0HDKY4a1HDfshT5KYgQFpULsVjwff4NW/bFGMubVhljsDrCPlLIG4HsPZYKQ/LWHS/OxQule4hwK39ixo/oPTK1tBUMbxw4="
+
+addons:
+  coverity_scan:
+    project:
+      name: "jdkoftinoff/jdksavdecc-c"
+      description: "AVDECC Library"
+    notification_email: jeffk@jdkoftinoff.com
+    build_command_prepend: "./configure"
+    build_command:   "make"
+    branch_pattern: coverity_scan
+
