@@ -67,7 +67,7 @@ if(TESTS MATCHES "ON")
    endforeach(item)
 endif()
 
-INSTALL(TARGETS jdksavdecc-c DESTINATION "lib" EXPORT jdksavdecc-c-exports.cmake)
+INSTALL(TARGETS jdksavdecc-c DESTINATION "lib" EXPORT jdksavdecc-c-exports)
 
 EXPORT(TARGETS jdksavdecc-c FILE jdksavdecc-c-exports.cmake)
 
@@ -76,5 +76,5 @@ INSTALL(FILES
    DESTINATION include
 )
 
-INSTALL(EXPORT jdksavdecc-c-exports.cmake DESTINATION "lib")
+INSTALL(EXPORT jdksavdecc-c-exports DESTINATION "lib")
 
