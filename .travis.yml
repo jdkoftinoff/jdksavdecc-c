@@ -5,10 +5,10 @@ compiler:
   - clang
 
 before_script:
-  - ./configure
+  - cmake -G "Unix Makefiles"
 
 script:
-  - make && make check
+  - make && make test
 
 notifications:
   recipients:

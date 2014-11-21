@@ -1,17 +1,24 @@
 cmake_minimum_required (VERSION 2.8)
-project (jdksavdecc-c)
-enable_testing()
+set(PROJECT jdksavdecc-c)
+SET(CPACK_GENERATOR "TGZ")
+
+project(${PROJECT} C CXX)
+
+
+cmake_minimum_required (VERSION 2.8)
 
 option(TODO "Enable TODO items that are in progress" OFF)
 option(TESTS "Enable building of extended test code in library" ON)
 option(EXAMPLES "Enable building of example programs" ON)
 option(TOOLS "Enable building of tools" ON)
+option(TOOLS_DEV "Enable building of tools-dev" ON)
 
-if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake|MSBuild)")
-    add_definitions("/W2")
-else()
-    add_definitions("-Wall -Wextra")
-endif()
+project (${PROJECT} C CXX)
+enable_testing()
+
+INCLUDE (CPack)
+INCLUDE (CTest)
+
 
 if(TODO MATCHES "ON")
    add_definitions("-DTODO=1")
@@ -19,29 +26,21 @@ if(TODO MATCHES "ON")
 endif()
 
 
-set(LIBS ${LIBS} ${CHECK_LIBRARIES} jdksavdecc-c)
+set(LIBS ${LIBS} ${CHECK_LIBRARIES} ${PROJECT})
 
-include_directories( include )
+include_directories( include  )
 
-if(TESTS MATCHES "ON")
-   message(STATUS "Extended test code functions are enabled")
-   file(GLOB JDKSAVDECC_C_INCLUDES "include/*.h" "include/tests/*.h" )
-   file(GLOB JDKSAVDECC_C_SRC "src/*.c" "src/test/*.c")
-   file(GLOB JDKSAVDECC_CPP_SRC "src/*.cpp" )
-else()
-   file(GLOB JDKSAVDECC_C_INCLUDES "include/*.h" )
-   file(GLOB JDKSAVDECC_C_SRC "src/*.c")
-   file(GLOB JDKSAVDECC_CPP_SRC "src/*.cpp" )
-endif()
+file(GLOB PROJECT_INCLUDES "include/*.h" "include/*.hpp" "include/*/*.h" "include/*/*.hpp" "include/*/*/*.h" "include/*/*/*.hpp")
+file(GLOB PROJECT_SRC "src/*.c" "src/*.cpp" "src/*/*.c" "src/*/*.cpp" "src/*/*/*.c" "src/*/*/*.cpp")
 
-add_library (jdksavdecc-c ${JDKSAVDECC_C_SRC} ${JDKSAVDECC_CPP_SRC} ${JDKSAVDECC_C_INCLUDES})
+add_library (${PROJECT} ${PROJECT_SRC} ${PROJECT_INCLUDES})
 
-link_directories( ${JDKSAVDECC_C_BINARY_DIR} )
+link_directories( ${PROJECT_BINARY_DIR} )
 
 
 if(EXAMPLES MATCHES "ON")
-    file(GLOB JDKSAVDECC_C_EXAMPLES "examples/*.c")
-    foreach(item ${JDKSAVDECC_C_EXAMPLES})
+    file(GLOB PROJECT_EXAMPLES "examples/*.c" "examples/*.cpp")
+    foreach(item ${PROJECT_EXAMPLES})
       GET_FILENAME_COMPONENT(examplename ${item} NAME_WE )
       add_executable(${examplename} ${item})
       target_link_libraries(${examplename} ${LIBS} )
@@ -49,8 +48,17 @@ if(EXAMPLES MATCHES "ON")
 endif()
 
 if(TOOLS MATCHES "ON")
-    file(GLOB JDKSAVDECC_C_TOOLS_DEV "tools-dev/*.c")
-    foreach(item ${JDKSAVDECC_C_TOOLS_DEV})
+    file(GLOB PROJECT_TOOLS "tools/*.c" "tools/*.cpp")
+    foreach(item ${PROJECT_TOOLS})
+      GET_FILENAME_COMPONENT(toolname ${item} NAME_WE )
+      add_executable(${toolname} ${item})
+      target_link_libraries(${toolname} ${LIBS} )
+    endforeach(item)
+endif()
+
+if(TOOLS_DEV MATCHES "ON")
+    file(GLOB PROJECT_TOOLS_DEV "tools-dev/*.c" "tools-dev/*.cpp")
+    foreach(item ${PROJECT_TOOLS_DEV})
       GET_FILENAME_COMPONENT(toolname ${item} NAME_WE )
       add_executable(${toolname} ${item})
       target_link_libraries(${toolname} ${LIBS} )
@@ -58,8 +66,8 @@ if(TOOLS MATCHES "ON")
 endif()
 
 if(TESTS MATCHES "ON")
-   file(GLOB JDKSAVDECC_C_TESTS "tests/*.c")
-   foreach(item ${JDKSAVDECC_C_TESTS})
+   file(GLOB PROJECT_TESTS "tests/*.c" "tests/*.cpp")
+   foreach(item ${PROJECT_TESTS})
       GET_FILENAME_COMPONENT(testname ${item} NAME_WE )
       add_executable(${testname} ${item})
       target_link_libraries(${testname} ${LIBS} )
@@ -67,14 +75,14 @@ if(TESTS MATCHES "ON")
    endforeach(item)
 endif()
 
-INSTALL(TARGETS jdksavdecc-c DESTINATION "lib" EXPORT jdksavdecc-c-exports.cmake)
+INSTALL(TARGETS ${PROJECT} DESTINATION "lib" EXPORT ${PROJECT}-exports.cmake )
 
-EXPORT(TARGETS jdksavdecc-c FILE jdksavdecc-c-exports.cmake)
+EXPORT(TARGETS ${PROJECT} FILE ${PROJECT}-exports.cmake )
 
 INSTALL(FILES
-   ${JDKSAVDECC_C_INCLUDES}
+   ${PROJECT_INCLUDES}
    DESTINATION include
 )
 
-INSTALL(EXPORT jdksavdecc-c-exports.cmake DESTINATION "lib")
+install(EXPORT ${PROJECT}-exports.cmake DESTINATION "lib"  )
 
