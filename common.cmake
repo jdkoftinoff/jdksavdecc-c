@@ -51,8 +51,8 @@ set(LIBS ${LIBS} ${CHECK_LIBRARIES} ${PROJECT})
 
 include_directories( include  )
 
-file(GLOB PROJECT_INCLUDES "include/*.h" "include/*.hpp" "include/*/*.h" "include/*/*.hpp")
-file(GLOB PROJECT_SRC "src/*.c" "src/*.cpp" "src/*/*.c" "src/*/*.cpp" )
+file(GLOB PROJECT_INCLUDES "include/*.h" "include/*.hpp" "include/*/*.h" "include/*/*.hpp" "include/*/*/*.h" "include/*/*/*.hpp")
+file(GLOB PROJECT_SRC "src/*.c" "src/*.cpp" "src/*/*.c" "src/*/*.cpp" "src/*/*/*.c" "src/*/*/*.cpp")
 
 add_library (${PROJECT} ${PROJECT_SRC} ${PROJECT_INCLUDES})
 
