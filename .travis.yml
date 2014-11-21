@@ -8,7 +8,7 @@ before_script:
   - cmake -G "Unix Makefiles"
 
 script:
-  - make && make test
+  - make
 
 notifications:
   recipients:
