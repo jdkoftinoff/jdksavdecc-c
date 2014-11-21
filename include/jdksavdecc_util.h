@@ -662,6 +662,29 @@ static inline int jdksavdecc_eui48_is_set( struct jdksavdecc_eui48 v )
     return r;
 }
 
+static inline int jdksavdecc_eui48_is_zero( struct jdksavdecc_eui48 v )
+{
+    int r = 0;
+    if ( v.value[0] == 0x00 && v.value[1] == 0x00 && v.value[2] == 0x00 && v.value[3] == 0x00 && v.value[4] == 0x00
+         && v.value[5] == 0x00  )
+    {
+        r = 1;
+    }
+    return r;
+}
+
+static inline int jdksavdecc_eui48_is_not_zero( struct jdksavdecc_eui48 v )
+{
+    int r = 0;
+    if ( v.value[0] != 0x00 || v.value[1] != 0x00 || v.value[2] != 0x00 || v.value[3] != 0x00 || v.value[4] != 0x00
+         || v.value[5] != 0x00  )
+    {
+        r = 1;
+    }
+    return r;
+}
+
+
 /*@}*/
 
 /** \addtogroup eui64 eui64 */
