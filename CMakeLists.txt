@@ -12,7 +12,6 @@ option(EXAMPLES "Enable building of example programs" ON)
 option(TOOLS "Enable building of tools" ON)
 option(TOOLS_DEV "Enable building of tools-dev" ON)
 
-project (${PROJECT} C CXX)
 enable_testing()
 
 INCLUDE (CPack)

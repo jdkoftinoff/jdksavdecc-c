@@ -6,11 +6,21 @@ option(EXAMPLES "Enable building of example programs" ON)
 option(TOOLS "Enable building of tools" ON)
 option(TOOLS_DEV "Enable building of tools-dev" ON)
 
-project (${PROJECT} C CXX)
 enable_testing()
 
 INCLUDE (CPack)
 INCLUDE (CTest)
+
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+FIND_PACKAGE (Threads)
+
+if(CMAKE_USE_PTHREADS_INIT)
+    if( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )
+        set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} "-pthread")
+        set(CMAKE_C_FLAGS ${CMAKE_CXX_FLAGS} "-pthread")
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread")
+    endif()
+endif()
 
 # Compiler-specific C++11 activation.
 if (${CMAKE_CXX_COMPILER_ID} MATCHES "GNU")
@@ -21,9 +31,9 @@ if (${CMAKE_CXX_COMPILER_ID} MATCHES "GNU")
     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
 
     execute_process(
-        COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+	COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
     if (NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
-        message(FATAL_ERROR "${PROJECT_NAME} requires g++ 4.7 or greater.")
+	message(FATAL_ERROR "${PROJECT_NAME} requires g++ 4.7 or greater.")
     endif ()
 elseif (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
 
