@@ -106,14 +106,4 @@ if(TESTS MATCHES "ON")
    endforeach(item)
 endif()
 
-INSTALL(TARGETS ${PROJECT} DESTINATION "lib" EXPORT ${PROJECT}-exports.cmake )
-
-EXPORT(TARGETS ${PROJECT} FILE ${PROJECT}-exports.cmake )
-
-INSTALL(FILES
-   ${PROJECT_INCLUDES}
-   DESTINATION include
-)
-
-install(EXPORT ${PROJECT}-exports.cmake DESTINATION "lib"  )
 
