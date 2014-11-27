@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>768D02FD-3920-45A0-BABD-9A136556BC34</string>
+	<key>IDESourceControlProjectName</key>
+	<string>jdksavdecc-c</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2270D561C71457A6FA71DAD0942560C352F063DC</key>
+		<string>github.com:jdkoftinoff/jdksavdecc-c.git</string>
+		<key>4665A1C5A67B50C253562A553D314CBC1D6B80EC</key>
+		<string>github.com:jdkoftinoff/avdecc-cmd.git</string>
+		<key>CF2F6A42-7F0B-42FB-81E0-FC8D23789BA6</key>
+		<string>https://github.com/jdkoftinoff/jdksavdecc-c.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>jdksavdecc-c.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2270D561C71457A6FA71DAD0942560C352F063DC</key>
+		<string>../..</string>
+		<key>4665A1C5A67B50C253562A553D314CBC1D6B80EC</key>
+		<string>../../..</string>
+		<key>CF2F6A42-7F0B-42FB-81E0-FC8D23789BA6</key>
+		<string>../..-devel</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:jdkoftinoff/jdksavdecc-c.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2270D561C71457A6FA71DAD0942560C352F063DC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4665A1C5A67B50C253562A553D314CBC1D6B80EC</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2270D561C71457A6FA71DAD0942560C352F063DC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>jdksavdecc-c</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CF2F6A42-7F0B-42FB-81E0-FC8D23789BA6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>jdksavdecc-c-devel</string>
+		</dict>
+	</array>
+</dict>
+</plist>
