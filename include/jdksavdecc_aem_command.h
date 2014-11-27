@@ -11068,6 +11068,7 @@ struct jdksavdecc_aem_command_set_stream_info_response
     uint8_t msrp_failure_code;
     uint8_t reserved;
     struct jdksavdecc_eui64 msrp_failure_bridge_id;
+    uint8_t stream_vlan_id;
 };
 
 /**
