@@ -279,9 +279,9 @@ typedef struct
 // in %MSVC.NET%\crt\src\div.c
 #ifdef STATIC_IMAXDIV // [
 static
-#else  // STATIC_IMAXDIV ][
+#else                 // STATIC_IMAXDIV ][
 _inline
-#endif // STATIC_IMAXDIV ]
+#endif                // STATIC_IMAXDIV ]
     imaxdiv_t __cdecl imaxdiv( intmax_t numer, intmax_t denom )
 {
     imaxdiv_t result;
@@ -311,4 +311,3 @@ _inline
 
 #endif // _MSC_INTTYPES_H_ ]
 #endif
-
