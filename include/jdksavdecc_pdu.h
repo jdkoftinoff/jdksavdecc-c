@@ -113,7 +113,6 @@ extern struct jdksavdecc_eui64 jdksavdecc_identification_notification_controller
 #define JDKSAVDECC_SUBTYPE_ADP ( 0x7a )
 #define JDKSAVDECC_SUBTYPE_AECP ( 0x7b )
 #define JDKSAVDECC_SUBTYPE_ACMP ( 0x7c )
-#define JDKSAVDECC_SUBTYPE_MCN ( 0X7d )
 #define JDKSAVDECC_SUBTYPE_MAAP ( 0x7e )
 #define JDKSAVDECC_SUBTYPE_EXPERIMENTAL ( 0x7f )
 
