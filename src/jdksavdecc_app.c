@@ -262,7 +262,7 @@ bool jdksavdecc_appdu_set_nop( struct jdksavdecc_appdu *self )
     self->version = JDKSAVDECC_APPDU_VERSION;
     self->message_type = JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP;
     self->payload_length = 0;
-    jdksavdecc_eui48_init( &self->address );
+    jdksavdecc_eui48_zero( &self->address );
     self->reserved = 0;
     return true;
 }
