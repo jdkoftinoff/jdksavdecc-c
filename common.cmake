@@ -59,7 +59,7 @@ if(TODO MATCHES "ON")
 endif()
 
 
-set(LIBS ${LIBS} ${CHECK_LIBRARIES} ${PROJECT})
+set(LIBS ${PROJECT} ${LIBS} ${CHECK_LIBRARIES} ${PROJECT})
 
 include_directories( include  )
 
