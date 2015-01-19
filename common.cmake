@@ -22,6 +22,11 @@ if(CMAKE_USE_PTHREADS_INIT)
     endif()
 endif()
 
+IF (APPLE)
+    FIND_LIBRARY(COREFOUNDATION_LIBRARY CoreFoundation )
+    set(LIBS ${LIBS} ${COREFOUNDATION_LIBRARY})
+ENDIF (APPLE)
+
 if (${CXX11} MATCHES "ON")
     # Compiler-specific C++11 activation.
     if (${CMAKE_CXX_COMPILER_ID} MATCHES "GNU")
