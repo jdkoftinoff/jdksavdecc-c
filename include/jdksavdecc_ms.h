@@ -32,15 +32,20 @@
 */
 
 #ifdef _MSC_VER
-
 #include <BaseTsd.h>
 #include <direct.h>
+#if _MSC_VER < 1800
 #ifndef ssize_t
 #define ssize_t SSIZE_T
 #endif
 #include "jdksavdecc_msstdint.h"
 #include "jdksavdecc_msinttypes.h"
-
+#else
+# ifdef _WIN64
+typedef __int64 ssize_t;
+# else
+typedef __int32 ssize_t;
+# endif
 #include <stdint.h>
 #include <inttypes.h>
 #include <stdbool.h>
@@ -58,5 +63,6 @@
 #define bool uint8_t
 #define true 1
 #define false 0
+#endif
 #endif
 #endif
