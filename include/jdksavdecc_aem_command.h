@@ -2210,9 +2210,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_COMMAND_TYPE                                            \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE                                         \
-    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_INDEX                                        \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX                                     \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_LENGTH ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24 )
@@ -2228,9 +2228,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_COMMAND_TYPE                                           \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE                                        \
-    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_INDEX                                       \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX                                    \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24 )
@@ -2246,9 +2246,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_COMMAND_TYPE                                            \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE                                         \
-    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_INDEX                                        \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX                                     \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 
@@ -2263,9 +2263,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_COMMAND_TYPE                                           \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE                                        \
-    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_INDEX                                       \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX                                    \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24 )
@@ -42803,7 +42803,7 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_set_command_t
 }
 
 /**
- * Extract the uint16 value of the descriptor_type field of the
+ * Extract the uint16 value of the configuration_index field of the
  *COMMAND_SET_MEMORY_OBJECT_LENGTH object from a network buffer.
  *
  *
@@ -42812,28 +42812,28 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_set_command_t
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t descriptor_type value
+ * @return the uint16_t configuration_index value
  */
-static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_get_descriptor_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_get_configuration_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
- * Store a uint16 value to the descriptor_type field of the
+ * Store a uint16 value to the configuration_index field of the
  *COMMAND_SET_MEMORY_OBJECT_LENGTH object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t descriptor_type value.
+ * @param v The uint16_t configuration_index value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_set_memory_object_length_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_set_memory_object_length_set_configuration_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
@@ -43095,7 +43095,7 @@ static inline void
 }
 
 /**
- * Extract the uint16 value of the descriptor_type field of the
+ * Extract the uint16 value of the configuration_index field of the
  *COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object from a network
  *buffer.
  *
@@ -43105,30 +43105,30 @@ static inline void
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t descriptor_type value
+ * @return the uint16_t configuration_index value
  */
-static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_response_get_descriptor_type( void const *base,
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_response_get_configuration_index( void const *base,
                                                                                                      ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
- * Store a uint16 value to the descriptor_type field of the
+ * Store a uint16 value to the configuration_index field of the
  *COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t descriptor_type value.
+ * @param v The uint16_t configuration_index value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
 static inline void
-    jdksavdecc_aem_command_set_memory_object_length_response_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+    jdksavdecc_aem_command_set_memory_object_length_response_set_configuration_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
@@ -43391,7 +43391,7 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_set_command_t
 }
 
 /**
- * Extract the uint16 value of the descriptor_type field of the
+ * Extract the uint16 value of the configuration_index field of the
  *COMMAND_GET_MEMORY_OBJECT_LENGTH object from a network buffer.
  *
  *
@@ -43400,28 +43400,28 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_set_command_t
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t descriptor_type value
+ * @return the uint16_t configuration_index value
  */
-static inline uint16_t jdksavdecc_aem_command_get_memory_object_length_get_descriptor_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_get_memory_object_length_get_configuration_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
- * Store a uint16 value to the descriptor_type field of the
+ * Store a uint16 value to the configuration_index field of the
  *COMMAND_GET_MEMORY_OBJECT_LENGTH object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t descriptor_type value.
+ * @param v The uint16_t configuration_index value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_get_memory_object_length_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_get_memory_object_length_set_configuration_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
@@ -43646,7 +43646,7 @@ static inline void
 }
 
 /**
- * Extract the uint16 value of the descriptor_type field of the
+ * Extract the uint16 value of the configuration_index field of the
  *COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE object from a network
  *buffer.
  *
@@ -43656,30 +43656,30 @@ static inline void
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t descriptor_type value
+ * @return the uint16_t configuration_index value
  */
-static inline uint16_t jdksavdecc_aem_command_get_memory_object_length_response_get_descriptor_type( void const *base,
+static inline uint16_t jdksavdecc_aem_command_get_memory_object_length_response_get_configuration_index( void const *base,
                                                                                                      ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
- * Store a uint16 value to the descriptor_type field of the
+ * Store a uint16 value to the configuration_index field of the
  *COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t descriptor_type value.
+ * @param v The uint16_t configuration_index value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
 static inline void
-    jdksavdecc_aem_command_get_memory_object_length_response_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+    jdksavdecc_aem_command_get_memory_object_length_response_set_configuration_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
