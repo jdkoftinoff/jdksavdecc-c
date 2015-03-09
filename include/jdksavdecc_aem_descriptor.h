@@ -882,7 +882,7 @@ struct jdksavdecc_descriptor
 
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_DESCRIPTOR_TYPE ( 0 )
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_DESCRIPTOR_INDEX ( 2 )
-#define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ENTITY_ID ( 4 )
+#define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ID ( 4 )
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_VENDOR_ID ( 12 )
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_MODEL_ID ( 16 )
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_CAPABILITIES ( 20 )
@@ -923,136 +923,136 @@ struct jdksavdecc_descriptor
 /** \addtogroup descriptor_audio AUDIO_UNIT Descriptor - Clause 7.2.3  */
 /*@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_DESCRIPTOR_TYPE ( 0 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_DESCRIPTOR_INDEX ( 2 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_OBJECT_NAME ( 4 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_LOCALIZED_DESCRIPTION ( 68 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_CLOCK_DOMAIN_INDEX ( 70 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS ( 72 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_STREAM_INPUT_PORT ( 74 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS ( 76 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_STREAM_OUTPUT_PORT ( 78 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS ( 80 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_EXTERNAL_INPUT_PORT ( 82 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS ( 84 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_EXTERNAL_OUTPUT_PORT ( 86 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS ( 88 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_INTERNAL_INPUT_PORT ( 90 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS ( 92 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_INTERNAL_OUTPUT_PORT ( 94 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_CONTROLS ( 96 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_CONTROL ( 98 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_SIGNAL_SELECTORS ( 100 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_SIGNAL_SELECTOR ( 102 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_MIXERS ( 104 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_MIXER ( 106 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_MATRICES ( 108 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_MATRIX ( 110 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_SPLITTERS ( 112 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_SPLITTER ( 114 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_COMBINERS ( 116 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_COMBINER ( 118 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_DEMULTIPLEXERS ( 120 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_DEMULTIPLEXER ( 122 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_MULTIPLEXERS ( 124 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_MULTIPLEXER ( 126 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_TRANSCODERS ( 128 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_TRANSCODER ( 130 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_CONTROL_BLOCKS ( 132 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_CONTROL_BLOCK ( 134 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_CURRENT_SAMPLING_RATE ( 136 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_SAMPLING_RATES_OFFSET ( 140 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_SAMPLING_RATES_COUNT ( 142 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_SAMPLING_RATES ( 144 )
-#define JDKSAVDECC_DESCRIPTOR_AUDIO_LEN ( 144 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_DESCRIPTOR_TYPE ( 0 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_DESCRIPTOR_INDEX ( 2 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_OBJECT_NAME ( 4 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_LOCALIZED_DESCRIPTION ( 68 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_CLOCK_DOMAIN_INDEX ( 70 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS ( 72 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_STREAM_INPUT_PORT ( 74 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS ( 76 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_STREAM_OUTPUT_PORT ( 78 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS ( 80 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_EXTERNAL_INPUT_PORT ( 82 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS ( 84 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_EXTERNAL_OUTPUT_PORT ( 86 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS ( 88 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_INTERNAL_INPUT_PORT ( 90 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS ( 92 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_INTERNAL_OUTPUT_PORT ( 94 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_CONTROLS ( 96 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_CONTROL ( 98 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_SIGNAL_SELECTORS ( 100 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_SIGNAL_SELECTOR ( 102 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_MIXERS ( 104 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_MIXER ( 106 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_MATRICES ( 108 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_MATRIX ( 110 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_SPLITTERS ( 112 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_SPLITTER ( 114 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_COMBINERS ( 116 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_COMBINER ( 118 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_DEMULTIPLEXERS ( 120 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_DEMULTIPLEXER ( 122 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_MULTIPLEXERS ( 124 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_MULTIPLEXER ( 126 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_TRANSCODERS ( 128 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_TRANSCODER ( 130 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_CONTROL_BLOCKS ( 132 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_CONTROL_BLOCK ( 134 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_CURRENT_SAMPLING_RATE ( 136 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_SAMPLING_RATES_OFFSET ( 140 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_SAMPLING_RATES_COUNT ( 142 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_SAMPLING_RATES ( 144 )
+#define JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_LEN ( 144 )
 
 /*@}*/
 
 /** \addtogroup descriptor_video VIDEO_UNIT Descriptor - Clause 7.2.4  */
 /*@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_DESCRIPTOR_TYPE ( 0 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_DESCRIPTOR_INDEX ( 2 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_OBJECT_NAME ( 4 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_LOCALIZED_DESCRIPTION ( 68 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_CLOCK_DOMAIN_INDEX ( 70 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS ( 72 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_STREAM_INPUT_PORT ( 74 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS ( 76 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_STREAM_OUTPUT_PORT ( 78 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS ( 80 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_EXTERNAL_INPUT_PORT ( 82 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS ( 84 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_EXTERNAL_OUTPUT_PORT ( 86 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS ( 88 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_INTERNAL_INPUT_PORT ( 90 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS ( 92 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_INTERNAL_OUTPUT_PORT ( 94 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_CONTROLS ( 96 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_CONTROL ( 98 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_SIGNAL_SELECTORS ( 100 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_SIGNAL_SELECTOR ( 102 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_MIXERS ( 104 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_MIXER ( 106 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_MATRICES ( 108 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_MATRIX ( 110 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_SPLITTERS ( 112 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_SPLITTER ( 114 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_COMBINERS ( 116 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_COMBINER ( 118 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_DEMULTIPLEXERS ( 120 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_DEMULTIPLEXER ( 122 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_MULTIPLEXERS ( 124 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_MULTIPLEXER ( 126 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_TRANSCODERS ( 128 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_TRANSCODER ( 130 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_CONTROL_BLOCKS ( 132 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_CONTROL_BLOCK ( 134 )
-#define JDKSAVDECC_DESCRIPTOR_VIDEO_LEN ( 136 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_DESCRIPTOR_TYPE ( 0 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_DESCRIPTOR_INDEX ( 2 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_OBJECT_NAME ( 4 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_LOCALIZED_DESCRIPTION ( 68 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_CLOCK_DOMAIN_INDEX ( 70 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS ( 72 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_STREAM_INPUT_PORT ( 74 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS ( 76 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_STREAM_OUTPUT_PORT ( 78 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS ( 80 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_EXTERNAL_INPUT_PORT ( 82 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS ( 84 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_EXTERNAL_OUTPUT_PORT ( 86 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS ( 88 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_INTERNAL_INPUT_PORT ( 90 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS ( 92 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_INTERNAL_OUTPUT_PORT ( 94 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_CONTROLS ( 96 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_CONTROL ( 98 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_SIGNAL_SELECTORS ( 100 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_SIGNAL_SELECTOR ( 102 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_MIXERS ( 104 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_MIXER ( 106 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_MATRICES ( 108 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_MATRIX ( 110 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_SPLITTERS ( 112 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_SPLITTER ( 114 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_COMBINERS ( 116 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_COMBINER ( 118 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_DEMULTIPLEXERS ( 120 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_DEMULTIPLEXER ( 122 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_MULTIPLEXERS ( 124 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_MULTIPLEXER ( 126 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_TRANSCODERS ( 128 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_TRANSCODER ( 130 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_CONTROL_BLOCKS ( 132 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_CONTROL_BLOCK ( 134 )
+#define JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_LEN ( 136 )
 
 /*@}*/
 
 /** \addtogroup descriptor_sensor SENSOR_UNIT Descriptor - Clause 7.2.5  */
 /*@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_DESCRIPTOR_TYPE ( 0 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_DESCRIPTOR_INDEX ( 2 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_OBJECT_NAME ( 4 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_LOCALIZED_DESCRIPTION ( 68 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_CLOCK_DOMAIN_INDEX ( 70 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS ( 72 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_STREAM_INPUT_PORT ( 74 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS ( 76 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_STREAM_OUTPUT_PORT ( 78 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS ( 80 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_EXTERNAL_INPUT_PORT ( 82 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS ( 84 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_EXTERNAL_OUTPUT_PORT ( 86 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS ( 88 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_INTERNAL_INPUT_PORT ( 90 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS ( 92 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_INTERNAL_OUTPUT_PORT ( 94 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_CONTROLS ( 96 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_CONTROL ( 98 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_SIGNAL_SELECTORS ( 100 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_SIGNAL_SELECTOR ( 102 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_MIXERS ( 104 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_MIXER ( 106 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_MATRICES ( 108 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_MATRIX ( 110 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_SPLITTERS ( 112 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_SPLITTER ( 114 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_COMBINERS ( 116 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_COMBINER ( 118 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_DEMULTIPLEXERS ( 120 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_DEMULTIPLEXER ( 122 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_MULTIPLEXERS ( 124 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_MULTIPLEXER ( 126 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_TRANSCODERS ( 128 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_TRANSCODER ( 130 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_CONTROL_BLOCKS ( 132 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_CONTROL_BLOCK ( 134 )
-#define JDKSAVDECC_DESCRIPTOR_SENSOR_LEN ( 136 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_DESCRIPTOR_TYPE ( 0 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_DESCRIPTOR_INDEX ( 2 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_OBJECT_NAME ( 4 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_LOCALIZED_DESCRIPTION ( 68 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_CLOCK_DOMAIN_INDEX ( 70 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS ( 72 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_STREAM_INPUT_PORT ( 74 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS ( 76 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_STREAM_OUTPUT_PORT ( 78 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS ( 80 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_EXTERNAL_INPUT_PORT ( 82 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS ( 84 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_EXTERNAL_OUTPUT_PORT ( 86 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS ( 88 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_INTERNAL_INPUT_PORT ( 90 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS ( 92 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_INTERNAL_OUTPUT_PORT ( 94 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_CONTROLS ( 96 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_CONTROL ( 98 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_SIGNAL_SELECTORS ( 100 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_SIGNAL_SELECTOR ( 102 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_MIXERS ( 104 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_MIXER ( 106 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_MATRICES ( 108 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_MATRIX ( 110 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_SPLITTERS ( 112 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_SPLITTER ( 114 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_COMBINERS ( 116 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_COMBINER ( 118 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_DEMULTIPLEXERS ( 120 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_DEMULTIPLEXER ( 122 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_MULTIPLEXERS ( 124 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_MULTIPLEXER ( 126 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_TRANSCODERS ( 128 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_TRANSCODER ( 130 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_CONTROL_BLOCKS ( 132 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_CONTROL_BLOCK ( 134 )
+#define JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_LEN ( 136 )
 
 /*@}*/
 
@@ -1070,13 +1070,13 @@ struct jdksavdecc_descriptor
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_FORMATS_OFFSET ( 82 )
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_NUMBER_OF_FORMATS ( 84 )
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_0 ( 86 )
-#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_0 ( 94 )
+#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_ID_0 ( 94 )
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_1 ( 96 )
-#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_1 ( 104 )
+#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_ID_1 ( 104 )
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_ENTITY_ID_2 ( 106 )
-#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_2 ( 114 )
+#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_ID_2 ( 114 )
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_ENTITY_ID ( 116 )
-#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_UNIQUE ( 124 )
+#define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_UNIQUE_ID ( 124 )
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_AVB_INTERFACE_INDEX ( 126 )
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BUFFER_LENGTH ( 128 )
 #define JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_FORMATS ( 132 )
@@ -1583,21 +1583,21 @@ struct jdksavdecc_descriptor
 /** \addtogroup descriptor_transcoder SIGNAL_TRANSCODER Descriptor - Clause 7.2.31  */
 /*@{*/
 
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_DESCRIPTOR_TYPE ( 0 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_DESCRIPTOR_INDEX ( 2 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_OBJECT_NAME ( 4 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_LOCALIZED_DESCRIPTION ( 68 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_BLOCK_LATENCY ( 70 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_CONTROL_LATENCY ( 74 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_CONTROL_DOMAIN ( 78 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_CONTROL_VALUE_TYPE ( 80 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_VALUES_OFFSET ( 82 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_NUMBER_OF_VALUES ( 84 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_SIGNAL_TYPE ( 86 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_SIGNAL_INDEX ( 88 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_SIGNAL_OUTPUT ( 90 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_VALUE_DETAILS ( 92 )
-#define JDKSAVDECC_DESCRIPTOR_TRANSCODER_LEN ( 92 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_DESCRIPTOR_TYPE ( 0 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_DESCRIPTOR_INDEX ( 2 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_OBJECT_NAME ( 4 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_LOCALIZED_DESCRIPTION ( 68 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_BLOCK_LATENCY ( 70 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_CONTROL_LATENCY ( 74 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_CONTROL_DOMAIN ( 78 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_CONTROL_VALUE_TYPE ( 80 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_VALUES_OFFSET ( 82 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_NUMBER_OF_VALUES ( 84 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_SIGNAL_TYPE ( 86 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_SIGNAL_INDEX ( 88 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_SIGNAL_OUTPUT ( 90 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_VALUE_DETAILS ( 92 )
+#define JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_LEN ( 92 )
 
 /*@}*/
 
@@ -5326,7 +5326,7 @@ static inline void jdksavdecc_descriptor_entity_set_descriptor_index( uint16_t v
  */
 static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_entity_get_entity_entity_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ENTITY_ID );
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ID );
 }
 
 /**
@@ -5343,7 +5343,7 @@ static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_entity_get_entity_en
  */
 static inline void jdksavdecc_descriptor_entity_set_entity_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ENTITY_ID );
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ID );
 }
 
 /**
@@ -6388,9 +6388,9 @@ static inline ssize_t jdksavdecc_descriptor_configuration_write( struct jdksavde
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_type value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_descriptor_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_descriptor_type( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -6405,9 +6405,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_descriptor_type( void con
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -6422,9 +6422,9 @@ static inline void jdksavdecc_descriptor_audio_set_descriptor_type( uint16_t v, 
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_index value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_descriptor_index( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_descriptor_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_DESCRIPTOR_INDEX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /**
@@ -6439,9 +6439,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_descriptor_index( void co
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_DESCRIPTOR_INDEX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /**
@@ -6456,9 +6456,9 @@ static inline void jdksavdecc_descriptor_audio_set_descriptor_index( uint16_t v,
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_string_t object_name value
  */
-static inline struct jdksavdecc_string jdksavdecc_descriptor_audio_get_object_name( void const *base, ssize_t pos )
+static inline struct jdksavdecc_string jdksavdecc_descriptor_audio_unit_get_object_name( void const *base, ssize_t pos )
 {
-    return jdksavdecc_string_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_OBJECT_NAME );
+    return jdksavdecc_string_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_OBJECT_NAME );
 }
 
 /**
@@ -6473,9 +6473,9 @@ static inline struct jdksavdecc_string jdksavdecc_descriptor_audio_get_object_na
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_object_name( struct jdksavdecc_string v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_object_name( struct jdksavdecc_string v, void *base, ssize_t pos )
 {
-    jdksavdecc_string_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_OBJECT_NAME );
+    jdksavdecc_string_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_OBJECT_NAME );
 }
 
 /**
@@ -6490,9 +6490,9 @@ static inline void jdksavdecc_descriptor_audio_set_object_name( struct jdksavdec
  * @param pos offset from base to read the field from;
  * @return the uint16_t localized_description value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_localized_description( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_localized_description( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_LOCALIZED_DESCRIPTION );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_LOCALIZED_DESCRIPTION );
 }
 
 /**
@@ -6507,9 +6507,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_localized_description( vo
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_localized_description( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_localized_description( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_LOCALIZED_DESCRIPTION );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_LOCALIZED_DESCRIPTION );
 }
 
 /**
@@ -6524,9 +6524,9 @@ static inline void jdksavdecc_descriptor_audio_set_localized_description( uint16
  * @param pos offset from base to read the field from;
  * @return the uint16_t clock_domain_index value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_clock_domain_index( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_clock_domain_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_CLOCK_DOMAIN_INDEX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_CLOCK_DOMAIN_INDEX );
 }
 
 /**
@@ -6541,9 +6541,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_clock_domain_index( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_clock_domain_index( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_clock_domain_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_CLOCK_DOMAIN_INDEX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_CLOCK_DOMAIN_INDEX );
 }
 
 /**
@@ -6558,9 +6558,9 @@ static inline void jdksavdecc_descriptor_audio_set_clock_domain_index( uint16_t 
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_stream_input_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_stream_input_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_stream_input_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
 }
 
 /**
@@ -6575,9 +6575,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_stream_input_po
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_stream_input_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_stream_input_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
 }
 
 /**
@@ -6592,9 +6592,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_stream_input_ports(
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_stream_input_port value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_stream_input_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_stream_input_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_STREAM_INPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_STREAM_INPUT_PORT );
 }
 
 /**
@@ -6609,9 +6609,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_stream_input_port( v
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_stream_input_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_stream_input_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_STREAM_INPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_STREAM_INPUT_PORT );
 }
 
 /**
@@ -6626,9 +6626,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_stream_input_port( uint1
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_stream_output_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_stream_output_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_stream_output_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
 }
 
 /**
@@ -6643,9 +6643,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_stream_output_p
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_stream_output_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_stream_output_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
 }
 
 /**
@@ -6660,9 +6660,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_stream_output_ports
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_stream_output_port value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_stream_output_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_stream_output_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_STREAM_OUTPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_STREAM_OUTPUT_PORT );
 }
 
 /**
@@ -6677,9 +6677,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_stream_output_port( 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_stream_output_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_stream_output_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_STREAM_OUTPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_STREAM_OUTPUT_PORT );
 }
 
 /**
@@ -6694,9 +6694,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_stream_output_port( uint
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_external_input_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_external_input_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_external_input_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -6711,9 +6711,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_external_input_
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_external_input_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_external_input_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -6728,9 +6728,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_external_input_port
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_external_input_port value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_external_input_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_external_input_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_EXTERNAL_INPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_EXTERNAL_INPUT_PORT );
 }
 
 /**
@@ -6745,9 +6745,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_external_input_port(
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_external_input_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_external_input_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_EXTERNAL_INPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_EXTERNAL_INPUT_PORT );
 }
 
 /**
@@ -6762,9 +6762,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_external_input_port( uin
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_external_output_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_external_output_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_external_output_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -6779,9 +6779,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_external_output
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_external_output_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_external_output_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -6796,9 +6796,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_external_output_por
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_external_output_port value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_external_output_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_external_output_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -6813,9 +6813,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_external_output_port
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_external_output_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_external_output_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -6830,9 +6830,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_external_output_port( ui
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_internal_input_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_internal_input_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_internal_input_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -6847,9 +6847,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_internal_input_
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_internal_input_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_internal_input_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -6864,9 +6864,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_internal_input_port
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_internal_input_port value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_internal_input_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_internal_input_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_INTERNAL_INPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_INTERNAL_INPUT_PORT );
 }
 
 /**
@@ -6881,9 +6881,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_internal_input_port(
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_internal_input_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_internal_input_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_INTERNAL_INPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_INTERNAL_INPUT_PORT );
 }
 
 /**
@@ -6898,9 +6898,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_internal_input_port( uin
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_internal_output_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_internal_output_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_internal_output_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -6915,9 +6915,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_internal_output
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_internal_output_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_internal_output_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -6932,9 +6932,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_internal_output_por
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_internal_output_port value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_internal_output_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_internal_output_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -6949,9 +6949,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_internal_output_port
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_internal_output_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_internal_output_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -6966,9 +6966,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_internal_output_port( ui
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_controls value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_controls( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_controls( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_CONTROLS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_CONTROLS );
 }
 
 /**
@@ -6983,9 +6983,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_controls( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_controls( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_controls( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_CONTROLS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_CONTROLS );
 }
 
 /**
@@ -7000,9 +7000,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_controls( uint16_t 
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_control value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_control( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_control( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_CONTROL );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_CONTROL );
 }
 
 /**
@@ -7017,9 +7017,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_control( void const 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_control( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_control( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_CONTROL );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_CONTROL );
 }
 
 /**
@@ -7034,9 +7034,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_control( uint16_t v, voi
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_signal_selectors value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_signal_selectors( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_signal_selectors( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
 }
 
 /**
@@ -7051,9 +7051,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_signal_selector
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_signal_selectors( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_signal_selectors( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
 }
 
 /**
@@ -7068,9 +7068,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_signal_selectors( u
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_signal_selector value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_signal_selector( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_signal_selector( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_SIGNAL_SELECTOR );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_SIGNAL_SELECTOR );
 }
 
 /**
@@ -7085,9 +7085,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_signal_selector( voi
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_signal_selector( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_signal_selector( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_SIGNAL_SELECTOR );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_SIGNAL_SELECTOR );
 }
 
 /**
@@ -7102,9 +7102,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_signal_selector( uint16_
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_mixers value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_mixers( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_mixers( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_MIXERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_MIXERS );
 }
 
 /**
@@ -7119,9 +7119,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_mixers( void co
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_mixers( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_mixers( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_MIXERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_MIXERS );
 }
 
 /**
@@ -7136,9 +7136,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_mixers( uint16_t v,
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_mixer value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_mixer( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_mixer( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_MIXER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_MIXER );
 }
 
 /**
@@ -7153,9 +7153,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_mixer( void const *b
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_mixer( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_mixer( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_MIXER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_MIXER );
 }
 
 /**
@@ -7170,9 +7170,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_mixer( uint16_t v, void 
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_matrices value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_matrices( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_matrices( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_MATRICES );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_MATRICES );
 }
 
 /**
@@ -7187,9 +7187,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_matrices( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_matrices( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_matrices( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_MATRICES );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_MATRICES );
 }
 
 /**
@@ -7204,9 +7204,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_matrices( uint16_t 
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_matrix value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_matrix( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_matrix( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_MATRIX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_MATRIX );
 }
 
 /**
@@ -7221,9 +7221,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_matrix( void const *
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_matrix( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_matrix( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_MATRIX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_MATRIX );
 }
 
 /**
@@ -7238,9 +7238,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_matrix( uint16_t v, void
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_splitters value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_splitters( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_splitters( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_SPLITTERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_SPLITTERS );
 }
 
 /**
@@ -7255,9 +7255,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_splitters( void
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_splitters( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_splitters( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_SPLITTERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_SPLITTERS );
 }
 
 /**
@@ -7272,9 +7272,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_splitters( uint16_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_splitter value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_splitter( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_splitter( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_SPLITTER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_SPLITTER );
 }
 
 /**
@@ -7289,9 +7289,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_splitter( void const
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_splitter( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_splitter( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_SPLITTER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_SPLITTER );
 }
 
 /**
@@ -7306,9 +7306,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_splitter( uint16_t v, vo
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_combiners value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_combiners( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_combiners( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_COMBINERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_COMBINERS );
 }
 
 /**
@@ -7323,9 +7323,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_combiners( void
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_combiners( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_combiners( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_COMBINERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_COMBINERS );
 }
 
 /**
@@ -7340,9 +7340,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_combiners( uint16_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_combiner value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_combiner( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_combiner( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_COMBINER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_COMBINER );
 }
 
 /**
@@ -7357,9 +7357,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_combiner( void const
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_combiner( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_combiner( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_COMBINER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_COMBINER );
 }
 
 /**
@@ -7374,9 +7374,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_combiner( uint16_t v, vo
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_demultiplexers value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_demultiplexers( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_demultiplexers( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
 }
 
 /**
@@ -7391,9 +7391,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_demultiplexers(
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_demultiplexers( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_demultiplexers( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
 }
 
 /**
@@ -7408,9 +7408,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_demultiplexers( uin
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_demultiplexer value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_demultiplexer( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_demultiplexer( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_DEMULTIPLEXER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_DEMULTIPLEXER );
 }
 
 /**
@@ -7425,9 +7425,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_demultiplexer( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_demultiplexer( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_demultiplexer( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_DEMULTIPLEXER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_DEMULTIPLEXER );
 }
 
 /**
@@ -7442,9 +7442,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_demultiplexer( uint16_t 
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_multiplexers value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_multiplexers( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_multiplexers( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_MULTIPLEXERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_MULTIPLEXERS );
 }
 
 /**
@@ -7459,9 +7459,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_multiplexers( v
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_multiplexers( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_multiplexers( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_MULTIPLEXERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_MULTIPLEXERS );
 }
 
 /**
@@ -7476,9 +7476,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_multiplexers( uint1
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_multiplexer value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_multiplexer( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_multiplexer( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_MULTIPLEXER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_MULTIPLEXER );
 }
 
 /**
@@ -7493,9 +7493,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_multiplexer( void co
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_multiplexer( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_multiplexer( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_MULTIPLEXER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_MULTIPLEXER );
 }
 
 /**
@@ -7510,9 +7510,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_multiplexer( uint16_t v,
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_transcoders value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_transcoders( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_transcoders( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_TRANSCODERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_TRANSCODERS );
 }
 
 /**
@@ -7527,9 +7527,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_transcoders( vo
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_transcoders( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_transcoders( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_TRANSCODERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_TRANSCODERS );
 }
 
 /**
@@ -7544,9 +7544,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_transcoders( uint16
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_transcoder value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_transcoder( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_transcoder( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_TRANSCODER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_TRANSCODER );
 }
 
 /**
@@ -7561,9 +7561,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_transcoder( void con
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_transcoder( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_transcoder( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_TRANSCODER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_TRANSCODER );
 }
 
 /**
@@ -7578,9 +7578,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_transcoder( uint16_t v, 
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_control_blocks value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_control_blocks( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_number_of_control_blocks( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
 }
 
 /**
@@ -7595,9 +7595,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_number_of_control_blocks(
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_number_of_control_blocks( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_number_of_control_blocks( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
 }
 
 /**
@@ -7612,9 +7612,9 @@ static inline void jdksavdecc_descriptor_audio_set_number_of_control_blocks( uin
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_control_block value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_base_control_block( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_base_control_block( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_CONTROL_BLOCK );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_CONTROL_BLOCK );
 }
 
 /**
@@ -7629,9 +7629,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_base_control_block( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_base_control_block( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_base_control_block( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_BASE_CONTROL_BLOCK );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_BASE_CONTROL_BLOCK );
 }
 
 /**
@@ -7646,9 +7646,9 @@ static inline void jdksavdecc_descriptor_audio_set_base_control_block( uint16_t 
  * @param pos offset from base to read the field from;
  * @return the uint32_t current_sampling_rate value
  */
-static inline uint32_t jdksavdecc_descriptor_audio_get_current_sampling_rate( void const *base, ssize_t pos )
+static inline uint32_t jdksavdecc_descriptor_audio_unit_get_current_sampling_rate( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_CURRENT_SAMPLING_RATE );
+    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_CURRENT_SAMPLING_RATE );
 }
 
 /**
@@ -7663,9 +7663,9 @@ static inline uint32_t jdksavdecc_descriptor_audio_get_current_sampling_rate( vo
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_current_sampling_rate( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_current_sampling_rate( uint32_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_CURRENT_SAMPLING_RATE );
+    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_CURRENT_SAMPLING_RATE );
 }
 
 /**
@@ -7680,9 +7680,9 @@ static inline void jdksavdecc_descriptor_audio_set_current_sampling_rate( uint32
  * @param pos offset from base to read the field from;
  * @return the uint16_t sampling_rates_offset value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_sampling_rates_offset( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_sampling_rates_offset( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_SAMPLING_RATES_OFFSET );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_SAMPLING_RATES_OFFSET );
 }
 
 /**
@@ -7697,9 +7697,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_sampling_rates_offset( vo
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_sampling_rates_offset( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_sampling_rates_offset( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_SAMPLING_RATES_OFFSET );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_SAMPLING_RATES_OFFSET );
 }
 
 /**
@@ -7714,9 +7714,9 @@ static inline void jdksavdecc_descriptor_audio_set_sampling_rates_offset( uint16
  * @param pos offset from base to read the field from;
  * @return the uint16_t sampling_rates_count value
  */
-static inline uint16_t jdksavdecc_descriptor_audio_get_sampling_rates_count( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_audio_unit_get_sampling_rates_count( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_SAMPLING_RATES_COUNT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_SAMPLING_RATES_COUNT );
 }
 
 /**
@@ -7731,9 +7731,9 @@ static inline uint16_t jdksavdecc_descriptor_audio_get_sampling_rates_count( voi
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_audio_set_sampling_rates_count( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_audio_unit_set_sampling_rates_count( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_OFFSET_SAMPLING_RATES_COUNT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_OFFSET_SAMPLING_RATES_COUNT );
 }
 
 /*@}*/
@@ -7742,7 +7742,7 @@ static inline void jdksavdecc_descriptor_audio_set_sampling_rates_count( uint16_
 /*@{*/
 
 /// AUDIO_UNIT Descriptor - Clause 7.2.3
-struct jdksavdecc_descriptor_audio
+struct jdksavdecc_descriptor_audio_unit
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -7801,51 +7801,51 @@ struct jdksavdecc_descriptor_audio
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_audio_read( struct jdksavdecc_descriptor_audio *p, void const *base, ssize_t pos, size_t len )
+    jdksavdecc_descriptor_audio_read( struct jdksavdecc_descriptor_audio_unit *p, void const *base, ssize_t pos, size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_LEN );
     if ( r >= 0 )
     {
-        p->descriptor_type = jdksavdecc_descriptor_audio_get_descriptor_type( base, pos );
-        p->descriptor_index = jdksavdecc_descriptor_audio_get_descriptor_index( base, pos );
-        p->object_name = jdksavdecc_descriptor_audio_get_object_name( base, pos );
-        p->localized_description = jdksavdecc_descriptor_audio_get_localized_description( base, pos );
-        p->clock_domain_index = jdksavdecc_descriptor_audio_get_clock_domain_index( base, pos );
-        p->number_of_stream_input_ports = jdksavdecc_descriptor_audio_get_number_of_stream_input_ports( base, pos );
-        p->base_stream_input_port = jdksavdecc_descriptor_audio_get_base_stream_input_port( base, pos );
-        p->number_of_stream_output_ports = jdksavdecc_descriptor_audio_get_number_of_stream_output_ports( base, pos );
-        p->base_stream_output_port = jdksavdecc_descriptor_audio_get_base_stream_output_port( base, pos );
-        p->number_of_external_input_ports = jdksavdecc_descriptor_audio_get_number_of_external_input_ports( base, pos );
-        p->base_external_input_port = jdksavdecc_descriptor_audio_get_base_external_input_port( base, pos );
-        p->number_of_external_output_ports = jdksavdecc_descriptor_audio_get_number_of_external_output_ports( base, pos );
-        p->base_external_output_port = jdksavdecc_descriptor_audio_get_base_external_output_port( base, pos );
-        p->number_of_internal_input_ports = jdksavdecc_descriptor_audio_get_number_of_internal_input_ports( base, pos );
-        p->base_internal_input_port = jdksavdecc_descriptor_audio_get_base_internal_input_port( base, pos );
-        p->number_of_internal_output_ports = jdksavdecc_descriptor_audio_get_number_of_internal_output_ports( base, pos );
-        p->base_internal_output_port = jdksavdecc_descriptor_audio_get_base_internal_output_port( base, pos );
-        p->number_of_controls = jdksavdecc_descriptor_audio_get_number_of_controls( base, pos );
-        p->base_control = jdksavdecc_descriptor_audio_get_base_control( base, pos );
-        p->number_of_signal_selectors = jdksavdecc_descriptor_audio_get_number_of_signal_selectors( base, pos );
-        p->base_signal_selector = jdksavdecc_descriptor_audio_get_base_signal_selector( base, pos );
-        p->number_of_mixers = jdksavdecc_descriptor_audio_get_number_of_mixers( base, pos );
-        p->base_mixer = jdksavdecc_descriptor_audio_get_base_mixer( base, pos );
-        p->number_of_matrices = jdksavdecc_descriptor_audio_get_number_of_matrices( base, pos );
-        p->base_matrix = jdksavdecc_descriptor_audio_get_base_matrix( base, pos );
-        p->number_of_splitters = jdksavdecc_descriptor_audio_get_number_of_splitters( base, pos );
-        p->base_splitter = jdksavdecc_descriptor_audio_get_base_splitter( base, pos );
-        p->number_of_combiners = jdksavdecc_descriptor_audio_get_number_of_combiners( base, pos );
-        p->base_combiner = jdksavdecc_descriptor_audio_get_base_combiner( base, pos );
-        p->number_of_demultiplexers = jdksavdecc_descriptor_audio_get_number_of_demultiplexers( base, pos );
-        p->base_demultiplexer = jdksavdecc_descriptor_audio_get_base_demultiplexer( base, pos );
-        p->number_of_multiplexers = jdksavdecc_descriptor_audio_get_number_of_multiplexers( base, pos );
-        p->base_multiplexer = jdksavdecc_descriptor_audio_get_base_multiplexer( base, pos );
-        p->number_of_transcoders = jdksavdecc_descriptor_audio_get_number_of_transcoders( base, pos );
-        p->base_transcoder = jdksavdecc_descriptor_audio_get_base_transcoder( base, pos );
-        p->number_of_control_blocks = jdksavdecc_descriptor_audio_get_number_of_control_blocks( base, pos );
-        p->base_control_block = jdksavdecc_descriptor_audio_get_base_control_block( base, pos );
-        p->current_sampling_rate = jdksavdecc_descriptor_audio_get_current_sampling_rate( base, pos );
-        p->sampling_rates_offset = jdksavdecc_descriptor_audio_get_sampling_rates_offset( base, pos );
-        p->sampling_rates_count = jdksavdecc_descriptor_audio_get_sampling_rates_count( base, pos );
+        p->descriptor_type = jdksavdecc_descriptor_audio_unit_get_descriptor_type( base, pos );
+        p->descriptor_index = jdksavdecc_descriptor_audio_unit_get_descriptor_index( base, pos );
+        p->object_name = jdksavdecc_descriptor_audio_unit_get_object_name( base, pos );
+        p->localized_description = jdksavdecc_descriptor_audio_unit_get_localized_description( base, pos );
+        p->clock_domain_index = jdksavdecc_descriptor_audio_unit_get_clock_domain_index( base, pos );
+        p->number_of_stream_input_ports = jdksavdecc_descriptor_audio_unit_get_number_of_stream_input_ports( base, pos );
+        p->base_stream_input_port = jdksavdecc_descriptor_audio_unit_get_base_stream_input_port( base, pos );
+        p->number_of_stream_output_ports = jdksavdecc_descriptor_audio_unit_get_number_of_stream_output_ports( base, pos );
+        p->base_stream_output_port = jdksavdecc_descriptor_audio_unit_get_base_stream_output_port( base, pos );
+        p->number_of_external_input_ports = jdksavdecc_descriptor_audio_unit_get_number_of_external_input_ports( base, pos );
+        p->base_external_input_port = jdksavdecc_descriptor_audio_unit_get_base_external_input_port( base, pos );
+        p->number_of_external_output_ports = jdksavdecc_descriptor_audio_unit_get_number_of_external_output_ports( base, pos );
+        p->base_external_output_port = jdksavdecc_descriptor_audio_unit_get_base_external_output_port( base, pos );
+        p->number_of_internal_input_ports = jdksavdecc_descriptor_audio_unit_get_number_of_internal_input_ports( base, pos );
+        p->base_internal_input_port = jdksavdecc_descriptor_audio_unit_get_base_internal_input_port( base, pos );
+        p->number_of_internal_output_ports = jdksavdecc_descriptor_audio_unit_get_number_of_internal_output_ports( base, pos );
+        p->base_internal_output_port = jdksavdecc_descriptor_audio_unit_get_base_internal_output_port( base, pos );
+        p->number_of_controls = jdksavdecc_descriptor_audio_unit_get_number_of_controls( base, pos );
+        p->base_control = jdksavdecc_descriptor_audio_unit_get_base_control( base, pos );
+        p->number_of_signal_selectors = jdksavdecc_descriptor_audio_unit_get_number_of_signal_selectors( base, pos );
+        p->base_signal_selector = jdksavdecc_descriptor_audio_unit_get_base_signal_selector( base, pos );
+        p->number_of_mixers = jdksavdecc_descriptor_audio_unit_get_number_of_mixers( base, pos );
+        p->base_mixer = jdksavdecc_descriptor_audio_unit_get_base_mixer( base, pos );
+        p->number_of_matrices = jdksavdecc_descriptor_audio_unit_get_number_of_matrices( base, pos );
+        p->base_matrix = jdksavdecc_descriptor_audio_unit_get_base_matrix( base, pos );
+        p->number_of_splitters = jdksavdecc_descriptor_audio_unit_get_number_of_splitters( base, pos );
+        p->base_splitter = jdksavdecc_descriptor_audio_unit_get_base_splitter( base, pos );
+        p->number_of_combiners = jdksavdecc_descriptor_audio_unit_get_number_of_combiners( base, pos );
+        p->base_combiner = jdksavdecc_descriptor_audio_unit_get_base_combiner( base, pos );
+        p->number_of_demultiplexers = jdksavdecc_descriptor_audio_unit_get_number_of_demultiplexers( base, pos );
+        p->base_demultiplexer = jdksavdecc_descriptor_audio_unit_get_base_demultiplexer( base, pos );
+        p->number_of_multiplexers = jdksavdecc_descriptor_audio_unit_get_number_of_multiplexers( base, pos );
+        p->base_multiplexer = jdksavdecc_descriptor_audio_unit_get_base_multiplexer( base, pos );
+        p->number_of_transcoders = jdksavdecc_descriptor_audio_unit_get_number_of_transcoders( base, pos );
+        p->base_transcoder = jdksavdecc_descriptor_audio_unit_get_base_transcoder( base, pos );
+        p->number_of_control_blocks = jdksavdecc_descriptor_audio_unit_get_number_of_control_blocks( base, pos );
+        p->base_control_block = jdksavdecc_descriptor_audio_unit_get_base_control_block( base, pos );
+        p->current_sampling_rate = jdksavdecc_descriptor_audio_unit_get_current_sampling_rate( base, pos );
+        p->sampling_rates_offset = jdksavdecc_descriptor_audio_unit_get_sampling_rates_offset( base, pos );
+        p->sampling_rates_count = jdksavdecc_descriptor_audio_unit_get_sampling_rates_count( base, pos );
     }
     return r;
 }
@@ -7865,51 +7865,51 @@ static inline ssize_t
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_audio_write( struct jdksavdecc_descriptor_audio const *p, void *base, size_t pos, size_t len )
+    jdksavdecc_descriptor_audio_write( struct jdksavdecc_descriptor_audio_unit const *p, void *base, size_t pos, size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_LEN );
     if ( r >= 0 )
     {
-        jdksavdecc_descriptor_audio_set_descriptor_type( p->descriptor_type, base, pos );
-        jdksavdecc_descriptor_audio_set_descriptor_index( p->descriptor_index, base, pos );
-        jdksavdecc_descriptor_audio_set_object_name( p->object_name, base, pos );
-        jdksavdecc_descriptor_audio_set_localized_description( p->localized_description, base, pos );
-        jdksavdecc_descriptor_audio_set_clock_domain_index( p->clock_domain_index, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_stream_input_ports( p->number_of_stream_input_ports, base, pos );
-        jdksavdecc_descriptor_audio_set_base_stream_input_port( p->base_stream_input_port, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_stream_output_ports( p->number_of_stream_output_ports, base, pos );
-        jdksavdecc_descriptor_audio_set_base_stream_output_port( p->base_stream_output_port, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_external_input_ports( p->number_of_external_input_ports, base, pos );
-        jdksavdecc_descriptor_audio_set_base_external_input_port( p->base_external_input_port, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_external_output_ports( p->number_of_external_output_ports, base, pos );
-        jdksavdecc_descriptor_audio_set_base_external_output_port( p->base_external_output_port, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_internal_input_ports( p->number_of_internal_input_ports, base, pos );
-        jdksavdecc_descriptor_audio_set_base_internal_input_port( p->base_internal_input_port, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_internal_output_ports( p->number_of_internal_output_ports, base, pos );
-        jdksavdecc_descriptor_audio_set_base_internal_output_port( p->base_internal_output_port, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_controls( p->number_of_controls, base, pos );
-        jdksavdecc_descriptor_audio_set_base_control( p->base_control, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_signal_selectors( p->number_of_signal_selectors, base, pos );
-        jdksavdecc_descriptor_audio_set_base_signal_selector( p->base_signal_selector, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_mixers( p->number_of_mixers, base, pos );
-        jdksavdecc_descriptor_audio_set_base_mixer( p->base_mixer, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_matrices( p->number_of_matrices, base, pos );
-        jdksavdecc_descriptor_audio_set_base_matrix( p->base_matrix, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_splitters( p->number_of_splitters, base, pos );
-        jdksavdecc_descriptor_audio_set_base_splitter( p->base_splitter, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_combiners( p->number_of_combiners, base, pos );
-        jdksavdecc_descriptor_audio_set_base_combiner( p->base_combiner, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_demultiplexers( p->number_of_demultiplexers, base, pos );
-        jdksavdecc_descriptor_audio_set_base_demultiplexer( p->base_demultiplexer, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_multiplexers( p->number_of_multiplexers, base, pos );
-        jdksavdecc_descriptor_audio_set_base_multiplexer( p->base_multiplexer, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_transcoders( p->number_of_transcoders, base, pos );
-        jdksavdecc_descriptor_audio_set_base_transcoder( p->base_transcoder, base, pos );
-        jdksavdecc_descriptor_audio_set_number_of_control_blocks( p->number_of_control_blocks, base, pos );
-        jdksavdecc_descriptor_audio_set_base_control_block( p->base_control_block, base, pos );
-        jdksavdecc_descriptor_audio_set_current_sampling_rate( p->current_sampling_rate, base, pos );
-        jdksavdecc_descriptor_audio_set_sampling_rates_offset( p->sampling_rates_offset, base, pos );
-        jdksavdecc_descriptor_audio_set_sampling_rates_count( p->sampling_rates_count, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_descriptor_type( p->descriptor_type, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_object_name( p->object_name, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_localized_description( p->localized_description, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_clock_domain_index( p->clock_domain_index, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_stream_input_ports( p->number_of_stream_input_ports, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_stream_input_port( p->base_stream_input_port, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_stream_output_ports( p->number_of_stream_output_ports, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_stream_output_port( p->base_stream_output_port, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_external_input_ports( p->number_of_external_input_ports, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_external_input_port( p->base_external_input_port, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_external_output_ports( p->number_of_external_output_ports, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_external_output_port( p->base_external_output_port, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_internal_input_ports( p->number_of_internal_input_ports, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_internal_input_port( p->base_internal_input_port, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_internal_output_ports( p->number_of_internal_output_ports, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_internal_output_port( p->base_internal_output_port, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_controls( p->number_of_controls, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_control( p->base_control, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_signal_selectors( p->number_of_signal_selectors, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_signal_selector( p->base_signal_selector, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_mixers( p->number_of_mixers, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_mixer( p->base_mixer, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_matrices( p->number_of_matrices, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_matrix( p->base_matrix, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_splitters( p->number_of_splitters, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_splitter( p->base_splitter, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_combiners( p->number_of_combiners, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_combiner( p->base_combiner, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_demultiplexers( p->number_of_demultiplexers, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_demultiplexer( p->base_demultiplexer, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_multiplexers( p->number_of_multiplexers, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_multiplexer( p->base_multiplexer, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_transcoders( p->number_of_transcoders, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_transcoder( p->base_transcoder, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_number_of_control_blocks( p->number_of_control_blocks, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_base_control_block( p->base_control_block, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_current_sampling_rate( p->current_sampling_rate, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_sampling_rates_offset( p->sampling_rates_offset, base, pos );
+        jdksavdecc_descriptor_audio_unit_set_sampling_rates_count( p->sampling_rates_count, base, pos );
     }
     return r;
 }
@@ -7931,9 +7931,9 @@ static inline ssize_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_type value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_descriptor_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_descriptor_type( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -7948,9 +7948,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_descriptor_type( void con
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -7965,9 +7965,9 @@ static inline void jdksavdecc_descriptor_video_set_descriptor_type( uint16_t v, 
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_index value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_descriptor_index( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_descriptor_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_DESCRIPTOR_INDEX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /**
@@ -7982,9 +7982,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_descriptor_index( void co
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_DESCRIPTOR_INDEX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /**
@@ -7999,9 +7999,9 @@ static inline void jdksavdecc_descriptor_video_set_descriptor_index( uint16_t v,
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_string_t object_name value
  */
-static inline struct jdksavdecc_string jdksavdecc_descriptor_video_get_object_name( void const *base, ssize_t pos )
+static inline struct jdksavdecc_string jdksavdecc_descriptor_video_unit_get_object_name( void const *base, ssize_t pos )
 {
-    return jdksavdecc_string_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_OBJECT_NAME );
+    return jdksavdecc_string_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_OBJECT_NAME );
 }
 
 /**
@@ -8016,9 +8016,9 @@ static inline struct jdksavdecc_string jdksavdecc_descriptor_video_get_object_na
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_object_name( struct jdksavdecc_string v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_object_name( struct jdksavdecc_string v, void *base, ssize_t pos )
 {
-    jdksavdecc_string_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_OBJECT_NAME );
+    jdksavdecc_string_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_OBJECT_NAME );
 }
 
 /**
@@ -8033,9 +8033,9 @@ static inline void jdksavdecc_descriptor_video_set_object_name( struct jdksavdec
  * @param pos offset from base to read the field from;
  * @return the uint16_t localized_description value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_localized_description( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_localized_description( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_LOCALIZED_DESCRIPTION );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_LOCALIZED_DESCRIPTION );
 }
 
 /**
@@ -8050,9 +8050,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_localized_description( vo
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_localized_description( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_localized_description( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_LOCALIZED_DESCRIPTION );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_LOCALIZED_DESCRIPTION );
 }
 
 /**
@@ -8067,9 +8067,9 @@ static inline void jdksavdecc_descriptor_video_set_localized_description( uint16
  * @param pos offset from base to read the field from;
  * @return the uint16_t clock_domain_index value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_clock_domain_index( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_clock_domain_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_CLOCK_DOMAIN_INDEX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_CLOCK_DOMAIN_INDEX );
 }
 
 /**
@@ -8084,9 +8084,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_clock_domain_index( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_clock_domain_index( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_clock_domain_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_CLOCK_DOMAIN_INDEX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_CLOCK_DOMAIN_INDEX );
 }
 
 /**
@@ -8101,9 +8101,9 @@ static inline void jdksavdecc_descriptor_video_set_clock_domain_index( uint16_t 
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_stream_input_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_stream_input_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_stream_input_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
 }
 
 /**
@@ -8118,9 +8118,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_stream_input_po
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_stream_input_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_stream_input_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
 }
 
 /**
@@ -8135,9 +8135,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_stream_input_ports(
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_stream_input_port value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_stream_input_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_stream_input_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_STREAM_INPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_STREAM_INPUT_PORT );
 }
 
 /**
@@ -8152,9 +8152,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_stream_input_port( v
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_stream_input_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_stream_input_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_STREAM_INPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_STREAM_INPUT_PORT );
 }
 
 /**
@@ -8169,9 +8169,9 @@ static inline void jdksavdecc_descriptor_video_set_base_stream_input_port( uint1
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_stream_output_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_stream_output_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_stream_output_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
 }
 
 /**
@@ -8186,9 +8186,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_stream_output_p
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_stream_output_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_stream_output_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
 }
 
 /**
@@ -8203,9 +8203,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_stream_output_ports
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_stream_output_port value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_stream_output_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_stream_output_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_STREAM_OUTPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_STREAM_OUTPUT_PORT );
 }
 
 /**
@@ -8220,9 +8220,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_stream_output_port( 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_stream_output_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_stream_output_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_STREAM_OUTPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_STREAM_OUTPUT_PORT );
 }
 
 /**
@@ -8237,9 +8237,9 @@ static inline void jdksavdecc_descriptor_video_set_base_stream_output_port( uint
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_external_input_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_external_input_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_external_input_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -8254,9 +8254,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_external_input_
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_external_input_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_external_input_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -8271,9 +8271,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_external_input_port
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_external_input_port value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_external_input_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_external_input_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_EXTERNAL_INPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_EXTERNAL_INPUT_PORT );
 }
 
 /**
@@ -8288,9 +8288,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_external_input_port(
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_external_input_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_external_input_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_EXTERNAL_INPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_EXTERNAL_INPUT_PORT );
 }
 
 /**
@@ -8305,9 +8305,9 @@ static inline void jdksavdecc_descriptor_video_set_base_external_input_port( uin
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_external_output_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_external_output_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_external_output_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -8322,9 +8322,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_external_output
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_external_output_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_external_output_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -8339,9 +8339,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_external_output_por
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_external_output_port value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_external_output_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_external_output_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -8356,9 +8356,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_external_output_port
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_external_output_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_external_output_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -8373,9 +8373,9 @@ static inline void jdksavdecc_descriptor_video_set_base_external_output_port( ui
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_internal_input_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_internal_input_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_internal_input_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -8390,9 +8390,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_internal_input_
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_internal_input_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_internal_input_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -8407,9 +8407,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_internal_input_port
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_internal_input_port value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_internal_input_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_internal_input_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_INTERNAL_INPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_INTERNAL_INPUT_PORT );
 }
 
 /**
@@ -8424,9 +8424,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_internal_input_port(
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_internal_input_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_internal_input_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_INTERNAL_INPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_INTERNAL_INPUT_PORT );
 }
 
 /**
@@ -8441,9 +8441,9 @@ static inline void jdksavdecc_descriptor_video_set_base_internal_input_port( uin
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_internal_output_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_internal_output_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_internal_output_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -8458,9 +8458,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_internal_output
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_internal_output_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_internal_output_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -8475,9 +8475,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_internal_output_por
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_internal_output_port value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_internal_output_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_internal_output_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -8492,9 +8492,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_internal_output_port
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_internal_output_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_internal_output_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -8509,9 +8509,9 @@ static inline void jdksavdecc_descriptor_video_set_base_internal_output_port( ui
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_controls value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_controls( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_controls( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_CONTROLS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_CONTROLS );
 }
 
 /**
@@ -8526,9 +8526,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_controls( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_controls( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_controls( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_CONTROLS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_CONTROLS );
 }
 
 /**
@@ -8543,9 +8543,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_controls( uint16_t 
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_control value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_control( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_control( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_CONTROL );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_CONTROL );
 }
 
 /**
@@ -8560,9 +8560,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_control( void const 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_control( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_control( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_CONTROL );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_CONTROL );
 }
 
 /**
@@ -8577,9 +8577,9 @@ static inline void jdksavdecc_descriptor_video_set_base_control( uint16_t v, voi
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_signal_selectors value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_signal_selectors( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_signal_selectors( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
 }
 
 /**
@@ -8594,9 +8594,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_signal_selector
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_signal_selectors( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_signal_selectors( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
 }
 
 /**
@@ -8611,9 +8611,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_signal_selectors( u
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_signal_selector value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_signal_selector( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_signal_selector( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_SIGNAL_SELECTOR );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_SIGNAL_SELECTOR );
 }
 
 /**
@@ -8628,9 +8628,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_signal_selector( voi
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_signal_selector( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_signal_selector( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_SIGNAL_SELECTOR );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_SIGNAL_SELECTOR );
 }
 
 /**
@@ -8645,9 +8645,9 @@ static inline void jdksavdecc_descriptor_video_set_base_signal_selector( uint16_
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_mixers value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_mixers( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_mixers( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_MIXERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_MIXERS );
 }
 
 /**
@@ -8662,9 +8662,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_mixers( void co
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_mixers( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_mixers( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_MIXERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_MIXERS );
 }
 
 /**
@@ -8679,9 +8679,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_mixers( uint16_t v,
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_mixer value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_mixer( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_mixer( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_MIXER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_MIXER );
 }
 
 /**
@@ -8696,9 +8696,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_mixer( void const *b
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_mixer( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_mixer( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_MIXER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_MIXER );
 }
 
 /**
@@ -8713,9 +8713,9 @@ static inline void jdksavdecc_descriptor_video_set_base_mixer( uint16_t v, void 
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_matrices value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_matrices( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_matrices( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_MATRICES );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_MATRICES );
 }
 
 /**
@@ -8730,9 +8730,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_matrices( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_matrices( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_matrices( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_MATRICES );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_MATRICES );
 }
 
 /**
@@ -8747,9 +8747,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_matrices( uint16_t 
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_matrix value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_matrix( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_matrix( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_MATRIX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_MATRIX );
 }
 
 /**
@@ -8764,9 +8764,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_matrix( void const *
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_matrix( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_matrix( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_MATRIX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_MATRIX );
 }
 
 /**
@@ -8781,9 +8781,9 @@ static inline void jdksavdecc_descriptor_video_set_base_matrix( uint16_t v, void
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_splitters value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_splitters( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_splitters( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_SPLITTERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_SPLITTERS );
 }
 
 /**
@@ -8798,9 +8798,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_splitters( void
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_splitters( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_splitters( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_SPLITTERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_SPLITTERS );
 }
 
 /**
@@ -8815,9 +8815,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_splitters( uint16_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_splitter value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_splitter( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_splitter( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_SPLITTER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_SPLITTER );
 }
 
 /**
@@ -8832,9 +8832,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_splitter( void const
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_splitter( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_splitter( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_SPLITTER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_SPLITTER );
 }
 
 /**
@@ -8849,9 +8849,9 @@ static inline void jdksavdecc_descriptor_video_set_base_splitter( uint16_t v, vo
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_combiners value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_combiners( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_combiners( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_COMBINERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_COMBINERS );
 }
 
 /**
@@ -8866,9 +8866,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_combiners( void
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_combiners( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_combiners( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_COMBINERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_COMBINERS );
 }
 
 /**
@@ -8883,9 +8883,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_combiners( uint16_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_combiner value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_combiner( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_combiner( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_COMBINER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_COMBINER );
 }
 
 /**
@@ -8900,9 +8900,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_combiner( void const
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_combiner( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_combiner( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_COMBINER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_COMBINER );
 }
 
 /**
@@ -8917,9 +8917,9 @@ static inline void jdksavdecc_descriptor_video_set_base_combiner( uint16_t v, vo
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_demultiplexers value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_demultiplexers( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_demultiplexers( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
 }
 
 /**
@@ -8934,9 +8934,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_demultiplexers(
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_demultiplexers( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_demultiplexers( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
 }
 
 /**
@@ -8951,9 +8951,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_demultiplexers( uin
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_demultiplexer value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_demultiplexer( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_demultiplexer( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_DEMULTIPLEXER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_DEMULTIPLEXER );
 }
 
 /**
@@ -8968,9 +8968,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_demultiplexer( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_demultiplexer( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_demultiplexer( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_DEMULTIPLEXER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_DEMULTIPLEXER );
 }
 
 /**
@@ -8985,9 +8985,9 @@ static inline void jdksavdecc_descriptor_video_set_base_demultiplexer( uint16_t 
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_multiplexers value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_multiplexers( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_multiplexers( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_MULTIPLEXERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_MULTIPLEXERS );
 }
 
 /**
@@ -9002,9 +9002,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_multiplexers( v
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_multiplexers( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_multiplexers( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_MULTIPLEXERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_MULTIPLEXERS );
 }
 
 /**
@@ -9019,9 +9019,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_multiplexers( uint1
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_multiplexer value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_multiplexer( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_multiplexer( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_MULTIPLEXER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_MULTIPLEXER );
 }
 
 /**
@@ -9036,9 +9036,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_multiplexer( void co
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_multiplexer( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_multiplexer( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_MULTIPLEXER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_MULTIPLEXER );
 }
 
 /**
@@ -9053,9 +9053,9 @@ static inline void jdksavdecc_descriptor_video_set_base_multiplexer( uint16_t v,
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_transcoders value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_transcoders( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_transcoders( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_TRANSCODERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_TRANSCODERS );
 }
 
 /**
@@ -9070,9 +9070,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_transcoders( vo
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_transcoders( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_transcoders( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_TRANSCODERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_TRANSCODERS );
 }
 
 /**
@@ -9087,9 +9087,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_transcoders( uint16
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_transcoder value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_transcoder( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_transcoder( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_TRANSCODER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_TRANSCODER );
 }
 
 /**
@@ -9104,9 +9104,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_transcoder( void con
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_transcoder( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_transcoder( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_TRANSCODER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_TRANSCODER );
 }
 
 /**
@@ -9121,9 +9121,9 @@ static inline void jdksavdecc_descriptor_video_set_base_transcoder( uint16_t v, 
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_control_blocks value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_number_of_control_blocks( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_number_of_control_blocks( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
 }
 
 /**
@@ -9138,9 +9138,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_number_of_control_blocks(
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_number_of_control_blocks( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_number_of_control_blocks( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
 }
 
 /**
@@ -9155,9 +9155,9 @@ static inline void jdksavdecc_descriptor_video_set_number_of_control_blocks( uin
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_control_block value
  */
-static inline uint16_t jdksavdecc_descriptor_video_get_base_control_block( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_video_unit_get_base_control_block( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_CONTROL_BLOCK );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_CONTROL_BLOCK );
 }
 
 /**
@@ -9172,9 +9172,9 @@ static inline uint16_t jdksavdecc_descriptor_video_get_base_control_block( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_video_set_base_control_block( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_video_unit_set_base_control_block( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_OFFSET_BASE_CONTROL_BLOCK );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_OFFSET_BASE_CONTROL_BLOCK );
 }
 
 /*@}*/
@@ -9183,7 +9183,7 @@ static inline void jdksavdecc_descriptor_video_set_base_control_block( uint16_t 
 /*@{*/
 
 /// VIDEO_UNIT Descriptor - Clause 7.2.4
-struct jdksavdecc_descriptor_video
+struct jdksavdecc_descriptor_video_unit
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -9239,48 +9239,48 @@ struct jdksavdecc_descriptor_video
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_video_read( struct jdksavdecc_descriptor_video *p, void const *base, ssize_t pos, size_t len )
+    jdksavdecc_descriptor_video_read( struct jdksavdecc_descriptor_video_unit *p, void const *base, ssize_t pos, size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_LEN );
     if ( r >= 0 )
     {
-        p->descriptor_type = jdksavdecc_descriptor_video_get_descriptor_type( base, pos );
-        p->descriptor_index = jdksavdecc_descriptor_video_get_descriptor_index( base, pos );
-        p->object_name = jdksavdecc_descriptor_video_get_object_name( base, pos );
-        p->localized_description = jdksavdecc_descriptor_video_get_localized_description( base, pos );
-        p->clock_domain_index = jdksavdecc_descriptor_video_get_clock_domain_index( base, pos );
-        p->number_of_stream_input_ports = jdksavdecc_descriptor_video_get_number_of_stream_input_ports( base, pos );
-        p->base_stream_input_port = jdksavdecc_descriptor_video_get_base_stream_input_port( base, pos );
-        p->number_of_stream_output_ports = jdksavdecc_descriptor_video_get_number_of_stream_output_ports( base, pos );
-        p->base_stream_output_port = jdksavdecc_descriptor_video_get_base_stream_output_port( base, pos );
-        p->number_of_external_input_ports = jdksavdecc_descriptor_video_get_number_of_external_input_ports( base, pos );
-        p->base_external_input_port = jdksavdecc_descriptor_video_get_base_external_input_port( base, pos );
-        p->number_of_external_output_ports = jdksavdecc_descriptor_video_get_number_of_external_output_ports( base, pos );
-        p->base_external_output_port = jdksavdecc_descriptor_video_get_base_external_output_port( base, pos );
-        p->number_of_internal_input_ports = jdksavdecc_descriptor_video_get_number_of_internal_input_ports( base, pos );
-        p->base_internal_input_port = jdksavdecc_descriptor_video_get_base_internal_input_port( base, pos );
-        p->number_of_internal_output_ports = jdksavdecc_descriptor_video_get_number_of_internal_output_ports( base, pos );
-        p->base_internal_output_port = jdksavdecc_descriptor_video_get_base_internal_output_port( base, pos );
-        p->number_of_controls = jdksavdecc_descriptor_video_get_number_of_controls( base, pos );
-        p->base_control = jdksavdecc_descriptor_video_get_base_control( base, pos );
-        p->number_of_signal_selectors = jdksavdecc_descriptor_video_get_number_of_signal_selectors( base, pos );
-        p->base_signal_selector = jdksavdecc_descriptor_video_get_base_signal_selector( base, pos );
-        p->number_of_mixers = jdksavdecc_descriptor_video_get_number_of_mixers( base, pos );
-        p->base_mixer = jdksavdecc_descriptor_video_get_base_mixer( base, pos );
-        p->number_of_matrices = jdksavdecc_descriptor_video_get_number_of_matrices( base, pos );
-        p->base_matrix = jdksavdecc_descriptor_video_get_base_matrix( base, pos );
-        p->number_of_splitters = jdksavdecc_descriptor_video_get_number_of_splitters( base, pos );
-        p->base_splitter = jdksavdecc_descriptor_video_get_base_splitter( base, pos );
-        p->number_of_combiners = jdksavdecc_descriptor_video_get_number_of_combiners( base, pos );
-        p->base_combiner = jdksavdecc_descriptor_video_get_base_combiner( base, pos );
-        p->number_of_demultiplexers = jdksavdecc_descriptor_video_get_number_of_demultiplexers( base, pos );
-        p->base_demultiplexer = jdksavdecc_descriptor_video_get_base_demultiplexer( base, pos );
-        p->number_of_multiplexers = jdksavdecc_descriptor_video_get_number_of_multiplexers( base, pos );
-        p->base_multiplexer = jdksavdecc_descriptor_video_get_base_multiplexer( base, pos );
-        p->number_of_transcoders = jdksavdecc_descriptor_video_get_number_of_transcoders( base, pos );
-        p->base_transcoder = jdksavdecc_descriptor_video_get_base_transcoder( base, pos );
-        p->number_of_control_blocks = jdksavdecc_descriptor_video_get_number_of_control_blocks( base, pos );
-        p->base_control_block = jdksavdecc_descriptor_video_get_base_control_block( base, pos );
+        p->descriptor_type = jdksavdecc_descriptor_video_unit_get_descriptor_type( base, pos );
+        p->descriptor_index = jdksavdecc_descriptor_video_unit_get_descriptor_index( base, pos );
+        p->object_name = jdksavdecc_descriptor_video_unit_get_object_name( base, pos );
+        p->localized_description = jdksavdecc_descriptor_video_unit_get_localized_description( base, pos );
+        p->clock_domain_index = jdksavdecc_descriptor_video_unit_get_clock_domain_index( base, pos );
+        p->number_of_stream_input_ports = jdksavdecc_descriptor_video_unit_get_number_of_stream_input_ports( base, pos );
+        p->base_stream_input_port = jdksavdecc_descriptor_video_unit_get_base_stream_input_port( base, pos );
+        p->number_of_stream_output_ports = jdksavdecc_descriptor_video_unit_get_number_of_stream_output_ports( base, pos );
+        p->base_stream_output_port = jdksavdecc_descriptor_video_unit_get_base_stream_output_port( base, pos );
+        p->number_of_external_input_ports = jdksavdecc_descriptor_video_unit_get_number_of_external_input_ports( base, pos );
+        p->base_external_input_port = jdksavdecc_descriptor_video_unit_get_base_external_input_port( base, pos );
+        p->number_of_external_output_ports = jdksavdecc_descriptor_video_unit_get_number_of_external_output_ports( base, pos );
+        p->base_external_output_port = jdksavdecc_descriptor_video_unit_get_base_external_output_port( base, pos );
+        p->number_of_internal_input_ports = jdksavdecc_descriptor_video_unit_get_number_of_internal_input_ports( base, pos );
+        p->base_internal_input_port = jdksavdecc_descriptor_video_unit_get_base_internal_input_port( base, pos );
+        p->number_of_internal_output_ports = jdksavdecc_descriptor_video_unit_get_number_of_internal_output_ports( base, pos );
+        p->base_internal_output_port = jdksavdecc_descriptor_video_unit_get_base_internal_output_port( base, pos );
+        p->number_of_controls = jdksavdecc_descriptor_video_unit_get_number_of_controls( base, pos );
+        p->base_control = jdksavdecc_descriptor_video_unit_get_base_control( base, pos );
+        p->number_of_signal_selectors = jdksavdecc_descriptor_video_unit_get_number_of_signal_selectors( base, pos );
+        p->base_signal_selector = jdksavdecc_descriptor_video_unit_get_base_signal_selector( base, pos );
+        p->number_of_mixers = jdksavdecc_descriptor_video_unit_get_number_of_mixers( base, pos );
+        p->base_mixer = jdksavdecc_descriptor_video_unit_get_base_mixer( base, pos );
+        p->number_of_matrices = jdksavdecc_descriptor_video_unit_get_number_of_matrices( base, pos );
+        p->base_matrix = jdksavdecc_descriptor_video_unit_get_base_matrix( base, pos );
+        p->number_of_splitters = jdksavdecc_descriptor_video_unit_get_number_of_splitters( base, pos );
+        p->base_splitter = jdksavdecc_descriptor_video_unit_get_base_splitter( base, pos );
+        p->number_of_combiners = jdksavdecc_descriptor_video_unit_get_number_of_combiners( base, pos );
+        p->base_combiner = jdksavdecc_descriptor_video_unit_get_base_combiner( base, pos );
+        p->number_of_demultiplexers = jdksavdecc_descriptor_video_unit_get_number_of_demultiplexers( base, pos );
+        p->base_demultiplexer = jdksavdecc_descriptor_video_unit_get_base_demultiplexer( base, pos );
+        p->number_of_multiplexers = jdksavdecc_descriptor_video_unit_get_number_of_multiplexers( base, pos );
+        p->base_multiplexer = jdksavdecc_descriptor_video_unit_get_base_multiplexer( base, pos );
+        p->number_of_transcoders = jdksavdecc_descriptor_video_unit_get_number_of_transcoders( base, pos );
+        p->base_transcoder = jdksavdecc_descriptor_video_unit_get_base_transcoder( base, pos );
+        p->number_of_control_blocks = jdksavdecc_descriptor_video_unit_get_number_of_control_blocks( base, pos );
+        p->base_control_block = jdksavdecc_descriptor_video_unit_get_base_control_block( base, pos );
     }
     return r;
 }
@@ -9300,48 +9300,48 @@ static inline ssize_t
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_video_write( struct jdksavdecc_descriptor_video const *p, void *base, size_t pos, size_t len )
+    jdksavdecc_descriptor_video_write( struct jdksavdecc_descriptor_video_unit const *p, void *base, size_t pos, size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_UNIT_LEN );
     if ( r >= 0 )
     {
-        jdksavdecc_descriptor_video_set_descriptor_type( p->descriptor_type, base, pos );
-        jdksavdecc_descriptor_video_set_descriptor_index( p->descriptor_index, base, pos );
-        jdksavdecc_descriptor_video_set_object_name( p->object_name, base, pos );
-        jdksavdecc_descriptor_video_set_localized_description( p->localized_description, base, pos );
-        jdksavdecc_descriptor_video_set_clock_domain_index( p->clock_domain_index, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_stream_input_ports( p->number_of_stream_input_ports, base, pos );
-        jdksavdecc_descriptor_video_set_base_stream_input_port( p->base_stream_input_port, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_stream_output_ports( p->number_of_stream_output_ports, base, pos );
-        jdksavdecc_descriptor_video_set_base_stream_output_port( p->base_stream_output_port, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_external_input_ports( p->number_of_external_input_ports, base, pos );
-        jdksavdecc_descriptor_video_set_base_external_input_port( p->base_external_input_port, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_external_output_ports( p->number_of_external_output_ports, base, pos );
-        jdksavdecc_descriptor_video_set_base_external_output_port( p->base_external_output_port, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_internal_input_ports( p->number_of_internal_input_ports, base, pos );
-        jdksavdecc_descriptor_video_set_base_internal_input_port( p->base_internal_input_port, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_internal_output_ports( p->number_of_internal_output_ports, base, pos );
-        jdksavdecc_descriptor_video_set_base_internal_output_port( p->base_internal_output_port, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_controls( p->number_of_controls, base, pos );
-        jdksavdecc_descriptor_video_set_base_control( p->base_control, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_signal_selectors( p->number_of_signal_selectors, base, pos );
-        jdksavdecc_descriptor_video_set_base_signal_selector( p->base_signal_selector, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_mixers( p->number_of_mixers, base, pos );
-        jdksavdecc_descriptor_video_set_base_mixer( p->base_mixer, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_matrices( p->number_of_matrices, base, pos );
-        jdksavdecc_descriptor_video_set_base_matrix( p->base_matrix, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_splitters( p->number_of_splitters, base, pos );
-        jdksavdecc_descriptor_video_set_base_splitter( p->base_splitter, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_combiners( p->number_of_combiners, base, pos );
-        jdksavdecc_descriptor_video_set_base_combiner( p->base_combiner, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_demultiplexers( p->number_of_demultiplexers, base, pos );
-        jdksavdecc_descriptor_video_set_base_demultiplexer( p->base_demultiplexer, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_multiplexers( p->number_of_multiplexers, base, pos );
-        jdksavdecc_descriptor_video_set_base_multiplexer( p->base_multiplexer, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_transcoders( p->number_of_transcoders, base, pos );
-        jdksavdecc_descriptor_video_set_base_transcoder( p->base_transcoder, base, pos );
-        jdksavdecc_descriptor_video_set_number_of_control_blocks( p->number_of_control_blocks, base, pos );
-        jdksavdecc_descriptor_video_set_base_control_block( p->base_control_block, base, pos );
+        jdksavdecc_descriptor_video_unit_set_descriptor_type( p->descriptor_type, base, pos );
+        jdksavdecc_descriptor_video_unit_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_descriptor_video_unit_set_object_name( p->object_name, base, pos );
+        jdksavdecc_descriptor_video_unit_set_localized_description( p->localized_description, base, pos );
+        jdksavdecc_descriptor_video_unit_set_clock_domain_index( p->clock_domain_index, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_stream_input_ports( p->number_of_stream_input_ports, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_stream_input_port( p->base_stream_input_port, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_stream_output_ports( p->number_of_stream_output_ports, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_stream_output_port( p->base_stream_output_port, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_external_input_ports( p->number_of_external_input_ports, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_external_input_port( p->base_external_input_port, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_external_output_ports( p->number_of_external_output_ports, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_external_output_port( p->base_external_output_port, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_internal_input_ports( p->number_of_internal_input_ports, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_internal_input_port( p->base_internal_input_port, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_internal_output_ports( p->number_of_internal_output_ports, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_internal_output_port( p->base_internal_output_port, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_controls( p->number_of_controls, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_control( p->base_control, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_signal_selectors( p->number_of_signal_selectors, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_signal_selector( p->base_signal_selector, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_mixers( p->number_of_mixers, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_mixer( p->base_mixer, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_matrices( p->number_of_matrices, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_matrix( p->base_matrix, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_splitters( p->number_of_splitters, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_splitter( p->base_splitter, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_combiners( p->number_of_combiners, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_combiner( p->base_combiner, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_demultiplexers( p->number_of_demultiplexers, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_demultiplexer( p->base_demultiplexer, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_multiplexers( p->number_of_multiplexers, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_multiplexer( p->base_multiplexer, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_transcoders( p->number_of_transcoders, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_transcoder( p->base_transcoder, base, pos );
+        jdksavdecc_descriptor_video_unit_set_number_of_control_blocks( p->number_of_control_blocks, base, pos );
+        jdksavdecc_descriptor_video_unit_set_base_control_block( p->base_control_block, base, pos );
     }
     return r;
 }
@@ -9363,9 +9363,9 @@ static inline ssize_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_type value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_descriptor_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_descriptor_type( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -9380,9 +9380,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_descriptor_type( void co
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -9397,9 +9397,9 @@ static inline void jdksavdecc_descriptor_sensor_set_descriptor_type( uint16_t v,
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_index value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_descriptor_index( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_descriptor_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_DESCRIPTOR_INDEX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /**
@@ -9414,9 +9414,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_descriptor_index( void c
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_DESCRIPTOR_INDEX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /**
@@ -9431,9 +9431,9 @@ static inline void jdksavdecc_descriptor_sensor_set_descriptor_index( uint16_t v
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_string_t object_name value
  */
-static inline struct jdksavdecc_string jdksavdecc_descriptor_sensor_get_object_name( void const *base, ssize_t pos )
+static inline struct jdksavdecc_string jdksavdecc_descriptor_sensor_unit_get_object_name( void const *base, ssize_t pos )
 {
-    return jdksavdecc_string_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_OBJECT_NAME );
+    return jdksavdecc_string_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_OBJECT_NAME );
 }
 
 /**
@@ -9448,9 +9448,9 @@ static inline struct jdksavdecc_string jdksavdecc_descriptor_sensor_get_object_n
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_object_name( struct jdksavdecc_string v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_object_name( struct jdksavdecc_string v, void *base, ssize_t pos )
 {
-    jdksavdecc_string_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_OBJECT_NAME );
+    jdksavdecc_string_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_OBJECT_NAME );
 }
 
 /**
@@ -9465,9 +9465,9 @@ static inline void jdksavdecc_descriptor_sensor_set_object_name( struct jdksavde
  * @param pos offset from base to read the field from;
  * @return the uint16_t localized_description value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_localized_description( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_localized_description( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_LOCALIZED_DESCRIPTION );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_LOCALIZED_DESCRIPTION );
 }
 
 /**
@@ -9482,9 +9482,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_localized_description( v
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_localized_description( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_localized_description( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_LOCALIZED_DESCRIPTION );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_LOCALIZED_DESCRIPTION );
 }
 
 /**
@@ -9499,9 +9499,9 @@ static inline void jdksavdecc_descriptor_sensor_set_localized_description( uint1
  * @param pos offset from base to read the field from;
  * @return the uint16_t clock_domain_index value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_clock_domain_index( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_clock_domain_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_CLOCK_DOMAIN_INDEX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_CLOCK_DOMAIN_INDEX );
 }
 
 /**
@@ -9516,9 +9516,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_clock_domain_index( void
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_clock_domain_index( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_clock_domain_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_CLOCK_DOMAIN_INDEX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_CLOCK_DOMAIN_INDEX );
 }
 
 /**
@@ -9533,9 +9533,9 @@ static inline void jdksavdecc_descriptor_sensor_set_clock_domain_index( uint16_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_stream_input_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_stream_input_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_stream_input_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
 }
 
 /**
@@ -9550,9 +9550,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_stream_input_p
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_stream_input_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_stream_input_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_STREAM_INPUT_PORTS );
 }
 
 /**
@@ -9567,9 +9567,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_stream_input_ports
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_stream_input_port value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_stream_input_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_stream_input_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_STREAM_INPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_STREAM_INPUT_PORT );
 }
 
 /**
@@ -9584,9 +9584,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_stream_input_port( 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_stream_input_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_stream_input_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_STREAM_INPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_STREAM_INPUT_PORT );
 }
 
 /**
@@ -9601,9 +9601,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_stream_input_port( uint
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_stream_output_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_stream_output_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_stream_output_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
 }
 
 /**
@@ -9618,9 +9618,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_stream_output_
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_stream_output_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_stream_output_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_STREAM_OUTPUT_PORTS );
 }
 
 /**
@@ -9635,9 +9635,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_stream_output_port
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_stream_output_port value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_stream_output_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_stream_output_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_STREAM_OUTPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_STREAM_OUTPUT_PORT );
 }
 
 /**
@@ -9652,9 +9652,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_stream_output_port(
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_stream_output_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_stream_output_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_STREAM_OUTPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_STREAM_OUTPUT_PORT );
 }
 
 /**
@@ -9669,9 +9669,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_stream_output_port( uin
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_external_input_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_external_input_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_external_input_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -9686,9 +9686,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_external_input
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_external_input_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_external_input_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_EXTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -9703,9 +9703,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_external_input_por
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_external_input_port value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_external_input_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_external_input_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_EXTERNAL_INPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_EXTERNAL_INPUT_PORT );
 }
 
 /**
@@ -9720,9 +9720,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_external_input_port
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_external_input_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_external_input_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_EXTERNAL_INPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_EXTERNAL_INPUT_PORT );
 }
 
 /**
@@ -9737,9 +9737,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_external_input_port( ui
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_external_output_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_external_output_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_external_output_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -9754,9 +9754,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_external_outpu
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_external_output_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_external_output_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_EXTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -9771,9 +9771,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_external_output_po
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_external_output_port value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_external_output_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_external_output_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -9788,9 +9788,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_external_output_por
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_external_output_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_external_output_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_EXTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -9805,9 +9805,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_external_output_port( u
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_internal_input_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_internal_input_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_internal_input_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -9822,9 +9822,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_internal_input
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_internal_input_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_internal_input_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_INTERNAL_INPUT_PORTS );
 }
 
 /**
@@ -9839,9 +9839,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_internal_input_por
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_internal_input_port value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_internal_input_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_internal_input_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_INTERNAL_INPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_INTERNAL_INPUT_PORT );
 }
 
 /**
@@ -9856,9 +9856,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_internal_input_port
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_internal_input_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_internal_input_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_INTERNAL_INPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_INTERNAL_INPUT_PORT );
 }
 
 /**
@@ -9873,9 +9873,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_internal_input_port( ui
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_internal_output_ports value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_internal_output_ports( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_internal_output_ports( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -9890,9 +9890,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_internal_outpu
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_internal_output_ports( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_internal_output_ports( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_INTERNAL_OUTPUT_PORTS );
 }
 
 /**
@@ -9907,9 +9907,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_internal_output_po
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_internal_output_port value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_internal_output_port( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_internal_output_port( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -9924,9 +9924,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_internal_output_por
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_internal_output_port( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_internal_output_port( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_INTERNAL_OUTPUT_PORT );
 }
 
 /**
@@ -9941,9 +9941,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_internal_output_port( u
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_controls value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_controls( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_controls( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_CONTROLS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_CONTROLS );
 }
 
 /**
@@ -9958,9 +9958,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_controls( void
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_controls( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_controls( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_CONTROLS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_CONTROLS );
 }
 
 /**
@@ -9975,9 +9975,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_controls( uint16_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_control value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_control( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_control( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_CONTROL );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_CONTROL );
 }
 
 /**
@@ -9992,9 +9992,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_control( void const
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_control( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_control( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_CONTROL );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_CONTROL );
 }
 
 /**
@@ -10009,9 +10009,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_control( uint16_t v, vo
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_signal_selectors value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_signal_selectors( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_signal_selectors( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
 }
 
 /**
@@ -10026,9 +10026,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_signal_selecto
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_signal_selectors( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_signal_selectors( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_SIGNAL_SELECTORS );
 }
 
 /**
@@ -10043,9 +10043,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_signal_selectors( 
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_signal_selector value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_signal_selector( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_signal_selector( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_SIGNAL_SELECTOR );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_SIGNAL_SELECTOR );
 }
 
 /**
@@ -10060,9 +10060,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_signal_selector( vo
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_signal_selector( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_signal_selector( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_SIGNAL_SELECTOR );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_SIGNAL_SELECTOR );
 }
 
 /**
@@ -10077,9 +10077,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_signal_selector( uint16
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_mixers value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_mixers( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_mixers( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_MIXERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_MIXERS );
 }
 
 /**
@@ -10094,9 +10094,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_mixers( void c
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_mixers( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_mixers( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_MIXERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_MIXERS );
 }
 
 /**
@@ -10111,9 +10111,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_mixers( uint16_t v
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_mixer value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_mixer( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_mixer( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_MIXER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_MIXER );
 }
 
 /**
@@ -10128,9 +10128,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_mixer( void const *
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_mixer( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_mixer( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_MIXER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_MIXER );
 }
 
 /**
@@ -10145,9 +10145,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_mixer( uint16_t v, void
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_matrices value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_matrices( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_matrices( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_MATRICES );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_MATRICES );
 }
 
 /**
@@ -10162,9 +10162,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_matrices( void
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_matrices( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_matrices( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_MATRICES );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_MATRICES );
 }
 
 /**
@@ -10179,9 +10179,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_matrices( uint16_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_matrix value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_matrix( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_matrix( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_MATRIX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_MATRIX );
 }
 
 /**
@@ -10196,9 +10196,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_matrix( void const 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_matrix( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_matrix( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_MATRIX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_MATRIX );
 }
 
 /**
@@ -10213,9 +10213,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_matrix( uint16_t v, voi
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_splitters value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_splitters( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_splitters( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_SPLITTERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_SPLITTERS );
 }
 
 /**
@@ -10230,9 +10230,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_splitters( voi
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_splitters( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_splitters( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_SPLITTERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_SPLITTERS );
 }
 
 /**
@@ -10247,9 +10247,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_splitters( uint16_
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_splitter value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_splitter( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_splitter( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_SPLITTER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_SPLITTER );
 }
 
 /**
@@ -10264,9 +10264,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_splitter( void cons
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_splitter( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_splitter( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_SPLITTER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_SPLITTER );
 }
 
 /**
@@ -10281,9 +10281,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_splitter( uint16_t v, v
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_combiners value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_combiners( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_combiners( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_COMBINERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_COMBINERS );
 }
 
 /**
@@ -10298,9 +10298,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_combiners( voi
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_combiners( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_combiners( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_COMBINERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_COMBINERS );
 }
 
 /**
@@ -10315,9 +10315,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_combiners( uint16_
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_combiner value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_combiner( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_combiner( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_COMBINER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_COMBINER );
 }
 
 /**
@@ -10332,9 +10332,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_combiner( void cons
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_combiner( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_combiner( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_COMBINER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_COMBINER );
 }
 
 /**
@@ -10349,9 +10349,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_combiner( uint16_t v, v
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_demultiplexers value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_demultiplexers( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_demultiplexers( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
 }
 
 /**
@@ -10366,9 +10366,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_demultiplexers
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_demultiplexers( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_demultiplexers( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_DEMULTIPLEXERS );
 }
 
 /**
@@ -10383,9 +10383,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_demultiplexers( ui
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_demultiplexer value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_demultiplexer( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_demultiplexer( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_DEMULTIPLEXER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_DEMULTIPLEXER );
 }
 
 /**
@@ -10400,9 +10400,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_demultiplexer( void
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_demultiplexer( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_demultiplexer( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_DEMULTIPLEXER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_DEMULTIPLEXER );
 }
 
 /**
@@ -10417,9 +10417,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_demultiplexer( uint16_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_multiplexers value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_multiplexers( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_multiplexers( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_MULTIPLEXERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_MULTIPLEXERS );
 }
 
 /**
@@ -10434,9 +10434,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_multiplexers( 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_multiplexers( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_multiplexers( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_MULTIPLEXERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_MULTIPLEXERS );
 }
 
 /**
@@ -10451,9 +10451,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_multiplexers( uint
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_multiplexer value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_multiplexer( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_multiplexer( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_MULTIPLEXER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_MULTIPLEXER );
 }
 
 /**
@@ -10468,9 +10468,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_multiplexer( void c
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_multiplexer( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_multiplexer( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_MULTIPLEXER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_MULTIPLEXER );
 }
 
 /**
@@ -10485,9 +10485,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_multiplexer( uint16_t v
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_transcoders value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_transcoders( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_transcoders( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_TRANSCODERS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_TRANSCODERS );
 }
 
 /**
@@ -10502,9 +10502,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_transcoders( v
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_transcoders( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_transcoders( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_TRANSCODERS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_TRANSCODERS );
 }
 
 /**
@@ -10519,9 +10519,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_transcoders( uint1
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_transcoder value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_transcoder( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_transcoder( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_TRANSCODER );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_TRANSCODER );
 }
 
 /**
@@ -10536,9 +10536,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_transcoder( void co
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_transcoder( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_transcoder( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_TRANSCODER );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_TRANSCODER );
 }
 
 /**
@@ -10553,9 +10553,9 @@ static inline void jdksavdecc_descriptor_sensor_set_base_transcoder( uint16_t v,
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_control_blocks value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_control_blocks( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_number_of_control_blocks( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
 }
 
 /**
@@ -10570,9 +10570,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_number_of_control_blocks
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_number_of_control_blocks( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_number_of_control_blocks( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_NUMBER_OF_CONTROL_BLOCKS );
 }
 
 /**
@@ -10587,9 +10587,9 @@ static inline void jdksavdecc_descriptor_sensor_set_number_of_control_blocks( ui
  * @param pos offset from base to read the field from;
  * @return the uint16_t base_control_block value
  */
-static inline uint16_t jdksavdecc_descriptor_sensor_get_base_control_block( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_sensor_unit_get_base_control_block( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_CONTROL_BLOCK );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_CONTROL_BLOCK );
 }
 
 /**
@@ -10604,9 +10604,9 @@ static inline uint16_t jdksavdecc_descriptor_sensor_get_base_control_block( void
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_sensor_set_base_control_block( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_sensor_unit_set_base_control_block( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_OFFSET_BASE_CONTROL_BLOCK );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_OFFSET_BASE_CONTROL_BLOCK );
 }
 
 /*@}*/
@@ -10615,7 +10615,7 @@ static inline void jdksavdecc_descriptor_sensor_set_base_control_block( uint16_t
 /*@{*/
 
 /// SENSOR_UNIT Descriptor - Clause 7.2.5
-struct jdksavdecc_descriptor_sensor
+struct jdksavdecc_descriptor_sensor_unit
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -10671,48 +10671,48 @@ struct jdksavdecc_descriptor_sensor
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_sensor_read( struct jdksavdecc_descriptor_sensor *p, void const *base, ssize_t pos, size_t len )
+    jdksavdecc_descriptor_sensor_read( struct jdksavdecc_descriptor_sensor_unit *p, void const *base, ssize_t pos, size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SENSOR_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_LEN );
     if ( r >= 0 )
     {
-        p->descriptor_type = jdksavdecc_descriptor_sensor_get_descriptor_type( base, pos );
-        p->descriptor_index = jdksavdecc_descriptor_sensor_get_descriptor_index( base, pos );
-        p->object_name = jdksavdecc_descriptor_sensor_get_object_name( base, pos );
-        p->localized_description = jdksavdecc_descriptor_sensor_get_localized_description( base, pos );
-        p->clock_domain_index = jdksavdecc_descriptor_sensor_get_clock_domain_index( base, pos );
-        p->number_of_stream_input_ports = jdksavdecc_descriptor_sensor_get_number_of_stream_input_ports( base, pos );
-        p->base_stream_input_port = jdksavdecc_descriptor_sensor_get_base_stream_input_port( base, pos );
-        p->number_of_stream_output_ports = jdksavdecc_descriptor_sensor_get_number_of_stream_output_ports( base, pos );
-        p->base_stream_output_port = jdksavdecc_descriptor_sensor_get_base_stream_output_port( base, pos );
-        p->number_of_external_input_ports = jdksavdecc_descriptor_sensor_get_number_of_external_input_ports( base, pos );
-        p->base_external_input_port = jdksavdecc_descriptor_sensor_get_base_external_input_port( base, pos );
-        p->number_of_external_output_ports = jdksavdecc_descriptor_sensor_get_number_of_external_output_ports( base, pos );
-        p->base_external_output_port = jdksavdecc_descriptor_sensor_get_base_external_output_port( base, pos );
-        p->number_of_internal_input_ports = jdksavdecc_descriptor_sensor_get_number_of_internal_input_ports( base, pos );
-        p->base_internal_input_port = jdksavdecc_descriptor_sensor_get_base_internal_input_port( base, pos );
-        p->number_of_internal_output_ports = jdksavdecc_descriptor_sensor_get_number_of_internal_output_ports( base, pos );
-        p->base_internal_output_port = jdksavdecc_descriptor_sensor_get_base_internal_output_port( base, pos );
-        p->number_of_controls = jdksavdecc_descriptor_sensor_get_number_of_controls( base, pos );
-        p->base_control = jdksavdecc_descriptor_sensor_get_base_control( base, pos );
-        p->number_of_signal_selectors = jdksavdecc_descriptor_sensor_get_number_of_signal_selectors( base, pos );
-        p->base_signal_selector = jdksavdecc_descriptor_sensor_get_base_signal_selector( base, pos );
-        p->number_of_mixers = jdksavdecc_descriptor_sensor_get_number_of_mixers( base, pos );
-        p->base_mixer = jdksavdecc_descriptor_sensor_get_base_mixer( base, pos );
-        p->number_of_matrices = jdksavdecc_descriptor_sensor_get_number_of_matrices( base, pos );
-        p->base_matrix = jdksavdecc_descriptor_sensor_get_base_matrix( base, pos );
-        p->number_of_splitters = jdksavdecc_descriptor_sensor_get_number_of_splitters( base, pos );
-        p->base_splitter = jdksavdecc_descriptor_sensor_get_base_splitter( base, pos );
-        p->number_of_combiners = jdksavdecc_descriptor_sensor_get_number_of_combiners( base, pos );
-        p->base_combiner = jdksavdecc_descriptor_sensor_get_base_combiner( base, pos );
-        p->number_of_demultiplexers = jdksavdecc_descriptor_sensor_get_number_of_demultiplexers( base, pos );
-        p->base_demultiplexer = jdksavdecc_descriptor_sensor_get_base_demultiplexer( base, pos );
-        p->number_of_multiplexers = jdksavdecc_descriptor_sensor_get_number_of_multiplexers( base, pos );
-        p->base_multiplexer = jdksavdecc_descriptor_sensor_get_base_multiplexer( base, pos );
-        p->number_of_transcoders = jdksavdecc_descriptor_sensor_get_number_of_transcoders( base, pos );
-        p->base_transcoder = jdksavdecc_descriptor_sensor_get_base_transcoder( base, pos );
-        p->number_of_control_blocks = jdksavdecc_descriptor_sensor_get_number_of_control_blocks( base, pos );
-        p->base_control_block = jdksavdecc_descriptor_sensor_get_base_control_block( base, pos );
+        p->descriptor_type = jdksavdecc_descriptor_sensor_unit_get_descriptor_type( base, pos );
+        p->descriptor_index = jdksavdecc_descriptor_sensor_unit_get_descriptor_index( base, pos );
+        p->object_name = jdksavdecc_descriptor_sensor_unit_get_object_name( base, pos );
+        p->localized_description = jdksavdecc_descriptor_sensor_unit_get_localized_description( base, pos );
+        p->clock_domain_index = jdksavdecc_descriptor_sensor_unit_get_clock_domain_index( base, pos );
+        p->number_of_stream_input_ports = jdksavdecc_descriptor_sensor_unit_get_number_of_stream_input_ports( base, pos );
+        p->base_stream_input_port = jdksavdecc_descriptor_sensor_unit_get_base_stream_input_port( base, pos );
+        p->number_of_stream_output_ports = jdksavdecc_descriptor_sensor_unit_get_number_of_stream_output_ports( base, pos );
+        p->base_stream_output_port = jdksavdecc_descriptor_sensor_unit_get_base_stream_output_port( base, pos );
+        p->number_of_external_input_ports = jdksavdecc_descriptor_sensor_unit_get_number_of_external_input_ports( base, pos );
+        p->base_external_input_port = jdksavdecc_descriptor_sensor_unit_get_base_external_input_port( base, pos );
+        p->number_of_external_output_ports = jdksavdecc_descriptor_sensor_unit_get_number_of_external_output_ports( base, pos );
+        p->base_external_output_port = jdksavdecc_descriptor_sensor_unit_get_base_external_output_port( base, pos );
+        p->number_of_internal_input_ports = jdksavdecc_descriptor_sensor_unit_get_number_of_internal_input_ports( base, pos );
+        p->base_internal_input_port = jdksavdecc_descriptor_sensor_unit_get_base_internal_input_port( base, pos );
+        p->number_of_internal_output_ports = jdksavdecc_descriptor_sensor_unit_get_number_of_internal_output_ports( base, pos );
+        p->base_internal_output_port = jdksavdecc_descriptor_sensor_unit_get_base_internal_output_port( base, pos );
+        p->number_of_controls = jdksavdecc_descriptor_sensor_unit_get_number_of_controls( base, pos );
+        p->base_control = jdksavdecc_descriptor_sensor_unit_get_base_control( base, pos );
+        p->number_of_signal_selectors = jdksavdecc_descriptor_sensor_unit_get_number_of_signal_selectors( base, pos );
+        p->base_signal_selector = jdksavdecc_descriptor_sensor_unit_get_base_signal_selector( base, pos );
+        p->number_of_mixers = jdksavdecc_descriptor_sensor_unit_get_number_of_mixers( base, pos );
+        p->base_mixer = jdksavdecc_descriptor_sensor_unit_get_base_mixer( base, pos );
+        p->number_of_matrices = jdksavdecc_descriptor_sensor_unit_get_number_of_matrices( base, pos );
+        p->base_matrix = jdksavdecc_descriptor_sensor_unit_get_base_matrix( base, pos );
+        p->number_of_splitters = jdksavdecc_descriptor_sensor_unit_get_number_of_splitters( base, pos );
+        p->base_splitter = jdksavdecc_descriptor_sensor_unit_get_base_splitter( base, pos );
+        p->number_of_combiners = jdksavdecc_descriptor_sensor_unit_get_number_of_combiners( base, pos );
+        p->base_combiner = jdksavdecc_descriptor_sensor_unit_get_base_combiner( base, pos );
+        p->number_of_demultiplexers = jdksavdecc_descriptor_sensor_unit_get_number_of_demultiplexers( base, pos );
+        p->base_demultiplexer = jdksavdecc_descriptor_sensor_unit_get_base_demultiplexer( base, pos );
+        p->number_of_multiplexers = jdksavdecc_descriptor_sensor_unit_get_number_of_multiplexers( base, pos );
+        p->base_multiplexer = jdksavdecc_descriptor_sensor_unit_get_base_multiplexer( base, pos );
+        p->number_of_transcoders = jdksavdecc_descriptor_sensor_unit_get_number_of_transcoders( base, pos );
+        p->base_transcoder = jdksavdecc_descriptor_sensor_unit_get_base_transcoder( base, pos );
+        p->number_of_control_blocks = jdksavdecc_descriptor_sensor_unit_get_number_of_control_blocks( base, pos );
+        p->base_control_block = jdksavdecc_descriptor_sensor_unit_get_base_control_block( base, pos );
     }
     return r;
 }
@@ -10732,48 +10732,48 @@ static inline ssize_t
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_sensor_write( struct jdksavdecc_descriptor_sensor const *p, void *base, size_t pos, size_t len )
+    jdksavdecc_descriptor_sensor_write( struct jdksavdecc_descriptor_sensor_unit const *p, void *base, size_t pos, size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SENSOR_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SENSOR_UNIT_LEN );
     if ( r >= 0 )
     {
-        jdksavdecc_descriptor_sensor_set_descriptor_type( p->descriptor_type, base, pos );
-        jdksavdecc_descriptor_sensor_set_descriptor_index( p->descriptor_index, base, pos );
-        jdksavdecc_descriptor_sensor_set_object_name( p->object_name, base, pos );
-        jdksavdecc_descriptor_sensor_set_localized_description( p->localized_description, base, pos );
-        jdksavdecc_descriptor_sensor_set_clock_domain_index( p->clock_domain_index, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_stream_input_ports( p->number_of_stream_input_ports, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_stream_input_port( p->base_stream_input_port, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_stream_output_ports( p->number_of_stream_output_ports, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_stream_output_port( p->base_stream_output_port, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_external_input_ports( p->number_of_external_input_ports, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_external_input_port( p->base_external_input_port, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_external_output_ports( p->number_of_external_output_ports, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_external_output_port( p->base_external_output_port, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_internal_input_ports( p->number_of_internal_input_ports, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_internal_input_port( p->base_internal_input_port, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_internal_output_ports( p->number_of_internal_output_ports, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_internal_output_port( p->base_internal_output_port, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_controls( p->number_of_controls, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_control( p->base_control, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_signal_selectors( p->number_of_signal_selectors, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_signal_selector( p->base_signal_selector, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_mixers( p->number_of_mixers, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_mixer( p->base_mixer, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_matrices( p->number_of_matrices, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_matrix( p->base_matrix, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_splitters( p->number_of_splitters, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_splitter( p->base_splitter, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_combiners( p->number_of_combiners, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_combiner( p->base_combiner, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_demultiplexers( p->number_of_demultiplexers, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_demultiplexer( p->base_demultiplexer, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_multiplexers( p->number_of_multiplexers, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_multiplexer( p->base_multiplexer, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_transcoders( p->number_of_transcoders, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_transcoder( p->base_transcoder, base, pos );
-        jdksavdecc_descriptor_sensor_set_number_of_control_blocks( p->number_of_control_blocks, base, pos );
-        jdksavdecc_descriptor_sensor_set_base_control_block( p->base_control_block, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_descriptor_type( p->descriptor_type, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_object_name( p->object_name, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_localized_description( p->localized_description, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_clock_domain_index( p->clock_domain_index, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_stream_input_ports( p->number_of_stream_input_ports, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_stream_input_port( p->base_stream_input_port, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_stream_output_ports( p->number_of_stream_output_ports, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_stream_output_port( p->base_stream_output_port, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_external_input_ports( p->number_of_external_input_ports, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_external_input_port( p->base_external_input_port, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_external_output_ports( p->number_of_external_output_ports, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_external_output_port( p->base_external_output_port, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_internal_input_ports( p->number_of_internal_input_ports, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_internal_input_port( p->base_internal_input_port, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_internal_output_ports( p->number_of_internal_output_ports, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_internal_output_port( p->base_internal_output_port, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_controls( p->number_of_controls, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_control( p->base_control, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_signal_selectors( p->number_of_signal_selectors, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_signal_selector( p->base_signal_selector, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_mixers( p->number_of_mixers, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_mixer( p->base_mixer, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_matrices( p->number_of_matrices, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_matrix( p->base_matrix, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_splitters( p->number_of_splitters, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_splitter( p->base_splitter, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_combiners( p->number_of_combiners, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_combiner( p->base_combiner, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_demultiplexers( p->number_of_demultiplexers, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_demultiplexer( p->base_demultiplexer, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_multiplexers( p->number_of_multiplexers, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_multiplexer( p->base_multiplexer, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_transcoders( p->number_of_transcoders, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_transcoder( p->base_transcoder, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_number_of_control_blocks( p->number_of_control_blocks, base, pos );
+        jdksavdecc_descriptor_sensor_unit_set_base_control_block( p->base_control_block, base, pos );
     }
     return r;
 }
@@ -11127,7 +11127,7 @@ static inline void
 }
 
 /**
- * Extract the uint16 value of the backup_talker_unique_0 field of the
+ * Extract the uint16 value of the backup_talker_unique_id_0 field of the
  *DESCRIPTOR_STREAM object from a network buffer.
  *
  *
@@ -11136,28 +11136,28 @@ static inline void
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t backup_talker_unique_0 value
+ * @return the uint16_t backup_talker_unique_id_0 value
  */
-static inline uint16_t jdksavdecc_descriptor_stream_get_backup_talker_unique_0( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_stream_get_backup_talker_unique_id_0( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_0 );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_ID_0 );
 }
 
 /**
- * Store a uint16 value to the backup_talker_unique_0 field of the
+ * Store a uint16 value to the backup_talker_unique_id_0 field of the
  *DESCRIPTOR_STREAM object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t backup_talker_unique_0 value.
+ * @param v The uint16_t backup_talker_unique_id_0 value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_stream_set_backup_talker_unique_0( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_stream_set_backup_talker_unique_id_0( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_0 );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_ID_0 );
 }
 
 /**
@@ -11197,7 +11197,7 @@ static inline void
 }
 
 /**
- * Extract the uint16 value of the backup_talker_unique_1 field of the
+ * Extract the uint16 value of the backup_talker_unique_id_1 field of the
  *DESCRIPTOR_STREAM object from a network buffer.
  *
  *
@@ -11206,28 +11206,28 @@ static inline void
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t backup_talker_unique_1 value
+ * @return the uint16_t backup_talker_unique_id_1 value
  */
-static inline uint16_t jdksavdecc_descriptor_stream_get_backup_talker_unique_1( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_stream_get_backup_talker_unique_id_1( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_1 );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_ID_1 );
 }
 
 /**
- * Store a uint16 value to the backup_talker_unique_1 field of the
+ * Store a uint16 value to the backup_talker_unique_id_1 field of the
  *DESCRIPTOR_STREAM object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t backup_talker_unique_1 value.
+ * @param v The uint16_t backup_talker_unique_id_1 value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_stream_set_backup_talker_unique_1( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_stream_set_backup_talker_unique_id_1( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_1 );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_ID_1 );
 }
 
 /**
@@ -11267,7 +11267,7 @@ static inline void
 }
 
 /**
- * Extract the uint16 value of the backup_talker_unique_2 field of the
+ * Extract the uint16 value of the backup_talker_unique_id_2 field of the
  *DESCRIPTOR_STREAM object from a network buffer.
  *
  *
@@ -11276,28 +11276,28 @@ static inline void
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t backup_talker_unique_2 value
+ * @return the uint16_t backup_talker_unique_id_2 value
  */
-static inline uint16_t jdksavdecc_descriptor_stream_get_backup_talker_unique_2( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_stream_get_backup_talker_unique_id_2( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_2 );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_ID_2 );
 }
 
 /**
- * Store a uint16 value to the backup_talker_unique_2 field of the
+ * Store a uint16 value to the backup_talker_unique_id_2 field of the
  *DESCRIPTOR_STREAM object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t backup_talker_unique_2 value.
+ * @param v The uint16_t backup_talker_unique_id_2 value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_stream_set_backup_talker_unique_2( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_stream_set_backup_talker_unique_id_2( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_2 );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKUP_TALKER_UNIQUE_ID_2 );
 }
 
 /**
@@ -11350,7 +11350,7 @@ static inline void
  */
 static inline uint16_t jdksavdecc_descriptor_stream_get_backedup_talker_unique( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_UNIQUE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_UNIQUE_ID );
 }
 
 /**
@@ -11367,7 +11367,7 @@ static inline uint16_t jdksavdecc_descriptor_stream_get_backedup_talker_unique( 
  */
 static inline void jdksavdecc_descriptor_stream_set_backedup_talker_unique( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_UNIQUE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_STREAM_OFFSET_BACKEDUP_TALKER_UNIQUE_ID );
 }
 
 /**
@@ -11457,11 +11457,11 @@ struct jdksavdecc_descriptor_stream
     uint16_t formats_offset;
     uint16_t number_of_formats;
     struct jdksavdecc_eui64 backup_talker_entity_id_0;
-    uint16_t backup_talker_unique_0;
+    uint16_t backup_talker_unique_id_0;
     struct jdksavdecc_eui64 backup_talker_entity_id_1;
-    uint16_t backup_talker_unique_1;
+    uint16_t backup_talker_unique_id_1;
     struct jdksavdecc_eui64 backup_talker_entity_id_2;
-    uint16_t backup_talker_unique_2;
+    uint16_t backup_talker_unique_id_2;
     struct jdksavdecc_eui64 backedup_talker_entity_id;
     uint16_t backedup_talker_unique;
     uint16_t avb_interface_index;
@@ -11498,11 +11498,11 @@ static inline ssize_t
         p->formats_offset = jdksavdecc_descriptor_stream_get_formats_offset( base, pos );
         p->number_of_formats = jdksavdecc_descriptor_stream_get_number_of_formats( base, pos );
         p->backup_talker_entity_id_0 = jdksavdecc_descriptor_stream_get_backup_talker_entity_id_0( base, pos );
-        p->backup_talker_unique_0 = jdksavdecc_descriptor_stream_get_backup_talker_unique_0( base, pos );
+        p->backup_talker_unique_id_0 = jdksavdecc_descriptor_stream_get_backup_talker_unique_id_0( base, pos );
         p->backup_talker_entity_id_1 = jdksavdecc_descriptor_stream_get_backup_talker_entity_id_1( base, pos );
-        p->backup_talker_unique_1 = jdksavdecc_descriptor_stream_get_backup_talker_unique_1( base, pos );
+        p->backup_talker_unique_id_1 = jdksavdecc_descriptor_stream_get_backup_talker_unique_id_1( base, pos );
         p->backup_talker_entity_id_2 = jdksavdecc_descriptor_stream_get_backup_talker_entity_id_2( base, pos );
-        p->backup_talker_unique_2 = jdksavdecc_descriptor_stream_get_backup_talker_unique_2( base, pos );
+        p->backup_talker_unique_id_2 = jdksavdecc_descriptor_stream_get_backup_talker_unique_id_2( base, pos );
         p->backedup_talker_entity_id = jdksavdecc_descriptor_stream_get_backedup_talker_entity_id( base, pos );
         p->backedup_talker_unique = jdksavdecc_descriptor_stream_get_backedup_talker_unique( base, pos );
         p->avb_interface_index = jdksavdecc_descriptor_stream_get_avb_interface_index( base, pos );
@@ -11541,11 +11541,11 @@ static inline ssize_t
         jdksavdecc_descriptor_stream_set_formats_offset( p->formats_offset, base, pos );
         jdksavdecc_descriptor_stream_set_number_of_formats( p->number_of_formats, base, pos );
         jdksavdecc_descriptor_stream_set_backup_talker_entity_id_0( p->backup_talker_entity_id_0, base, pos );
-        jdksavdecc_descriptor_stream_set_backup_talker_unique_0( p->backup_talker_unique_0, base, pos );
+        jdksavdecc_descriptor_stream_set_backup_talker_unique_id_0( p->backup_talker_unique_id_0, base, pos );
         jdksavdecc_descriptor_stream_set_backup_talker_entity_id_1( p->backup_talker_entity_id_1, base, pos );
-        jdksavdecc_descriptor_stream_set_backup_talker_unique_1( p->backup_talker_unique_1, base, pos );
+        jdksavdecc_descriptor_stream_set_backup_talker_unique_id_1( p->backup_talker_unique_id_1, base, pos );
         jdksavdecc_descriptor_stream_set_backup_talker_entity_id_2( p->backup_talker_entity_id_2, base, pos );
-        jdksavdecc_descriptor_stream_set_backup_talker_unique_2( p->backup_talker_unique_2, base, pos );
+        jdksavdecc_descriptor_stream_set_backup_talker_unique_id_2( p->backup_talker_unique_id_2, base, pos );
         jdksavdecc_descriptor_stream_set_backedup_talker_entity_id( p->backedup_talker_entity_id, base, pos );
         jdksavdecc_descriptor_stream_set_backedup_talker_unique( p->backedup_talker_unique, base, pos );
         jdksavdecc_descriptor_stream_set_avb_interface_index( p->avb_interface_index, base, pos );
@@ -15874,7 +15874,7 @@ static inline void jdksavdecc_descriptor_audio_cluster_set_format( uint8_t v, vo
 /*@{*/
 
 /// AUDIO_CLUSTER Descriptor - Clause 7.2.16
-struct jdksavdecc_descriptor_audio_cluster
+struct jdksavdecc_descriptor_audio_unit_cluster
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -15904,7 +15904,7 @@ struct jdksavdecc_descriptor_audio_cluster
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_audio_cluster_read( struct jdksavdecc_descriptor_audio_cluster *p,
+static inline ssize_t jdksavdecc_descriptor_audio_cluster_read( struct jdksavdecc_descriptor_audio_unit_cluster *p,
                                                                 void const *base,
                                                                 ssize_t pos,
                                                                 size_t len )
@@ -15942,7 +15942,7 @@ static inline ssize_t jdksavdecc_descriptor_audio_cluster_read( struct jdksavdec
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_audio_cluster_write( struct jdksavdecc_descriptor_audio_cluster const *p,
+static inline ssize_t jdksavdecc_descriptor_audio_cluster_write( struct jdksavdecc_descriptor_audio_unit_cluster const *p,
                                                                  void *base,
                                                                  size_t pos,
                                                                  size_t len )
@@ -16837,7 +16837,7 @@ static inline void jdksavdecc_descriptor_video_cluster_set_supported_color_space
 /*@{*/
 
 /// VIDEO_CLUSTER Descriptor - Clause 7.2.17
-struct jdksavdecc_descriptor_video_cluster
+struct jdksavdecc_descriptor_video_unit_cluster
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -16881,7 +16881,7 @@ struct jdksavdecc_descriptor_video_cluster
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_video_cluster_read( struct jdksavdecc_descriptor_video_cluster *p,
+static inline ssize_t jdksavdecc_descriptor_video_cluster_read( struct jdksavdecc_descriptor_video_unit_cluster *p,
                                                                 void const *base,
                                                                 ssize_t pos,
                                                                 size_t len )
@@ -16936,7 +16936,7 @@ static inline ssize_t jdksavdecc_descriptor_video_cluster_read( struct jdksavdec
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_video_cluster_write( struct jdksavdecc_descriptor_video_cluster const *p,
+static inline ssize_t jdksavdecc_descriptor_video_cluster_write( struct jdksavdecc_descriptor_video_unit_cluster const *p,
                                                                  void *base,
                                                                  size_t pos,
                                                                  size_t len )
@@ -17503,7 +17503,7 @@ static inline void
 /*@{*/
 
 /// SENSOR_CLUSTER Descriptor - Clause 7.2.18
-struct jdksavdecc_descriptor_sensor_cluster
+struct jdksavdecc_descriptor_sensor_unit_cluster
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -17537,7 +17537,7 @@ struct jdksavdecc_descriptor_sensor_cluster
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_sensor_cluster_read( struct jdksavdecc_descriptor_sensor_cluster *p,
+static inline ssize_t jdksavdecc_descriptor_sensor_cluster_read( struct jdksavdecc_descriptor_sensor_unit_cluster *p,
                                                                  void const *base,
                                                                  ssize_t pos,
                                                                  size_t len )
@@ -17581,7 +17581,7 @@ static inline ssize_t jdksavdecc_descriptor_sensor_cluster_read( struct jdksavde
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_sensor_cluster_write( struct jdksavdecc_descriptor_sensor_cluster const *p,
+static inline ssize_t jdksavdecc_descriptor_sensor_cluster_write( struct jdksavdecc_descriptor_sensor_unit_cluster const *p,
                                                                   void *base,
                                                                   size_t pos,
                                                                   size_t len )
@@ -17756,7 +17756,7 @@ static inline void jdksavdecc_descriptor_audio_map_set_number_of_mappings( uint1
 /*@{*/
 
 /// AUDIO_MAP Descriptor - Clause 7.2.19
-struct jdksavdecc_descriptor_audio_map
+struct jdksavdecc_descriptor_audio_unit_map
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -17780,7 +17780,7 @@ struct jdksavdecc_descriptor_audio_map
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_audio_map_read( struct jdksavdecc_descriptor_audio_map *p, void const *base, ssize_t pos, size_t len )
+    jdksavdecc_descriptor_audio_map_read( struct jdksavdecc_descriptor_audio_unit_map *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_MAP_LEN );
     if ( r >= 0 )
@@ -17808,7 +17808,7 @@ static inline ssize_t
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_audio_map_write( struct jdksavdecc_descriptor_audio_map const *p, void *base, size_t pos, size_t len )
+    jdksavdecc_descriptor_audio_map_write( struct jdksavdecc_descriptor_audio_unit_map const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_MAP_LEN );
     if ( r >= 0 )
@@ -17968,7 +17968,7 @@ static inline void jdksavdecc_descriptor_video_map_set_number_of_mappings( uint1
 /*@{*/
 
 /// VIDEO_MAP Descriptor - Clause 7.2.20
-struct jdksavdecc_descriptor_video_map
+struct jdksavdecc_descriptor_video_unit_map
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -17992,7 +17992,7 @@ struct jdksavdecc_descriptor_video_map
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_video_map_read( struct jdksavdecc_descriptor_video_map *p, void const *base, ssize_t pos, size_t len )
+    jdksavdecc_descriptor_video_map_read( struct jdksavdecc_descriptor_video_unit_map *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_MAP_LEN );
     if ( r >= 0 )
@@ -18020,7 +18020,7 @@ static inline ssize_t
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_video_map_write( struct jdksavdecc_descriptor_video_map const *p, void *base, size_t pos, size_t len )
+    jdksavdecc_descriptor_video_map_write( struct jdksavdecc_descriptor_video_unit_map const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_VIDEO_MAP_LEN );
     if ( r >= 0 )
@@ -18180,7 +18180,7 @@ static inline void jdksavdecc_descriptor_sensor_map_set_number_of_mappings( uint
 /*@{*/
 
 /// SENSOR_MAP Descriptor - Clause 7.2.21
-struct jdksavdecc_descriptor_sensor_map
+struct jdksavdecc_descriptor_sensor_unit_map
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -18203,7 +18203,7 @@ struct jdksavdecc_descriptor_sensor_map
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_sensor_map_read( struct jdksavdecc_descriptor_sensor_map *p,
+static inline ssize_t jdksavdecc_descriptor_sensor_map_read( struct jdksavdecc_descriptor_sensor_unit_map *p,
                                                              void const *base,
                                                              ssize_t pos,
                                                              size_t len )
@@ -18233,7 +18233,7 @@ static inline ssize_t jdksavdecc_descriptor_sensor_map_read( struct jdksavdecc_d
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_sensor_map_write( struct jdksavdecc_descriptor_sensor_map const *p,
+static inline ssize_t jdksavdecc_descriptor_sensor_map_write( struct jdksavdecc_descriptor_sensor_unit_map const *p,
                                                               void *base,
                                                               size_t pos,
                                                               size_t len )
@@ -22884,9 +22884,9 @@ static inline ssize_t jdksavdecc_descriptor_signal_multiplexer_write( struct jdk
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_type value
  */
-static inline uint16_t jdksavdecc_descriptor_transcoder_get_descriptor_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_signal_transcoder_get_descriptor_type( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -22901,9 +22901,9 @@ static inline uint16_t jdksavdecc_descriptor_transcoder_get_descriptor_type( voi
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -22918,9 +22918,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_descriptor_type( uint16_
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_index value
  */
-static inline uint16_t jdksavdecc_descriptor_transcoder_get_descriptor_index( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_signal_transcoder_get_descriptor_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_DESCRIPTOR_INDEX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /**
@@ -22935,9 +22935,9 @@ static inline uint16_t jdksavdecc_descriptor_transcoder_get_descriptor_index( vo
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_DESCRIPTOR_INDEX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /**
@@ -22952,9 +22952,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_descriptor_index( uint16
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_string_t object_name value
  */
-static inline struct jdksavdecc_string jdksavdecc_descriptor_transcoder_get_object_name( void const *base, ssize_t pos )
+static inline struct jdksavdecc_string jdksavdecc_descriptor_signal_transcoder_get_object_name( void const *base, ssize_t pos )
 {
-    return jdksavdecc_string_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_OBJECT_NAME );
+    return jdksavdecc_string_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_OBJECT_NAME );
 }
 
 /**
@@ -22969,9 +22969,9 @@ static inline struct jdksavdecc_string jdksavdecc_descriptor_transcoder_get_obje
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_object_name( struct jdksavdecc_string v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_object_name( struct jdksavdecc_string v, void *base, ssize_t pos )
 {
-    jdksavdecc_string_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_OBJECT_NAME );
+    jdksavdecc_string_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_OBJECT_NAME );
 }
 
 /**
@@ -22986,9 +22986,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_object_name( struct jdks
  * @param pos offset from base to read the field from;
  * @return the uint16_t localized_description value
  */
-static inline uint16_t jdksavdecc_descriptor_transcoder_get_localized_description( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_signal_transcoder_get_localized_description( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_LOCALIZED_DESCRIPTION );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_LOCALIZED_DESCRIPTION );
 }
 
 /**
@@ -23003,9 +23003,9 @@ static inline uint16_t jdksavdecc_descriptor_transcoder_get_localized_descriptio
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_localized_description( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_localized_description( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_LOCALIZED_DESCRIPTION );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_LOCALIZED_DESCRIPTION );
 }
 
 /**
@@ -23020,9 +23020,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_localized_description( u
  * @param pos offset from base to read the field from;
  * @return the uint32_t block_latency value
  */
-static inline uint32_t jdksavdecc_descriptor_transcoder_get_block_latency( void const *base, ssize_t pos )
+static inline uint32_t jdksavdecc_descriptor_signal_transcoder_get_block_latency( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_BLOCK_LATENCY );
+    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_BLOCK_LATENCY );
 }
 
 /**
@@ -23037,9 +23037,9 @@ static inline uint32_t jdksavdecc_descriptor_transcoder_get_block_latency( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_block_latency( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_block_latency( uint32_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_BLOCK_LATENCY );
+    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_BLOCK_LATENCY );
 }
 
 /**
@@ -23054,9 +23054,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_block_latency( uint32_t 
  * @param pos offset from base to read the field from;
  * @return the uint32_t control_latency value
  */
-static inline uint32_t jdksavdecc_descriptor_transcoder_get_control_latency( void const *base, ssize_t pos )
+static inline uint32_t jdksavdecc_descriptor_signal_transcoder_get_control_latency( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_CONTROL_LATENCY );
+    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_CONTROL_LATENCY );
 }
 
 /**
@@ -23071,9 +23071,9 @@ static inline uint32_t jdksavdecc_descriptor_transcoder_get_control_latency( voi
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_control_latency( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_control_latency( uint32_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_CONTROL_LATENCY );
+    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_CONTROL_LATENCY );
 }
 
 /**
@@ -23088,9 +23088,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_control_latency( uint32_
  * @param pos offset from base to read the field from;
  * @return the uint16_t control_domain value
  */
-static inline uint16_t jdksavdecc_descriptor_transcoder_get_control_domain( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_signal_transcoder_get_control_domain( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_CONTROL_DOMAIN );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_CONTROL_DOMAIN );
 }
 
 /**
@@ -23105,9 +23105,9 @@ static inline uint16_t jdksavdecc_descriptor_transcoder_get_control_domain( void
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_control_domain( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_control_domain( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_CONTROL_DOMAIN );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_CONTROL_DOMAIN );
 }
 
 /**
@@ -23122,9 +23122,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_control_domain( uint16_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t control_value_type value
  */
-static inline uint16_t jdksavdecc_descriptor_transcoder_get_control_value_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_signal_transcoder_get_control_value_type( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_CONTROL_VALUE_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_CONTROL_VALUE_TYPE );
 }
 
 /**
@@ -23139,9 +23139,9 @@ static inline uint16_t jdksavdecc_descriptor_transcoder_get_control_value_type( 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_control_value_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_control_value_type( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_CONTROL_VALUE_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_CONTROL_VALUE_TYPE );
 }
 
 /**
@@ -23156,9 +23156,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_control_value_type( uint
  * @param pos offset from base to read the field from;
  * @return the uint16_t values_offset value
  */
-static inline uint16_t jdksavdecc_descriptor_transcoder_get_values_offset( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_signal_transcoder_get_values_offset( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_VALUES_OFFSET );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_VALUES_OFFSET );
 }
 
 /**
@@ -23173,9 +23173,9 @@ static inline uint16_t jdksavdecc_descriptor_transcoder_get_values_offset( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_values_offset( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_values_offset( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_VALUES_OFFSET );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_VALUES_OFFSET );
 }
 
 /**
@@ -23190,9 +23190,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_values_offset( uint16_t 
  * @param pos offset from base to read the field from;
  * @return the uint16_t number_of_values value
  */
-static inline uint16_t jdksavdecc_descriptor_transcoder_get_number_of_values( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_signal_transcoder_get_number_of_values( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_NUMBER_OF_VALUES );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_NUMBER_OF_VALUES );
 }
 
 /**
@@ -23207,9 +23207,9 @@ static inline uint16_t jdksavdecc_descriptor_transcoder_get_number_of_values( vo
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_number_of_values( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_number_of_values( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_NUMBER_OF_VALUES );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_NUMBER_OF_VALUES );
 }
 
 /**
@@ -23224,9 +23224,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_number_of_values( uint16
  * @param pos offset from base to read the field from;
  * @return the uint16_t signal_type value
  */
-static inline uint16_t jdksavdecc_descriptor_transcoder_get_signal_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_signal_transcoder_get_signal_type( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_SIGNAL_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_SIGNAL_TYPE );
 }
 
 /**
@@ -23241,9 +23241,9 @@ static inline uint16_t jdksavdecc_descriptor_transcoder_get_signal_type( void co
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_signal_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_signal_type( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_SIGNAL_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_SIGNAL_TYPE );
 }
 
 /**
@@ -23258,9 +23258,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_signal_type( uint16_t v,
  * @param pos offset from base to read the field from;
  * @return the uint16_t signal_index value
  */
-static inline uint16_t jdksavdecc_descriptor_transcoder_get_signal_index( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_signal_transcoder_get_signal_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_SIGNAL_INDEX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_SIGNAL_INDEX );
 }
 
 /**
@@ -23275,9 +23275,9 @@ static inline uint16_t jdksavdecc_descriptor_transcoder_get_signal_index( void c
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_signal_index( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_signal_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_SIGNAL_INDEX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_SIGNAL_INDEX );
 }
 
 /**
@@ -23292,9 +23292,9 @@ static inline void jdksavdecc_descriptor_transcoder_set_signal_index( uint16_t v
  * @param pos offset from base to read the field from;
  * @return the uint16_t signal_output value
  */
-static inline uint16_t jdksavdecc_descriptor_transcoder_get_signal_output( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_descriptor_signal_transcoder_get_signal_output( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_SIGNAL_OUTPUT );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_SIGNAL_OUTPUT );
 }
 
 /**
@@ -23309,9 +23309,9 @@ static inline uint16_t jdksavdecc_descriptor_transcoder_get_signal_output( void 
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_descriptor_transcoder_set_signal_output( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_descriptor_signal_transcoder_set_signal_output( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_TRANSCODER_OFFSET_SIGNAL_OUTPUT );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_OFFSET_SIGNAL_OUTPUT );
 }
 
 /*@}*/
@@ -23321,7 +23321,7 @@ static inline void jdksavdecc_descriptor_transcoder_set_signal_output( uint16_t 
 /*@{*/
 
 /// SIGNAL_TRANSCODER Descriptor - Clause 7.2.31
-struct jdksavdecc_descriptor_transcoder
+struct jdksavdecc_descriptor_signal_transcoder
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -23339,7 +23339,7 @@ struct jdksavdecc_descriptor_transcoder
 };
 
 /**
- * Extract the jdksavdecc_descriptor_transcoder_t structure from a network
+ * Extract the jdksavdecc_descriptor_signal_transcoder_t structure from a network
  *buffer.
  *
  *  - Clause 7.2.31
@@ -23353,33 +23353,33 @@ struct jdksavdecc_descriptor_transcoder
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_transcoder_read( struct jdksavdecc_descriptor_transcoder *p,
+static inline ssize_t jdksavdecc_descriptor_signal_transcoder_read( struct jdksavdecc_descriptor_signal_transcoder *p,
                                                              void const *base,
                                                              ssize_t pos,
                                                              size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_TRANSCODER_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_LEN );
     if ( r >= 0 )
     {
-        p->descriptor_type = jdksavdecc_descriptor_transcoder_get_descriptor_type( base, pos );
-        p->descriptor_index = jdksavdecc_descriptor_transcoder_get_descriptor_index( base, pos );
-        p->object_name = jdksavdecc_descriptor_transcoder_get_object_name( base, pos );
-        p->localized_description = jdksavdecc_descriptor_transcoder_get_localized_description( base, pos );
-        p->block_latency = jdksavdecc_descriptor_transcoder_get_block_latency( base, pos );
-        p->control_latency = jdksavdecc_descriptor_transcoder_get_control_latency( base, pos );
-        p->control_domain = jdksavdecc_descriptor_transcoder_get_control_domain( base, pos );
-        p->control_value_type = jdksavdecc_descriptor_transcoder_get_control_value_type( base, pos );
-        p->values_offset = jdksavdecc_descriptor_transcoder_get_values_offset( base, pos );
-        p->number_of_values = jdksavdecc_descriptor_transcoder_get_number_of_values( base, pos );
-        p->signal_type = jdksavdecc_descriptor_transcoder_get_signal_type( base, pos );
-        p->signal_index = jdksavdecc_descriptor_transcoder_get_signal_index( base, pos );
-        p->signal_output = jdksavdecc_descriptor_transcoder_get_signal_output( base, pos );
+        p->descriptor_type = jdksavdecc_descriptor_signal_transcoder_get_descriptor_type( base, pos );
+        p->descriptor_index = jdksavdecc_descriptor_signal_transcoder_get_descriptor_index( base, pos );
+        p->object_name = jdksavdecc_descriptor_signal_transcoder_get_object_name( base, pos );
+        p->localized_description = jdksavdecc_descriptor_signal_transcoder_get_localized_description( base, pos );
+        p->block_latency = jdksavdecc_descriptor_signal_transcoder_get_block_latency( base, pos );
+        p->control_latency = jdksavdecc_descriptor_signal_transcoder_get_control_latency( base, pos );
+        p->control_domain = jdksavdecc_descriptor_signal_transcoder_get_control_domain( base, pos );
+        p->control_value_type = jdksavdecc_descriptor_signal_transcoder_get_control_value_type( base, pos );
+        p->values_offset = jdksavdecc_descriptor_signal_transcoder_get_values_offset( base, pos );
+        p->number_of_values = jdksavdecc_descriptor_signal_transcoder_get_number_of_values( base, pos );
+        p->signal_type = jdksavdecc_descriptor_signal_transcoder_get_signal_type( base, pos );
+        p->signal_index = jdksavdecc_descriptor_signal_transcoder_get_signal_index( base, pos );
+        p->signal_output = jdksavdecc_descriptor_signal_transcoder_get_signal_output( base, pos );
     }
     return r;
 }
 
 /**
- * Store the jdksavdecc_descriptor_transcoder_t structure to a network buffer.
+ * Store the jdksavdecc_descriptor_signal_transcoder_t structure to a network buffer.
  *
  *  - Clause 7.2.31
  *
@@ -23392,27 +23392,27 @@ static inline ssize_t jdksavdecc_descriptor_transcoder_read( struct jdksavdecc_d
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_transcoder_write( struct jdksavdecc_descriptor_transcoder const *p,
+static inline ssize_t jdksavdecc_descriptor_signal_transcoder_write( struct jdksavdecc_descriptor_signal_transcoder const *p,
                                                               void *base,
                                                               size_t pos,
                                                               size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_TRANSCODER_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_SIGNAL_TRANSCODER_LEN );
     if ( r >= 0 )
     {
-        jdksavdecc_descriptor_transcoder_set_descriptor_type( p->descriptor_type, base, pos );
-        jdksavdecc_descriptor_transcoder_set_descriptor_index( p->descriptor_index, base, pos );
-        jdksavdecc_descriptor_transcoder_set_object_name( p->object_name, base, pos );
-        jdksavdecc_descriptor_transcoder_set_localized_description( p->localized_description, base, pos );
-        jdksavdecc_descriptor_transcoder_set_block_latency( p->block_latency, base, pos );
-        jdksavdecc_descriptor_transcoder_set_control_latency( p->control_latency, base, pos );
-        jdksavdecc_descriptor_transcoder_set_control_domain( p->control_domain, base, pos );
-        jdksavdecc_descriptor_transcoder_set_control_value_type( p->control_value_type, base, pos );
-        jdksavdecc_descriptor_transcoder_set_values_offset( p->values_offset, base, pos );
-        jdksavdecc_descriptor_transcoder_set_number_of_values( p->number_of_values, base, pos );
-        jdksavdecc_descriptor_transcoder_set_signal_type( p->signal_type, base, pos );
-        jdksavdecc_descriptor_transcoder_set_signal_index( p->signal_index, base, pos );
-        jdksavdecc_descriptor_transcoder_set_signal_output( p->signal_output, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_descriptor_type( p->descriptor_type, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_object_name( p->object_name, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_localized_description( p->localized_description, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_block_latency( p->block_latency, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_control_latency( p->control_latency, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_control_domain( p->control_domain, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_control_value_type( p->control_value_type, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_values_offset( p->values_offset, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_number_of_values( p->number_of_values, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_signal_type( p->signal_type, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_signal_index( p->signal_index, base, pos );
+        jdksavdecc_descriptor_signal_transcoder_set_signal_output( p->signal_output, base, pos );
     }
     return r;
 }
