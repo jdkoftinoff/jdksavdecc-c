@@ -883,8 +883,7 @@ struct jdksavdecc_descriptor
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_DESCRIPTOR_TYPE ( 0 )
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_DESCRIPTOR_INDEX ( 2 )
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ID ( 4 )
-#define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_VENDOR_ID ( 12 )
-#define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_MODEL_ID ( 16 )
+#define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_MODEL_ID ( 12 )
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_CAPABILITIES ( 20 )
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_TALKER_STREAM_SOURCES ( 24 )
 #define JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_TALKER_CAPABILITIES ( 26 )
@@ -5344,40 +5343,6 @@ static inline struct jdksavdecc_eui64 jdksavdecc_descriptor_entity_get_entity_en
 static inline void jdksavdecc_descriptor_entity_set_entity_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
     jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_ENTITY_ID );
-}
-
-/**
- * Extract the uint32 value of the vendor_id field of the DESCRIPTOR_ENTITY
- *object from a network buffer.
- *
- *
- * No bounds checking of the memory buffer is done. It is the caller's
- *responsibility to pre-validate base and pos.
- *
- * @param base pointer to raw memory buffer to read from.
- * @param pos offset from base to read the field from;
- * @return the uint32_t vendor_id value
- */
-static inline uint32_t jdksavdecc_descriptor_entity_get_vendor_id( void const *base, ssize_t pos )
-{
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_VENDOR_ID );
-}
-
-/**
- * Store a uint32 value to the vendor_id field of the DESCRIPTOR_ENTITY object
- *to a network buffer.
- *
- *
- * No bounds checking of the memory buffer is done. It is the caller's
- *responsibility to pre-validate base and pos.
- *
- * @param v The uint32_t vendor_id value.
- * @param base pointer to raw memory buffer to write to.
- * @param pos offset from base to write the field to;
- */
-static inline void jdksavdecc_descriptor_entity_set_vendor_id( uint32_t v, void *base, ssize_t pos )
-{
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_ENTITY_OFFSET_VENDOR_ID );
 }
 
 /**
