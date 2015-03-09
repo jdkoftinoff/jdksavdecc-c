@@ -1230,15 +1230,15 @@ extern "C" {
  * Response - Clause 7.4.39.1 */
 /*@{*/
 
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_CONTROLLER_ENTITY_ID                                       \
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID                                       \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0 )
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_COMMAND_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_TYPE                                            \
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_COMMAND_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_TYPE                                            \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_INDEX                                           \
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_INDEX                                           \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 
 /*@}*/
 
@@ -24798,10 +24798,10 @@ static inline ssize_t jdksavdecc_aem_command_deregister_unsolicited_notification
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_eui64 controller_entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_identify_notification_get_controller_entity_id( void const *base,
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_identify_notification_response_get_controller_entity_id( void const *base,
                                                                                                              ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_CONTROLLER_ENTITY_ID );
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID );
 }
 
 /**
@@ -24817,9 +24817,9 @@ static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_identify_notificati
  * @param pos offset from base to write the field to;
  */
 static inline void
-    jdksavdecc_aem_command_identify_notification_set_controller_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+    jdksavdecc_aem_command_identify_notification_response_set_controller_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_CONTROLLER_ENTITY_ID );
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID );
 }
 
 /**
@@ -24834,9 +24834,9 @@ static inline void
  * @param pos offset from base to read the field from;
  * @return the uint16_t sequence_id value
  */
-static inline uint16_t jdksavdecc_aem_command_identify_notification_get_sequence_id( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_identify_notification_response_get_sequence_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_SEQUENCE_ID );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_SEQUENCE_ID );
 }
 
 /**
@@ -24851,9 +24851,9 @@ static inline uint16_t jdksavdecc_aem_command_identify_notification_get_sequence
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_identify_notification_set_sequence_id( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_identify_notification_response_set_sequence_id( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_SEQUENCE_ID );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_SEQUENCE_ID );
 }
 
 /**
@@ -24868,9 +24868,9 @@ static inline void jdksavdecc_aem_command_identify_notification_set_sequence_id(
  * @param pos offset from base to read the field from;
  * @return the uint16_t command_type value
  */
-static inline uint16_t jdksavdecc_aem_command_identify_notification_get_command_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_identify_notification_response_get_command_type( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_COMMAND_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_COMMAND_TYPE );
 }
 
 /**
@@ -24885,9 +24885,9 @@ static inline uint16_t jdksavdecc_aem_command_identify_notification_get_command_
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_identify_notification_set_command_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_identify_notification_response_set_command_type( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_COMMAND_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_COMMAND_TYPE );
 }
 
 /**
@@ -24902,9 +24902,9 @@ static inline void jdksavdecc_aem_command_identify_notification_set_command_type
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_type value
  */
-static inline uint16_t jdksavdecc_aem_command_identify_notification_get_descriptor_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_identify_notification_response_get_descriptor_type( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -24919,9 +24919,9 @@ static inline uint16_t jdksavdecc_aem_command_identify_notification_get_descript
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_identify_notification_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_identify_notification_response_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -24936,9 +24936,9 @@ static inline void jdksavdecc_aem_command_identify_notification_set_descriptor_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_index value
  */
-static inline uint16_t jdksavdecc_aem_command_identify_notification_get_descriptor_index( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_identify_notification_response_get_descriptor_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_INDEX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /**
@@ -24953,9 +24953,9 @@ static inline uint16_t jdksavdecc_aem_command_identify_notification_get_descript
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_identify_notification_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_identify_notification_response_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_INDEX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /*@}*/
@@ -24987,17 +24987,17 @@ struct jdksavdecc_aem_command_identify_notification
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aem_command_identify_notification_read( struct jdksavdecc_aem_command_identify_notification *p,
+static inline ssize_t jdksavdecc_aem_command_identify_notification_response_read( struct jdksavdecc_aem_command_identify_notification *p,
                                                                          void const *base,
                                                                          ssize_t pos,
                                                                          size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_LEN );
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_read( &p->aem_header, base, pos, len );
-        p->descriptor_type = jdksavdecc_aem_command_identify_notification_get_descriptor_type( base, pos );
-        p->descriptor_index = jdksavdecc_aem_command_identify_notification_get_descriptor_index( base, pos );
+        p->descriptor_type = jdksavdecc_aem_command_identify_notification_response_get_descriptor_type( base, pos );
+        p->descriptor_index = jdksavdecc_aem_command_identify_notification_response_get_descriptor_index( base, pos );
     }
     return r;
 }
@@ -25018,15 +25018,15 @@ static inline ssize_t jdksavdecc_aem_command_identify_notification_read( struct 
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aem_command_identify_notification_write(
+static inline ssize_t jdksavdecc_aem_command_identify_notification_response_write(
     struct jdksavdecc_aem_command_identify_notification const *p, void *base, size_t pos, size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_LEN );
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_write( &p->aem_header, base, pos, len );
-        jdksavdecc_aem_command_identify_notification_set_descriptor_type( p->descriptor_type, base, pos );
-        jdksavdecc_aem_command_identify_notification_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_aem_command_identify_notification_response_set_descriptor_type( p->descriptor_type, base, pos );
+        jdksavdecc_aem_command_identify_notification_response_set_descriptor_index( p->descriptor_index, base, pos );
     }
     return r;
 }
