@@ -1200,7 +1200,8 @@ struct jdksavdecc_descriptor
 #define JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_OFFSET_START_ADDRESS ( 76 )
 #define JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_OFFSET_MAXIMUM_LENGTH ( 84 )
 #define JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_OFFSET_LENGTH ( 92 )
-#define JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_LEN ( 100 )
+#define JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_OFFSET_MAXIMUM_SEGMENT_LENGTH ( 100 )
+#define JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_LEN ( 108 )
 
 /*@}*/
 
@@ -13315,6 +13316,40 @@ static inline void jdksavdecc_descriptor_memory_object_set_length( uint64_t v, v
     jdksavdecc_uint64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_OFFSET_LENGTH );
 }
 
+/**
+ * Extract the eui64 value of the maximum_segment_length field of the DESCRIPTOR_MEMORY_OBJECT
+ *object from a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's
+ *responsibility to pre-validate base and pos.
+ *
+ * @param base pointer to raw memory buffer to read from.
+ * @param pos offset from base to read the field from;
+ * @return the uint64_t maximum_segment_length value
+ */
+static inline uint64_t jdksavdecc_descriptor_memory_object_get_maximum_segment_length( void const *base, ssize_t pos )
+{
+    return jdksavdecc_uint64_get( base, pos + JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_OFFSET_MAXIMUM_SEGMENT_LENGTH );
+}
+
+/**
+ * Store a eui64 value to the maximum_segment_length field of the DESCRIPTOR_MEMORY_OBJECT
+ *object to a network buffer.
+ *
+ *
+ * No bounds checking of the memory buffer is done. It is the caller's
+ *responsibility to pre-validate base and pos.
+ *
+ * @param v The uint64_t maximum_segment_length value.
+ * @param base pointer to raw memory buffer to write to.
+ * @param pos offset from base to write the field to;
+ */
+static inline void jdksavdecc_descriptor_memory_object_set_maximum_segment_length( uint64_t v, void *base, ssize_t pos )
+{
+    jdksavdecc_uint64_set( v, base, pos + JDKSAVDECC_DESCRIPTOR_MEMORY_OBJECT_OFFSET_MAXIMUM_SEGMENT_LENGTH );
+}
+
 /*@}*/
 
 /** \addtogroup descriptor_memory_object MEMORY_OBJECT Descriptor - Clause
@@ -13334,6 +13369,7 @@ struct jdksavdecc_descriptor_memory_object
     uint64_t start_address;
     uint64_t maximum_length;
     uint64_t length;
+    uint64_t maximum_segment_length;
 };
 
 /**
@@ -13369,6 +13405,7 @@ static inline ssize_t jdksavdecc_descriptor_memory_object_read( struct jdksavdec
         p->start_address = jdksavdecc_descriptor_memory_object_get_start_address( base, pos );
         p->maximum_length = jdksavdecc_descriptor_memory_object_get_maximum_length( base, pos );
         p->length = jdksavdecc_descriptor_memory_object_get_length( base, pos );
+        p->maximum_segment_length = jdksavdecc_descriptor_memory_object_get_maximum_segment_length( base, pos );
     }
     return r;
 }
@@ -13405,6 +13442,7 @@ static inline ssize_t jdksavdecc_descriptor_memory_object_write( struct jdksavde
         jdksavdecc_descriptor_memory_object_set_start_address( p->start_address, base, pos );
         jdksavdecc_descriptor_memory_object_set_maximum_length( p->maximum_length, base, pos );
         jdksavdecc_descriptor_memory_object_set_length( p->length, base, pos );
+        jdksavdecc_descriptor_memory_object_set_maximum_segment_length( p->maximum_segment_length, base, pos );
     }
     return r;
 }
