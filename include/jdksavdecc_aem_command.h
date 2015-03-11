@@ -42919,6 +42919,7 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_set_configura
     jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX );
 }
 
+
 /**
  * Extract the uint16 value of the descriptor_index field of the
  *COMMAND_SET_MEMORY_OBJECT_LENGTH object from a network buffer.
@@ -42952,6 +42953,7 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_set_descripto
 {
     jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_INDEX );
 }
+
 
 /**
  * Extract the uint64_t value of the descriptor_index field of the
@@ -42996,8 +42998,8 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_set_length( u
 struct jdksavdecc_aem_command_set_memory_object_length
 {
     struct jdksavdecc_aecpdu_aem aem_header;
-    uint16_t descriptor_type;
     uint16_t descriptor_index;
+    uint16_t configuration_index;
     uint64_t length;
 };
 
@@ -43023,7 +43025,7 @@ static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_read(
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_read( &p->aem_header, base, pos, len );
-        p->descriptor_type = jdksavdecc_aem_command_set_memory_object_length_get_descriptor_type( base, pos );
+        p->configuration_index = jdksavdecc_aem_command_set_memory_object_length_get_configuration_index( base, pos );
         p->descriptor_index = jdksavdecc_aem_command_set_memory_object_length_get_descriptor_index( base, pos );
         p->length = jdksavdecc_aem_command_set_memory_object_length_get_length( base, pos );
     }
@@ -43053,7 +43055,7 @@ static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_write(
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_write( &p->aem_header, base, pos, len );
-        jdksavdecc_aem_command_set_memory_object_length_set_descriptor_type( p->descriptor_type, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_set_configuration_index( p->configuration_index, base, pos );
         jdksavdecc_aem_command_set_memory_object_length_set_descriptor_index( p->descriptor_index, base, pos );
         jdksavdecc_aem_command_set_memory_object_length_set_length( p->length, base, pos );
     }
@@ -43296,8 +43298,8 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_response_set_
 struct jdksavdecc_aem_command_set_memory_object_length_response
 {
     struct jdksavdecc_aecpdu_aem aem_header;
-    uint16_t descriptor_type;
     uint16_t descriptor_index;
+    uint16_t configuration_index;
     uint64_t length;
 };
 
@@ -43324,8 +43326,8 @@ static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_response_r
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_read( &p->aem_header, base, pos, len );
-        p->descriptor_type = jdksavdecc_aem_command_set_memory_object_length_response_get_descriptor_type( base, pos );
         p->descriptor_index = jdksavdecc_aem_command_set_memory_object_length_response_get_descriptor_index( base, pos );
+        p->configuration_index = jdksavdecc_aem_command_set_memory_object_length_response_get_configuration_index( base, pos );
         p->length = jdksavdecc_aem_command_set_memory_object_length_response_get_length( base, pos );
     }
     return r;
@@ -43354,8 +43356,8 @@ static inline ssize_t jdksavdecc_aem_command_set_memory_object_length_response_w
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_write( &p->aem_header, base, pos, len );
-        jdksavdecc_aem_command_set_memory_object_length_response_set_descriptor_type( p->descriptor_type, base, pos );
         jdksavdecc_aem_command_set_memory_object_length_response_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_aem_command_set_memory_object_length_response_set_configuration_index( p->configuration_index, base, pos );
         jdksavdecc_aem_command_set_memory_object_length_response_set_length( p->length, base, pos );
     }
     return r;
@@ -43550,8 +43552,8 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_set_descripto
 struct jdksavdecc_aem_command_get_memory_object_length
 {
     struct jdksavdecc_aecpdu_aem aem_header;
-    uint16_t descriptor_type;
     uint16_t descriptor_index;
+    uint16_t configuration_index;
 };
 
 /**
@@ -43576,8 +43578,8 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_read(
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_read( &p->aem_header, base, pos, len );
-        p->descriptor_type = jdksavdecc_aem_command_get_memory_object_length_get_descriptor_type( base, pos );
         p->descriptor_index = jdksavdecc_aem_command_get_memory_object_length_get_descriptor_index( base, pos );
+        p->configuration_index = jdksavdecc_aem_command_get_memory_object_length_get_configuration_index( base, pos );
     }
     return r;
 }
@@ -43605,8 +43607,8 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_write(
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_write( &p->aem_header, base, pos, len );
-        jdksavdecc_aem_command_get_memory_object_length_set_descriptor_type( p->descriptor_type, base, pos );
         jdksavdecc_aem_command_get_memory_object_length_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_aem_command_get_memory_object_length_set_configuration_index( p->configuration_index, base, pos );
     }
     return r;
 }
@@ -43847,8 +43849,8 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_response_set_
 struct jdksavdecc_aem_command_get_memory_object_length_response
 {
     struct jdksavdecc_aecpdu_aem aem_header;
-    uint16_t descriptor_type;
     uint16_t descriptor_index;
+    uint16_t configuration_index;
     uint64_t length;
 };
 
@@ -43875,8 +43877,8 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_response_r
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_read( &p->aem_header, base, pos, len );
-        p->descriptor_type = jdksavdecc_aem_command_get_memory_object_length_response_get_descriptor_type( base, pos );
         p->descriptor_index = jdksavdecc_aem_command_get_memory_object_length_response_get_descriptor_index( base, pos );
+        p->configuration_index = jdksavdecc_aem_command_get_memory_object_length_response_get_configuration_index( base, pos );
         p->length = jdksavdecc_aem_command_get_memory_object_length_response_get_length( base, pos );
     }
     return r;
@@ -43905,8 +43907,8 @@ static inline ssize_t jdksavdecc_aem_command_get_memory_object_length_response_w
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_write( &p->aem_header, base, pos, len );
-        jdksavdecc_aem_command_get_memory_object_length_response_set_descriptor_type( p->descriptor_type, base, pos );
         jdksavdecc_aem_command_get_memory_object_length_response_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_aem_command_get_memory_object_length_response_set_configuration_index( p->configuration_index, base, pos );
         jdksavdecc_aem_command_get_memory_object_length_response_set_length( p->length, base, pos );
     }
     return r;
