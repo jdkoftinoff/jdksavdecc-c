@@ -15874,7 +15874,7 @@ static inline void jdksavdecc_descriptor_audio_cluster_set_format( uint8_t v, vo
 /*@{*/
 
 /// AUDIO_CLUSTER Descriptor - Clause 7.2.16
-struct jdksavdecc_descriptor_audio_unit_cluster
+struct jdksavdecc_descriptor_audio_cluster
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -15904,7 +15904,7 @@ struct jdksavdecc_descriptor_audio_unit_cluster
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_audio_cluster_read( struct jdksavdecc_descriptor_audio_unit_cluster *p,
+static inline ssize_t jdksavdecc_descriptor_audio_cluster_read( struct jdksavdecc_descriptor_audio_cluster *p,
                                                                 void const *base,
                                                                 ssize_t pos,
                                                                 size_t len )
@@ -15942,7 +15942,7 @@ static inline ssize_t jdksavdecc_descriptor_audio_cluster_read( struct jdksavdec
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_descriptor_audio_cluster_write( struct jdksavdecc_descriptor_audio_unit_cluster const *p,
+static inline ssize_t jdksavdecc_descriptor_audio_cluster_write( struct jdksavdecc_descriptor_audio_cluster const *p,
                                                                  void *base,
                                                                  size_t pos,
                                                                  size_t len )
@@ -17756,7 +17756,7 @@ static inline void jdksavdecc_descriptor_audio_map_set_number_of_mappings( uint1
 /*@{*/
 
 /// AUDIO_MAP Descriptor - Clause 7.2.19
-struct jdksavdecc_descriptor_audio_unit_map
+struct jdksavdecc_descriptor_audio_map
 {
     uint16_t descriptor_type;
     uint16_t descriptor_index;
@@ -17780,7 +17780,7 @@ struct jdksavdecc_descriptor_audio_unit_map
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_audio_map_read( struct jdksavdecc_descriptor_audio_unit_map *p, void const *base, ssize_t pos, size_t len )
+    jdksavdecc_descriptor_audio_map_read( struct jdksavdecc_descriptor_audio_map *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_MAP_LEN );
     if ( r >= 0 )
@@ -17808,7 +17808,7 @@ static inline ssize_t
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_audio_map_write( struct jdksavdecc_descriptor_audio_unit_map const *p, void *base, size_t pos, size_t len )
+    jdksavdecc_descriptor_audio_map_write( struct jdksavdecc_descriptor_audio_map const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_MAP_LEN );
     if ( r >= 0 )
