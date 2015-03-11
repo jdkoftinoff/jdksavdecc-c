@@ -556,7 +556,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_RESPONSE_OFFSET_RESERVED ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 47 )
 #define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_RESPONSE_OFFSET_MSRP_FAILURE_BRIDGE_ID                                          \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 48 )
-#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 56 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_RESPONSE_OFFSET_STREAM_VLAN_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 56 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_RESPONSE_OFFSET_RESERVED2 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 58 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_INFO_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 60 )
 
 /*@}*/
 
@@ -767,7 +769,8 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_COMMAND_OFFSET_DESCRIPTOR_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_COMMAND_OFFSET_DESCRIPTOR_INDEX ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
 #define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_COMMAND_OFFSET_CLOCK_SOURCE_INDEX ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
-#define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 18 )
+#define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_COMMAND_OFFSET_RESERVED ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 18 )
+#define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 20 )
 
 /*@}*/
 
@@ -781,7 +784,8 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_RESPONSE_OFFSET_DESCRIPTOR_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_RESPONSE_OFFSET_DESCRIPTOR_INDEX ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
 #define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_RESPONSE_OFFSET_CLOCK_SOURCE_INDEX ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
-#define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 18 )
+#define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_RESPONSE_OFFSET_RESERVED ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 18 )
+#define JDKSAVDECC_AEM_COMMAND_SET_CLOCK_SOURCE_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 20 )
 
 /*@}*/
 
@@ -1226,15 +1230,15 @@ extern "C" {
  * Response - Clause 7.4.39.1 */
 /*@{*/
 
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_CONTROLLER_ENTITY_ID                                       \
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID                                       \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0 )
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_COMMAND_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_TYPE                                            \
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_COMMAND_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_TYPE                                            \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_INDEX                                           \
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_INDEX                                           \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
-#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
+#define JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 
 /*@}*/
 
@@ -1246,13 +1250,7 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_COMMAND_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_DESCRIPTOR_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_DESCRIPTOR_INDEX ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
-#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_GPTP_GRANDMASTER_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
-#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_PROPAGATION_DELAY ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24 )
-#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_GPTP_DOMAIN_NUMBER ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 28 )
-#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_FLAGS ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 29 )
-#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_MSRP_MAPPINGS_COUNT ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 30 )
-#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_OFFSET_MSRP_MAPPINGS ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 32 )
-#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 32 )
+#define JDKSAVDECC_AEM_COMMAND_GET_AVB_INFO_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 
 /*@}*/
 
@@ -2212,9 +2210,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_COMMAND_TYPE                                            \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE                                         \
-    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_INDEX                                        \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX                                     \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_LENGTH ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24 )
@@ -2230,9 +2228,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_COMMAND_TYPE                                           \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE                                        \
-    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_INDEX                                       \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX                                    \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 #define JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24 )
@@ -2248,9 +2246,9 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_COMMAND_TYPE                                            \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE                                         \
-    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_INDEX                                        \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX                                     \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 
@@ -2265,19 +2263,102 @@ extern "C" {
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_COMMAND_TYPE                                           \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE                                        \
-    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_INDEX                                       \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX                                    \
     ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_LENGTH ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
 #define JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24 )
 
 /*@}*/
 
-/** @todo Add offsets for fields for the rest of the commands:
-JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP
-JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP
-*/
+/** \addtogroup command_set_stream_backup SET_STREAM_BACKUP Command - Clause 7.4.74.1 */
+/*@{*/
+
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_CONTROLLER_ENTITY_ID                                           \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_COMMAND_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_DESCRIPTOR_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_DESCRIPTOR_INDEX ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_BACKUP_TALKER_ENTITY_ID_0 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_BACKUP_TALKER_UNIQUE_ID_0 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_RESERVED0 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 26 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_BACKUP_TALKER_ENTITY_ID_1 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 28 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_BACKUP_TALKER_UNIQUE_ID_1 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 36 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_RESERVED1 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 38 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_BACKUP_TALKER_ENTITY_ID_2 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 40 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_BACKUP_TALKER_UNIQUE_ID_2 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 48 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_RESERVED2 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 50 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_BACKEDUP_TALKER_ENTITY_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 52 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_BACKEDUP_TALKER_UNIQUE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 60 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_OFFSET_RESERVED3 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 62 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 64 )
+
+/*@}*/
+
+/** \addtogroup command_set_stream_backup_response SET_STREAM_BACKUP Response - Clause 7.4.74.1 */
+/*@{*/
+
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID                                           \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_COMMAND_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_DESCRIPTOR_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_DESCRIPTOR_INDEX ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_ENTITY_ID_0 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_UNIQUE_ID_0 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_RESERVED0 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 26 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_ENTITY_ID_1 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 28 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_UNIQUE_ID_1 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 36 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_RESERVED1 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 38 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_ENTITY_ID_2 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 40 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_UNIQUE_ID_2 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 48 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_RESERVED2 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 50 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_BACKEDUP_TALKER_ENTITY_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 52 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_BACKEDUP_TALKER_UNIQUE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 60 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_OFFSET_RESERVED3 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 62 )
+#define JDKSAVDECC_AEM_COMMAND_SET_STREAM_BACKUP_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 64 )
+
+/*@}*/
+
+/** \addtogroup command_get_stream_backup GET_STREAM_BACKUP Command - Clause 7.4.75.1 */
+/*@{*/
+
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_COMMAND_OFFSET_CONTROLLER_ENTITY_ID                                           \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_COMMAND_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_COMMAND_OFFSET_COMMAND_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_COMMAND_OFFSET_DESCRIPTOR_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_COMMAND_OFFSET_DESCRIPTOR_INDEX ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_COMMAND_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
+
+/*@}*/
+
+/** \addtogroup command_get_stream_backup_response GET_STREAM_BACKUP Response - Clause 7.4.75.2 */
+/*@{*/
+
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID                                           \
+    ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_COMMAND_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_DESCRIPTOR_TYPE ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 12 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_DESCRIPTOR_INDEX ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 14 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_ENTITY_ID_0 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 16 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_UNIQUE_ID_0 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 24 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_RESERVED0 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 26 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_ENTITY_ID_1 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 28 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_UNIQUE_ID_1 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 36 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_RESERVED1 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 38 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_ENTITY_ID_2 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 40 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_BACKUP_TALKER_UNIQUE_ID_2 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 48 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_RESERVED2 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 50 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_BACKEDUP_TALKER_ENTITY_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 52 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_BACKEDUP_TALKER_UNIQUE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 60 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_OFFSET_RESERVED3 ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 62 )
+#define JDKSAVDECC_AEM_COMMAND_GET_STREAM_BACKUP_RESPONSE_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 64 )
+
+/*@}*/
 
 /** @todo Add defs Table 7.6.1.2 Key Types, 7.6.1.2.3 ECC_PUBLIC_256, 7.6.1.2.4
  * ECC_PRIVATE_256, 7.6.1.3 Key Chains */
@@ -24717,10 +24798,10 @@ static inline ssize_t jdksavdecc_aem_command_deregister_unsolicited_notification
  * @param pos offset from base to read the field from;
  * @return the struct jdksavdecc_eui64 controller_entity_id value
  */
-static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_identify_notification_get_controller_entity_id( void const *base,
+static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_identify_notification_response_get_controller_entity_id( void const *base,
                                                                                                              ssize_t pos )
 {
-    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_CONTROLLER_ENTITY_ID );
+    return jdksavdecc_eui64_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID );
 }
 
 /**
@@ -24736,9 +24817,9 @@ static inline struct jdksavdecc_eui64 jdksavdecc_aem_command_identify_notificati
  * @param pos offset from base to write the field to;
  */
 static inline void
-    jdksavdecc_aem_command_identify_notification_set_controller_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
+    jdksavdecc_aem_command_identify_notification_response_set_controller_entity_id( struct jdksavdecc_eui64 v, void *base, ssize_t pos )
 {
-    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_CONTROLLER_ENTITY_ID );
+    jdksavdecc_eui64_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_CONTROLLER_ENTITY_ID );
 }
 
 /**
@@ -24753,9 +24834,9 @@ static inline void
  * @param pos offset from base to read the field from;
  * @return the uint16_t sequence_id value
  */
-static inline uint16_t jdksavdecc_aem_command_identify_notification_get_sequence_id( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_identify_notification_response_get_sequence_id( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_SEQUENCE_ID );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_SEQUENCE_ID );
 }
 
 /**
@@ -24770,9 +24851,9 @@ static inline uint16_t jdksavdecc_aem_command_identify_notification_get_sequence
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_identify_notification_set_sequence_id( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_identify_notification_response_set_sequence_id( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_SEQUENCE_ID );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_SEQUENCE_ID );
 }
 
 /**
@@ -24787,9 +24868,9 @@ static inline void jdksavdecc_aem_command_identify_notification_set_sequence_id(
  * @param pos offset from base to read the field from;
  * @return the uint16_t command_type value
  */
-static inline uint16_t jdksavdecc_aem_command_identify_notification_get_command_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_identify_notification_response_get_command_type( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_COMMAND_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_COMMAND_TYPE );
 }
 
 /**
@@ -24804,9 +24885,9 @@ static inline uint16_t jdksavdecc_aem_command_identify_notification_get_command_
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_identify_notification_set_command_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_identify_notification_response_set_command_type( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_COMMAND_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_COMMAND_TYPE );
 }
 
 /**
@@ -24821,9 +24902,9 @@ static inline void jdksavdecc_aem_command_identify_notification_set_command_type
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_type value
  */
-static inline uint16_t jdksavdecc_aem_command_identify_notification_get_descriptor_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_identify_notification_response_get_descriptor_type( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -24838,9 +24919,9 @@ static inline uint16_t jdksavdecc_aem_command_identify_notification_get_descript
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_identify_notification_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_identify_notification_response_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
 }
 
 /**
@@ -24855,9 +24936,9 @@ static inline void jdksavdecc_aem_command_identify_notification_set_descriptor_t
  * @param pos offset from base to read the field from;
  * @return the uint16_t descriptor_index value
  */
-static inline uint16_t jdksavdecc_aem_command_identify_notification_get_descriptor_index( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_identify_notification_response_get_descriptor_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_INDEX );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /**
@@ -24872,9 +24953,9 @@ static inline uint16_t jdksavdecc_aem_command_identify_notification_get_descript
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_identify_notification_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_identify_notification_response_set_descriptor_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_OFFSET_DESCRIPTOR_INDEX );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_OFFSET_DESCRIPTOR_INDEX );
 }
 
 /*@}*/
@@ -24906,17 +24987,17 @@ struct jdksavdecc_aem_command_identify_notification
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aem_command_identify_notification_read( struct jdksavdecc_aem_command_identify_notification *p,
+static inline ssize_t jdksavdecc_aem_command_identify_notification_response_read( struct jdksavdecc_aem_command_identify_notification *p,
                                                                          void const *base,
                                                                          ssize_t pos,
                                                                          size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_LEN );
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_read( &p->aem_header, base, pos, len );
-        p->descriptor_type = jdksavdecc_aem_command_identify_notification_get_descriptor_type( base, pos );
-        p->descriptor_index = jdksavdecc_aem_command_identify_notification_get_descriptor_index( base, pos );
+        p->descriptor_type = jdksavdecc_aem_command_identify_notification_response_get_descriptor_type( base, pos );
+        p->descriptor_index = jdksavdecc_aem_command_identify_notification_response_get_descriptor_index( base, pos );
     }
     return r;
 }
@@ -24937,15 +25018,15 @@ static inline ssize_t jdksavdecc_aem_command_identify_notification_read( struct 
  * @return -1 if the buffer length is insufficent, otherwise the offset of the
  *octet following the structure in the buffer.
  */
-static inline ssize_t jdksavdecc_aem_command_identify_notification_write(
+static inline ssize_t jdksavdecc_aem_command_identify_notification_response_write(
     struct jdksavdecc_aem_command_identify_notification const *p, void *base, size_t pos, size_t len )
 {
-    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_COMMAND_LEN );
+    ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_AEM_COMMAND_IDENTIFY_NOTIFICATION_RESPONSE_LEN );
     if ( r >= 0 )
     {
         jdksavdecc_aecpdu_aem_write( &p->aem_header, base, pos, len );
-        jdksavdecc_aem_command_identify_notification_set_descriptor_type( p->descriptor_type, base, pos );
-        jdksavdecc_aem_command_identify_notification_set_descriptor_index( p->descriptor_index, base, pos );
+        jdksavdecc_aem_command_identify_notification_response_set_descriptor_type( p->descriptor_type, base, pos );
+        jdksavdecc_aem_command_identify_notification_response_set_descriptor_index( p->descriptor_index, base, pos );
     }
     return r;
 }
@@ -42805,7 +42886,7 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_set_command_t
 }
 
 /**
- * Extract the uint16 value of the descriptor_type field of the
+ * Extract the uint16 value of the configuration_index field of the
  *COMMAND_SET_MEMORY_OBJECT_LENGTH object from a network buffer.
  *
  *
@@ -42814,28 +42895,28 @@ static inline void jdksavdecc_aem_command_set_memory_object_length_set_command_t
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t descriptor_type value
+ * @return the uint16_t configuration_index value
  */
-static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_get_descriptor_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_get_configuration_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
- * Store a uint16 value to the descriptor_type field of the
+ * Store a uint16 value to the configuration_index field of the
  *COMMAND_SET_MEMORY_OBJECT_LENGTH object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t descriptor_type value.
+ * @param v The uint16_t configuration_index value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_set_memory_object_length_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_set_memory_object_length_set_configuration_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
@@ -43097,7 +43178,7 @@ static inline void
 }
 
 /**
- * Extract the uint16 value of the descriptor_type field of the
+ * Extract the uint16 value of the configuration_index field of the
  *COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object from a network
  *buffer.
  *
@@ -43107,30 +43188,30 @@ static inline void
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t descriptor_type value
+ * @return the uint16_t configuration_index value
  */
-static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_response_get_descriptor_type( void const *base,
+static inline uint16_t jdksavdecc_aem_command_set_memory_object_length_response_get_configuration_index( void const *base,
                                                                                                      ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
- * Store a uint16 value to the descriptor_type field of the
+ * Store a uint16 value to the configuration_index field of the
  *COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t descriptor_type value.
+ * @param v The uint16_t configuration_index value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
 static inline void
-    jdksavdecc_aem_command_set_memory_object_length_response_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+    jdksavdecc_aem_command_set_memory_object_length_response_set_configuration_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_SET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
@@ -43393,7 +43474,7 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_set_command_t
 }
 
 /**
- * Extract the uint16 value of the descriptor_type field of the
+ * Extract the uint16 value of the configuration_index field of the
  *COMMAND_GET_MEMORY_OBJECT_LENGTH object from a network buffer.
  *
  *
@@ -43402,28 +43483,28 @@ static inline void jdksavdecc_aem_command_get_memory_object_length_set_command_t
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t descriptor_type value
+ * @return the uint16_t configuration_index value
  */
-static inline uint16_t jdksavdecc_aem_command_get_memory_object_length_get_descriptor_type( void const *base, ssize_t pos )
+static inline uint16_t jdksavdecc_aem_command_get_memory_object_length_get_configuration_index( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
- * Store a uint16 value to the descriptor_type field of the
+ * Store a uint16 value to the configuration_index field of the
  *COMMAND_GET_MEMORY_OBJECT_LENGTH object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t descriptor_type value.
+ * @param v The uint16_t configuration_index value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_aem_command_get_memory_object_length_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_aem_command_get_memory_object_length_set_configuration_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_COMMAND_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
@@ -43648,7 +43729,7 @@ static inline void
 }
 
 /**
- * Extract the uint16 value of the descriptor_type field of the
+ * Extract the uint16 value of the configuration_index field of the
  *COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE object from a network
  *buffer.
  *
@@ -43658,30 +43739,30 @@ static inline void
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint16_t descriptor_type value
+ * @return the uint16_t configuration_index value
  */
-static inline uint16_t jdksavdecc_aem_command_get_memory_object_length_response_get_descriptor_type( void const *base,
+static inline uint16_t jdksavdecc_aem_command_get_memory_object_length_response_get_configuration_index( void const *base,
                                                                                                      ssize_t pos )
 {
-    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
+    return jdksavdecc_uint16_get( base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
- * Store a uint16 value to the descriptor_type field of the
+ * Store a uint16 value to the configuration_index field of the
  *COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE object to a network buffer.
  *
  *
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint16_t descriptor_type value.
+ * @param v The uint16_t configuration_index value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
 static inline void
-    jdksavdecc_aem_command_get_memory_object_length_response_set_descriptor_type( uint16_t v, void *base, ssize_t pos )
+    jdksavdecc_aem_command_get_memory_object_length_response_set_configuration_index( uint16_t v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_DESCRIPTOR_TYPE );
+    jdksavdecc_uint16_set( v, base, pos + JDKSAVDECC_AEM_COMMAND_GET_MEMORY_OBJECT_LENGTH_RESPONSE_OFFSET_CONFIGURATION_INDEX );
 }
 
 /**
@@ -43930,30 +44011,30 @@ struct jdksavdecc_aem_command_get_stream_backup_response;
 #define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_UNLOCKED_BIT ( 30 )
 #define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_UNLOCKED ( 0x00000002UL )
 #define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_UNLOCKED_MASK ( ~( 0x00000002UL ) )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_1_BIT ( 7 )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_1 ( 0x01000000UL )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_1_MASK ( ~( 0x01000000UL ) )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_2_BIT ( 6 )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_2 ( 0x02000000UL )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_2_MASK ( ~( 0x02000000UL ) )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_3_BIT ( 5 )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_3 ( 0x04000000UL )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_3_MASK ( ~( 0x04000000UL ) )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_4_BIT ( 4 )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_4 ( 0x08000000UL )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_4_MASK ( ~( 0x08000000UL ) )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_5_BIT ( 3 )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_5 ( 0x10000000UL )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_5_MASK ( ~( 0x10000000UL ) )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_6_BIT ( 2 )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_6 ( 0x20000000UL )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_6_MASK ( ~( 0x20000000UL ) )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_7_BIT ( 1 )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_7 ( 0x40000000UL )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_7_MASK ( ~( 0x40000000UL ) )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_8_BIT ( 0 )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_8 ( 0x80000000UL )
-#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_8_MASK ( ~( 0x80000000UL ) )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_8_BIT ( 7 )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_8 ( 0x01000000UL )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_8_MASK ( ~( 0x01000000UL ) )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_7_BIT ( 6 )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_7 ( 0x02000000UL )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_7_MASK ( ~( 0x02000000UL ) )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_6_BIT ( 5 )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_6 ( 0x04000000UL )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_6_MASK ( ~( 0x04000000UL ) )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_5_BIT ( 4 )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_5 ( 0x08000000UL )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_5_MASK ( ~( 0x08000000UL ) )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_4_BIT ( 3 )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_4 ( 0x10000000UL )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_4_MASK ( ~( 0x10000000UL ) )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_3_BIT ( 2 )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_3 ( 0x20000000UL )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_3_MASK ( ~( 0x20000000UL ) )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_2_BIT ( 1 )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_2 ( 0x40000000UL )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_2_MASK ( ~( 0x40000000UL ) )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_1_BIT ( 0 )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_1 ( 0x80000000UL )
+#define JDKSAVDECC_GET_COUNTERS_CLOCK_DOMAIN_BITS_ENTITY_SPECIFIC_1_MASK ( ~( 0x80000000UL ) )
 
 /*@}*/
 
@@ -44099,14 +44180,14 @@ struct jdksavdecc_aem_command_get_stream_backup_response;
 #define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_EARLY_TIMESTAMP ( 40 )
 #define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_PACKETS_RX ( 44 )
 #define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_PACKETS_TX ( 48 )
-#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_1 ( 96 )
-#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_2 ( 100 )
-#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_3 ( 104 )
-#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_4 ( 108 )
-#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_5 ( 112 )
-#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_6 ( 116 )
-#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_7 ( 120 )
-#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_8 ( 124 )
+#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_8 ( 96 )
+#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_7 ( 100 )
+#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_6 ( 104 )
+#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_5 ( 108 )
+#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_4 ( 112 )
+#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_3 ( 116 )
+#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_2 ( 120 )
+#define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_OFFSET_ENTITY_SPECIFIC_1 ( 124 )
 #define JDKSAVDECC_GET_COUNTERS_STREAM_INPUT_LEN ( 128 )
 
 /*@}*/
