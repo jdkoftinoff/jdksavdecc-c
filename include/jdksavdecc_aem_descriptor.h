@@ -7764,7 +7764,7 @@ struct jdksavdecc_descriptor_audio_unit
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_audio_read( struct jdksavdecc_descriptor_audio_unit *p, void const *base, ssize_t pos, size_t len )
+    jdksavdecc_descriptor_audio_unit_read( struct jdksavdecc_descriptor_audio_unit *p, void const *base, ssize_t pos, size_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_LEN );
     if ( r >= 0 )
@@ -7828,7 +7828,7 @@ static inline ssize_t
  *octet following the structure in the buffer.
  */
 static inline ssize_t
-    jdksavdecc_descriptor_audio_write( struct jdksavdecc_descriptor_audio_unit const *p, void *base, size_t pos, size_t len )
+    jdksavdecc_descriptor_audio_unit_write( struct jdksavdecc_descriptor_audio_unit const *p, void *base, size_t pos, size_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, JDKSAVDECC_DESCRIPTOR_AUDIO_UNIT_LEN );
     if ( r >= 0 )
