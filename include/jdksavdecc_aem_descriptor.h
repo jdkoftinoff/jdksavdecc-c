@@ -3402,11 +3402,11 @@ static inline ssize_t
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t frequency_minimum value
+ * @return the float frequency_minimum value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_frequency_minimum( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_frequency_minimum( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_MINIMUM );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_MINIMUM );
 }
 
 /**
@@ -3417,13 +3417,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_frequency_minimum( void c
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t frequency_minimum value.
+ * @param v The float frequency_minimum value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_frequency_minimum( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_frequency_minimum( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_MINIMUM );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_MINIMUM );
 }
 
 /**
@@ -3436,11 +3436,11 @@ static inline void jdksavdecc_values_bode_plot_set_frequency_minimum( uint32_t v
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t frequency_maximum value
+ * @return the float frequency_maximum value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_frequency_maximum( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_frequency_maximum( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_MAXIMUM );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_MAXIMUM );
 }
 
 /**
@@ -3451,13 +3451,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_frequency_maximum( void c
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t frequency_maximum value.
+ * @param v The float frequency_maximum value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_frequency_maximum( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_frequency_maximum( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_MAXIMUM );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_MAXIMUM );
 }
 
 /**
@@ -3470,11 +3470,11 @@ static inline void jdksavdecc_values_bode_plot_set_frequency_maximum( uint32_t v
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t frequency_step value
+ * @return the float frequency_step value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_frequency_step( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_frequency_step( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_STEP );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_STEP );
 }
 
 /**
@@ -3485,13 +3485,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_frequency_step( void cons
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t frequency_step value.
+ * @param v The float frequency_step value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_frequency_step( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_frequency_step( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_STEP );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_STEP );
 }
 
 /**
@@ -3504,11 +3504,11 @@ static inline void jdksavdecc_values_bode_plot_set_frequency_step( uint32_t v, v
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t frequency_default value
+ * @return the float frequency_default value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_frequency_default( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_frequency_default( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_DEFAULT );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_DEFAULT );
 }
 
 /**
@@ -3519,13 +3519,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_frequency_default( void c
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t frequency_default value.
+ * @param v The float frequency_default value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_frequency_default( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_frequency_default( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_DEFAULT );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_FREQUENCY_DEFAULT );
 }
 
 /**
@@ -3538,11 +3538,11 @@ static inline void jdksavdecc_values_bode_plot_set_frequency_default( uint32_t v
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t magnitude_minimum value
+ * @return the float magnitude_minimum value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_magnitude_minimum( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_magnitude_minimum( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_MINIMUM );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_MINIMUM );
 }
 
 /**
@@ -3553,13 +3553,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_magnitude_minimum( void c
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t magnitude_minimum value.
+ * @param v The float magnitude_minimum value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_magnitude_minimum( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_magnitude_minimum( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_MINIMUM );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_MINIMUM );
 }
 
 /**
@@ -3572,11 +3572,11 @@ static inline void jdksavdecc_values_bode_plot_set_magnitude_minimum( uint32_t v
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t magnitude_maximum value
+ * @return the float magnitude_maximum value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_magnitude_maximum( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_magnitude_maximum( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_MAXIMUM );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_MAXIMUM );
 }
 
 /**
@@ -3587,13 +3587,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_magnitude_maximum( void c
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t magnitude_maximum value.
+ * @param v The float magnitude_maximum value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_magnitude_maximum( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_magnitude_maximum( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_MAXIMUM );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_MAXIMUM );
 }
 
 /**
@@ -3606,11 +3606,11 @@ static inline void jdksavdecc_values_bode_plot_set_magnitude_maximum( uint32_t v
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t magnitude_step value
+ * @return the float magnitude_step value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_magnitude_step( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_magnitude_step( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_STEP );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_STEP );
 }
 
 /**
@@ -3621,13 +3621,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_magnitude_step( void cons
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t magnitude_step value.
+ * @param v The float magnitude_step value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_magnitude_step( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_magnitude_step( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_STEP );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_STEP );
 }
 
 /**
@@ -3640,11 +3640,11 @@ static inline void jdksavdecc_values_bode_plot_set_magnitude_step( uint32_t v, v
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t magnitude_default value
+ * @return the float magnitude_default value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_magnitude_default( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_magnitude_default( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_DEFAULT );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_DEFAULT );
 }
 
 /**
@@ -3655,13 +3655,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_magnitude_default( void c
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t magnitude_default value.
+ * @param v The float magnitude_default value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_magnitude_default( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_magnitude_default( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_DEFAULT );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_MAGNITUDE_DEFAULT );
 }
 
 /**
@@ -3674,11 +3674,11 @@ static inline void jdksavdecc_values_bode_plot_set_magnitude_default( uint32_t v
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t phase_minimum value
+ * @return the float phase_minimum value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_phase_minimum( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_phase_minimum( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_MINIMUM );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_MINIMUM );
 }
 
 /**
@@ -3689,13 +3689,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_phase_minimum( void const
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t phase_minimum value.
+ * @param v The float phase_minimum value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_phase_minimum( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_phase_minimum( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_MINIMUM );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_MINIMUM );
 }
 
 /**
@@ -3708,11 +3708,11 @@ static inline void jdksavdecc_values_bode_plot_set_phase_minimum( uint32_t v, vo
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t phase_maximum value
+ * @return the float phase_maximum value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_phase_maximum( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_phase_maximum( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_MAXIMUM );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_MAXIMUM );
 }
 
 /**
@@ -3723,13 +3723,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_phase_maximum( void const
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t phase_maximum value.
+ * @param v The float phase_maximum value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_phase_maximum( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_phase_maximum( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_MAXIMUM );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_MAXIMUM );
 }
 
 /**
@@ -3742,11 +3742,11 @@ static inline void jdksavdecc_values_bode_plot_set_phase_maximum( uint32_t v, vo
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t phase_step value
+ * @return the float phase_step value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_phase_step( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_phase_step( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_STEP );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_STEP );
 }
 
 /**
@@ -3757,13 +3757,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_phase_step( void const *b
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t phase_step value.
+ * @param v The float phase_step value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_phase_step( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_phase_step( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_STEP );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_STEP );
 }
 
 /**
@@ -3776,11 +3776,11 @@ static inline void jdksavdecc_values_bode_plot_set_phase_step( uint32_t v, void 
  *
  * @param base pointer to raw memory buffer to read from.
  * @param pos offset from base to read the field from;
- * @return the uint32_t phase_default value
+ * @return the float phase_default value
  */
-static inline uint32_t jdksavdecc_values_bode_plot_get_phase_default( void const *base, ssize_t pos )
+static inline float jdksavdecc_values_bode_plot_get_phase_default( void const *base, ssize_t pos )
 {
-    return jdksavdecc_uint32_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_DEFAULT );
+    return jdksavdecc_float_get( base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_DEFAULT );
 }
 
 /**
@@ -3791,13 +3791,13 @@ static inline uint32_t jdksavdecc_values_bode_plot_get_phase_default( void const
  * No bounds checking of the memory buffer is done. It is the caller's
  *responsibility to pre-validate base and pos.
  *
- * @param v The uint32_t phase_default value.
+ * @param v The float phase_default value.
  * @param base pointer to raw memory buffer to write to.
  * @param pos offset from base to write the field to;
  */
-static inline void jdksavdecc_values_bode_plot_set_phase_default( uint32_t v, void *base, ssize_t pos )
+static inline void jdksavdecc_values_bode_plot_set_phase_default( float v, void *base, ssize_t pos )
 {
-    jdksavdecc_uint32_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_DEFAULT );
+    jdksavdecc_float_set( v, base, pos + JDKSAVDECC_VALUES_BODE_PLOT_OFFSET_PHASE_DEFAULT );
 }
 
 /*@}*/
@@ -3808,18 +3808,18 @@ static inline void jdksavdecc_values_bode_plot_set_phase_default( uint32_t v, vo
 /// Bode Plot Value Details - Clause 7.3.5.2.5
 struct jdksavdecc_values_bode_plot
 {
-    uint32_t frequency_minimum;
-    uint32_t frequency_maximum;
-    uint32_t frequency_step;
-    uint32_t frequency_default;
-    uint32_t magnitude_minimum;
-    uint32_t magnitude_maximum;
-    uint32_t magnitude_step;
-    uint32_t magnitude_default;
-    uint32_t phase_minimum;
-    uint32_t phase_maximum;
-    uint32_t phase_step;
-    uint32_t phase_default;
+    float frequency_minimum;
+    float frequency_maximum;
+    float frequency_step;
+    float frequency_default;
+    float magnitude_minimum;
+    float magnitude_maximum;
+    float magnitude_step;
+    float magnitude_default;
+    float phase_minimum;
+    float phase_maximum;
+    float phase_step;
+    float phase_default;
 };
 
 /**
