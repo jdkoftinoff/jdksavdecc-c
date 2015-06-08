@@ -47,13 +47,13 @@ extern "C" {
 #define JDKSAVDECC_AEM_VALUES_TYPE_FLAG_READ_ONLY ( 0x8000 )
 #define JDKSAVDECC_AEM_VALUES_TYPE_FLAG_UNKNOWN ( 0x4000 )
 
-/// Clause 7.3.3
+/** Clause 7.3.3 */
 #define JDKSAVDECC_AEM_UNITS( multiplier, code ) ( ( multiplier << 8 ) + code )
 
 /** \addtogroup descriptor */
 /*@{*/
 
-#define JDKSAVDECC_AEM_DESCRIPTOR_SIZE ( 508 ) /// Clause 7.2
+#define JDKSAVDECC_AEM_DESCRIPTOR_SIZE ( 508 ) /** Clause 7.2 */
 
 struct jdksavdecc_descriptor
 {
@@ -1418,7 +1418,7 @@ struct jdksavdecc_descriptor
 #define JDKSAVDECC_DESCRIPTOR_CONTROL_OFFSET_VALUE_DETAILS ( 104 )
 #define JDKSAVDECC_DESCRIPTOR_CONTROL_LEN ( 104 )
 
-/// See IEEE Std 1722.1-2013 Clause 7.2.22 Table 7.38
+/** See IEEE Std 1722.1-2013 Clause 7.2.22 Table 7.38 */
 #define JDKSAVDECC_DESCRIPTOR_CONTROL_VALUE_DETAILS_MAX_LENGTH ( 404 )
 
 /*@}*/
@@ -2058,7 +2058,7 @@ static inline void jdksavdecc_audio_mapping_set_mapping_cluster_channel( uint16_
 /** \addtogroup audio_mapping Audio Mappings Format - Clause 7.2.19.1  */
 /*@{*/
 
-/// Audio Mappings Format - Clause 7.2.19.1
+/** Audio Mappings Format - Clause 7.2.19.1 */
 struct jdksavdecc_audio_mapping
 {
     uint16_t mapping_stream_index;
@@ -2269,7 +2269,7 @@ static inline void jdksavdecc_video_mapping_set_mapping_cluster_offset( uint16_t
 /** \addtogroup video_mapping Video Mappings Format - Clause 7.2.20.1  */
 /*@{*/
 
-/// Video Mappings Format - Clause 7.2.20.1
+/** Video Mappings Format - Clause 7.2.20.1 */
 struct jdksavdecc_video_mapping
 {
     uint16_t mapping_stream_index;
@@ -2448,7 +2448,7 @@ static inline void jdksavdecc_signal_selector_source_set_signal_output( uint16_t
  * 7.2.23.1  */
 /*@{*/
 
-/// Signal Selector Sources Field - Clause 7.2.23.1
+/** Signal Selector Sources Field - Clause 7.2.23.1 */
 struct jdksavdecc_signal_selector_source
 {
     uint16_t signal_type;
@@ -2627,7 +2627,7 @@ static inline void jdksavdecc_mixer_source_set_signal_output( uint16_t v, void *
 /** \addtogroup mixer_source Mixer Sources Field - Clause 7.2.24.1  */
 /*@{*/
 
-/// Mixer Sources Field - Clause 7.2.24.1
+/** Mixer Sources Field - Clause 7.2.24.1 */
 struct jdksavdecc_mixer_source
 {
     uint16_t signal_type;
@@ -2801,7 +2801,7 @@ static inline void jdksavdecc_splitter_map_set_output_index( uint16_t v, void *b
 /** \addtogroup splitter_map splitter_map Format - Clause 7.2.27.1  */
 /*@{*/
 
-/// splitter_map Format - Clause 7.2.27.1
+/** splitter_map Format - Clause 7.2.27.1 */
 struct jdksavdecc_splitter_map
 {
     uint16_t sub_signal_start;
@@ -2975,7 +2975,7 @@ static inline void jdksavdecc_combiner_map_set_input_index( uint16_t v, void *ba
 /** \addtogroup combiner_map combiner_map Format - Clause 7.2.28.1  */
 /*@{*/
 
-/// combiner_map Format - Clause 7.2.28.1
+/** combiner_map Format - Clause 7.2.28.1 */
 struct jdksavdecc_combiner_map
 {
     uint16_t sub_signal_start;
@@ -3149,7 +3149,7 @@ static inline void jdksavdecc_demultiplexer_map_set_output_index( uint16_t v, vo
 /** \addtogroup demultiplexer_map demultiplexer_map Format - Clause 7.2.29.1  */
 /*@{*/
 
-/// demultiplexer_map Format - Clause 7.2.29.1
+/** demultiplexer_map Format - Clause 7.2.29.1 */
 struct jdksavdecc_demultiplexer_map
 {
     uint16_t sub_signal_start;
@@ -3325,7 +3325,7 @@ static inline void jdksavdecc_multiplexer_source_set_signal_output( uint16_t v, 
  * 7.2.30.2  */
 /*@{*/
 
-/// Signal Multiplexer Sources Field - Clause 7.2.30.2
+/** Signal Multiplexer Sources Field - Clause 7.2.30.2 */
 struct jdksavdecc_multiplexer_source
 {
     uint16_t signal_type;
@@ -3805,7 +3805,7 @@ static inline void jdksavdecc_values_bode_plot_set_phase_default( float v, void 
 /** \addtogroup values_bode_plot Bode Plot Value Details - Clause 7.3.5.2.5  */
 /*@{*/
 
-/// Bode Plot Value Details - Clause 7.3.5.2.5
+/** Bode Plot Value Details - Clause 7.3.5.2.5 */
 struct jdksavdecc_values_bode_plot
 {
     float frequency_minimum;
@@ -4176,7 +4176,7 @@ static inline void jdksavdecc_values_smpte_time_set_pull( uint8_t v, void *base,
 /** \addtogroup values_smpte_time SMPTE Value Details - Clause 7.3.5.2.6  */
 /*@{*/
 
-/// SMPTE Value Details - Clause 7.3.5.2.6
+/** SMPTE Value Details - Clause 7.3.5.2.6 */
 struct jdksavdecc_values_smpte_time
 {
     uint16_t hours;
@@ -4299,10 +4299,10 @@ static inline void jdksavdecc_values_sample_rate_set_sample_rate( uint32_t v, vo
  */
 /*@{*/
 
-/// Sample Rate Value Details - Clause 7.3.5.2.7
+/** Sample Rate Value Details - Clause 7.3.5.2.7 */
 struct jdksavdecc_values_sample_rate
 {
-    uint32_t sample_rate; /// @todo pull field
+    uint32_t sample_rate; /** @todo pull field */
 };
 
 /**
@@ -4433,7 +4433,7 @@ static inline void jdksavdecc_values_gptp_time_set_gptp_nanoseconds( uint32_t v,
 /** \addtogroup values_gptp_time gPTP Time Value Details - Clause 7.3.5.2.8  */
 /*@{*/
 
-/// gPTP Time Value Details - Clause 7.3.5.2.8
+/** gPTP Time Value Details - Clause 7.3.5.2.8 */
 struct jdksavdecc_values_gptp_time
 {
     struct jdksavdecc_gptp_seconds gptp_seconds;
@@ -4570,7 +4570,7 @@ static inline void jdksavdecc_values_vendor_set_blob_size( uint32_t v, void *bas
 /** \addtogroup values_vendor Vendor Value Details - Clause 7.3.5.2.9  */
 /*@{*/
 
-/// Vendor Value Details - Clause 7.3.5.2.9
+/** Vendor Value Details - Clause 7.3.5.2.9 */
 struct jdksavdecc_values_vendor
 {
     struct jdksavdecc_eui64 vendor_eui64;
@@ -4743,7 +4743,7 @@ static inline void jdksavdecc_msrp_mappings_format_set_vlan_id( uint16_t v, void
  */
 /*@{*/
 
-/// msrp_mappings Format - Clause 7.4.40.2.1
+/** msrp_mappings Format - Clause 7.4.40.2.1 */
 struct jdksavdecc_msrp_mappings_format
 {
     uint8_t traffic_class;
@@ -4953,7 +4953,7 @@ static inline void jdksavdecc_audio_mappings_format_set_mapping_cluster_channel(
  */
 /*@{*/
 
-/// Audio Mappings Format - Clause 7.4.44.2.1
+/** Audio Mappings Format - Clause 7.4.44.2.1 */
 struct jdksavdecc_audio_mappings_format
 {
     uint16_t mapping_stream_index;
@@ -5170,7 +5170,7 @@ static inline void jdksavdecc_video_mappings_format_set_mapping_cluster_offset( 
  */
 /*@{*/
 
-/// Video Mappings Format - Clause 7.4.47.2.1
+/** Video Mappings Format - Clause 7.4.47.2.1 */
 struct jdksavdecc_video_mappings_format
 {
     uint16_t mapping_stream_index;
@@ -5929,7 +5929,7 @@ static inline void jdksavdecc_descriptor_entity_set_current_configuration( uint1
 /** \addtogroup descriptor_entity ENTITY Descriptor - Clause 7.2.1  */
 /*@{*/
 
-/// ENTITY Descriptor - Clause 7.2.1
+/** ENTITY Descriptor - Clause 7.2.1 */
 struct jdksavdecc_descriptor_entity
 {
     uint16_t descriptor_type;
@@ -6258,7 +6258,7 @@ static inline void jdksavdecc_descriptor_configuration_set_descriptor_counts_off
  */
 /*@{*/
 
-/// CONFIGURATION Descriptor - Clause 7.2.2
+/** CONFIGURATION Descriptor - Clause 7.2.2 */
 struct jdksavdecc_descriptor_configuration
 {
     uint16_t descriptor_type;
@@ -7704,7 +7704,7 @@ static inline void jdksavdecc_descriptor_audio_unit_set_sampling_rates_count( ui
 /** \addtogroup descriptor_audio AUDIO_UNIT Descriptor - Clause 7.2.3  */
 /*@{*/
 
-/// AUDIO_UNIT Descriptor - Clause 7.2.3
+/** AUDIO_UNIT Descriptor - Clause 7.2.3 */
 struct jdksavdecc_descriptor_audio_unit
 {
     uint16_t descriptor_type;
@@ -9145,7 +9145,7 @@ static inline void jdksavdecc_descriptor_video_unit_set_base_control_block( uint
 /** \addtogroup descriptor_video VIDEO_UNIT Descriptor - Clause 7.2.4  */
 /*@{*/
 
-/// VIDEO_UNIT Descriptor - Clause 7.2.4
+/** VIDEO_UNIT Descriptor - Clause 7.2.4 */
 struct jdksavdecc_descriptor_video_unit
 {
     uint16_t descriptor_type;
@@ -10577,7 +10577,7 @@ static inline void jdksavdecc_descriptor_sensor_unit_set_base_control_block( uin
 /** \addtogroup descriptor_sensor SENSOR_UNIT Descriptor - Clause 7.2.5  */
 /*@{*/
 
-/// SENSOR_UNIT Descriptor - Clause 7.2.5
+/** SENSOR_UNIT Descriptor - Clause 7.2.5 */
 struct jdksavdecc_descriptor_sensor_unit
 {
     uint16_t descriptor_type;
@@ -11407,7 +11407,7 @@ static inline void jdksavdecc_descriptor_stream_set_buffer_length( uint32_t v, v
  * Clause 7.2.6  */
 /*@{*/
 
-/// STREAM_INPUT and STREAM_OUTPUT Descriptor - Clause 7.2.6
+/** STREAM_INPUT and STREAM_OUTPUT Descriptor - Clause 7.2.6 */
 struct jdksavdecc_descriptor_stream
 {
     uint16_t descriptor_type;
@@ -11801,7 +11801,7 @@ static inline void jdksavdecc_descriptor_jack_set_base_control( uint16_t v, void
  * 7.2.7  */
 /*@{*/
 
-/// JACK_INPUT and JACK_OUTPUT Descriptor - Clause 7.2.7
+/** JACK_INPUT and JACK_OUTPUT Descriptor - Clause 7.2.7 */
 struct jdksavdecc_descriptor_jack
 {
     uint16_t descriptor_type;
@@ -12456,7 +12456,7 @@ static inline void jdksavdecc_descriptor_avb_interface_set_port_number( uint16_t
  */
 /*@{*/
 
-/// AVB_INTERFACE Descriptor - Clause 7.2.8
+/** AVB_INTERFACE Descriptor - Clause 7.2.8 */
 struct jdksavdecc_descriptor_avb_interface
 {
     uint16_t descriptor_type;
@@ -12885,7 +12885,7 @@ static inline void jdksavdecc_descriptor_clock_source_set_clock_source_location_
  */
 /*@{*/
 
-/// CLOCK_SOURCE Descriptor - Clause 7.2.9
+/** CLOCK_SOURCE Descriptor - Clause 7.2.9 */
 struct jdksavdecc_descriptor_clock_source
 {
     uint16_t descriptor_type;
@@ -13356,7 +13356,7 @@ static inline void jdksavdecc_descriptor_memory_object_set_maximum_segment_lengt
  * 7.2.10  */
 /*@{*/
 
-/// MEMORY_OBJECT Descriptor - Clause 7.2.10
+/** MEMORY_OBJECT Descriptor - Clause 7.2.10 */
 struct jdksavdecc_descriptor_memory_object
 {
     uint16_t descriptor_type;
@@ -13627,7 +13627,7 @@ static inline void jdksavdecc_descriptor_locale_set_base_strings( uint16_t v, vo
 /** \addtogroup descriptor_locale LOCALE Descriptor - Clause 7.2.11  */
 /*@{*/
 
-/// LOCALE Descriptor - Clause 7.2.11
+/** LOCALE Descriptor - Clause 7.2.11 */
 struct jdksavdecc_descriptor_locale
 {
     uint16_t descriptor_type;
@@ -14011,7 +14011,7 @@ static inline void jdksavdecc_descriptor_strings_set_string_6( struct jdksavdecc
 /** \addtogroup descriptor_strings STRINGS Descriptor - Clause 7.2.12  */
 /*@{*/
 
-/// STRINGS Descriptor - Clause 7.2.12
+/** STRINGS Descriptor - Clause 7.2.12 */
 struct jdksavdecc_descriptor_strings
 {
     uint16_t descriptor_type;
@@ -14443,7 +14443,7 @@ static inline void jdksavdecc_descriptor_stream_port_set_base_map( uint16_t v, v
  * Descriptor - Clause 7.2.13  */
 /*@{*/
 
-/// STREAM_PORT_INPUT and STREAM_PORT_OUTPUT Descriptor - Clause 7.2.13
+/** STREAM_PORT_INPUT and STREAM_PORT_OUTPUT Descriptor - Clause 7.2.13 */
 struct jdksavdecc_descriptor_stream_port
 {
     uint16_t descriptor_type;
@@ -14917,7 +14917,7 @@ static inline void jdksavdecc_descriptor_external_port_set_jack_index( uint16_t 
  * EXTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.14  */
 /*@{*/
 
-/// EXTERNAL_PORT_INPUT and EXTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.14
+/** EXTERNAL_PORT_INPUT and EXTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.14 */
 struct jdksavdecc_descriptor_external_port
 {
     uint16_t descriptor_type;
@@ -15395,7 +15395,7 @@ static inline void jdksavdecc_descriptor_internal_port_set_internal_index( uint1
  * INTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.15  */
 /*@{*/
 
-/// INTERNAL_PORT_INPUT and INTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.15
+/** INTERNAL_PORT_INPUT and INTERNAL_PORT_OUTPUT Descriptor - Clause 7.2.15 */
 struct jdksavdecc_descriptor_internal_port
 {
     uint16_t descriptor_type;
@@ -15873,7 +15873,7 @@ static inline void jdksavdecc_descriptor_audio_cluster_set_format( uint8_t v, vo
  * 7.2.16  */
 /*@{*/
 
-/// AUDIO_CLUSTER Descriptor - Clause 7.2.16
+/** AUDIO_CLUSTER Descriptor - Clause 7.2.16 */
 struct jdksavdecc_descriptor_audio_cluster
 {
     uint16_t descriptor_type;
@@ -16836,7 +16836,7 @@ static inline void jdksavdecc_descriptor_video_cluster_set_supported_color_space
  * 7.2.17  */
 /*@{*/
 
-/// VIDEO_CLUSTER Descriptor - Clause 7.2.17
+/** VIDEO_CLUSTER Descriptor - Clause 7.2.17 */
 struct jdksavdecc_descriptor_video_unit_cluster
 {
     uint16_t descriptor_type;
@@ -17502,7 +17502,7 @@ static inline void
  * 7.2.18  */
 /*@{*/
 
-/// SENSOR_CLUSTER Descriptor - Clause 7.2.18
+/** SENSOR_CLUSTER Descriptor - Clause 7.2.18 */
 struct jdksavdecc_descriptor_sensor_unit_cluster
 {
     uint16_t descriptor_type;
@@ -17755,7 +17755,7 @@ static inline void jdksavdecc_descriptor_audio_map_set_number_of_mappings( uint1
 /** \addtogroup descriptor_audio_map AUDIO_MAP Descriptor - Clause 7.2.19  */
 /*@{*/
 
-/// AUDIO_MAP Descriptor - Clause 7.2.19
+/** AUDIO_MAP Descriptor - Clause 7.2.19 */
 struct jdksavdecc_descriptor_audio_map
 {
     uint16_t descriptor_type;
@@ -17967,7 +17967,7 @@ static inline void jdksavdecc_descriptor_video_map_set_number_of_mappings( uint1
 /** \addtogroup descriptor_video_map VIDEO_MAP Descriptor - Clause 7.2.20  */
 /*@{*/
 
-/// VIDEO_MAP Descriptor - Clause 7.2.20
+/** VIDEO_MAP Descriptor - Clause 7.2.20 */
 struct jdksavdecc_descriptor_video_unit_map
 {
     uint16_t descriptor_type;
@@ -18179,7 +18179,7 @@ static inline void jdksavdecc_descriptor_sensor_map_set_number_of_mappings( uint
 /** \addtogroup descriptor_sensor_map SENSOR_MAP Descriptor - Clause 7.2.21  */
 /*@{*/
 
-/// SENSOR_MAP Descriptor - Clause 7.2.21
+/** SENSOR_MAP Descriptor - Clause 7.2.21 */
 struct jdksavdecc_descriptor_sensor_unit_map
 {
     uint16_t descriptor_type;
@@ -18769,7 +18769,7 @@ static inline void jdksavdecc_descriptor_control_set_signal_output( uint16_t v, 
 /** \addtogroup descriptor_control CONTROL Descriptor - Clause 7.2.22  */
 /*@{*/
 
-/// CONTROL Descriptor - Clause 7.2.22
+/** CONTROL Descriptor - Clause 7.2.22 */
 struct jdksavdecc_descriptor_control
 {
     uint16_t descriptor_type;
@@ -19389,7 +19389,7 @@ static inline void jdksavdecc_descriptor_signal_selector_set_default_signal_outp
  * 7.2.23  */
 /*@{*/
 
-/// SIGNAL_SELECTOR Descriptor - Clause 7.2.23
+/** SIGNAL_SELECTOR Descriptor - Clause 7.2.23 */
 struct jdksavdecc_descriptor_signal_selector
 {
     uint16_t descriptor_type;
@@ -19877,7 +19877,7 @@ static inline void jdksavdecc_descriptor_mixer_set_value_offset( uint16_t v, voi
 /** \addtogroup descriptor_mixer MIXER Descriptor - Clause 7.2.24  */
 /*@{*/
 
-/// MIXER Descriptor - Clause 7.2.24
+/** MIXER Descriptor - Clause 7.2.24 */
 struct jdksavdecc_descriptor_mixer
 {
     uint16_t descriptor_type;
@@ -20483,7 +20483,7 @@ static inline void jdksavdecc_descriptor_matrix_set_base_source( uint16_t v, voi
 /** \addtogroup descriptor_matrix MATRIX Descriptor - Clause 7.2.25  */
 /*@{*/
 
-/// MATRIX Descriptor - Clause 7.2.25
+/** MATRIX Descriptor - Clause 7.2.25 */
 struct jdksavdecc_descriptor_matrix
 {
     uint16_t descriptor_type;
@@ -20729,7 +20729,7 @@ static inline void jdksavdecc_descriptor_matrix_signal_set_signals_offset( uint1
  * 7.2.26  */
 /*@{*/
 
-/// Matrix Signal Descriptor - Clause 7.2.26
+/** Matrix Signal Descriptor - Clause 7.2.26 */
 struct jdksavdecc_descriptor_matrix_signal
 {
     uint16_t descriptor_type;
@@ -21254,7 +21254,7 @@ static inline void jdksavdecc_descriptor_signal_splitter_set_splitter_map_offset
  * 7.2.27  */
 /*@{*/
 
-/// SIGNAL_SPLITTER Descriptor - Clause 7.2.27
+/** SIGNAL_SPLITTER Descriptor - Clause 7.2.27 */
 struct jdksavdecc_descriptor_signal_splitter
 {
     uint16_t descriptor_type;
@@ -21738,7 +21738,7 @@ static inline void jdksavdecc_descriptor_signal_combiner_set_number_of_sources( 
  * 7.2.28  */
 /*@{*/
 
-/// SIGNAL_COMBINER Descriptor - Clause 7.2.28
+/** SIGNAL_COMBINER Descriptor - Clause 7.2.28 */
 struct jdksavdecc_descriptor_signal_combiner
 {
     uint16_t descriptor_type;
@@ -22289,7 +22289,7 @@ static inline void
  * - Clause 7.2.29  */
 /*@{*/
 
-/// SIGNAL_DEMULTIPLEXER Descriptor - Clause 7.2.29
+/** SIGNAL_DEMULTIPLEXER Descriptor - Clause 7.2.29 */
 struct jdksavdecc_descriptor_signal_demultiplexer
 {
     uint16_t descriptor_type;
@@ -22773,7 +22773,7 @@ static inline void jdksavdecc_descriptor_signal_multiplexer_set_number_of_source
  * Clause 7.2.30  */
 /*@{*/
 
-/// SIGNAL_MULTIPLEXER Descriptor - Clause 7.2.30
+/** SIGNAL_MULTIPLEXER Descriptor - Clause 7.2.30 */
 struct jdksavdecc_descriptor_signal_multiplexer
 {
     uint16_t descriptor_type;
@@ -23320,7 +23320,7 @@ static inline void jdksavdecc_descriptor_signal_transcoder_set_signal_output( ui
  * 7.2.31  */
 /*@{*/
 
-/// SIGNAL_TRANSCODER Descriptor - Clause 7.2.31
+/** SIGNAL_TRANSCODER Descriptor - Clause 7.2.31 */
 struct jdksavdecc_descriptor_signal_transcoder
 {
     uint16_t descriptor_type;
@@ -23667,7 +23667,7 @@ static inline void jdksavdecc_descriptor_clock_domain_set_clock_sources_count( u
  */
 /*@{*/
 
-/// CLOCK_DOMAIN Descriptor - Clause 7.2.32
+/** CLOCK_DOMAIN Descriptor - Clause 7.2.32 */
 struct jdksavdecc_descriptor_clock_domain
 {
     uint16_t descriptor_type;
@@ -23996,7 +23996,7 @@ static inline void jdksavdecc_descriptor_control_block_set_final_control_index( 
  * 7.2.33  */
 /*@{*/
 
-/// CONTROL_BLOCK Descriptor - Clause 7.2.33
+/** CONTROL_BLOCK Descriptor - Clause 7.2.33 */
 struct jdksavdecc_descriptor_control_block
 {
     uint16_t descriptor_type;

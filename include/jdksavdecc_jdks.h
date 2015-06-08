@@ -98,9 +98,9 @@ extern "C" {
 #define JDKSAVDECC_JDKS_LOG_DEBUG3 ( 5 )
 #define JDKSAVDECC_JDKS_LOG_CONSOLE ( 0xff )
 
-/// Special controller entity id used for JDKS notifications - only for use with
-/// controls with value_type set to CONTROL_VENDOR.
-
+/* Special controller entity id used for JDKS notifications - only for use with
+ * controls with value_type set to CONTROL_VENDOR.
+ */
 #define JDKSAVDECC_JDKS_NOTIFICATIONS_CONTROLLER_ENTITY_ID                                                                     \
     {                                                                                                                          \
         {                                                                                                                      \
@@ -110,8 +110,9 @@ extern "C" {
 
 extern struct jdksavdecc_eui64 jdksavdecc_jdks_notifications_controller_entity_id;
 
-/// Multicast MAC address 71:b3:d5:ed:cf:ff is reserved for logging via
-/// unsolicited SET_CONTROL of control descriptor of control type JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT
+/* Multicast MAC address 71:b3:d5:ed:cf:ff is reserved for logging via
+ * unsolicited SET_CONTROL of control descriptor of control type JDKSAVDECC_JDKS_AEM_CONTROL_LOG_TEXT
+ */
 #define JDKSAVDECC_JDKS_MULTICAST_LOG                                                                                          \
     {                                                                                                                          \
         {                                                                                                                      \
@@ -540,31 +541,33 @@ static inline ssize_t
  */
 /*@{*/
 
-/// Control type for setting IPv4 parameters
+/**
+ Control type for setting IPv4 parameters
 ///
-/// vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_IPV4_PARAMETERS ( 70:b3:d5:ed:c0:00:00:01 )
+ vendor_eui64 is JDKSAVDECC_JDKS_AEM_CONTROL_IPV4_PARAMETERS ( 70:b3:d5:ed:c0:00:00:01 )
 ///
-/// BLOB contains:
-///     Doublet interface_descriptor_type
-///     Doublet interface_descriptor_index
-///     Quadlet flags:
-///         bit 0 = static_enable
-///         bit 1 = link_local_enable
-///         bit 2 = dhcp_enable
-///         bit 3 = ipv4_address_valid
-///         bit 4 = ipv4_netmask_valid
-///         bit 5 = ipv4_gateway_valid
-///         bit 6 = ipv4_broadcast_valid
-///         bit 7 = dnsserver1_valid
-///         bit 8 = dnsserver2_valid
-///     Quadlet ipv4_address
-///     Quadlet ipv4_netmask
-///     Quadlet ipv4_gateway
-///     Quadlet ipv4_broadcast
-///     Quadlet ipv4_dnsserver1
-///     Quadlet ipv4_dnsserver2
-
-/// Control type for setting/getting network IPV4 parameters
+ BLOB contains:
+     Doublet interface_descriptor_type
+     Doublet interface_descriptor_index
+     Quadlet flags:
+         bit 0 = static_enable
+         bit 1 = link_local_enable
+         bit 2 = dhcp_enable
+         bit 3 = ipv4_address_valid
+         bit 4 = ipv4_netmask_valid
+         bit 5 = ipv4_gateway_valid
+         bit 6 = ipv4_broadcast_valid
+         bit 7 = dnsserver1_valid
+         bit 8 = dnsserver2_valid
+     Quadlet ipv4_address
+     Quadlet ipv4_netmask
+     Quadlet ipv4_gateway
+     Quadlet ipv4_broadcast
+     Quadlet ipv4_dnsserver1
+     Quadlet ipv4_dnsserver2
+*/
+    
+/** Control type for setting/getting network IPV4 parameters */
 #define JDKSAVDECC_JDKS_AEM_CONTROL_IPV4_PARAMETERS                                                                            \
     {                                                                                                                          \
         {                                                                                                                      \
@@ -579,3 +582,4 @@ extern struct jdksavdecc_eui64 jdksavdecc_jdks_aem_control_ipv4_parameters;
 #ifdef __cplusplus
 }
 #endif
+

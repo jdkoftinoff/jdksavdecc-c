@@ -82,13 +82,13 @@ extern "C" {
 #define JDKSAVDECC_CONTROL_VALUE_VENDOR ( 0x3ffe )
 #define JDKSAVDECC_CONTROL_VALUE_EXPANSION ( 0x3fff )
 
-/// See IEEE Std 1722.1-2013 Clause 7.3.5.1
+/** See IEEE Std 1722.1-2013 Clause 7.3.5.1 */
 #define JDKSAVDECC_CONTROL_VALUE_MASK ( 0x3fff )
 
-/// See IEEE Std 1722.1-2013 Clause 7.3.5.1.1
+/** See IEEE Std 1722.1-2013 Clause 7.3.5.1.1 */
 #define JDKSAVDECC_CONTROL_VALUE_MASK_READONLY ( 0x8000 )
 
-/// See IEEE Std 1722.1-2013 Clause 7.3.5.1.2
+/** See IEEE Std 1722.1-2013 Clause 7.3.5.1.2 */
 #define JDKSAVDECC_CONTROL_VALUE_MASK_UNKNOWN ( 0x4000 )
 
 /*@}*/
@@ -96,7 +96,7 @@ extern "C" {
 /** \addtogroup aem_control_value_helpers Helper functions to determine general type of control contents */
 /*@{*/
 
-/// bode plot point: See IEEE Std 1722.1-2013 Clause 7.3.5.2.5
+/** bode plot point: See IEEE Std 1722.1-2013 Clause 7.3.5.2.5 */
 struct jdksavdecc_control_bode_plot_point
 {
     float frequency_hz;
@@ -274,7 +274,7 @@ bool jdksavdecc_control_get_item_default_as_string( struct jdksavdecc_control_in
                                                     struct jdksavdecc_entity_model *entity_model,
                                                     uint16_t locale_id );
 
-///
+
 bool jdksavdecc_control_get_item_as_int8( struct jdksavdecc_control_info const *control_info,
                                           uint16_t item,
                                           uint8_t const *control_data,
@@ -307,7 +307,6 @@ bool jdksavdecc_control_get_item_default_as_int8( struct jdksavdecc_control_info
                                                   uint16_t item,
                                                   int8_t *result );
 
-///
 bool jdksavdecc_control_get_item_as_uint8( struct jdksavdecc_control_info const *control_info,
                                            uint16_t item,
                                            uint8_t const *control_data,
@@ -340,7 +339,6 @@ bool jdksavdecc_control_get_item_default_as_uint8( struct jdksavdecc_control_inf
                                                    uint16_t item,
                                                    uint8_t *result );
 
-///
 bool jdksavdecc_control_get_item_as_int16( struct jdksavdecc_control_info const *control_info,
                                            uint16_t item,
                                            uint8_t const *control_data,
@@ -373,7 +371,6 @@ bool jdksavdecc_control_get_item_default_as_int16( struct jdksavdecc_control_inf
                                                    uint16_t item,
                                                    int16_t *result );
 
-///
 bool jdksavdecc_control_get_item_as_uint16( struct jdksavdecc_control_info const *control_info,
                                             uint16_t item,
                                             uint8_t const *control_data,
@@ -406,7 +403,6 @@ bool jdksavdecc_control_get_item_default_as_uint16( struct jdksavdecc_control_in
                                                     uint16_t item,
                                                     uint16_t *result );
 
-///
 bool jdksavdecc_control_get_item_as_int32( struct jdksavdecc_control_info const *control_info,
                                            uint16_t item,
                                            uint8_t const *control_data,
@@ -439,7 +435,6 @@ bool jdksavdecc_control_get_item_default_as_int32( struct jdksavdecc_control_inf
                                                    uint16_t item,
                                                    int32_t *result );
 
-///
 bool jdksavdecc_control_get_item_as_uint32( struct jdksavdecc_control_info const *control_info,
                                             uint16_t item,
                                             uint8_t const *control_data,
@@ -472,7 +467,6 @@ bool jdksavdecc_control_get_item_default_as_uint32( struct jdksavdecc_control_in
                                                     uint16_t item,
                                                     uint32_t *result );
 
-///
 bool jdksavdecc_control_get_item_as_int64( struct jdksavdecc_control_info const *control_info,
                                            uint16_t item,
                                            uint8_t const *control_data,
@@ -505,7 +499,6 @@ bool jdksavdecc_control_get_item_default_as_int64( struct jdksavdecc_control_inf
                                                    uint16_t item,
                                                    int64_t *result );
 
-///
 bool jdksavdecc_control_get_item_as_uint64( struct jdksavdecc_control_info const *control_info,
                                             uint16_t item,
                                             uint8_t const *control_data,
@@ -538,7 +531,6 @@ bool jdksavdecc_control_get_item_default_as_uint64( struct jdksavdecc_control_in
                                                     uint16_t item,
                                                     uint64_t *result );
 
-///
 bool jdksavdecc_control_get_bode_plot_item( struct jdksavdecc_control_info const *control_info,
                                             uint16_t item,
                                             uint8_t const *control_data,
@@ -559,7 +551,6 @@ bool jdksavdecc_control_get_current_bode_plot_item( struct jdksavdecc_control_in
                                                     uint16_t item,
                                                     struct jdksavdecc_control_bode_plot_point *result );
 
-///
 bool jdksavdecc_control_get_smpte_time_item( struct jdksavdecc_control_info const *control_info,
                                              uint16_t item,
                                              uint8_t const *control_data,
@@ -576,7 +567,7 @@ bool jdksavdecc_control_get_current_smpte_time_item( struct jdksavdecc_control_i
                                                      uint16_t item,
                                                      struct jdksavdecc_values_smpte_time *result );
 
-///
+
 bool jdksavdecc_control_get_sample_rate_item( struct jdksavdecc_control_info const *control_info,
                                               uint16_t item,
                                               uint8_t const *control_data,
@@ -593,7 +584,7 @@ bool jdksavdecc_control_get_current_sample_rate_item( struct jdksavdecc_control_
                                                       uint16_t item,
                                                       struct jdksavdecc_values_sample_rate *result );
 
-///
+
 bool jdksavdecc_control_get_gptp_time_item( struct jdksavdecc_control_info const *control_info,
                                             uint16_t item,
                                             uint8_t const *control_data,

@@ -753,7 +753,7 @@ static inline void jdksavdecc_adpdu_set_reserved1( uint32_t v, void *base, ssize
 /** \addtogroup adpdu ADPDU - Clause 6.2.1 */
 /*@{*/
 
-/// ADPDU - Clause 6.2.1
+/** ADPDU - Clause 6.2.1 */
 struct jdksavdecc_adpdu
 {
     struct jdksavdecc_adpdu_common_control_header header;

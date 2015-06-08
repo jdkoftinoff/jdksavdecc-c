@@ -112,13 +112,15 @@ void jdksavdecc_descriptor_storage_gen_init( struct jdksavdecc_descriptor_storag
 
 void jdksavdecc_descriptor_storage_gen_destroy( struct jdksavdecc_entity_model *self );
 
-/// Read the count of configurations
+/** Read the count of configurations */
 uint16_t jdksavdecc_descriptor_storage_gen_get_configuration_count( struct jdksavdecc_entity_model *self );
 
-/// Read a descriptor for the specified configuration, descriptor_type and
-/// descriptor_index into result buffer which has a length of
-/// result_buffer_len.
-/// Returns the length of the descriptor, or 0 if no descriptor.
+/**
+Read a descriptor for the specified configuration, descriptor_type and
+descriptor_index into result buffer which has a length of
+result_buffer_len.
+Returns the length of the descriptor, or 0 if no descriptor.
+**/
 uint16_t jdksavdecc_descriptor_storage_gen_read_descriptor( struct jdksavdecc_entity_model *self,
                                                             uint16_t configuration_number,
                                                             uint16_t descriptor_type,
@@ -126,9 +128,11 @@ uint16_t jdksavdecc_descriptor_storage_gen_read_descriptor( struct jdksavdecc_en
                                                             uint8_t *result_buffer,
                                                             uint16_t result_buffer_len );
 
-/// Write the descriptor data for the specified configuration, descriptor_type and
-/// descriptor_index from the descriptor_data with the descriptor_data_length
-/// Returns the length of the data written, or 0 if not possible
+/**
+Write the descriptor data for the specified configuration, descriptor_type and
+descriptor_index from the descriptor_data with the descriptor_data_length
+Returns the length of the data written, or 0 if not possible
+*/
 uint16_t jdksavdecc_descriptor_storage_gen_write_descriptor( struct jdksavdecc_entity_model *self,
                                                              uint16_t configuration_number,
                                                              uint16_t descriptor_type,

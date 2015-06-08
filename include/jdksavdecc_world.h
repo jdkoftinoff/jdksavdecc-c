@@ -31,9 +31,11 @@
   POSSIBILITY OF SUCH DAMAGE.
 */
 
-// predefine JDKSAVDECC_ENABLE_MICROSUPPORT to be set to 1
-// if you want jdksavdecc-c library to integrate nicely with the microsupport
-// library (see https://github.com/jdkoftinoff/microsupport)
+/*
+ predefine JDKSAVDECC_ENABLE_MICROSUPPORT to be set to 1
+ if you want jdksavdecc-c library to integrate nicely with the microsupport
+ library (see https://github.com/jdkoftinoff/microsupport)
+*/
 #ifndef JDKSAVDECC_ENABLE_MICROSUPPORT
 #define JDKSAVDECC_ENABLE_MICROSUPPORT ( 0 )
 #endif

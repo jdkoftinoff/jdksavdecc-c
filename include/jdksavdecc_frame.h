@@ -55,9 +55,9 @@ struct jdksavdecc_frame
     struct jdksavdecc_eui48 src_address;
     uint16_t ethertype;
     uint16_t tpid;
-    uint16_t pcp : 3;
-    uint16_t dei : 1;
-    uint16_t vid : 12;
+    unsigned pcp : 3;
+    unsigned dei : 1;
+    unsigned vid : 12;
     uint16_t length;
     uint8_t payload[JDKSAVDECC_FRAME_MAX_PAYLOAD_SIZE];
 };

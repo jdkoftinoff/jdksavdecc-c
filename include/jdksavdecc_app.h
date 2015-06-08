@@ -44,75 +44,77 @@ extern "C" {
 /** \addtogroup appdu_dns_sd APPDU DNS-SD definitions - See IEEE Std 1722.1-2013 Annex C.2 */
 /*@{*/
 
-/// The assigned MDNS-SD service name - See IEEE Std 1722.1-2013 Annex C.2
+/** The assigned MDNS-SD service name - See IEEE Std 1722.1-2013 Annex C.2 */
 #define JDKSAVDECC_APPDU_DNS_SD_SERVICE_NAME "_avdecc._tcp."
-#define JDKSAVDECC_APPDU_IANA_SERVICE_NAME "avdecc"            /// The assigned IANA service name
-#define JDKSAVDECC_APPDU_TCP_PORT_STRING "17221"               /// Port as an ascii string - See IEEE Std 1722.1-2013 Annex C.2
-#define JDKSAVDECC_APPDU_TCP_PORT 17221                        /// Port as an integer See IEEE Std 1722.1-2013 Annex C.2
-#define JDKSAVDECC_APPDU_TXT_FIELD_VERSION "Version"           /// See IEEE Std 1722.1-2013 Annex C.3.1
-#define JDKSAVDECC_APPDU_TXT_FIELD_PRIORITY "Priority"         /// See IEEE Std 1722.1-2013 Annex C.3.2
-#define JDKSAVDECC_APPDU_TXT_FIELD_DESCRIPTION "Description"   /// See IEEE Std 1722.1-2013 Annex C.3.3
-#define JDKSAVDECC_APPDU_TXT_FIELD_MANUFACTURER "Manufacturer" /// See IEEE Std 1722.1-2013 Annex C.3.4
-#define JDKSAVDECC_APPDU_TXT_FIELD_PATH "path"                 /// See IEEE Std 1722.1-2013 Annex C.3.5
+#define JDKSAVDECC_APPDU_IANA_SERVICE_NAME "avdecc"            /** The assigned IANA service name */
+#define JDKSAVDECC_APPDU_TCP_PORT_STRING "17221"               /** Port as an ascii string - See IEEE Std 1722.1-2013 Annex C.2 */
+#define JDKSAVDECC_APPDU_TCP_PORT 17221                        /** Port as an integer See IEEE Std 1722.1-2013 Annex C.2 */
+#define JDKSAVDECC_APPDU_TXT_FIELD_VERSION "Version"           /** See IEEE Std 1722.1-2013 Annex C.3.1 */
+#define JDKSAVDECC_APPDU_TXT_FIELD_PRIORITY "Priority"         /** See IEEE Std 1722.1-2013 Annex C.3.2 */
+#define JDKSAVDECC_APPDU_TXT_FIELD_DESCRIPTION "Description"   /** See IEEE Std 1722.1-2013 Annex C.3.3 */
+#define JDKSAVDECC_APPDU_TXT_FIELD_MANUFACTURER "Manufacturer" /** See IEEE Std 1722.1-2013 Annex C.3.4 */
+#define JDKSAVDECC_APPDU_TXT_FIELD_PATH "path"                 /** See IEEE Std 1722.1-2013 Annex C.3.5 */
 
 /*@}*/
 
 /**\addtogroup appdu_offset APPDU Offsets - See IEEE Std 1722.1-2013 Annex C.4 */
 /*@{*/
 
-#define JDKSAVDECC_APPDU_OFFSET_VERSION ( 0 )        /// See IEEE Std 1722.1-2013 Annex C.4.1
-#define JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE ( 1 )   /// See IEEE Std 1722.1-2013 Annex C.4.2
-#define JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH ( 2 ) /// See IEEE Std 1722.1-2013 Annex C.4.3
-#define JDKSAVDECC_APPDU_OFFSET_ADDRESS ( 4 )        /// See IEEE Std 1722.1-2013 Annex C.4.4
-#define JDKSAVDECC_APPDU_OFFSET_RESERVED ( 10 )      /// See IEEE Std 1722.1-2013 Annex C.4
-#define JDKSAVDECC_APPDU_OFFSET_PAYLOAD ( 12 )       /// See IEEE Std 1722.1-2013 Annex C.4.5
-#define JDKSAVDECC_APPDU_HEADER_LEN ( 12 )           /// See IEEE Std 1722.1-2013 Annex C.4
+#define JDKSAVDECC_APPDU_OFFSET_VERSION ( 0 )        /** See IEEE Std 1722.1-2013 Annex C.4.1 */
+#define JDKSAVDECC_APPDU_OFFSET_MESSAGE_TYPE ( 1 )   /** See IEEE Std 1722.1-2013 Annex C.4.2 */
+#define JDKSAVDECC_APPDU_OFFSET_PAYLOAD_LENGTH ( 2 ) /** See IEEE Std 1722.1-2013 Annex C.4.3 */
+#define JDKSAVDECC_APPDU_OFFSET_ADDRESS ( 4 )        /** See IEEE Std 1722.1-2013 Annex C.4.4 */
+#define JDKSAVDECC_APPDU_OFFSET_RESERVED ( 10 )      /** See IEEE Std 1722.1-2013 Annex C.4 */
+#define JDKSAVDECC_APPDU_OFFSET_PAYLOAD ( 12 )       /** See IEEE Std 1722.1-2013 Annex C.4.5 */
+#define JDKSAVDECC_APPDU_HEADER_LEN ( 12 )           /** See IEEE Std 1722.1-2013 Annex C.4 */
 
 /*@}*/
 
 /**\addtogroup appdu_constants APP constants and message types - See IEEE Std 1722.1-2013 Annex C.4 */
 /*@{*/
 
-#define JDKSAVDECC_APPDU_VERSION ( 0 )                         /// See IEEE Std 1722.1-2013 Annex C.4.1
-#define JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH ( 1500 )           /// See IEEE Std 1722.1-2013 Annex C.4.3
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP ( 0 )                /// See IEEE Std 1722.1-2103 Annex C.5.1.1
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST ( 1 )  /// See IEEE Std 1722.1-2103 Annex C.5.1.2
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE ( 2 ) /// See IEEE Std 1722.1-2103 Annex C.5.1.3
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP ( 3 )            /// See IEEE Std 1722.1-2103 Annex C.5.1.4
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN ( 4 )          /// See IEEE Std 1722.1-2103 Annex C.5.1.5
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS ( 5 )    /// See IEEE Std 1722.1-2103 Annex C.5.1.6
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC ( 6 )    /// See IEEE Std 1722.1-2103 Annex C.5.1.7
-#define JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR ( 0xff )          /// See IEEE Std 1722.1-2103 Annex C.5.1.8
+#define JDKSAVDECC_APPDU_VERSION ( 0 )                         /** See IEEE Std 1722.1-2013 Annex C.4.1 */
+#define JDKSAVDECC_APPDU_MAX_PAYLOAD_LENGTH ( 1500 )           /** See IEEE Std 1722.1-2013 Annex C.4.3 */
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_NOP ( 0 )                /** See IEEE Std 1722.1-2103 Annex C.5.1.1 */
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_REQUEST ( 1 )  /** See IEEE Std 1722.1-2103 Annex C.5.1.2 */
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_ENTITY_ID_RESPONSE ( 2 ) /** See IEEE Std 1722.1-2103 Annex C.5.1.3 */
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_UP ( 3 )            /** See IEEE Std 1722.1-2103 Annex C.5.1.4 */
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_LINK_DOWN ( 4 )          /** See IEEE Std 1722.1-2103 Annex C.5.1.5 */
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APS ( 5 )    /** See IEEE Std 1722.1-2103 Annex C.5.1.6 */
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_AVDECC_FROM_APC ( 6 )    /** See IEEE Std 1722.1-2103 Annex C.5.1.7 */
+#define JDKSAVDECC_APPDU_MESSAGE_TYPE_VENDOR ( 0xff )          /** See IEEE Std 1722.1-2103 Annex C.5.1.8 */
 
 /*@}*/
 
 /**\addtogroup appdu_errors APPDU parsing errors - See IEEE Std 1722.1-2013 Annex C.4 */
 /*@{*/
 
-/// The buffer length is insufficent
+/** The buffer length is insufficent */
 #define JDKSAVDECC_APPDU_ERROR_BUFFER_LENGTH_INSUFFICIENT ( -1 )
 
-/// The network buffer does not contain enough bytes for the declared payload
+/** The network buffer does not contain enough bytes for the declared payload */
 #define JDKSAVDECC_APPDU_ERROR_PAYLOAD_INCOMPLETE ( -2 )
 
-/// The parsed data does not contain valid data
+/** The parsed data does not contain valid data */
 #define JDKSAVDECC_APPDU_ERROR_INVALID_HEADER ( -3 )
 
 /*@}*/
 
-/// The APPDU
-/// Note: payload always points to an existing packet buffer
+/**
+ * The APPDU
+ * Note: payload always points to an existing packet buffer
+ */
 struct jdksavdecc_appdu
 {
-    uint8_t version;                 /// See IEEE Std 1722.1-2013 Annex C.4.1
-    uint8_t message_type;            /// See IEEE Std 1722.1-2013 Annex C.4.2
-    uint16_t payload_length;         /// See IEEE Std 1722.1-2013 Annex C.4.3
-    struct jdksavdecc_eui48 address; /// See IEEE Std 1722.1-2013 Annex C.4
-    uint16_t reserved;               /// See IEEE Std 1722.1-2013 Annex C.4
-    uint8_t *payload;                /// See IEEE Std 1722.1-2013 Annex C.4.5
+    uint8_t version;                 /** See IEEE Std 1722.1-2013 Annex C.4.1 */
+    uint8_t message_type;            /** See IEEE Std 1722.1-2013 Annex C.4.2 */
+    uint16_t payload_length;         /** See IEEE Std 1722.1-2013 Annex C.4.3 */
+    struct jdksavdecc_eui48 address; /** See IEEE Std 1722.1-2013 Annex C.4 */
+    uint16_t reserved;               /** See IEEE Std 1722.1-2013 Annex C.4 */
+    uint8_t *payload;                /** See IEEE Std 1722.1-2013 Annex C.4.5 */
 };
 
-/// The APPDU with pre-allocated payload buffer
+/** The APPDU with pre-allocated payload buffer */
 struct jdksavdecc_fullappdu
 {
     struct jdksavdecc_appdu base;

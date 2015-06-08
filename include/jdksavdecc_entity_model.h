@@ -43,19 +43,21 @@ extern "C" {
 
 struct jdksavdecc_entity_model
 {
-    /// Destroy the object
+    /** Destroy the object */
     void ( *destroy )( struct jdksavdecc_entity_model *self );
 
     void *additional_data;
     int additional_tag;
 
-    /// Read the count of configurations
+    /** Read the count of configurations */
     uint16_t ( *get_configuration_count )( struct jdksavdecc_entity_model *self );
 
-    /// Read a descriptor for the specified configuration, descriptor_type and
-    /// descriptor_index into result buffer which has a length of
-    /// result_buffer_len.
-    /// Returns the length of the descriptor, or 0 if no descriptor.
+    /**
+    Read a descriptor for the specified configuration, descriptor_type and
+    descriptor_index into result buffer which has a length of
+    result_buffer_len.
+    Returns the length of the descriptor, or 0 if no descriptor.
+    */
     uint16_t ( *read_descriptor )( struct jdksavdecc_entity_model *self,
                                    uint16_t configuration_index,
                                    uint16_t descriptor_type,
@@ -63,9 +65,11 @@ struct jdksavdecc_entity_model
                                    uint8_t *result_buffer,
                                    uint16_t result_buffer_len );
 
-    /// Write the descriptor data for the specified configuration, descriptor_type and
-    /// descriptor_index from the descriptor_data with the descriptor_data_length
-    /// Returns the length of the data written, or 0 if not possible
+    /**
+    Write the descriptor data for the specified configuration, descriptor_type and
+    descriptor_index from the descriptor_data with the descriptor_data_length
+    Returns the length of the data written, or 0 if not possible
+    */
     uint16_t ( *write_descriptor )( struct jdksavdecc_entity_model *self,
                                     uint16_t configuration_index,
                                     uint16_t descriptor_type,
@@ -79,8 +83,10 @@ struct jdksavdecc_entity_model
                                          uint16_t localized_string_id,
                                          struct jdksavdecc_string *result );
 
-    /// Read a symbol for the specified configuration, descriptor_type and
-    /// descriptor_index. Returns true on success
+    /**
+    Read a symbol for the specified configuration, descriptor_type and
+    descriptor_index. Returns true on success
+    */
     bool ( *read_symbol )( struct jdksavdecc_entity_model *self,
                            uint16_t configuration_number,
                            uint16_t descriptor_type,
@@ -110,8 +116,18 @@ uint16_t jdksavdecc_entity_model_read_localized_string( struct jdksavdecc_entity
                                                         uint16_t localized_string_id,
                                                         struct jdksavdecc_string *result );
 
-/// Read a symbol for the specified configuration, descriptor_type and
-/// descriptor_index. Returns true on success
+
+/**
+ * @brief jdksavdecc_entity_model_read_symbol
+ * Read a symbol for the specified configuration, descriptor_type and
+ * descriptor_index. Returns true on success
+ * @param self
+ * @param configuration_number
+ * @param descriptor_type
+ * @param descriptor_index
+ * @param result_symbol
+ * @return
+ */
 bool jdksavdecc_entity_model_read_symbol( struct jdksavdecc_entity_model *self,
                                           uint16_t configuration_number,
                                           uint16_t descriptor_type,

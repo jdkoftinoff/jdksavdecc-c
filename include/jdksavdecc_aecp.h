@@ -99,7 +99,7 @@ static inline ssize_t jdksavdecc_aecpdu_common_control_header_write( struct jdks
 #define JDKSAVDECC_AECPDU_COMMON_OFFSET_CONTROLLER_ENTITY_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 0 )
 #define JDKSAVDECC_AECPDU_COMMON_OFFSET_SEQUENCE_ID ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 8 )
 #define JDKSAVDECC_AECPDU_COMMON_LEN ( JDKSAVDECC_COMMON_CONTROL_HEADER_LEN + 10 )
-#define JDKSAVDECC_AECP_MAX_CONTROL_DATA_LENGTH ( 524 ) /// Clause 9.2.1.1.7
+#define JDKSAVDECC_AECP_MAX_CONTROL_DATA_LENGTH ( 524 ) /** Clause 9.2.1.1.7 */
 
 /*@}*/
 
@@ -206,7 +206,7 @@ static inline void jdksavdecc_aecpdu_common_set_sequence_id( uint16_t v, void *b
 /** \addtogroup aecpdu_common AECPDU Common - Clause 9.2.1.1 */
 /*@{*/
 
-/// AECPDU Common - Clause 9.2.1.1
+/** AECPDU Common - Clause 9.2.1.1 */
 struct jdksavdecc_aecpdu_common
 {
     struct jdksavdecc_aecpdu_common_control_header header;

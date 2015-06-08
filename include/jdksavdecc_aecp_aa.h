@@ -199,7 +199,11 @@ static inline void jdksavdecc_aecp_aa_set_tlv_count( uint16_t v, void *base, ssi
 /** \addtogroup AECP_AA AECPDU Address Access - Clause 9.2.1.3 */
 /*@{*/
 
-/// AECPDU Address Access - Clause 9.2.1.3
+
+/**
+ * @brief The jdksavdecc_aecp_aa struct
+ *  AECPDU Address Access - Clause 9.2.1.3
+ */
 struct jdksavdecc_aecp_aa
 {
     struct jdksavdecc_aecpdu_common aecpdu_header;
@@ -374,7 +378,7 @@ static inline void jdksavdecc_aecp_aa_tlv_set_address_lower( uint32_t v, void *b
 /** \addtogroup aecp_aa_tlv AECPDU Address Access TLV - Clause 9.2.1.3.3 */
 /*@{*/
 
-/// AECPDU Address Access TLV - Clause 9.2.1.3.3
+/** AECPDU Address Access TLV - Clause 9.2.1.3.3 */
 struct jdksavdecc_aecp_aa_tlv
 {
     uint16_t mode_length;
