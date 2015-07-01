@@ -67,14 +67,26 @@ static inline ssize_t jdksavdecc_validate_range( ssize_t bufpos, size_t buflen, 
 /** \addtogroup endian Endian helpers / data access */
 /*@{*/
 
-/// Reverses endian of uint16_t value at *vin and returns it
+/**
+ * @brief jdksavdecc_endian_reverse_uint16
+ *
+ *  Reverses endian of uint16_t value at *vin and returns it
+ *
+ * @param vin
+ * @return uint16_t endian reverse
+ */
 static inline uint16_t jdksavdecc_endian_reverse_uint16( uint16_t const *vin )
 {
     uint8_t const *p = (uint8_t const *)( vin );
     return ( ( uint16_t )( p[1] ) << 0 ) + ( ( uint16_t )( p[0] ) << 8 );
 }
 
-/// Reverses endian of uint32_t value at *vin and returns it
+/**
+ * @brief jdksavdecc_endian_reverse_uint32
+ *  Reverses endian of uint32_t value at *vin and returns it
+ * @param vin
+ * @return
+ */
 static inline uint32_t jdksavdecc_endian_reverse_uint32( uint32_t const *vin )
 {
     uint8_t const *p = (uint8_t const *)vin;
@@ -82,7 +94,12 @@ static inline uint32_t jdksavdecc_endian_reverse_uint32( uint32_t const *vin )
            + ( ( uint32_t )( p[0] ) << 24 );
 }
 
-/// Reverses endian of uint64_t value at *vin and returns it
+/**
+ * @brief jdksavdecc_endian_reverse_uint64
+ * Reverses endian of uint64_t value at *vin and returns it
+ * @param vin
+ * @return
+ */
 static inline uint64_t jdksavdecc_endian_reverse_uint64( uint64_t const *vin )
 {
     uint8_t const *p = (uint8_t const *)vin;
@@ -91,8 +108,17 @@ static inline uint64_t jdksavdecc_endian_reverse_uint64( uint64_t const *vin )
            + ( ( uint64_t )( p[1] ) << 48 ) + ( ( uint64_t )( p[0] ) << 56 );
 }
 
-/// Read the uint8_t value at base[pos] and store it in *host_value. Returns new
-/// pos, or -1 if pos is out of bounds.
+
+/**
+ * @brief jdksavdecc_uint8_read
+ * Read the uint8_t value at base[pos] and store it in *host_value. Returns new
+ * pos, or -1 if pos is out of bounds.
+ * @param host_value
+ * @param base
+ * @param pos
+ * @param len
+ * @return
+ */
 static inline ssize_t jdksavdecc_uint8_read( uint8_t *host_value, void const *base, ssize_t pos, ssize_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, 1 );
@@ -104,15 +130,28 @@ static inline ssize_t jdksavdecc_uint8_read( uint8_t *host_value, void const *ba
     return r;
 }
 
-/// get the uint8_t value at base[pos] and return it without bounds checking
+/**
+ * @brief jdksavdecc_uint8_get
+ * get the uint8_t value at base[pos] and return it without bounds checking
+ * @param base
+ * @param pos
+ * @return
+ */
 static inline uint8_t jdksavdecc_uint8_get( void const *base, ssize_t pos )
 {
     uint8_t const *b = (uint8_t const *)base;
     return b[pos];
 }
 
-/// store the uint8_t value v into base[pos]. Returns -1 if pos is out of
-/// bounds.
+/**
+ * @brief jdksavdecc_uint8_write
+ * store the uint8_t value v into base[pos]. Returns -1 if pos is out of bounds.
+ * @param v
+ * @param base
+ * @param pos
+ * @param len
+ * @return
+ */
 static inline ssize_t jdksavdecc_uint8_write( uint8_t v, void *base, ssize_t pos, ssize_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, 1 );
@@ -126,15 +165,30 @@ static inline ssize_t jdksavdecc_uint8_write( uint8_t v, void *base, ssize_t pos
     return r;
 }
 
-/// Set the uint8_t value at base[pos] to v without bounds checking
+/**
+ * @brief jdksavdecc_uint8_set
+ *
+ * Set the uint8_t value at base[pos] to v without bounds checking
+ * @param v
+ * @param base
+ * @param pos
+ */
 static inline void jdksavdecc_uint8_set( uint8_t v, void *base, ssize_t pos )
 {
     uint8_t *b = (uint8_t *)base;
     b[pos] = v;
 }
 
-/// Read the network order Doublet value at base[pos] and store it in
-/// *host_value. Returns new pos, or -1 if pos is out of bounds.
+/**
+ * @brief jdksavdecc_uint16_read
+ * Read the network order Doublet value at base[pos] and store it in *host_value.
+ * Returns new pos, or -1 if pos is out of bounds.
+ * @param host_value
+ * @param base
+ * @param pos
+ * @param len
+ * @return
+ */
 static inline ssize_t jdksavdecc_uint16_read( uint16_t *host_value, void const *base, ssize_t pos, ssize_t len )
 {
     ssize_t r = jdksavdecc_validate_range( pos, len, 2 );
@@ -146,7 +200,13 @@ static inline ssize_t jdksavdecc_uint16_read( uint16_t *host_value, void const *
     return r;
 }
 
-/// get the uint8_t value at base[pos] and return it without bounds checking
+/**
+ * @brief jdksavdecc_uint16_get
+ * get the uint8_t value at base[pos] and return it without bounds checking
+ * @param base
+ * @param pos
+ * @return
+ */
 static inline uint16_t jdksavdecc_uint16_get( void const *base, ssize_t pos )
 {
     uint8_t const *b = ( (uint8_t const *)base ) + pos;
@@ -689,7 +749,6 @@ static inline int jdksavdecc_eui48_is_not_zero( struct jdksavdecc_eui48 v )
 /** \addtogroup eui64 eui64 */
 /*@{*/
 
-///
 struct jdksavdecc_eui64
 {
     uint8_t value[8];
@@ -841,7 +900,7 @@ static inline int jdksavdecc_eui64_is_not_zero( struct jdksavdecc_eui64 v )
 
 struct jdksavdecc_gptp_seconds
 {
-    uint64_t seconds : 48;
+    uint64_t seconds; /* 48 bits */
 };
 
 static inline void jdksavdecc_gptp_seconds_init( struct jdksavdecc_gptp_seconds *self ) { self->seconds = 0; }
@@ -896,9 +955,11 @@ static inline void jdksavdecc_gptp_seconds_set( struct jdksavdecc_gptp_seconds v
 
 /*@}*/
 
-/// Typedef for a pointer to a procedure that can be used to
-/// lookup a localized_string from a localized string index, given a context/tag
-/// which would refer to an entity model.
+/**
+ * Typedef for a pointer to a procedure that can be used to
+ * lookup a localized_string from a localized string index, given a context/tag
+ * which would refer to an entity model.
+ */
 typedef struct jdksavdecc_string const *( *jdksavdecc_localized_string_lookup_proc )( void *context,
                                                                                       const char *locale_name,
                                                                                       uint16_t localized_string_id );

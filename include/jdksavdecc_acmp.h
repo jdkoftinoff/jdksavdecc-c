@@ -172,8 +172,9 @@ static inline ssize_t jdksavdecc_acmpdu_common_control_header_write( struct jdks
 #define JDKSAVDECC_ACMP_STATUS_CONTROLLER_NOT_AUTHORIZED ( 16 )
 #define JDKSAVDECC_ACMP_STATUS_INCOMPATIBLE_REQUEST ( 17 )
 
-/// New: The AVDECC Listener is being asked to connect to something that it cannot listen to, e.g. it is being asked to
-/// listen to it's own AVDECC Talker stream.
+/** New: The AVDECC Listener is being asked to connect to something that it cannot listen to,
+ * e.g. it is being asked to listen to it's own AVDECC Talker stream.
+ */
 #define JDKSAVDECC_ACMP_STATUS_LISTENER_INVALID_CONNECTION ( 18 )
 #define JDKSAVDECC_ACMP_STATUS_NOT_SUPPORTED ( 31 )
 
@@ -561,7 +562,10 @@ static inline void jdksavdecc_acmpdu_set_reserved( uint16_t v, void *base, ssize
 /** \addtogroup acmpdu ACMPDU - Clause 8.2.1 */
 /*@{*/
 
-/// ACMPDU - Clause 8.2.1
+/**
+ * @brief The jdksavdecc_acmpdu struct
+ * ACMPDU - Clause 8.2.1
+ */
 struct jdksavdecc_acmpdu
 {
     struct jdksavdecc_acmpdu_common_control_header header;

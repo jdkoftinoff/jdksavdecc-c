@@ -186,7 +186,10 @@ static inline void jdksavdecc_aecpdu_aem_set_command_type( uint16_t v, void *bas
 /** \addtogroup aecpdu_aem AECPDU AEM - Clause 9.2.1.2 */
 /*@{*/
 
-/// AECPDU AEM - Clause 9.2.1.2
+/**
+ * @brief The jdksavdecc_aecpdu_aem struct
+ * AECPDU AEM - Clause 9.2.1.2
+ */
 struct jdksavdecc_aecpdu_aem
 {
     struct jdksavdecc_aecpdu_common aecpdu_header;
