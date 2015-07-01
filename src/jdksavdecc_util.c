@@ -76,7 +76,7 @@ int jdksavdecc_eui48_init_from_cstr( struct jdksavdecc_eui48 *self, const char *
            && jdksavdecc_util_parse_byte( &self->value[2], str[6], str[7] ) && jdksavdecc_util_delim( str[8] )
            && jdksavdecc_util_parse_byte( &self->value[3], str[9], str[10] ) && jdksavdecc_util_delim( str[11] )
            && jdksavdecc_util_parse_byte( &self->value[4], str[12], str[13] ) && jdksavdecc_util_delim( str[14] )
-           && jdksavdecc_util_parse_byte( &self->value[5], str[15], str[16] ) && jdksavdecc_util_delim( str[17] );
+           && jdksavdecc_util_parse_byte( &self->value[5], str[15], str[16] );
 }
 
 int jdksavdecc_eui64_init_from_cstr( struct jdksavdecc_eui64 *self, const char *str )
@@ -88,5 +88,5 @@ int jdksavdecc_eui64_init_from_cstr( struct jdksavdecc_eui64 *self, const char *
            && jdksavdecc_util_parse_byte( &self->value[4], str[12], str[13] ) && jdksavdecc_util_delim( str[14] )
            && jdksavdecc_util_parse_byte( &self->value[5], str[15], str[16] ) && jdksavdecc_util_delim( str[17] )
            && jdksavdecc_util_parse_byte( &self->value[6], str[18], str[19] ) && jdksavdecc_util_delim( str[20] )
-           && jdksavdecc_util_parse_byte( &self->value[7], str[21], str[22] ) && jdksavdecc_util_delim( str[23] );
+           && jdksavdecc_util_parse_byte( &self->value[7], str[21], str[22] );
 }
