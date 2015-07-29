@@ -71,12 +71,12 @@ ssize_t jdksavdecc_common_control_header_write( struct jdksavdecc_common_control
     if ( r >= 0 )
     {
         jdksavdecc_common_control_header_set_cd( p->cd, base, pos );
-        jdksavdecc_common_control_header_set_subtype( p->subtype, base, pos );
-        jdksavdecc_common_control_header_set_sv( p->sv, base, pos );
-        jdksavdecc_common_control_header_set_version( p->version, base, pos );
-        jdksavdecc_common_control_header_set_control_data( p->control_data, base, pos );
-        jdksavdecc_common_control_header_set_status( p->status, base, pos );
-        jdksavdecc_common_control_header_set_control_data_length( p->control_data_length, base, pos );
+        jdksavdecc_common_control_header_set_subtype( (uint8_t)p->subtype, base, pos );
+        jdksavdecc_common_control_header_set_sv( (bool)p->sv, base, pos);
+        jdksavdecc_common_control_header_set_version( (uint8_t)p->version, base, pos);
+        jdksavdecc_common_control_header_set_control_data ((uint8_t)p->control_data, base, pos);
+        jdksavdecc_common_control_header_set_status( (uint8_t)p->status, base, pos);
+        jdksavdecc_common_control_header_set_control_data_length( (uint16_t)p->control_data_length, base, pos);
         jdksavdecc_common_control_header_set_stream_id( p->stream_id, base, pos );
     }
     return r;
