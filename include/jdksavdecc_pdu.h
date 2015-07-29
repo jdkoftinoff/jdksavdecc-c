@@ -350,7 +350,7 @@ static inline void jdksavdecc_common_control_header_set_cd( bool v, void *base, 
     jdksavdecc_subtype_data_set_cd( v, base, pos );
 }
 
-static inline uint32_t jdksavdecc_common_control_header_get_subtype( void const *base, size_t pos )
+static inline uint8_t jdksavdecc_common_control_header_get_subtype( void const *base, size_t pos )
 {
     return jdksavdecc_subtype_data_get_subtype( base, pos );
 }
@@ -361,7 +361,7 @@ static inline void jdksavdecc_common_control_header_set_subtype( uint8_t v, void
     p[0] = ( p[0] & 0x80 ) | ( v & 0x7f );
 }
 
-static inline uint32_t jdksavdecc_common_control_header_get_sv( void const *base, size_t pos )
+static inline bool jdksavdecc_common_control_header_get_sv( void const *base, size_t pos )
 {
     return jdksavdecc_subtype_data_get_sv( base, pos );
 }
@@ -371,7 +371,7 @@ static inline void jdksavdecc_common_control_header_set_sv( bool v, void *base, 
     jdksavdecc_subtype_data_set_sv( v, base, pos );
 }
 
-static inline uint32_t jdksavdecc_common_control_header_get_version( void const *base, size_t pos )
+static inline uint8_t jdksavdecc_common_control_header_get_version( void const *base, size_t pos )
 {
     return jdksavdecc_subtype_data_get_version( base, pos );
 }
@@ -391,7 +391,7 @@ static inline void jdksavdecc_common_control_header_set_control_data( uint8_t v,
     jdksavdecc_avtp_subtype_data_set_control_data( v, base, pos );
 }
 
-static inline uint32_t jdksavdecc_common_control_header_get_status( void const *base, size_t pos )
+static inline uint8_t jdksavdecc_common_control_header_get_status( void const *base, size_t pos )
 {
     return jdksavdecc_subtype_data_get_status( base, pos );
 }

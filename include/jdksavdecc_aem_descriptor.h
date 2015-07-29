@@ -4574,7 +4574,7 @@ static inline void jdksavdecc_values_vendor_set_blob_size( uint32_t v, void *bas
 struct jdksavdecc_values_vendor
 {
     struct jdksavdecc_eui64 vendor_eui64;
-    uint16_t blob_size;
+    uint32_t blob_size;
 };
 
 /**
