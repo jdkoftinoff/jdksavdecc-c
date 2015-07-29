@@ -438,7 +438,7 @@ static inline ssize_t jdksavdecc_jdks_log_control_read( struct jdksavdecc_jdks_l
             jdksavdecc_uint32_read( &p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE + pos, len );
             if ( p->blob_size >= 2 && p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE )
             {
-                uint16_t text_len = p->blob_size - 2;
+                uint32_t text_len = p->blob_size - 2;
 
                 jdksavdecc_uint8_read( &p->log_detail, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL + pos, len );
 
@@ -501,7 +501,7 @@ static inline ssize_t
             jdksavdecc_uint32_read( &p->blob_size, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_BLOB_SIZE + pos, len );
             if ( p->blob_size >= 2 && p->blob_size <= JDKSAVDECC_AEM_CONTROL_VALUE_TYPE_BLOB_MAX_SIZE )
             {
-                uint16_t text_len = p->blob_size - 2;
+                uint32_t text_len = p->blob_size - 2;
 
                 jdksavdecc_uint8_read( &p->log_detail, buf, JDKSAVDECC_JDKS_LOG_CONTROL_OFFSET_LOG_DETAIL + pos, len );
 
