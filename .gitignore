@@ -28,3 +28,11 @@
 *.tlog
 *.lastbuildstate
 
+*.cmake
+Makefile
+CMakeFiles/
+CMakeCache.txt
+DartConfiguration.tcl
+jdksavdecc-tool-print-pdu
+jdksavdecc-tool-gen-acmpdu
+
